@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	
+	<meta title="CardTactics" package="com.sample.cardtactics" version="1.0.0" company="Company Name" />
+	<window background="#000000" />
+	<app main="Main" path="Export" file="CardTactics" />
+	
+	<source path="Source" />
+	
+	<haxelib name="openfl" />
+	<haxelib name="zerolib" />
+	<haxelib name="actuate" />
+	
+	<assets path="Assets" rename="assets" />
+	
+</project>

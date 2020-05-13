@@ -1,0 +1,73 @@
+[
+	{
+		"name":"Sniper Rifle",
+		"description":"A rifle with high accuracy at long ranges.\nDiamonds pierce through walls!",
+		"value":10,
+		"effects":[
+			{
+				"type":"ATTACK",
+				"value":8,
+				"range":16,
+				"attack_type":"PIERCING"
+			}
+		],
+		"requirement":{
+			"type":"GREATER_THAN",
+			"value":6
+		},
+		"special":{
+			"effect":"NOCLIP",
+			"requirement":{
+				"type":"SUIT_IS",
+				"suit":"DIAMONDS"
+			}
+		},
+		"weakness":"IMPACT"
+	},
+	{
+		"name":"Shotgun",
+		"description":"Pump action shotgun.\nClubs splits damage among neighbors.",
+		"value":8,
+		"effects":[
+			{
+				"type":"ATTACK",
+				"value":1,
+				"range":4,
+				"attack_type":"IMPACT",
+				"repeat":-1
+			}
+		],
+		"requirement":{
+			"type":"GREATER_THAN",
+			"value":3
+		},
+		"special":{
+			"effect":"SPREAD",
+			"requirement":{
+				"type":"SUIT_IS",
+				"suit":"CLUBS"
+			}
+		},
+		"weakness":"PIERCING"
+	},
+	{
+		"name":"Riot Shield",
+		"description":"Rush down your opponents!\nProtect against impacts and run!",
+		"value":12,
+		"effects":[
+			{
+				"type":"DEFENSE",
+				"attack_type":"IMPACT"
+			},
+			{
+				"type":"MOVEMENT",
+				"value":-1
+			}
+		],
+		"requirement":{
+			"type":"SUIT_IS",
+			"suit":"CLUBS"
+		},
+		"weakness":"ELECTRIC"
+	}
+]
