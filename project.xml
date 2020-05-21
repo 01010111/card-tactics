@@ -2,15 +2,18 @@
 <project>
 	
 	<meta title="CardTactics" package="com.sample.cardtactics" version="1.0.0" company="Company Name" />
-	<window background="#000000" />
-	<app main="Main" path="Export" file="CardTactics" />
+	<app main="Main" path="export" file="CardTactics" />
+	<window width="1280" height="720" fps="60" />
 	
-	<source path="Source" />
+	<source path="src" />
+	<source path="zerolib-openfl" />
 	
 	<haxelib name="openfl" />
 	<haxelib name="zerolib" />
-	<haxelib name="actuate" />
 	
-	<assets path="Assets" rename="assets" />
+	<assets path="assets/images" rename="images" />
+	<assets path="assets/audio" rename="audio" />
+	<assets path="assets/data" rename="data" />
+	<assets path="assets/fonts" rename="fonts" />
 	
 </project>

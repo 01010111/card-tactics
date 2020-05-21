@@ -1,0 +1,22 @@
+Card
+- Title
+  - Need to limit length
+- AP Cost
+  - Int, 1-4
+- Effect
+  - Damage, Move, etc
+- Effect Calculation
+  - Card Values, static, etc
+- Requirement
+  - Min/Max values, face, suits, pairs, matching suits, etc
+- Class
+  - Fire, Explosion, Piercing, Electricity, Water, Shield, Move
+- Weakness
+  - Fire, Explosion, Piercing, Electricity, Water
+- Bonus Requirement
+  - face, suits, pairs, matching suits, etc
+- Bonus Effect
+  - Effect Mult, etc
+- Bonus Description
+  - 
+- Description

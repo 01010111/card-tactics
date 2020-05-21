@@ -1,21 +1,16 @@
 -main ApplicationMain 
 --macro openfl._internal.macros.ExtraParams.include()
--cp /usr/local/lib/haxe/lib/openfl/8,9,5/src
--D openfl=8.9.5
+-cp C:/HaxeToolkit/haxe/lib/openfl/8,9,6/src
+-D openfl=8.9.6
 --macro lime._internal.macros.DefineMacro.run()
--cp /usr/local/lib/haxe/lib/lime/7,6,3/src
--D lime=7.6.3
--cp /Users/will/_dev/zero/zerolib
--D zerolib=0.6.5
--cp /usr/local/lib/haxe/lib/actuate/1,8,9/src
--D actuate=1.8.9
--cp Source
--D MAC_USE_CURRENT_SDK=1
--D tools=7.6.3
--D ANDROID_SETUP=true
--D ANDROID_SDK=/Users/will/Library/Android/sdk
+-cp C:/HaxeToolkit/haxe/lib/lime/7,7,0/src
+-D lime=7.7.0
+-cp C:/HaxeToolkit/haxe/lib/zerolib/git
+-D zerolib=0.7.0
+-cp src
+-cp zerolib-openfl
+-D tools=7.7.0
 -D lime-canvas
--D ANDROID_NDK_ROOT=/Users/will/Library/Android/sdk/ndk/20.0.5594570
 -D howlerjs
 -D no-compilation
 -D openfl-html5
@@ -23,14 +18,13 @@
 -D lime-dom
 -D lime-howlerjs
 -D lime-html5
--D JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_221.jdk/Contents/Home
 -D html5
 -D web
 --remap flash:openfl
 --connect
-6002
--js Export/html5/bin/CardTactics.js
--cp Export/html5/haxe
+6000
+-js export/html5/bin/CardTactics.js
+-cp export/html5/haxe
 -D html5
 -dce full
 -D final
