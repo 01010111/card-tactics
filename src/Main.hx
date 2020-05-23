@@ -1,10 +1,10 @@
 package;
 
+import util.UpdateManager;
+import openfl.events.Event;
 import zero.openfl.utilities.Game;
 import openfl.display.Sprite;
-import scenes.Level;
-
-using zero.openfl.extensions.SpriteTools;
+import scenes.*;
 
 class Main extends Sprite
 {
@@ -13,5 +13,6 @@ class Main extends Sprite
 		super();
 		stage.color = 0x000000;
 		new Game(this, Level);
+		stage.addEventListener(Event.ENTER_FRAME, UpdateManager.update);
 	}
 }

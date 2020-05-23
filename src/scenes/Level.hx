@@ -16,17 +16,21 @@ using zero.openfl.extensions.SpriteTools;
 using zero.utilities.AStar;
 using zero.utilities.OgmoUtils;
 using zero.extensions.FloatExt;
+using zero.utilities.EventBus;
 
 class Level extends Scene {
 
 	var tiles:Tilemap;
 	var object_map:Array<Array<Int>> = [];
-	var players:Array<Sprite> = [];
-	var tweens:Map<Sprite,Tween> = [];
 	var selected_player(default, set):PlayerSprite;
 	var can_move:Bool = true;
 	var dolly:Dolly;
+
+	// layers
+	var level:Sprite;
+	var under_objects:Sprite;
 	var objects:Sprite;
+	var over_objects:Sprite;
 
 	function set_selected_player(player:PlayerSprite) {
 		dolly.follow(player, false);
@@ -36,38 +40,44 @@ class Level extends Scene {
 	
 	public function new() {
 		super();
-		zoom = 3;
 	}
 
 	override function create() {
 		super.create();
-		dolly = new Dolly();
-		objects = new Sprite();
-		addChild(dolly);
+		init_dolly();
 		draw_map('000');
-		dolly.add(objects);
 		make_player(2, 9);
 		make_player(6, 8);
-		addEventListener(MouseEvent.CLICK, on_click);
-		addEventListener(Event.ENTER_FRAME, (e) -> {
-			Tween.update(1/60);
-			dolly.update(1/60);
-		});
+		dolly.update.listen('update');
+		var gear = new ui.cards.Gear();
+		var deck = new ui.cards.Deck();
+		this.add(gear);
+		gear.add_card(new ui.cards.GearCard(128, 128, gear));
+		this.add(deck);
+		deck.deal();
+	}
+
+	function init_dolly() {
+		this.add(dolly = new Dolly());
+		dolly.add(level = new Sprite());
+		dolly.add(under_objects = new Sprite());
+		dolly.add(objects = new Sprite());
+		dolly.add(over_objects = new Sprite());
+		dolly.set_scale(3);
 	}
 
 	function draw_map(src:String) {
-		var project = OgmoUtils.parse_project_json(Assets.getText('data/maps/maps.ogmo'));
-		var level = OgmoUtils.parse_level_json(Assets.getText('data/maps/$src.json'));
-		tiles = new Tilemap({ map: level.get_tile_layer('tiles').data2D, tileset: { image: 'images/tiles.png', frame_height: 16, frame_width: 16 }, smoothing: false, solids: [for (i in 64...256) i] });
-		dolly.addChild(tiles);
+		var level_data = OgmoUtils.parse_level_json(Assets.getText('data/maps/$src.json'));
+		tiles = new Tilemap({ map: level_data.get_tile_layer('tiles').data2D, tileset: { image: 'images/tiles.png', frame_height: 16, frame_width: 16 }, smoothing: false, solids: [for (i in 64...256) i] });
+		level.add(tiles);
+		level.addEventListener(MouseEvent.CLICK, on_click);
 		object_map = [for (row in tiles.get_map(false)) [for (n in row) 0]];
 	}
 	
 	function make_player(x:Int, y:Int) {
 		var player = new PlayerSprite(x * 16 + 8, y * 16 + 8);
 		player.addEventListener(MouseEvent.CLICK, (e) -> if (can_move) selected_player = player);
-		objects.addChild(player);
-		players.push(player);
+		objects.add(player);
 		selected_player = player;
 		dolly.follow(selected_player, true);
 		object_map[y][x] = -1;
@@ -75,7 +85,6 @@ class Level extends Scene {
 
 	function on_click(e:MouseEvent) {
 		if (!can_move || e.localX < 0 || e.localY < 0) return;
-		if (tweens.exists(selected_player) && tweens[selected_player].active) tweens[selected_player].destroy();
 		var x = (e.localX/16).floor();
 		var y = (e.localY/16).floor();
 		var map = get_traversal_map();
@@ -111,7 +120,6 @@ class Level extends Scene {
 			}
 		});
 		tween.update_tween(1/60);
-		tweens.set(selected_player, tween);
 		return true;
 	}
 

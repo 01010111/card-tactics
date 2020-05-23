@@ -1,12 +1,14 @@
 package zero.openfl.extensions;
 
+import zero.utilities.Color;
 import openfl.text.TextFieldAutoSize;
 import openfl.text.TextFormatAlign;
 import openfl.text.TextField;
 import openfl.text.TextFormat;
 import zero.utilities.Anchor;
 
-using util.TextTools;
+using zero.openfl.extensions.TextTools;
+using zero.extensions.Tools;
 using Reflect;
 
 class TextTools {
@@ -14,7 +16,7 @@ class TextTools {
 	// Styles
 
 	static var formats:Map<String, TextFormatOptions> = [];
-	static function store_format(name:String, format:TextFormatOptions) formats.set(name, format);
+	public static function store_format(name:String, format:TextFormatOptions) formats.set(name, format);
 
 	// Static Extensions
 

@@ -91,6 +91,7 @@ class SpriteTools {
 	public static inline function set_position(sprite:Sprite, x:Float, y:Float) {
 		sprite.x = x;
 		sprite.y = y;
+		return sprite;
 	}
 	public static inline function distance(sprite1:Sprite, sprite2:Sprite):Float {
 		var p1 = Vec2.get(sprite1.x, sprite1.y);

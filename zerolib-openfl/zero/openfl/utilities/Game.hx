@@ -1,10 +1,15 @@
 package zero.openfl.utilities;
 
+import openfl.display.DisplayObject;
+import zero.utilities.Vec2;
+import openfl.events.MouseEvent;
 import openfl.display.Sprite;
 import zero.openfl.utilities.Scene;
 import zero.openfl.utilities.FPS;
 import openfl.Lib;
 
+using Std;
+using Math;
 using zero.openfl.extensions.SpriteTools;
 
 class Game {
@@ -23,6 +28,8 @@ class Game {
 	#end
 
 	public static var root:Sprite;
+
+	public static var mouse:Vec2 = [0, 0];
 
 	public function new(root:Sprite, scene:Class<Scene>) {
 		i = this;

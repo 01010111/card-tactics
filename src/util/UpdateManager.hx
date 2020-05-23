@@ -1,5 +1,7 @@
 package util;
 
+import zero.utilities.Tween;
+import zero.utilities.Timer;
 import openfl.events.Event;
 
 using Math;
@@ -18,6 +20,8 @@ class UpdateManager {
 	public static function update(e:Event) {
 		if (wait) return;
 		var dt = get_dt(get_time());
+		Timer.update(dt);
+		Tween.update(dt);
 		'update'.dispatch(dt);
 		'persistent_update'.dispatch(dt);
 		fps_array.push(1/dt);
