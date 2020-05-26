@@ -21,8 +21,8 @@ class PlayingCard extends Card {
 	static var mini_height:Float = 80;
 	
 	public var gear:GearCard;
+	public var data:PlayingCardData;
 	var deck:Deck;
-	var data:PlayingCardData;
 	var last:Vec2;
 	var face:Sprite;
 	var mini_face:Sprite;
@@ -64,23 +64,23 @@ class PlayingCard extends Card {
 		}
 		
 		face = new Sprite();
-		face.fill_rect(Color.PICO_8_WHITE, -card_width/2, -card_height/2, card_width, card_height, 8);
-		face.rect(Color.BLACK, -card_width/2, -card_height/2, card_width, card_height, 7, 4);
+		face.fill_rect(Color.PICO_8_WHITE, -card_width/2, -card_height/2, card_width, card_height, 16);
+		face.rect(Color.BLACK, -card_width/2 + 2, -card_height/2 + 2, card_width - 4, card_height - 4, 12, 4.5);
 
 		var text = new TextField()
 			.format({ font: 'Oduda Bold', size: 24, color: Color.BLACK })
 			.set_string(val)
 			.set_position(-40, -72, MIDDLE_CENTER);
 
-		var sprite = new Sprite().load_graphic(src, MIDDLE_CENTER);
+		var sprite = new Sprite().load_graphic(src, MIDDLE_CENTER, true);
 		sprite.set_scale(96/256);
 		
 		face.add(text);
 		face.add(sprite);
 
 		mini_face = new Sprite();
-		mini_face.fill_rect(Color.PICO_8_WHITE, -mini_width/2, -mini_height/2, mini_width, mini_height, 8);
-		mini_face.rect(Color.BLACK, -mini_width/2, -mini_height/2, mini_width, mini_height, 7, 4);
+		mini_face.fill_rect(Color.PICO_8_WHITE, -mini_width/2, -mini_height/2, mini_width, mini_height, 16);
+		mini_face.rect(Color.BLACK, -mini_width/2 + 2, -mini_height/2 + 2, mini_width - 4, mini_height - 4, 12, 4.5);
 		mini_face.set_scale(card_width/mini_width, card_height/mini_height);
 
 		var text = new TextField()
@@ -88,7 +88,7 @@ class PlayingCard extends Card {
 			.set_string(val)
 			.set_position(0, -24, MIDDLE_CENTER);
 
-		var sprite = new Sprite().load_graphic(src, MIDDLE_CENTER).set_position(0, 12);
+		var sprite = new Sprite().load_graphic(src, MIDDLE_CENTER, true).set_position(0, 12);
 		sprite.set_scale(56/256);
 
 		mini_face.add(text);
@@ -120,10 +120,11 @@ class PlayingCard extends Card {
 
 	override function mouse_up(e:MouseEvent) {
 		if (!dragging) return;
-		if (!equipped) for (card in Gear.active_gear.gear_cards) {
-			var pos = card.get_anchor(true);
+		if (!equipped) for (gear in Gear.active_gear.gear_cards) {
+			var pos = gear.get_anchor(true);
 			if (pos.distance([x, y]) < 128) {
-				card.add_card(this);
+				if (!gear.verify_card(data)) continue;
+				gear.add_card(this);
 				equipped = true;
 				super.mouse_up(e);
 				pos.put();

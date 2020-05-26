@@ -52,7 +52,28 @@ class Level extends Scene {
 		var gear = new ui.cards.Gear();
 		var deck = new ui.cards.Deck();
 		this.add(gear);
-		gear.add_card(new ui.cards.GearCard(128, 128, gear));
+		gear.add_card(new ui.cards.GearCard(240, 144, gear, {
+			title: 'Test Card',
+			cost: 3,
+			description: 'A test card',
+			range: {
+				min: 1,
+				max: 5,
+				type: NONE,
+			},
+			gear_class: FLAME,
+			weakness: PIERCING,
+			requirement: MAX_CARD,
+			requirement_value: 3,
+			effect: {
+				type: DAMAGE,
+				factor: VALUES,
+			},
+			bonus: {
+				requirement: HEARTS,
+				type: DOUBLE_EFFECT_VALUE
+			}
+		}));
 		this.add(deck);
 		deck.deal();
 	}

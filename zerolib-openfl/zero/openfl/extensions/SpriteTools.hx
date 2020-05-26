@@ -84,6 +84,7 @@ class SpriteTools {
 		if (y == null) y = x;
 		sprite.scaleX = x;
 		sprite.scaleY = y;
+		return sprite;
 	}
 	public static inline function children(sprite:Sprite):Array<DisplayObject> {
 		return [for (i in 0...sprite.numChildren) sprite.getChildAt(i)];
@@ -109,8 +110,9 @@ class SpriteTools {
 		p2.put();
 		return out;
 	}
-	public static function load_graphic(sprite:Sprite, graphic:String, anchor:Anchor) {
+	public static function load_graphic(sprite:Sprite, graphic:String, anchor:Anchor, smoothing:Bool = false) {
 		var bitmap = new Bitmap(Assets.getBitmapData(graphic));
+		bitmap.smoothing = smoothing;
 		bitmap.x = switch anchor {
 			case TOP_LEFT | MIDDLE_LEFT | BOTTOM_LEFT: 0;
 			case TOP_CENTER | MIDDLE_CENTER | BOTTOM_CENTER: -bitmap.width/2;
