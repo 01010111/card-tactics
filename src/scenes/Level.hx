@@ -1,5 +1,6 @@
 package scenes;
 
+import zero.openfl.utilities.Particles;
 import zero.openfl.utilities.AnimatedSprite;
 import zero.openfl.utilities.Dolly;
 import zero.openfl.utilities.Tilemap;
@@ -10,6 +11,7 @@ import openfl.events.MouseEvent;
 import openfl.display.Sprite;
 import zero.openfl.utilities.Scene;
 import zero.utilities.Tween;
+import particles.Poof;
 
 using Math;
 using zero.openfl.extensions.SpriteTools;
@@ -20,6 +22,8 @@ using zero.utilities.EventBus;
 
 class Level extends Scene {
 
+	public static var i:Level;
+
 	var tiles:Tilemap;
 	var object_map:Array<Array<Int>> = [];
 	var selected_player(default, set):PlayerSprite;
@@ -27,10 +31,13 @@ class Level extends Scene {
 	var dolly:Dolly;
 
 	// layers
-	var level:Sprite;
-	var under_objects:Sprite;
-	var objects:Sprite;
-	var over_objects:Sprite;
+	public var level:Sprite;
+	public var under_objects:Sprite;
+	public var objects:Sprite;
+	public var over_objects:Sprite;
+
+	// Particles
+	public var poofs:Particles = new Particles(() -> new Poof());
 
 	function set_selected_player(player:PlayerSprite) {
 		dolly.follow(player, false);
@@ -39,6 +46,7 @@ class Level extends Scene {
 	}
 	
 	public function new() {
+		i = this;
 		super();
 	}
 
@@ -63,7 +71,7 @@ class Level extends Scene {
 			},
 			gear_class: FLAME,
 			weakness: PIERCING,
-			requirement: MAX_CARD,
+			requirement: DIFF_SUIT,
 			requirement_value: 3,
 			effect: {
 				type: DAMAGE,
@@ -134,13 +142,16 @@ class Level extends Scene {
 	function follow_path(player:PlayerSprite, path:Array<IntPoint>) {
 		var t = path.shift();
 		var tween = Tween.get(selected_player).from_to('x', selected_player.x, t.x * 16 + 8).from_to('y', selected_player.y, t.y * 16 + 8).duration(0.05).on_complete(() -> {
-			if (path.length > 0) follow_path(player, path);
+			if (path.length > 0) {
+				follow_path(player, path);
+				Level.i.poofs.fire({ x: t.x * 16 + 8, y: t.y * 16 + 8 });
+			}
 			else {
 				player.pulse();
 				can_move = true;
 			}
 		});
-		tween.update_tween(1/60);
+		//tween.update_tween(1/60);
 		return true;
 	}
 
@@ -171,7 +182,7 @@ class PlayerSprite extends Sprite {
 			offset_x: 8,
 			offset_y: 12,
 		});
-		graphic.set_frame_index(16.get_random().floor());
+		graphic.set_frame_index(8.get_random().floor());
 		addChild(graphic);
 	}
 

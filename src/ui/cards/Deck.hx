@@ -62,7 +62,6 @@ class Deck extends Sprite {
 			card.x += (target.x - card.x) * 0.25;
             card.y += (target.y - card.y) * 0.25;
             i++;
-            trace(card.x, card.y, target.x, target.y);
             target.put();
 		}
 	}

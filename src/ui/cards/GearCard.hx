@@ -1,5 +1,7 @@
 package ui.cards;
 
+import openfl.events.MouseEvent;
+import openfl.text.TextFormatAlign;
 import zero.utilities.Ease;
 import zero.utilities.Tween;
 import openfl.text.TextField;
@@ -37,11 +39,11 @@ class GearCard extends Card {
 		this.data = data;
 		this.set_position(x, y);
 		draggable = false;
-		addEventListener(Event.ENTER_FRAME, update);
 		last = [x, y];
 		home = [x, y];
 		anchor = [0, 0];
 		draw_card();
+		addEventListener(Event.ENTER_FRAME, update);
 	}
 	
 	function draw_card() {
@@ -60,21 +62,21 @@ class GearCard extends Card {
 			// AP cost
 			{
 				for (i in 0...data.cost) {
-					var pip = new Sprite().load_graphic('images/ui/ap_pip.png', TOP_LEFT, true).set_position(165 - i * 11, 11);
+					var pip = new Sprite().load_graphic('images/ui/ap_pip.png', TOP_LEFT, true).set_position(165 - i * 11, 10);
 					contents.add(pip);
 				}
 			}
 
 			// Title
 			{
-				contents.add(new Sprite().fill_rect(Color.PICO_8_WHITE, 26, 28, 140, 32, 32));
-				var title = new TextField().format({ font: 'Oduda Bold', size: 16, color: Color.BLACK }).set_string(data.title).set_position(42, 44, MIDDLE_LEFT);
+				contents.add(new Sprite().fill_rect(Color.PICO_8_WHITE, 26, 28, 140, 24, 24));
+				var title = new TextField().format({ font: 'Oduda Bold', size: 16, color: Color.BLACK }).set_string(data.title).set_position(40, 38, MIDDLE_LEFT);
 				contents.add(title);
 			}
 
 			// Description
 			{
-				description = new TextField().format({ font: 'Oduda Bold', size: 14, color: Color.BLACK });
+				description = new TextField().format({ font: 'Oduda Bold', size: 14, color: Color.BLACK, leading: -2 });
 				contents.add(description);
 				set_description();
 			}
@@ -83,13 +85,26 @@ class GearCard extends Card {
 			{
 				contents.add(new Sprite().fill_rect(Color.PICO_8_DARK_GREEN, 16, 92, 160, 96, 16));
 
-				req_text = new TextField().format({ font: 'Oduda Bold', size: 18, color: Color.PICO_8_DARK_BLUE });
+				req_text = new TextField().format({ font: 'Oduda Bold', size: 20, color: Color.PICO_8_DARK_BLUE });
 				contents.add(req_text);
 				set_req_text();
 
-				req_text_r = new TextField().format({ font: 'Oduda Bold', size: 16, color: Color.PICO_8_DARK_BLUE });
+				req_text_r = new TextField().format({ font: 'Oduda Bold', size: 16, color: Color.PICO_8_DARK_BLUE, align: TextFormatAlign.CENTER });
 				contents.add(req_text_r);
 				set_req_text_r();
+			}
+
+			// Bonus
+			{
+				var src = switch data.bonus.requirement {
+					case IS_FACE:'images/ui/rule_face.png';
+					case HEARTS:'images/ui/suit_heart.png';
+					case DIAMONDS:'images/ui/suit_diamond.png';
+					case CLUBS:'images/ui/suit_club.png';
+					case SPADES:'images/ui/suit_spade.png';
+					default: 'images/blank.png';
+				}
+				contents.add(new Sprite().load_graphic(src, MIDDLE_CENTER, true).set_position(20, 92).set_scale(0.125));
 			}
 
 			// Classes
@@ -102,6 +117,8 @@ class GearCard extends Card {
 					case WATER:'images/ui/icons/on_white/icon_water.png';
 					case SHIELD:'images/ui/icons/on_white/icon_shield.png';
 					case MOVE:'images/ui/icons/on_white/icon_move.png';
+					case HEALTH:'images/ui/icons/on_white/icon_health.png';
+					case UTILITY:'images/ui/icons/on_white/icon_utility.png';
 				}
 				var weakness_src = switch data.weakness {
 					case FLAME:'images/ui/icons/on_white/icon_flame.png';
@@ -111,6 +128,8 @@ class GearCard extends Card {
 					case WATER:'images/ui/icons/on_white/icon_water.png';
 					case SHIELD:'images/ui/icons/on_white/icon_shield.png';
 					case MOVE:'images/ui/icons/on_white/icon_move.png';
+					case HEALTH:'images/ui/icons/on_white/icon_health.png';
+					case UTILITY:'images/ui/icons/on_white/icon_utility.png';
 				}
 				contents.addChild(new Sprite().load_graphic(class_src, TOP_LEFT, true).set_position(16, 196).set_scale(0.25));
 				contents.addChild(new Sprite().load_graphic(weakness_src, TOP_LEFT, true).set_position(160, 196).set_scale(0.25));
@@ -125,19 +144,24 @@ class GearCard extends Card {
 			case MOVE: 'Move ${get_effect_value()} spaces';
 			case SHIELD: 'Shield against ${get_effect_value()} damage';
 		}
-		description.set_string(str).set_position(card_width/2, 76, MIDDLE_CENTER);
+		description.set_string(str.wrap_string(description, 128)).set_position(card_width/2, 70, MIDDLE_CENTER);
 	}
 
 	function get_effect_value() {
+		var out = 0;
 		switch data.effect.factor {
 			case VALUES:
-				var out = 0;
-				for (card in cards) out += card.data.value.get_value_value();
-				if (out == 0) return '_';
-				return '$out';
+				for (card in cards) out += card.data.value.value_to_int();
 			case STATIC:
-				return '${data.effect.value}';	
-		}	
+				out = data.effect.value;	
+		}
+		if (vefify_bonus()) {
+			switch data.bonus.type {
+				case DOUBLE_EFFECT_VALUE: out *= 2;
+				case DOUBLE_RANGE: {}
+			}
+		}
+		return out == 0 ? '_' : '$out';
 	}
 
 	function set_req_text() {
@@ -167,29 +191,29 @@ class GearCard extends Card {
 	}
 
 	function set_req_text_r() {
-		if (cards.length == 0) {
+		if (cards.length == 0 || cards.length == 2) {
 			req_text_r.set_string('');
 			return;
 		}
 		var str = switch data.requirement {
-			case MIN_TOTAL: '> ${(data.requirement_value - 1 - cards[0].data.value.get_value_value()).max(0)}';
-			case MAX_TOTAL: '< ${data.requirement_value + 1 - cards[0].data.value.get_value_value()}';
+			case MIN_TOTAL: '> ${(data.requirement_value - 1 - cards[0].data.value.value_to_int()).max(0)}';
+			case MAX_TOTAL: '< ${data.requirement_value + 1 - cards[0].data.value.value_to_int()}';
 			case MIN_CARD: '> ${data.requirement_value - 1}';
 			case MAX_CARD: '< ${data.requirement_value + 1}';
 			case EXACT_CARD: '= ${data.requirement_value}';
-			case EXACT_TOTAL: '= ${data.requirement_value - cards[0].data.value.get_value_value()}';
+			case EXACT_TOTAL: '= ${data.requirement_value - cards[0].data.value.value_to_int()}';
 			case IS_FACE: 'Face';
 			case NOT_FACE: 'Not\nFace';
-			case PAIR: '= ${cards[0].data.value.get_value_string()}';
-			case NO_MATCH: 'Not ${cards[0].data.value.get_value_string()}';
-			case SAME_SUIT: '${cards[0].data.suit}';
-			case DIFF_SUIT: 'Not ${cards[0].data.suit}';
+			case PAIR: '= ${cards[0].data.value.value_to_string()}';
+			case NO_MATCH: 'Not\n${cards[0].data.value.value_to_string()}';
+			case SAME_SUIT: '${cards[0].data.suit.suit_to_string()}';
+			case DIFF_SUIT: 'Not\n${cards[0].data.suit.suit_to_string()}';
 			case HEARTS: 'Hearts';
 			case DIAMONDS: 'Diamonds';
 			case CLUBS: 'Clubs';
 			case SPADES: 'Spades';
 		}
-		req_text.set_string(str).set_position(card_width/2 + 36, 140, MIDDLE_CENTER);
+		req_text_r.set_string(str).set_position(card_width/2 + 36, 140, MIDDLE_CENTER);
 	}
 	
 	function update(e:Event) {
@@ -221,6 +245,7 @@ class GearCard extends Card {
 		set_description();
 		set_req_text();
 		set_req_text_r();
+		//draggable = verify_gear();
 	}
 
 	public function remove_card(card:PlayingCard) {
@@ -228,6 +253,7 @@ class GearCard extends Card {
 		set_description();
 		set_req_text();
 		set_req_text_r();
+		//draggable = verify_gear();
 	}
 
 	public function verify_card(card_data:PlayingCardData):Bool {
@@ -235,22 +261,22 @@ class GearCard extends Card {
 		switch data.requirement {
 			case MIN_TOTAL:
 				var total = 0;
-				for (card in cards) total += card.data.value.get_value_value();
-				return total + card_data.value.get_value_value() >= data.requirement_value || cards.length == 0;
+				for (card in cards) total += card.data.value.value_to_int();
+				return total + card_data.value.value_to_int() >= data.requirement_value || cards.length == 0;
 			case MAX_TOTAL:
 				var total = 0;
-				for (card in cards) total += card.data.value.get_value_value();
-				return total + card_data.value.get_value_value() <= data.requirement_value;
+				for (card in cards) total += card.data.value.value_to_int();
+				return total + card_data.value.value_to_int() <= data.requirement_value;
 			case MIN_CARD:
-				return card_data.value.get_value_value() >= data.requirement_value;
+				return card_data.value.value_to_int() >= data.requirement_value;
 			case MAX_CARD:
-				return card_data.value.get_value_value() <= data.requirement_value;
+				return card_data.value.value_to_int() <= data.requirement_value;
 			case EXACT_CARD:
-				return card_data.value.get_value_value() == data.requirement_value;
+				return card_data.value.value_to_int() == data.requirement_value;
 			case EXACT_TOTAL:
 				var total = 0;
-				for (card in cards) total += card.data.value.get_value_value();
-				return total + card_data.value.get_value_value() == data.requirement_value || cards.length == 0;
+				for (card in cards) total += card.data.value.value_to_int();
+				return total + card_data.value.value_to_int() == data.requirement_value || cards.length == 0;
 			case IS_FACE:
 				return [JACK, QUEEN, KING].contains(card_data.value);
 			case NOT_FACE:
@@ -274,10 +300,10 @@ class GearCard extends Card {
 		}
 	}
 
-	public function verify_gear() {
+	public function verify_gear():Bool {
 		if (cards.length == 0) return false;
 		var total = 0;
-		for (card in cards) total += card.data.value.get_value_value();
+		for (card in cards) total += card.data.value.value_to_int();
 		return switch data.requirement {
 			case MIN_TOTAL: total >= data.requirement_value;
 			case MAX_TOTAL: total <= data.requirement_value;
@@ -285,6 +311,19 @@ class GearCard extends Card {
 			default: true;
 		}
 	}
+
+	function vefify_bonus() {
+		switch data.bonus.requirement {
+			case IS_FACE: for (card in cards) if (![JACK, QUEEN, KING].contains(card.data.value)) return false;
+			case HEARTS: for (card in cards) if (card.data.suit != HEARTS) return false;
+			case DIAMONDS: for (card in cards) if (card.data.suit != DIAMONDS) return false;
+			case CLUBS: for (card in cards) if (card.data.suit != CLUBS) return false;
+			case SPADES: for (card in cards) if (card.data.suit != SPADES) return false;
+			default: return false;
+		}
+		return true;
+	}
+
 
 }
 
@@ -367,4 +406,6 @@ typedef GearData = {
 	WATER;
 	SHIELD;
 	MOVE;
+	HEALTH;
+	UTILITY;
   }
