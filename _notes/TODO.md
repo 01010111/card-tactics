@@ -1,0 +1,8 @@
+- [ ] Finish Game
+  - [ ] Implement Gear Cards
+    - [ ] Implement Move Card
+      - [ ] Finish Graphics
+      - [ ] Implement path finding
+    - [ ] Implement Character Select
+    - [ ] Implement Gear Card
+      - [ ] Implement Do/Aim on verify

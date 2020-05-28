@@ -78,9 +78,31 @@ class Level extends Scene {
 				factor: VALUES,
 			},
 			bonus: {
-				requirement: HEARTS,
+				requirement: CLUBS,
 				type: DOUBLE_EFFECT_VALUE
 			}
+		}));
+		gear.add_card(new ui.cards.GearCard(448, 144, gear, {
+			title: 'Test Utility Card',
+			cost: 2,
+			description: 'A test utility card',
+			range: {
+				min: 0,
+				max: 5,
+				type: NONE,
+			},
+			gear_class: HEALTH,
+			weakness: EXPLOSIVE,
+			requirement: IS_FACE,
+			effect: {
+				type: HEALTH,
+				factor: STATIC,
+				value: 5
+			},
+			bonus: {
+				requirement: TWO_CARDS,
+				type: DOUBLE_EFFECT_VALUE
+			},
 		}));
 		this.add(deck);
 		deck.deal();

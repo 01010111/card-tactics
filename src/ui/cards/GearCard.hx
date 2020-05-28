@@ -1,5 +1,6 @@
 package ui.cards;
 
+import zero.openfl.utilities.Game;
 import openfl.events.MouseEvent;
 import openfl.text.TextFormatAlign;
 import zero.utilities.Ease;
@@ -32,6 +33,7 @@ class GearCard extends Card {
 	var data:GearData;
 	var req_text:TextField;
 	var req_text_r:TextField;
+	var handle:GearCardHandle;
 	
 	public function new(x:Float, y:Float, gear:Gear, data:GearData) {
 		super();
@@ -98,6 +100,7 @@ class GearCard extends Card {
 			{
 				var src = switch data.bonus.requirement {
 					case IS_FACE:'images/ui/rule_face.png';
+					case TWO_CARDS:'images/ui/rule_two_cards.png';
 					case HEARTS:'images/ui/suit_heart.png';
 					case DIAMONDS:'images/ui/suit_diamond.png';
 					case CLUBS:'images/ui/suit_club.png';
@@ -136,6 +139,14 @@ class GearCard extends Card {
 				contents.addChild(new Sprite().load_graphic('images/ui/icons/icon_skull.png', TOP_LEFT, true).set_position(144, 180).set_scale(0.25));
 			}
 		}
+
+		var handle_type:HandleType = switch data.effect.type {
+			case DAMAGE: DRAG;
+			case MOVE: DRAG;
+			case SHIELD: PRESS;
+			case HEALTH: PRESS;
+		}
+		this.add(handle = cast new GearCardHandle(handle_type).set_position(0, card_height/2));
 	}
 
 	function set_description() {
@@ -143,6 +154,7 @@ class GearCard extends Card {
 			case DAMAGE: 'Do ${get_effect_value()} damage';
 			case MOVE: 'Move ${get_effect_value()} spaces';
 			case SHIELD: 'Shield against ${get_effect_value()} damage';
+			case HEALTH: 'Heal ${get_effect_value()} hitpoints';
 		}
 		description.set_string(str.wrap_string(description, 128)).set_position(card_width/2, 70, MIDDLE_CENTER);
 	}
@@ -153,9 +165,11 @@ class GearCard extends Card {
 			case VALUES:
 				for (card in cards) out += card.data.value.value_to_int();
 			case STATIC:
-				out = data.effect.value;	
+				out = data.effect.value;
 		}
+		trace('initial value: ', out);
 		if (vefify_bonus()) {
+			trace('bonus+', data.bonus.type);
 			switch data.bonus.type {
 				case DOUBLE_EFFECT_VALUE: out *= 2;
 				case DOUBLE_RANGE: {}
@@ -186,6 +200,7 @@ class GearCard extends Card {
 			case DIAMONDS: 'Diamonds';
 			case CLUBS: 'Clubs';
 			case SPADES: 'Spades';
+			case TWO_CARDS: 'Two Cards';
 		}
 		req_text.set_string(str).set_position(card_width/2, 140, MIDDLE_CENTER);
 	}
@@ -212,6 +227,7 @@ class GearCard extends Card {
 			case DIAMONDS: 'Diamonds';
 			case CLUBS: 'Clubs';
 			case SPADES: 'Spades';
+			case TWO_CARDS: 'Any';
 		}
 		req_text_r.set_string(str).set_position(card_width/2 + 36, 140, MIDDLE_CENTER);
 	}
@@ -245,7 +261,7 @@ class GearCard extends Card {
 		set_description();
 		set_req_text();
 		set_req_text_r();
-		//draggable = verify_gear();
+		verify_gear() ? handle.show() : handle.hide();
 	}
 
 	public function remove_card(card:PlayingCard) {
@@ -253,7 +269,7 @@ class GearCard extends Card {
 		set_description();
 		set_req_text();
 		set_req_text_r();
-		//draggable = verify_gear();
+		verify_gear() ? handle.show() : handle.hide();
 	}
 
 	public function verify_card(card_data:PlayingCardData):Bool {
@@ -297,6 +313,8 @@ class GearCard extends Card {
 				return card_data.suit == CLUBS;
 			case SPADES:
 				return card_data.suit == CLUBS;
+			case TWO_CARDS:
+				return true;
 		}
 	}
 
@@ -308,13 +326,16 @@ class GearCard extends Card {
 			case MIN_TOTAL: total >= data.requirement_value;
 			case MAX_TOTAL: total <= data.requirement_value;
 			case EXACT_TOTAL: total == data.requirement_value;
+			case TWO_CARDS: cards.length == 2;
 			default: true;
 		}
 	}
 
 	function vefify_bonus() {
+		if (cards.length == 0) return false;
 		switch data.bonus.requirement {
 			case IS_FACE: for (card in cards) if (![JACK, QUEEN, KING].contains(card.data.value)) return false;
+			case TWO_CARDS: return cards.length == 2;
 			case HEARTS: for (card in cards) if (card.data.suit != HEARTS) return false;
 			case DIAMONDS: for (card in cards) if (card.data.suit != DIAMONDS) return false;
 			case CLUBS: for (card in cards) if (card.data.suit != CLUBS) return false;
@@ -325,6 +346,70 @@ class GearCard extends Card {
 	}
 
 
+}
+
+class GearCardHandle extends Sprite {
+
+	var active:Bool = false;
+	var type:HandleType;
+	var graphic:Sprite;
+	var home:Vec2 = [];
+
+	public function new(type:HandleType) {
+		super();
+		this.type = type;
+		this.add(graphic = new Sprite());
+		switch type {
+			case DRAG:
+				graphic.load_graphic('images/ui/aim_cta.png', MIDDLE_CENTER, true);
+				addEventListener(MouseEvent.MOUSE_DOWN, mouse_down);
+				Game.root.addEventListener(MouseEvent.MOUSE_UP, mouse_up);
+			case PRESS:
+				graphic.load_graphic('images/ui/do_cta.png', MIDDLE_CENTER, true);
+				addEventListener(MouseEvent.MOUSE_DOWN, on_click);
+		}
+		this.set_scale(0);
+	}
+
+	public function set_position(x:Float, y:Float) {
+		home.set(x, y);
+		this.x = x;
+		this.y = y;
+		return this;
+	}
+
+	function mouse_down(e:MouseEvent) {
+		if (!active) return;
+		startDrag(true);
+	}
+
+	function mouse_up(e:MouseEvent) {
+		stopDrag();
+		Tween.get(this).from_to('x', x, home.x).from_to('y', y, home.y).duration(0.2).ease(Ease.expoOut);
+	}
+
+	function on_click(e:MouseEvent) {
+		if (!active) return;
+		Tween.get(this).from_to('scaleX', 0.5, 1).from_to('scaleY', 0.5, 1).ease(Ease.elasticOut).duration(0.4);
+	}
+
+	public function show() {
+		if (active) return;
+		active = true;
+		Tween.get(this).from_to('scaleX', 0, 1).from_to('scaleY', 0, 1).from_to('alpha', 1, 1).duration(0.4).ease(Ease.backOut);
+	}
+	
+	public function hide() {
+		if (!active) return;
+		active = false;
+		Tween.get(this).from_to('scaleX', 1, 0).from_to('scaleY', 1, 0).from_to('alpha', 1, 0).duration(0.4).ease(Ease.backOut);
+	}
+
+}
+
+enum HandleType {
+	DRAG;
+	PRESS;
 }
 
 typedef GearData = {
@@ -367,6 +452,7 @@ typedef GearData = {
 	DAMAGE;
 	MOVE;
 	SHIELD;
+	HEALTH;
   }
   
   enum EffectFactor {
@@ -396,6 +482,7 @@ typedef GearData = {
 	DIAMONDS;
 	CLUBS;
 	SPADES;
+	TWO_CARDS;
   }
   
   enum GearClass {
