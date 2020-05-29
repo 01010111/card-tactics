@@ -894,9 +894,9 @@ ApplicationMain.create = function(config) {
 	ManifestResources.init(config);
 	var _this = app.meta;
 	if(__map_reserved["build"] != null) {
-		_this.setReserved("build","6");
+		_this.setReserved("build","8");
 	} else {
-		_this.h["build"] = "6";
+		_this.h["build"] = "8";
 	}
 	var _this1 = app.meta;
 	if(__map_reserved["company"] != null) {
@@ -75836,7 +75836,7 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 		var deck = new ui_cards_Deck();
 		this.addChild(gear);
 		gear.add_card(new ui_cards_GearCard(240,144,gear,{ title : "Test Card", cost : 3, description : "A test card", range : { min : 1, max : 5, type : ui_cards_RangeType.NONE}, gear_class : ui_cards_GearClass.FLAME, weakness : ui_cards_GearClass.PIERCING, requirement : ui_cards_Requirement.DIFF_SUIT, requirement_value : 3, effect : { type : ui_cards_EffectType.DAMAGE, factor : ui_cards_EffectFactor.VALUES}, bonus : { requirement : ui_cards_Requirement.CLUBS, type : ui_cards_BonusType.DOUBLE_EFFECT_VALUE}}));
-		gear.add_card(new ui_cards_GearCard(448,144,gear,{ title : "Test Utility Card", cost : 2, description : "A test utility card", range : { min : 0, max : 5, type : ui_cards_RangeType.NONE}, gear_class : ui_cards_GearClass.HEALTH, weakness : ui_cards_GearClass.EXPLOSIVE, requirement : ui_cards_Requirement.IS_FACE, effect : { type : ui_cards_EffectType.HEALTH, factor : ui_cards_EffectFactor.STATIC, value : 5}, bonus : { requirement : ui_cards_Requirement.TWO_CARDS, type : ui_cards_BonusType.DOUBLE_EFFECT_VALUE}}));
+		gear.add_card(new ui_cards_GearCard(448,144,gear,{ title : "Test Utility Card", cost : 2, description : "A test utility card", range : { min : 0, max : 0, type : ui_cards_RangeType.NONE}, gear_class : ui_cards_GearClass.HEALTH, weakness : ui_cards_GearClass.EXPLOSIVE, requirement : ui_cards_Requirement.IS_FACE, effect : { type : ui_cards_EffectType.HEALTH, factor : ui_cards_EffectFactor.STATIC, value : 5}, bonus : { requirement : ui_cards_Requirement.TWO_CARDS, type : ui_cards_BonusType.DOUBLE_EFFECT_VALUE}}));
 		this.addChild(deck);
 		deck.deal();
 	}
@@ -76497,10 +76497,10 @@ ui_cards_GearCard.prototype = $extend(ui_cards_Card.prototype,{
 		contents.addChild(sprite10);
 		var sprite11 = new openfl_display_Sprite();
 		var color4 = zero_utilities__$Color_Color_$Impl_$.PICO_8_WHITE;
-		var x7 = -ui_cards_GearCard.card_width / 2;
-		var y8 = -ui_cards_GearCard.card_height / 2;
-		var width2 = ui_cards_GearCard.card_width;
-		var height2 = ui_cards_GearCard.card_height;
+		var x7 = -ui_cards_GearCard.card_width / 2 + 4;
+		var y8 = -ui_cards_GearCard.card_height / 2 + 4;
+		var width2 = ui_cards_GearCard.card_width - 8;
+		var height2 = ui_cards_GearCard.card_height - 8;
 		var radius4 = 16;
 		var line_width1 = 8;
 		if(line_width1 == null) {
@@ -76517,24 +76517,9 @@ ui_cards_GearCard.prototype = $extend(ui_cards_Card.prototype,{
 		}
 		sprite11.get_graphics().lineStyle();
 		this.addChild(this.highlight = sprite11);
-		zero_utilities_Tween.get(this.highlight).from_to("scaleX",1,1.1).from_to("scaleY",1,1.1).from_to("alpha",1,0).type(zero_utilities_TweenType.LOOP_FORWARDS).duration(0.5).ease(zero_utilities_Ease.expoOut);
+		zero_utilities_Tween.get(this.highlight).from_to("scaleX",1,1.1).from_to("scaleY",1,1.1).from_to("alpha",1,0).type(zero_utilities_TweenType.LOOP_FORWARDS).duration(1).ease(zero_utilities_Ease.quadOut);
 		this.highlight.set_visible(false);
-		var handle_type;
-		switch(this.data.effect.type._hx_index) {
-		case 0:
-			handle_type = ui_cards_HandleType.DAMAGE;
-			break;
-		case 1:
-			handle_type = ui_cards_HandleType.MOVE;
-			break;
-		case 2:
-			handle_type = ui_cards_HandleType.HEALTH;
-			break;
-		case 3:
-			handle_type = ui_cards_HandleType.PRESS;
-			break;
-		}
-		this.handle = new ui_cards_GearCardHandle(handle_type,this);
+		this.handle = new ui_cards_GearCardHandle(this.data.range.max == 0 ? ui_cards_HandleType.PRESS : ui_cards_HandleType.AIM,this);
 	}
 	,set_description: function() {
 		var str;
@@ -76570,9 +76555,9 @@ ui_cards_GearCard.prototype = $extend(ui_cards_Card.prototype,{
 			out = this.data.effect.value;
 			break;
 		}
-		haxe_Log.trace("initial value: ",{ fileName : "src/ui/cards/GearCard.hx", lineNumber : 177, className : "ui.cards.GearCard", methodName : "get_effect_value", customParams : [out]});
+		haxe_Log.trace("initial value: ",{ fileName : "src/ui/cards/GearCard.hx", lineNumber : 171, className : "ui.cards.GearCard", methodName : "get_effect_value", customParams : [out]});
 		if(this.vefify_bonus()) {
-			haxe_Log.trace("bonus+",{ fileName : "src/ui/cards/GearCard.hx", lineNumber : 179, className : "ui.cards.GearCard", methodName : "get_effect_value", customParams : [this.data.bonus.type]});
+			haxe_Log.trace("bonus+",{ fileName : "src/ui/cards/GearCard.hx", lineNumber : 173, className : "ui.cards.GearCard", methodName : "get_effect_value", customParams : [this.data.bonus.type]});
 			switch(this.data.bonus.type._hx_index) {
 			case 0:
 				out *= 2;
@@ -76977,6 +76962,61 @@ ui_cards_GearCard.prototype = $extend(ui_cards_Card.prototype,{
 	}
 	,__class__: ui_cards_GearCard
 });
+var ui_cards_RangeType = $hxEnums["ui.cards.RangeType"] = { __ename__ : "ui.cards.RangeType", __constructs__ : ["NONE","ORTHOGONAL","DIAGONAL"]
+	,NONE: {_hx_index:0,__enum__:"ui.cards.RangeType",toString:$estr}
+	,ORTHOGONAL: {_hx_index:1,__enum__:"ui.cards.RangeType",toString:$estr}
+	,DIAGONAL: {_hx_index:2,__enum__:"ui.cards.RangeType",toString:$estr}
+};
+ui_cards_RangeType.__empty_constructs__ = [ui_cards_RangeType.NONE,ui_cards_RangeType.ORTHOGONAL,ui_cards_RangeType.DIAGONAL];
+var ui_cards_EffectType = $hxEnums["ui.cards.EffectType"] = { __ename__ : "ui.cards.EffectType", __constructs__ : ["DAMAGE","MOVE","HEALTH","SHIELD"]
+	,DAMAGE: {_hx_index:0,__enum__:"ui.cards.EffectType",toString:$estr}
+	,MOVE: {_hx_index:1,__enum__:"ui.cards.EffectType",toString:$estr}
+	,HEALTH: {_hx_index:2,__enum__:"ui.cards.EffectType",toString:$estr}
+	,SHIELD: {_hx_index:3,__enum__:"ui.cards.EffectType",toString:$estr}
+};
+ui_cards_EffectType.__empty_constructs__ = [ui_cards_EffectType.DAMAGE,ui_cards_EffectType.MOVE,ui_cards_EffectType.HEALTH,ui_cards_EffectType.SHIELD];
+var ui_cards_EffectFactor = $hxEnums["ui.cards.EffectFactor"] = { __ename__ : "ui.cards.EffectFactor", __constructs__ : ["VALUES","STATIC"]
+	,VALUES: {_hx_index:0,__enum__:"ui.cards.EffectFactor",toString:$estr}
+	,STATIC: {_hx_index:1,__enum__:"ui.cards.EffectFactor",toString:$estr}
+};
+ui_cards_EffectFactor.__empty_constructs__ = [ui_cards_EffectFactor.VALUES,ui_cards_EffectFactor.STATIC];
+var ui_cards_BonusType = $hxEnums["ui.cards.BonusType"] = { __ename__ : "ui.cards.BonusType", __constructs__ : ["DOUBLE_EFFECT_VALUE","DOUBLE_RANGE"]
+	,DOUBLE_EFFECT_VALUE: {_hx_index:0,__enum__:"ui.cards.BonusType",toString:$estr}
+	,DOUBLE_RANGE: {_hx_index:1,__enum__:"ui.cards.BonusType",toString:$estr}
+};
+ui_cards_BonusType.__empty_constructs__ = [ui_cards_BonusType.DOUBLE_EFFECT_VALUE,ui_cards_BonusType.DOUBLE_RANGE];
+var ui_cards_Requirement = $hxEnums["ui.cards.Requirement"] = { __ename__ : "ui.cards.Requirement", __constructs__ : ["MIN_TOTAL","MAX_TOTAL","MIN_CARD","MAX_CARD","EXACT_CARD","EXACT_TOTAL","IS_FACE","NOT_FACE","PAIR","NO_MATCH","SAME_SUIT","DIFF_SUIT","HEARTS","DIAMONDS","CLUBS","SPADES","TWO_CARDS"]
+	,MIN_TOTAL: {_hx_index:0,__enum__:"ui.cards.Requirement",toString:$estr}
+	,MAX_TOTAL: {_hx_index:1,__enum__:"ui.cards.Requirement",toString:$estr}
+	,MIN_CARD: {_hx_index:2,__enum__:"ui.cards.Requirement",toString:$estr}
+	,MAX_CARD: {_hx_index:3,__enum__:"ui.cards.Requirement",toString:$estr}
+	,EXACT_CARD: {_hx_index:4,__enum__:"ui.cards.Requirement",toString:$estr}
+	,EXACT_TOTAL: {_hx_index:5,__enum__:"ui.cards.Requirement",toString:$estr}
+	,IS_FACE: {_hx_index:6,__enum__:"ui.cards.Requirement",toString:$estr}
+	,NOT_FACE: {_hx_index:7,__enum__:"ui.cards.Requirement",toString:$estr}
+	,PAIR: {_hx_index:8,__enum__:"ui.cards.Requirement",toString:$estr}
+	,NO_MATCH: {_hx_index:9,__enum__:"ui.cards.Requirement",toString:$estr}
+	,SAME_SUIT: {_hx_index:10,__enum__:"ui.cards.Requirement",toString:$estr}
+	,DIFF_SUIT: {_hx_index:11,__enum__:"ui.cards.Requirement",toString:$estr}
+	,HEARTS: {_hx_index:12,__enum__:"ui.cards.Requirement",toString:$estr}
+	,DIAMONDS: {_hx_index:13,__enum__:"ui.cards.Requirement",toString:$estr}
+	,CLUBS: {_hx_index:14,__enum__:"ui.cards.Requirement",toString:$estr}
+	,SPADES: {_hx_index:15,__enum__:"ui.cards.Requirement",toString:$estr}
+	,TWO_CARDS: {_hx_index:16,__enum__:"ui.cards.Requirement",toString:$estr}
+};
+ui_cards_Requirement.__empty_constructs__ = [ui_cards_Requirement.MIN_TOTAL,ui_cards_Requirement.MAX_TOTAL,ui_cards_Requirement.MIN_CARD,ui_cards_Requirement.MAX_CARD,ui_cards_Requirement.EXACT_CARD,ui_cards_Requirement.EXACT_TOTAL,ui_cards_Requirement.IS_FACE,ui_cards_Requirement.NOT_FACE,ui_cards_Requirement.PAIR,ui_cards_Requirement.NO_MATCH,ui_cards_Requirement.SAME_SUIT,ui_cards_Requirement.DIFF_SUIT,ui_cards_Requirement.HEARTS,ui_cards_Requirement.DIAMONDS,ui_cards_Requirement.CLUBS,ui_cards_Requirement.SPADES,ui_cards_Requirement.TWO_CARDS];
+var ui_cards_GearClass = $hxEnums["ui.cards.GearClass"] = { __ename__ : "ui.cards.GearClass", __constructs__ : ["FLAME","PIERCING","EXPLOSIVE","ELECTRICITY","WATER","SHIELD","MOVE","HEALTH","UTILITY"]
+	,FLAME: {_hx_index:0,__enum__:"ui.cards.GearClass",toString:$estr}
+	,PIERCING: {_hx_index:1,__enum__:"ui.cards.GearClass",toString:$estr}
+	,EXPLOSIVE: {_hx_index:2,__enum__:"ui.cards.GearClass",toString:$estr}
+	,ELECTRICITY: {_hx_index:3,__enum__:"ui.cards.GearClass",toString:$estr}
+	,WATER: {_hx_index:4,__enum__:"ui.cards.GearClass",toString:$estr}
+	,SHIELD: {_hx_index:5,__enum__:"ui.cards.GearClass",toString:$estr}
+	,MOVE: {_hx_index:6,__enum__:"ui.cards.GearClass",toString:$estr}
+	,HEALTH: {_hx_index:7,__enum__:"ui.cards.GearClass",toString:$estr}
+	,UTILITY: {_hx_index:8,__enum__:"ui.cards.GearClass",toString:$estr}
+};
+ui_cards_GearClass.__empty_constructs__ = [ui_cards_GearClass.FLAME,ui_cards_GearClass.PIERCING,ui_cards_GearClass.EXPLOSIVE,ui_cards_GearClass.ELECTRICITY,ui_cards_GearClass.WATER,ui_cards_GearClass.SHIELD,ui_cards_GearClass.MOVE,ui_cards_GearClass.HEALTH,ui_cards_GearClass.UTILITY];
 var ui_cards_GearCardHandle = function(type,parent) {
 	this.dragging = false;
 	this.home = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([]);
@@ -76987,14 +77027,16 @@ var ui_cards_GearCardHandle = function(type,parent) {
 	this.addChild(this.graphic = new openfl_display_Sprite());
 	this.addEventListener("enterFrame",$bind(this,this.update));
 	switch(type._hx_index) {
-	case 0:case 1:case 2:case 3:
+	case 0:
 		zero_openfl_extensions_SpriteTools.load_graphic(this.graphic,"images/ui/aim_cta.png",zero_utilities_Anchor.MIDDLE_CENTER,true);
 		this.addEventListener("mouseDown",$bind(this,this.mouse_down));
 		zero_openfl_utilities_Game.root.addEventListener("mouseUp",$bind(this,this.mouse_up));
 		break;
-	case 4:
+	case 1:
 		zero_openfl_extensions_SpriteTools.load_graphic(this.graphic,"images/ui/do_cta.png",zero_utilities_Anchor.MIDDLE_CENTER,true);
 		this.addEventListener("mouseDown",$bind(this,this.on_click));
+		this.addEventListener("mouseOver",$bind(this,this.mouse_over));
+		this.addEventListener("mouseOut",$bind(this,this.mouse_out));
 		break;
 	}
 	var x = 0;
@@ -77018,6 +77060,12 @@ ui_cards_GearCardHandle.prototype = $extend(openfl_display_Sprite.prototype,{
 	,home: null
 	,dragging: null
 	,gear_card: null
+	,mouse_over: function(e) {
+		this.gear_card.active = true;
+	}
+	,mouse_out: function(e) {
+		this.gear_card.active = false;
+	}
 	,mouse_down: function(e) {
 		if(!this.active) {
 			return;
@@ -77083,69 +77131,11 @@ ui_cards_GearCardHandle.prototype = $extend(openfl_display_Sprite.prototype,{
 	}
 	,__class__: ui_cards_GearCardHandle
 });
-var ui_cards_HandleType = $hxEnums["ui.cards.HandleType"] = { __ename__ : "ui.cards.HandleType", __constructs__ : ["DAMAGE","HEALTH","MOVE","UTILITY","PRESS"]
-	,DAMAGE: {_hx_index:0,__enum__:"ui.cards.HandleType",toString:$estr}
-	,HEALTH: {_hx_index:1,__enum__:"ui.cards.HandleType",toString:$estr}
-	,MOVE: {_hx_index:2,__enum__:"ui.cards.HandleType",toString:$estr}
-	,UTILITY: {_hx_index:3,__enum__:"ui.cards.HandleType",toString:$estr}
-	,PRESS: {_hx_index:4,__enum__:"ui.cards.HandleType",toString:$estr}
+var ui_cards_HandleType = $hxEnums["ui.cards.HandleType"] = { __ename__ : "ui.cards.HandleType", __constructs__ : ["AIM","PRESS"]
+	,AIM: {_hx_index:0,__enum__:"ui.cards.HandleType",toString:$estr}
+	,PRESS: {_hx_index:1,__enum__:"ui.cards.HandleType",toString:$estr}
 };
-ui_cards_HandleType.__empty_constructs__ = [ui_cards_HandleType.DAMAGE,ui_cards_HandleType.HEALTH,ui_cards_HandleType.MOVE,ui_cards_HandleType.UTILITY,ui_cards_HandleType.PRESS];
-var ui_cards_RangeType = $hxEnums["ui.cards.RangeType"] = { __ename__ : "ui.cards.RangeType", __constructs__ : ["NONE","ORTHOGONAL","DIAGONAL"]
-	,NONE: {_hx_index:0,__enum__:"ui.cards.RangeType",toString:$estr}
-	,ORTHOGONAL: {_hx_index:1,__enum__:"ui.cards.RangeType",toString:$estr}
-	,DIAGONAL: {_hx_index:2,__enum__:"ui.cards.RangeType",toString:$estr}
-};
-ui_cards_RangeType.__empty_constructs__ = [ui_cards_RangeType.NONE,ui_cards_RangeType.ORTHOGONAL,ui_cards_RangeType.DIAGONAL];
-var ui_cards_EffectType = $hxEnums["ui.cards.EffectType"] = { __ename__ : "ui.cards.EffectType", __constructs__ : ["DAMAGE","MOVE","HEALTH","SHIELD"]
-	,DAMAGE: {_hx_index:0,__enum__:"ui.cards.EffectType",toString:$estr}
-	,MOVE: {_hx_index:1,__enum__:"ui.cards.EffectType",toString:$estr}
-	,HEALTH: {_hx_index:2,__enum__:"ui.cards.EffectType",toString:$estr}
-	,SHIELD: {_hx_index:3,__enum__:"ui.cards.EffectType",toString:$estr}
-};
-ui_cards_EffectType.__empty_constructs__ = [ui_cards_EffectType.DAMAGE,ui_cards_EffectType.MOVE,ui_cards_EffectType.HEALTH,ui_cards_EffectType.SHIELD];
-var ui_cards_EffectFactor = $hxEnums["ui.cards.EffectFactor"] = { __ename__ : "ui.cards.EffectFactor", __constructs__ : ["VALUES","STATIC"]
-	,VALUES: {_hx_index:0,__enum__:"ui.cards.EffectFactor",toString:$estr}
-	,STATIC: {_hx_index:1,__enum__:"ui.cards.EffectFactor",toString:$estr}
-};
-ui_cards_EffectFactor.__empty_constructs__ = [ui_cards_EffectFactor.VALUES,ui_cards_EffectFactor.STATIC];
-var ui_cards_BonusType = $hxEnums["ui.cards.BonusType"] = { __ename__ : "ui.cards.BonusType", __constructs__ : ["DOUBLE_EFFECT_VALUE","DOUBLE_RANGE"]
-	,DOUBLE_EFFECT_VALUE: {_hx_index:0,__enum__:"ui.cards.BonusType",toString:$estr}
-	,DOUBLE_RANGE: {_hx_index:1,__enum__:"ui.cards.BonusType",toString:$estr}
-};
-ui_cards_BonusType.__empty_constructs__ = [ui_cards_BonusType.DOUBLE_EFFECT_VALUE,ui_cards_BonusType.DOUBLE_RANGE];
-var ui_cards_Requirement = $hxEnums["ui.cards.Requirement"] = { __ename__ : "ui.cards.Requirement", __constructs__ : ["MIN_TOTAL","MAX_TOTAL","MIN_CARD","MAX_CARD","EXACT_CARD","EXACT_TOTAL","IS_FACE","NOT_FACE","PAIR","NO_MATCH","SAME_SUIT","DIFF_SUIT","HEARTS","DIAMONDS","CLUBS","SPADES","TWO_CARDS"]
-	,MIN_TOTAL: {_hx_index:0,__enum__:"ui.cards.Requirement",toString:$estr}
-	,MAX_TOTAL: {_hx_index:1,__enum__:"ui.cards.Requirement",toString:$estr}
-	,MIN_CARD: {_hx_index:2,__enum__:"ui.cards.Requirement",toString:$estr}
-	,MAX_CARD: {_hx_index:3,__enum__:"ui.cards.Requirement",toString:$estr}
-	,EXACT_CARD: {_hx_index:4,__enum__:"ui.cards.Requirement",toString:$estr}
-	,EXACT_TOTAL: {_hx_index:5,__enum__:"ui.cards.Requirement",toString:$estr}
-	,IS_FACE: {_hx_index:6,__enum__:"ui.cards.Requirement",toString:$estr}
-	,NOT_FACE: {_hx_index:7,__enum__:"ui.cards.Requirement",toString:$estr}
-	,PAIR: {_hx_index:8,__enum__:"ui.cards.Requirement",toString:$estr}
-	,NO_MATCH: {_hx_index:9,__enum__:"ui.cards.Requirement",toString:$estr}
-	,SAME_SUIT: {_hx_index:10,__enum__:"ui.cards.Requirement",toString:$estr}
-	,DIFF_SUIT: {_hx_index:11,__enum__:"ui.cards.Requirement",toString:$estr}
-	,HEARTS: {_hx_index:12,__enum__:"ui.cards.Requirement",toString:$estr}
-	,DIAMONDS: {_hx_index:13,__enum__:"ui.cards.Requirement",toString:$estr}
-	,CLUBS: {_hx_index:14,__enum__:"ui.cards.Requirement",toString:$estr}
-	,SPADES: {_hx_index:15,__enum__:"ui.cards.Requirement",toString:$estr}
-	,TWO_CARDS: {_hx_index:16,__enum__:"ui.cards.Requirement",toString:$estr}
-};
-ui_cards_Requirement.__empty_constructs__ = [ui_cards_Requirement.MIN_TOTAL,ui_cards_Requirement.MAX_TOTAL,ui_cards_Requirement.MIN_CARD,ui_cards_Requirement.MAX_CARD,ui_cards_Requirement.EXACT_CARD,ui_cards_Requirement.EXACT_TOTAL,ui_cards_Requirement.IS_FACE,ui_cards_Requirement.NOT_FACE,ui_cards_Requirement.PAIR,ui_cards_Requirement.NO_MATCH,ui_cards_Requirement.SAME_SUIT,ui_cards_Requirement.DIFF_SUIT,ui_cards_Requirement.HEARTS,ui_cards_Requirement.DIAMONDS,ui_cards_Requirement.CLUBS,ui_cards_Requirement.SPADES,ui_cards_Requirement.TWO_CARDS];
-var ui_cards_GearClass = $hxEnums["ui.cards.GearClass"] = { __ename__ : "ui.cards.GearClass", __constructs__ : ["FLAME","PIERCING","EXPLOSIVE","ELECTRICITY","WATER","SHIELD","MOVE","HEALTH","UTILITY"]
-	,FLAME: {_hx_index:0,__enum__:"ui.cards.GearClass",toString:$estr}
-	,PIERCING: {_hx_index:1,__enum__:"ui.cards.GearClass",toString:$estr}
-	,EXPLOSIVE: {_hx_index:2,__enum__:"ui.cards.GearClass",toString:$estr}
-	,ELECTRICITY: {_hx_index:3,__enum__:"ui.cards.GearClass",toString:$estr}
-	,WATER: {_hx_index:4,__enum__:"ui.cards.GearClass",toString:$estr}
-	,SHIELD: {_hx_index:5,__enum__:"ui.cards.GearClass",toString:$estr}
-	,MOVE: {_hx_index:6,__enum__:"ui.cards.GearClass",toString:$estr}
-	,HEALTH: {_hx_index:7,__enum__:"ui.cards.GearClass",toString:$estr}
-	,UTILITY: {_hx_index:8,__enum__:"ui.cards.GearClass",toString:$estr}
-};
-ui_cards_GearClass.__empty_constructs__ = [ui_cards_GearClass.FLAME,ui_cards_GearClass.PIERCING,ui_cards_GearClass.EXPLOSIVE,ui_cards_GearClass.ELECTRICITY,ui_cards_GearClass.WATER,ui_cards_GearClass.SHIELD,ui_cards_GearClass.MOVE,ui_cards_GearClass.HEALTH,ui_cards_GearClass.UTILITY];
+ui_cards_HandleType.__empty_constructs__ = [ui_cards_HandleType.AIM,ui_cards_HandleType.PRESS];
 var ui_cards_PlayingCard = function(deck,card_data,x,y) {
 	this.equipped = false;
 	ui_cards_Card.call(this);
@@ -83105,8 +83095,8 @@ zero_utilities_Tween.prototype = {
 			var _g1 = _g.next();
 			var field = _g1.key;
 			var property = _g1.value;
-			var t = eased_period / 1;
-			var val = (1 - t) * property.start + t * property.end;
+			var t1 = eased_period / 1;
+			var val = (1 - t1) * property.start + t1 * property.end;
 			Reflect.setProperty(this.data.target,field,val);
 		}
 	}

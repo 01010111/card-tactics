@@ -142,18 +142,12 @@ class GearCard extends Card {
 		}
 
 		// Highlight
-		addChild(highlight = new Sprite().rect(Color.PICO_8_WHITE, -card_width/2, -card_height/2, card_width, card_height, 16, 8));
-		Tween.get(highlight).from_to('scaleX', 1, 1.1).from_to('scaleY', 1, 1.1).from_to('alpha', 1, 0).type(LOOP_FORWARDS).duration(0.5).ease(Ease.expoOut);
+		addChild(highlight = new Sprite().rect(Color.PICO_8_WHITE, -card_width/2 + 4, -card_height/2 + 4, card_width - 8, card_height - 8, 16, 8));
+		Tween.get(highlight).from_to('scaleX', 1, 1.1).from_to('scaleY', 1, 1.1).from_to('alpha', 1, 0).type(LOOP_FORWARDS).duration(1).ease(Ease.quadOut);
 		highlight.visible = false;
 
 		// Handle
-		var handle_type:HandleType = switch data.effect.type {
-			case DAMAGE: DAMAGE;
-			case MOVE: MOVE;
-			case SHIELD: PRESS;
-			case HEALTH: HEALTH;
-		}
-		handle = new GearCardHandle(handle_type, this);
+		handle = new GearCardHandle(data.range.max == 0 ? PRESS : AIM, this);
 	}
 
 	function set_description() {
@@ -359,95 +353,6 @@ class GearCard extends Card {
 
 }
 
-class GearCardHandle extends Sprite {
-
-	var active:Bool = false;
-	var type:HandleType;
-	var graphic:Sprite;
-	var home:Vec2 = [];
-	var dragging:Bool = false;
-	var gear_card:GearCard;
-
-	public function new(type:HandleType, parent:GearCard) {
-		super();
-		gear_card = parent;
-		this.type = type;
-		this.add(graphic = new Sprite());
-		addEventListener(Event.ENTER_FRAME, update);
-		switch type {
-			case DAMAGE, HEALTH, UTILITY, MOVE:
-				graphic.load_graphic('images/ui/aim_cta.png', MIDDLE_CENTER, true);
-				addEventListener(MouseEvent.MOUSE_DOWN, mouse_down);
-				Game.root.addEventListener(MouseEvent.MOUSE_UP, mouse_up);
-			case PRESS:
-				graphic.load_graphic('images/ui/do_cta.png', MIDDLE_CENTER, true);
-				addEventListener(MouseEvent.MOUSE_DOWN, on_click);
-		}
-		this.set_scale(0);
-	}
-
-	function mouse_down(e:MouseEvent) {
-		if (!active) return;
-		startDrag(true);
-		dragging = true;
-		gear_card.active = true;
-	}
-	
-	function mouse_up(e:MouseEvent) {
-		stopDrag();
-		dragging = false;
-		Gear.active_gear.link.length = 0;
-		Gear.active_gear.link.draw();
-		gear_card.active = false;
-	}
-
-	function on_click(e:MouseEvent) {
-		if (!active) return;
-		Tween.get(this).from_to('scaleX', 0.5, 1).from_to('scaleY', 0.5, 1).ease(Ease.elasticOut).duration(0.4);
-	}
-
-	public function show() {
-		if (active) return;
-		if (parent == null) Gear.active_gear.add(this);
-		active = true;
-		Tween.get(this).from_to('scaleX', 0, 1).from_to('scaleY', 0, 1).from_to('alpha', 1, 1).duration(0.4).ease(Ease.backOut);
-	}
-	
-	public function hide() {
-		if (!active) return;
-		active = false;
-		Tween.get(this).from_to('scaleX', 1, 0).from_to('scaleY', 1, 0).from_to('alpha', 1, 0).duration(0.4).ease(Ease.backOut);
-	}
-
-	function update(e:Event) {
-		Gear.active_gear.link.active = dragging;
-		if (dragging) {
-			var card_pos:Vec2 = [gear_card.x, gear_card.y];
-			var this_pos:Vec2 = [x, y];
-			var diff = this_pos - card_pos;
-			Gear.active_gear.link.set_position(card_pos.x, card_pos.y);
-			Gear.active_gear.link.length = diff.length;
-			Gear.active_gear.link.rotation = diff.angle;
-			card_pos.put();
-			this_pos.put();
-			diff.put();
-			Gear.active_gear.link.draw();
-		}
-		else {
-			x += (gear_card.x - x) * 0.25;
-			y += (gear_card.y + GearCard.card_height/2 - y) * 0.25;
-		}
-	}
-
-}
-
-enum HandleType {
-	DAMAGE;
-	HEALTH;
-	MOVE;
-	UTILITY;
-	PRESS;
-}
 
 typedef GearData = {
 	title:String,

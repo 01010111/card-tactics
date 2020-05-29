@@ -88,7 +88,7 @@ class Level extends Scene {
 			description: 'A test utility card',
 			range: {
 				min: 0,
-				max: 5,
+				max: 0,
 				type: NONE,
 			},
 			gear_class: HEALTH,
