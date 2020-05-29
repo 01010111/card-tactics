@@ -4,7 +4,7 @@ Underneath Planet Monster is a roguelike deck builder being made by 01010111 (Wi
 
 ## Demo
 
-A live demo is available [here](01010111.com/card-tactics)
+A live demo is available [here](http://01010111.com/card-tactics)
 Never expect that to be playable :)
 
 ## Licenses
