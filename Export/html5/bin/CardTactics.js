@@ -894,9 +894,9 @@ ApplicationMain.create = function(config) {
 	ManifestResources.init(config);
 	var _this = app.meta;
 	if(__map_reserved["build"] != null) {
-		_this.setReserved("build","8");
+		_this.setReserved("build","11");
 	} else {
-		_this.h["build"] = "8";
+		_this.h["build"] = "11";
 	}
 	var _this1 = app.meta;
 	if(__map_reserved["company"] != null) {
@@ -75816,6 +75816,7 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 	,can_move: null
 	,dolly: null
 	,level: null
+	,indicators: null
 	,under_objects: null
 	,objects: null
 	,over_objects: null
@@ -75829,20 +75830,21 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 		zero_openfl_utilities_Scene.prototype.create.call(this);
 		this.init_dolly();
 		this.draw_map("000");
-		this.make_player(2,9);
+		var player = this.make_player(2,9);
 		this.make_player(6,8);
 		zero_utilities_EventBus.listen(($_=this.dolly,$bind($_,$_.update)),"update");
-		var gear = new ui_cards_Gear();
+		var gear = new ui_cards_Gear(player);
 		var deck = new ui_cards_Deck();
 		this.addChild(gear);
-		gear.add_card(new ui_cards_GearCard(240,144,gear,{ title : "Test Card", cost : 3, description : "A test card", range : { min : 1, max : 5, type : ui_cards_RangeType.NONE}, gear_class : ui_cards_GearClass.FLAME, weakness : ui_cards_GearClass.PIERCING, requirement : ui_cards_Requirement.DIFF_SUIT, requirement_value : 3, effect : { type : ui_cards_EffectType.DAMAGE, factor : ui_cards_EffectFactor.VALUES}, bonus : { requirement : ui_cards_Requirement.CLUBS, type : ui_cards_BonusType.DOUBLE_EFFECT_VALUE}}));
-		gear.add_card(new ui_cards_GearCard(448,144,gear,{ title : "Test Utility Card", cost : 2, description : "A test utility card", range : { min : 0, max : 0, type : ui_cards_RangeType.NONE}, gear_class : ui_cards_GearClass.HEALTH, weakness : ui_cards_GearClass.EXPLOSIVE, requirement : ui_cards_Requirement.IS_FACE, effect : { type : ui_cards_EffectType.HEALTH, factor : ui_cards_EffectFactor.STATIC, value : 5}, bonus : { requirement : ui_cards_Requirement.TWO_CARDS, type : ui_cards_BonusType.DOUBLE_EFFECT_VALUE}}));
+		gear.add_card(new ui_cards_GearCard(240,144,gear,{ title : "Test Card", cost : 3, description : "A test card", range : { min : 3, max : 6, type : ui_cards_RangeType.NONE}, gear_class : ui_cards_GearClass.FLAME, weakness : ui_cards_GearClass.PIERCING, requirement : ui_cards_Requirement.DIFF_SUIT, requirement_value : 3, effect : { type : ui_cards_EffectType.DAMAGE, factor : ui_cards_EffectFactor.VALUES}, bonus : { requirement : ui_cards_Requirement.CLUBS, type : ui_cards_BonusType.DOUBLE_EFFECT_VALUE}}));
+		gear.add_card(new ui_cards_GearCard(448,144,gear,{ title : "Test Utility Card", cost : 2, description : "A test utility card", range : { min : 0, max : 3, type : ui_cards_RangeType.NONE}, gear_class : ui_cards_GearClass.HEALTH, weakness : ui_cards_GearClass.EXPLOSIVE, requirement : ui_cards_Requirement.IS_FACE, effect : { type : ui_cards_EffectType.HEALTH, factor : ui_cards_EffectFactor.STATIC, value : 5}, bonus : { requirement : ui_cards_Requirement.TWO_CARDS, type : ui_cards_BonusType.DOUBLE_EFFECT_VALUE}}));
 		this.addChild(deck);
 		deck.deal();
 	}
 	,init_dolly: function() {
 		this.addChild(this.dolly = new zero_openfl_utilities_Dolly());
 		this.dolly.addChild(this.level = new openfl_display_Sprite());
+		this.dolly.addChild(this.indicators = new openfl_display_Sprite());
 		this.dolly.addChild(this.under_objects = new openfl_display_Sprite());
 		this.dolly.addChild(this.objects = new openfl_display_Sprite());
 		this.dolly.addChild(this.over_objects = new openfl_display_Sprite());
@@ -75900,6 +75902,7 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 		this.set_selected_player(player);
 		this.dolly.follow(this.selected_player,true);
 		this.object_map[y][x] = -1;
+		return player;
 	}
 	,on_click: function(e) {
 		if(!this.can_move || e.localX < 0 || e.localY < 0) {
@@ -75953,6 +75956,118 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 			return;
 		});
 		return true;
+	}
+	,clear_indicators: function() {
+		this.indicators.get_graphics().clear();
+	}
+	,draw_indicators: function(gear_card) {
+		haxe_Log.trace("indicators",{ fileName : "src/scenes/Level.hx", lineNumber : 190, className : "scenes.Level", methodName : "draw_indicators"});
+		this.indicators.get_graphics().clear();
+		var player = gear_card.gear.player;
+		var range = gear_card.data.range;
+		if(gear_card.data.bonus.type == ui_cards_BonusType.DOUBLE_RANGE && gear_card.vefify_bonus()) {
+			range.max *= 2;
+		}
+		var tiles = this.get_available_tiles_array(zero_utilities__$IntPoint_IntPoint_$Impl_$.from_array_int([Math.floor(player.get_x() / 16),Math.floor(player.get_y() / 16)]),range.min,range.max);
+		var color;
+		switch(gear_card.data.effect.type._hx_index) {
+		case 0:
+			color = zero_utilities__$Color_Color_$Impl_$.PICO_8_RED;
+			break;
+		case 1:
+			color = zero_utilities__$Color_Color_$Impl_$.PICO_8_BLUE;
+			break;
+		case 2:
+			color = zero_utilities__$Color_Color_$Impl_$.PICO_8_GREEN;
+			break;
+		case 3:
+			color = zero_utilities__$Color_Color_$Impl_$.PICO_8_ORANGE;
+			break;
+		}
+		var color_fill = zero_utilities__$Vec4_Vec4_$Impl_$.get(color[0],color[1],color[2],color[3]);
+		color_fill[3] = Math.min(Math.max(0.25,0),1);
+		var _g1 = 0;
+		while(_g1 < tiles.length) {
+			var tile = tiles[_g1];
+			++_g1;
+			var sprite = this.indicators;
+			var x = tile[0] * 16 + 2;
+			var y = tile[1] * 16 + 2;
+			var radius = 2;
+			if(radius == null) {
+				radius = 0;
+			}
+			sprite.get_graphics().beginFill((Math.round(color_fill[0] * 255) & 255) << 16 | (Math.round(color_fill[1] * 255) & 255) << 8 | Math.round(color_fill[2] * 255) & 255,color_fill[3]);
+			if(radius == 0) {
+				sprite.get_graphics().drawRect(x,y,12,12);
+			} else {
+				sprite.get_graphics().drawRoundRect(x,y,12,12,radius);
+			}
+			sprite.get_graphics().endFill();
+			var sprite1 = sprite;
+			var x1 = tile[0] * 16 + 2;
+			var y1 = tile[1] * 16 + 2;
+			var radius1 = 2;
+			var line_width = 1;
+			if(line_width == null) {
+				line_width = 1;
+			}
+			if(radius1 == null) {
+				radius1 = 0;
+			}
+			sprite1.get_graphics().lineStyle(line_width,(Math.round(color[0] * 255) & 255) << 16 | (Math.round(color[1] * 255) & 255) << 8 | Math.round(color[2] * 255) & 255,color[3]);
+			if(radius1 == 0) {
+				sprite1.get_graphics().drawRect(x1,y1,12,12);
+			} else {
+				sprite1.get_graphics().drawRoundRect(x1,y1,12,12,radius1);
+			}
+			sprite1.get_graphics().lineStyle();
+		}
+	}
+	,get_available_tiles_array: function(origin,min_range,max_range,restrictions) {
+		if(restrictions == null) {
+			restrictions = ui_cards_RangeType.NONE;
+		}
+		var solids = this.tiles;
+		var _g = [];
+		var _g1 = 128;
+		while(_g1 < 256) {
+			var i = _g1++;
+			_g.push(i);
+		}
+		var solids1 = solids.get_solids_array(_g);
+		var not_availables = this.tiles.get_solids_array();
+		var map = zero_extensions_ArrayExt.heat_map(solids1,origin[0],origin[1],max_range);
+		var out = [];
+		var _g2 = 0;
+		var _g3 = map.length;
+		while(_g2 < _g3) {
+			var j = _g2++;
+			var _g21 = 0;
+			var _g31 = map[j].length;
+			while(_g21 < _g31) {
+				var i1 = _g21++;
+				if(map[j][i1] > 0) {
+					if(map[j][i1] > max_range - min_range) {
+						map[j][i1] = 0;
+					} else if(not_availables[j][i1] != 0) {
+						map[j][i1] = 0;
+					} else if(!zero_utilities_AStar.los(origin,zero_utilities__$IntPoint_IntPoint_$Impl_$.from_array_int([i1,j]),solids1,[0])) {
+						map[j][i1] = 0;
+					}
+					if(map[j][i1] > 0) {
+						out.push(zero_utilities__$IntPoint_IntPoint_$Impl_$.from_array_int([i1,j]));
+					}
+				}
+			}
+		}
+		var _g4 = 0;
+		while(_g4 < map.length) {
+			var row = map[_g4];
+			++_g4;
+			haxe_Log.trace(row,{ fileName : "src/scenes/Level.hx", lineNumber : 218, className : "scenes.Level", methodName : "get_available_tiles_array"});
+		}
+		return out;
 	}
 	,__class__: scenes_Level
 	,__properties__: $extend(zero_openfl_utilities_Scene.prototype.__properties__,{set_selected_player:"set_selected_player"})
@@ -76135,10 +76250,11 @@ ui_cards_Deck.prototype = $extend(openfl_display_Sprite.prototype,{
 	}
 	,__class__: ui_cards_Deck
 });
-var ui_cards_Gear = function() {
+var ui_cards_Gear = function(player) {
 	this.gear_cards = [];
 	openfl_display_Sprite.call(this);
 	ui_cards_Gear.active_gear = this;
+	this.player = player;
 	this.addChild(this.link = new ui_cards_LinkGraphic(openfl_utils_Assets.getBitmapData("images/ui/action_arrow_white.png")));
 };
 $hxClasses["ui.cards.Gear"] = ui_cards_Gear;
@@ -76148,6 +76264,7 @@ ui_cards_Gear.prototype = $extend(openfl_display_Sprite.prototype,{
 	link: null
 	,gear_cards: null
 	,move_card: null
+	,player: null
 	,add_card: function(card) {
 		this.addChild(card);
 		this.gear_cards.push(card);
@@ -76222,24 +76339,36 @@ var ui_cards_GearCard = function(x,y,gear,data) {
 	this.anchor = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([0,0]);
 	this.draw_card();
 	this.addEventListener("enterFrame",$bind(this,this.update));
+	this.addEventListener("mouseOver",$bind(this,this.mouse_over));
+	this.addEventListener("mouseOut",$bind(this,this.mouse_out));
 };
 $hxClasses["ui.cards.GearCard"] = ui_cards_GearCard;
 ui_cards_GearCard.__name__ = "ui.cards.GearCard";
 ui_cards_GearCard.__super__ = ui_cards_Card;
 ui_cards_GearCard.prototype = $extend(ui_cards_Card.prototype,{
 	active: null
+	,gear: null
+	,data: null
 	,highlight: null
 	,last: null
 	,home: null
-	,gear: null
 	,anchor: null
 	,anchors: null
 	,cards: null
 	,description: null
-	,data: null
 	,req_text: null
 	,req_text_r: null
 	,handle: null
+	,mouse_over: function(e) {
+		if(this.data.range.max > 0) {
+			scenes_Level.i.draw_indicators(this);
+		}
+	}
+	,mouse_out: function(e) {
+		if(!this.active) {
+			scenes_Level.i.clear_indicators();
+		}
+	}
 	,draw_card: function() {
 		var this1 = zero_utilities__$Color_Color_$Impl_$.get();
 		var x = 0.48627450980392156;
@@ -76555,9 +76684,7 @@ ui_cards_GearCard.prototype = $extend(ui_cards_Card.prototype,{
 			out = this.data.effect.value;
 			break;
 		}
-		haxe_Log.trace("initial value: ",{ fileName : "src/ui/cards/GearCard.hx", lineNumber : 171, className : "ui.cards.GearCard", methodName : "get_effect_value", customParams : [out]});
 		if(this.vefify_bonus()) {
-			haxe_Log.trace("bonus+",{ fileName : "src/ui/cards/GearCard.hx", lineNumber : 173, className : "ui.cards.GearCard", methodName : "get_effect_value", customParams : [this.data.bonus.type]});
 			switch(this.data.bonus.type._hx_index) {
 			case 0:
 				out *= 2;
@@ -77026,6 +77153,7 @@ var ui_cards_GearCardHandle = function(type,parent) {
 	this.type = type;
 	this.addChild(this.graphic = new openfl_display_Sprite());
 	this.addEventListener("enterFrame",$bind(this,this.update));
+	this.addEventListener("mouseOver",$bind(this,this.mouse_over));
 	switch(type._hx_index) {
 	case 0:
 		zero_openfl_extensions_SpriteTools.load_graphic(this.graphic,"images/ui/aim_cta.png",zero_utilities_Anchor.MIDDLE_CENTER,true);
@@ -77035,7 +77163,6 @@ var ui_cards_GearCardHandle = function(type,parent) {
 	case 1:
 		zero_openfl_extensions_SpriteTools.load_graphic(this.graphic,"images/ui/do_cta.png",zero_utilities_Anchor.MIDDLE_CENTER,true);
 		this.addEventListener("mouseDown",$bind(this,this.on_click));
-		this.addEventListener("mouseOver",$bind(this,this.mouse_over));
 		this.addEventListener("mouseOut",$bind(this,this.mouse_out));
 		break;
 	}
@@ -77060,8 +77187,13 @@ ui_cards_GearCardHandle.prototype = $extend(openfl_display_Sprite.prototype,{
 	,home: null
 	,dragging: null
 	,gear_card: null
+	,level_pos: null
 	,mouse_over: function(e) {
-		this.gear_card.active = true;
+		if(this.type == ui_cards_HandleType.PRESS) {
+			this.gear_card.active = true;
+		} else {
+			scenes_Level.i.draw_indicators(this.gear_card);
+		}
 	}
 	,mouse_out: function(e) {
 		this.gear_card.active = false;
@@ -77075,11 +77207,18 @@ ui_cards_GearCardHandle.prototype = $extend(openfl_display_Sprite.prototype,{
 		this.gear_card.active = true;
 	}
 	,mouse_up: function(e) {
+		if(!this.dragging) {
+			return;
+		}
 		this.stopDrag();
 		this.dragging = false;
 		ui_cards_Gear.active_gear.link.length = 0;
 		ui_cards_Gear.active_gear.link.draw();
 		this.gear_card.active = false;
+		haxe_Log.trace(this.get_x(),{ fileName : "src/ui/cards/GearCardHandle.hx", lineNumber : 69, className : "ui.cards.GearCardHandle", methodName : "mouse_up", customParams : [this.get_y()]});
+		this.level_pos = scenes_Level.i.level.globalToLocal(new openfl_geom_Point(this.get_x(),this.get_y()));
+		haxe_Log.trace(Math.floor(this.level_pos.x / 16),{ fileName : "src/ui/cards/GearCardHandle.hx", lineNumber : 71, className : "ui.cards.GearCardHandle", methodName : "mouse_up", customParams : [Math.floor(this.level_pos.y / 16)]});
+		scenes_Level.i.clear_indicators();
 	}
 	,on_click: function(e) {
 		if(!this.active) {
@@ -79263,7 +79402,6 @@ zero_openfl_utilities_Particles.prototype = {
 	,pool: null
 	,fire: function(options) {
 		this.get_particle().fire(options);
-		haxe_Log.trace(this.pool.length,{ fileName : "zerolib-openfl/zero/openfl/utilities/Particles.hx", lineNumber : 14, className : "zero.openfl.utilities.Particles", methodName : "fire"});
 	}
 	,get_particle: function() {
 		var _g = 0;
@@ -79366,9 +79504,12 @@ zero_openfl_utilities_Tilemap.prototype = $extend(openfl_display_Tilemap.prototy
 	}
 	,make_solids: function(map,solids) {
 	}
-	,get_solids_array: function() {
-		if(this.options.solids == null) {
+	,get_solids_array: function(solids) {
+		if(solids == null && this.options.solids == null) {
 			return [];
+		}
+		if(solids == null) {
+			solids = this.options.solids;
 		}
 		var _g = [];
 		var _g1 = 0;
@@ -79380,7 +79521,7 @@ zero_openfl_utilities_Tilemap.prototype = $extend(openfl_display_Tilemap.prototy
 			var _g3 = this.map[j].length;
 			while(_g21 < _g3) {
 				var i = _g21++;
-				_g11.push(this.options.solids.indexOf(this.map[j][i]) >= 0 ? 1 : 0);
+				_g11.push(solids.indexOf(this.map[j][i]) >= 0 ? 1 : 0);
 			}
 			_g.push(_g11);
 		}

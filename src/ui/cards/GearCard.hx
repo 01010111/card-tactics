@@ -1,6 +1,6 @@
 package ui.cards;
 
-import zero.openfl.utilities.Game;
+import scenes.Level;
 import openfl.events.MouseEvent;
 import openfl.text.TextFormatAlign;
 import zero.utilities.Ease;
@@ -23,15 +23,15 @@ class GearCard extends Card {
 	public static var card_width:Float = 192;
 	public static var card_height:Float = 224;
 	public var active:Bool = false;
+	public var gear:Gear;
+	public var data:GearData;
 	var highlight:Sprite;
 	var last:Vec2;
 	var home:Vec2;
-	var gear:Gear;
 	var anchor:Vec2;
 	var anchors:Array<Vec2> = [[-35, 28], [35, 28]];
 	var cards:Array<PlayingCard> = [];
 	var description:TextField;
-	var data:GearData;
 	var req_text:TextField;
 	var req_text_r:TextField;
 	var handle:GearCardHandle;
@@ -47,6 +47,16 @@ class GearCard extends Card {
 		anchor = [0, 0];
 		draw_card();
 		addEventListener(Event.ENTER_FRAME, update);
+		addEventListener(MouseEvent.MOUSE_OVER, mouse_over);
+		addEventListener(MouseEvent.MOUSE_OUT, mouse_out);
+	}
+
+	function mouse_over(e:MouseEvent) {
+		if (data.range.max > 0) Level.i.draw_indicators(this);
+	}
+	
+	function mouse_out(e:MouseEvent) {
+		if (!active) Level.i.clear_indicators();
 	}
 	
 	function draw_card() {
@@ -160,7 +170,7 @@ class GearCard extends Card {
 		description.set_string(str.wrap_string(description, 128)).set_position(card_width/2, 70, MIDDLE_CENTER);
 	}
 
-	function get_effect_value() {
+	public function get_effect_value() {
 		var out = 0;
 		switch data.effect.factor {
 			case VALUES:
@@ -168,9 +178,7 @@ class GearCard extends Card {
 			case STATIC:
 				out = data.effect.value;
 		}
-		trace('initial value: ', out);
 		if (vefify_bonus()) {
-			trace('bonus+', data.bonus.type);
 			switch data.bonus.type {
 				case DOUBLE_EFFECT_VALUE: out *= 2;
 				case DOUBLE_RANGE: {}
@@ -336,7 +344,7 @@ class GearCard extends Card {
 		}
 	}
 
-	function vefify_bonus() {
+	public function vefify_bonus() {
 		if (cards.length == 0) return false;
 		switch data.bonus.requirement {
 			case IS_FACE: for (card in cards) if (![JACK, QUEEN, KING].contains(card.data.value)) return false;

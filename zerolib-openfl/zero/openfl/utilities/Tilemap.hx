@@ -78,9 +78,10 @@ class Tilemap extends OTilemap {
 		#end
 	}
 
-	public function get_solids_array():Array<Array<Int>> {
-		if (options.solids == null) return [];
-		return [for (j in 0...map.length) [for (i in 0...map[j].length) options.solids.contains(map[j][i]) ? 1 : 0]];
+	public function get_solids_array(?solids:Array<Int>):Array<Array<Int>> {
+		if (solids == null && options.solids == null) return [];
+		if (solids == null) solids = options.solids;
+		return [for (j in 0...map.length) [for (i in 0...map[j].length) solids.contains(map[j][i]) ? 1 : 0]];
 	}
 
 	public function get_map(copy:Bool = true):Array<Array<Int>> {

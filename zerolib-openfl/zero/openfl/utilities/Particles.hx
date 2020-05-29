@@ -11,7 +11,6 @@ class Particles {
 
 	public function fire(options:Dynamic) {
 		get_particle().fire(options);
-		trace(pool.length);
 	}
 
 	function get_particle():Particle {

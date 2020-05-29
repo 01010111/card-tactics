@@ -1,5 +1,7 @@
 package ui.cards;
 
+import scenes.Level;
+import openfl.geom.Point;
 import zero.utilities.Tween;
 import zero.utilities.Ease;
 import zero.openfl.utilities.Game;
@@ -9,6 +11,7 @@ import zero.utilities.Vec2;
 import openfl.display.Sprite;
 
 using zero.openfl.extensions.SpriteTools;
+using Math;
 
 class GearCardHandle extends Sprite {
 
@@ -18,6 +21,7 @@ class GearCardHandle extends Sprite {
 	var home:Vec2 = [];
 	var dragging:Bool = false;
 	var gear_card:GearCard;
+	var level_pos:Point;
 
 	public function new(type:HandleType, parent:GearCard) {
 		super();
@@ -25,6 +29,7 @@ class GearCardHandle extends Sprite {
 		this.type = type;
 		this.add(graphic = new Sprite());
 		addEventListener(Event.ENTER_FRAME, update);
+		addEventListener(MouseEvent.MOUSE_OVER, mouse_over);
 		switch type {
 			case AIM:
 				graphic.load_graphic('images/ui/aim_cta.png', MIDDLE_CENTER, true);
@@ -33,14 +38,14 @@ class GearCardHandle extends Sprite {
 			case PRESS:
 				graphic.load_graphic('images/ui/do_cta.png', MIDDLE_CENTER, true);
 				addEventListener(MouseEvent.MOUSE_DOWN, on_click);
-				addEventListener(MouseEvent.MOUSE_OVER, mouse_over);
 				addEventListener(MouseEvent.MOUSE_OUT, mouse_out);
 		}
 		this.set_scale(0);
 	}
 
 	function mouse_over(e:MouseEvent) {
-		gear_card.active = true;
+		if (type == PRESS) gear_card.active = true;
+		else Level.i.draw_indicators(gear_card);
 	}
 
 	function mouse_out(e:MouseEvent) {
@@ -55,11 +60,16 @@ class GearCardHandle extends Sprite {
 	}
 	
 	function mouse_up(e:MouseEvent) {
+		if (!dragging) return;
 		stopDrag();
 		dragging = false;
 		Gear.active_gear.link.length = 0;
 		Gear.active_gear.link.draw();
 		gear_card.active = false;
+		trace(x, y);
+		level_pos = Level.i.level.globalToLocal(new Point(x, y));
+		trace((level_pos.x/16).floor(), (level_pos.y/16).floor());
+		Level.i.clear_indicators();
 	}
 
 	function on_click(e:MouseEvent) {
