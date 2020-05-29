@@ -14,15 +14,16 @@ import ui.cards.PlayingCard;
 
 using zero.openfl.extensions.SpriteTools;
 using zero.openfl.extensions.TextTools;
-using Std;
 using Math;
 using util.CardUtil;
 using zero.extensions.Tools;
 
 class GearCard extends Card {
 	
-	var card_width:Float = 192;
-	var card_height:Float = 224;
+	public static var card_width:Float = 192;
+	public static var card_height:Float = 224;
+	public var active:Bool = false;
+	var highlight:Sprite;
 	var last:Vec2;
 	var home:Vec2;
 	var gear:Gear;
@@ -140,13 +141,19 @@ class GearCard extends Card {
 			}
 		}
 
+		// Highlight
+		addChild(highlight = new Sprite().rect(Color.PICO_8_WHITE, -card_width/2, -card_height/2, card_width, card_height, 16, 8));
+		Tween.get(highlight).from_to('scaleX', 1, 1.1).from_to('scaleY', 1, 1.1).from_to('alpha', 1, 0).type(LOOP_FORWARDS).duration(0.5).ease(Ease.expoOut);
+		highlight.visible = false;
+
+		// Handle
 		var handle_type:HandleType = switch data.effect.type {
-			case DAMAGE: DRAG;
-			case MOVE: DRAG;
+			case DAMAGE: DAMAGE;
+			case MOVE: MOVE;
 			case SHIELD: PRESS;
-			case HEALTH: PRESS;
+			case HEALTH: HEALTH;
 		}
-		this.add(handle = cast new GearCardHandle(handle_type).set_position(0, card_height/2));
+		handle = new GearCardHandle(handle_type, this);
 	}
 
 	function set_description() {
@@ -232,9 +239,10 @@ class GearCard extends Card {
 		req_text_r.set_string(str).set_position(card_width/2 + 36, 140, MIDDLE_CENTER);
 	}
 	
+	var t = 0.0;
 	function update(e:Event) {
-		rotation += ((x - last.x)/2 - rotation) * 0.25;
-		last.set(x, y);
+		//rotation += ((x - last.x)/2 - rotation) * 0.25;
+		//last.set(x, y);
 		var i = 0;
 		for (card in cards) {
 			if (card.dragging) continue;
@@ -246,6 +254,9 @@ class GearCard extends Card {
 			x += (home.x - x) * 0.1;
 			y += (home.y - y) * 0.1;
 		}
+		highlight.visible = active;
+		var rot_target = active ? (t += 0.15).sin() * 4 : 0;
+		rotation += (rot_target - rotation) * 0.25;
 	}
 
 	public function get_anchor(global:Bool = false):Vec2 {
@@ -354,13 +365,17 @@ class GearCardHandle extends Sprite {
 	var type:HandleType;
 	var graphic:Sprite;
 	var home:Vec2 = [];
+	var dragging:Bool = false;
+	var gear_card:GearCard;
 
-	public function new(type:HandleType) {
+	public function new(type:HandleType, parent:GearCard) {
 		super();
+		gear_card = parent;
 		this.type = type;
 		this.add(graphic = new Sprite());
+		addEventListener(Event.ENTER_FRAME, update);
 		switch type {
-			case DRAG:
+			case DAMAGE, HEALTH, UTILITY, MOVE:
 				graphic.load_graphic('images/ui/aim_cta.png', MIDDLE_CENTER, true);
 				addEventListener(MouseEvent.MOUSE_DOWN, mouse_down);
 				Game.root.addEventListener(MouseEvent.MOUSE_UP, mouse_up);
@@ -371,21 +386,19 @@ class GearCardHandle extends Sprite {
 		this.set_scale(0);
 	}
 
-	public function set_position(x:Float, y:Float) {
-		home.set(x, y);
-		this.x = x;
-		this.y = y;
-		return this;
-	}
-
 	function mouse_down(e:MouseEvent) {
 		if (!active) return;
 		startDrag(true);
+		dragging = true;
+		gear_card.active = true;
 	}
-
+	
 	function mouse_up(e:MouseEvent) {
 		stopDrag();
-		Tween.get(this).from_to('x', x, home.x).from_to('y', y, home.y).duration(0.2).ease(Ease.expoOut);
+		dragging = false;
+		Gear.active_gear.link.length = 0;
+		Gear.active_gear.link.draw();
+		gear_card.active = false;
 	}
 
 	function on_click(e:MouseEvent) {
@@ -395,6 +408,7 @@ class GearCardHandle extends Sprite {
 
 	public function show() {
 		if (active) return;
+		if (parent == null) Gear.active_gear.add(this);
 		active = true;
 		Tween.get(this).from_to('scaleX', 0, 1).from_to('scaleY', 0, 1).from_to('alpha', 1, 1).duration(0.4).ease(Ease.backOut);
 	}
@@ -405,10 +419,33 @@ class GearCardHandle extends Sprite {
 		Tween.get(this).from_to('scaleX', 1, 0).from_to('scaleY', 1, 0).from_to('alpha', 1, 0).duration(0.4).ease(Ease.backOut);
 	}
 
+	function update(e:Event) {
+		Gear.active_gear.link.active = dragging;
+		if (dragging) {
+			var card_pos:Vec2 = [gear_card.x, gear_card.y];
+			var this_pos:Vec2 = [x, y];
+			var diff = this_pos - card_pos;
+			Gear.active_gear.link.set_position(card_pos.x, card_pos.y);
+			Gear.active_gear.link.length = diff.length;
+			Gear.active_gear.link.rotation = diff.angle;
+			card_pos.put();
+			this_pos.put();
+			diff.put();
+			Gear.active_gear.link.draw();
+		}
+		else {
+			x += (gear_card.x - x) * 0.25;
+			y += (gear_card.y + GearCard.card_height/2 - y) * 0.25;
+		}
+	}
+
 }
 
 enum HandleType {
-	DRAG;
+	DAMAGE;
+	HEALTH;
+	MOVE;
+	UTILITY;
 	PRESS;
 }
 
@@ -451,8 +488,8 @@ typedef GearData = {
   enum EffectType {
 	DAMAGE;
 	MOVE;
-	SHIELD;
 	HEALTH;
+	SHIELD;
   }
   
   enum EffectFactor {
