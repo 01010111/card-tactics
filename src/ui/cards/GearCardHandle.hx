@@ -1,5 +1,6 @@
 package ui.cards;
 
+import objects.GameObject;
 import scenes.Level;
 import openfl.geom.Point;
 import zero.utilities.Tween;
@@ -22,6 +23,7 @@ class GearCardHandle extends Sprite {
 	var dragging:Bool = false;
 	var gear_card:GearCard;
 	var level_pos:Point;
+	var target:Null<GameObject>;
 
 	public function new(type:HandleType, parent:GearCard) {
 		super();
@@ -67,9 +69,13 @@ class GearCardHandle extends Sprite {
 		Gear.active_gear.link.draw();
 		gear_card.active = false;
 		trace(x, y);
-		level_pos = Level.i.level.globalToLocal(new Point(x, y));
+		level_pos = get_level_pos();
 		trace((level_pos.x/16).floor(), (level_pos.y/16).floor());
 		Level.i.clear_indicators();
+	}
+
+	function get_level_pos() {
+		return level_pos = Level.i.level.globalToLocal(new Point(x, y));
 	}
 
 	function on_click(e:MouseEvent) {
@@ -103,11 +109,31 @@ class GearCardHandle extends Sprite {
 			this_pos.put();
 			diff.put();
 			Gear.active_gear.link.draw();
+			check_objects(x, y);
 		}
 		else {
 			x += (gear_card.x - x) * 0.25;
 			y += (gear_card.y + GearCard.card_height/2 - y) * 0.25;
 		}
+	}
+
+	function check_objects(x:Float, y:Float, ?target:GameObject) {
+		level_pos = get_level_pos();
+		for (object in Level.i.objects.children()) {
+			var pos = Vec2.get(level_pos.x, level_pos.y);
+			var obj_pos = Vec2.get(object.x, object.y);
+			if (pos.distance(obj_pos) < 8) {
+				target = cast object;
+				Level.i.info_layer.show_info(target, gear_card);
+				pos.put();
+				obj_pos.put();
+				break;
+			}
+			pos.put();
+			obj_pos.put();
+		}
+		if (target == null) Level.i.info_layer.hide_info();
+		this.target = target;
 	}
 
 }

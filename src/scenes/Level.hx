@@ -3,7 +3,6 @@ package scenes;
 import zero.utilities.Color;
 import ui.cards.GearCard;
 import zero.openfl.utilities.Particles;
-import zero.openfl.utilities.AnimatedSprite;
 import zero.openfl.utilities.Dolly;
 import zero.openfl.utilities.Tilemap;
 import openfl.Assets;
@@ -14,6 +13,8 @@ import openfl.display.Sprite;
 import zero.openfl.utilities.Scene;
 import zero.utilities.Tween;
 import particles.Poof;
+import ui.InfoLayer;
+import objects.Player;
 
 using Math;
 using zero.openfl.extensions.SpriteTools;
@@ -28,9 +29,9 @@ class Level extends Scene {
 
 	var tiles:Tilemap;
 	var object_map:Array<Array<Int>> = [];
-	var selected_player(default, set):PlayerSprite;
-	var can_move:Bool = true;
-	var dolly:Dolly;
+	var selected_player(default, set):Player;
+	public var can_move:Bool = true;
+	public var dolly:Dolly;
 
 	// layers
 	public var level:Sprite;
@@ -38,11 +39,12 @@ class Level extends Scene {
 	public var under_objects:Sprite;
 	public var objects:Sprite;
 	public var over_objects:Sprite;
+	public var info_layer:InfoLayer;
 
 	// Particles
 	public var poofs:Particles = new Particles(() -> new Poof());
 
-	function set_selected_player(player:PlayerSprite) {
+	function set_selected_player(player:Player) {
 		dolly.follow(player, false);
 		player.pulse();
 		return selected_player = player;
@@ -58,6 +60,7 @@ class Level extends Scene {
 		init_dolly();
 		draw_map('000');
 		var player = make_player(2, 9);
+		player.change_health(-16);
 		make_player(6, 8);
 		dolly.update.listen('update');
 		var gear = new ui.cards.Gear(player);
@@ -109,6 +112,7 @@ class Level extends Scene {
 		}));
 		this.add(deck);
 		deck.deal();
+		this.add(info_layer = new InfoLayer());
 	}
 
 	function init_dolly() {
@@ -130,8 +134,10 @@ class Level extends Scene {
 	}
 	
 	function make_player(x:Int, y:Int) {
-		var player = new PlayerSprite(x * 16 + 8, y * 16 + 8);
+		var player = new Player(x * 16 + 8, y * 16 + 8);
 		player.addEventListener(MouseEvent.CLICK, (e) -> if (can_move) selected_player = player);
+		player.addEventListener(MouseEvent.MOUSE_OVER, (e) -> info_layer.show_info(player));
+		player.addEventListener(MouseEvent.MOUSE_OUT, (e) -> info_layer.hide_info());
 		objects.add(player);
 		selected_player = player;
 		dolly.follow(selected_player, true);
@@ -156,7 +162,7 @@ class Level extends Scene {
 		if (path.length == 0) return;
 		object_map[player_y][player_x] = 0;
 		object_map[y][x] = -1;
-		follow_path(selected_player, path);
+		selected_player.follow_path(path);
 		can_move = false;
 	}
 
@@ -166,21 +172,6 @@ class Level extends Scene {
 		return out;
 	}
 
-	function follow_path(player:PlayerSprite, path:Array<IntPoint>) {
-		var t = path.shift();
-		var tween = Tween.get(selected_player).from_to('x', selected_player.x, t.x * 16 + 8).from_to('y', selected_player.y, t.y * 16 + 8).duration(0.05).on_complete(() -> {
-			if (path.length > 0) {
-				follow_path(player, path);
-				Level.i.poofs.fire({ x: t.x * 16 + 8, y: t.y * 16 + 8 });
-			}
-			else {
-				player.pulse();
-				can_move = true;
-			}
-		});
-		//tween.update_tween(1/60);
-		return true;
-	}
 
 	public function clear_indicators() {
 		indicators.graphics.clear();
@@ -217,48 +208,6 @@ class Level extends Scene {
 		}
 		for (row in map) trace(row);
 		return out;
-	}
-
-}
-
-class PlayerSprite extends Sprite {
-
-	var last_x:Float;
-	var last_y:Float;
-	var graphic:AnimatedSprite;
-
-	public function new(x:Float, y:Float) {
-		super();
-		
-		this.set_position(x, y);
-		last_x = x;
-		last_y = y;
-		addEventListener(Event.ENTER_FRAME, (e) -> update(1/60));
-		init_graphic();
-	}
-
-	function init_graphic() {
-		graphic = new AnimatedSprite({
-			source: 'images/players.png',
-			animations: [],
-			frame_width: 16,
-			frame_height: 16,
-			offset_x: 8,
-			offset_y: 12,
-		});
-		graphic.set_frame_index(8.get_random().floor());
-		addChild(graphic);
-	}
-
-	function update(dt:Float) {
-		var rot = last_x == x ? 0 : (last_x - x).sign_of() * 15;
-		rotation += (rot - rotation) * 0.25;
-		if (rot.abs() > 0) graphic.scaleX = -rot.sign_of();
-		last_x = x;
-	}
-
-	public function pulse() {
-		Tween.get(this).from_to('scaleX', 1.5, 1).from_to('scaleY', 0.5, 1).ease(zero.utilities.Ease.elasticOut).duration(0.5);
 	}
 
 }

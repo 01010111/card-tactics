@@ -1,6 +1,6 @@
 package ui.cards;
 
-import scenes.Level.PlayerSprite;
+import objects.Player;
 import openfl.Assets;
 import openfl.geom.Matrix;
 import openfl.display.BitmapData;
@@ -14,9 +14,9 @@ class Gear extends Sprite {
 	public var link:LinkGraphic;
 	public var gear_cards:Array<GearCard> = [];
 	public var move_card:MoveCard;
-	public var player:PlayerSprite;
+	public var player:Player;
 
-	public function new(player:PlayerSprite) {
+	public function new(player:Player) {
 		super();
 		active_gear = this;
 		this.player = player;

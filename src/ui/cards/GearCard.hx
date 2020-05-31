@@ -162,10 +162,10 @@ class GearCard extends Card {
 
 	function set_description() {
 		var str = switch data.effect.type {
-			case DAMAGE: 'Do ${get_effect_value()} damage';
-			case MOVE: 'Move ${get_effect_value()} spaces';
-			case SHIELD: 'Shield against ${get_effect_value()} damage';
-			case HEALTH: 'Heal ${get_effect_value()} hitpoints';
+			case DAMAGE: 'Do ${get_effect_string()} damage';
+			case MOVE: 'Move ${get_effect_string()} spaces';
+			case SHIELD: 'Shield against ${get_effect_string()} damage';
+			case HEALTH: 'Heal ${get_effect_string()} hitpoints';
 		}
 		description.set_string(str.wrap_string(description, 128)).set_position(card_width/2, 70, MIDDLE_CENTER);
 	}
@@ -184,7 +184,12 @@ class GearCard extends Card {
 				case DOUBLE_RANGE: {}
 			}
 		}
-		return out == 0 ? '_' : '$out';
+		return out;
+	}
+
+	public function get_effect_string() {
+		var val = get_effect_value();
+		return val == 0 ? '_' : '$val';
 	}
 
 	function set_req_text() {
