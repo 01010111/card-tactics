@@ -1,7 +1,7 @@
 package ui;
 
 import openfl.text.TextField;
-import ui.cards.GearCard;
+import ui.GearCard;
 import scenes.Level;
 import openfl.events.Event;
 import zero.utilities.Color;
@@ -48,6 +48,7 @@ class ObjectInfo extends Sprite {
 	function draw_target_info(target:GameObject, ?gear:GearCard) {
 		var cur_hp = target.health.current;
 		var next_hp = gear == null ? cur_hp : cur_hp + switch gear.data.effect.type {
+			default: 0;
 			case DAMAGE: -gear.get_effect_value();
 			case MOVE: 0;
 			case HEALTH: gear.get_effect_value();

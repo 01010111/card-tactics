@@ -1,0 +1,50 @@
+[
+	//
+	//	TEST CARDS
+	//
+	{
+		"id": "test_d_01",
+		"title": "Damage Card",
+		"description": "Test Card Description",
+		"cost": 2,
+		"range": {
+			"min": 1,
+			"max": 5,
+			"type": "NONE"
+		},
+		"effect": {
+			"type": "DAMAGE",
+			"factor": "VALUES"
+		},
+		"bonus": {
+			"requirement": "CLUBS",
+			"type": "DOUBLE_EFFECT_VALUE"
+		},
+		"requirement": "DIFF_SUIT",
+		"gear_class": "EXPLOSIVE",
+		"weakness": "ELECTRICITY"
+	},
+	{
+		"id": "test_h_01",
+		"title": "Health Card",
+		"description": "Test Card Description",
+		"cost": 1,
+		"range": {
+			"min": 0,
+			"max": 3,
+			"type": "NONE"
+		},
+		"effect": {
+			"type": "HEALTH",
+			"factor": "STATIC",
+			"value": 5
+		},
+		"bonus": {
+			"requirement": "TWO_CARDS",
+			"type": "DOUBLE_EFFECT_VALUE"
+		},
+		"requirement": "IS_FACE",
+		"gear_class": "HEALTH",
+		"weakness": "FLAME"
+	}
+]

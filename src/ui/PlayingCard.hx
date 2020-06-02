@@ -1,4 +1,4 @@
-package ui.cards;
+package ui;
 
 import openfl.geom.Point;
 import zero.utilities.Tween;
@@ -120,7 +120,7 @@ class PlayingCard extends Card {
 
 	override function mouse_up(e:MouseEvent) {
 		if (!dragging) return;
-		if (!equipped) for (gear in Gear.active_gear.gear_cards) {
+		if (!equipped && Gear.active_gear != null) for (gear in Gear.active_gear.gear_cards) {
 			var pos = gear.get_anchor(true);
 			if (pos.distance([x, y]) < 128) {
 				if (!gear.verify_card(data)) continue;

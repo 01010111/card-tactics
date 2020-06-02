@@ -1,4 +1,4 @@
-package ui.cards;
+package ui;
 
 import zero.utilities.Vec2;
 import openfl.display.Sprite;
@@ -7,7 +7,7 @@ import zero.openfl.utilities.Game;
 import zero.utilities.Timer;
 import openfl.events.Event;
 import openfl.display.InteractiveObject;
-import ui.cards.PlayingCard;
+import ui.PlayingCard;
 
 using zero.openfl.extensions.SpriteTools;
 using zero.openfl.extensions.TextTools;

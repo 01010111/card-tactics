@@ -1,4 +1,4 @@
-package ui.cards;
+package ui;
 
 import zero.openfl.utilities.Game;
 import openfl.events.MouseEvent;

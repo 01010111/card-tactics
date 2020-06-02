@@ -1,7 +1,7 @@
 package util;
 
-import ui.cards.PlayingCard.PlayingCardSuit;
-import ui.cards.PlayingCard.PlayingCardValue;
+import ui.PlayingCard.PlayingCardSuit;
+import ui.PlayingCard.PlayingCardValue;
 
 class CardUtil {
 

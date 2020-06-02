@@ -1,6 +1,6 @@
 package ui;
 
-import ui.cards.GearCard;
+import ui.GearCard;
 import objects.GameObject;
 import openfl.display.Sprite;
 

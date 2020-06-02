@@ -1,0 +1,21 @@
+{
+	"json.schemas": [
+		{
+			"fileMatch": [
+				"assets/data/gear.jsonc"
+			],
+			"url": "./_project/data/gear_schema.json"
+		}
+	],
+	"files.exclude": {
+		"**/.git": true,
+		"**/.svn": true,
+		"**/.hg": true,
+		"**/CVS": true,
+		"**/.DS_Store": true,
+		"_old":true,
+		"export/html5/haxe": true,
+		"export/html5/obj": true,
+		"zerolib-openfl":true
+	}
+}

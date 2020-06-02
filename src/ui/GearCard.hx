@@ -1,4 +1,4 @@
-package ui.cards;
+package ui;
 
 import scenes.Level;
 import openfl.events.MouseEvent;
@@ -10,7 +10,7 @@ import openfl.display.Sprite;
 import zero.utilities.Color;
 import openfl.events.Event;
 import zero.utilities.Vec2;
-import ui.cards.PlayingCard;
+import ui.PlayingCard;
 
 using zero.openfl.extensions.SpriteTools;
 using zero.openfl.extensions.TextTools;
@@ -36,11 +36,10 @@ class GearCard extends Card {
 	var req_text_r:TextField;
 	var handle:GearCardHandle;
 	
-	public function new(x:Float, y:Float, gear:Gear, data:GearData) {
+	public function new(gear:Gear, data:GearData) {
 		super();
 		this.gear = gear;
 		this.data = data;
-		this.set_position(x, y);
 		draggable = false;
 		last = [x, y];
 		home = [x, y];
@@ -124,6 +123,7 @@ class GearCard extends Card {
 			// Classes
 			{
 				var class_src = switch data.gear_class {
+					default: 'images/blank.png';
 					case FLAME:'images/ui/icons/on_white/icon_flame.png';
 					case PIERCING:'images/ui/icons/on_white/icon_pierce.png';
 					case EXPLOSIVE:'images/ui/icons/on_white/icon_explode.png';
@@ -135,6 +135,7 @@ class GearCard extends Card {
 					case UTILITY:'images/ui/icons/on_white/icon_utility.png';
 				}
 				var weakness_src = switch data.weakness {
+					default: 'images/blank.png';
 					case FLAME:'images/ui/icons/on_white/icon_flame.png';
 					case PIERCING:'images/ui/icons/on_white/icon_pierce.png';
 					case EXPLOSIVE:'images/ui/icons/on_white/icon_explode.png';
@@ -162,6 +163,7 @@ class GearCard extends Card {
 
 	function set_description() {
 		var str = switch data.effect.type {
+			default: '';
 			case DAMAGE: 'Do ${get_effect_string()} damage';
 			case MOVE: 'Move ${get_effect_string()} spaces';
 			case SHIELD: 'Shield against ${get_effect_string()} damage';
@@ -170,34 +172,13 @@ class GearCard extends Card {
 		description.set_string(str.wrap_string(description, 128)).set_position(card_width/2, 70, MIDDLE_CENTER);
 	}
 
-	public function get_effect_value() {
-		var out = 0;
-		switch data.effect.factor {
-			case VALUES:
-				for (card in cards) out += card.data.value.value_to_int();
-			case STATIC:
-				out = data.effect.value;
-		}
-		if (vefify_bonus()) {
-			switch data.bonus.type {
-				case DOUBLE_EFFECT_VALUE: out *= 2;
-				case DOUBLE_RANGE: {}
-			}
-		}
-		return out;
-	}
-
-	public function get_effect_string() {
-		var val = get_effect_value();
-		return val == 0 ? '_' : '$val';
-	}
-
 	function set_req_text() {
 		if (cards.length > 0) {
 			req_text.set_string('');
 			return;
 		}
 		var str = switch data.requirement {
+			default: '';
 			case MIN_TOTAL: 'All > ${data.requirement_value - 1}';
 			case MAX_TOTAL: 'All < ${data.requirement_value + 1}';
 			case MIN_CARD: '> ${data.requirement_value - 1}';
@@ -225,6 +206,7 @@ class GearCard extends Card {
 			return;
 		}
 		var str = switch data.requirement {
+			default: '';
 			case MIN_TOTAL: '> ${(data.requirement_value - 1 - cards[0].data.value.value_to_int()).max(0)}';
 			case MAX_TOTAL: '< ${data.requirement_value + 1 - cards[0].data.value.value_to_int()}';
 			case MIN_CARD: '> ${data.requirement_value - 1}';
@@ -245,7 +227,29 @@ class GearCard extends Card {
 		}
 		req_text_r.set_string(str).set_position(card_width/2 + 36, 140, MIDDLE_CENTER);
 	}
-	
+
+	public function get_effect_value() {
+		var out = 0;
+		switch data.effect.factor {
+			case VALUES:
+				for (card in cards) out += card.data.value.value_to_int();
+			case STATIC:
+				out = data.effect.value;
+		}
+		if (vefify_bonus()) {
+			switch data.bonus.type {
+				case DOUBLE_EFFECT_VALUE: out *= 2;
+				case DOUBLE_RANGE: {}
+			}
+		}
+		return out;
+	}
+
+	public function get_effect_string() {
+		var val = get_effect_value();
+		return val == 0 ? '_' : '$val';
+	}
+
 	var t = 0.0;
 	function update(e:Event) {
 		//rotation += ((x - last.x)/2 - rotation) * 0.25;
@@ -293,6 +297,7 @@ class GearCard extends Card {
 	public function verify_card(card_data:PlayingCardData):Bool {
 		if (cards.length >= 2) return false;
 		switch data.requirement {
+			default: return false;
 			case MIN_TOTAL:
 				var total = 0;
 				for (card in cards) total += card.data.value.value_to_int();
@@ -368,14 +373,15 @@ class GearCard extends Card {
 
 
 typedef GearData = {
+	id:String,
 	title:String,
 	description:String,
 	cost:Int,
-	range:RangeData,
-	effect:EffectData,
 	requirement:Requirement,
 	gear_class:GearClass,
 	weakness:GearClass,
+	range:RangeData,
+	effect:EffectData,
 	bonus:BonusData,
 	?requirement_value:Int,
   }
@@ -397,57 +403,57 @@ typedef GearData = {
 	type:BonusType,
   }
   
-  enum RangeType {
-	NONE;
-	ORTHOGONAL;
-	DIAGONAL;
+  enum abstract RangeType(String) {
+	var NONE;
+	var ORTHOGONAL;
+	var DIAGONAL;
   }
   
-  enum EffectType {
-	DAMAGE;
-	MOVE;
-	HEALTH;
-	SHIELD;
+  enum abstract EffectType(String) {
+	var DAMAGE;
+	var MOVE;
+	var HEALTH;
+	var SHIELD;
   }
   
-  enum EffectFactor {
-	VALUES;
-	STATIC;
+  enum abstract EffectFactor(String) {
+	var VALUES;
+	var STATIC;
   }
   
-  enum BonusType {
-	DOUBLE_EFFECT_VALUE;
-	DOUBLE_RANGE;
+  enum abstract BonusType(String) {
+	var DOUBLE_EFFECT_VALUE;
+	var DOUBLE_RANGE;
   }
   
-  enum Requirement {
-	MIN_TOTAL;
-	MAX_TOTAL;
-	MIN_CARD;
-	MAX_CARD;
-	EXACT_CARD;
-	EXACT_TOTAL;
-	IS_FACE;
-	NOT_FACE;
-	PAIR;
-	NO_MATCH;
-	SAME_SUIT;
-	DIFF_SUIT;
-	HEARTS;
-	DIAMONDS;
-	CLUBS;
-	SPADES;
-	TWO_CARDS;
+  enum abstract Requirement(String) {
+	var MIN_TOTAL;
+	var MAX_TOTAL;
+	var MIN_CARD;
+	var MAX_CARD;
+	var EXACT_CARD;
+	var EXACT_TOTAL;
+	var IS_FACE;
+	var NOT_FACE;
+	var PAIR;
+	var NO_MATCH;
+	var SAME_SUIT;
+	var DIFF_SUIT;
+	var HEARTS;
+	var DIAMONDS;
+	var CLUBS;
+	var SPADES;
+	var TWO_CARDS;
   }
   
-  enum GearClass {
-	FLAME;
-	PIERCING;
-	EXPLOSIVE;
-	ELECTRICITY;
-	WATER;
-	SHIELD;
-	MOVE;
-	HEALTH;
-	UTILITY;
+  enum abstract GearClass(String) {
+	var FLAME;
+	var PIERCING;
+	var EXPLOSIVE;
+	var ELECTRICITY;
+	var WATER;
+	var SHIELD;
+	var MOVE;
+	var HEALTH;
+	var UTILITY;
   }

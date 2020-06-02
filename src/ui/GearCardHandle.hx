@@ -1,4 +1,4 @@
-package ui.cards;
+package ui;
 
 import objects.GameObject;
 import scenes.Level;
@@ -36,6 +36,7 @@ class GearCardHandle extends Sprite {
 			case AIM:
 				graphic.load_graphic('images/ui/aim_cta.png', MIDDLE_CENTER, true);
 				addEventListener(MouseEvent.MOUSE_DOWN, mouse_down);
+				addEventListener(MouseEvent.MOUSE_OUT, (e) -> Level.i.clear_indicators());
 				Game.root.addEventListener(MouseEvent.MOUSE_UP, mouse_up);
 			case PRESS:
 				graphic.load_graphic('images/ui/do_cta.png', MIDDLE_CENTER, true);
@@ -68,9 +69,7 @@ class GearCardHandle extends Sprite {
 		Gear.active_gear.link.length = 0;
 		Gear.active_gear.link.draw();
 		gear_card.active = false;
-		trace(x, y);
 		level_pos = get_level_pos();
-		trace((level_pos.x/16).floor(), (level_pos.y/16).floor());
 		Level.i.clear_indicators();
 	}
 
@@ -112,8 +111,8 @@ class GearCardHandle extends Sprite {
 			check_objects(x, y);
 		}
 		else {
-			x += (gear_card.x - x) * 0.25;
-			y += (gear_card.y + GearCard.card_height/2 - y) * 0.25;
+			x += (gear_card.x - x) * 0.5;
+			y += (gear_card.y + GearCard.card_height/2 - y) * 0.5;
 		}
 	}
 

@@ -1,0 +1,323 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "array",
+    "description": "An array of gear definitions.",
+    "default": [],
+    "additionalItems": true,
+    "items": {
+        "anyOf": [
+            {
+                "$id": "#/items/anyOf/0",
+                "type": "object",
+                "title": "The first anyOf schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "examples": [
+                    {
+                        "id": "Test",
+                        "title": "Test Card",
+                        "description": "Test Card Description",
+                        "cost": 1,
+                        "range": {
+                            "min": 0,
+                            "max": 5,
+                            "type": "NONE"
+                        },
+                        "effect": {
+                            "type": "DAMAGE",
+                            "factor": "STATIC",
+                            "value": 5
+                        },
+                        "requirement": "MIN_TOTAL",
+                        "requirement_value": 10,
+                        "gear_class": "FLAME",
+                        "weakness": "PIERCING",
+                        "bonus": {
+                            "requirement": "FACE",
+                            "type": "DOUBLE_EFFECT_VALUE"
+                        }
+                    }
+                ],
+                "required": [
+                    "id",
+                    "title",
+                    "description",
+                    "cost",
+                    "range",
+                    "effect",
+                    "requirement",
+                    "gear_class",
+                    "weakness",
+                    "bonus"
+                ],
+                "additionalProperties": true,
+                "properties": {
+                    "id": {
+                        "$id": "#/items/anyOf/0/properties/id",
+                        "type":"string",
+                        "title": "The id schema",
+                        "description": "A simple identifier for loading cards",
+                        "default":"",
+                        "examples": [
+                            "Test"
+                        ]
+                    },
+                    "title": {
+                        "$id": "#/items/anyOf/0/properties/title",
+                        "type": "string",
+                        "title": "The title schema",
+                        "description": "The title of the card, appears at the top of a gear card.",
+                        "default": "",
+                        "maxLength": 12,
+                        "examples": [
+                            "Test Card"
+                        ]
+                    },
+                    "description": {
+                        "$id": "#/items/anyOf/0/properties/description",
+                        "type": "string",
+                        "title": "The description schema",
+                        "description": "A description of a piece of gear. May appear on gear card hover in an info box.",
+                        "default": "",
+                        "examples": [
+                            "Test Card Description"
+                        ]
+                    },
+                    "cost": {
+                        "$id": "#/items/anyOf/0/properties/cost",
+                        "type": "integer",
+                        "title": "The cost schema",
+                        "description": "AP cost of equipping this gear.",
+                        "default": 1,
+                        "minimum": 1,
+                        "maximum": 4
+                    },
+                    "range": {
+                        "$id": "#/items/anyOf/0/properties/range",
+                        "type": "object",
+                        "title": "The range schema",
+                        "description": "An object describing the range of this gear.",
+                        "default": {},
+                        "examples": [
+                            {
+                                "min": 0,
+                                "max": 5,
+                                "type": "NONE"
+                            }
+                        ],
+                        "required": [
+                            "min",
+                            "max",
+                            "type"
+                        ],
+                        "additionalProperties": true,
+                        "properties": {
+                            "min": {
+                                "$id": "#/items/anyOf/0/properties/range/properties/min",
+                                "type": "integer",
+                                "title": "The min schema",
+                                "description": "The minimum range (in tiles) of this gear. 0 means the player may use this gear on themselves.",
+                                "default": 0,
+                                "examples": [
+                                    0
+                                ]
+                            },
+                            "max": {
+                                "$id": "#/items/anyOf/0/properties/range/properties/max",
+                                "type": "integer",
+                                "title": "The max schema",
+                                "description": "The maximum range (in tiles) of this gear. 0 means a card will automatically be used on the selected character.",
+                                "default": 3
+                            },
+                            "type": {
+                                "$id": "#/items/anyOf/0/properties/range/properties/type",
+                                "type": "string",
+                                "title": "The type schema",
+                                "description": "An optional restriction on this gear's range.",
+                                "default": "",
+                                "enum": [
+                                    "NONE",
+                                    "ORTHOGONAL",
+                                    "DIAGONAL"
+                                ]
+                            }
+                        }
+                    },
+                    "effect": {
+                        "$id": "#/items/anyOf/0/properties/effect",
+                        "type": "object",
+                        "title": "The effect schema",
+                        "description": "An object describing the effect this gear has on a target.",
+                        "default": {},
+                        "examples": [
+                            {
+                                "type": "DAMAGE",
+                                "factor": "STATIC",
+                                "value": 5
+                            }
+                        ],
+                        "required": [
+                            "type",
+                            "factor"
+                        ],
+                        "additionalProperties": true,
+                        "properties": {
+                            "type": {
+                                "$id": "#/items/anyOf/0/properties/effect/properties/type",
+                                "type": "string",
+                                "title": "The type schema",
+                                "description": "The type of effect this gear has on a target.",
+                                "default": "",
+                                "enum": [
+                                    "DAMAGE",
+                                    "MOVE",
+                                    "HEALTH",
+                                    "SHIELD"
+                                ]
+                            },
+                            "factor": {
+                                "$id": "#/items/anyOf/0/properties/effect/properties/factor",
+                                "type": "string",
+                                "title": "The factor schema",
+                                "description": "How the value for an effect is calculated.",
+                                "default": "",
+                                "enum": [
+                                    "VALUES",
+                                    "STATIC"
+                                ]
+                            },
+                            "value": {
+                                "$id": "#/items/anyOf/0/properties/effect/properties/value",
+                                "type": "integer",
+                                "title": "The value schema",
+                                "description": "An optional static value.",
+                                "default": 0,
+                                "examples": [
+                                    5
+                                ]
+                            }
+                        }
+                    },
+                    "requirement": {
+                        "$id": "#/items/anyOf/0/properties/requirement",
+                        "type": "string",
+                        "title": "The requirement schema",
+                        "description": "The requirement needed for this gear to become active",
+                        "default": "",
+                        "enum": [
+                            "MIN_TOTAL",
+                            "MAX_TOTAL",
+                            "MIN_CARD",
+                            "MAX_CARD",
+                            "EXACT_CARD",
+                            "EXACT_TOTAL",
+                            "IS_FACE",
+                            "NOT_FACE",
+                            "PAIR",
+                            "NO_MATCH",
+                            "SAME_SUIT",
+                            "DIFF_SUIT",
+                            "HEARTS",
+                            "DIAMONDS",
+                            "CLUBS",
+                            "SPADES",
+                            "TWO_CARDS"
+                        ]
+                    },
+                    "requirement_value": {
+                        "$id": "#/items/anyOf/0/properties/requirement_value",
+                        "type": "integer",
+                        "title": "The requirement_value schema",
+                        "description": "An optional value to be used in conjunction with a requirement.",
+                        "minimum": 1,
+                        "maximum": 26,
+                        "default": 1,
+                        "examples": [
+                            10
+                        ]
+                    },
+                    "gear_class": {
+                        "$id": "#/items/anyOf/0/properties/gear_class",
+                        "type": "string",
+                        "title": "The gear_class schema",
+                        "description": "The class of this gear. Determines the class of damage dealt to target.",
+                        "default": "",
+                        "enum": [
+                            "FLAME",
+                            "PIERCING",
+                            "EXPLOSIVE",
+                            "ELECTRICITY",
+                            "WATER",
+                            "SHIELD",
+                            "MOVE",
+                            "HEALTH",
+                            "UTILITY"
+                        ]
+                    },
+                    "weakness": {
+                        "$id": "#/items/anyOf/0/properties/weakness",
+                        "type": "string",
+                        "title": "The weakness schema",
+                        "description": "The class of damage this card is vulnerable to.",
+                        "default": "",
+                        "enum": [
+                            "FLAME",
+                            "PIERCING",
+                            "EXPLOSIVE",
+                            "ELECTRICITY",
+                            "WATER"
+                        ]
+                    },
+                    "bonus": {
+                        "$id": "#/items/anyOf/0/properties/bonus",
+                        "type": "object",
+                        "title": "The bonus schema",
+                        "description": "An object describing the bonus effect for this gear.",
+                        "default": {},
+                        "examples": [
+                            {
+                                "requirement": "FACE",
+                                "type": "DOUBLE_EFFECT_VALUE"
+                            }
+                        ],
+                        "required": [
+                            "requirement",
+                            "type"
+                        ],
+                        "additionalProperties": true,
+                        "properties": {
+                            "requirement": {
+                                "$id": "#/items/anyOf/0/properties/bonus/properties/requirement",
+                                "type": "string",
+                                "title": "The requirement schema",
+                                "description": "The requirement for activating the bonus.",
+                                "default": "",
+                                "enum": [
+                                    "IS_FACE",
+                                    "TWO_CARDS",
+                                    "HEARTS",
+                                    "DIAMONDS",
+                                    "CLUBS",
+                                    "SPADES"
+                                ]
+                            },
+                            "type": {
+                                "$id": "#/items/anyOf/0/properties/bonus/properties/type",
+                                "type": "string",
+                                "title": "The type schema",
+                                "description": "The effect the bonus has on this gear.",
+                                "default": "",
+                                "enum": [
+                                    "DOUBLE_EFFECT_VALUE",
+                                    "DOUBLE_RANGE"
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        ],
+        "$id": "#/items"
+    }
+}
