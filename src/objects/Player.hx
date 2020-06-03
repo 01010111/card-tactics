@@ -1,12 +1,10 @@
 package objects;
 
+import objects.Actor.ActorData;
 import ui.GearCard;
 import openfl.events.MouseEvent;
 import ui.Gear;
-import zero.utilities.IntPoint;
 import scenes.Level;
-import zero.utilities.Tween;
-import openfl.events.Event;
 import zero.openfl.utilities.AnimatedSprite;
 import util.GearUtil;
 
@@ -14,14 +12,21 @@ using zero.extensions.Tools;
 using zero.openfl.extensions.SpriteTools;
 using Math;
 
-class Player extends GameObject {
+class Player extends Actor {
 
 	public static var selected_player(default, set):Player;
 
+	public var AP(default, set):Int = 10;
+	function set_AP(n:Int) {
+		AP = n;
+		gear.player_info.update_ap_pts();
+		return AP;
+	}
+
 	var gear:Gear;
 
-	public function new(x:Int, y:Int, gear_ids:Array<String>, side:PlayerSide) {
-		super(x, y, 64, 'Test Player');
+	public function new(x:Int, y:Int, options:PlayerOptions) {
+		super(options.data, x, y);
 		addEventListener(MouseEvent.CLICK, (e) -> if (Level.i.can_move) selected_player = this);
 		Level.i.objects.add(this);
 		Level.i.dolly.follow(this, true);
@@ -29,8 +34,8 @@ class Player extends GameObject {
 
 		init_graphic();
 		
-		gear = new Gear(this, side);
-		for (g in gear_ids) gear.add_card(new GearCard(gear, GearUtil.get_gear_data(g)));
+		gear = new Gear(this, options.side);
+		for (g in options.data.gear) gear.add_card(new GearCard(gear, GearUtil.get_gear_data(g)));
 		Level.i.gear_layer.add(gear);
 	}
 
@@ -54,6 +59,15 @@ class Player extends GameObject {
 		return selected_player = player;
 	}
 
+	override function health_callback() {
+		gear.player_info.update_health();
+	}
+
+}
+
+typedef PlayerOptions = {
+	data:ActorData,
+	side:PlayerSide,
 }
 
 enum PlayerSide {

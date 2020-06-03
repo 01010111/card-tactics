@@ -23,11 +23,8 @@ class GameObject extends Sprite {
 	var last:Vec2;
 	var graphic:AnimatedSprite;
 
-	public function new(x:Int, y:Int, health:Int, title:String) {
-		this.health = {
-			current: health,
-			max: health,
-		};
+	public function new(x:Int, y:Int, health:HealthData, title:String) {
+		this.health = health;
 		this.title = title;
 		super();
 
@@ -62,11 +59,14 @@ class GameObject extends Sprite {
 		return true;
 	}
 
-	public function change_health(delta:Float) {
+	public function change_health(delta:Int) {
 		health.current += delta;
 		if (health.current <= 0) kill();
-		health.current = health.current.min(health.max).max(0);
+		health.current = health.current.min(health.max).max(0).floor();
+		health_callback();
 	}
+
+	function health_callback() {}
 
 	function kill() {
 		
@@ -79,6 +79,6 @@ class GameObject extends Sprite {
 }
 
 typedef HealthData = {
-	current:Float,
-	max:Float,
+	current:Int,
+	max:Int,
 }

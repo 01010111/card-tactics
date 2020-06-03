@@ -54,7 +54,7 @@ class ObjectInfo extends Sprite {
 			case HEALTH: gear.get_effect_value();
 			case SHIELD: 0;
 		}
-		next_hp = next_hp.min(target.health.max).max(0);
+		next_hp = next_hp.min(target.health.max).max(0).floor();
 
 		health_bar.graphics.clear();
 		health_bar.fill_rect(Color.PICO_8_DARK_BLUE, -48, -6, 96, 12, 12);

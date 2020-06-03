@@ -54,7 +54,7 @@ class Game {
 		scene.create();
 		root.add(scene);
 		#if debug
-		root.add(new FPS(10, 10, 0xFFFFFF));
+		root.add(new FPS(10, Game.height - 64, 0xFFFFFF));
 		#end
 	}
 	

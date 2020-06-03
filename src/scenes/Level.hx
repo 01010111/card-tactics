@@ -62,9 +62,40 @@ class Level extends Scene {
 		this.add(deck);
 		deck.deal();
 		this.add(info_layer = new InfoLayer());
-		var player = new Player(2, 9, ['test_d_01', 'test_h_01'], LEFT);
-		player.change_health(-16);
-		new Player(6, 8, ['test_h_01', 'test_u_01'], RIGHT);
+		var player = new Player(2, 9, {
+			data: {
+				id: 'Test Player',
+				health: {
+					current: 48,
+					max: 64,
+				},
+				movement: {
+					requirement: MAX_CARD,
+					value: 5,
+					type: FREE,
+					factor: VALUE,
+				},
+				gear: ['test_d_01', 'test_h_01'],
+			},
+			side: LEFT,
+		});
+		new Player(6, 8, {
+			data: {
+				id: 'Test Player',
+				health: {
+					current: 64,
+					max: 64,
+				},
+				movement: {
+					requirement: MAX_CARD,
+					value: 5,
+					type: FREE,
+					factor: VALUE,
+				},
+				gear: ['test_u_01', 'test_h_01'],
+			},
+			side: RIGHT,
+		});
 		Player.selected_player = player;
 	}
 

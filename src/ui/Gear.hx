@@ -2,12 +2,11 @@ package ui;
 
 import zero.openfl.utilities.Game;
 import openfl.events.Event;
-import objects.Player;
 import openfl.Assets;
-import openfl.geom.Matrix;
-import openfl.display.BitmapData;
-import ui.GearCard.Requirement;
 import openfl.display.Sprite;
+import objects.Player;
+
+using zero.openfl.extensions.SpriteTools;
 
 class Gear extends Sprite {
 
@@ -23,7 +22,9 @@ class Gear extends Sprite {
 	public var gear_cards:Array<GearCard> = [];
 	public var move_card:MoveCard;
 	public var player:Player;
+	public var player_info:PlayerInfo;
 
+	var gear:Sprite;
 	var side:PlayerSide;
 
 	public function new(player:Player, side:PlayerSide) {
@@ -31,6 +32,10 @@ class Gear extends Sprite {
 		this.player = player;
 		this.side = side;
 		addChild(link = new LinkGraphic(Assets.getBitmapData('images/ui/action_arrow_white.png')));
+		addChild(gear = new Sprite());
+		addChild(move_card = cast new MoveCard().set_position(side == LEFT ? -72 : Game.width + 72, 298));
+		addChild(player_info = new PlayerInfo(player, side));
+
 		addEventListener(Event.ENTER_FRAME, (e) -> update());
 	}
 
@@ -48,66 +53,13 @@ class Gear extends Sprite {
 				gear.alpha += (0 - gear.alpha) * 0.25;
 			}
 		}
+		var tx = active ? side == LEFT ? 72 : Game.width - 72 : side == LEFT ? -72 : Game.width + 72;
+		move_card.x += (tx - move_card.x) * 0.25;
 	}
 
 	public function add_card(card:GearCard) {
-		addChild(card);
+		gear.addChild(card);
 		gear_cards.push(card);
-	}
-	
-}
-
-class MoveCard extends Card {
-	
-	public function new() {
-		super();
-	}
-
-}
-
-typedef MoveCardOptions = {
-	requirement:Requirement,
-	factor:MoveFactor,
-	type:MoveType,
-	range:Int,
-}
-
-enum MoveFactor {
-	STATIC;
-	VALUE;
-	VALUE_HALF;
-	VALUE_X_TWO;
-	INFINITE;
-}
-
-enum MoveType {
-	FREE;
-	ROOK;
-	TELEPORT;
-}
-
-class LinkGraphic extends Sprite {
-
-	public var length:Float = 8;
-	public var active:Bool = false;
-
-	var offset_matrix:Matrix = new Matrix();
-	var bitmap:BitmapData;
-
-	public function new(bitmap:BitmapData) {
-		super();
-		this.bitmap = bitmap;
-		offset_matrix.ty = 12;
-	}
-
-	public function draw() {
-		visible = active;
-		if (!active) return;
-		offset_matrix.tx += 4;
-		graphics.clear();
-		graphics.beginBitmapFill(bitmap, offset_matrix, true, true);
-		graphics.drawRect(0, -12, length, 24);
-		graphics.endFill();
 	}
 	
 }

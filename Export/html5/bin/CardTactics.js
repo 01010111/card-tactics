@@ -894,9 +894,9 @@ ApplicationMain.create = function(config) {
 	ManifestResources.init(config);
 	var _this = app.meta;
 	if(__map_reserved["build"] != null) {
-		_this.setReserved("build","15");
+		_this.setReserved("build","17");
 	} else {
-		_this.h["build"] = "15";
+		_this.h["build"] = "17";
 	}
 	var _this1 = app.meta;
 	if(__map_reserved["company"] != null) {
@@ -4814,7 +4814,7 @@ ManifestResources.init = function(config) {
 	}
 	openfl_text_Font.registerFont(_$_$ASSET_$_$OPENFL_$_$fonts_$oduda_$ttf);
 	var bundle;
-	var data = "{\"name\":null,\"assets\":\"aoy4:pathy18:images%2Fblank.pngy4:sizei123y4:typey5:IMAGEy2:idR1y7:preloadtgoR0y29:images%2Fparticles%2Fpoof.pngR2i452R3R4R5R7R6tgoR0y20:images%2Fplayers.pngR2i1824R3R4R5R8R6tgoR0y18:images%2Ftiles.pngR2i14787R3R4R5R9R6tgoR0y35:images%2Fui%2Faction_arrow_blue.pngR2i473R3R4R5R10R6tgoR0y36:images%2Fui%2Faction_arrow_green.pngR2i489R3R4R5R11R6tgoR0y34:images%2Fui%2Faction_arrow_red.pngR2i470R3R4R5R12R6tgoR0y36:images%2Fui%2Faction_arrow_white.pngR2i307R3R4R5R13R6tgoR0y25:images%2Fui%2Faim_cta.pngR2i1862R3R4R5R14R6tgoR0y24:images%2Fui%2Fap_pip.pngR2i270R3R4R5R15R6tgoR0y24:images%2Fui%2Fdo_cta.pngR2i1723R3R4R5R16R6tgoR0y36:images%2Fui%2Ficons%2Ficon_skull.pngR2i2850R3R4R5R17R6tgoR0y35:images%2Fui%2Ficons%2Fmove_free.pngR2i2776R3R4R5R18R6tgoR0y35:images%2Fui%2Ficons%2Fmove_rook.pngR2i3371R3R4R5R19R6tgoR0y39:images%2Fui%2Ficons%2Fmove_teleport.pngR2i3093R3R4R5R20R6tgoR0y51:images%2Fui%2Ficons%2Fon_white%2Ficon_electrify.pngR2i1737R3R4R5R21R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_explode.pngR2i2333R3R4R5R22R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_flame.pngR2i2026R3R4R5R23R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_health.pngR2i1796R3R4R5R24R6tgoR0y46:images%2Fui%2Ficons%2Fon_white%2Ficon_move.pngR2i1973R3R4R5R25R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_pierce.pngR2i1943R3R4R5R26R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_shield.pngR2i1973R3R4R5R27R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_utility.pngR2i1803R3R4R5R28R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_water.pngR2i1906R3R4R5R29R6tgoR0y27:images%2Fui%2Frule_face.pngR2i8721R3R4R5R30R6tgoR0y32:images%2Fui%2Frule_two_cards.pngR2i5319R3R4R5R31R6tgoR0y27:images%2Fui%2Fsuit_club.pngR2i4182R3R4R5R32R6tgoR0y30:images%2Fui%2Fsuit_diamond.pngR2i2985R3R4R5R33R6tgoR0y28:images%2Fui%2Fsuit_heart.pngR2i2540R3R4R5R34R6tgoR0y28:images%2Fui%2Fsuit_spade.pngR2i3507R3R4R5R35R6tgoR0y17:data%2Fgear.jsoncR2i1340R3y4:TEXTR5R36R6tgoR0y22:data%2Fmaps%2F000.jsonR2i1922R3R37R5R38R6tgoR0y23:data%2Fmaps%2Fmaps.ogmoR2i19048R3R37R5R39R6tgoR2i19636R3y4:FONTy9:classNamey24:__ASSET__fonts_oduda_ttfR5y17:fonts%2Foduda.ttfR6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
+	var data = "{\"name\":null,\"assets\":\"aoy4:pathy18:images%2Fblank.pngy4:sizei123y4:typey5:IMAGEy2:idR1y7:preloadtgoR0y29:images%2Fparticles%2Fpoof.pngR2i452R3R4R5R7R6tgoR0y20:images%2Fplayers.pngR2i1824R3R4R5R8R6tgoR0y18:images%2Ftiles.pngR2i14787R3R4R5R9R6tgoR0y35:images%2Fui%2Faction_arrow_blue.pngR2i473R3R4R5R10R6tgoR0y36:images%2Fui%2Faction_arrow_green.pngR2i489R3R4R5R11R6tgoR0y34:images%2Fui%2Faction_arrow_red.pngR2i470R3R4R5R12R6tgoR0y36:images%2Fui%2Faction_arrow_white.pngR2i307R3R4R5R13R6tgoR0y25:images%2Fui%2Faim_cta.pngR2i1862R3R4R5R14R6tgoR0y24:images%2Fui%2Fap_pip.pngR2i270R3R4R5R15R6tgoR0y25:images%2Fui%2Fap_pips.pngR2i467R3R4R5R16R6tgoR0y28:images%2Fui%2Fap_pip_big.pngR2i370R3R4R5R17R6tgoR0y24:images%2Fui%2Fdo_cta.pngR2i1723R3R4R5R18R6tgoR0y36:images%2Fui%2Ficons%2Ficon_skull.pngR2i2850R3R4R5R19R6tgoR0y35:images%2Fui%2Ficons%2Fmove_free.pngR2i2776R3R4R5R20R6tgoR0y35:images%2Fui%2Ficons%2Fmove_rook.pngR2i3371R3R4R5R21R6tgoR0y39:images%2Fui%2Ficons%2Fmove_teleport.pngR2i3093R3R4R5R22R6tgoR0y51:images%2Fui%2Ficons%2Fon_white%2Ficon_electrify.pngR2i1737R3R4R5R23R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_explode.pngR2i2333R3R4R5R24R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_flame.pngR2i2026R3R4R5R25R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_health.pngR2i1796R3R4R5R26R6tgoR0y46:images%2Fui%2Ficons%2Fon_white%2Ficon_move.pngR2i1973R3R4R5R27R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_pierce.pngR2i1943R3R4R5R28R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_shield.pngR2i1973R3R4R5R29R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_utility.pngR2i1803R3R4R5R30R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_water.pngR2i1906R3R4R5R31R6tgoR0y27:images%2Fui%2Frule_face.pngR2i8721R3R4R5R32R6tgoR0y32:images%2Fui%2Frule_two_cards.pngR2i5319R3R4R5R33R6tgoR0y27:images%2Fui%2Fsuit_club.pngR2i4182R3R4R5R34R6tgoR0y30:images%2Fui%2Fsuit_diamond.pngR2i2985R3R4R5R35R6tgoR0y28:images%2Fui%2Fsuit_heart.pngR2i2540R3R4R5R36R6tgoR0y28:images%2Fui%2Fsuit_spade.pngR2i3507R3R4R5R37R6tgoR0y17:data%2Fgear.jsoncR2i1340R3y4:TEXTR5R38R6tgoR0y22:data%2Fmaps%2F000.jsonR2i1922R3R39R5R40R6tgoR0y23:data%2Fmaps%2Fmaps.ogmoR2i19048R3R39R5R41R6tgoR2i19636R3y4:FONTy9:classNamey24:__ASSET__fonts_oduda_ttfR5y17:fonts%2Foduda.ttfR6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
 	var manifest = lime_utils_AssetManifest.parse(data,ManifestResources.rootPath);
 	var library = lime_utils_AssetLibrary.fromManifest(manifest);
 	lime_utils_Assets.registerLibrary("default",library);
@@ -5488,6 +5488,702 @@ _$UInt_UInt_$Impl_$.toFloat = function(this1) {
 		return int + 0.0;
 	}
 };
+var openfl_display_Shader = function(code) {
+	this.byteCode = code;
+	this.precisionHint = 1;
+	this.__glSourceDirty = true;
+	this.__numPasses = 1;
+	this.__data = openfl_display__$ShaderData_ShaderData_$Impl_$._new(code);
+};
+$hxClasses["openfl.display.Shader"] = openfl_display_Shader;
+openfl_display_Shader.__name__ = "openfl.display.Shader";
+openfl_display_Shader.prototype = {
+	byteCode: null
+	,glProgram: null
+	,precisionHint: null
+	,program: null
+	,__alpha: null
+	,__bitmap: null
+	,__colorMultiplier: null
+	,__colorOffset: null
+	,__context: null
+	,__data: null
+	,__glFragmentSource: null
+	,__glSourceDirty: null
+	,__glVertexSource: null
+	,__hasColorTransform: null
+	,__inputBitmapData: null
+	,__isGenerated: null
+	,__matrix: null
+	,__numPasses: null
+	,__paramBool: null
+	,__paramFloat: null
+	,__paramInt: null
+	,__position: null
+	,__textureCoord: null
+	,__texture: null
+	,__textureSize: null
+	,__clearUseArray: function() {
+		var _g = 0;
+		var _g1 = this.__paramBool;
+		while(_g < _g1.length) {
+			var parameter = _g1[_g];
+			++_g;
+			parameter.__useArray = false;
+		}
+		var _g2 = 0;
+		var _g3 = this.__paramFloat;
+		while(_g2 < _g3.length) {
+			var parameter1 = _g3[_g2];
+			++_g2;
+			parameter1.__useArray = false;
+		}
+		var _g4 = 0;
+		var _g5 = this.__paramInt;
+		while(_g4 < _g5.length) {
+			var parameter2 = _g5[_g4];
+			++_g4;
+			parameter2.__useArray = false;
+		}
+	}
+	,__createGLShader: function(source,type) {
+		var gl = this.__context.gl;
+		var shader = gl.createShader(type);
+		gl.shaderSource(shader,source);
+		gl.compileShader(shader);
+		if(gl.getShaderParameter(shader,gl.COMPILE_STATUS) == 0) {
+			var message = type == gl.VERTEX_SHADER ? "Error compiling vertex shader" : "Error compiling fragment shader";
+			message += "\n" + gl.getShaderInfoLog(shader);
+			message += "\n" + source;
+			lime_utils_Log.error(message,{ fileName : "openfl/display/Shader.hx", lineNumber : 328, className : "openfl.display.Shader", methodName : "__createGLShader"});
+		}
+		return shader;
+	}
+	,__createGLProgram: function(vertexSource,fragmentSource) {
+		var gl = this.__context.gl;
+		var vertexShader = this.__createGLShader(vertexSource,gl.VERTEX_SHADER);
+		var fragmentShader = this.__createGLShader(fragmentSource,gl.FRAGMENT_SHADER);
+		var program = gl.createProgram();
+		var _g = 0;
+		var _g1 = this.__paramFloat;
+		while(_g < _g1.length) {
+			var param = _g1[_g];
+			++_g;
+			if(param.name.indexOf("Position") > -1 && StringTools.startsWith(param.name,"openfl_")) {
+				gl.bindAttribLocation(program,0,param.name);
+				break;
+			}
+		}
+		gl.attachShader(program,vertexShader);
+		gl.attachShader(program,fragmentShader);
+		gl.linkProgram(program);
+		if(gl.getProgramParameter(program,gl.LINK_STATUS) == 0) {
+			var message = "Unable to initialize the shader program";
+			message += "\n" + gl.getProgramInfoLog(program);
+			lime_utils_Log.error(message,{ fileName : "openfl/display/Shader.hx", lineNumber : 361, className : "openfl.display.Shader", methodName : "__createGLProgram"});
+		}
+		return program;
+	}
+	,__disable: function() {
+		if(this.program != null) {
+			this.__disableGL();
+		}
+	}
+	,__disableGL: function() {
+		var gl = this.__context.gl;
+		var textureCount = 0;
+		var _g = 0;
+		var _g1 = this.__inputBitmapData;
+		while(_g < _g1.length) {
+			var input = _g1[_g];
+			++_g;
+			input.__disableGL(this.__context,textureCount);
+			++textureCount;
+		}
+		var _g2 = 0;
+		var _g3 = this.__paramBool;
+		while(_g2 < _g3.length) {
+			var parameter = _g3[_g2];
+			++_g2;
+			parameter.__disableGL(this.__context);
+		}
+		var _g4 = 0;
+		var _g5 = this.__paramFloat;
+		while(_g4 < _g5.length) {
+			var parameter1 = _g5[_g4];
+			++_g4;
+			parameter1.__disableGL(this.__context);
+		}
+		var _g6 = 0;
+		var _g7 = this.__paramInt;
+		while(_g6 < _g7.length) {
+			var parameter2 = _g7[_g6];
+			++_g6;
+			parameter2.__disableGL(this.__context);
+		}
+		this.__context.__bindGLArrayBuffer(null);
+		if(this.__context.__context.type == "opengl") {
+			gl.disable(gl.TEXTURE_2D);
+		}
+	}
+	,__enable: function() {
+		this.__init();
+		if(this.program != null) {
+			this.__enableGL();
+		}
+	}
+	,__enableGL: function() {
+		var textureCount = 0;
+		var gl = this.__context.gl;
+		var _g = 0;
+		var _g1 = this.__inputBitmapData;
+		while(_g < _g1.length) {
+			var input = _g1[_g];
+			++_g;
+			gl.uniform1i(input.index,textureCount);
+			++textureCount;
+		}
+		if(this.__context.__context.type == "opengl" && textureCount > 0) {
+			gl.enable(gl.TEXTURE_2D);
+		}
+	}
+	,__init: function() {
+		if(this.__data == null) {
+			this.__data = openfl_display__$ShaderData_ShaderData_$Impl_$._new(null);
+		}
+		if(this.__glFragmentSource != null && this.__glVertexSource != null && (this.program == null || this.__glSourceDirty)) {
+			this.__initGL();
+		}
+	}
+	,__initGL: function() {
+		if(this.__glSourceDirty || this.__paramBool == null) {
+			this.__glSourceDirty = false;
+			this.program = null;
+			this.__inputBitmapData = [];
+			this.__paramBool = [];
+			this.__paramFloat = [];
+			this.__paramInt = [];
+			this.__processGLData(this.get_glVertexSource(),"attribute");
+			this.__processGLData(this.get_glVertexSource(),"uniform");
+			this.__processGLData(this.get_glFragmentSource(),"uniform");
+		}
+		if(this.__context != null && this.program == null) {
+			var gl = this.__context.gl;
+			var prefix = "#ifdef GL_ES\n\t\t\t\t" + (this.precisionHint == 1 ? "#ifdef GL_FRAGMENT_PRECISION_HIGH\n\t\t\t\tprecision highp float;\n\t\t\t\t#else\n\t\t\t\tprecision mediump float;\n\t\t\t\t#endif" : "precision lowp float;") + "\n\t\t\t\t#endif\n\t\t\t\t";
+			var vertex = prefix + this.get_glVertexSource();
+			var fragment = prefix + this.get_glFragmentSource();
+			var id = vertex + fragment;
+			var _this = this.__context.__programs;
+			if(__map_reserved[id] != null ? _this.existsReserved(id) : _this.h.hasOwnProperty(id)) {
+				var _this1 = this.__context.__programs;
+				this.program = __map_reserved[id] != null ? _this1.getReserved(id) : _this1.h[id];
+			} else {
+				this.program = this.__context.createProgram(1);
+				this.program.__glProgram = this.__createGLProgram(vertex,fragment);
+				var value = this.program;
+				var _this2 = this.__context.__programs;
+				if(__map_reserved[id] != null) {
+					_this2.setReserved(id,value);
+				} else {
+					_this2.h[id] = value;
+				}
+			}
+			if(this.program != null) {
+				this.glProgram = this.program.__glProgram;
+				var _g = 0;
+				var _g1 = this.__inputBitmapData;
+				while(_g < _g1.length) {
+					var input = _g1[_g];
+					++_g;
+					if(input.__isUniform) {
+						input.index = gl.getUniformLocation(this.glProgram,input.name);
+					} else {
+						input.index = gl.getAttribLocation(this.glProgram,input.name);
+					}
+				}
+				var _g2 = 0;
+				var _g3 = this.__paramBool;
+				while(_g2 < _g3.length) {
+					var parameter = _g3[_g2];
+					++_g2;
+					if(parameter.__isUniform) {
+						parameter.index = gl.getUniformLocation(this.glProgram,parameter.name);
+					} else {
+						parameter.index = gl.getAttribLocation(this.glProgram,parameter.name);
+					}
+				}
+				var _g4 = 0;
+				var _g5 = this.__paramFloat;
+				while(_g4 < _g5.length) {
+					var parameter1 = _g5[_g4];
+					++_g4;
+					if(parameter1.__isUniform) {
+						parameter1.index = gl.getUniformLocation(this.glProgram,parameter1.name);
+					} else {
+						parameter1.index = gl.getAttribLocation(this.glProgram,parameter1.name);
+					}
+				}
+				var _g6 = 0;
+				var _g7 = this.__paramInt;
+				while(_g6 < _g7.length) {
+					var parameter2 = _g7[_g6];
+					++_g6;
+					if(parameter2.__isUniform) {
+						parameter2.index = gl.getUniformLocation(this.glProgram,parameter2.name);
+					} else {
+						parameter2.index = gl.getAttribLocation(this.glProgram,parameter2.name);
+					}
+				}
+			}
+		}
+	}
+	,__processGLData: function(source,storageType) {
+		var lastMatch = 0;
+		var position;
+		var regex;
+		var name;
+		var type;
+		if(storageType == "uniform") {
+			regex = new EReg("uniform ([A-Za-z0-9]+) ([A-Za-z0-9_]+)","");
+		} else {
+			regex = new EReg("attribute ([A-Za-z0-9]+) ([A-Za-z0-9_]+)","");
+		}
+		while(regex.matchSub(source,lastMatch)) {
+			type = regex.matched(1);
+			name = regex.matched(2);
+			if(StringTools.startsWith(name,"gl_")) {
+				continue;
+			}
+			var isUniform = storageType == "uniform";
+			if(StringTools.startsWith(type,"sampler")) {
+				var input = new openfl_display_ShaderInput();
+				input.name = name;
+				input.__isUniform = isUniform;
+				this.__inputBitmapData.push(input);
+				switch(name) {
+				case "bitmap":
+					this.__bitmap = input;
+					break;
+				case "openfl_Texture":
+					this.__texture = input;
+					break;
+				default:
+				}
+				this.__data[name] = input;
+				if(this.__isGenerated) {
+					this[name] = input;
+				}
+			} else if(!Object.prototype.hasOwnProperty.call(this.__data,name) || Reflect.field(this.__data,name) == null) {
+				var parameterType;
+				switch(type) {
+				case "bool":
+					parameterType = 0;
+					break;
+				case "bvec2":
+					parameterType = 1;
+					break;
+				case "bvec3":
+					parameterType = 2;
+					break;
+				case "bvec4":
+					parameterType = 3;
+					break;
+				case "dvec2":case "vec2":
+					parameterType = 5;
+					break;
+				case "dvec3":case "vec3":
+					parameterType = 6;
+					break;
+				case "double":case "float":
+					parameterType = 4;
+					break;
+				case "ivec3":case "uvec3":
+					parameterType = 10;
+					break;
+				case "ivec4":case "uvec4":
+					parameterType = 11;
+					break;
+				case "mat2":case "mat2x2":
+					parameterType = 12;
+					break;
+				case "mat2x3":
+					parameterType = 13;
+					break;
+				case "mat2x4":
+					parameterType = 14;
+					break;
+				case "mat3x2":
+					parameterType = 15;
+					break;
+				case "mat3":case "mat3x3":
+					parameterType = 16;
+					break;
+				case "mat3x4":
+					parameterType = 17;
+					break;
+				case "mat4":case "mat4x4":
+					parameterType = 20;
+					break;
+				case "mat4x2":
+					parameterType = 18;
+					break;
+				case "mat4x3":
+					parameterType = 19;
+					break;
+				case "int":case "uint":
+					parameterType = 8;
+					break;
+				case "ivec2":case "uvec2":
+					parameterType = 9;
+					break;
+				case "dvec4":case "vec4":
+					parameterType = 7;
+					break;
+				default:
+					parameterType = null;
+				}
+				var length;
+				switch(parameterType) {
+				case 1:case 5:case 9:
+					length = 2;
+					break;
+				case 3:case 7:case 11:case 12:
+					length = 4;
+					break;
+				case 2:case 6:case 10:
+					length = 3;
+					break;
+				case 16:
+					length = 9;
+					break;
+				case 20:
+					length = 16;
+					break;
+				default:
+					length = 1;
+				}
+				var arrayLength;
+				switch(parameterType) {
+				case 12:
+					arrayLength = 2;
+					break;
+				case 16:
+					arrayLength = 3;
+					break;
+				case 20:
+					arrayLength = 4;
+					break;
+				default:
+					arrayLength = 1;
+				}
+				switch(parameterType) {
+				case 0:case 1:case 2:case 3:
+					var parameter = new openfl_display_ShaderParameter();
+					parameter.set_name(name);
+					parameter.type = parameterType;
+					parameter.__arrayLength = arrayLength;
+					parameter.__isBool = true;
+					parameter.__isUniform = isUniform;
+					parameter.__length = length;
+					this.__paramBool.push(parameter);
+					if(name == "openfl_HasColorTransform") {
+						this.__hasColorTransform = parameter;
+					}
+					this.__data[name] = parameter;
+					if(this.__isGenerated) {
+						this[name] = parameter;
+					}
+					break;
+				case 8:case 9:case 10:case 11:
+					var parameter1 = new openfl_display_ShaderParameter();
+					parameter1.set_name(name);
+					parameter1.type = parameterType;
+					parameter1.__arrayLength = arrayLength;
+					parameter1.__isInt = true;
+					parameter1.__isUniform = isUniform;
+					parameter1.__length = length;
+					this.__paramInt.push(parameter1);
+					this.__data[name] = parameter1;
+					if(this.__isGenerated) {
+						this[name] = parameter1;
+					}
+					break;
+				default:
+					var parameter2 = new openfl_display_ShaderParameter();
+					parameter2.set_name(name);
+					parameter2.type = parameterType;
+					parameter2.__arrayLength = arrayLength;
+					if(arrayLength > 0) {
+						var elements = arrayLength * arrayLength;
+						var array = null;
+						var vector = null;
+						var view = null;
+						var buffer = null;
+						var len = null;
+						var this1;
+						if(elements != null) {
+							this1 = new Float32Array(elements);
+						} else if(array != null) {
+							this1 = new Float32Array(array);
+						} else if(vector != null) {
+							this1 = new Float32Array(vector.__array);
+						} else if(view != null) {
+							this1 = new Float32Array(view);
+						} else if(buffer != null) {
+							if(len == null) {
+								this1 = new Float32Array(buffer,0);
+							} else {
+								this1 = new Float32Array(buffer,0,len);
+							}
+						} else {
+							this1 = null;
+						}
+						parameter2.__uniformMatrix = this1;
+					}
+					parameter2.__isFloat = true;
+					parameter2.__isUniform = isUniform;
+					parameter2.__length = length;
+					this.__paramFloat.push(parameter2);
+					if(StringTools.startsWith(name,"openfl_")) {
+						switch(name) {
+						case "openfl_Alpha":
+							this.__alpha = parameter2;
+							break;
+						case "openfl_ColorMultiplier":
+							this.__colorMultiplier = parameter2;
+							break;
+						case "openfl_ColorOffset":
+							this.__colorOffset = parameter2;
+							break;
+						case "openfl_Matrix":
+							this.__matrix = parameter2;
+							break;
+						case "openfl_Position":
+							this.__position = parameter2;
+							break;
+						case "openfl_TextureCoord":
+							this.__textureCoord = parameter2;
+							break;
+						case "openfl_TextureSize":
+							this.__textureSize = parameter2;
+							break;
+						default:
+						}
+					}
+					this.__data[name] = parameter2;
+					if(this.__isGenerated) {
+						this[name] = parameter2;
+					}
+				}
+			}
+			position = regex.matchedPos();
+			lastMatch = position.pos + position.len;
+		}
+	}
+	,__update: function() {
+		if(this.program != null) {
+			this.__updateGL();
+		}
+	}
+	,__updateFromBuffer: function(shaderBuffer,bufferOffset) {
+		if(this.program != null) {
+			this.__updateGLFromBuffer(shaderBuffer,bufferOffset);
+		}
+	}
+	,__updateGL: function() {
+		var textureCount = 0;
+		var _g = 0;
+		var _g1 = this.__inputBitmapData;
+		while(_g < _g1.length) {
+			var input = _g1[_g];
+			++_g;
+			input.__updateGL(this.__context,textureCount);
+			++textureCount;
+		}
+		var _g2 = 0;
+		var _g3 = this.__paramBool;
+		while(_g2 < _g3.length) {
+			var parameter = _g3[_g2];
+			++_g2;
+			parameter.__updateGL(this.__context);
+		}
+		var _g4 = 0;
+		var _g5 = this.__paramFloat;
+		while(_g4 < _g5.length) {
+			var parameter1 = _g5[_g4];
+			++_g4;
+			parameter1.__updateGL(this.__context);
+		}
+		var _g6 = 0;
+		var _g7 = this.__paramInt;
+		while(_g6 < _g7.length) {
+			var parameter2 = _g7[_g6];
+			++_g6;
+			parameter2.__updateGL(this.__context);
+		}
+	}
+	,__updateGLFromBuffer: function(shaderBuffer,bufferOffset) {
+		var textureCount = 0;
+		var input;
+		var inputData;
+		var inputFilter;
+		var inputMipFilter;
+		var inputWrap;
+		var _g = 0;
+		var _g1 = shaderBuffer.inputCount;
+		while(_g < _g1) {
+			var i = _g++;
+			input = shaderBuffer.inputRefs[i];
+			inputData = shaderBuffer.inputs[i];
+			inputFilter = shaderBuffer.inputFilter[i];
+			inputMipFilter = shaderBuffer.inputMipFilter[i];
+			inputWrap = shaderBuffer.inputWrap[i];
+			if(inputData != null) {
+				input.__updateGL(this.__context,textureCount,inputData,inputFilter,inputMipFilter,inputWrap);
+				++textureCount;
+			}
+		}
+		var gl = this.__context.gl;
+		if(shaderBuffer.paramDataLength > 0) {
+			if(shaderBuffer.paramDataBuffer == null) {
+				shaderBuffer.paramDataBuffer = gl.createBuffer();
+			}
+			this.__context.__bindGLArrayBuffer(shaderBuffer.paramDataBuffer);
+			lime_graphics__$WebGLRenderContext_WebGLRenderContext_$Impl_$.bufferData(gl,gl.ARRAY_BUFFER,shaderBuffer.paramData,gl.DYNAMIC_DRAW);
+		} else {
+			this.__context.__bindGLArrayBuffer(null);
+		}
+		var boolIndex = 0;
+		var floatIndex = 0;
+		var intIndex = 0;
+		var boolCount = shaderBuffer.paramBoolCount;
+		var floatCount = shaderBuffer.paramFloatCount;
+		var paramData = shaderBuffer.paramData;
+		var boolRef;
+		var floatRef;
+		var intRef;
+		var hasOverride;
+		var overrideBoolValue = null;
+		var overrideFloatValue = null;
+		var overrideIntValue = null;
+		var _g2 = 0;
+		var _g3 = shaderBuffer.paramCount;
+		while(_g2 < _g3) {
+			var i1 = _g2++;
+			hasOverride = false;
+			if(i1 < boolCount) {
+				boolRef = shaderBuffer.paramRefs_Bool[boolIndex];
+				var _g21 = 0;
+				var _g31 = shaderBuffer.overrideBoolCount;
+				while(_g21 < _g31) {
+					var j = _g21++;
+					if(boolRef.name == shaderBuffer.overrideBoolNames[j]) {
+						overrideBoolValue = shaderBuffer.overrideBoolValues[j];
+						hasOverride = true;
+						break;
+					}
+				}
+				if(hasOverride) {
+					boolRef.__updateGL(this.__context,overrideBoolValue);
+				} else {
+					boolRef.__updateGLFromBuffer(this.__context,paramData,shaderBuffer.paramPositions[i1],shaderBuffer.paramLengths[i1],bufferOffset);
+				}
+				++boolIndex;
+			} else if(i1 < boolCount + floatCount) {
+				floatRef = shaderBuffer.paramRefs_Float[floatIndex];
+				var _g22 = 0;
+				var _g32 = shaderBuffer.overrideFloatCount;
+				while(_g22 < _g32) {
+					var j1 = _g22++;
+					if(floatRef.name == shaderBuffer.overrideFloatNames[j1]) {
+						overrideFloatValue = shaderBuffer.overrideFloatValues[j1];
+						hasOverride = true;
+						break;
+					}
+				}
+				if(hasOverride) {
+					floatRef.__updateGL(this.__context,overrideFloatValue);
+				} else {
+					floatRef.__updateGLFromBuffer(this.__context,paramData,shaderBuffer.paramPositions[i1],shaderBuffer.paramLengths[i1],bufferOffset);
+				}
+				++floatIndex;
+			} else {
+				intRef = shaderBuffer.paramRefs_Int[intIndex];
+				var _g23 = 0;
+				var _g33 = shaderBuffer.overrideIntCount;
+				while(_g23 < _g33) {
+					var j2 = _g23++;
+					if(intRef.name == shaderBuffer.overrideIntNames[j2]) {
+						overrideIntValue = shaderBuffer.overrideIntValues[j2];
+						hasOverride = true;
+						break;
+					}
+				}
+				if(hasOverride) {
+					intRef.__updateGL(this.__context,overrideIntValue);
+				} else {
+					intRef.__updateGLFromBuffer(this.__context,paramData,shaderBuffer.paramPositions[i1],shaderBuffer.paramLengths[i1],bufferOffset);
+				}
+				++intIndex;
+			}
+		}
+	}
+	,get_data: function() {
+		if(this.__glSourceDirty || this.__data == null) {
+			this.__init();
+		}
+		return this.__data;
+	}
+	,set_data: function(value) {
+		return this.__data = value;
+	}
+	,get_glFragmentSource: function() {
+		return this.__glFragmentSource;
+	}
+	,set_glFragmentSource: function(value) {
+		if(value != this.__glFragmentSource) {
+			this.__glSourceDirty = true;
+		}
+		return this.__glFragmentSource = value;
+	}
+	,get_glVertexSource: function() {
+		return this.__glVertexSource;
+	}
+	,set_glVertexSource: function(value) {
+		if(value != this.__glVertexSource) {
+			this.__glSourceDirty = true;
+		}
+		return this.__glVertexSource = value;
+	}
+	,__class__: openfl_display_Shader
+	,__properties__: {set_glVertexSource:"set_glVertexSource",get_glVertexSource:"get_glVertexSource",set_glFragmentSource:"set_glFragmentSource",get_glFragmentSource:"get_glFragmentSource",set_data:"set_data",get_data:"get_data"}
+};
+var filters_OutlineShader = function() {
+	if(this.__glFragmentSource == null) {
+		this.__glFragmentSource = "\r\n\t\tvarying float openfl_Alphav;\r\n\t\tvarying vec4 openfl_ColorMultiplierv;\r\n\t\tvarying vec4 openfl_ColorOffsetv;\r\n\t\tvarying vec2 openfl_TextureCoordv;\r\n\t\t\r\n\t\tuniform bool openfl_HasColorTransform;\r\n\t\tuniform vec2 openfl_TextureSize;\r\n\t\tuniform sampler2D bitmap;\r\n\r\n\t\tvoid main(void) {\r\n\t\t\tvec4 sample = texture2D(bitmap, openfl_TextureCoordv);\r\n\t\t\tvec2 size = vec2(3.,3.);\r\n\r\n\t\t\tif (sample.a < 1.) {\r\n\t\t\t\tfloat w = size.x / openfl_TextureSize.x;\r\n\t\t\t\tfloat h = size.y / openfl_TextureSize.y;\r\n\r\n\t\t\t\tif (texture2D(bitmap, vec2(\topenfl_TextureCoordv.x + w, \t\topenfl_TextureCoordv.y\t\t\t\t)).a != 0.\r\n\t\t\t\t||\ttexture2D(bitmap, vec2(\topenfl_TextureCoordv.x - w, \t\topenfl_TextureCoordv.y\t\t\t\t)).a != 0.\r\n\t\t\t\t||\ttexture2D(bitmap, vec2(\topenfl_TextureCoordv.x, \t\t\topenfl_TextureCoordv.y - h\t\t\t)).a != 0.\r\n\t\t\t\t||\ttexture2D(bitmap, vec2(\topenfl_TextureCoordv.x, \t\t\topenfl_TextureCoordv.y + h\t\t\t)).a != 0.\r\n\t\t\t\t||\ttexture2D(bitmap, vec2(\topenfl_TextureCoordv.x - w * 0.5, \topenfl_TextureCoordv.y - h * 0.5\t)).a != 0.\r\n\t\t\t\t||\ttexture2D(bitmap, vec2(\topenfl_TextureCoordv.x + w * 0.5, \topenfl_TextureCoordv.y - h * 0.5\t)).a != 0.\r\n\t\t\t\t||\ttexture2D(bitmap, vec2(\topenfl_TextureCoordv.x - w * 0.5, \topenfl_TextureCoordv.y + h * 0.5\t)).a != 0.\r\n\t\t\t\t||\ttexture2D(bitmap, vec2(\topenfl_TextureCoordv.x + w * 0.5, \topenfl_TextureCoordv.y + h * 0.5\t)).a != 0.)\r\n\t\t\t\t\tsample += vec4(0., 0., 0., 1.);\r\n\t\t\t}\r\n\r\n\t\t\tgl_FragColor = sample;\r\n\t\t}\r\n\t";
+	}
+	if(this.__glVertexSource == null) {
+		this.__glVertexSource = "\r\n\t\tattribute float openfl_Alpha;\r\n\t\tattribute vec4 openfl_ColorMultiplier;\r\n\t\tattribute vec4 openfl_ColorOffset;\r\n\t\tattribute vec4 openfl_Position;\r\n\t\tattribute vec2 openfl_TextureCoord;\r\n\t\t\r\n\t\tvarying float openfl_Alphav;\r\n\t\tvarying vec4 openfl_ColorMultiplierv;\r\n\t\tvarying vec4 openfl_ColorOffsetv;\r\n\t\tvarying vec2 openfl_TextureCoordv;\r\n\t\t\r\n\t\tuniform mat4 openfl_Matrix;\r\n\t\tuniform bool openfl_HasColorTransform;\r\n\t\tuniform vec2 openfl_TextureSize;\r\n\t\r\n\t\tvoid main(void) {\r\n\t\t\topenfl_Alphav = openfl_Alpha;\r\n\t\t\topenfl_TextureCoordv = openfl_TextureCoord;\r\n\t\t\t\r\n\t\t\tif (openfl_HasColorTransform) {\r\n\t\t\t\topenfl_ColorMultiplierv = openfl_ColorMultiplier;\r\n\t\t\t\topenfl_ColorOffsetv = openfl_ColorOffset / 255.0;\r\n\t\t\t}\r\n\t\t\t\r\n\t\t\tgl_Position = openfl_Matrix * openfl_Position;\r\n\t\t}\r\n\t";
+	}
+	openfl_display_Shader.call(this);
+	this.__isGenerated = true;
+	this.__initGL();
+};
+$hxClasses["filters.OutlineShader"] = filters_OutlineShader;
+filters_OutlineShader.__name__ = "filters.OutlineShader";
+filters_OutlineShader.__super__ = openfl_display_Shader;
+filters_OutlineShader.prototype = $extend(openfl_display_Shader.prototype,{
+	openfl_Alpha: null
+	,openfl_ColorMultiplier: null
+	,openfl_ColorOffset: null
+	,openfl_Position: null
+	,openfl_TextureCoord: null
+	,openfl_Matrix: null
+	,openfl_HasColorTransform: null
+	,openfl_TextureSize: null
+	,bitmap: null
+	,__class__: filters_OutlineShader
+});
 var haxe_StackItem = $hxEnums["haxe.StackItem"] = { __ename__ : "haxe.StackItem", __constructs__ : ["CFunction","Module","FilePos","Method","LocalFunction"]
 	,CFunction: {_hx_index:0,__enum__:"haxe.StackItem",toString:$estr}
 	,Module: ($_=function(m) { return {_hx_index:1,m:m,__enum__:"haxe.StackItem",toString:$estr}; },$_.__params__ = ["m"],$_)
@@ -27072,7 +27768,7 @@ lime_utils__$UInt8ClampedArray_UInt8ClampedArray_$Impl_$._clamp = function(_in) 
 };
 var objects_GameObject = function(x,y,health,title) {
 	var _gthis = this;
-	this.health = { current : health, max : health};
+	this.health = health;
 	this.title = title;
 	openfl_display_Sprite.call(this);
 	this.last = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([x * 16 + 8,y * 16 + 8]);
@@ -27138,7 +27834,10 @@ objects_GameObject.prototype = $extend(openfl_display_Sprite.prototype,{
 		if(this.health.current <= 0) {
 			this.kill();
 		}
-		this.health.current = Math.max(Math.min(this.health.current,this.health.max),0);
+		this.health.current = Math.floor(Math.max(Math.min(this.health.current,this.health.max),0));
+		this.health_callback();
+	}
+	,health_callback: function() {
 	}
 	,kill: function() {
 	}
@@ -27148,9 +27847,24 @@ objects_GameObject.prototype = $extend(openfl_display_Sprite.prototype,{
 	,__class__: objects_GameObject
 	,__properties__: $extend(openfl_display_Sprite.prototype.__properties__,{get_grid_pos:"get_grid_pos"})
 });
-var objects_Player = function(x,y,gear_ids,side) {
+var objects_Actor = function(data,x,y) {
+	haxe_Log.trace(data,{ fileName : "src/objects/Actor.hx", lineNumber : 11, className : "objects.Actor", methodName : "new"});
+	objects_GameObject.call(this,x,y,data.health,data.id);
+};
+$hxClasses["objects.Actor"] = objects_Actor;
+objects_Actor.__name__ = "objects.Actor";
+objects_Actor.__super__ = objects_GameObject;
+objects_Actor.prototype = $extend(objects_GameObject.prototype,{
+	data: null
+	,__class__: objects_Actor
+});
+var objects_ActorMovement = $hxEnums["objects.ActorMovement"] = { __ename__ : "objects.ActorMovement", __constructs__ : []
+};
+objects_ActorMovement.__empty_constructs__ = [];
+var objects_Player = function(x,y,options) {
+	this.AP = 10;
 	var _gthis = this;
-	objects_GameObject.call(this,x,y,64,"Test Player");
+	objects_Actor.call(this,options.data,x,y);
 	this.addEventListener("click",function(e) {
 		if(scenes_Level.i.can_move) {
 			objects_Player.set_selected_player(_gthis);
@@ -27161,10 +27875,11 @@ var objects_Player = function(x,y,gear_ids,side) {
 	scenes_Level.i.dolly.follow(this,true);
 	scenes_Level.i.object_map[y][x] = -1;
 	this.init_graphic();
-	this.gear = new ui_Gear(this,side);
+	this.gear = new ui_Gear(this,options.side);
 	var _g = 0;
-	while(_g < gear_ids.length) {
-		var g = gear_ids[_g];
+	var _g1 = options.data.gear;
+	while(_g < _g1.length) {
+		var g = _g1[_g];
 		++_g;
 		this.gear.add_card(new ui_GearCard(this.gear,util_GearUtil.get_gear_data(g)));
 	}
@@ -27179,16 +27894,26 @@ objects_Player.set_selected_player = function(player) {
 	player.pulse();
 	return objects_Player.selected_player = player;
 };
-objects_Player.__super__ = objects_GameObject;
-objects_Player.prototype = $extend(objects_GameObject.prototype,{
-	gear: null
+objects_Player.__super__ = objects_Actor;
+objects_Player.prototype = $extend(objects_Actor.prototype,{
+	AP: null
+	,set_AP: function(n) {
+		this.AP = n;
+		this.gear.player_info.update_ap_pts();
+		return this.AP;
+	}
+	,gear: null
 	,init_graphic: function() {
 		this.graphic = new zero_openfl_utilities_AnimatedSprite({ source : "images/players.png", animations : [], frame_width : 16, frame_height : 16, offset_x : 8, offset_y : 12});
 		var max = null;
 		this.graphic.set_frame_index(Math.floor(Math.random() * (max == null ? 8 : max)));
 		this.addChild(this.graphic);
 	}
+	,health_callback: function() {
+		this.gear.player_info.update_health();
+	}
 	,__class__: objects_Player
+	,__properties__: $extend(objects_Actor.prototype.__properties__,{set_AP:"set_AP"})
 });
 var objects_PlayerSide = $hxEnums["objects.PlayerSide"] = { __ename__ : "objects.PlayerSide", __constructs__ : ["LEFT","RIGHT"]
 	,LEFT: {_hx_index:0,__enum__:"objects.PlayerSide",toString:$estr}
@@ -47159,676 +47884,6 @@ openfl__$internal_renderer_context3D_Context3DGraphics.resizeVertexBuffer = func
 		}
 	}
 };
-var openfl_display_Shader = function(code) {
-	this.byteCode = code;
-	this.precisionHint = 1;
-	this.__glSourceDirty = true;
-	this.__numPasses = 1;
-	this.__data = openfl_display__$ShaderData_ShaderData_$Impl_$._new(code);
-};
-$hxClasses["openfl.display.Shader"] = openfl_display_Shader;
-openfl_display_Shader.__name__ = "openfl.display.Shader";
-openfl_display_Shader.prototype = {
-	byteCode: null
-	,glProgram: null
-	,precisionHint: null
-	,program: null
-	,__alpha: null
-	,__bitmap: null
-	,__colorMultiplier: null
-	,__colorOffset: null
-	,__context: null
-	,__data: null
-	,__glFragmentSource: null
-	,__glSourceDirty: null
-	,__glVertexSource: null
-	,__hasColorTransform: null
-	,__inputBitmapData: null
-	,__isGenerated: null
-	,__matrix: null
-	,__numPasses: null
-	,__paramBool: null
-	,__paramFloat: null
-	,__paramInt: null
-	,__position: null
-	,__textureCoord: null
-	,__texture: null
-	,__textureSize: null
-	,__clearUseArray: function() {
-		var _g = 0;
-		var _g1 = this.__paramBool;
-		while(_g < _g1.length) {
-			var parameter = _g1[_g];
-			++_g;
-			parameter.__useArray = false;
-		}
-		var _g2 = 0;
-		var _g3 = this.__paramFloat;
-		while(_g2 < _g3.length) {
-			var parameter1 = _g3[_g2];
-			++_g2;
-			parameter1.__useArray = false;
-		}
-		var _g4 = 0;
-		var _g5 = this.__paramInt;
-		while(_g4 < _g5.length) {
-			var parameter2 = _g5[_g4];
-			++_g4;
-			parameter2.__useArray = false;
-		}
-	}
-	,__createGLShader: function(source,type) {
-		var gl = this.__context.gl;
-		var shader = gl.createShader(type);
-		gl.shaderSource(shader,source);
-		gl.compileShader(shader);
-		if(gl.getShaderParameter(shader,gl.COMPILE_STATUS) == 0) {
-			var message = type == gl.VERTEX_SHADER ? "Error compiling vertex shader" : "Error compiling fragment shader";
-			message += "\n" + gl.getShaderInfoLog(shader);
-			message += "\n" + source;
-			lime_utils_Log.error(message,{ fileName : "openfl/display/Shader.hx", lineNumber : 328, className : "openfl.display.Shader", methodName : "__createGLShader"});
-		}
-		return shader;
-	}
-	,__createGLProgram: function(vertexSource,fragmentSource) {
-		var gl = this.__context.gl;
-		var vertexShader = this.__createGLShader(vertexSource,gl.VERTEX_SHADER);
-		var fragmentShader = this.__createGLShader(fragmentSource,gl.FRAGMENT_SHADER);
-		var program = gl.createProgram();
-		var _g = 0;
-		var _g1 = this.__paramFloat;
-		while(_g < _g1.length) {
-			var param = _g1[_g];
-			++_g;
-			if(param.name.indexOf("Position") > -1 && StringTools.startsWith(param.name,"openfl_")) {
-				gl.bindAttribLocation(program,0,param.name);
-				break;
-			}
-		}
-		gl.attachShader(program,vertexShader);
-		gl.attachShader(program,fragmentShader);
-		gl.linkProgram(program);
-		if(gl.getProgramParameter(program,gl.LINK_STATUS) == 0) {
-			var message = "Unable to initialize the shader program";
-			message += "\n" + gl.getProgramInfoLog(program);
-			lime_utils_Log.error(message,{ fileName : "openfl/display/Shader.hx", lineNumber : 361, className : "openfl.display.Shader", methodName : "__createGLProgram"});
-		}
-		return program;
-	}
-	,__disable: function() {
-		if(this.program != null) {
-			this.__disableGL();
-		}
-	}
-	,__disableGL: function() {
-		var gl = this.__context.gl;
-		var textureCount = 0;
-		var _g = 0;
-		var _g1 = this.__inputBitmapData;
-		while(_g < _g1.length) {
-			var input = _g1[_g];
-			++_g;
-			input.__disableGL(this.__context,textureCount);
-			++textureCount;
-		}
-		var _g2 = 0;
-		var _g3 = this.__paramBool;
-		while(_g2 < _g3.length) {
-			var parameter = _g3[_g2];
-			++_g2;
-			parameter.__disableGL(this.__context);
-		}
-		var _g4 = 0;
-		var _g5 = this.__paramFloat;
-		while(_g4 < _g5.length) {
-			var parameter1 = _g5[_g4];
-			++_g4;
-			parameter1.__disableGL(this.__context);
-		}
-		var _g6 = 0;
-		var _g7 = this.__paramInt;
-		while(_g6 < _g7.length) {
-			var parameter2 = _g7[_g6];
-			++_g6;
-			parameter2.__disableGL(this.__context);
-		}
-		this.__context.__bindGLArrayBuffer(null);
-		if(this.__context.__context.type == "opengl") {
-			gl.disable(gl.TEXTURE_2D);
-		}
-	}
-	,__enable: function() {
-		this.__init();
-		if(this.program != null) {
-			this.__enableGL();
-		}
-	}
-	,__enableGL: function() {
-		var textureCount = 0;
-		var gl = this.__context.gl;
-		var _g = 0;
-		var _g1 = this.__inputBitmapData;
-		while(_g < _g1.length) {
-			var input = _g1[_g];
-			++_g;
-			gl.uniform1i(input.index,textureCount);
-			++textureCount;
-		}
-		if(this.__context.__context.type == "opengl" && textureCount > 0) {
-			gl.enable(gl.TEXTURE_2D);
-		}
-	}
-	,__init: function() {
-		if(this.__data == null) {
-			this.__data = openfl_display__$ShaderData_ShaderData_$Impl_$._new(null);
-		}
-		if(this.__glFragmentSource != null && this.__glVertexSource != null && (this.program == null || this.__glSourceDirty)) {
-			this.__initGL();
-		}
-	}
-	,__initGL: function() {
-		if(this.__glSourceDirty || this.__paramBool == null) {
-			this.__glSourceDirty = false;
-			this.program = null;
-			this.__inputBitmapData = [];
-			this.__paramBool = [];
-			this.__paramFloat = [];
-			this.__paramInt = [];
-			this.__processGLData(this.get_glVertexSource(),"attribute");
-			this.__processGLData(this.get_glVertexSource(),"uniform");
-			this.__processGLData(this.get_glFragmentSource(),"uniform");
-		}
-		if(this.__context != null && this.program == null) {
-			var gl = this.__context.gl;
-			var prefix = "#ifdef GL_ES\n\t\t\t\t" + (this.precisionHint == 1 ? "#ifdef GL_FRAGMENT_PRECISION_HIGH\n\t\t\t\tprecision highp float;\n\t\t\t\t#else\n\t\t\t\tprecision mediump float;\n\t\t\t\t#endif" : "precision lowp float;") + "\n\t\t\t\t#endif\n\t\t\t\t";
-			var vertex = prefix + this.get_glVertexSource();
-			var fragment = prefix + this.get_glFragmentSource();
-			var id = vertex + fragment;
-			var _this = this.__context.__programs;
-			if(__map_reserved[id] != null ? _this.existsReserved(id) : _this.h.hasOwnProperty(id)) {
-				var _this1 = this.__context.__programs;
-				this.program = __map_reserved[id] != null ? _this1.getReserved(id) : _this1.h[id];
-			} else {
-				this.program = this.__context.createProgram(1);
-				this.program.__glProgram = this.__createGLProgram(vertex,fragment);
-				var value = this.program;
-				var _this2 = this.__context.__programs;
-				if(__map_reserved[id] != null) {
-					_this2.setReserved(id,value);
-				} else {
-					_this2.h[id] = value;
-				}
-			}
-			if(this.program != null) {
-				this.glProgram = this.program.__glProgram;
-				var _g = 0;
-				var _g1 = this.__inputBitmapData;
-				while(_g < _g1.length) {
-					var input = _g1[_g];
-					++_g;
-					if(input.__isUniform) {
-						input.index = gl.getUniformLocation(this.glProgram,input.name);
-					} else {
-						input.index = gl.getAttribLocation(this.glProgram,input.name);
-					}
-				}
-				var _g2 = 0;
-				var _g3 = this.__paramBool;
-				while(_g2 < _g3.length) {
-					var parameter = _g3[_g2];
-					++_g2;
-					if(parameter.__isUniform) {
-						parameter.index = gl.getUniformLocation(this.glProgram,parameter.name);
-					} else {
-						parameter.index = gl.getAttribLocation(this.glProgram,parameter.name);
-					}
-				}
-				var _g4 = 0;
-				var _g5 = this.__paramFloat;
-				while(_g4 < _g5.length) {
-					var parameter1 = _g5[_g4];
-					++_g4;
-					if(parameter1.__isUniform) {
-						parameter1.index = gl.getUniformLocation(this.glProgram,parameter1.name);
-					} else {
-						parameter1.index = gl.getAttribLocation(this.glProgram,parameter1.name);
-					}
-				}
-				var _g6 = 0;
-				var _g7 = this.__paramInt;
-				while(_g6 < _g7.length) {
-					var parameter2 = _g7[_g6];
-					++_g6;
-					if(parameter2.__isUniform) {
-						parameter2.index = gl.getUniformLocation(this.glProgram,parameter2.name);
-					} else {
-						parameter2.index = gl.getAttribLocation(this.glProgram,parameter2.name);
-					}
-				}
-			}
-		}
-	}
-	,__processGLData: function(source,storageType) {
-		var lastMatch = 0;
-		var position;
-		var regex;
-		var name;
-		var type;
-		if(storageType == "uniform") {
-			regex = new EReg("uniform ([A-Za-z0-9]+) ([A-Za-z0-9_]+)","");
-		} else {
-			regex = new EReg("attribute ([A-Za-z0-9]+) ([A-Za-z0-9_]+)","");
-		}
-		while(regex.matchSub(source,lastMatch)) {
-			type = regex.matched(1);
-			name = regex.matched(2);
-			if(StringTools.startsWith(name,"gl_")) {
-				continue;
-			}
-			var isUniform = storageType == "uniform";
-			if(StringTools.startsWith(type,"sampler")) {
-				var input = new openfl_display_ShaderInput();
-				input.name = name;
-				input.__isUniform = isUniform;
-				this.__inputBitmapData.push(input);
-				switch(name) {
-				case "bitmap":
-					this.__bitmap = input;
-					break;
-				case "openfl_Texture":
-					this.__texture = input;
-					break;
-				default:
-				}
-				this.__data[name] = input;
-				if(this.__isGenerated) {
-					this[name] = input;
-				}
-			} else if(!Object.prototype.hasOwnProperty.call(this.__data,name) || Reflect.field(this.__data,name) == null) {
-				var parameterType;
-				switch(type) {
-				case "bool":
-					parameterType = 0;
-					break;
-				case "bvec2":
-					parameterType = 1;
-					break;
-				case "bvec3":
-					parameterType = 2;
-					break;
-				case "bvec4":
-					parameterType = 3;
-					break;
-				case "dvec2":case "vec2":
-					parameterType = 5;
-					break;
-				case "dvec3":case "vec3":
-					parameterType = 6;
-					break;
-				case "double":case "float":
-					parameterType = 4;
-					break;
-				case "ivec3":case "uvec3":
-					parameterType = 10;
-					break;
-				case "ivec4":case "uvec4":
-					parameterType = 11;
-					break;
-				case "mat2":case "mat2x2":
-					parameterType = 12;
-					break;
-				case "mat2x3":
-					parameterType = 13;
-					break;
-				case "mat2x4":
-					parameterType = 14;
-					break;
-				case "mat3x2":
-					parameterType = 15;
-					break;
-				case "mat3":case "mat3x3":
-					parameterType = 16;
-					break;
-				case "mat3x4":
-					parameterType = 17;
-					break;
-				case "mat4":case "mat4x4":
-					parameterType = 20;
-					break;
-				case "mat4x2":
-					parameterType = 18;
-					break;
-				case "mat4x3":
-					parameterType = 19;
-					break;
-				case "int":case "uint":
-					parameterType = 8;
-					break;
-				case "ivec2":case "uvec2":
-					parameterType = 9;
-					break;
-				case "dvec4":case "vec4":
-					parameterType = 7;
-					break;
-				default:
-					parameterType = null;
-				}
-				var length;
-				switch(parameterType) {
-				case 1:case 5:case 9:
-					length = 2;
-					break;
-				case 3:case 7:case 11:case 12:
-					length = 4;
-					break;
-				case 2:case 6:case 10:
-					length = 3;
-					break;
-				case 16:
-					length = 9;
-					break;
-				case 20:
-					length = 16;
-					break;
-				default:
-					length = 1;
-				}
-				var arrayLength;
-				switch(parameterType) {
-				case 12:
-					arrayLength = 2;
-					break;
-				case 16:
-					arrayLength = 3;
-					break;
-				case 20:
-					arrayLength = 4;
-					break;
-				default:
-					arrayLength = 1;
-				}
-				switch(parameterType) {
-				case 0:case 1:case 2:case 3:
-					var parameter = new openfl_display_ShaderParameter();
-					parameter.set_name(name);
-					parameter.type = parameterType;
-					parameter.__arrayLength = arrayLength;
-					parameter.__isBool = true;
-					parameter.__isUniform = isUniform;
-					parameter.__length = length;
-					this.__paramBool.push(parameter);
-					if(name == "openfl_HasColorTransform") {
-						this.__hasColorTransform = parameter;
-					}
-					this.__data[name] = parameter;
-					if(this.__isGenerated) {
-						this[name] = parameter;
-					}
-					break;
-				case 8:case 9:case 10:case 11:
-					var parameter1 = new openfl_display_ShaderParameter();
-					parameter1.set_name(name);
-					parameter1.type = parameterType;
-					parameter1.__arrayLength = arrayLength;
-					parameter1.__isInt = true;
-					parameter1.__isUniform = isUniform;
-					parameter1.__length = length;
-					this.__paramInt.push(parameter1);
-					this.__data[name] = parameter1;
-					if(this.__isGenerated) {
-						this[name] = parameter1;
-					}
-					break;
-				default:
-					var parameter2 = new openfl_display_ShaderParameter();
-					parameter2.set_name(name);
-					parameter2.type = parameterType;
-					parameter2.__arrayLength = arrayLength;
-					if(arrayLength > 0) {
-						var elements = arrayLength * arrayLength;
-						var array = null;
-						var vector = null;
-						var view = null;
-						var buffer = null;
-						var len = null;
-						var this1;
-						if(elements != null) {
-							this1 = new Float32Array(elements);
-						} else if(array != null) {
-							this1 = new Float32Array(array);
-						} else if(vector != null) {
-							this1 = new Float32Array(vector.__array);
-						} else if(view != null) {
-							this1 = new Float32Array(view);
-						} else if(buffer != null) {
-							if(len == null) {
-								this1 = new Float32Array(buffer,0);
-							} else {
-								this1 = new Float32Array(buffer,0,len);
-							}
-						} else {
-							this1 = null;
-						}
-						parameter2.__uniformMatrix = this1;
-					}
-					parameter2.__isFloat = true;
-					parameter2.__isUniform = isUniform;
-					parameter2.__length = length;
-					this.__paramFloat.push(parameter2);
-					if(StringTools.startsWith(name,"openfl_")) {
-						switch(name) {
-						case "openfl_Alpha":
-							this.__alpha = parameter2;
-							break;
-						case "openfl_ColorMultiplier":
-							this.__colorMultiplier = parameter2;
-							break;
-						case "openfl_ColorOffset":
-							this.__colorOffset = parameter2;
-							break;
-						case "openfl_Matrix":
-							this.__matrix = parameter2;
-							break;
-						case "openfl_Position":
-							this.__position = parameter2;
-							break;
-						case "openfl_TextureCoord":
-							this.__textureCoord = parameter2;
-							break;
-						case "openfl_TextureSize":
-							this.__textureSize = parameter2;
-							break;
-						default:
-						}
-					}
-					this.__data[name] = parameter2;
-					if(this.__isGenerated) {
-						this[name] = parameter2;
-					}
-				}
-			}
-			position = regex.matchedPos();
-			lastMatch = position.pos + position.len;
-		}
-	}
-	,__update: function() {
-		if(this.program != null) {
-			this.__updateGL();
-		}
-	}
-	,__updateFromBuffer: function(shaderBuffer,bufferOffset) {
-		if(this.program != null) {
-			this.__updateGLFromBuffer(shaderBuffer,bufferOffset);
-		}
-	}
-	,__updateGL: function() {
-		var textureCount = 0;
-		var _g = 0;
-		var _g1 = this.__inputBitmapData;
-		while(_g < _g1.length) {
-			var input = _g1[_g];
-			++_g;
-			input.__updateGL(this.__context,textureCount);
-			++textureCount;
-		}
-		var _g2 = 0;
-		var _g3 = this.__paramBool;
-		while(_g2 < _g3.length) {
-			var parameter = _g3[_g2];
-			++_g2;
-			parameter.__updateGL(this.__context);
-		}
-		var _g4 = 0;
-		var _g5 = this.__paramFloat;
-		while(_g4 < _g5.length) {
-			var parameter1 = _g5[_g4];
-			++_g4;
-			parameter1.__updateGL(this.__context);
-		}
-		var _g6 = 0;
-		var _g7 = this.__paramInt;
-		while(_g6 < _g7.length) {
-			var parameter2 = _g7[_g6];
-			++_g6;
-			parameter2.__updateGL(this.__context);
-		}
-	}
-	,__updateGLFromBuffer: function(shaderBuffer,bufferOffset) {
-		var textureCount = 0;
-		var input;
-		var inputData;
-		var inputFilter;
-		var inputMipFilter;
-		var inputWrap;
-		var _g = 0;
-		var _g1 = shaderBuffer.inputCount;
-		while(_g < _g1) {
-			var i = _g++;
-			input = shaderBuffer.inputRefs[i];
-			inputData = shaderBuffer.inputs[i];
-			inputFilter = shaderBuffer.inputFilter[i];
-			inputMipFilter = shaderBuffer.inputMipFilter[i];
-			inputWrap = shaderBuffer.inputWrap[i];
-			if(inputData != null) {
-				input.__updateGL(this.__context,textureCount,inputData,inputFilter,inputMipFilter,inputWrap);
-				++textureCount;
-			}
-		}
-		var gl = this.__context.gl;
-		if(shaderBuffer.paramDataLength > 0) {
-			if(shaderBuffer.paramDataBuffer == null) {
-				shaderBuffer.paramDataBuffer = gl.createBuffer();
-			}
-			this.__context.__bindGLArrayBuffer(shaderBuffer.paramDataBuffer);
-			lime_graphics__$WebGLRenderContext_WebGLRenderContext_$Impl_$.bufferData(gl,gl.ARRAY_BUFFER,shaderBuffer.paramData,gl.DYNAMIC_DRAW);
-		} else {
-			this.__context.__bindGLArrayBuffer(null);
-		}
-		var boolIndex = 0;
-		var floatIndex = 0;
-		var intIndex = 0;
-		var boolCount = shaderBuffer.paramBoolCount;
-		var floatCount = shaderBuffer.paramFloatCount;
-		var paramData = shaderBuffer.paramData;
-		var boolRef;
-		var floatRef;
-		var intRef;
-		var hasOverride;
-		var overrideBoolValue = null;
-		var overrideFloatValue = null;
-		var overrideIntValue = null;
-		var _g2 = 0;
-		var _g3 = shaderBuffer.paramCount;
-		while(_g2 < _g3) {
-			var i1 = _g2++;
-			hasOverride = false;
-			if(i1 < boolCount) {
-				boolRef = shaderBuffer.paramRefs_Bool[boolIndex];
-				var _g21 = 0;
-				var _g31 = shaderBuffer.overrideBoolCount;
-				while(_g21 < _g31) {
-					var j = _g21++;
-					if(boolRef.name == shaderBuffer.overrideBoolNames[j]) {
-						overrideBoolValue = shaderBuffer.overrideBoolValues[j];
-						hasOverride = true;
-						break;
-					}
-				}
-				if(hasOverride) {
-					boolRef.__updateGL(this.__context,overrideBoolValue);
-				} else {
-					boolRef.__updateGLFromBuffer(this.__context,paramData,shaderBuffer.paramPositions[i1],shaderBuffer.paramLengths[i1],bufferOffset);
-				}
-				++boolIndex;
-			} else if(i1 < boolCount + floatCount) {
-				floatRef = shaderBuffer.paramRefs_Float[floatIndex];
-				var _g22 = 0;
-				var _g32 = shaderBuffer.overrideFloatCount;
-				while(_g22 < _g32) {
-					var j1 = _g22++;
-					if(floatRef.name == shaderBuffer.overrideFloatNames[j1]) {
-						overrideFloatValue = shaderBuffer.overrideFloatValues[j1];
-						hasOverride = true;
-						break;
-					}
-				}
-				if(hasOverride) {
-					floatRef.__updateGL(this.__context,overrideFloatValue);
-				} else {
-					floatRef.__updateGLFromBuffer(this.__context,paramData,shaderBuffer.paramPositions[i1],shaderBuffer.paramLengths[i1],bufferOffset);
-				}
-				++floatIndex;
-			} else {
-				intRef = shaderBuffer.paramRefs_Int[intIndex];
-				var _g23 = 0;
-				var _g33 = shaderBuffer.overrideIntCount;
-				while(_g23 < _g33) {
-					var j2 = _g23++;
-					if(intRef.name == shaderBuffer.overrideIntNames[j2]) {
-						overrideIntValue = shaderBuffer.overrideIntValues[j2];
-						hasOverride = true;
-						break;
-					}
-				}
-				if(hasOverride) {
-					intRef.__updateGL(this.__context,overrideIntValue);
-				} else {
-					intRef.__updateGLFromBuffer(this.__context,paramData,shaderBuffer.paramPositions[i1],shaderBuffer.paramLengths[i1],bufferOffset);
-				}
-				++intIndex;
-			}
-		}
-	}
-	,get_data: function() {
-		if(this.__glSourceDirty || this.__data == null) {
-			this.__init();
-		}
-		return this.__data;
-	}
-	,set_data: function(value) {
-		return this.__data = value;
-	}
-	,get_glFragmentSource: function() {
-		return this.__glFragmentSource;
-	}
-	,set_glFragmentSource: function(value) {
-		if(value != this.__glFragmentSource) {
-			this.__glSourceDirty = true;
-		}
-		return this.__glFragmentSource = value;
-	}
-	,get_glVertexSource: function() {
-		return this.__glVertexSource;
-	}
-	,set_glVertexSource: function(value) {
-		if(value != this.__glVertexSource) {
-			this.__glSourceDirty = true;
-		}
-		return this.__glVertexSource = value;
-	}
-	,__class__: openfl_display_Shader
-	,__properties__: {set_glVertexSource:"set_glVertexSource",get_glVertexSource:"get_glVertexSource",set_glFragmentSource:"set_glFragmentSource",get_glFragmentSource:"get_glFragmentSource",set_data:"set_data",get_data:"get_data"}
-};
 var openfl__$internal_renderer_context3D_Context3DMaskShader = function() {
 	if(this.__glFragmentSource == null) {
 		this.__glFragmentSource = "varying vec2 openfl_TextureCoordv;\n\t\t\n\t\tuniform sampler2D openfl_Texture;\n\t\t\n\t\tvoid main(void) {\n\t\t\t\n\t\t\tvec4 color = texture2D (openfl_Texture, openfl_TextureCoordv);\n\t\t\t\n\t\t\tif (color.a == 0.0) {\n\t\t\t\t\n\t\t\t\tdiscard;\n\t\t\t\t\n\t\t\t} else {\n\t\t\t\t\n\t\t\t\tgl_FragColor = color;\n\t\t\t\t\n\t\t\t}\n\t\t\t\n\t\t}";
@@ -67488,6 +67543,35 @@ openfl_filters_GlowFilter.prototype = $extend(openfl_filters_BitmapFilter.protot
 	,__class__: openfl_filters_GlowFilter
 	,__properties__: {set_strength:"set_strength",get_strength:"get_strength",set_quality:"set_quality",get_quality:"get_quality",set_knockout:"set_knockout",get_knockout:"get_knockout",set_inner:"set_inner",get_inner:"get_inner",set_color:"set_color",get_color:"get_color",set_blurY:"set_blurY",get_blurY:"get_blurY",set_blurX:"set_blurX",get_blurX:"get_blurX",set_alpha:"set_alpha",get_alpha:"get_alpha"}
 });
+var openfl_filters_ShaderFilter = function(shader) {
+	openfl_filters_BitmapFilter.call(this);
+	this.shader = shader;
+	this.__numShaderPasses = 1;
+};
+$hxClasses["openfl.filters.ShaderFilter"] = openfl_filters_ShaderFilter;
+openfl_filters_ShaderFilter.__name__ = "openfl.filters.ShaderFilter";
+openfl_filters_ShaderFilter.__super__ = openfl_filters_BitmapFilter;
+openfl_filters_ShaderFilter.prototype = $extend(openfl_filters_BitmapFilter.prototype,{
+	blendMode: null
+	,bottomExtension: null
+	,leftExtension: null
+	,rightExtension: null
+	,shader: null
+	,topExtension: null
+	,clone: function() {
+		var filter = new openfl_filters_ShaderFilter(this.shader);
+		filter.bottomExtension = this.bottomExtension;
+		filter.leftExtension = this.leftExtension;
+		filter.rightExtension = this.rightExtension;
+		filter.topExtension = this.topExtension;
+		return filter;
+	}
+	,__initShader: function(renderer,pass) {
+		this.__shaderBlendMode = this.blendMode;
+		return this.shader;
+	}
+	,__class__: openfl_filters_ShaderFilter
+});
 var openfl_geom_Matrix3D = function(v) {
 	if(v != null && v.get_length() == 16) {
 		this.rawData = v.concat(null);
@@ -75960,9 +76044,8 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 		this.addChild(this.deck);
 		this.deck.deal();
 		this.addChild(this.info_layer = new ui_InfoLayer());
-		var player = new objects_Player(2,9,["test_d_01","test_h_01"],objects_PlayerSide.LEFT);
-		player.change_health(-16);
-		new objects_Player(6,8,["test_h_01","test_u_01"],objects_PlayerSide.RIGHT);
+		var player = new objects_Player(2,9,{ data : { id : "Test Player", health : { current : 48, max : 64}, movement : { requirement : "MAX_CARD", value : 5, type : ui_MoveType.FREE, factor : ui_MoveFactor.VALUE}, gear : ["test_d_01","test_h_01"]}, side : objects_PlayerSide.LEFT});
+		new objects_Player(6,8,{ data : { id : "Test Player", health : { current : 64, max : 64}, movement : { requirement : "MAX_CARD", value : 5, type : ui_MoveType.FREE, factor : ui_MoveFactor.VALUE}, gear : ["test_u_01","test_h_01"]}, side : objects_PlayerSide.RIGHT});
 		objects_Player.set_selected_player(player);
 	}
 	,init_dolly: function() {
@@ -76302,6 +76385,12 @@ var ui_Gear = function(player,side) {
 	this.player = player;
 	this.side = side;
 	this.addChild(this.link = new ui_LinkGraphic(openfl_utils_Assets.getBitmapData("images/ui/action_arrow_white.png")));
+	this.addChild(this.gear = new openfl_display_Sprite());
+	var sprite = new ui_MoveCard();
+	sprite.set_x(side == objects_PlayerSide.LEFT ? -72 : zero_openfl_utilities_Game.get_width() + 72);
+	sprite.set_y(298);
+	this.addChild(this.move_card = sprite);
+	this.addChild(this.player_info = new ui_PlayerInfo(player,side));
 	this.addEventListener("enterFrame",function(e) {
 		_gthis.update();
 		return;
@@ -76324,6 +76413,8 @@ ui_Gear.prototype = $extend(openfl_display_Sprite.prototype,{
 	,gear_cards: null
 	,move_card: null
 	,player: null
+	,player_info: null
+	,gear: null
 	,side: null
 	,update: function() {
 		var i = 0;
@@ -76348,64 +76439,15 @@ ui_Gear.prototype = $extend(openfl_display_Sprite.prototype,{
 				_g7.set_alpha(_g7.get_alpha() + (0 - gear.get_alpha()) * 0.25);
 			}
 		}
+		var tx = this.active ? this.side == objects_PlayerSide.LEFT ? 72 : zero_openfl_utilities_Game.get_width() - 72 : this.side == objects_PlayerSide.LEFT ? -72 : zero_openfl_utilities_Game.get_width() + 72;
+		var _g21 = this.move_card;
+		_g21.set_x(_g21.get_x() + (tx - this.move_card.get_x()) * 0.25);
 	}
 	,add_card: function(card) {
-		this.addChild(card);
+		this.gear.addChild(card);
 		this.gear_cards.push(card);
 	}
 	,__class__: ui_Gear
-});
-var ui_MoveCard = function() {
-	ui_Card.call(this);
-};
-$hxClasses["ui.MoveCard"] = ui_MoveCard;
-ui_MoveCard.__name__ = "ui.MoveCard";
-ui_MoveCard.__super__ = ui_Card;
-ui_MoveCard.prototype = $extend(ui_Card.prototype,{
-	__class__: ui_MoveCard
-});
-var ui_MoveFactor = $hxEnums["ui.MoveFactor"] = { __ename__ : "ui.MoveFactor", __constructs__ : ["STATIC","VALUE","VALUE_HALF","VALUE_X_TWO","INFINITE"]
-	,STATIC: {_hx_index:0,__enum__:"ui.MoveFactor",toString:$estr}
-	,VALUE: {_hx_index:1,__enum__:"ui.MoveFactor",toString:$estr}
-	,VALUE_HALF: {_hx_index:2,__enum__:"ui.MoveFactor",toString:$estr}
-	,VALUE_X_TWO: {_hx_index:3,__enum__:"ui.MoveFactor",toString:$estr}
-	,INFINITE: {_hx_index:4,__enum__:"ui.MoveFactor",toString:$estr}
-};
-ui_MoveFactor.__empty_constructs__ = [ui_MoveFactor.STATIC,ui_MoveFactor.VALUE,ui_MoveFactor.VALUE_HALF,ui_MoveFactor.VALUE_X_TWO,ui_MoveFactor.INFINITE];
-var ui_MoveType = $hxEnums["ui.MoveType"] = { __ename__ : "ui.MoveType", __constructs__ : ["FREE","ROOK","TELEPORT"]
-	,FREE: {_hx_index:0,__enum__:"ui.MoveType",toString:$estr}
-	,ROOK: {_hx_index:1,__enum__:"ui.MoveType",toString:$estr}
-	,TELEPORT: {_hx_index:2,__enum__:"ui.MoveType",toString:$estr}
-};
-ui_MoveType.__empty_constructs__ = [ui_MoveType.FREE,ui_MoveType.ROOK,ui_MoveType.TELEPORT];
-var ui_LinkGraphic = function(bitmap) {
-	this.offset_matrix = new openfl_geom_Matrix();
-	this.active = false;
-	this.length = 8;
-	openfl_display_Sprite.call(this);
-	this.bitmap = bitmap;
-	this.offset_matrix.ty = 12;
-};
-$hxClasses["ui.LinkGraphic"] = ui_LinkGraphic;
-ui_LinkGraphic.__name__ = "ui.LinkGraphic";
-ui_LinkGraphic.__super__ = openfl_display_Sprite;
-ui_LinkGraphic.prototype = $extend(openfl_display_Sprite.prototype,{
-	length: null
-	,active: null
-	,offset_matrix: null
-	,bitmap: null
-	,draw: function() {
-		this.set_visible(this.active);
-		if(!this.active) {
-			return;
-		}
-		this.offset_matrix.tx += 4;
-		this.get_graphics().clear();
-		this.get_graphics().beginBitmapFill(this.bitmap,this.offset_matrix,true,true);
-		this.get_graphics().drawRect(0,-12,this.length,24);
-		this.get_graphics().endFill();
-	}
-	,__class__: ui_LinkGraphic
 });
 var ui_GearCard = function(gear,data) {
 	this.t = 0.0;
@@ -77450,6 +77492,169 @@ ui_InfoLayer.prototype = $extend(openfl_display_Sprite.prototype,{
 	}
 	,__class__: ui_InfoLayer
 });
+var ui_LinkGraphic = function(bitmap) {
+	this.offset_matrix = new openfl_geom_Matrix();
+	this.active = false;
+	this.length = 8;
+	openfl_display_Sprite.call(this);
+	this.bitmap = bitmap;
+	this.offset_matrix.ty = 12;
+};
+$hxClasses["ui.LinkGraphic"] = ui_LinkGraphic;
+ui_LinkGraphic.__name__ = "ui.LinkGraphic";
+ui_LinkGraphic.__super__ = openfl_display_Sprite;
+ui_LinkGraphic.prototype = $extend(openfl_display_Sprite.prototype,{
+	length: null
+	,active: null
+	,offset_matrix: null
+	,bitmap: null
+	,draw: function() {
+		this.set_visible(this.active);
+		if(!this.active) {
+			return;
+		}
+		this.offset_matrix.tx += 4;
+		this.get_graphics().clear();
+		this.get_graphics().beginBitmapFill(this.bitmap,this.offset_matrix,true,true);
+		this.get_graphics().drawRect(0,-12,this.length,24);
+		this.get_graphics().endFill();
+	}
+	,__class__: ui_LinkGraphic
+});
+var ui_MoveCard = function() {
+	ui_Card.call(this);
+	this.make_graphic();
+};
+$hxClasses["ui.MoveCard"] = ui_MoveCard;
+ui_MoveCard.__name__ = "ui.MoveCard";
+ui_MoveCard.__super__ = ui_Card;
+ui_MoveCard.prototype = $extend(ui_Card.prototype,{
+	make_graphic: function() {
+		var color = zero_utilities__$Color_Color_$Impl_$.BLACK;
+		var radius = 16;
+		if(radius == null) {
+			radius = 0;
+		}
+		this.get_graphics().beginFill((Math.round(color[0] * 255) & 255) << 16 | (Math.round(color[1] * 255) & 255) << 8 | Math.round(color[2] * 255) & 255,color[3]);
+		if(radius == 0) {
+			this.get_graphics().drawRect(-48,-72,96,144);
+		} else {
+			this.get_graphics().drawRoundRect(-48,-72,96,144,radius);
+		}
+		this.get_graphics().endFill();
+		var sprite = this;
+		var this1 = zero_utilities__$Color_Color_$Impl_$.get();
+		var x = 0.16078431372549021;
+		var y = 0.67843137254901964;
+		var z = 1.;
+		var w = 1.;
+		if(w == null) {
+			w = 0;
+		}
+		if(z == null) {
+			z = 0;
+		}
+		if(y == null) {
+			y = 0;
+		}
+		if(x == null) {
+			x = 0;
+		}
+		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this1,0,zero_utilities__$Color_Color_$Impl_$.zero(x));
+		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this1,1,zero_utilities__$Color_Color_$Impl_$.zero(y));
+		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this1,2,zero_utilities__$Color_Color_$Impl_$.zero(z));
+		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this1,3,zero_utilities__$Color_Color_$Impl_$.zero(w));
+		var color1 = this1;
+		var radius1 = 12;
+		if(radius1 == null) {
+			radius1 = 0;
+		}
+		sprite.get_graphics().beginFill((Math.round(color1[0] * 255) & 255) << 16 | (Math.round(color1[1] * 255) & 255) << 8 | Math.round(color1[2] * 255) & 255,color1[3]);
+		if(radius1 == 0) {
+			sprite.get_graphics().drawRect(-44,-68,88,136);
+		} else {
+			sprite.get_graphics().drawRoundRect(-44,-68,88,136,radius1);
+		}
+		sprite.get_graphics().endFill();
+		var sprite1 = sprite;
+		var this11 = zero_utilities__$Color_Color_$Impl_$.get();
+		var x1 = 0.086274509803921567;
+		var y1 = 0.54117647058823526;
+		var z1 = 1.;
+		var w1 = 1.;
+		if(w1 == null) {
+			w1 = 0;
+		}
+		if(z1 == null) {
+			z1 = 0;
+		}
+		if(y1 == null) {
+			y1 = 0;
+		}
+		if(x1 == null) {
+			x1 = 0;
+		}
+		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this11,0,zero_utilities__$Color_Color_$Impl_$.zero(x1));
+		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this11,1,zero_utilities__$Color_Color_$Impl_$.zero(y1));
+		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this11,2,zero_utilities__$Color_Color_$Impl_$.zero(z1));
+		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this11,3,zero_utilities__$Color_Color_$Impl_$.zero(w1));
+		var color2 = this11;
+		var radius2 = 16;
+		if(radius2 == null) {
+			radius2 = 0;
+		}
+		sprite1.get_graphics().beginFill((Math.round(color2[0] * 255) & 255) << 16 | (Math.round(color2[1] * 255) & 255) << 8 | Math.round(color2[2] * 255) & 255,color2[3]);
+		if(radius2 == 0) {
+			sprite1.get_graphics().drawRect(-32,-24,64,80);
+		} else {
+			sprite1.get_graphics().drawRoundRect(-32,-24,64,80,radius2);
+		}
+		sprite1.get_graphics().endFill();
+		var move_type = ui_MoveType.FREE;
+		var icon_src;
+		switch(move_type._hx_index) {
+		case 0:
+			icon_src = "images/ui/icons/move_free.png";
+			break;
+		case 1:
+			icon_src = "images/ui/icons/move_rook.png";
+			break;
+		case 2:
+			icon_src = "images/ui/icons/move_teleport.png";
+			break;
+		}
+		var sprite2 = zero_openfl_extensions_SpriteTools.load_graphic(new openfl_display_Sprite(),icon_src,zero_utilities_Anchor.MIDDLE_CENTER,true);
+		sprite2.set_x(0);
+		sprite2.set_y(-48);
+		var sprite3 = sprite2;
+		var x2 = 0.25;
+		var y2 = null;
+		if(x2 == null) {
+			x2 = 0;
+		}
+		if(y2 == null) {
+			y2 = x2;
+		}
+		sprite3.set_scaleX(x2);
+		sprite3.set_scaleY(y2);
+		this.addChild(sprite3);
+	}
+	,__class__: ui_MoveCard
+});
+var ui_MoveFactor = $hxEnums["ui.MoveFactor"] = { __ename__ : "ui.MoveFactor", __constructs__ : ["STATIC","VALUE","VALUE_HALF","VALUE_X_TWO","INFINITE"]
+	,STATIC: {_hx_index:0,__enum__:"ui.MoveFactor",toString:$estr}
+	,VALUE: {_hx_index:1,__enum__:"ui.MoveFactor",toString:$estr}
+	,VALUE_HALF: {_hx_index:2,__enum__:"ui.MoveFactor",toString:$estr}
+	,VALUE_X_TWO: {_hx_index:3,__enum__:"ui.MoveFactor",toString:$estr}
+	,INFINITE: {_hx_index:4,__enum__:"ui.MoveFactor",toString:$estr}
+};
+ui_MoveFactor.__empty_constructs__ = [ui_MoveFactor.STATIC,ui_MoveFactor.VALUE,ui_MoveFactor.VALUE_HALF,ui_MoveFactor.VALUE_X_TWO,ui_MoveFactor.INFINITE];
+var ui_MoveType = $hxEnums["ui.MoveType"] = { __ename__ : "ui.MoveType", __constructs__ : ["FREE","ROOK","TELEPORT"]
+	,FREE: {_hx_index:0,__enum__:"ui.MoveType",toString:$estr}
+	,ROOK: {_hx_index:1,__enum__:"ui.MoveType",toString:$estr}
+	,TELEPORT: {_hx_index:2,__enum__:"ui.MoveType",toString:$estr}
+};
+ui_MoveType.__empty_constructs__ = [ui_MoveType.FREE,ui_MoveType.ROOK,ui_MoveType.TELEPORT];
 var ui_ObjectInfo = function() {
 	this.active = false;
 	openfl_display_Sprite.call(this);
@@ -77537,7 +77742,7 @@ ui_ObjectInfo.prototype = $extend(openfl_display_Sprite.prototype,{
 			}
 			next_hp = cur_hp + next_hp1;
 		}
-		next_hp = Math.max(Math.min(next_hp,target.health.max),0);
+		next_hp = Math.floor(Math.max(Math.min(next_hp,target.health.max),0));
 		this.health_bar.get_graphics().clear();
 		var sprite = this.health_bar;
 		var color = zero_utilities__$Color_Color_$Impl_$.PICO_8_DARK_BLUE;
@@ -77706,6 +77911,153 @@ var ui_Comparison = $hxEnums["ui.Comparison"] = { __ename__ : "ui.Comparison", _
 	,GREATER_THAN: {_hx_index:2,__enum__:"ui.Comparison",toString:$estr}
 };
 ui_Comparison.__empty_constructs__ = [ui_Comparison.EQUAL_THAN,ui_Comparison.LESS_THAN,ui_Comparison.GREATER_THAN];
+var ui_PlayerInfo = function(player,side) {
+	openfl_display_Sprite.call(this);
+	this.player = player;
+	this.make_avatar();
+	this.make_ap_pts();
+	this.make_health();
+	this.set_x(side == objects_PlayerSide.LEFT ? 72 : zero_openfl_utilities_Game.get_width() - 72);
+	this.set_y(80);
+};
+$hxClasses["ui.PlayerInfo"] = ui_PlayerInfo;
+ui_PlayerInfo.__name__ = "ui.PlayerInfo";
+ui_PlayerInfo.__super__ = openfl_display_Sprite;
+ui_PlayerInfo.prototype = $extend(openfl_display_Sprite.prototype,{
+	player: null
+	,avatar: null
+	,health: null
+	,ap_pts: null
+	,health_text: null
+	,health_text_sprite: null
+	,ap_pts_text: null
+	,make_avatar: function() {
+		this.avatar = new openfl_display_Sprite();
+		var sprite = this.avatar;
+		var color = zero_utilities__$Color_Color_$Impl_$.PICO_8_ORANGE;
+		sprite.get_graphics().beginFill((Math.round(color[0] * 255) & 255) << 16 | (Math.round(color[1] * 255) & 255) << 8 | Math.round(color[2] * 255) & 255,color[3]);
+		sprite.get_graphics().drawCircle(0,0,48);
+		sprite.get_graphics().endFill();
+		this.avatar.addEventListener("mouseDown",$bind(this,this.on_click));
+		this.addChild(this.avatar);
+	}
+	,make_ap_pts: function() {
+		var sprite = new openfl_display_Sprite();
+		sprite.set_x(0);
+		sprite.set_y(80);
+		this.ap_pts = sprite;
+		this.ap_pts_text = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : "Oduda Bold", color : zero_utilities__$Color_Color_$Impl_$.PICO_8_WHITE, size : 24});
+		var sprite1 = this.ap_pts;
+		var color = zero_utilities__$Color_Color_$Impl_$.PICO_8_DARK_BLUE;
+		var radius = 32;
+		if(radius == null) {
+			radius = 0;
+		}
+		sprite1.get_graphics().beginFill((Math.round(color[0] * 255) & 255) << 16 | (Math.round(color[1] * 255) & 255) << 8 | Math.round(color[2] * 255) & 255,color[3]);
+		if(radius == 0) {
+			sprite1.get_graphics().drawRect(-48,-16,96,32);
+		} else {
+			sprite1.get_graphics().drawRoundRect(-48,-16,96,32,radius);
+		}
+		sprite1.get_graphics().endFill();
+		var parent = this.ap_pts;
+		var sprite2 = zero_openfl_extensions_SpriteTools.load_graphic(new openfl_display_Sprite(),"images/ui/ap_pips.png",zero_utilities_Anchor.MIDDLE_CENTER,true);
+		sprite2.set_x(-26);
+		sprite2.set_y(0);
+		parent.addChild(sprite2);
+		this.addChild(this.ap_pts);
+		this.ap_pts.addChild(this.ap_pts_text);
+		this.update_ap_pts();
+	}
+	,make_health: function() {
+		var sprite = new openfl_display_Sprite();
+		sprite.set_x(0);
+		sprite.set_y(116);
+		this.health = sprite;
+		this.health_text_sprite = new openfl_display_Sprite();
+		this.health_text = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : "Oduda Bold", color : zero_utilities__$Color_Color_$Impl_$.PICO_8_WHITE, size : 24});
+		var filter = new openfl_filters_ShaderFilter(new filters_OutlineShader());
+		filter.topExtension = filter.bottomExtension = filter.leftExtension = filter.rightExtension = 64;
+		this.health_text_sprite.set_filters([filter]);
+		this.addChild(this.health);
+		this.health_text_sprite.addChild(this.health_text);
+		this.health.addChild(this.health_text_sprite);
+		this.update_health();
+	}
+	,update_ap_pts: function() {
+		zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(this.ap_pts_text,"" + this.player.AP),0,0,zero_utilities_Anchor.MIDDLE_CENTER);
+	}
+	,update_health: function() {
+		zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(this.health_text,"" + Math.floor(this.player.health.current)),0,0,zero_utilities_Anchor.MIDDLE_CENTER);
+		this.health.get_graphics().clear();
+		var sprite = this.health;
+		var color = zero_utilities__$Color_Color_$Impl_$.BLACK;
+		var radius = 32;
+		if(radius == null) {
+			radius = 0;
+		}
+		sprite.get_graphics().beginFill((Math.round(color[0] * 255) & 255) << 16 | (Math.round(color[1] * 255) & 255) << 8 | Math.round(color[2] * 255) & 255,color[3]);
+		if(radius == 0) {
+			sprite.get_graphics().drawRect(-48,-16,96,32);
+		} else {
+			sprite.get_graphics().drawRoundRect(-48,-16,96,32,radius);
+		}
+		sprite.get_graphics().endFill();
+		var sprite1 = sprite;
+		var color1 = zero_utilities__$Color_Color_$Impl_$.PICO_8_WHITE;
+		var radius1 = 28;
+		if(radius1 == null) {
+			radius1 = 0;
+		}
+		sprite1.get_graphics().beginFill((Math.round(color1[0] * 255) & 255) << 16 | (Math.round(color1[1] * 255) & 255) << 8 | Math.round(color1[2] * 255) & 255,color1[3]);
+		if(radius1 == 0) {
+			sprite1.get_graphics().drawRect(-44,-12,88,24);
+		} else {
+			sprite1.get_graphics().drawRoundRect(-44,-12,88,24,radius1);
+		}
+		sprite1.get_graphics().endFill();
+		var sprite2 = sprite1;
+		var color2 = zero_utilities__$Color_Color_$Impl_$.PICO_8_DARK_BLUE;
+		var radius2 = 16;
+		if(radius2 == null) {
+			radius2 = 0;
+		}
+		sprite2.get_graphics().beginFill((Math.round(color2[0] * 255) & 255) << 16 | (Math.round(color2[1] * 255) & 255) << 8 | Math.round(color2[2] * 255) & 255,color2[3]);
+		if(radius2 == 0) {
+			sprite2.get_graphics().drawRect(-40,-8,80,16);
+		} else {
+			sprite2.get_graphics().drawRoundRect(-40,-8,80,16,radius2);
+		}
+		sprite2.get_graphics().endFill();
+		if(this.player.health.current > 0) {
+			var sprite3 = this.health;
+			var color3 = zero_utilities__$Color_Color_$Impl_$.PICO_8_RED;
+			var width = Math.max(this.player.health.current / this.player.health.max * 80,16);
+			var radius3 = 16;
+			if(radius3 == null) {
+				radius3 = 0;
+			}
+			sprite3.get_graphics().beginFill((Math.round(color3[0] * 255) & 255) << 16 | (Math.round(color3[1] * 255) & 255) << 8 | Math.round(color3[2] * 255) & 255,color3[3]);
+			if(radius3 == 0) {
+				sprite3.get_graphics().drawRect(-40,-8,width,16);
+			} else {
+				sprite3.get_graphics().drawRoundRect(-40,-8,width,16,radius3);
+			}
+			sprite3.get_graphics().endFill();
+		}
+		var tmp = zero_utilities_Tween.get(this.health_text_sprite).from_to("scaleX",1.5,1).from_to("scaleY",1.5,1);
+		var min = -45;
+		var max = null;
+		if(min == null) {
+			min = 0;
+		}
+		tmp.from_to("rotation",min + Math.random() * ((max == null ? 45 : max) - min),0).ease(zero_utilities_Ease.elasticOut);
+	}
+	,on_click: function(e) {
+		objects_Player.set_selected_player(this.player);
+	}
+	,__class__: ui_PlayerInfo
+});
 var ui_PlayingCard = function(deck,card_data,x,y) {
 	this.equipped = false;
 	ui_Card.call(this);
@@ -78858,8 +79210,8 @@ zero_openfl_extensions_SpriteTools.set_position = function(sprite,x,y) {
 zero_openfl_extensions_SpriteTools.distance = function(sprite1,sprite2) {
 	var p1 = zero_utilities__$Vec2_Vec2_$Impl_$.get(sprite1.get_x(),sprite1.get_y());
 	var p2 = zero_utilities__$Vec2_Vec2_$Impl_$.get(sprite2.get_x(),sprite2.get_y());
-	var this1 = zero_utilities__$Vec2_Vec2_$Impl_$.subtract(p2,zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float(p1));
-	var out = Math.sqrt(this1[0] * this1[0] + this1[1] * this1[1]);
+	var this2 = zero_utilities__$Vec2_Vec2_$Impl_$.subtract(p2,zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float(p1));
+	var out = Math.sqrt(this2[0] * this2[0] + this2[1] * this2[1]);
 	zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(p1);
 	p1 = null;
 	zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(p2);
@@ -79661,7 +80013,7 @@ zero_openfl_utilities_Game.prototype = {
 		this.scene = scene;
 		scene.create();
 		zero_openfl_utilities_Game.root.addChild(scene);
-		zero_openfl_utilities_Game.root.addChild(new zero_openfl_utilities_FPS(10,10,16777215));
+		zero_openfl_utilities_Game.root.addChild(new zero_openfl_utilities_FPS(10,zero_openfl_utilities_Game.get_height() - 64,16777215));
 	}
 	,__class__: zero_openfl_utilities_Game
 };
@@ -84414,6 +84766,7 @@ openfl_display_DisplayObject.__tempStack = new lime_utils_ObjectPool(function() 
 });
 openfl_text_Font.__fontByName = new haxe_ds_StringMap();
 openfl_text_Font.__registeredFonts = [];
+openfl_display_Shader.__meta__ = { fields : { glProgram : { SuppressWarnings : ["checkstyle:Dynamic"]}}};
 haxe_Serializer.USE_CACHE = false;
 haxe_Serializer.USE_ENUM_INDEX = false;
 haxe_Serializer.BASE64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789%:";
@@ -85860,7 +86213,6 @@ openfl_geom_ColorTransform.__pool = new lime_utils_ObjectPool(function() {
 openfl__$internal_renderer_context3D_Context3DGraphics.__meta__ = { obj : { SuppressWarnings : ["checkstyle:FieldDocComment"]}};
 openfl__$internal_renderer_context3D_Context3DGraphics.blankBitmapData = new openfl_display_BitmapData(1,1,false,0);
 openfl__$internal_renderer_context3D_Context3DGraphics.tempColorTransform = new openfl_geom_ColorTransform(1,1,1,1,0,0,0,0);
-openfl_display_Shader.__meta__ = { fields : { glProgram : { SuppressWarnings : ["checkstyle:Dynamic"]}}};
 openfl__$internal_renderer_context3D_Context3DMaskShader.opaqueBitmapData = new openfl_display_BitmapData(1,1,false,0);
 openfl__$internal_renderer_context3D_Context3DShape.__meta__ = { obj : { SuppressWarnings : ["checkstyle:FieldDocComment"]}};
 openfl__$internal_renderer_context3D_Context3DState.__meta__ = { obj : { SuppressWarnings : ["checkstyle:FieldDocComment"]}};
@@ -86434,6 +86786,7 @@ openfl_filters_DisplacementMapFilter.__displacementMapShader = new openfl_filter
 openfl_filters_DisplacementMapFilter.__matrixData = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
 openfl_filters_DisplacementMapFilter.__offset = [0.5,0.5,0.0,0.0];
 openfl_filters_GlowFilter.__glowShader = new openfl_filters__$GlowFilter_GlowShader();
+openfl_filters_ShaderFilter.__meta__ = { fields : { blendMode : { SuppressWarnings : ["checkstyle:FieldDocComment"]}}};
 openfl_geom_Matrix3D.__meta__ = { statics : { create2D : { SuppressWarnings : ["checkstyle:FieldDocComment"]}, createABCD : { SuppressWarnings : ["checkstyle:FieldDocComment"]}, createOrtho : { SuppressWarnings : ["checkstyle:FieldDocComment"]}}};
 openfl_geom__$Orientation3D_Orientation3D_$Impl_$.AXIS_ANGLE = 0;
 openfl_geom__$Orientation3D_Orientation3D_$Impl_$.EULER_ANGLES = 1;

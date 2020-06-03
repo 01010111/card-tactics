@@ -1,20 +1,27 @@
 # Broad Strokes
 
-- [ ] Finish Game
-  - [ ] Implement Gear Cards
-    - [ ] Implement Move Card
-      - [ ] Finish Graphics
-      - [ ] Implement path finding
-    - [x] Implement Character Select
-    - [x] Implement Gear Card
-      - [x] Implement Do/Aim on verify
-    - [ ] Implement Mutation Cards
+- [ ] Movement
+- [ ] Mutation Gear
+- [ ] Gear Pickups
+- [ ] Props
 
 # Tomorrow
 
-- [ ] Work on Player Info
-  - [ ] Show Player Avatar (placeholder)
-    - [ ] Switch Players on click
-  - [ ] Show Player AP
-  - [ ] Show Player HP
-  - [ ] Show Move Card (don't worry about functionality)
+- [ ] Move Cards
+  - [ ] Drop Playing Cards
+    - [ ] Check for prox to Move Card
+    - [ ] Validate against Move Data
+  - [ ] Show Available Moves
+    - [ ] Similar to Actionable Gear
+    - [ ] Persistent per player
+  - [ ] Click on Available Moves to Move
+    - [ ] Gray Out Move Card
+
+6/3/2020
+
+- [x] Work on Player Info
+  - [x] Show Player Avatar (placeholder)
+    - [x] Switch Players on click
+  - [x] Show Player AP
+  - [x] Show Player HP
+  - [x] Show Move Card (don't worry about functionality)
