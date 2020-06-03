@@ -102,6 +102,7 @@ class PlayingCard extends Card {
 
 	override function mouse_down(e:MouseEvent) {
 		if (equipped) {
+			if (gear.expended) return;
 			var p = localToGlobal(new Point(x, y));
 			gear.remove_card(this);
 			deck.add_card(this);
@@ -123,7 +124,7 @@ class PlayingCard extends Card {
 		if (!equipped && Gear.active_gear != null) for (gear in Gear.active_gear.gear_cards) {
 			var pos = gear.get_anchor(true);
 			if (pos.distance([x, y]) < 128) {
-				if (!gear.verify_card(data)) continue;
+				if (gear.expended || !gear.verify_card(data)) continue;
 				gear.add_card(this);
 				equipped = true;
 				super.mouse_up(e);

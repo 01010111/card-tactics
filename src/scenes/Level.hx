@@ -32,6 +32,7 @@ class Level extends Scene {
 	public var object_map:Array<Array<Int>> = [];
 	public var can_move:Bool = true;
 	public var dolly:Dolly;
+	public var available_tiles:Array<IntPoint>;
 
 	// layers
 	public var level:Sprite;
@@ -63,7 +64,7 @@ class Level extends Scene {
 		this.add(info_layer = new InfoLayer());
 		var player = new Player(2, 9, ['test_d_01', 'test_h_01'], LEFT);
 		player.change_health(-16);
-		new Player(6, 8, ['test_h_01'], RIGHT);
+		new Player(6, 8, ['test_h_01', 'test_u_01'], RIGHT);
 		Player.selected_player = player;
 	}
 
@@ -146,6 +147,7 @@ class Level extends Scene {
 			else if (!AStar.los(origin, [i, j], solids, [0])) map[j][i] = 0;
 			if (map[j][i] > 0) out.push([i, j]);
 		}
+		available_tiles = out;
 		return out;
 	}
 

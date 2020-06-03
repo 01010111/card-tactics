@@ -17,6 +17,8 @@ class GameObject extends Sprite {
 
 	public var health:HealthData;
 	public var title:String;
+	public var grid_pos(get, never):IntPoint;
+	function get_grid_pos():IntPoint return [(x/16).floor(), (y/16).floor()];
 
 	var last:Vec2;
 	var graphic:AnimatedSprite;
@@ -63,6 +65,7 @@ class GameObject extends Sprite {
 	public function change_health(delta:Float) {
 		health.current += delta;
 		if (health.current <= 0) kill();
+		health.current = health.current.min(health.max).max(0);
 	}
 
 	function kill() {

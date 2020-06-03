@@ -894,9 +894,9 @@ ApplicationMain.create = function(config) {
 	ManifestResources.init(config);
 	var _this = app.meta;
 	if(__map_reserved["build"] != null) {
-		_this.setReserved("build","14");
+		_this.setReserved("build","15");
 	} else {
-		_this.h["build"] = "14";
+		_this.h["build"] = "15";
 	}
 	var _this1 = app.meta;
 	if(__map_reserved["company"] != null) {
@@ -4814,7 +4814,7 @@ ManifestResources.init = function(config) {
 	}
 	openfl_text_Font.registerFont(_$_$ASSET_$_$OPENFL_$_$fonts_$oduda_$ttf);
 	var bundle;
-	var data = "{\"name\":null,\"assets\":\"aoy4:pathy18:images%2Fblank.pngy4:sizei123y4:typey5:IMAGEy2:idR1y7:preloadtgoR0y29:images%2Fparticles%2Fpoof.pngR2i452R3R4R5R7R6tgoR0y20:images%2Fplayers.pngR2i1824R3R4R5R8R6tgoR0y18:images%2Ftiles.pngR2i14787R3R4R5R9R6tgoR0y35:images%2Fui%2Faction_arrow_blue.pngR2i473R3R4R5R10R6tgoR0y36:images%2Fui%2Faction_arrow_green.pngR2i489R3R4R5R11R6tgoR0y34:images%2Fui%2Faction_arrow_red.pngR2i470R3R4R5R12R6tgoR0y36:images%2Fui%2Faction_arrow_white.pngR2i307R3R4R5R13R6tgoR0y25:images%2Fui%2Faim_cta.pngR2i1862R3R4R5R14R6tgoR0y24:images%2Fui%2Fap_pip.pngR2i270R3R4R5R15R6tgoR0y24:images%2Fui%2Fdo_cta.pngR2i1723R3R4R5R16R6tgoR0y36:images%2Fui%2Ficons%2Ficon_skull.pngR2i2850R3R4R5R17R6tgoR0y35:images%2Fui%2Ficons%2Fmove_free.pngR2i2776R3R4R5R18R6tgoR0y35:images%2Fui%2Ficons%2Fmove_rook.pngR2i3371R3R4R5R19R6tgoR0y39:images%2Fui%2Ficons%2Fmove_teleport.pngR2i3093R3R4R5R20R6tgoR0y51:images%2Fui%2Ficons%2Fon_white%2Ficon_electrify.pngR2i1737R3R4R5R21R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_explode.pngR2i2333R3R4R5R22R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_flame.pngR2i2026R3R4R5R23R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_health.pngR2i1796R3R4R5R24R6tgoR0y46:images%2Fui%2Ficons%2Fon_white%2Ficon_move.pngR2i1973R3R4R5R25R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_pierce.pngR2i1943R3R4R5R26R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_shield.pngR2i1973R3R4R5R27R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_utility.pngR2i1803R3R4R5R28R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_water.pngR2i1906R3R4R5R29R6tgoR0y27:images%2Fui%2Frule_face.pngR2i8721R3R4R5R30R6tgoR0y32:images%2Fui%2Frule_two_cards.pngR2i5319R3R4R5R31R6tgoR0y27:images%2Fui%2Fsuit_club.pngR2i4182R3R4R5R32R6tgoR0y30:images%2Fui%2Fsuit_diamond.pngR2i2985R3R4R5R33R6tgoR0y28:images%2Fui%2Fsuit_heart.pngR2i2540R3R4R5R34R6tgoR0y28:images%2Fui%2Fsuit_spade.pngR2i3507R3R4R5R35R6tgoR0y17:data%2Fgear.jsoncR2i878R3y4:TEXTR5R36R6tgoR0y22:data%2Fmaps%2F000.jsonR2i1922R3R37R5R38R6tgoR0y23:data%2Fmaps%2Fmaps.ogmoR2i19048R3R37R5R39R6tgoR2i19636R3y4:FONTy9:classNamey24:__ASSET__fonts_oduda_ttfR5y17:fonts%2Foduda.ttfR6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
+	var data = "{\"name\":null,\"assets\":\"aoy4:pathy18:images%2Fblank.pngy4:sizei123y4:typey5:IMAGEy2:idR1y7:preloadtgoR0y29:images%2Fparticles%2Fpoof.pngR2i452R3R4R5R7R6tgoR0y20:images%2Fplayers.pngR2i1824R3R4R5R8R6tgoR0y18:images%2Ftiles.pngR2i14787R3R4R5R9R6tgoR0y35:images%2Fui%2Faction_arrow_blue.pngR2i473R3R4R5R10R6tgoR0y36:images%2Fui%2Faction_arrow_green.pngR2i489R3R4R5R11R6tgoR0y34:images%2Fui%2Faction_arrow_red.pngR2i470R3R4R5R12R6tgoR0y36:images%2Fui%2Faction_arrow_white.pngR2i307R3R4R5R13R6tgoR0y25:images%2Fui%2Faim_cta.pngR2i1862R3R4R5R14R6tgoR0y24:images%2Fui%2Fap_pip.pngR2i270R3R4R5R15R6tgoR0y24:images%2Fui%2Fdo_cta.pngR2i1723R3R4R5R16R6tgoR0y36:images%2Fui%2Ficons%2Ficon_skull.pngR2i2850R3R4R5R17R6tgoR0y35:images%2Fui%2Ficons%2Fmove_free.pngR2i2776R3R4R5R18R6tgoR0y35:images%2Fui%2Ficons%2Fmove_rook.pngR2i3371R3R4R5R19R6tgoR0y39:images%2Fui%2Ficons%2Fmove_teleport.pngR2i3093R3R4R5R20R6tgoR0y51:images%2Fui%2Ficons%2Fon_white%2Ficon_electrify.pngR2i1737R3R4R5R21R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_explode.pngR2i2333R3R4R5R22R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_flame.pngR2i2026R3R4R5R23R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_health.pngR2i1796R3R4R5R24R6tgoR0y46:images%2Fui%2Ficons%2Fon_white%2Ficon_move.pngR2i1973R3R4R5R25R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_pierce.pngR2i1943R3R4R5R26R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_shield.pngR2i1973R3R4R5R27R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_utility.pngR2i1803R3R4R5R28R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_water.pngR2i1906R3R4R5R29R6tgoR0y27:images%2Fui%2Frule_face.pngR2i8721R3R4R5R30R6tgoR0y32:images%2Fui%2Frule_two_cards.pngR2i5319R3R4R5R31R6tgoR0y27:images%2Fui%2Fsuit_club.pngR2i4182R3R4R5R32R6tgoR0y30:images%2Fui%2Fsuit_diamond.pngR2i2985R3R4R5R33R6tgoR0y28:images%2Fui%2Fsuit_heart.pngR2i2540R3R4R5R34R6tgoR0y28:images%2Fui%2Fsuit_spade.pngR2i3507R3R4R5R35R6tgoR0y17:data%2Fgear.jsoncR2i1340R3y4:TEXTR5R36R6tgoR0y22:data%2Fmaps%2F000.jsonR2i1922R3R37R5R38R6tgoR0y23:data%2Fmaps%2Fmaps.ogmoR2i19048R3R37R5R39R6tgoR2i19636R3y4:FONTy9:classNamey24:__ASSET__fonts_oduda_ttfR5y17:fonts%2Foduda.ttfR6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
 	var manifest = lime_utils_AssetManifest.parse(data,ManifestResources.rootPath);
 	var library = lime_utils_AssetLibrary.fromManifest(manifest);
 	lime_utils_Assets.registerLibrary("default",library);
@@ -27098,6 +27098,9 @@ objects_GameObject.__super__ = openfl_display_Sprite;
 objects_GameObject.prototype = $extend(openfl_display_Sprite.prototype,{
 	health: null
 	,title: null
+	,get_grid_pos: function() {
+		return zero_utilities__$IntPoint_IntPoint_$Impl_$.from_array_int([Math.floor(this.get_x() / 16),Math.floor(this.get_y() / 16)]);
+	}
 	,last: null
 	,graphic: null
 	,update: function(dt) {
@@ -27135,6 +27138,7 @@ objects_GameObject.prototype = $extend(openfl_display_Sprite.prototype,{
 		if(this.health.current <= 0) {
 			this.kill();
 		}
+		this.health.current = Math.max(Math.min(this.health.current,this.health.max),0);
 	}
 	,kill: function() {
 	}
@@ -27142,6 +27146,7 @@ objects_GameObject.prototype = $extend(openfl_display_Sprite.prototype,{
 		zero_utilities_Tween.get(this).from_to("scaleX",1.5,1).from_to("scaleY",0.5,1).ease(zero_utilities_Ease.elasticOut).duration(0.5);
 	}
 	,__class__: objects_GameObject
+	,__properties__: $extend(openfl_display_Sprite.prototype.__properties__,{get_grid_pos:"get_grid_pos"})
 });
 var objects_Player = function(x,y,gear_ids,side) {
 	var _gthis = this;
@@ -75935,6 +75940,7 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 	,object_map: null
 	,can_move: null
 	,dolly: null
+	,available_tiles: null
 	,level: null
 	,indicators: null
 	,under_objects: null
@@ -75956,7 +75962,7 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 		this.addChild(this.info_layer = new ui_InfoLayer());
 		var player = new objects_Player(2,9,["test_d_01","test_h_01"],objects_PlayerSide.LEFT);
 		player.change_health(-16);
-		new objects_Player(6,8,["test_h_01"],objects_PlayerSide.RIGHT);
+		new objects_Player(6,8,["test_h_01","test_u_01"],objects_PlayerSide.RIGHT);
 		objects_Player.set_selected_player(player);
 	}
 	,init_dolly: function() {
@@ -76151,6 +76157,7 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 				}
 			}
 		}
+		this.available_tiles = out;
 		return out;
 	}
 	,__class__: scenes_Level
@@ -76402,8 +76409,10 @@ ui_LinkGraphic.prototype = $extend(openfl_display_Sprite.prototype,{
 });
 var ui_GearCard = function(gear,data) {
 	this.t = 0.0;
+	this.grayscale_filter = new openfl_filters_ColorMatrixFilter([0.25,0.25,0.25,0,0,0.25,0.25,0.25,0,0,0.25,0.25,0.25,0,0,0,0,0,1,1]);
 	this.cards = [];
 	this.anchors = [zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([-35,28]),zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([35,28])];
+	this.expended = false;
 	this.active = false;
 	ui_Card.call(this);
 	this.gear = gear;
@@ -76421,9 +76430,18 @@ $hxClasses["ui.GearCard"] = ui_GearCard;
 ui_GearCard.__name__ = "ui.GearCard";
 ui_GearCard.__super__ = ui_Card;
 ui_GearCard.prototype = $extend(ui_Card.prototype,{
-	active: null
-	,gear: null
+	gear: null
 	,data: null
+	,active: null
+	,set_active: function(b) {
+		return this.active = b && !this.expended;
+	}
+	,expended: null
+	,set_expended: function(b) {
+		this.set_filters(b ? [this.grayscale_filter] : []);
+		haxe_Log.trace(this.get_filters(),{ fileName : "src/ui/GearCard.hx", lineNumber : 34, className : "ui.GearCard", methodName : "set_expended"});
+		return this.expended = b;
+	}
 	,highlight: null
 	,last: null
 	,home: null
@@ -76434,8 +76452,9 @@ ui_GearCard.prototype = $extend(ui_Card.prototype,{
 	,req_text: null
 	,req_text_r: null
 	,handle: null
+	,grayscale_filter: null
 	,mouse_over: function(e) {
-		if(this.data.range.max > 0) {
+		if(!this.expended && this.data.range.max > 0) {
 			scenes_Level.i.draw_indicators(this);
 		}
 	}
@@ -76735,6 +76754,9 @@ ui_GearCard.prototype = $extend(ui_Card.prototype,{
 		case "DAMAGE":
 			str = "Do " + this.get_effect_string() + " damage";
 			break;
+		case "DRAW":
+			str = "Draw " + this.get_effect_string() + " card" + (this.get_effect_value() > 1 ? "s" : "");
+			break;
 		case "HEALTH":
 			str = "Heal " + this.get_effect_string() + " hitpoints";
 			break;
@@ -76744,8 +76766,6 @@ ui_GearCard.prototype = $extend(ui_Card.prototype,{
 		case "SHIELD":
 			str = "Shield against " + this.get_effect_string() + " damage";
 			break;
-		default:
-			str = "";
 		}
 		zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(this.description,zero_openfl_extensions_TextTools.wrap_string(str,this.description,128)),ui_GearCard.card_width / 2,70,zero_utilities_Anchor.MIDDLE_CENTER);
 	}
@@ -77178,7 +77198,31 @@ ui_GearCard.prototype = $extend(ui_Card.prototype,{
 		}
 		return true;
 	}
+	,execute: function(target) {
+		this.set_active(false);
+		this.set_expended(true);
+		switch(this.data.effect.type) {
+		case "DAMAGE":
+			if(target != null) {
+				target.change_health(-this.get_effect_value());
+			}
+			break;
+		case "DRAW":
+			scenes_Level.i.deck.deal(this.get_effect_value());
+			break;
+		case "HEALTH":
+			if(target != null) {
+				target.change_health(this.get_effect_value());
+			}
+			break;
+		case "MOVE":
+			break;
+		case "SHIELD":
+			break;
+		}
+	}
 	,__class__: ui_GearCard
+	,__properties__: $extend(ui_Card.prototype.__properties__,{set_expended:"set_expended",set_active:"set_active"})
 });
 var ui_GearCardHandle = function(type,parent) {
 	this.dragging = false;
@@ -77231,13 +77275,13 @@ ui_GearCardHandle.prototype = $extend(openfl_display_Sprite.prototype,{
 	,target: null
 	,mouse_over: function(e) {
 		if(this.type == ui_HandleType.PRESS) {
-			this.gear_card.active = true;
+			this.gear_card.set_active(true);
 		} else {
 			scenes_Level.i.draw_indicators(this.gear_card);
 		}
 	}
 	,mouse_out: function(e) {
-		this.gear_card.active = false;
+		this.gear_card.set_active(false);
 	}
 	,mouse_down: function(e) {
 		if(!this.active) {
@@ -77245,7 +77289,7 @@ ui_GearCardHandle.prototype = $extend(openfl_display_Sprite.prototype,{
 		}
 		this.startDrag(true);
 		this.dragging = true;
-		this.gear_card.active = true;
+		this.gear_card.set_active(true);
 	}
 	,mouse_up: function(e) {
 		if(!this.dragging) {
@@ -77255,9 +77299,30 @@ ui_GearCardHandle.prototype = $extend(openfl_display_Sprite.prototype,{
 		this.dragging = false;
 		ui_Gear.active_gear.link.length = 0;
 		ui_Gear.active_gear.link.draw();
-		this.gear_card.active = false;
+		this.gear_card.set_active(false);
 		this.level_pos = this.get_level_pos();
 		scenes_Level.i.clear_indicators();
+		if(this.target != null) {
+			var execute = false;
+			var target_grid_pos = this.target.get_grid_pos();
+			var _g = 0;
+			var _g1 = scenes_Level.i.available_tiles;
+			while(_g < _g1.length) {
+				var pos = _g1[_g];
+				++_g;
+				if(pos[0] == target_grid_pos[0] && pos[1] == target_grid_pos[1]) {
+					execute = true;
+				}
+			}
+			zero_utilities__$IntPoint_IntPoint_$Impl_$.pool.push(target_grid_pos);
+			target_grid_pos = null;
+			scenes_Level.i.info_layer.show_info(this.target);
+			if(!execute) {
+				return;
+			}
+			this.gear_card.execute(this.target);
+			this.hide();
+		}
 	}
 	,get_level_pos: function() {
 		return this.level_pos = scenes_Level.i.level.globalToLocal(new openfl_geom_Point(this.get_x(),this.get_y()));
@@ -77266,7 +77331,8 @@ ui_GearCardHandle.prototype = $extend(openfl_display_Sprite.prototype,{
 		if(!this.active) {
 			return;
 		}
-		zero_utilities_Tween.get(this).from_to("scaleX",0.5,1).from_to("scaleY",0.5,1).ease(zero_utilities_Ease.elasticOut).duration(0.4);
+		zero_utilities_Tween.get(this).from_to("scaleX",0.5,1).from_to("scaleY",0.5,1).ease(zero_utilities_Ease.elasticOut).duration(0.4).on_complete($bind(this,this.hide));
+		this.gear_card.execute();
 	}
 	,show: function() {
 		if(this.active) {
@@ -77331,7 +77397,18 @@ ui_GearCardHandle.prototype = $extend(openfl_display_Sprite.prototype,{
 			var this2 = zero_utilities__$Vec2_Vec2_$Impl_$.subtract(obj_pos,zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float(pos));
 			if(Math.sqrt(this2[0] * this2[0] + this2[1] * this2[1]) < 8) {
 				target = object;
-				scenes_Level.i.info_layer.show_info(target,this.gear_card);
+				var target_grid_pos = target.get_grid_pos();
+				var _g3 = 0;
+				var _g13 = scenes_Level.i.available_tiles;
+				while(_g3 < _g13.length) {
+					var pos1 = _g13[_g3];
+					++_g3;
+					if(pos1[0] == target_grid_pos[0] && pos1[1] == target_grid_pos[1]) {
+						scenes_Level.i.info_layer.show_info(target,this.gear_card);
+					}
+				}
+				zero_utilities__$IntPoint_IntPoint_$Impl_$.pool.push(target_grid_pos);
+				target_grid_pos = null;
 				zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(pos);
 				pos = null;
 				zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(obj_pos);
@@ -77835,6 +77912,9 @@ ui_PlayingCard.prototype = $extend(ui_Card.prototype,{
 	}
 	,mouse_down: function(e) {
 		if(this.equipped) {
+			if(this.gear.expended) {
+				return;
+			}
 			var p = this.localToGlobal(new openfl_geom_Point(this.get_x(),this.get_y()));
 			this.gear.remove_card(this);
 			this.deck.add_card(this);
@@ -77865,7 +77945,7 @@ ui_PlayingCard.prototype = $extend(ui_Card.prototype,{
 				var pos = gear.get_anchor(true);
 				var this2 = zero_utilities__$Vec2_Vec2_$Impl_$.subtract(zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([this.get_x(),this.get_y()]),zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float(pos));
 				if(Math.sqrt(this2[0] * this2[0] + this2[1] * this2[1]) < 128) {
-					if(!gear.verify_card(this.data)) {
+					if(gear.expended || !gear.verify_card(this.data)) {
 						continue;
 					}
 					gear.add_card(this);

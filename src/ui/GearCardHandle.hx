@@ -71,6 +71,16 @@ class GearCardHandle extends Sprite {
 		gear_card.active = false;
 		level_pos = get_level_pos();
 		Level.i.clear_indicators();
+		if (target != null) {
+			var execute = false;
+			var target_grid_pos = target.grid_pos;
+			for (pos in Level.i.available_tiles) if (pos.equals(target_grid_pos)) execute = true;
+			target_grid_pos.put();
+			Level.i.info_layer.show_info(target);
+			if (!execute) return;
+			gear_card.execute(target);
+			hide();
+		}
 	}
 
 	function get_level_pos() {
@@ -79,7 +89,8 @@ class GearCardHandle extends Sprite {
 
 	function on_click(e:MouseEvent) {
 		if (!active) return;
-		Tween.get(this).from_to('scaleX', 0.5, 1).from_to('scaleY', 0.5, 1).ease(Ease.elasticOut).duration(0.4);
+		Tween.get(this).from_to('scaleX', 0.5, 1).from_to('scaleY', 0.5, 1).ease(Ease.elasticOut).duration(0.4).on_complete(hide);
+		gear_card.execute();
 	}
 
 	public function show() {
@@ -123,7 +134,9 @@ class GearCardHandle extends Sprite {
 			var obj_pos = Vec2.get(object.x, object.y);
 			if (pos.distance(obj_pos) < 8) {
 				target = cast object;
-				Level.i.info_layer.show_info(target, gear_card);
+				var target_grid_pos = target.grid_pos;
+				for (pos in Level.i.available_tiles) if (pos.equals(target_grid_pos)) Level.i.info_layer.show_info(target, gear_card);
+				target_grid_pos.put();
 				pos.put();
 				obj_pos.put();
 				break;

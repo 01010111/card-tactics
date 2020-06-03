@@ -1,5 +1,7 @@
 package ui;
 
+import openfl.filters.ColorMatrixFilter;
+import objects.GameObject;
 import scenes.Level;
 import openfl.events.MouseEvent;
 import openfl.text.TextFormatAlign;
@@ -22,9 +24,16 @@ class GearCard extends Card {
 	
 	public static var card_width:Float = 192;
 	public static var card_height:Float = 224;
-	public var active:Bool = false;
 	public var gear:Gear;
 	public var data:GearData;
+	public var active(default, set):Bool = false;
+	function set_active(b:Bool) return active = b && !expended;
+	public var expended(default, set):Bool = false;
+	function set_expended(b:Bool) {
+		filters = b ? [grayscale_filter] : [];
+		trace(filters);
+		return expended = b;
+	}
 	var highlight:Sprite;
 	var last:Vec2;
 	var home:Vec2;
@@ -35,6 +44,7 @@ class GearCard extends Card {
 	var req_text:TextField;
 	var req_text_r:TextField;
 	var handle:GearCardHandle;
+	var grayscale_filter:ColorMatrixFilter = new ColorMatrixFilter([0.25, 0.25, 0.25, 0, 0, 0.25, 0.25, 0.25, 0, 0, 0.25, 0.25, 0.25, 0, 0, 0, 0, 0, 1, 1]);
 	
 	public function new(gear:Gear, data:GearData) {
 		super();
@@ -51,7 +61,7 @@ class GearCard extends Card {
 	}
 
 	function mouse_over(e:MouseEvent) {
-		if (data.range.max > 0) Level.i.draw_indicators(this);
+		if (!expended && data.range.max > 0) Level.i.draw_indicators(this);
 	}
 	
 	function mouse_out(e:MouseEvent) {
@@ -163,11 +173,11 @@ class GearCard extends Card {
 
 	function set_description() {
 		var str = switch data.effect.type {
-			default: '';
 			case DAMAGE: 'Do ${get_effect_string()} damage';
 			case MOVE: 'Move ${get_effect_string()} spaces';
 			case SHIELD: 'Shield against ${get_effect_string()} damage';
 			case HEALTH: 'Heal ${get_effect_string()} hitpoints';
+			case DRAW: 'Draw ${get_effect_string()} card${get_effect_value() > 1 ? 's' : ''}';
 		}
 		description.set_string(str.wrap_string(description, 128)).set_position(card_width/2, 70, MIDDLE_CENTER);
 	}
@@ -368,6 +378,20 @@ class GearCard extends Card {
 		return true;
 	}
 
+	public function execute(?target:GameObject) {
+		active = false;
+		expended = true;
+		switch data.effect.type {
+			case DAMAGE:
+				if (target != null) target.change_health(-get_effect_value());
+			case MOVE:
+			case HEALTH:
+				if (target != null) target.change_health(get_effect_value());
+			case SHIELD:
+			case DRAW:
+				Level.i.deck.deal(get_effect_value());
+		}
+	}
 
 }
 
@@ -414,6 +438,7 @@ typedef GearData = {
 	var MOVE;
 	var HEALTH;
 	var SHIELD;
+	var DRAW;
   }
   
   enum abstract EffectFactor(String) {

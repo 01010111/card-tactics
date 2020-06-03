@@ -173,7 +173,8 @@
                                     "DAMAGE",
                                     "MOVE",
                                     "HEALTH",
-                                    "SHIELD"
+                                    "SHIELD",
+                                    "DRAW"
                                 ]
                             },
                             "factor": {
