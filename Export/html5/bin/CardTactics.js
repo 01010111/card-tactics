@@ -894,9 +894,9 @@ ApplicationMain.create = function(config) {
 	ManifestResources.init(config);
 	var _this = app.meta;
 	if(__map_reserved["build"] != null) {
-		_this.setReserved("build","17");
+		_this.setReserved("build","18");
 	} else {
-		_this.h["build"] = "17";
+		_this.h["build"] = "18";
 	}
 	var _this1 = app.meta;
 	if(__map_reserved["company"] != null) {
@@ -25115,7 +25115,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 692370;
+	this.version = 220651;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
@@ -76141,13 +76141,13 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 	,draw_indicators: function(gear_card) {
 		this.indicators.get_graphics().clear();
 		var player = gear_card.gear.player;
-		var range = gear_card.data.range;
-		if(gear_card.data.bonus.type == "DOUBLE_RANGE" && gear_card.vefify_bonus()) {
+		var range = gear_card.gear_data.range;
+		if(gear_card.gear_data.bonus.type == "DOUBLE_RANGE" && gear_card.vefify_bonus()) {
 			range.max *= 2;
 		}
 		var tiles = this.get_available_tiles_array(zero_utilities__$IntPoint_IntPoint_$Impl_$.from_array_int([Math.floor(player.get_x() / 16),Math.floor(player.get_y() / 16)]),range.min,range.max);
 		var color;
-		switch(gear_card.data.effect.type) {
+		switch(gear_card.gear_data.effect.type) {
 		case "DAMAGE":
 			color = zero_utilities__$Color_Color_$Impl_$.PICO_8_RED;
 			break;
@@ -76377,6 +76377,187 @@ ui_Deck.prototype = $extend(openfl_display_Sprite.prototype,{
 	}
 	,__class__: ui_Deck
 });
+var ui_DropCard = function() {
+	this.t = 0.0;
+	this.expended = false;
+	this.active = false;
+	this.cards = [];
+	this.anchors = [zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([-35,28]),zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([35,28])];
+	this.grayscale_filter = new openfl_filters_ColorMatrixFilter([0.25,0.25,0.25,0,0,0.25,0.25,0.25,0,0,0.25,0.25,0.25,0,0,0,0,0,1,1]);
+	ui_Card.call(this);
+	this.last = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([this.get_x(),this.get_y()]);
+	this.anchor = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([0,0]);
+};
+$hxClasses["ui.DropCard"] = ui_DropCard;
+ui_DropCard.__name__ = "ui.DropCard";
+ui_DropCard.__super__ = ui_Card;
+ui_DropCard.prototype = $extend(ui_Card.prototype,{
+	anchor: null
+	,handle: null
+	,grayscale_filter: null
+	,anchors: null
+	,cards: null
+	,data: null
+	,active: null
+	,set_active: function(b) {
+		return this.active = b && !this.expended;
+	}
+	,expended: null
+	,set_expended: function(b) {
+		this.set_filters(b ? [this.grayscale_filter] : []);
+		return this.expended = b;
+	}
+	,highlight: null
+	,last: null
+	,verify_card: function(card_data) {
+		if(this.cards.length >= 2) {
+			return false;
+		}
+		switch(this.data.requirement) {
+		case "CLUBS":
+			return card_data.suit == ui_PlayingCardSuit.CLUBS;
+		case "DIAMONDS":
+			return card_data.suit == ui_PlayingCardSuit.DIAMONDS;
+		case "DIFF_SUIT":
+			if(this.cards.length != 0) {
+				return this.cards[0].data.suit != card_data.suit;
+			} else {
+				return true;
+			}
+			break;
+		case "EXACT_CARD":
+			return util_CardUtil.value_to_int(card_data.value) == this.data.requirement_value;
+		case "EXACT_TOTAL":
+			var total = 0;
+			var _g = 0;
+			var _g1 = this.cards;
+			while(_g < _g1.length) {
+				var card = _g1[_g];
+				++_g;
+				total += util_CardUtil.value_to_int(card.data.value);
+			}
+			if(total + util_CardUtil.value_to_int(card_data.value) != this.data.requirement_value) {
+				return this.cards.length == 0;
+			} else {
+				return true;
+			}
+			break;
+		case "HEARTS":
+			return card_data.suit == ui_PlayingCardSuit.HEARTS;
+		case "IS_FACE":
+			return [ui_PlayingCardValue.JACK,ui_PlayingCardValue.QUEEN,ui_PlayingCardValue.KING].indexOf(card_data.value) >= 0;
+		case "MAX_CARD":
+			return util_CardUtil.value_to_int(card_data.value) <= this.data.requirement_value;
+		case "MAX_TOTAL":
+			var total1 = 0;
+			var _g2 = 0;
+			var _g11 = this.cards;
+			while(_g2 < _g11.length) {
+				var card1 = _g11[_g2];
+				++_g2;
+				total1 += util_CardUtil.value_to_int(card1.data.value);
+			}
+			return total1 + util_CardUtil.value_to_int(card_data.value) <= this.data.requirement_value;
+		case "MIN_CARD":
+			return util_CardUtil.value_to_int(card_data.value) >= this.data.requirement_value;
+		case "MIN_TOTAL":
+			var total2 = 0;
+			var _g3 = 0;
+			var _g12 = this.cards;
+			while(_g3 < _g12.length) {
+				var card2 = _g12[_g3];
+				++_g3;
+				total2 += util_CardUtil.value_to_int(card2.data.value);
+			}
+			if(total2 + util_CardUtil.value_to_int(card_data.value) < this.data.requirement_value) {
+				return this.cards.length == 0;
+			} else {
+				return true;
+			}
+			break;
+		case "NOT_FACE":
+			return [ui_PlayingCardValue.JACK,ui_PlayingCardValue.QUEEN,ui_PlayingCardValue.KING].indexOf(card_data.value) < 0;
+		case "NO_MATCH":
+			if(this.cards.length != 0) {
+				return this.cards[0].data.value != card_data.value;
+			} else {
+				return true;
+			}
+			break;
+		case "PAIR":
+			if(this.cards.length != 0) {
+				return this.cards[0].data.value == card_data.value;
+			} else {
+				return true;
+			}
+			break;
+		case "SAME_SUIT":
+			if(this.cards.length != 0) {
+				return this.cards[0].data.suit == card_data.suit;
+			} else {
+				return true;
+			}
+			break;
+		case "SPADES":
+			return card_data.suit == ui_PlayingCardSuit.CLUBS;
+		case "TWO_CARDS":
+			return true;
+		default:
+			return false;
+		}
+	}
+	,get_anchor: function(global) {
+		if(global == null) {
+			global = false;
+		}
+		if(global) {
+			return zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([this.anchor[0] + this.get_x(),this.anchor[1] + this.get_y()]);
+		} else {
+			return this.anchor;
+		}
+	}
+	,add_card: function(card) {
+		this.addChild(card);
+		this.cards.push(card);
+		var _g = card;
+		_g.set_x(_g.get_x() - this.get_x());
+		var _g1 = card;
+		_g1.set_y(_g1.get_y() - this.get_y());
+	}
+	,remove_card: function(card) {
+		HxOverrides.remove(this.cards,card);
+	}
+	,t: null
+	,update: function(e) {
+		var i = 0;
+		var _g = 0;
+		var _g1 = this.cards;
+		while(_g < _g1.length) {
+			var card = _g1[_g];
+			++_g;
+			if(card.dragging) {
+				continue;
+			}
+			var _g2 = card;
+			_g2.set_x(_g2.get_x() + (this.anchors[i][0] - card.get_x()) * 0.25);
+			var _g3 = card;
+			_g3.set_y(_g3.get_y() + (this.anchors[i][1] - card.get_y()) * 0.25);
+			++i;
+		}
+		this.highlight.set_visible(this.active);
+		var rot_target;
+		if(this.active) {
+			var rot_target1 = this;
+			rot_target = Math.sin(rot_target1.t += 0.15) * 4;
+		} else {
+			rot_target = 0;
+		}
+		var _g21 = this;
+		_g21.set_rotation(_g21.get_rotation() + (rot_target - this.get_rotation()) * 0.25);
+	}
+	,__class__: ui_DropCard
+	,__properties__: $extend(ui_Card.prototype.__properties__,{set_expended:"set_expended",set_active:"set_active"})
+});
 var ui_Gear = function(player,side) {
 	this.gear_cards = [];
 	this.active = false;
@@ -76449,20 +76630,12 @@ ui_Gear.prototype = $extend(openfl_display_Sprite.prototype,{
 	}
 	,__class__: ui_Gear
 });
-var ui_GearCard = function(gear,data) {
-	this.t = 0.0;
-	this.grayscale_filter = new openfl_filters_ColorMatrixFilter([0.25,0.25,0.25,0,0,0.25,0.25,0.25,0,0,0.25,0.25,0.25,0,0,0,0,0,1,1]);
-	this.cards = [];
-	this.anchors = [zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([-35,28]),zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([35,28])];
-	this.expended = false;
-	this.active = false;
-	ui_Card.call(this);
+var ui_GearCard = function(gear,gear_data) {
+	ui_DropCard.call(this);
 	this.gear = gear;
-	this.data = data;
+	this.gear_data = gear_data;
 	this.draggable = false;
-	this.last = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([this.get_x(),this.get_y()]);
-	this.home = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([this.get_x(),this.get_y()]);
-	this.anchor = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([0,0]);
+	this.data = { requirement : gear_data.requirement, requirement_value : gear_data.requirement_value};
 	this.draw_card();
 	this.addEventListener("enterFrame",$bind(this,this.update));
 	this.addEventListener("mouseOver",$bind(this,this.mouse_over));
@@ -76470,33 +76643,15 @@ var ui_GearCard = function(gear,data) {
 };
 $hxClasses["ui.GearCard"] = ui_GearCard;
 ui_GearCard.__name__ = "ui.GearCard";
-ui_GearCard.__super__ = ui_Card;
-ui_GearCard.prototype = $extend(ui_Card.prototype,{
+ui_GearCard.__super__ = ui_DropCard;
+ui_GearCard.prototype = $extend(ui_DropCard.prototype,{
 	gear: null
-	,data: null
-	,active: null
-	,set_active: function(b) {
-		return this.active = b && !this.expended;
-	}
-	,expended: null
-	,set_expended: function(b) {
-		this.set_filters(b ? [this.grayscale_filter] : []);
-		haxe_Log.trace(this.get_filters(),{ fileName : "src/ui/GearCard.hx", lineNumber : 34, className : "ui.GearCard", methodName : "set_expended"});
-		return this.expended = b;
-	}
-	,highlight: null
-	,last: null
-	,home: null
-	,anchor: null
-	,anchors: null
-	,cards: null
+	,gear_data: null
 	,description: null
 	,req_text: null
 	,req_text_r: null
-	,handle: null
-	,grayscale_filter: null
 	,mouse_over: function(e) {
-		if(!this.expended && this.data.range.max > 0) {
+		if(!this.expended && this.gear_data.range.max > 0) {
 			scenes_Level.i.draw_indicators(this);
 		}
 	}
@@ -76569,7 +76724,7 @@ ui_GearCard.prototype = $extend(ui_Card.prototype,{
 		contents.set_y(y3);
 		this.addChild(contents);
 		var _g = 0;
-		var _g1 = this.data.cost;
+		var _g1 = this.gear_data.cost;
 		while(_g < _g1) {
 			var i = _g++;
 			var sprite = zero_openfl_extensions_SpriteTools.load_graphic(new openfl_display_Sprite(),"images/ui/ap_pip.png",zero_utilities_Anchor.TOP_LEFT,true);
@@ -76592,7 +76747,7 @@ ui_GearCard.prototype = $extend(ui_Card.prototype,{
 		}
 		sprite1.get_graphics().endFill();
 		contents.addChild(sprite1);
-		var title = zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : "Oduda Bold", size : 16, color : zero_utilities__$Color_Color_$Impl_$.BLACK}),this.data.title),40,38,zero_utilities_Anchor.MIDDLE_LEFT);
+		var title = zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : "Oduda Bold", size : 16, color : zero_utilities__$Color_Color_$Impl_$.BLACK}),this.gear_data.title),40,38,zero_utilities_Anchor.MIDDLE_LEFT);
 		contents.addChild(title);
 		this.description = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : "Oduda Bold", size : 14, color : zero_utilities__$Color_Color_$Impl_$.BLACK, leading : -2});
 		contents.addChild(this.description);
@@ -76618,7 +76773,7 @@ ui_GearCard.prototype = $extend(ui_Card.prototype,{
 		contents.addChild(this.req_text_r);
 		this.set_req_text_r();
 		var src;
-		switch(this.data.bonus.requirement) {
+		switch(this.gear_data.bonus.requirement) {
 		case "CLUBS":
 			src = "images/ui/suit_club.png";
 			break;
@@ -76656,7 +76811,7 @@ ui_GearCard.prototype = $extend(ui_Card.prototype,{
 		sprite4.set_scaleY(y4);
 		contents.addChild(sprite4);
 		var class_src;
-		switch(this.data.gear_class) {
+		switch(this.gear_data.gear_class) {
 		case "ELECTRICITY":
 			class_src = "images/ui/icons/on_white/icon_electrify.png";
 			break;
@@ -76688,7 +76843,7 @@ ui_GearCard.prototype = $extend(ui_Card.prototype,{
 			class_src = "images/blank.png";
 		}
 		var weakness_src;
-		switch(this.data.weakness) {
+		switch(this.gear_data.weakness) {
 		case "ELECTRICITY":
 			weakness_src = "images/ui/icons/on_white/icon_electrify.png";
 			break;
@@ -76788,11 +76943,11 @@ ui_GearCard.prototype = $extend(ui_Card.prototype,{
 		this.addChild(this.highlight = sprite11);
 		zero_utilities_Tween.get(this.highlight).from_to("scaleX",1,1.1).from_to("scaleY",1,1.1).from_to("alpha",1,0).type(zero_utilities_TweenType.LOOP_FORWARDS).duration(1).ease(zero_utilities_Ease.quadOut);
 		this.highlight.set_visible(false);
-		this.handle = new ui_GearCardHandle(this.data.range.max == 0 ? ui_HandleType.PRESS : ui_HandleType.AIM,this);
+		this.handle = new ui_GearCardHandle(this.gear_data.range.max == 0 ? ui_HandleType.PRESS : ui_HandleType.AIM,this);
 	}
 	,set_description: function() {
 		var str;
-		switch(this.data.effect.type) {
+		switch(this.gear_data.effect.type) {
 		case "DAMAGE":
 			str = "Do " + this.get_effect_string() + " damage";
 			break;
@@ -76817,7 +76972,7 @@ ui_GearCard.prototype = $extend(ui_Card.prototype,{
 			return;
 		}
 		var str;
-		switch(this.data.requirement) {
+		switch(this.gear_data.requirement) {
 		case "CLUBS":
 			str = "Clubs";
 			break;
@@ -76828,10 +76983,10 @@ ui_GearCard.prototype = $extend(ui_Card.prototype,{
 			str = "Different Suit";
 			break;
 		case "EXACT_CARD":
-			str = "= " + this.data.requirement_value;
+			str = "= " + this.gear_data.requirement_value;
 			break;
 		case "EXACT_TOTAL":
-			str = "All = " + this.data.requirement_value;
+			str = "All = " + this.gear_data.requirement_value;
 			break;
 		case "HEARTS":
 			str = "Hearts";
@@ -76840,16 +76995,16 @@ ui_GearCard.prototype = $extend(ui_Card.prototype,{
 			str = "Face";
 			break;
 		case "MAX_CARD":
-			str = "< " + (this.data.requirement_value + 1);
+			str = "< " + (this.gear_data.requirement_value + 1);
 			break;
 		case "MAX_TOTAL":
-			str = "All < " + (this.data.requirement_value + 1);
+			str = "All < " + (this.gear_data.requirement_value + 1);
 			break;
 		case "MIN_CARD":
-			str = "> " + (this.data.requirement_value - 1);
+			str = "> " + (this.gear_data.requirement_value - 1);
 			break;
 		case "MIN_TOTAL":
-			str = "All > " + (this.data.requirement_value - 1);
+			str = "All > " + (this.gear_data.requirement_value - 1);
 			break;
 		case "NOT_FACE":
 			str = "Not Face";
@@ -76880,7 +77035,7 @@ ui_GearCard.prototype = $extend(ui_Card.prototype,{
 			return;
 		}
 		var str;
-		switch(this.data.requirement) {
+		switch(this.gear_data.requirement) {
 		case "CLUBS":
 			str = "Clubs";
 			break;
@@ -76891,10 +77046,10 @@ ui_GearCard.prototype = $extend(ui_Card.prototype,{
 			str = "Not\n" + util_CardUtil.suit_to_string(this.cards[0].data.suit);
 			break;
 		case "EXACT_CARD":
-			str = "= " + this.data.requirement_value;
+			str = "= " + this.gear_data.requirement_value;
 			break;
 		case "EXACT_TOTAL":
-			str = "= " + (this.data.requirement_value - util_CardUtil.value_to_int(this.cards[0].data.value));
+			str = "= " + (this.gear_data.requirement_value - util_CardUtil.value_to_int(this.cards[0].data.value));
 			break;
 		case "HEARTS":
 			str = "Hearts";
@@ -76903,16 +77058,16 @@ ui_GearCard.prototype = $extend(ui_Card.prototype,{
 			str = "Face";
 			break;
 		case "MAX_CARD":
-			str = "< " + (this.data.requirement_value + 1);
+			str = "< " + (this.gear_data.requirement_value + 1);
 			break;
 		case "MAX_TOTAL":
-			str = "< " + (this.data.requirement_value + 1 - util_CardUtil.value_to_int(this.cards[0].data.value));
+			str = "< " + (this.gear_data.requirement_value + 1 - util_CardUtil.value_to_int(this.cards[0].data.value));
 			break;
 		case "MIN_CARD":
-			str = "> " + (this.data.requirement_value - 1);
+			str = "> " + (this.gear_data.requirement_value - 1);
 			break;
 		case "MIN_TOTAL":
-			str = "> " + Math.max(this.data.requirement_value - 1 - util_CardUtil.value_to_int(this.cards[0].data.value),0);
+			str = "> " + Math.max(this.gear_data.requirement_value - 1 - util_CardUtil.value_to_int(this.cards[0].data.value),0);
 			break;
 		case "NOT_FACE":
 			str = "Not\nFace";
@@ -76939,9 +77094,9 @@ ui_GearCard.prototype = $extend(ui_Card.prototype,{
 	}
 	,get_effect_value: function() {
 		var out = 0;
-		switch(this.data.effect.factor) {
+		switch(this.gear_data.effect.factor) {
 		case "STATIC":
-			out = this.data.effect.value;
+			out = this.gear_data.effect.value;
 			break;
 		case "VALUES":
 			var _g = 0;
@@ -76954,7 +77109,7 @@ ui_GearCard.prototype = $extend(ui_Card.prototype,{
 			break;
 		}
 		if(this.vefify_bonus()) {
-			switch(this.data.bonus.type) {
+			switch(this.gear_data.bonus.type) {
 			case "DOUBLE_EFFECT_VALUE":
 				out *= 2;
 				break;
@@ -76972,182 +77127,6 @@ ui_GearCard.prototype = $extend(ui_Card.prototype,{
 			return "" + val;
 		}
 	}
-	,t: null
-	,update: function(e) {
-		var i = 0;
-		var _g = 0;
-		var _g1 = this.cards;
-		while(_g < _g1.length) {
-			var card = _g1[_g];
-			++_g;
-			if(card.dragging) {
-				continue;
-			}
-			var _g2 = card;
-			_g2.set_x(_g2.get_x() + (this.anchors[i][0] - card.get_x()) * 0.25);
-			var _g3 = card;
-			_g3.set_y(_g3.get_y() + (this.anchors[i][1] - card.get_y()) * 0.25);
-			++i;
-		}
-		var tmp;
-		if(!this.dragging) {
-			var this1 = this.home;
-			tmp = Math.sqrt(this1[0] * this1[0] + this1[1] * this1[1]) > 0;
-		} else {
-			tmp = false;
-		}
-		if(tmp) {
-			var _g21 = this;
-			_g21.set_x(_g21.get_x() + (this.home[0] - this.get_x()) * 0.1);
-			var _g22 = this;
-			_g22.set_y(_g22.get_y() + (this.home[1] - this.get_y()) * 0.1);
-		}
-		this.highlight.set_visible(this.active);
-		var rot_target;
-		if(this.active) {
-			var rot_target1 = this;
-			rot_target = Math.sin(rot_target1.t += 0.15) * 4;
-		} else {
-			rot_target = 0;
-		}
-		var _g23 = this;
-		_g23.set_rotation(_g23.get_rotation() + (rot_target - this.get_rotation()) * 0.25);
-	}
-	,get_anchor: function(global) {
-		if(global == null) {
-			global = false;
-		}
-		if(global) {
-			return zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([this.anchor[0] + this.get_x(),this.anchor[1] + this.get_y()]);
-		} else {
-			return this.anchor;
-		}
-	}
-	,add_card: function(card) {
-		this.addChild(card);
-		this.cards.push(card);
-		var _g = card;
-		_g.set_x(_g.get_x() - this.get_x());
-		var _g1 = card;
-		_g1.set_y(_g1.get_y() - this.get_y());
-		card.gear = this;
-		this.set_description();
-		this.set_req_text();
-		this.set_req_text_r();
-		if(this.verify_gear()) {
-			this.handle.show();
-		} else {
-			this.handle.hide();
-		}
-	}
-	,remove_card: function(card) {
-		HxOverrides.remove(this.cards,card);
-		this.set_description();
-		this.set_req_text();
-		this.set_req_text_r();
-		if(this.verify_gear()) {
-			this.handle.show();
-		} else {
-			this.handle.hide();
-		}
-	}
-	,verify_card: function(card_data) {
-		if(this.cards.length >= 2) {
-			return false;
-		}
-		switch(this.data.requirement) {
-		case "CLUBS":
-			return card_data.suit == ui_PlayingCardSuit.CLUBS;
-		case "DIAMONDS":
-			return card_data.suit == ui_PlayingCardSuit.DIAMONDS;
-		case "DIFF_SUIT":
-			if(this.cards.length != 0) {
-				return this.cards[0].data.suit != card_data.suit;
-			} else {
-				return true;
-			}
-			break;
-		case "EXACT_CARD":
-			return util_CardUtil.value_to_int(card_data.value) == this.data.requirement_value;
-		case "EXACT_TOTAL":
-			var total = 0;
-			var _g = 0;
-			var _g1 = this.cards;
-			while(_g < _g1.length) {
-				var card = _g1[_g];
-				++_g;
-				total += util_CardUtil.value_to_int(card.data.value);
-			}
-			if(total + util_CardUtil.value_to_int(card_data.value) != this.data.requirement_value) {
-				return this.cards.length == 0;
-			} else {
-				return true;
-			}
-			break;
-		case "HEARTS":
-			return card_data.suit == ui_PlayingCardSuit.HEARTS;
-		case "IS_FACE":
-			return [ui_PlayingCardValue.JACK,ui_PlayingCardValue.QUEEN,ui_PlayingCardValue.KING].indexOf(card_data.value) >= 0;
-		case "MAX_CARD":
-			return util_CardUtil.value_to_int(card_data.value) <= this.data.requirement_value;
-		case "MAX_TOTAL":
-			var total1 = 0;
-			var _g2 = 0;
-			var _g11 = this.cards;
-			while(_g2 < _g11.length) {
-				var card1 = _g11[_g2];
-				++_g2;
-				total1 += util_CardUtil.value_to_int(card1.data.value);
-			}
-			return total1 + util_CardUtil.value_to_int(card_data.value) <= this.data.requirement_value;
-		case "MIN_CARD":
-			return util_CardUtil.value_to_int(card_data.value) >= this.data.requirement_value;
-		case "MIN_TOTAL":
-			var total2 = 0;
-			var _g3 = 0;
-			var _g12 = this.cards;
-			while(_g3 < _g12.length) {
-				var card2 = _g12[_g3];
-				++_g3;
-				total2 += util_CardUtil.value_to_int(card2.data.value);
-			}
-			if(total2 + util_CardUtil.value_to_int(card_data.value) < this.data.requirement_value) {
-				return this.cards.length == 0;
-			} else {
-				return true;
-			}
-			break;
-		case "NOT_FACE":
-			return [ui_PlayingCardValue.JACK,ui_PlayingCardValue.QUEEN,ui_PlayingCardValue.KING].indexOf(card_data.value) < 0;
-		case "NO_MATCH":
-			if(this.cards.length != 0) {
-				return this.cards[0].data.value != card_data.value;
-			} else {
-				return true;
-			}
-			break;
-		case "PAIR":
-			if(this.cards.length != 0) {
-				return this.cards[0].data.value == card_data.value;
-			} else {
-				return true;
-			}
-			break;
-		case "SAME_SUIT":
-			if(this.cards.length != 0) {
-				return this.cards[0].data.suit == card_data.suit;
-			} else {
-				return true;
-			}
-			break;
-		case "SPADES":
-			return card_data.suit == ui_PlayingCardSuit.CLUBS;
-		case "TWO_CARDS":
-			return true;
-		default:
-			return false;
-		}
-	}
 	,verify_gear: function() {
 		if(this.cards.length == 0) {
 			return false;
@@ -77160,13 +77139,13 @@ ui_GearCard.prototype = $extend(ui_Card.prototype,{
 			++_g;
 			total += util_CardUtil.value_to_int(card.data.value);
 		}
-		switch(this.data.requirement) {
+		switch(this.gear_data.requirement) {
 		case "EXACT_TOTAL":
-			return total == this.data.requirement_value;
+			return total == this.gear_data.requirement_value;
 		case "MAX_TOTAL":
-			return total <= this.data.requirement_value;
+			return total <= this.gear_data.requirement_value;
 		case "MIN_TOTAL":
-			return total >= this.data.requirement_value;
+			return total >= this.gear_data.requirement_value;
 		case "TWO_CARDS":
 			return this.cards.length == 2;
 		default:
@@ -77177,7 +77156,7 @@ ui_GearCard.prototype = $extend(ui_Card.prototype,{
 		if(this.cards.length == 0) {
 			return false;
 		}
-		switch(this.data.bonus.requirement) {
+		switch(this.gear_data.bonus.requirement) {
 		case "CLUBS":
 			var _g = 0;
 			var _g1 = this.cards;
@@ -77243,7 +77222,7 @@ ui_GearCard.prototype = $extend(ui_Card.prototype,{
 	,execute: function(target) {
 		this.set_active(false);
 		this.set_expended(true);
-		switch(this.data.effect.type) {
+		switch(this.gear_data.effect.type) {
 		case "DAMAGE":
 			if(target != null) {
 				target.change_health(-this.get_effect_value());
@@ -77263,8 +77242,30 @@ ui_GearCard.prototype = $extend(ui_Card.prototype,{
 			break;
 		}
 	}
+	,add_card: function(card) {
+		ui_DropCard.prototype.add_card.call(this,card);
+		card.gear = this;
+		this.set_description();
+		this.set_req_text();
+		this.set_req_text_r();
+		if(this.verify_gear()) {
+			this.handle.show();
+		} else {
+			this.handle.hide();
+		}
+	}
+	,remove_card: function(card) {
+		ui_DropCard.prototype.remove_card.call(this,card);
+		this.set_description();
+		this.set_req_text();
+		this.set_req_text_r();
+		if(this.verify_gear()) {
+			this.handle.show();
+		} else {
+			this.handle.hide();
+		}
+	}
 	,__class__: ui_GearCard
-	,__properties__: $extend(ui_Card.prototype.__properties__,{set_expended:"set_expended",set_active:"set_active"})
 });
 var ui_GearCardHandle = function(type,parent) {
 	this.dragging = false;
@@ -77358,11 +77359,11 @@ ui_GearCardHandle.prototype = $extend(openfl_display_Sprite.prototype,{
 			}
 			zero_utilities__$IntPoint_IntPoint_$Impl_$.pool.push(target_grid_pos);
 			target_grid_pos = null;
-			scenes_Level.i.info_layer.show_info(this.target);
 			if(!execute) {
 				return;
 			}
 			this.gear_card.execute(this.target);
+			scenes_Level.i.info_layer.show_info(this.target);
 			this.hide();
 		}
 	}
@@ -77724,7 +77725,7 @@ ui_ObjectInfo.prototype = $extend(openfl_display_Sprite.prototype,{
 			next_hp = cur_hp;
 		} else {
 			var next_hp1;
-			switch(gear.data.effect.type) {
+			switch(gear.gear_data.effect.type) {
 			case "DAMAGE":
 				next_hp1 = -gear.get_effect_value();
 				break;
@@ -79210,8 +79211,8 @@ zero_openfl_extensions_SpriteTools.set_position = function(sprite,x,y) {
 zero_openfl_extensions_SpriteTools.distance = function(sprite1,sprite2) {
 	var p1 = zero_utilities__$Vec2_Vec2_$Impl_$.get(sprite1.get_x(),sprite1.get_y());
 	var p2 = zero_utilities__$Vec2_Vec2_$Impl_$.get(sprite2.get_x(),sprite2.get_y());
-	var this2 = zero_utilities__$Vec2_Vec2_$Impl_$.subtract(p2,zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float(p1));
-	var out = Math.sqrt(this2[0] * this2[0] + this2[1] * this2[1]);
+	var this1 = zero_utilities__$Vec2_Vec2_$Impl_$.subtract(p2,zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float(p1));
+	var out = Math.sqrt(this1[0] * this1[0] + this1[1] * this1[1]);
 	zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(p1);
 	p1 = null;
 	zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(p2);

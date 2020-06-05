@@ -152,10 +152,10 @@ class Level extends Scene {
 	public function draw_indicators(gear_card:GearCard) {
 		indicators.graphics.clear();
 		var player = gear_card.gear.player;
-		var range = gear_card.data.range;
-		if (gear_card.data.bonus.type == DOUBLE_RANGE && gear_card.vefify_bonus()) range.max *= 2;
+		var range = gear_card.gear_data.range;
+		if (gear_card.gear_data.bonus.type == DOUBLE_RANGE && gear_card.vefify_bonus()) range.max *= 2;
 		var tiles = get_available_tiles_array([(player.x/16).floor(), (player.y/16).floor()], range.min, range.max);
-		var color = switch gear_card.data.effect.type {
+		var color = switch gear_card.gear_data.effect.type {
 			default: Color.WHITE;
 			case DAMAGE:Color.PICO_8_RED;
 			case MOVE:Color.PICO_8_BLUE;

@@ -76,9 +76,9 @@ class GearCardHandle extends Sprite {
 			var target_grid_pos = target.grid_pos;
 			for (pos in Level.i.available_tiles) if (pos.equals(target_grid_pos)) execute = true;
 			target_grid_pos.put();
-			Level.i.info_layer.show_info(target);
 			if (!execute) return;
 			gear_card.execute(target);
+			Level.i.info_layer.show_info(target);
 			hide();
 		}
 	}

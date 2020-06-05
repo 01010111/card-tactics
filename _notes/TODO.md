@@ -4,6 +4,7 @@
 - [ ] Mutation Gear
 - [ ] Gear Pickups
 - [ ] Props
+- [ ] Turns
 
 # Tomorrow
 
@@ -16,6 +17,11 @@
     - [ ] Persistent per player
   - [ ] Click on Available Moves to Move
     - [ ] Gray Out Move Card
+
+6/4/2020
+
+- [x] Refactor GearCard
+  - [x] Make Generic DropCard
 
 6/3/2020
 
