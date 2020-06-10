@@ -26,7 +26,7 @@ class DropCard extends Card {
 	var anchor:Vec2;
 	var handle:GearCardHandle;
 	var grayscale_filter:ColorMatrixFilter = new ColorMatrixFilter([0.25, 0.25, 0.25, 0, 0, 0.25, 0.25, 0.25, 0, 0, 0.25, 0.25, 0.25, 0, 0, 0, 0, 0, 1, 1]);
-	var anchors:Array<Vec2> = [[-35, 28], [35, 28]];
+	var anchors:Array<Vec2>;
 	var cards:Array<PlayingCard> = [];
 	var data:DropCardData;
 	public var active(default, set):Bool = false;
@@ -43,6 +43,7 @@ class DropCard extends Card {
 		super();
 		last = [x, y];
 		anchor = [0, 0];
+		addEventListener(Event.ENTER_FRAME, update);
 	}
 
 	public function verify_card(card_data:PlayingCardData):Bool {
@@ -99,6 +100,7 @@ class DropCard extends Card {
 	public function add_card(card:PlayingCard) {
 		this.add(card);
 		cards.push(card);
+		card.drop = this;
 		card.x -= x;
 		card.y -= y;
 	}
@@ -116,18 +118,11 @@ class DropCard extends Card {
 			card.y += (anchors[i].y - card.y) * 0.25;
 			i++;
 		}
-		/*if (!dragging && home.length > 0) {
-			x += (home.x - x) * 0.1;
-			y += (home.y - y) * 0.1;
-		}*/
-		highlight.visible = active;
-		var rot_target = active ? (t += 0.15).sin() * 4 : 0;
-		rotation += (rot_target - rotation) * 0.25;
 	}
 
 }
 
 typedef DropCardData = {
 	requirement:Requirement,
-	requirement_value:Int,
+	?requirement_value:Int,
 }

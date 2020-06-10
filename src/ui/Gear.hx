@@ -33,7 +33,7 @@ class Gear extends Sprite {
 		this.side = side;
 		addChild(link = new LinkGraphic(Assets.getBitmapData('images/ui/action_arrow_white.png')));
 		addChild(gear = new Sprite());
-		addChild(move_card = cast new MoveCard().set_position(side == LEFT ? -72 : Game.width + 72, 298));
+		addChild(move_card = cast new MoveCard({ requirement: MIN_CARD, requirement_value: 3, type: FREE, factor: VALUE }).set_position(side == LEFT ? -72 : Game.width + 72, 298));
 		addChild(player_info = new PlayerInfo(player, side));
 
 		addEventListener(Event.ENTER_FRAME, (e) -> update());

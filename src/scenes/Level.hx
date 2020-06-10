@@ -71,7 +71,7 @@ class Level extends Scene {
 				},
 				movement: {
 					requirement: MAX_CARD,
-					value: 5,
+					requirement_value: 5,
 					type: FREE,
 					factor: VALUE,
 				},
@@ -88,7 +88,7 @@ class Level extends Scene {
 				},
 				movement: {
 					requirement: MAX_CARD,
-					value: 5,
+					requirement_value: 5,
 					type: FREE,
 					factor: VALUE,
 				},

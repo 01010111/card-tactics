@@ -894,9 +894,9 @@ ApplicationMain.create = function(config) {
 	ManifestResources.init(config);
 	var _this = app.meta;
 	if(__map_reserved["build"] != null) {
-		_this.setReserved("build","18");
+		_this.setReserved("build","19");
 	} else {
-		_this.h["build"] = "18";
+		_this.h["build"] = "19";
 	}
 	var _this1 = app.meta;
 	if(__map_reserved["company"] != null) {
@@ -27848,7 +27848,6 @@ objects_GameObject.prototype = $extend(openfl_display_Sprite.prototype,{
 	,__properties__: $extend(openfl_display_Sprite.prototype.__properties__,{get_grid_pos:"get_grid_pos"})
 });
 var objects_Actor = function(data,x,y) {
-	haxe_Log.trace(data,{ fileName : "src/objects/Actor.hx", lineNumber : 11, className : "objects.Actor", methodName : "new"});
 	objects_GameObject.call(this,x,y,data.health,data.id);
 };
 $hxClasses["objects.Actor"] = objects_Actor;
@@ -27892,6 +27891,7 @@ objects_Player.set_selected_player = function(player) {
 	ui_Gear.set_active_gear(player.gear);
 	scenes_Level.i.dolly.follow(player,false);
 	player.pulse();
+	player.gear.move_card.set_moves();
 	return objects_Player.selected_player = player;
 };
 objects_Player.__super__ = objects_Actor;
@@ -76044,8 +76044,8 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 		this.addChild(this.deck);
 		this.deck.deal();
 		this.addChild(this.info_layer = new ui_InfoLayer());
-		var player = new objects_Player(2,9,{ data : { id : "Test Player", health : { current : 48, max : 64}, movement : { requirement : "MAX_CARD", value : 5, type : ui_MoveType.FREE, factor : ui_MoveFactor.VALUE}, gear : ["test_d_01","test_h_01"]}, side : objects_PlayerSide.LEFT});
-		new objects_Player(6,8,{ data : { id : "Test Player", health : { current : 64, max : 64}, movement : { requirement : "MAX_CARD", value : 5, type : ui_MoveType.FREE, factor : ui_MoveFactor.VALUE}, gear : ["test_u_01","test_h_01"]}, side : objects_PlayerSide.RIGHT});
+		var player = new objects_Player(2,9,{ data : { id : "Test Player", health : { current : 48, max : 64}, movement : { requirement : "MAX_CARD", requirement_value : 5, type : ui_MoveType.FREE, factor : ui_MoveFactor.VALUE}, gear : ["test_d_01","test_h_01"]}, side : objects_PlayerSide.LEFT});
+		new objects_Player(6,8,{ data : { id : "Test Player", health : { current : 64, max : 64}, movement : { requirement : "MAX_CARD", requirement_value : 5, type : ui_MoveType.FREE, factor : ui_MoveFactor.VALUE}, gear : ["test_u_01","test_h_01"]}, side : objects_PlayerSide.RIGHT});
 		objects_Player.set_selected_player(player);
 	}
 	,init_dolly: function() {
@@ -76382,11 +76382,11 @@ var ui_DropCard = function() {
 	this.expended = false;
 	this.active = false;
 	this.cards = [];
-	this.anchors = [zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([-35,28]),zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([35,28])];
 	this.grayscale_filter = new openfl_filters_ColorMatrixFilter([0.25,0.25,0.25,0,0,0.25,0.25,0.25,0,0,0.25,0.25,0.25,0,0,0,0,0,1,1]);
 	ui_Card.call(this);
 	this.last = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([this.get_x(),this.get_y()]);
 	this.anchor = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([0,0]);
+	this.addEventListener("enterFrame",$bind(this,this.update));
 };
 $hxClasses["ui.DropCard"] = ui_DropCard;
 ui_DropCard.__name__ = "ui.DropCard";
@@ -76519,6 +76519,7 @@ ui_DropCard.prototype = $extend(ui_Card.prototype,{
 	,add_card: function(card) {
 		this.addChild(card);
 		this.cards.push(card);
+		card.drop = this;
 		var _g = card;
 		_g.set_x(_g.get_x() - this.get_x());
 		var _g1 = card;
@@ -76544,16 +76545,6 @@ ui_DropCard.prototype = $extend(ui_Card.prototype,{
 			_g3.set_y(_g3.get_y() + (this.anchors[i][1] - card.get_y()) * 0.25);
 			++i;
 		}
-		this.highlight.set_visible(this.active);
-		var rot_target;
-		if(this.active) {
-			var rot_target1 = this;
-			rot_target = Math.sin(rot_target1.t += 0.15) * 4;
-		} else {
-			rot_target = 0;
-		}
-		var _g21 = this;
-		_g21.set_rotation(_g21.get_rotation() + (rot_target - this.get_rotation()) * 0.25);
 	}
 	,__class__: ui_DropCard
 	,__properties__: $extend(ui_Card.prototype.__properties__,{set_expended:"set_expended",set_active:"set_active"})
@@ -76567,7 +76558,7 @@ var ui_Gear = function(player,side) {
 	this.side = side;
 	this.addChild(this.link = new ui_LinkGraphic(openfl_utils_Assets.getBitmapData("images/ui/action_arrow_white.png")));
 	this.addChild(this.gear = new openfl_display_Sprite());
-	var sprite = new ui_MoveCard();
+	var sprite = new ui_MoveCard({ requirement : "MIN_CARD", requirement_value : 3, type : ui_MoveType.FREE, factor : ui_MoveFactor.VALUE});
 	sprite.set_x(side == objects_PlayerSide.LEFT ? -72 : zero_openfl_utilities_Game.get_width() + 72);
 	sprite.set_y(298);
 	this.addChild(this.move_card = sprite);
@@ -76635,9 +76626,9 @@ var ui_GearCard = function(gear,gear_data) {
 	this.gear = gear;
 	this.gear_data = gear_data;
 	this.draggable = false;
+	this.anchors = [zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([-35,28]),zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([35,28])];
 	this.data = { requirement : gear_data.requirement, requirement_value : gear_data.requirement_value};
 	this.draw_card();
-	this.addEventListener("enterFrame",$bind(this,this.update));
 	this.addEventListener("mouseOver",$bind(this,this.mouse_over));
 	this.addEventListener("mouseOut",$bind(this,this.mouse_out));
 };
@@ -77244,7 +77235,6 @@ ui_GearCard.prototype = $extend(ui_DropCard.prototype,{
 	}
 	,add_card: function(card) {
 		ui_DropCard.prototype.add_card.call(this,card);
-		card.gear = this;
 		this.set_description();
 		this.set_req_text();
 		this.set_req_text_r();
@@ -77264,6 +77254,19 @@ ui_GearCard.prototype = $extend(ui_DropCard.prototype,{
 		} else {
 			this.handle.hide();
 		}
+	}
+	,update: function(e) {
+		ui_DropCard.prototype.update.call(this,e);
+		this.highlight.set_visible(this.active);
+		var rot_target;
+		if(this.active) {
+			var rot_target1 = this;
+			rot_target = Math.sin(rot_target1.t += 0.15) * 4;
+		} else {
+			rot_target = 0;
+		}
+		var _g = this;
+		_g.set_rotation(_g.get_rotation() + (rot_target - this.get_rotation()) * 0.25);
 	}
 	,__class__: ui_GearCard
 });
@@ -77522,15 +77525,21 @@ ui_LinkGraphic.prototype = $extend(openfl_display_Sprite.prototype,{
 	}
 	,__class__: ui_LinkGraphic
 });
-var ui_MoveCard = function() {
-	ui_Card.call(this);
+var ui_MoveCard = function(data) {
+	ui_DropCard.call(this);
+	this.data = { requirement : data.requirement, requirement_value : data.requirement_value};
+	this.move_data = data;
 	this.make_graphic();
+	this.draggable = false;
+	this.anchors = [zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([0,16])];
 };
 $hxClasses["ui.MoveCard"] = ui_MoveCard;
 ui_MoveCard.__name__ = "ui.MoveCard";
-ui_MoveCard.__super__ = ui_Card;
-ui_MoveCard.prototype = $extend(ui_Card.prototype,{
-	make_graphic: function() {
+ui_MoveCard.__super__ = ui_DropCard;
+ui_MoveCard.prototype = $extend(ui_DropCard.prototype,{
+	req_text: null
+	,move_data: null
+	,make_graphic: function() {
 		var color = zero_utilities__$Color_Color_$Impl_$.BLACK;
 		var radius = 16;
 		if(radius == null) {
@@ -77639,6 +77648,80 @@ ui_MoveCard.prototype = $extend(ui_Card.prototype,{
 		sprite3.set_scaleX(x2);
 		sprite3.set_scaleY(y2);
 		this.addChild(sprite3);
+		var tmp = new openfl_text_TextField();
+		var this12 = zero_utilities__$Color_Color_$Impl_$.get();
+		var x3 = 0.031372549019607843;
+		var y3 = 0.24313725490196078;
+		var z2 = 0.69411764705882351;
+		var w2 = 1.;
+		if(w2 == null) {
+			w2 = 0;
+		}
+		if(z2 == null) {
+			z2 = 0;
+		}
+		if(y3 == null) {
+			y3 = 0;
+		}
+		if(x3 == null) {
+			x3 = 0;
+		}
+		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this12,0,zero_utilities__$Color_Color_$Impl_$.zero(x3));
+		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this12,1,zero_utilities__$Color_Color_$Impl_$.zero(y3));
+		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this12,2,zero_utilities__$Color_Color_$Impl_$.zero(z2));
+		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this12,3,zero_utilities__$Color_Color_$Impl_$.zero(w2));
+		this.req_text = zero_openfl_extensions_TextTools.format(tmp,{ font : "Oduda Bold", size : 24, color : this12});
+		this.addChild(this.req_text);
+		this.set_req_text();
+	}
+	,set_req_text: function() {
+		if(this.cards.length > 0) {
+			zero_openfl_extensions_TextTools.set_string(this.req_text,"");
+			return;
+		}
+		var str;
+		switch(this.data.requirement) {
+		case "EXACT_CARD":
+			str = "=" + this.data.requirement_value;
+			break;
+		case "IS_FACE":
+			str = "Face";
+			break;
+		case "MAX_CARD":
+			str = "<" + (this.data.requirement_value + 1);
+			break;
+		case "MIN_CARD":
+			str = ">" + (this.data.requirement_value - 1);
+			break;
+		default:
+			str = "";
+		}
+		zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(this.req_text,str),0,16,zero_utilities_Anchor.MIDDLE_CENTER);
+	}
+	,add_card: function(card) {
+		ui_DropCard.prototype.add_card.call(this,card);
+		this.set_moves();
+	}
+	,set_moves: function() {
+		haxe_Log.trace(this.get_moves_value(),{ fileName : "src/ui/MoveCard.hx", lineNumber : 66, className : "ui.MoveCard", methodName : "set_moves"});
+	}
+	,get_moves_value: function() {
+		if(this.cards.length == 0) {
+			return 0;
+		}
+		var card = this.cards[0];
+		switch(this.move_data.factor._hx_index) {
+		case 0:
+			return this.move_data.value;
+		case 1:
+			return util_CardUtil.value_to_int(card.data.value);
+		case 2:
+			return Math.floor(util_CardUtil.value_to_int(card.data.value) / 2);
+		case 3:
+			return util_CardUtil.value_to_int(card.data.value) * 2;
+		case 4:
+			return 9999;
+		}
 	}
 	,__class__: ui_MoveCard
 });
@@ -78074,7 +78157,7 @@ $hxClasses["ui.PlayingCard"] = ui_PlayingCard;
 ui_PlayingCard.__name__ = "ui.PlayingCard";
 ui_PlayingCard.__super__ = ui_Card;
 ui_PlayingCard.prototype = $extend(ui_Card.prototype,{
-	gear: null
+	drop: null
 	,data: null
 	,deck: null
 	,last: null
@@ -78265,11 +78348,11 @@ ui_PlayingCard.prototype = $extend(ui_Card.prototype,{
 	}
 	,mouse_down: function(e) {
 		if(this.equipped) {
-			if(this.gear.expended) {
+			if(this.drop.expended) {
 				return;
 			}
 			var p = this.localToGlobal(new openfl_geom_Point(this.get_x(),this.get_y()));
-			this.gear.remove_card(this);
+			this.drop.remove_card(this);
 			this.deck.add_card(this);
 			this.set_x(p.x);
 			this.set_y(p.y);
@@ -78290,28 +78373,49 @@ ui_PlayingCard.prototype = $extend(ui_Card.prototype,{
 			return;
 		}
 		if(!this.equipped && ui_Gear.active_gear != null) {
+			var move_card = ui_Gear.active_gear.move_card;
+			var pos = move_card.get_anchor(true);
+			var my_pos = zero_utilities__$Vec2_Vec2_$Impl_$.get(this.get_x(),this.get_y());
+			if(Math.abs(pos[0] - this.get_x()) < 96 && Math.abs(pos[1] - this.get_y()) < 144) {
+				if(!move_card.expended && move_card.verify_card(this.data)) {
+					move_card.add_card(this);
+					this.equipped = true;
+					ui_Card.prototype.mouse_up.call(this,e);
+					zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(pos);
+					pos = null;
+					zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(my_pos);
+					my_pos = null;
+					this.dragging = false;
+					return;
+				}
+			}
+			zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(pos);
+			pos = null;
 			var _g = 0;
 			var _g1 = ui_Gear.active_gear.gear_cards;
 			while(_g < _g1.length) {
 				var gear = _g1[_g];
 				++_g;
-				var pos = gear.get_anchor(true);
-				var this2 = zero_utilities__$Vec2_Vec2_$Impl_$.subtract(zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([this.get_x(),this.get_y()]),zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float(pos));
-				if(Math.sqrt(this2[0] * this2[0] + this2[1] * this2[1]) < 128) {
+				var pos1 = gear.get_anchor(true);
+				if(Math.abs(pos1[0] - this.get_x()) < 96 && Math.abs(pos1[1] - this.get_y()) < 112) {
 					if(gear.expended || !gear.verify_card(this.data)) {
 						continue;
 					}
 					gear.add_card(this);
 					this.equipped = true;
 					ui_Card.prototype.mouse_up.call(this,e);
-					zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(pos);
-					pos = null;
-					this.draggable = false;
+					zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(pos1);
+					pos1 = null;
+					zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(my_pos);
+					my_pos = null;
+					this.dragging = false;
 					return;
 				}
-				zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(pos);
-				pos = null;
+				zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(pos1);
+				pos1 = null;
 			}
+			zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(my_pos);
+			my_pos = null;
 		}
 		ui_Card.prototype.mouse_up.call(this,e);
 		this.deck.add_to_hand(this);
@@ -79211,8 +79315,8 @@ zero_openfl_extensions_SpriteTools.set_position = function(sprite,x,y) {
 zero_openfl_extensions_SpriteTools.distance = function(sprite1,sprite2) {
 	var p1 = zero_utilities__$Vec2_Vec2_$Impl_$.get(sprite1.get_x(),sprite1.get_y());
 	var p2 = zero_utilities__$Vec2_Vec2_$Impl_$.get(sprite2.get_x(),sprite2.get_y());
-	var this1 = zero_utilities__$Vec2_Vec2_$Impl_$.subtract(p2,zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float(p1));
-	var out = Math.sqrt(this1[0] * this1[0] + this1[1] * this1[1]);
+	var this2 = zero_utilities__$Vec2_Vec2_$Impl_$.subtract(p2,zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float(p1));
+	var out = Math.sqrt(this2[0] * this2[0] + this2[1] * this2[1]);
 	zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(p1);
 	p1 = null;
 	zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(p2);

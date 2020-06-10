@@ -56,6 +56,7 @@ class Player extends Actor {
 		Gear.active_gear = player.gear;
 		Level.i.dolly.follow(player, false);
 		player.pulse();
+		player.gear.move_card.set_moves();
 		return selected_player = player;
 	}
 

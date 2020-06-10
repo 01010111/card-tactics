@@ -12,6 +12,7 @@ using zero.openfl.extensions.SpriteTools;
 using zero.openfl.extensions.TextTools;
 using zero.extensions.Tools;
 using zero.utilities.EventBus;
+using Math;
 
 class PlayingCard extends Card {
 
@@ -20,7 +21,7 @@ class PlayingCard extends Card {
 	static var mini_width:Float = 64;
 	static var mini_height:Float = 80;
 	
-	public var gear:GearCard;
+	public var drop:DropCard;
 	public var data:PlayingCardData;
 	var deck:Deck;
 	var last:Vec2;
@@ -102,9 +103,9 @@ class PlayingCard extends Card {
 
 	override function mouse_down(e:MouseEvent) {
 		if (equipped) {
-			if (gear.expended) return;
+			if (drop.expended) return;
 			var p = localToGlobal(new Point(x, y));
-			gear.remove_card(this);
+			drop.remove_card(this);
 			deck.add_card(this);
 			x = p.x;
 			y = p.y;
@@ -121,18 +122,37 @@ class PlayingCard extends Card {
 
 	override function mouse_up(e:MouseEvent) {
 		if (!dragging) return;
-		if (!equipped && Gear.active_gear != null) for (gear in Gear.active_gear.gear_cards) {
-			var pos = gear.get_anchor(true);
-			if (pos.distance([x, y]) < 128) {
-				if (gear.expended || !gear.verify_card(data)) continue;
-				gear.add_card(this);
-				equipped = true;
-				super.mouse_up(e);
-				pos.put();
-				draggable = false;
-				return;
+		if (!equipped && Gear.active_gear != null) {
+			var move_card = Gear.active_gear.move_card;
+			var pos = move_card.get_anchor(true);
+			var my_pos = Vec2.get(x, y);
+			if ((pos.x - x).abs() < 96 && (pos.y - y).abs() < 144) {
+				if (!move_card.expended && move_card.verify_card(data)) {
+					move_card.add_card(this);
+					equipped = true;
+					super.mouse_up(e);
+					pos.put();
+					my_pos.put();
+					dragging = false;
+					return;
+				}
 			}
 			pos.put();
+			for (gear in Gear.active_gear.gear_cards) {
+				var pos = gear.get_anchor(true);
+				if ((pos.x - x).abs() < 96 && (pos.y - y).abs() < 112) {
+					if (gear.expended || !gear.verify_card(data)) continue;
+					gear.add_card(this);
+					equipped = true;
+					super.mouse_up(e);
+					pos.put();
+					my_pos.put();
+					dragging = false;
+					return;
+				}
+				pos.put();
+			}
+			my_pos.put();
 		}
 		super.mouse_up(e);
 		deck.add_to_hand(this);

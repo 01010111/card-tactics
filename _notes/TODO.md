@@ -9,17 +9,18 @@
 # Tomorrow
 
 - [ ] Move Cards
-  - [ ] Drop Playing Cards
-    - [ ] Check for prox to Move Card
-    - [ ] Validate against Move Data
   - [ ] Show Available Moves
     - [ ] Similar to Actionable Gear
     - [ ] Persistent per player
   - [ ] Click on Available Moves to Move
     - [ ] Gray Out Move Card
 
-6/4/2020
+6/5/2020
+- [x] Drop Playing Cards on Move Card
+  - [x] Check for prox to Move Card
+  - [X] Validate against Move Data
 
+6/4/2020
 - [x] Refactor GearCard
   - [x] Make Generic DropCard
 

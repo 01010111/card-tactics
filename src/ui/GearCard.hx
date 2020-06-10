@@ -36,12 +36,12 @@ class GearCard extends DropCard {
 		this.gear = gear;
 		this.gear_data = gear_data;
 		draggable = false;
+		anchors = [[-35, 28], [35, 28]];
 		this.data = {
 			requirement: gear_data.requirement,
 			requirement_value: gear_data.requirement_value,
 		};
 		draw_card();
-		addEventListener(Event.ENTER_FRAME, update);
 		addEventListener(MouseEvent.MOUSE_OVER, mouse_over);
 		addEventListener(MouseEvent.MOUSE_OUT, mouse_out);
 	}
@@ -291,7 +291,6 @@ class GearCard extends DropCard {
 
 	override function add_card(card:PlayingCard) {
 		super.add_card(card);
-		card.gear = this;
 		set_description();
 		set_req_text();
 		set_req_text_r();
@@ -304,6 +303,13 @@ class GearCard extends DropCard {
 		set_req_text();
 		set_req_text_r();
 		verify_gear() ? handle.show() : handle.hide();
+	}
+
+	override function update(e:Event) {
+		super.update(e);
+		highlight.visible = active;
+		var rot_target = active ? (t += 0.15).sin() * 4 : 0;
+		rotation += (rot_target - rotation) * 0.25;
 	}
 
 }

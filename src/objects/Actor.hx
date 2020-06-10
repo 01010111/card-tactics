@@ -8,7 +8,6 @@ class Actor extends GameObject {
 	var data:ActorData;
 
 	public function new(data:ActorData, x:Int, y:Int) {
-		trace(data);
 		super(x, y, data.health, data.id);
 	}
 

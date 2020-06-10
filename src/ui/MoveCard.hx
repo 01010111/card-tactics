@@ -1,17 +1,31 @@
 package ui;
 
+import openfl.text.TextField;
+import ui.DropCard.DropCardData;
 import openfl.display.Sprite;
 import zero.utilities.Color;
 import ui.GearCard;
 
 using zero.openfl.extensions.SpriteTools;
+using zero.openfl.extensions.TextTools;
+using util.CardUtil;
+using Math;
 
-class MoveCard extends Card {
+class MoveCard extends DropCard {
+
+	var req_text:TextField;
+	var move_data:MoveData;
 	
-	public function new() {
+	public function new(data:MoveData) {
 		super();
-
+		this.data = {
+			requirement: data.requirement,
+			requirement_value: data.requirement_value
+		}
+		this.move_data = data;
 		make_graphic();
+		draggable = false;
+		anchors = [[0, 16]];
 	}
 
 	function make_graphic() {
@@ -23,12 +37,51 @@ class MoveCard extends Card {
 			case TELEPORT:'images/ui/icons/move_teleport.png';
 		}
 		addChild(new Sprite().load_graphic(icon_src, MIDDLE_CENTER, true).set_position(0, -48).set_scale(0.25));
+		req_text = new TextField().format({ font: 'Oduda Bold', size: 24, color: Color.get().from_int32(0xFF083EB1) });
+		addChild(req_text);
+		set_req_text();
+	}
+
+	function set_req_text() {
+		if (cards.length > 0) {
+			req_text.set_string('');
+			return;
+		}
+		var str = switch data.requirement {
+			default: '';
+			case MIN_CARD: '>${data.requirement_value - 1}';
+			case MAX_CARD: '<${data.requirement_value + 1}';
+			case EXACT_CARD: '=${data.requirement_value}';
+			case IS_FACE: 'Face';
+		}
+		req_text.set_string(str).set_position(0, 16, MIDDLE_CENTER);
+	}
+
+	override function add_card(card:PlayingCard) {
+		super.add_card(card);
+		set_moves();
+	}
+
+	public function set_moves() {
+		trace(get_moves_value());
+	}
+
+	public function get_moves_value():Int {
+		if (cards.length == 0) return 0;
+		var card = cards[0];
+		return switch move_data.factor {
+			case STATIC:move_data.value;
+			case VALUE:card.data.value.value_to_int();
+			case VALUE_HALF:(card.data.value.value_to_int()/2).floor();
+			case VALUE_X_TWO:card.data.value.value_to_int() * 2;
+			case INFINITE:9999;
+		}
 	}
 
 }
 
 typedef MoveData = {
-	requirement:Requirement,
+	> DropCardData,
 	factor:MoveFactor,
 	type:MoveType,
 	?value:Int,
