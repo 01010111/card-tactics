@@ -894,9 +894,9 @@ ApplicationMain.create = function(config) {
 	ManifestResources.init(config);
 	var _this = app.meta;
 	if(__map_reserved["build"] != null) {
-		_this.setReserved("build","12");
+		_this.setReserved("build","20");
 	} else {
-		_this.h["build"] = "12";
+		_this.h["build"] = "20";
 	}
 	var _this1 = app.meta;
 	if(__map_reserved["company"] != null) {
@@ -4617,6 +4617,7 @@ openfl_display_Sprite.prototype = $extend(openfl_display_DisplayObjectContainer.
 var Main = function() {
 	openfl_display_Sprite.call(this);
 	this.stage.set_color(0);
+	util_GearUtil.init();
 	new zero_openfl_utilities_Game(this,scenes_Level);
 	this.stage.addEventListener("enterFrame",util_UpdateManager.update);
 };
@@ -4813,7 +4814,7 @@ ManifestResources.init = function(config) {
 	}
 	openfl_text_Font.registerFont(_$_$ASSET_$_$OPENFL_$_$fonts_$oduda_$ttf);
 	var bundle;
-	var data = "{\"name\":null,\"assets\":\"aoy4:pathy18:images%2Fblank.pngy4:sizei123y4:typey5:IMAGEy2:idR1y7:preloadtgoR0y29:images%2Fparticles%2Fpoof.pngR2i452R3R4R5R7R6tgoR0y20:images%2Fplayers.pngR2i1824R3R4R5R8R6tgoR0y18:images%2Ftiles.pngR2i14787R3R4R5R9R6tgoR0y35:images%2Fui%2Faction_arrow_blue.pngR2i473R3R4R5R10R6tgoR0y36:images%2Fui%2Faction_arrow_green.pngR2i489R3R4R5R11R6tgoR0y34:images%2Fui%2Faction_arrow_red.pngR2i470R3R4R5R12R6tgoR0y36:images%2Fui%2Faction_arrow_white.pngR2i307R3R4R5R13R6tgoR0y25:images%2Fui%2Faim_cta.pngR2i1862R3R4R5R14R6tgoR0y24:images%2Fui%2Fap_pip.pngR2i270R3R4R5R15R6tgoR0y24:images%2Fui%2Fdo_cta.pngR2i1723R3R4R5R16R6tgoR0y36:images%2Fui%2Ficons%2Ficon_skull.pngR2i2850R3R4R5R17R6tgoR0y35:images%2Fui%2Ficons%2Fmove_free.pngR2i2776R3R4R5R18R6tgoR0y35:images%2Fui%2Ficons%2Fmove_rook.pngR2i3371R3R4R5R19R6tgoR0y39:images%2Fui%2Ficons%2Fmove_teleport.pngR2i3093R3R4R5R20R6tgoR0y51:images%2Fui%2Ficons%2Fon_white%2Ficon_electrify.pngR2i1737R3R4R5R21R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_explode.pngR2i2333R3R4R5R22R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_flame.pngR2i2026R3R4R5R23R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_health.pngR2i1796R3R4R5R24R6tgoR0y46:images%2Fui%2Ficons%2Fon_white%2Ficon_move.pngR2i1973R3R4R5R25R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_pierce.pngR2i1943R3R4R5R26R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_shield.pngR2i1973R3R4R5R27R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_utility.pngR2i1803R3R4R5R28R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_water.pngR2i1906R3R4R5R29R6tgoR0y27:images%2Fui%2Frule_face.pngR2i8721R3R4R5R30R6tgoR0y32:images%2Fui%2Frule_two_cards.pngR2i5319R3R4R5R31R6tgoR0y27:images%2Fui%2Fsuit_club.pngR2i4182R3R4R5R32R6tgoR0y30:images%2Fui%2Fsuit_diamond.pngR2i2985R3R4R5R33R6tgoR0y28:images%2Fui%2Fsuit_heart.pngR2i2540R3R4R5R34R6tgoR0y28:images%2Fui%2Fsuit_spade.pngR2i3507R3R4R5R35R6tgoR0y22:data%2Fmaps%2F000.jsonR2i1922R3y4:TEXTR5R36R6tgoR0y23:data%2Fmaps%2Fmaps.ogmoR2i19048R3R37R5R38R6tgoR2i19636R3y4:FONTy9:classNamey24:__ASSET__fonts_oduda_ttfR5y17:fonts%2Foduda.ttfR6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
+	var data = "{\"name\":null,\"assets\":\"aoy4:pathy18:images%2Fblank.pngy4:sizei123y4:typey5:IMAGEy2:idR1y7:preloadtgoR0y29:images%2Fparticles%2Fpoof.pngR2i452R3R4R5R7R6tgoR0y20:images%2Fplayers.pngR2i1824R3R4R5R8R6tgoR0y18:images%2Ftiles.pngR2i14787R3R4R5R9R6tgoR0y35:images%2Fui%2Faction_arrow_blue.pngR2i473R3R4R5R10R6tgoR0y36:images%2Fui%2Faction_arrow_green.pngR2i489R3R4R5R11R6tgoR0y34:images%2Fui%2Faction_arrow_red.pngR2i470R3R4R5R12R6tgoR0y36:images%2Fui%2Faction_arrow_white.pngR2i307R3R4R5R13R6tgoR0y25:images%2Fui%2Faim_cta.pngR2i1862R3R4R5R14R6tgoR0y24:images%2Fui%2Fap_pip.pngR2i270R3R4R5R15R6tgoR0y25:images%2Fui%2Fap_pips.pngR2i467R3R4R5R16R6tgoR0y28:images%2Fui%2Fap_pip_big.pngR2i370R3R4R5R17R6tgoR0y24:images%2Fui%2Fdo_cta.pngR2i1723R3R4R5R18R6tgoR0y36:images%2Fui%2Ficons%2Ficon_skull.pngR2i2850R3R4R5R19R6tgoR0y35:images%2Fui%2Ficons%2Fmove_free.pngR2i2776R3R4R5R20R6tgoR0y35:images%2Fui%2Ficons%2Fmove_rook.pngR2i3371R3R4R5R21R6tgoR0y39:images%2Fui%2Ficons%2Fmove_teleport.pngR2i3093R3R4R5R22R6tgoR0y51:images%2Fui%2Ficons%2Fon_white%2Ficon_electrify.pngR2i1737R3R4R5R23R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_explode.pngR2i2333R3R4R5R24R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_flame.pngR2i2026R3R4R5R25R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_health.pngR2i1796R3R4R5R26R6tgoR0y46:images%2Fui%2Ficons%2Fon_white%2Ficon_move.pngR2i1973R3R4R5R27R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_pierce.pngR2i1943R3R4R5R28R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_shield.pngR2i1973R3R4R5R29R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_utility.pngR2i1803R3R4R5R30R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_water.pngR2i1906R3R4R5R31R6tgoR0y27:images%2Fui%2Frule_face.pngR2i8721R3R4R5R32R6tgoR0y32:images%2Fui%2Frule_two_cards.pngR2i5319R3R4R5R33R6tgoR0y27:images%2Fui%2Fsuit_club.pngR2i4182R3R4R5R34R6tgoR0y30:images%2Fui%2Fsuit_diamond.pngR2i2985R3R4R5R35R6tgoR0y28:images%2Fui%2Fsuit_heart.pngR2i2540R3R4R5R36R6tgoR0y28:images%2Fui%2Fsuit_spade.pngR2i3507R3R4R5R37R6tgoR0y17:data%2Fgear.jsoncR2i1350R3y4:TEXTR5R38R6tgoR0y22:data%2Fmaps%2F000.jsonR2i1922R3R39R5R40R6tgoR0y23:data%2Fmaps%2Fmaps.ogmoR2i19048R3R39R5R41R6tgoR2i19636R3y4:FONTy9:classNamey24:__ASSET__fonts_oduda_ttfR5y17:fonts%2Foduda.ttfR6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
 	var manifest = lime_utils_AssetManifest.parse(data,ManifestResources.rootPath);
 	var library = lime_utils_AssetLibrary.fromManifest(manifest);
 	lime_utils_Assets.registerLibrary("default",library);
@@ -5487,6 +5488,702 @@ _$UInt_UInt_$Impl_$.toFloat = function(this1) {
 		return int + 0.0;
 	}
 };
+var openfl_display_Shader = function(code) {
+	this.byteCode = code;
+	this.precisionHint = 1;
+	this.__glSourceDirty = true;
+	this.__numPasses = 1;
+	this.__data = openfl_display__$ShaderData_ShaderData_$Impl_$._new(code);
+};
+$hxClasses["openfl.display.Shader"] = openfl_display_Shader;
+openfl_display_Shader.__name__ = "openfl.display.Shader";
+openfl_display_Shader.prototype = {
+	byteCode: null
+	,glProgram: null
+	,precisionHint: null
+	,program: null
+	,__alpha: null
+	,__bitmap: null
+	,__colorMultiplier: null
+	,__colorOffset: null
+	,__context: null
+	,__data: null
+	,__glFragmentSource: null
+	,__glSourceDirty: null
+	,__glVertexSource: null
+	,__hasColorTransform: null
+	,__inputBitmapData: null
+	,__isGenerated: null
+	,__matrix: null
+	,__numPasses: null
+	,__paramBool: null
+	,__paramFloat: null
+	,__paramInt: null
+	,__position: null
+	,__textureCoord: null
+	,__texture: null
+	,__textureSize: null
+	,__clearUseArray: function() {
+		var _g = 0;
+		var _g1 = this.__paramBool;
+		while(_g < _g1.length) {
+			var parameter = _g1[_g];
+			++_g;
+			parameter.__useArray = false;
+		}
+		var _g2 = 0;
+		var _g3 = this.__paramFloat;
+		while(_g2 < _g3.length) {
+			var parameter1 = _g3[_g2];
+			++_g2;
+			parameter1.__useArray = false;
+		}
+		var _g4 = 0;
+		var _g5 = this.__paramInt;
+		while(_g4 < _g5.length) {
+			var parameter2 = _g5[_g4];
+			++_g4;
+			parameter2.__useArray = false;
+		}
+	}
+	,__createGLShader: function(source,type) {
+		var gl = this.__context.gl;
+		var shader = gl.createShader(type);
+		gl.shaderSource(shader,source);
+		gl.compileShader(shader);
+		if(gl.getShaderParameter(shader,gl.COMPILE_STATUS) == 0) {
+			var message = type == gl.VERTEX_SHADER ? "Error compiling vertex shader" : "Error compiling fragment shader";
+			message += "\n" + gl.getShaderInfoLog(shader);
+			message += "\n" + source;
+			lime_utils_Log.error(message,{ fileName : "openfl/display/Shader.hx", lineNumber : 328, className : "openfl.display.Shader", methodName : "__createGLShader"});
+		}
+		return shader;
+	}
+	,__createGLProgram: function(vertexSource,fragmentSource) {
+		var gl = this.__context.gl;
+		var vertexShader = this.__createGLShader(vertexSource,gl.VERTEX_SHADER);
+		var fragmentShader = this.__createGLShader(fragmentSource,gl.FRAGMENT_SHADER);
+		var program = gl.createProgram();
+		var _g = 0;
+		var _g1 = this.__paramFloat;
+		while(_g < _g1.length) {
+			var param = _g1[_g];
+			++_g;
+			if(param.name.indexOf("Position") > -1 && StringTools.startsWith(param.name,"openfl_")) {
+				gl.bindAttribLocation(program,0,param.name);
+				break;
+			}
+		}
+		gl.attachShader(program,vertexShader);
+		gl.attachShader(program,fragmentShader);
+		gl.linkProgram(program);
+		if(gl.getProgramParameter(program,gl.LINK_STATUS) == 0) {
+			var message = "Unable to initialize the shader program";
+			message += "\n" + gl.getProgramInfoLog(program);
+			lime_utils_Log.error(message,{ fileName : "openfl/display/Shader.hx", lineNumber : 361, className : "openfl.display.Shader", methodName : "__createGLProgram"});
+		}
+		return program;
+	}
+	,__disable: function() {
+		if(this.program != null) {
+			this.__disableGL();
+		}
+	}
+	,__disableGL: function() {
+		var gl = this.__context.gl;
+		var textureCount = 0;
+		var _g = 0;
+		var _g1 = this.__inputBitmapData;
+		while(_g < _g1.length) {
+			var input = _g1[_g];
+			++_g;
+			input.__disableGL(this.__context,textureCount);
+			++textureCount;
+		}
+		var _g2 = 0;
+		var _g3 = this.__paramBool;
+		while(_g2 < _g3.length) {
+			var parameter = _g3[_g2];
+			++_g2;
+			parameter.__disableGL(this.__context);
+		}
+		var _g4 = 0;
+		var _g5 = this.__paramFloat;
+		while(_g4 < _g5.length) {
+			var parameter1 = _g5[_g4];
+			++_g4;
+			parameter1.__disableGL(this.__context);
+		}
+		var _g6 = 0;
+		var _g7 = this.__paramInt;
+		while(_g6 < _g7.length) {
+			var parameter2 = _g7[_g6];
+			++_g6;
+			parameter2.__disableGL(this.__context);
+		}
+		this.__context.__bindGLArrayBuffer(null);
+		if(this.__context.__context.type == "opengl") {
+			gl.disable(gl.TEXTURE_2D);
+		}
+	}
+	,__enable: function() {
+		this.__init();
+		if(this.program != null) {
+			this.__enableGL();
+		}
+	}
+	,__enableGL: function() {
+		var textureCount = 0;
+		var gl = this.__context.gl;
+		var _g = 0;
+		var _g1 = this.__inputBitmapData;
+		while(_g < _g1.length) {
+			var input = _g1[_g];
+			++_g;
+			gl.uniform1i(input.index,textureCount);
+			++textureCount;
+		}
+		if(this.__context.__context.type == "opengl" && textureCount > 0) {
+			gl.enable(gl.TEXTURE_2D);
+		}
+	}
+	,__init: function() {
+		if(this.__data == null) {
+			this.__data = openfl_display__$ShaderData_ShaderData_$Impl_$._new(null);
+		}
+		if(this.__glFragmentSource != null && this.__glVertexSource != null && (this.program == null || this.__glSourceDirty)) {
+			this.__initGL();
+		}
+	}
+	,__initGL: function() {
+		if(this.__glSourceDirty || this.__paramBool == null) {
+			this.__glSourceDirty = false;
+			this.program = null;
+			this.__inputBitmapData = [];
+			this.__paramBool = [];
+			this.__paramFloat = [];
+			this.__paramInt = [];
+			this.__processGLData(this.get_glVertexSource(),"attribute");
+			this.__processGLData(this.get_glVertexSource(),"uniform");
+			this.__processGLData(this.get_glFragmentSource(),"uniform");
+		}
+		if(this.__context != null && this.program == null) {
+			var gl = this.__context.gl;
+			var prefix = "#ifdef GL_ES\n\t\t\t\t" + (this.precisionHint == 1 ? "#ifdef GL_FRAGMENT_PRECISION_HIGH\n\t\t\t\tprecision highp float;\n\t\t\t\t#else\n\t\t\t\tprecision mediump float;\n\t\t\t\t#endif" : "precision lowp float;") + "\n\t\t\t\t#endif\n\t\t\t\t";
+			var vertex = prefix + this.get_glVertexSource();
+			var fragment = prefix + this.get_glFragmentSource();
+			var id = vertex + fragment;
+			var _this = this.__context.__programs;
+			if(__map_reserved[id] != null ? _this.existsReserved(id) : _this.h.hasOwnProperty(id)) {
+				var _this1 = this.__context.__programs;
+				this.program = __map_reserved[id] != null ? _this1.getReserved(id) : _this1.h[id];
+			} else {
+				this.program = this.__context.createProgram(1);
+				this.program.__glProgram = this.__createGLProgram(vertex,fragment);
+				var value = this.program;
+				var _this2 = this.__context.__programs;
+				if(__map_reserved[id] != null) {
+					_this2.setReserved(id,value);
+				} else {
+					_this2.h[id] = value;
+				}
+			}
+			if(this.program != null) {
+				this.glProgram = this.program.__glProgram;
+				var _g = 0;
+				var _g1 = this.__inputBitmapData;
+				while(_g < _g1.length) {
+					var input = _g1[_g];
+					++_g;
+					if(input.__isUniform) {
+						input.index = gl.getUniformLocation(this.glProgram,input.name);
+					} else {
+						input.index = gl.getAttribLocation(this.glProgram,input.name);
+					}
+				}
+				var _g2 = 0;
+				var _g3 = this.__paramBool;
+				while(_g2 < _g3.length) {
+					var parameter = _g3[_g2];
+					++_g2;
+					if(parameter.__isUniform) {
+						parameter.index = gl.getUniformLocation(this.glProgram,parameter.name);
+					} else {
+						parameter.index = gl.getAttribLocation(this.glProgram,parameter.name);
+					}
+				}
+				var _g4 = 0;
+				var _g5 = this.__paramFloat;
+				while(_g4 < _g5.length) {
+					var parameter1 = _g5[_g4];
+					++_g4;
+					if(parameter1.__isUniform) {
+						parameter1.index = gl.getUniformLocation(this.glProgram,parameter1.name);
+					} else {
+						parameter1.index = gl.getAttribLocation(this.glProgram,parameter1.name);
+					}
+				}
+				var _g6 = 0;
+				var _g7 = this.__paramInt;
+				while(_g6 < _g7.length) {
+					var parameter2 = _g7[_g6];
+					++_g6;
+					if(parameter2.__isUniform) {
+						parameter2.index = gl.getUniformLocation(this.glProgram,parameter2.name);
+					} else {
+						parameter2.index = gl.getAttribLocation(this.glProgram,parameter2.name);
+					}
+				}
+			}
+		}
+	}
+	,__processGLData: function(source,storageType) {
+		var lastMatch = 0;
+		var position;
+		var regex;
+		var name;
+		var type;
+		if(storageType == "uniform") {
+			regex = new EReg("uniform ([A-Za-z0-9]+) ([A-Za-z0-9_]+)","");
+		} else {
+			regex = new EReg("attribute ([A-Za-z0-9]+) ([A-Za-z0-9_]+)","");
+		}
+		while(regex.matchSub(source,lastMatch)) {
+			type = regex.matched(1);
+			name = regex.matched(2);
+			if(StringTools.startsWith(name,"gl_")) {
+				continue;
+			}
+			var isUniform = storageType == "uniform";
+			if(StringTools.startsWith(type,"sampler")) {
+				var input = new openfl_display_ShaderInput();
+				input.name = name;
+				input.__isUniform = isUniform;
+				this.__inputBitmapData.push(input);
+				switch(name) {
+				case "bitmap":
+					this.__bitmap = input;
+					break;
+				case "openfl_Texture":
+					this.__texture = input;
+					break;
+				default:
+				}
+				this.__data[name] = input;
+				if(this.__isGenerated) {
+					this[name] = input;
+				}
+			} else if(!Object.prototype.hasOwnProperty.call(this.__data,name) || Reflect.field(this.__data,name) == null) {
+				var parameterType;
+				switch(type) {
+				case "bool":
+					parameterType = 0;
+					break;
+				case "bvec2":
+					parameterType = 1;
+					break;
+				case "bvec3":
+					parameterType = 2;
+					break;
+				case "bvec4":
+					parameterType = 3;
+					break;
+				case "dvec2":case "vec2":
+					parameterType = 5;
+					break;
+				case "dvec3":case "vec3":
+					parameterType = 6;
+					break;
+				case "double":case "float":
+					parameterType = 4;
+					break;
+				case "ivec3":case "uvec3":
+					parameterType = 10;
+					break;
+				case "ivec4":case "uvec4":
+					parameterType = 11;
+					break;
+				case "mat2":case "mat2x2":
+					parameterType = 12;
+					break;
+				case "mat2x3":
+					parameterType = 13;
+					break;
+				case "mat2x4":
+					parameterType = 14;
+					break;
+				case "mat3x2":
+					parameterType = 15;
+					break;
+				case "mat3":case "mat3x3":
+					parameterType = 16;
+					break;
+				case "mat3x4":
+					parameterType = 17;
+					break;
+				case "mat4":case "mat4x4":
+					parameterType = 20;
+					break;
+				case "mat4x2":
+					parameterType = 18;
+					break;
+				case "mat4x3":
+					parameterType = 19;
+					break;
+				case "int":case "uint":
+					parameterType = 8;
+					break;
+				case "ivec2":case "uvec2":
+					parameterType = 9;
+					break;
+				case "dvec4":case "vec4":
+					parameterType = 7;
+					break;
+				default:
+					parameterType = null;
+				}
+				var length;
+				switch(parameterType) {
+				case 1:case 5:case 9:
+					length = 2;
+					break;
+				case 3:case 7:case 11:case 12:
+					length = 4;
+					break;
+				case 2:case 6:case 10:
+					length = 3;
+					break;
+				case 16:
+					length = 9;
+					break;
+				case 20:
+					length = 16;
+					break;
+				default:
+					length = 1;
+				}
+				var arrayLength;
+				switch(parameterType) {
+				case 12:
+					arrayLength = 2;
+					break;
+				case 16:
+					arrayLength = 3;
+					break;
+				case 20:
+					arrayLength = 4;
+					break;
+				default:
+					arrayLength = 1;
+				}
+				switch(parameterType) {
+				case 0:case 1:case 2:case 3:
+					var parameter = new openfl_display_ShaderParameter();
+					parameter.set_name(name);
+					parameter.type = parameterType;
+					parameter.__arrayLength = arrayLength;
+					parameter.__isBool = true;
+					parameter.__isUniform = isUniform;
+					parameter.__length = length;
+					this.__paramBool.push(parameter);
+					if(name == "openfl_HasColorTransform") {
+						this.__hasColorTransform = parameter;
+					}
+					this.__data[name] = parameter;
+					if(this.__isGenerated) {
+						this[name] = parameter;
+					}
+					break;
+				case 8:case 9:case 10:case 11:
+					var parameter1 = new openfl_display_ShaderParameter();
+					parameter1.set_name(name);
+					parameter1.type = parameterType;
+					parameter1.__arrayLength = arrayLength;
+					parameter1.__isInt = true;
+					parameter1.__isUniform = isUniform;
+					parameter1.__length = length;
+					this.__paramInt.push(parameter1);
+					this.__data[name] = parameter1;
+					if(this.__isGenerated) {
+						this[name] = parameter1;
+					}
+					break;
+				default:
+					var parameter2 = new openfl_display_ShaderParameter();
+					parameter2.set_name(name);
+					parameter2.type = parameterType;
+					parameter2.__arrayLength = arrayLength;
+					if(arrayLength > 0) {
+						var elements = arrayLength * arrayLength;
+						var array = null;
+						var vector = null;
+						var view = null;
+						var buffer = null;
+						var len = null;
+						var this1;
+						if(elements != null) {
+							this1 = new Float32Array(elements);
+						} else if(array != null) {
+							this1 = new Float32Array(array);
+						} else if(vector != null) {
+							this1 = new Float32Array(vector.__array);
+						} else if(view != null) {
+							this1 = new Float32Array(view);
+						} else if(buffer != null) {
+							if(len == null) {
+								this1 = new Float32Array(buffer,0);
+							} else {
+								this1 = new Float32Array(buffer,0,len);
+							}
+						} else {
+							this1 = null;
+						}
+						parameter2.__uniformMatrix = this1;
+					}
+					parameter2.__isFloat = true;
+					parameter2.__isUniform = isUniform;
+					parameter2.__length = length;
+					this.__paramFloat.push(parameter2);
+					if(StringTools.startsWith(name,"openfl_")) {
+						switch(name) {
+						case "openfl_Alpha":
+							this.__alpha = parameter2;
+							break;
+						case "openfl_ColorMultiplier":
+							this.__colorMultiplier = parameter2;
+							break;
+						case "openfl_ColorOffset":
+							this.__colorOffset = parameter2;
+							break;
+						case "openfl_Matrix":
+							this.__matrix = parameter2;
+							break;
+						case "openfl_Position":
+							this.__position = parameter2;
+							break;
+						case "openfl_TextureCoord":
+							this.__textureCoord = parameter2;
+							break;
+						case "openfl_TextureSize":
+							this.__textureSize = parameter2;
+							break;
+						default:
+						}
+					}
+					this.__data[name] = parameter2;
+					if(this.__isGenerated) {
+						this[name] = parameter2;
+					}
+				}
+			}
+			position = regex.matchedPos();
+			lastMatch = position.pos + position.len;
+		}
+	}
+	,__update: function() {
+		if(this.program != null) {
+			this.__updateGL();
+		}
+	}
+	,__updateFromBuffer: function(shaderBuffer,bufferOffset) {
+		if(this.program != null) {
+			this.__updateGLFromBuffer(shaderBuffer,bufferOffset);
+		}
+	}
+	,__updateGL: function() {
+		var textureCount = 0;
+		var _g = 0;
+		var _g1 = this.__inputBitmapData;
+		while(_g < _g1.length) {
+			var input = _g1[_g];
+			++_g;
+			input.__updateGL(this.__context,textureCount);
+			++textureCount;
+		}
+		var _g2 = 0;
+		var _g3 = this.__paramBool;
+		while(_g2 < _g3.length) {
+			var parameter = _g3[_g2];
+			++_g2;
+			parameter.__updateGL(this.__context);
+		}
+		var _g4 = 0;
+		var _g5 = this.__paramFloat;
+		while(_g4 < _g5.length) {
+			var parameter1 = _g5[_g4];
+			++_g4;
+			parameter1.__updateGL(this.__context);
+		}
+		var _g6 = 0;
+		var _g7 = this.__paramInt;
+		while(_g6 < _g7.length) {
+			var parameter2 = _g7[_g6];
+			++_g6;
+			parameter2.__updateGL(this.__context);
+		}
+	}
+	,__updateGLFromBuffer: function(shaderBuffer,bufferOffset) {
+		var textureCount = 0;
+		var input;
+		var inputData;
+		var inputFilter;
+		var inputMipFilter;
+		var inputWrap;
+		var _g = 0;
+		var _g1 = shaderBuffer.inputCount;
+		while(_g < _g1) {
+			var i = _g++;
+			input = shaderBuffer.inputRefs[i];
+			inputData = shaderBuffer.inputs[i];
+			inputFilter = shaderBuffer.inputFilter[i];
+			inputMipFilter = shaderBuffer.inputMipFilter[i];
+			inputWrap = shaderBuffer.inputWrap[i];
+			if(inputData != null) {
+				input.__updateGL(this.__context,textureCount,inputData,inputFilter,inputMipFilter,inputWrap);
+				++textureCount;
+			}
+		}
+		var gl = this.__context.gl;
+		if(shaderBuffer.paramDataLength > 0) {
+			if(shaderBuffer.paramDataBuffer == null) {
+				shaderBuffer.paramDataBuffer = gl.createBuffer();
+			}
+			this.__context.__bindGLArrayBuffer(shaderBuffer.paramDataBuffer);
+			lime_graphics__$WebGLRenderContext_WebGLRenderContext_$Impl_$.bufferData(gl,gl.ARRAY_BUFFER,shaderBuffer.paramData,gl.DYNAMIC_DRAW);
+		} else {
+			this.__context.__bindGLArrayBuffer(null);
+		}
+		var boolIndex = 0;
+		var floatIndex = 0;
+		var intIndex = 0;
+		var boolCount = shaderBuffer.paramBoolCount;
+		var floatCount = shaderBuffer.paramFloatCount;
+		var paramData = shaderBuffer.paramData;
+		var boolRef;
+		var floatRef;
+		var intRef;
+		var hasOverride;
+		var overrideBoolValue = null;
+		var overrideFloatValue = null;
+		var overrideIntValue = null;
+		var _g2 = 0;
+		var _g3 = shaderBuffer.paramCount;
+		while(_g2 < _g3) {
+			var i1 = _g2++;
+			hasOverride = false;
+			if(i1 < boolCount) {
+				boolRef = shaderBuffer.paramRefs_Bool[boolIndex];
+				var _g21 = 0;
+				var _g31 = shaderBuffer.overrideBoolCount;
+				while(_g21 < _g31) {
+					var j = _g21++;
+					if(boolRef.name == shaderBuffer.overrideBoolNames[j]) {
+						overrideBoolValue = shaderBuffer.overrideBoolValues[j];
+						hasOverride = true;
+						break;
+					}
+				}
+				if(hasOverride) {
+					boolRef.__updateGL(this.__context,overrideBoolValue);
+				} else {
+					boolRef.__updateGLFromBuffer(this.__context,paramData,shaderBuffer.paramPositions[i1],shaderBuffer.paramLengths[i1],bufferOffset);
+				}
+				++boolIndex;
+			} else if(i1 < boolCount + floatCount) {
+				floatRef = shaderBuffer.paramRefs_Float[floatIndex];
+				var _g22 = 0;
+				var _g32 = shaderBuffer.overrideFloatCount;
+				while(_g22 < _g32) {
+					var j1 = _g22++;
+					if(floatRef.name == shaderBuffer.overrideFloatNames[j1]) {
+						overrideFloatValue = shaderBuffer.overrideFloatValues[j1];
+						hasOverride = true;
+						break;
+					}
+				}
+				if(hasOverride) {
+					floatRef.__updateGL(this.__context,overrideFloatValue);
+				} else {
+					floatRef.__updateGLFromBuffer(this.__context,paramData,shaderBuffer.paramPositions[i1],shaderBuffer.paramLengths[i1],bufferOffset);
+				}
+				++floatIndex;
+			} else {
+				intRef = shaderBuffer.paramRefs_Int[intIndex];
+				var _g23 = 0;
+				var _g33 = shaderBuffer.overrideIntCount;
+				while(_g23 < _g33) {
+					var j2 = _g23++;
+					if(intRef.name == shaderBuffer.overrideIntNames[j2]) {
+						overrideIntValue = shaderBuffer.overrideIntValues[j2];
+						hasOverride = true;
+						break;
+					}
+				}
+				if(hasOverride) {
+					intRef.__updateGL(this.__context,overrideIntValue);
+				} else {
+					intRef.__updateGLFromBuffer(this.__context,paramData,shaderBuffer.paramPositions[i1],shaderBuffer.paramLengths[i1],bufferOffset);
+				}
+				++intIndex;
+			}
+		}
+	}
+	,get_data: function() {
+		if(this.__glSourceDirty || this.__data == null) {
+			this.__init();
+		}
+		return this.__data;
+	}
+	,set_data: function(value) {
+		return this.__data = value;
+	}
+	,get_glFragmentSource: function() {
+		return this.__glFragmentSource;
+	}
+	,set_glFragmentSource: function(value) {
+		if(value != this.__glFragmentSource) {
+			this.__glSourceDirty = true;
+		}
+		return this.__glFragmentSource = value;
+	}
+	,get_glVertexSource: function() {
+		return this.__glVertexSource;
+	}
+	,set_glVertexSource: function(value) {
+		if(value != this.__glVertexSource) {
+			this.__glSourceDirty = true;
+		}
+		return this.__glVertexSource = value;
+	}
+	,__class__: openfl_display_Shader
+	,__properties__: {set_glVertexSource:"set_glVertexSource",get_glVertexSource:"get_glVertexSource",set_glFragmentSource:"set_glFragmentSource",get_glFragmentSource:"get_glFragmentSource",set_data:"set_data",get_data:"get_data"}
+};
+var filters_OutlineShader = function() {
+	if(this.__glFragmentSource == null) {
+		this.__glFragmentSource = "\r\n\t\tvarying float openfl_Alphav;\r\n\t\tvarying vec4 openfl_ColorMultiplierv;\r\n\t\tvarying vec4 openfl_ColorOffsetv;\r\n\t\tvarying vec2 openfl_TextureCoordv;\r\n\t\t\r\n\t\tuniform bool openfl_HasColorTransform;\r\n\t\tuniform vec2 openfl_TextureSize;\r\n\t\tuniform sampler2D bitmap;\r\n\r\n\t\tvoid main(void) {\r\n\t\t\tvec4 sample = texture2D(bitmap, openfl_TextureCoordv);\r\n\t\t\tvec2 size = vec2(3.,3.);\r\n\r\n\t\t\tif (sample.a < 1.) {\r\n\t\t\t\tfloat w = size.x / openfl_TextureSize.x;\r\n\t\t\t\tfloat h = size.y / openfl_TextureSize.y;\r\n\r\n\t\t\t\tif (texture2D(bitmap, vec2(\topenfl_TextureCoordv.x + w, \t\topenfl_TextureCoordv.y\t\t\t\t)).a != 0.\r\n\t\t\t\t||\ttexture2D(bitmap, vec2(\topenfl_TextureCoordv.x - w, \t\topenfl_TextureCoordv.y\t\t\t\t)).a != 0.\r\n\t\t\t\t||\ttexture2D(bitmap, vec2(\topenfl_TextureCoordv.x, \t\t\topenfl_TextureCoordv.y - h\t\t\t)).a != 0.\r\n\t\t\t\t||\ttexture2D(bitmap, vec2(\topenfl_TextureCoordv.x, \t\t\topenfl_TextureCoordv.y + h\t\t\t)).a != 0.\r\n\t\t\t\t||\ttexture2D(bitmap, vec2(\topenfl_TextureCoordv.x - w * 0.5, \topenfl_TextureCoordv.y - h * 0.5\t)).a != 0.\r\n\t\t\t\t||\ttexture2D(bitmap, vec2(\topenfl_TextureCoordv.x + w * 0.5, \topenfl_TextureCoordv.y - h * 0.5\t)).a != 0.\r\n\t\t\t\t||\ttexture2D(bitmap, vec2(\topenfl_TextureCoordv.x - w * 0.5, \topenfl_TextureCoordv.y + h * 0.5\t)).a != 0.\r\n\t\t\t\t||\ttexture2D(bitmap, vec2(\topenfl_TextureCoordv.x + w * 0.5, \topenfl_TextureCoordv.y + h * 0.5\t)).a != 0.)\r\n\t\t\t\t\tsample += vec4(0., 0., 0., 1.);\r\n\t\t\t}\r\n\r\n\t\t\tgl_FragColor = sample;\r\n\t\t}\r\n\t";
+	}
+	if(this.__glVertexSource == null) {
+		this.__glVertexSource = "\r\n\t\tattribute float openfl_Alpha;\r\n\t\tattribute vec4 openfl_ColorMultiplier;\r\n\t\tattribute vec4 openfl_ColorOffset;\r\n\t\tattribute vec4 openfl_Position;\r\n\t\tattribute vec2 openfl_TextureCoord;\r\n\t\t\r\n\t\tvarying float openfl_Alphav;\r\n\t\tvarying vec4 openfl_ColorMultiplierv;\r\n\t\tvarying vec4 openfl_ColorOffsetv;\r\n\t\tvarying vec2 openfl_TextureCoordv;\r\n\t\t\r\n\t\tuniform mat4 openfl_Matrix;\r\n\t\tuniform bool openfl_HasColorTransform;\r\n\t\tuniform vec2 openfl_TextureSize;\r\n\t\r\n\t\tvoid main(void) {\r\n\t\t\topenfl_Alphav = openfl_Alpha;\r\n\t\t\topenfl_TextureCoordv = openfl_TextureCoord;\r\n\t\t\t\r\n\t\t\tif (openfl_HasColorTransform) {\r\n\t\t\t\topenfl_ColorMultiplierv = openfl_ColorMultiplier;\r\n\t\t\t\topenfl_ColorOffsetv = openfl_ColorOffset / 255.0;\r\n\t\t\t}\r\n\t\t\t\r\n\t\t\tgl_Position = openfl_Matrix * openfl_Position;\r\n\t\t}\r\n\t";
+	}
+	openfl_display_Shader.call(this);
+	this.__isGenerated = true;
+	this.__initGL();
+};
+$hxClasses["filters.OutlineShader"] = filters_OutlineShader;
+filters_OutlineShader.__name__ = "filters.OutlineShader";
+filters_OutlineShader.__super__ = openfl_display_Shader;
+filters_OutlineShader.prototype = $extend(openfl_display_Shader.prototype,{
+	openfl_Alpha: null
+	,openfl_ColorMultiplier: null
+	,openfl_ColorOffset: null
+	,openfl_Position: null
+	,openfl_TextureCoord: null
+	,openfl_Matrix: null
+	,openfl_HasColorTransform: null
+	,openfl_TextureSize: null
+	,bitmap: null
+	,__class__: filters_OutlineShader
+});
 var haxe_StackItem = $hxEnums["haxe.StackItem"] = { __ename__ : "haxe.StackItem", __constructs__ : ["CFunction","Module","FilePos","Method","LocalFunction"]
 	,CFunction: {_hx_index:0,__enum__:"haxe.StackItem",toString:$estr}
 	,Module: ($_=function(m) { return {_hx_index:1,m:m,__enum__:"haxe.StackItem",toString:$estr}; },$_.__params__ = ["m"],$_)
@@ -8820,10 +9517,10 @@ lime__$internal_backend_html5_HTML5HTTPRequest.prototype = {
 				var value = __map_reserved[key1] != null ? _this.getReserved(key1) : _this.h[key1];
 				if(key1.indexOf("[]") > -1 && ((value) instanceof Array)) {
 					var _g = [];
-					var x1 = $getIterator(value);
-					while(x1.hasNext()) {
-						var x11 = x1.next();
-						_g.push(encodeURIComponent(x11));
+					var x = $getIterator(value);
+					while(x.hasNext()) {
+						var x1 = x.next();
+						_g.push(encodeURIComponent(x1));
 					}
 					var arrayValue = _g.join("&amp;" + key1 + "=");
 					query += encodeURIComponent(key1) + "=" + arrayValue;
@@ -11609,8 +12306,8 @@ lime__$internal_graphics_ImageDataUtil.fillRect = function(image,rect,color,form
 		break;
 	case 2:
 		var bgra = color;
-		var this11 = 0;
-		var rgba1 = this11;
+		var this2 = 0;
+		var rgba1 = this2;
 		rgba1 = (bgra >>> 8 & 255 & 255) << 24 | (bgra >>> 16 & 255 & 255) << 16 | (bgra >>> 24 & 255 & 255) << 8 | bgra & 255 & 255;
 		fillColor = rgba1;
 		break;
@@ -11885,20 +12582,20 @@ lime__$internal_graphics_ImageDataUtil.getColorBoundsRect = function(image,mask,
 		rgba = (argb >>> 16 & 255 & 255) << 24 | (argb >>> 8 & 255 & 255) << 16 | (argb & 255 & 255) << 8 | argb >>> 24 & 255 & 255;
 		_color = rgba;
 		var argb1 = mask;
-		var this11 = 0;
-		var rgba1 = this11;
+		var this2 = 0;
+		var rgba1 = this2;
 		rgba1 = (argb1 >>> 16 & 255 & 255) << 24 | (argb1 >>> 8 & 255 & 255) << 16 | (argb1 & 255 & 255) << 8 | argb1 >>> 24 & 255 & 255;
 		_mask = rgba1;
 		break;
 	case 2:
 		var bgra = color;
-		var this12 = 0;
-		var rgba2 = this12;
+		var this3 = 0;
+		var rgba2 = this3;
 		rgba2 = (bgra >>> 8 & 255 & 255) << 24 | (bgra >>> 16 & 255 & 255) << 16 | (bgra >>> 24 & 255 & 255) << 8 | bgra & 255 & 255;
 		_color = rgba2;
 		var bgra1 = mask;
-		var this13 = 0;
-		var rgba3 = this13;
+		var this4 = 0;
+		var rgba3 = this4;
 		rgba3 = (bgra1 >>> 8 & 255 & 255) << 24 | (bgra1 >>> 16 & 255 & 255) << 16 | (bgra1 >>> 24 & 255 & 255) << 8 | bgra1 & 255 & 255;
 		_mask = rgba3;
 		break;
@@ -12069,8 +12766,8 @@ lime__$internal_graphics_ImageDataUtil.getPixel = function(image,x,y,format) {
 		argb = (pixel & 255 & 255) << 24 | (pixel >>> 24 & 255 & 255) << 16 | (pixel >>> 16 & 255 & 255) << 8 | pixel >>> 8 & 255 & 255;
 		return argb;
 	case 2:
-		var this11 = 0;
-		var bgra = this11;
+		var this2 = 0;
+		var bgra = this2;
 		bgra = (pixel >>> 8 & 255 & 255) << 24 | (pixel >>> 16 & 255 & 255) << 16 | (pixel >>> 24 & 255 & 255) << 8 | pixel & 255 & 255;
 		return bgra;
 	default:
@@ -12113,8 +12810,8 @@ lime__$internal_graphics_ImageDataUtil.getPixel32 = function(image,x,y,format) {
 		argb = (pixel & 255 & 255) << 24 | (pixel >>> 24 & 255 & 255) << 16 | (pixel >>> 16 & 255 & 255) << 8 | pixel >>> 8 & 255 & 255;
 		return argb;
 	case 2:
-		var this11 = 0;
-		var bgra = this11;
+		var this2 = 0;
+		var bgra = this2;
 		bgra = (pixel >>> 8 & 255 & 255) << 24 | (pixel >>> 16 & 255 & 255) << 16 | (pixel >>> 24 & 255 & 255) << 8 | pixel & 255 & 255;
 		return bgra;
 	default:
@@ -12179,8 +12876,8 @@ lime__$internal_graphics_ImageDataUtil.getPixels = function(image,rect,format) {
 				pixel = argb;
 				break;
 			case 2:
-				var this11 = 0;
-				var bgra1 = this11;
+				var this2 = 0;
+				var bgra1 = this2;
 				bgra1 = (pixel >>> 8 & 255 & 255) << 24 | (pixel >>> 16 & 255 & 255) << 16 | (pixel >>> 24 & 255 & 255) << 8 | pixel & 255 & 255;
 				bgra = bgra1;
 				pixel = bgra;
@@ -12641,16 +13338,16 @@ lime__$internal_graphics_ImageDataUtil.setPixel = function(image,x,y,color,forma
 		break;
 	case 2:
 		var bgra = color;
-		var this11 = 0;
-		var rgba1 = this11;
+		var this2 = 0;
+		var rgba1 = this2;
 		rgba1 = (bgra >>> 8 & 255 & 255) << 24 | (bgra >>> 16 & 255 & 255) << 16 | (bgra >>> 24 & 255 & 255) << 8 | bgra & 255 & 255;
 		pixel = rgba1;
 		break;
 	default:
 		pixel = color;
 	}
-	var this12 = 0;
-	var source = this12;
+	var this3 = 0;
+	var source = this3;
 	var data = image.buffer.data;
 	var offset = 4 * (y + image.offsetY) * image.buffer.width + (x + image.offsetX) * 4;
 	var format1 = image.buffer.format;
@@ -12735,8 +13432,8 @@ lime__$internal_graphics_ImageDataUtil.setPixel32 = function(image,x,y,color,for
 		break;
 	case 2:
 		var bgra = color;
-		var this11 = 0;
-		var rgba1 = this11;
+		var this2 = 0;
+		var rgba1 = this2;
 		rgba1 = (bgra >>> 8 & 255 & 255) << 24 | (bgra >>> 16 & 255 & 255) << 16 | (bgra >>> 24 & 255 & 255) << 8 | bgra & 255 & 255;
 		pixel = rgba1;
 		break;
@@ -12829,8 +13526,8 @@ lime__$internal_graphics_ImageDataUtil.setPixels = function(image,rect,bytePoint
 				break;
 			case 2:
 				var bgra = color;
-				var this11 = 0;
-				var rgba1 = this11;
+				var this2 = 0;
+				var rgba1 = this2;
 				rgba1 = (bgra >>> 8 & 255 & 255) << 24 | (bgra >>> 16 & 255 & 255) << 16 | (bgra >>> 24 & 255 & 255) << 8 | bgra & 255 & 255;
 				pixel = rgba1;
 				break;
@@ -12896,30 +13593,30 @@ lime__$internal_graphics_ImageDataUtil.threshold = function(image,sourceImage,so
 		rgba = (argb >>> 16 & 255 & 255) << 24 | (argb >>> 8 & 255 & 255) << 16 | (argb & 255 & 255) << 8 | argb >>> 24 & 255 & 255;
 		_color = rgba;
 		var argb1 = mask;
-		var this11 = 0;
-		var rgba1 = this11;
+		var this2 = 0;
+		var rgba1 = this2;
 		rgba1 = (argb1 >>> 16 & 255 & 255) << 24 | (argb1 >>> 8 & 255 & 255) << 16 | (argb1 & 255 & 255) << 8 | argb1 >>> 24 & 255 & 255;
 		_mask = rgba1;
 		var argb2 = threshold;
-		var this12 = 0;
-		var rgba2 = this12;
+		var this3 = 0;
+		var rgba2 = this3;
 		rgba2 = (argb2 >>> 16 & 255 & 255) << 24 | (argb2 >>> 8 & 255 & 255) << 16 | (argb2 & 255 & 255) << 8 | argb2 >>> 24 & 255 & 255;
 		_threshold = rgba2;
 		break;
 	case 2:
 		var bgra = color;
-		var this13 = 0;
-		var rgba3 = this13;
+		var this4 = 0;
+		var rgba3 = this4;
 		rgba3 = (bgra >>> 8 & 255 & 255) << 24 | (bgra >>> 16 & 255 & 255) << 16 | (bgra >>> 24 & 255 & 255) << 8 | bgra & 255 & 255;
 		_color = rgba3;
 		var bgra1 = mask;
-		var this14 = 0;
-		var rgba4 = this14;
+		var this5 = 0;
+		var rgba4 = this5;
 		rgba4 = (bgra1 >>> 8 & 255 & 255) << 24 | (bgra1 >>> 16 & 255 & 255) << 16 | (bgra1 >>> 24 & 255 & 255) << 8 | bgra1 & 255 & 255;
 		_mask = rgba4;
 		var bgra2 = threshold;
-		var this15 = 0;
-		var rgba5 = this15;
+		var this6 = 0;
+		var rgba5 = this6;
 		rgba5 = (bgra2 >>> 8 & 255 & 255) << 24 | (bgra2 >>> 16 & 255 & 255) << 16 | (bgra2 >>> 24 & 255 & 255) << 8 | bgra2 & 255 & 255;
 		_threshold = rgba5;
 		break;
@@ -16521,15 +17218,15 @@ lime_graphics_Image.prototype = {
 					break;
 				case 2:
 					var bgra = color;
-					var this11 = 0;
-					var argb2 = this11;
+					var this2 = 0;
+					var argb2 = this2;
 					argb2 = (bgra & 255 & 255) << 24 | (bgra >>> 8 & 255 & 255) << 16 | (bgra >>> 16 & 255 & 255) << 8 | bgra >>> 24 & 255 & 255;
 					argb = argb2;
 					break;
 				default:
 					var rgba1 = color;
-					var this12 = 0;
-					var argb3 = this12;
+					var this3 = 0;
+					var argb3 = this3;
 					argb3 = (rgba1 & 255 & 255) << 24 | (rgba1 >>> 24 & 255 & 255) << 16 | (rgba1 >>> 16 & 255 & 255) << 8 | rgba1 >>> 8 & 255 & 255;
 					argb = argb3;
 				}
@@ -16566,15 +17263,15 @@ lime_graphics_Image.prototype = {
 					break;
 				case 2:
 					var bgra = color;
-					var this11 = 0;
-					var argb2 = this11;
+					var this2 = 0;
+					var argb2 = this2;
 					argb2 = (bgra & 255 & 255) << 24 | (bgra >>> 8 & 255 & 255) << 16 | (bgra >>> 16 & 255 & 255) << 8 | bgra >>> 24 & 255 & 255;
 					argb = argb2;
 					break;
 				default:
 					var rgba1 = color;
-					var this12 = 0;
-					var argb3 = this12;
+					var this3 = 0;
+					var argb3 = this3;
 					argb3 = (rgba1 & 255 & 255) << 24 | (rgba1 >>> 24 & 255 & 255) << 16 | (rgba1 >>> 16 & 255 & 255) << 8 | rgba1 >>> 8 & 255 & 255;
 					argb = argb3;
 				}
@@ -16627,14 +17324,14 @@ lime_graphics_Image.prototype = {
 				case 1:
 					return color;
 				case 2:
-					var this11 = 0;
-					var bgra = this11;
+					var this2 = 0;
+					var bgra = this2;
 					bgra = (color & 255 & 255) << 24 | (color >>> 8 & 255 & 255) << 16 | (color >>> 16 & 255 & 255) << 8 | color >>> 24 & 255 & 255;
 					var bgra1 = bgra;
 					return bgra1;
 				default:
-					var this12 = 0;
-					var rgba2 = this12;
+					var this3 = 0;
+					var rgba2 = this3;
 					rgba2 = (color >>> 16 & 255 & 255) << 24 | (color >>> 8 & 255 & 255) << 16 | (color & 255 & 255) << 8 | color >>> 24 & 255 & 255;
 					var rgba3 = rgba2;
 					return rgba3;
@@ -16668,14 +17365,14 @@ lime_graphics_Image.prototype = {
 				case 1:
 					return color;
 				case 2:
-					var this11 = 0;
-					var bgra = this11;
+					var this2 = 0;
+					var bgra = this2;
 					bgra = (color & 255 & 255) << 24 | (color >>> 8 & 255 & 255) << 16 | (color >>> 16 & 255 & 255) << 8 | color >>> 24 & 255 & 255;
 					var bgra1 = bgra;
 					return bgra1;
 				default:
-					var this12 = 0;
-					var rgba2 = this12;
+					var this3 = 0;
+					var rgba2 = this3;
 					rgba2 = (color >>> 16 & 255 & 255) << 24 | (color >>> 8 & 255 & 255) << 16 | (color & 255 & 255) << 8 | color >>> 24 & 255 & 255;
 					var rgba3 = rgba2;
 					return rgba3;
@@ -16787,15 +17484,15 @@ lime_graphics_Image.prototype = {
 					break;
 				case 2:
 					var bgra = color;
-					var this11 = 0;
-					var argb2 = this11;
+					var this2 = 0;
+					var argb2 = this2;
 					argb2 = (bgra & 255 & 255) << 24 | (bgra >>> 8 & 255 & 255) << 16 | (bgra >>> 16 & 255 & 255) << 8 | bgra >>> 24 & 255 & 255;
 					argb = argb2;
 					break;
 				default:
 					var rgba1 = color;
-					var this12 = 0;
-					var argb3 = this12;
+					var this3 = 0;
+					var argb3 = this3;
 					argb3 = (rgba1 & 255 & 255) << 24 | (rgba1 >>> 24 & 255 & 255) << 16 | (rgba1 >>> 16 & 255 & 255) << 8 | rgba1 >>> 8 & 255 & 255;
 					argb = argb3;
 				}
@@ -16832,15 +17529,15 @@ lime_graphics_Image.prototype = {
 					break;
 				case 2:
 					var bgra = color;
-					var this11 = 0;
-					var argb2 = this11;
+					var this2 = 0;
+					var argb2 = this2;
 					argb2 = (bgra & 255 & 255) << 24 | (bgra >>> 8 & 255 & 255) << 16 | (bgra >>> 16 & 255 & 255) << 8 | bgra >>> 24 & 255 & 255;
 					argb = argb2;
 					break;
 				default:
 					var rgba1 = color;
-					var this12 = 0;
-					var argb3 = this12;
+					var this3 = 0;
+					var argb3 = this3;
 					argb3 = (rgba1 & 255 & 255) << 24 | (rgba1 >>> 24 & 255 & 255) << 16 | (rgba1 >>> 16 & 255 & 255) << 8 | rgba1 >>> 8 & 255 & 255;
 					argb = argb3;
 				}
@@ -16904,15 +17601,15 @@ lime_graphics_Image.prototype = {
 					break;
 				case 2:
 					var bgra = color;
-					var this11 = 0;
-					var argb1 = this11;
+					var this2 = 0;
+					var argb1 = this2;
 					argb1 = (bgra & 255 & 255) << 24 | (bgra >>> 8 & 255 & 255) << 16 | (bgra >>> 16 & 255 & 255) << 8 | bgra >>> 24 & 255 & 255;
 					_color = argb1;
 					break;
 				default:
 					var rgba1 = color;
-					var this12 = 0;
-					var argb2 = this12;
+					var this3 = 0;
+					var argb2 = this3;
 					argb2 = (rgba1 & 255 & 255) << 24 | (rgba1 >>> 24 & 255 & 255) << 16 | (rgba1 >>> 16 & 255 & 255) << 8 | rgba1 >>> 8 & 255 & 255;
 					_color = argb2;
 				}
@@ -16920,8 +17617,8 @@ lime_graphics_Image.prototype = {
 			var _mask;
 			if(format == null) {
 				var rgba2 = mask;
-				var this13 = 0;
-				var argb3 = this13;
+				var this4 = 0;
+				var argb3 = this4;
 				argb3 = (rgba2 & 255 & 255) << 24 | (rgba2 >>> 24 & 255 & 255) << 16 | (rgba2 >>> 16 & 255 & 255) << 8 | rgba2 >>> 8 & 255 & 255;
 				_mask = argb3;
 			} else {
@@ -16931,15 +17628,15 @@ lime_graphics_Image.prototype = {
 					break;
 				case 2:
 					var bgra1 = mask;
-					var this14 = 0;
-					var argb4 = this14;
+					var this5 = 0;
+					var argb4 = this5;
 					argb4 = (bgra1 & 255 & 255) << 24 | (bgra1 >>> 8 & 255 & 255) << 16 | (bgra1 >>> 16 & 255 & 255) << 8 | bgra1 >>> 24 & 255 & 255;
 					_mask = argb4;
 					break;
 				default:
 					var rgba3 = mask;
-					var this15 = 0;
-					var argb5 = this15;
+					var this6 = 0;
+					var argb5 = this6;
 					argb5 = (rgba3 & 255 & 255) << 24 | (rgba3 >>> 24 & 255 & 255) << 16 | (rgba3 >>> 16 & 255 & 255) << 8 | rgba3 >>> 8 & 255 & 255;
 					_mask = argb5;
 				}
@@ -24418,7 +25115,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 359403;
+	this.version = 220651;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
@@ -27069,10 +27766,27 @@ lime_utils__$UInt8ClampedArray_UInt8ClampedArray_$Impl_$._clamp = function(_in) 
 		return _out;
 	}
 };
-var objects_GameObject = function(health,title) {
-	this.health = { current : health, max : health};
+var objects_GameObject = function(x,y,health,title) {
+	var _gthis = this;
+	this.health = health;
 	this.title = title;
 	openfl_display_Sprite.call(this);
+	this.last = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([x * 16 + 8,y * 16 + 8]);
+	var y1 = this.last[1];
+	this.set_x(this.last[0]);
+	this.set_y(y1);
+	this.addEventListener("mouseOver",function(e) {
+		scenes_Level.i.info_layer.show_info(_gthis);
+		return;
+	});
+	this.addEventListener("mouseOut",function(e1) {
+		scenes_Level.i.info_layer.hide_info();
+		return;
+	});
+	this.addEventListener("enterFrame",function(e2) {
+		_gthis.update(0.016666666666666666);
+		return;
+	});
 };
 $hxClasses["objects.GameObject"] = objects_GameObject;
 objects_GameObject.__name__ = "objects.GameObject";
@@ -27080,48 +27794,17 @@ objects_GameObject.__super__ = openfl_display_Sprite;
 objects_GameObject.prototype = $extend(openfl_display_Sprite.prototype,{
 	health: null
 	,title: null
-	,change_health: function(delta) {
-		this.health.current += delta;
-		if(this.health.current <= 0) {
-			this.kill();
-		}
+	,get_grid_pos: function() {
+		return zero_utilities__$IntPoint_IntPoint_$Impl_$.from_array_int([Math.floor(this.get_x() / 16),Math.floor(this.get_y() / 16)]);
 	}
-	,kill: function() {
-	}
-	,__class__: objects_GameObject
-});
-var objects_Player = function(x,y) {
-	var _gthis = this;
-	objects_GameObject.call(this,64,"Test Player");
-	this.set_x(x);
-	this.set_y(y);
-	this.last_x = x;
-	this.last_y = y;
-	this.addEventListener("enterFrame",function(e) {
-		_gthis.update(0.016666666666666666);
-		return;
-	});
-	this.init_graphic();
-};
-$hxClasses["objects.Player"] = objects_Player;
-objects_Player.__name__ = "objects.Player";
-objects_Player.__super__ = objects_GameObject;
-objects_Player.prototype = $extend(objects_GameObject.prototype,{
-	last_x: null
-	,last_y: null
+	,last: null
 	,graphic: null
-	,init_graphic: function() {
-		this.graphic = new zero_openfl_utilities_AnimatedSprite({ source : "images/players.png", animations : [], frame_width : 16, frame_height : 16, offset_x : 8, offset_y : 12});
-		var max = null;
-		this.graphic.set_frame_index(Math.floor(Math.random() * (max == null ? 8 : max)));
-		this.addChild(this.graphic);
-	}
 	,update: function(dt) {
 		var rot;
-		if(this.last_x == this.get_x()) {
+		if(this.last[0] == this.get_x()) {
 			rot = 0;
 		} else {
-			var n = this.last_x - this.get_x();
+			var n = this.last[0] - this.get_x();
 			rot = (n > 0 ? 1 : n < 0 ? -1 : 0) * 15;
 		}
 		var _g = this;
@@ -27129,15 +27812,12 @@ objects_Player.prototype = $extend(objects_GameObject.prototype,{
 		if(Math.abs(rot) > 0) {
 			this.graphic.set_scaleX(-(rot > 0 ? 1 : rot < 0 ? -1 : 0));
 		}
-		this.last_x = this.get_x();
-	}
-	,pulse: function() {
-		zero_utilities_Tween.get(this).from_to("scaleX",1.5,1).from_to("scaleY",0.5,1).ease(zero_utilities_Ease.elasticOut).duration(0.5);
+		this.last[0] = this.get_x();
 	}
 	,follow_path: function(path) {
 		var _gthis = this;
 		var t = path.shift();
-		var tween = zero_utilities_Tween.get(this).from_to("x",this.get_x(),t[0] * 16 + 8).from_to("y",this.get_y(),t[1] * 16 + 8).duration(0.05).on_complete(function() {
+		zero_utilities_Tween.get(this).from_to("x",this.get_x(),t[0] * 16 + 8).from_to("y",this.get_y(),t[1] * 16 + 8).duration(0.05).on_complete(function() {
 			if(path.length > 0) {
 				_gthis.follow_path(path);
 				scenes_Level.i.poofs.fire({ x : t[0] * 16 + 8, y : t[1] * 16 + 8});
@@ -27149,8 +27829,97 @@ objects_Player.prototype = $extend(objects_GameObject.prototype,{
 		});
 		return true;
 	}
-	,__class__: objects_Player
+	,change_health: function(delta) {
+		this.health.current += delta;
+		if(this.health.current <= 0) {
+			this.kill();
+		}
+		this.health.current = Math.floor(Math.max(Math.min(this.health.current,this.health.max),0));
+		this.health_callback();
+	}
+	,health_callback: function() {
+	}
+	,kill: function() {
+	}
+	,pulse: function() {
+		zero_utilities_Tween.get(this).from_to("scaleX",1.5,1).from_to("scaleY",0.5,1).ease(zero_utilities_Ease.elasticOut).duration(0.5);
+	}
+	,__class__: objects_GameObject
+	,__properties__: $extend(openfl_display_Sprite.prototype.__properties__,{get_grid_pos:"get_grid_pos"})
 });
+var objects_Actor = function(data,x,y) {
+	objects_GameObject.call(this,x,y,data.health,data.id);
+};
+$hxClasses["objects.Actor"] = objects_Actor;
+objects_Actor.__name__ = "objects.Actor";
+objects_Actor.__super__ = objects_GameObject;
+objects_Actor.prototype = $extend(objects_GameObject.prototype,{
+	data: null
+	,__class__: objects_Actor
+});
+var objects_ActorMovement = $hxEnums["objects.ActorMovement"] = { __ename__ : "objects.ActorMovement", __constructs__ : []
+};
+objects_ActorMovement.__empty_constructs__ = [];
+var objects_Player = function(x,y,options) {
+	this.AP = 10;
+	var _gthis = this;
+	objects_Actor.call(this,options.data,x,y);
+	this.addEventListener("click",function(e) {
+		if(scenes_Level.i.can_move) {
+			objects_Player.set_selected_player(_gthis);
+		}
+		return;
+	});
+	scenes_Level.i.objects.addChild(this);
+	scenes_Level.i.dolly.follow(this,true);
+	scenes_Level.i.object_map[y][x] = -1;
+	this.init_graphic();
+	this.gear = new ui_Gear(this,options.side);
+	var _g = 0;
+	var _g1 = options.data.gear;
+	while(_g < _g1.length) {
+		var g = _g1[_g];
+		++_g;
+		this.gear.add_card(new ui_GearCard(this.gear,util_GearUtil.get_gear_data(g)));
+	}
+	scenes_Level.i.gear_layer.addChild(this.gear);
+};
+$hxClasses["objects.Player"] = objects_Player;
+objects_Player.__name__ = "objects.Player";
+objects_Player.__properties__ = {set_selected_player:"set_selected_player"};
+objects_Player.set_selected_player = function(player) {
+	ui_Gear.set_active_gear(player.gear);
+	scenes_Level.i.dolly.follow(player,false);
+	player.pulse();
+	player.gear.move_card.set_moves();
+	return objects_Player.selected_player = player;
+};
+objects_Player.__super__ = objects_Actor;
+objects_Player.prototype = $extend(objects_Actor.prototype,{
+	AP: null
+	,set_AP: function(n) {
+		this.AP = n;
+		this.gear.player_info.update_ap_pts();
+		return this.AP;
+	}
+	,gear: null
+	,init_graphic: function() {
+		this.graphic = new zero_openfl_utilities_AnimatedSprite({ source : "images/players.png", animations : [], frame_width : 16, frame_height : 16, offset_x : 8, offset_y : 12});
+		var max = null;
+		this.graphic.set_frame_index(Math.floor(Math.random() * (max == null ? 8 : max)));
+		this.addChild(this.graphic);
+	}
+	,health_callback: function() {
+		this.gear.player_info.update_health();
+	}
+	,__class__: objects_Player
+	,__properties__: $extend(objects_Actor.prototype.__properties__,{set_AP:"set_AP"})
+});
+var objects_PlayerSide = $hxEnums["objects.PlayerSide"] = { __ename__ : "objects.PlayerSide", __constructs__ : ["LEFT","RIGHT"]
+	,LEFT: {_hx_index:0,__enum__:"objects.PlayerSide",toString:$estr}
+	,RIGHT: {_hx_index:1,__enum__:"objects.PlayerSide",toString:$estr}
+};
+objects_PlayerSide.__empty_constructs__ = [objects_PlayerSide.LEFT,objects_PlayerSide.RIGHT];
 var openfl_Lib = function() { };
 $hxClasses["openfl.Lib"] = openfl_Lib;
 openfl_Lib.__name__ = "openfl.Lib";
@@ -28704,140 +29473,140 @@ openfl__$internal_formats_agal__$AGALConverter_SamplerRegister.parse = function(
 	}
 	var b_high = 0;
 	var b_low = 15;
-	var this1_high = a.high & b_high;
-	var this1_low = a.low & b_low;
-	sr.f = this1_low;
+	var this_high = a.high & b_high;
+	var this_low = a.low & b_low;
+	sr.f = this_low;
 	var b1 = 56;
 	b1 &= 63;
 	var a1;
 	if(b1 == 0) {
-		var this11 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
-		a1 = this11;
+		var this4 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
+		a1 = this4;
 	} else if(b1 < 32) {
-		var this21 = new haxe__$Int64__$_$_$Int64(v.high >> b1,v.high << 32 - b1 | v.low >>> b1);
-		a1 = this21;
+		var this5 = new haxe__$Int64__$_$_$Int64(v.high >> b1,v.high << 32 - b1 | v.low >>> b1);
+		a1 = this5;
 	} else {
-		var this31 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b1 - 32);
-		a1 = this31;
+		var this6 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b1 - 32);
+		a1 = this6;
 	}
 	var b_high1 = 0;
 	var b_low1 = 15;
-	var this1_high1 = a1.high & b_high1;
-	var this1_low1 = a1.low & b_low1;
-	sr.m = this1_low1;
+	var this_high1 = a1.high & b_high1;
+	var this_low1 = a1.low & b_low1;
+	sr.m = this_low1;
 	var b2 = 52;
 	b2 &= 63;
 	var a2;
 	if(b2 == 0) {
-		var this12 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
-		a2 = this12;
+		var this7 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
+		a2 = this7;
 	} else if(b2 < 32) {
-		var this22 = new haxe__$Int64__$_$_$Int64(v.high >> b2,v.high << 32 - b2 | v.low >>> b2);
-		a2 = this22;
+		var this8 = new haxe__$Int64__$_$_$Int64(v.high >> b2,v.high << 32 - b2 | v.low >>> b2);
+		a2 = this8;
 	} else {
-		var this32 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b2 - 32);
-		a2 = this32;
+		var this9 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b2 - 32);
+		a2 = this9;
 	}
 	var b_high2 = 0;
 	var b_low2 = 15;
-	var this1_high2 = a2.high & b_high2;
-	var this1_low2 = a2.low & b_low2;
-	sr.w = this1_low2;
+	var this_high2 = a2.high & b_high2;
+	var this_low2 = a2.low & b_low2;
+	sr.w = this_low2;
 	var b3 = 48;
 	b3 &= 63;
 	var a3;
 	if(b3 == 0) {
-		var this13 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
-		a3 = this13;
+		var this10 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
+		a3 = this10;
 	} else if(b3 < 32) {
-		var this23 = new haxe__$Int64__$_$_$Int64(v.high >> b3,v.high << 32 - b3 | v.low >>> b3);
-		a3 = this23;
+		var this11 = new haxe__$Int64__$_$_$Int64(v.high >> b3,v.high << 32 - b3 | v.low >>> b3);
+		a3 = this11;
 	} else {
-		var this33 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b3 - 32);
-		a3 = this33;
+		var this12 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b3 - 32);
+		a3 = this12;
 	}
 	var b_high3 = 0;
 	var b_low3 = 15;
-	var this1_high3 = a3.high & b_high3;
-	var this1_low3 = a3.low & b_low3;
-	sr.s = this1_low3;
+	var this_high3 = a3.high & b_high3;
+	var this_low3 = a3.low & b_low3;
+	sr.s = this_low3;
 	var b4 = 44;
 	b4 &= 63;
 	var a4;
 	if(b4 == 0) {
-		var this14 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
-		a4 = this14;
+		var this13 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
+		a4 = this13;
 	} else if(b4 < 32) {
-		var this24 = new haxe__$Int64__$_$_$Int64(v.high >> b4,v.high << 32 - b4 | v.low >>> b4);
-		a4 = this24;
+		var this14 = new haxe__$Int64__$_$_$Int64(v.high >> b4,v.high << 32 - b4 | v.low >>> b4);
+		a4 = this14;
 	} else {
-		var this34 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b4 - 32);
-		a4 = this34;
+		var this15 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b4 - 32);
+		a4 = this15;
 	}
 	var b_high4 = 0;
 	var b_low4 = 15;
-	var this1_high4 = a4.high & b_high4;
-	var this1_low4 = a4.low & b_low4;
-	sr.d = this1_low4;
+	var this_high4 = a4.high & b_high4;
+	var this_low4 = a4.low & b_low4;
+	sr.d = this_low4;
 	var b5 = 40;
 	b5 &= 63;
 	var a5;
 	if(b5 == 0) {
-		var this15 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
-		a5 = this15;
+		var this16 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
+		a5 = this16;
 	} else if(b5 < 32) {
-		var this25 = new haxe__$Int64__$_$_$Int64(v.high >> b5,v.high << 32 - b5 | v.low >>> b5);
-		a5 = this25;
+		var this17 = new haxe__$Int64__$_$_$Int64(v.high >> b5,v.high << 32 - b5 | v.low >>> b5);
+		a5 = this17;
 	} else {
-		var this35 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b5 - 32);
-		a5 = this35;
+		var this18 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b5 - 32);
+		a5 = this18;
 	}
 	var b_high5 = 0;
 	var b_low5 = 15;
-	var this1_high5 = a5.high & b_high5;
-	var this1_low5 = a5.low & b_low5;
-	sr.t = this1_low5;
+	var this_high5 = a5.high & b_high5;
+	var this_low5 = a5.low & b_low5;
+	sr.t = this_low5;
 	var b6 = 32;
 	b6 &= 63;
 	var a6;
 	if(b6 == 0) {
-		var this16 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
-		a6 = this16;
+		var this19 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
+		a6 = this19;
 	} else if(b6 < 32) {
-		var this26 = new haxe__$Int64__$_$_$Int64(v.high >> b6,v.high << 32 - b6 | v.low >>> b6);
-		a6 = this26;
+		var this20 = new haxe__$Int64__$_$_$Int64(v.high >> b6,v.high << 32 - b6 | v.low >>> b6);
+		a6 = this20;
 	} else {
-		var this36 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b6 - 32);
-		a6 = this36;
+		var this21 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b6 - 32);
+		a6 = this21;
 	}
 	var b_high6 = 0;
 	var b_low6 = 15;
-	var this1_high6 = a6.high & b_high6;
-	var this1_low6 = a6.low & b_low6;
-	sr.type = this1_low6;
+	var this_high6 = a6.high & b_high6;
+	var this_low6 = a6.low & b_low6;
+	sr.type = this_low6;
 	var b7 = 16;
 	b7 &= 63;
 	var a7;
 	if(b7 == 0) {
-		var this17 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
-		a7 = this17;
+		var this22 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
+		a7 = this22;
 	} else if(b7 < 32) {
-		var this27 = new haxe__$Int64__$_$_$Int64(v.high >> b7,v.high << 32 - b7 | v.low >>> b7);
-		a7 = this27;
+		var this23 = new haxe__$Int64__$_$_$Int64(v.high >> b7,v.high << 32 - b7 | v.low >>> b7);
+		a7 = this23;
 	} else {
-		var this37 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b7 - 32);
-		a7 = this37;
+		var this24 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b7 - 32);
+		a7 = this24;
 	}
 	var b_high7 = 0;
 	var b_low7 = 255;
-	var this1_high7 = a7.high & b_high7;
-	var this1_low7 = a7.low & b_low7;
-	sr.b = this1_low7;
+	var this_high7 = a7.high & b_high7;
+	var this_low7 = a7.low & b_low7;
+	sr.b = this_low7;
 	var b_high8 = 0;
 	var b_low8 = 65535;
-	var this1_high8 = v.high & b_high8;
-	var this1_low8 = v.low & b_low8;
-	sr.n = this1_low8;
+	var this_high8 = v.high & b_high8;
+	var this_low8 = v.low & b_low8;
+	sr.n = this_low8;
 	return sr;
 };
 openfl__$internal_formats_agal__$AGALConverter_SamplerRegister.prototype = {
@@ -28922,104 +29691,104 @@ openfl__$internal_formats_agal__$AGALConverter_SourceRegister.parse = function(v
 	}
 	var b_high = 0;
 	var b_low = 1;
-	var this1_high = a.high & b_high;
-	var this1_low = a.low & b_low;
-	sr.d = this1_low;
+	var this_high = a.high & b_high;
+	var this_low = a.low & b_low;
+	sr.d = this_low;
 	var b1 = 48;
 	b1 &= 63;
 	var a1;
 	if(b1 == 0) {
-		var this11 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
-		a1 = this11;
+		var this4 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
+		a1 = this4;
 	} else if(b1 < 32) {
-		var this21 = new haxe__$Int64__$_$_$Int64(v.high >> b1,v.high << 32 - b1 | v.low >>> b1);
-		a1 = this21;
+		var this5 = new haxe__$Int64__$_$_$Int64(v.high >> b1,v.high << 32 - b1 | v.low >>> b1);
+		a1 = this5;
 	} else {
-		var this31 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b1 - 32);
-		a1 = this31;
+		var this6 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b1 - 32);
+		a1 = this6;
 	}
 	var b_high1 = 0;
 	var b_low1 = 3;
-	var this1_high1 = a1.high & b_high1;
-	var this1_low1 = a1.low & b_low1;
-	sr.q = this1_low1;
+	var this_high1 = a1.high & b_high1;
+	var this_low1 = a1.low & b_low1;
+	sr.q = this_low1;
 	var b2 = 40;
 	b2 &= 63;
 	var a2;
 	if(b2 == 0) {
-		var this12 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
-		a2 = this12;
+		var this7 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
+		a2 = this7;
 	} else if(b2 < 32) {
-		var this22 = new haxe__$Int64__$_$_$Int64(v.high >> b2,v.high << 32 - b2 | v.low >>> b2);
-		a2 = this22;
+		var this8 = new haxe__$Int64__$_$_$Int64(v.high >> b2,v.high << 32 - b2 | v.low >>> b2);
+		a2 = this8;
 	} else {
-		var this32 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b2 - 32);
-		a2 = this32;
+		var this9 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b2 - 32);
+		a2 = this9;
 	}
 	var b_high2 = 0;
 	var b_low2 = 15;
-	var this1_high2 = a2.high & b_high2;
-	var this1_low2 = a2.low & b_low2;
-	sr.itype = this1_low2;
+	var this_high2 = a2.high & b_high2;
+	var this_low2 = a2.low & b_low2;
+	sr.itype = this_low2;
 	var b3 = 32;
 	b3 &= 63;
 	var a3;
 	if(b3 == 0) {
-		var this13 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
-		a3 = this13;
+		var this10 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
+		a3 = this10;
 	} else if(b3 < 32) {
-		var this23 = new haxe__$Int64__$_$_$Int64(v.high >> b3,v.high << 32 - b3 | v.low >>> b3);
-		a3 = this23;
+		var this11 = new haxe__$Int64__$_$_$Int64(v.high >> b3,v.high << 32 - b3 | v.low >>> b3);
+		a3 = this11;
 	} else {
-		var this33 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b3 - 32);
-		a3 = this33;
+		var this12 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b3 - 32);
+		a3 = this12;
 	}
 	var b_high3 = 0;
 	var b_low3 = 15;
-	var this1_high3 = a3.high & b_high3;
-	var this1_low3 = a3.low & b_low3;
-	sr.type = this1_low3;
+	var this_high3 = a3.high & b_high3;
+	var this_low3 = a3.low & b_low3;
+	sr.type = this_low3;
 	var b4 = 24;
 	b4 &= 63;
 	var a4;
 	if(b4 == 0) {
-		var this14 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
-		a4 = this14;
+		var this13 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
+		a4 = this13;
 	} else if(b4 < 32) {
-		var this24 = new haxe__$Int64__$_$_$Int64(v.high >> b4,v.high << 32 - b4 | v.low >>> b4);
-		a4 = this24;
+		var this14 = new haxe__$Int64__$_$_$Int64(v.high >> b4,v.high << 32 - b4 | v.low >>> b4);
+		a4 = this14;
 	} else {
-		var this34 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b4 - 32);
-		a4 = this34;
+		var this15 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b4 - 32);
+		a4 = this15;
 	}
 	var b_high4 = 0;
 	var b_low4 = 255;
-	var this1_high4 = a4.high & b_high4;
-	var this1_low4 = a4.low & b_low4;
-	sr.s = this1_low4;
+	var this_high4 = a4.high & b_high4;
+	var this_low4 = a4.low & b_low4;
+	sr.s = this_low4;
 	var b5 = 16;
 	b5 &= 63;
 	var a5;
 	if(b5 == 0) {
-		var this15 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
-		a5 = this15;
+		var this16 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
+		a5 = this16;
 	} else if(b5 < 32) {
-		var this25 = new haxe__$Int64__$_$_$Int64(v.high >> b5,v.high << 32 - b5 | v.low >>> b5);
-		a5 = this25;
+		var this17 = new haxe__$Int64__$_$_$Int64(v.high >> b5,v.high << 32 - b5 | v.low >>> b5);
+		a5 = this17;
 	} else {
-		var this35 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b5 - 32);
-		a5 = this35;
+		var this18 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b5 - 32);
+		a5 = this18;
 	}
 	var b_high5 = 0;
 	var b_low5 = 255;
-	var this1_high5 = a5.high & b_high5;
-	var this1_low5 = a5.low & b_low5;
-	sr.o = this1_low5;
+	var this_high5 = a5.high & b_high5;
+	var this_low5 = a5.low & b_low5;
+	sr.o = this_low5;
 	var b_high6 = 0;
 	var b_low6 = 65535;
-	var this1_high6 = v.high & b_high6;
-	var this1_low6 = v.low & b_low6;
-	sr.n = this1_low6;
+	var this_high6 = v.high & b_high6;
+	var this_low6 = v.low & b_low6;
+	sr.n = this_low6;
 	sr.sourceMask = sourceMask;
 	return sr;
 };
@@ -47114,676 +47883,6 @@ openfl__$internal_renderer_context3D_Context3DGraphics.resizeVertexBuffer = func
 			graphics.__vertexBufferData = newBuffer;
 		}
 	}
-};
-var openfl_display_Shader = function(code) {
-	this.byteCode = code;
-	this.precisionHint = 1;
-	this.__glSourceDirty = true;
-	this.__numPasses = 1;
-	this.__data = openfl_display__$ShaderData_ShaderData_$Impl_$._new(code);
-};
-$hxClasses["openfl.display.Shader"] = openfl_display_Shader;
-openfl_display_Shader.__name__ = "openfl.display.Shader";
-openfl_display_Shader.prototype = {
-	byteCode: null
-	,glProgram: null
-	,precisionHint: null
-	,program: null
-	,__alpha: null
-	,__bitmap: null
-	,__colorMultiplier: null
-	,__colorOffset: null
-	,__context: null
-	,__data: null
-	,__glFragmentSource: null
-	,__glSourceDirty: null
-	,__glVertexSource: null
-	,__hasColorTransform: null
-	,__inputBitmapData: null
-	,__isGenerated: null
-	,__matrix: null
-	,__numPasses: null
-	,__paramBool: null
-	,__paramFloat: null
-	,__paramInt: null
-	,__position: null
-	,__textureCoord: null
-	,__texture: null
-	,__textureSize: null
-	,__clearUseArray: function() {
-		var _g = 0;
-		var _g1 = this.__paramBool;
-		while(_g < _g1.length) {
-			var parameter = _g1[_g];
-			++_g;
-			parameter.__useArray = false;
-		}
-		var _g2 = 0;
-		var _g3 = this.__paramFloat;
-		while(_g2 < _g3.length) {
-			var parameter1 = _g3[_g2];
-			++_g2;
-			parameter1.__useArray = false;
-		}
-		var _g4 = 0;
-		var _g5 = this.__paramInt;
-		while(_g4 < _g5.length) {
-			var parameter2 = _g5[_g4];
-			++_g4;
-			parameter2.__useArray = false;
-		}
-	}
-	,__createGLShader: function(source,type) {
-		var gl = this.__context.gl;
-		var shader = gl.createShader(type);
-		gl.shaderSource(shader,source);
-		gl.compileShader(shader);
-		if(gl.getShaderParameter(shader,gl.COMPILE_STATUS) == 0) {
-			var message = type == gl.VERTEX_SHADER ? "Error compiling vertex shader" : "Error compiling fragment shader";
-			message += "\n" + gl.getShaderInfoLog(shader);
-			message += "\n" + source;
-			lime_utils_Log.error(message,{ fileName : "openfl/display/Shader.hx", lineNumber : 328, className : "openfl.display.Shader", methodName : "__createGLShader"});
-		}
-		return shader;
-	}
-	,__createGLProgram: function(vertexSource,fragmentSource) {
-		var gl = this.__context.gl;
-		var vertexShader = this.__createGLShader(vertexSource,gl.VERTEX_SHADER);
-		var fragmentShader = this.__createGLShader(fragmentSource,gl.FRAGMENT_SHADER);
-		var program = gl.createProgram();
-		var _g = 0;
-		var _g1 = this.__paramFloat;
-		while(_g < _g1.length) {
-			var param = _g1[_g];
-			++_g;
-			if(param.name.indexOf("Position") > -1 && StringTools.startsWith(param.name,"openfl_")) {
-				gl.bindAttribLocation(program,0,param.name);
-				break;
-			}
-		}
-		gl.attachShader(program,vertexShader);
-		gl.attachShader(program,fragmentShader);
-		gl.linkProgram(program);
-		if(gl.getProgramParameter(program,gl.LINK_STATUS) == 0) {
-			var message = "Unable to initialize the shader program";
-			message += "\n" + gl.getProgramInfoLog(program);
-			lime_utils_Log.error(message,{ fileName : "openfl/display/Shader.hx", lineNumber : 361, className : "openfl.display.Shader", methodName : "__createGLProgram"});
-		}
-		return program;
-	}
-	,__disable: function() {
-		if(this.program != null) {
-			this.__disableGL();
-		}
-	}
-	,__disableGL: function() {
-		var gl = this.__context.gl;
-		var textureCount = 0;
-		var _g = 0;
-		var _g1 = this.__inputBitmapData;
-		while(_g < _g1.length) {
-			var input = _g1[_g];
-			++_g;
-			input.__disableGL(this.__context,textureCount);
-			++textureCount;
-		}
-		var _g2 = 0;
-		var _g3 = this.__paramBool;
-		while(_g2 < _g3.length) {
-			var parameter = _g3[_g2];
-			++_g2;
-			parameter.__disableGL(this.__context);
-		}
-		var _g4 = 0;
-		var _g5 = this.__paramFloat;
-		while(_g4 < _g5.length) {
-			var parameter1 = _g5[_g4];
-			++_g4;
-			parameter1.__disableGL(this.__context);
-		}
-		var _g6 = 0;
-		var _g7 = this.__paramInt;
-		while(_g6 < _g7.length) {
-			var parameter2 = _g7[_g6];
-			++_g6;
-			parameter2.__disableGL(this.__context);
-		}
-		this.__context.__bindGLArrayBuffer(null);
-		if(this.__context.__context.type == "opengl") {
-			gl.disable(gl.TEXTURE_2D);
-		}
-	}
-	,__enable: function() {
-		this.__init();
-		if(this.program != null) {
-			this.__enableGL();
-		}
-	}
-	,__enableGL: function() {
-		var textureCount = 0;
-		var gl = this.__context.gl;
-		var _g = 0;
-		var _g1 = this.__inputBitmapData;
-		while(_g < _g1.length) {
-			var input = _g1[_g];
-			++_g;
-			gl.uniform1i(input.index,textureCount);
-			++textureCount;
-		}
-		if(this.__context.__context.type == "opengl" && textureCount > 0) {
-			gl.enable(gl.TEXTURE_2D);
-		}
-	}
-	,__init: function() {
-		if(this.__data == null) {
-			this.__data = openfl_display__$ShaderData_ShaderData_$Impl_$._new(null);
-		}
-		if(this.__glFragmentSource != null && this.__glVertexSource != null && (this.program == null || this.__glSourceDirty)) {
-			this.__initGL();
-		}
-	}
-	,__initGL: function() {
-		if(this.__glSourceDirty || this.__paramBool == null) {
-			this.__glSourceDirty = false;
-			this.program = null;
-			this.__inputBitmapData = [];
-			this.__paramBool = [];
-			this.__paramFloat = [];
-			this.__paramInt = [];
-			this.__processGLData(this.get_glVertexSource(),"attribute");
-			this.__processGLData(this.get_glVertexSource(),"uniform");
-			this.__processGLData(this.get_glFragmentSource(),"uniform");
-		}
-		if(this.__context != null && this.program == null) {
-			var gl = this.__context.gl;
-			var prefix = "#ifdef GL_ES\n\t\t\t\t" + (this.precisionHint == 1 ? "#ifdef GL_FRAGMENT_PRECISION_HIGH\n\t\t\t\tprecision highp float;\n\t\t\t\t#else\n\t\t\t\tprecision mediump float;\n\t\t\t\t#endif" : "precision lowp float;") + "\n\t\t\t\t#endif\n\t\t\t\t";
-			var vertex = prefix + this.get_glVertexSource();
-			var fragment = prefix + this.get_glFragmentSource();
-			var id = vertex + fragment;
-			var _this = this.__context.__programs;
-			if(__map_reserved[id] != null ? _this.existsReserved(id) : _this.h.hasOwnProperty(id)) {
-				var _this1 = this.__context.__programs;
-				this.program = __map_reserved[id] != null ? _this1.getReserved(id) : _this1.h[id];
-			} else {
-				this.program = this.__context.createProgram(1);
-				this.program.__glProgram = this.__createGLProgram(vertex,fragment);
-				var value = this.program;
-				var _this2 = this.__context.__programs;
-				if(__map_reserved[id] != null) {
-					_this2.setReserved(id,value);
-				} else {
-					_this2.h[id] = value;
-				}
-			}
-			if(this.program != null) {
-				this.glProgram = this.program.__glProgram;
-				var _g = 0;
-				var _g1 = this.__inputBitmapData;
-				while(_g < _g1.length) {
-					var input = _g1[_g];
-					++_g;
-					if(input.__isUniform) {
-						input.index = gl.getUniformLocation(this.glProgram,input.name);
-					} else {
-						input.index = gl.getAttribLocation(this.glProgram,input.name);
-					}
-				}
-				var _g2 = 0;
-				var _g3 = this.__paramBool;
-				while(_g2 < _g3.length) {
-					var parameter = _g3[_g2];
-					++_g2;
-					if(parameter.__isUniform) {
-						parameter.index = gl.getUniformLocation(this.glProgram,parameter.name);
-					} else {
-						parameter.index = gl.getAttribLocation(this.glProgram,parameter.name);
-					}
-				}
-				var _g4 = 0;
-				var _g5 = this.__paramFloat;
-				while(_g4 < _g5.length) {
-					var parameter1 = _g5[_g4];
-					++_g4;
-					if(parameter1.__isUniform) {
-						parameter1.index = gl.getUniformLocation(this.glProgram,parameter1.name);
-					} else {
-						parameter1.index = gl.getAttribLocation(this.glProgram,parameter1.name);
-					}
-				}
-				var _g6 = 0;
-				var _g7 = this.__paramInt;
-				while(_g6 < _g7.length) {
-					var parameter2 = _g7[_g6];
-					++_g6;
-					if(parameter2.__isUniform) {
-						parameter2.index = gl.getUniformLocation(this.glProgram,parameter2.name);
-					} else {
-						parameter2.index = gl.getAttribLocation(this.glProgram,parameter2.name);
-					}
-				}
-			}
-		}
-	}
-	,__processGLData: function(source,storageType) {
-		var lastMatch = 0;
-		var position;
-		var regex;
-		var name;
-		var type;
-		if(storageType == "uniform") {
-			regex = new EReg("uniform ([A-Za-z0-9]+) ([A-Za-z0-9_]+)","");
-		} else {
-			regex = new EReg("attribute ([A-Za-z0-9]+) ([A-Za-z0-9_]+)","");
-		}
-		while(regex.matchSub(source,lastMatch)) {
-			type = regex.matched(1);
-			name = regex.matched(2);
-			if(StringTools.startsWith(name,"gl_")) {
-				continue;
-			}
-			var isUniform = storageType == "uniform";
-			if(StringTools.startsWith(type,"sampler")) {
-				var input = new openfl_display_ShaderInput();
-				input.name = name;
-				input.__isUniform = isUniform;
-				this.__inputBitmapData.push(input);
-				switch(name) {
-				case "bitmap":
-					this.__bitmap = input;
-					break;
-				case "openfl_Texture":
-					this.__texture = input;
-					break;
-				default:
-				}
-				this.__data[name] = input;
-				if(this.__isGenerated) {
-					this[name] = input;
-				}
-			} else if(!Object.prototype.hasOwnProperty.call(this.__data,name) || Reflect.field(this.__data,name) == null) {
-				var parameterType;
-				switch(type) {
-				case "bool":
-					parameterType = 0;
-					break;
-				case "bvec2":
-					parameterType = 1;
-					break;
-				case "bvec3":
-					parameterType = 2;
-					break;
-				case "bvec4":
-					parameterType = 3;
-					break;
-				case "dvec2":case "vec2":
-					parameterType = 5;
-					break;
-				case "dvec3":case "vec3":
-					parameterType = 6;
-					break;
-				case "double":case "float":
-					parameterType = 4;
-					break;
-				case "ivec3":case "uvec3":
-					parameterType = 10;
-					break;
-				case "ivec4":case "uvec4":
-					parameterType = 11;
-					break;
-				case "mat2":case "mat2x2":
-					parameterType = 12;
-					break;
-				case "mat2x3":
-					parameterType = 13;
-					break;
-				case "mat2x4":
-					parameterType = 14;
-					break;
-				case "mat3x2":
-					parameterType = 15;
-					break;
-				case "mat3":case "mat3x3":
-					parameterType = 16;
-					break;
-				case "mat3x4":
-					parameterType = 17;
-					break;
-				case "mat4":case "mat4x4":
-					parameterType = 20;
-					break;
-				case "mat4x2":
-					parameterType = 18;
-					break;
-				case "mat4x3":
-					parameterType = 19;
-					break;
-				case "int":case "uint":
-					parameterType = 8;
-					break;
-				case "ivec2":case "uvec2":
-					parameterType = 9;
-					break;
-				case "dvec4":case "vec4":
-					parameterType = 7;
-					break;
-				default:
-					parameterType = null;
-				}
-				var length;
-				switch(parameterType) {
-				case 1:case 5:case 9:
-					length = 2;
-					break;
-				case 3:case 7:case 11:case 12:
-					length = 4;
-					break;
-				case 2:case 6:case 10:
-					length = 3;
-					break;
-				case 16:
-					length = 9;
-					break;
-				case 20:
-					length = 16;
-					break;
-				default:
-					length = 1;
-				}
-				var arrayLength;
-				switch(parameterType) {
-				case 12:
-					arrayLength = 2;
-					break;
-				case 16:
-					arrayLength = 3;
-					break;
-				case 20:
-					arrayLength = 4;
-					break;
-				default:
-					arrayLength = 1;
-				}
-				switch(parameterType) {
-				case 0:case 1:case 2:case 3:
-					var parameter = new openfl_display_ShaderParameter();
-					parameter.set_name(name);
-					parameter.type = parameterType;
-					parameter.__arrayLength = arrayLength;
-					parameter.__isBool = true;
-					parameter.__isUniform = isUniform;
-					parameter.__length = length;
-					this.__paramBool.push(parameter);
-					if(name == "openfl_HasColorTransform") {
-						this.__hasColorTransform = parameter;
-					}
-					this.__data[name] = parameter;
-					if(this.__isGenerated) {
-						this[name] = parameter;
-					}
-					break;
-				case 8:case 9:case 10:case 11:
-					var parameter1 = new openfl_display_ShaderParameter();
-					parameter1.set_name(name);
-					parameter1.type = parameterType;
-					parameter1.__arrayLength = arrayLength;
-					parameter1.__isInt = true;
-					parameter1.__isUniform = isUniform;
-					parameter1.__length = length;
-					this.__paramInt.push(parameter1);
-					this.__data[name] = parameter1;
-					if(this.__isGenerated) {
-						this[name] = parameter1;
-					}
-					break;
-				default:
-					var parameter2 = new openfl_display_ShaderParameter();
-					parameter2.set_name(name);
-					parameter2.type = parameterType;
-					parameter2.__arrayLength = arrayLength;
-					if(arrayLength > 0) {
-						var elements = arrayLength * arrayLength;
-						var array = null;
-						var vector = null;
-						var view = null;
-						var buffer = null;
-						var len = null;
-						var this1;
-						if(elements != null) {
-							this1 = new Float32Array(elements);
-						} else if(array != null) {
-							this1 = new Float32Array(array);
-						} else if(vector != null) {
-							this1 = new Float32Array(vector.__array);
-						} else if(view != null) {
-							this1 = new Float32Array(view);
-						} else if(buffer != null) {
-							if(len == null) {
-								this1 = new Float32Array(buffer,0);
-							} else {
-								this1 = new Float32Array(buffer,0,len);
-							}
-						} else {
-							this1 = null;
-						}
-						parameter2.__uniformMatrix = this1;
-					}
-					parameter2.__isFloat = true;
-					parameter2.__isUniform = isUniform;
-					parameter2.__length = length;
-					this.__paramFloat.push(parameter2);
-					if(StringTools.startsWith(name,"openfl_")) {
-						switch(name) {
-						case "openfl_Alpha":
-							this.__alpha = parameter2;
-							break;
-						case "openfl_ColorMultiplier":
-							this.__colorMultiplier = parameter2;
-							break;
-						case "openfl_ColorOffset":
-							this.__colorOffset = parameter2;
-							break;
-						case "openfl_Matrix":
-							this.__matrix = parameter2;
-							break;
-						case "openfl_Position":
-							this.__position = parameter2;
-							break;
-						case "openfl_TextureCoord":
-							this.__textureCoord = parameter2;
-							break;
-						case "openfl_TextureSize":
-							this.__textureSize = parameter2;
-							break;
-						default:
-						}
-					}
-					this.__data[name] = parameter2;
-					if(this.__isGenerated) {
-						this[name] = parameter2;
-					}
-				}
-			}
-			position = regex.matchedPos();
-			lastMatch = position.pos + position.len;
-		}
-	}
-	,__update: function() {
-		if(this.program != null) {
-			this.__updateGL();
-		}
-	}
-	,__updateFromBuffer: function(shaderBuffer,bufferOffset) {
-		if(this.program != null) {
-			this.__updateGLFromBuffer(shaderBuffer,bufferOffset);
-		}
-	}
-	,__updateGL: function() {
-		var textureCount = 0;
-		var _g = 0;
-		var _g1 = this.__inputBitmapData;
-		while(_g < _g1.length) {
-			var input = _g1[_g];
-			++_g;
-			input.__updateGL(this.__context,textureCount);
-			++textureCount;
-		}
-		var _g2 = 0;
-		var _g3 = this.__paramBool;
-		while(_g2 < _g3.length) {
-			var parameter = _g3[_g2];
-			++_g2;
-			parameter.__updateGL(this.__context);
-		}
-		var _g4 = 0;
-		var _g5 = this.__paramFloat;
-		while(_g4 < _g5.length) {
-			var parameter1 = _g5[_g4];
-			++_g4;
-			parameter1.__updateGL(this.__context);
-		}
-		var _g6 = 0;
-		var _g7 = this.__paramInt;
-		while(_g6 < _g7.length) {
-			var parameter2 = _g7[_g6];
-			++_g6;
-			parameter2.__updateGL(this.__context);
-		}
-	}
-	,__updateGLFromBuffer: function(shaderBuffer,bufferOffset) {
-		var textureCount = 0;
-		var input;
-		var inputData;
-		var inputFilter;
-		var inputMipFilter;
-		var inputWrap;
-		var _g = 0;
-		var _g1 = shaderBuffer.inputCount;
-		while(_g < _g1) {
-			var i = _g++;
-			input = shaderBuffer.inputRefs[i];
-			inputData = shaderBuffer.inputs[i];
-			inputFilter = shaderBuffer.inputFilter[i];
-			inputMipFilter = shaderBuffer.inputMipFilter[i];
-			inputWrap = shaderBuffer.inputWrap[i];
-			if(inputData != null) {
-				input.__updateGL(this.__context,textureCount,inputData,inputFilter,inputMipFilter,inputWrap);
-				++textureCount;
-			}
-		}
-		var gl = this.__context.gl;
-		if(shaderBuffer.paramDataLength > 0) {
-			if(shaderBuffer.paramDataBuffer == null) {
-				shaderBuffer.paramDataBuffer = gl.createBuffer();
-			}
-			this.__context.__bindGLArrayBuffer(shaderBuffer.paramDataBuffer);
-			lime_graphics__$WebGLRenderContext_WebGLRenderContext_$Impl_$.bufferData(gl,gl.ARRAY_BUFFER,shaderBuffer.paramData,gl.DYNAMIC_DRAW);
-		} else {
-			this.__context.__bindGLArrayBuffer(null);
-		}
-		var boolIndex = 0;
-		var floatIndex = 0;
-		var intIndex = 0;
-		var boolCount = shaderBuffer.paramBoolCount;
-		var floatCount = shaderBuffer.paramFloatCount;
-		var paramData = shaderBuffer.paramData;
-		var boolRef;
-		var floatRef;
-		var intRef;
-		var hasOverride;
-		var overrideBoolValue = null;
-		var overrideFloatValue = null;
-		var overrideIntValue = null;
-		var _g2 = 0;
-		var _g3 = shaderBuffer.paramCount;
-		while(_g2 < _g3) {
-			var i1 = _g2++;
-			hasOverride = false;
-			if(i1 < boolCount) {
-				boolRef = shaderBuffer.paramRefs_Bool[boolIndex];
-				var _g21 = 0;
-				var _g31 = shaderBuffer.overrideBoolCount;
-				while(_g21 < _g31) {
-					var j = _g21++;
-					if(boolRef.name == shaderBuffer.overrideBoolNames[j]) {
-						overrideBoolValue = shaderBuffer.overrideBoolValues[j];
-						hasOverride = true;
-						break;
-					}
-				}
-				if(hasOverride) {
-					boolRef.__updateGL(this.__context,overrideBoolValue);
-				} else {
-					boolRef.__updateGLFromBuffer(this.__context,paramData,shaderBuffer.paramPositions[i1],shaderBuffer.paramLengths[i1],bufferOffset);
-				}
-				++boolIndex;
-			} else if(i1 < boolCount + floatCount) {
-				floatRef = shaderBuffer.paramRefs_Float[floatIndex];
-				var _g22 = 0;
-				var _g32 = shaderBuffer.overrideFloatCount;
-				while(_g22 < _g32) {
-					var j1 = _g22++;
-					if(floatRef.name == shaderBuffer.overrideFloatNames[j1]) {
-						overrideFloatValue = shaderBuffer.overrideFloatValues[j1];
-						hasOverride = true;
-						break;
-					}
-				}
-				if(hasOverride) {
-					floatRef.__updateGL(this.__context,overrideFloatValue);
-				} else {
-					floatRef.__updateGLFromBuffer(this.__context,paramData,shaderBuffer.paramPositions[i1],shaderBuffer.paramLengths[i1],bufferOffset);
-				}
-				++floatIndex;
-			} else {
-				intRef = shaderBuffer.paramRefs_Int[intIndex];
-				var _g23 = 0;
-				var _g33 = shaderBuffer.overrideIntCount;
-				while(_g23 < _g33) {
-					var j2 = _g23++;
-					if(intRef.name == shaderBuffer.overrideIntNames[j2]) {
-						overrideIntValue = shaderBuffer.overrideIntValues[j2];
-						hasOverride = true;
-						break;
-					}
-				}
-				if(hasOverride) {
-					intRef.__updateGL(this.__context,overrideIntValue);
-				} else {
-					intRef.__updateGLFromBuffer(this.__context,paramData,shaderBuffer.paramPositions[i1],shaderBuffer.paramLengths[i1],bufferOffset);
-				}
-				++intIndex;
-			}
-		}
-	}
-	,get_data: function() {
-		if(this.__glSourceDirty || this.__data == null) {
-			this.__init();
-		}
-		return this.__data;
-	}
-	,set_data: function(value) {
-		return this.__data = value;
-	}
-	,get_glFragmentSource: function() {
-		return this.__glFragmentSource;
-	}
-	,set_glFragmentSource: function(value) {
-		if(value != this.__glFragmentSource) {
-			this.__glSourceDirty = true;
-		}
-		return this.__glFragmentSource = value;
-	}
-	,get_glVertexSource: function() {
-		return this.__glVertexSource;
-	}
-	,set_glVertexSource: function(value) {
-		if(value != this.__glVertexSource) {
-			this.__glSourceDirty = true;
-		}
-		return this.__glVertexSource = value;
-	}
-	,__class__: openfl_display_Shader
-	,__properties__: {set_glVertexSource:"set_glVertexSource",get_glVertexSource:"get_glVertexSource",set_glFragmentSource:"set_glFragmentSource",get_glFragmentSource:"get_glFragmentSource",set_data:"set_data",get_data:"get_data"}
 };
 var openfl__$internal_renderer_context3D_Context3DMaskShader = function() {
 	if(this.__glFragmentSource == null) {
@@ -67444,6 +67543,35 @@ openfl_filters_GlowFilter.prototype = $extend(openfl_filters_BitmapFilter.protot
 	,__class__: openfl_filters_GlowFilter
 	,__properties__: {set_strength:"set_strength",get_strength:"get_strength",set_quality:"set_quality",get_quality:"get_quality",set_knockout:"set_knockout",get_knockout:"get_knockout",set_inner:"set_inner",get_inner:"get_inner",set_color:"set_color",get_color:"get_color",set_blurY:"set_blurY",get_blurY:"get_blurY",set_blurX:"set_blurX",get_blurX:"get_blurX",set_alpha:"set_alpha",get_alpha:"get_alpha"}
 });
+var openfl_filters_ShaderFilter = function(shader) {
+	openfl_filters_BitmapFilter.call(this);
+	this.shader = shader;
+	this.__numShaderPasses = 1;
+};
+$hxClasses["openfl.filters.ShaderFilter"] = openfl_filters_ShaderFilter;
+openfl_filters_ShaderFilter.__name__ = "openfl.filters.ShaderFilter";
+openfl_filters_ShaderFilter.__super__ = openfl_filters_BitmapFilter;
+openfl_filters_ShaderFilter.prototype = $extend(openfl_filters_BitmapFilter.prototype,{
+	blendMode: null
+	,bottomExtension: null
+	,leftExtension: null
+	,rightExtension: null
+	,shader: null
+	,topExtension: null
+	,clone: function() {
+		var filter = new openfl_filters_ShaderFilter(this.shader);
+		filter.bottomExtension = this.bottomExtension;
+		filter.leftExtension = this.leftExtension;
+		filter.rightExtension = this.rightExtension;
+		filter.topExtension = this.topExtension;
+		return filter;
+	}
+	,__initShader: function(renderer,pass) {
+		this.__shaderBlendMode = this.blendMode;
+		return this.shader;
+	}
+	,__class__: openfl_filters_ShaderFilter
+});
 var openfl_geom_Matrix3D = function(v) {
 	if(v != null && v.get_length() == 16) {
 		this.rawData = v.concat(null);
@@ -73038,537 +73166,537 @@ openfl_utils_AGALMiniAssembler.init = function() {
 	} else {
 		_this.h["mov"] = v;
 	}
-	var this11 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this2 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v1 = new openfl_utils__$AGALMiniAssembler_OpCode("add",3,1,0);
-	var _this1 = this11;
+	var _this1 = this2;
 	if(__map_reserved["add"] != null) {
 		_this1.setReserved("add",v1);
 	} else {
 		_this1.h["add"] = v1;
 	}
-	var this12 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this3 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v2 = new openfl_utils__$AGALMiniAssembler_OpCode("sub",3,2,0);
-	var _this2 = this12;
+	var _this2 = this3;
 	if(__map_reserved["sub"] != null) {
 		_this2.setReserved("sub",v2);
 	} else {
 		_this2.h["sub"] = v2;
 	}
-	var this13 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this4 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v3 = new openfl_utils__$AGALMiniAssembler_OpCode("mul",3,3,0);
-	var _this3 = this13;
+	var _this3 = this4;
 	if(__map_reserved["mul"] != null) {
 		_this3.setReserved("mul",v3);
 	} else {
 		_this3.h["mul"] = v3;
 	}
-	var this14 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this5 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v4 = new openfl_utils__$AGALMiniAssembler_OpCode("div",3,4,0);
-	var _this4 = this14;
+	var _this4 = this5;
 	if(__map_reserved["div"] != null) {
 		_this4.setReserved("div",v4);
 	} else {
 		_this4.h["div"] = v4;
 	}
-	var this15 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this6 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v5 = new openfl_utils__$AGALMiniAssembler_OpCode("rcp",2,5,0);
-	var _this5 = this15;
+	var _this5 = this6;
 	if(__map_reserved["rcp"] != null) {
 		_this5.setReserved("rcp",v5);
 	} else {
 		_this5.h["rcp"] = v5;
 	}
-	var this16 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this7 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v6 = new openfl_utils__$AGALMiniAssembler_OpCode("min",3,6,0);
-	var _this6 = this16;
+	var _this6 = this7;
 	if(__map_reserved["min"] != null) {
 		_this6.setReserved("min",v6);
 	} else {
 		_this6.h["min"] = v6;
 	}
-	var this17 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this8 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v7 = new openfl_utils__$AGALMiniAssembler_OpCode("max",3,7,0);
-	var _this7 = this17;
+	var _this7 = this8;
 	if(__map_reserved["max"] != null) {
 		_this7.setReserved("max",v7);
 	} else {
 		_this7.h["max"] = v7;
 	}
-	var this18 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this9 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v8 = new openfl_utils__$AGALMiniAssembler_OpCode("frc",2,8,0);
-	var _this8 = this18;
+	var _this8 = this9;
 	if(__map_reserved["frc"] != null) {
 		_this8.setReserved("frc",v8);
 	} else {
 		_this8.h["frc"] = v8;
 	}
-	var this19 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this10 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v9 = new openfl_utils__$AGALMiniAssembler_OpCode("sqt",2,9,0);
-	var _this9 = this19;
+	var _this9 = this10;
 	if(__map_reserved["sqt"] != null) {
 		_this9.setReserved("sqt",v9);
 	} else {
 		_this9.h["sqt"] = v9;
 	}
-	var this110 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this11 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v10 = new openfl_utils__$AGALMiniAssembler_OpCode("rsq",2,10,0);
-	var _this10 = this110;
+	var _this10 = this11;
 	if(__map_reserved["rsq"] != null) {
 		_this10.setReserved("rsq",v10);
 	} else {
 		_this10.h["rsq"] = v10;
 	}
-	var this111 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this12 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v11 = new openfl_utils__$AGALMiniAssembler_OpCode("pow",3,11,0);
-	var _this11 = this111;
+	var _this11 = this12;
 	if(__map_reserved["pow"] != null) {
 		_this11.setReserved("pow",v11);
 	} else {
 		_this11.h["pow"] = v11;
 	}
-	var this112 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this13 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v12 = new openfl_utils__$AGALMiniAssembler_OpCode("log",2,12,0);
-	var _this12 = this112;
+	var _this12 = this13;
 	if(__map_reserved["log"] != null) {
 		_this12.setReserved("log",v12);
 	} else {
 		_this12.h["log"] = v12;
 	}
-	var this113 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this14 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v13 = new openfl_utils__$AGALMiniAssembler_OpCode("exp",2,13,0);
-	var _this13 = this113;
+	var _this13 = this14;
 	if(__map_reserved["exp"] != null) {
 		_this13.setReserved("exp",v13);
 	} else {
 		_this13.h["exp"] = v13;
 	}
-	var this114 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this15 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v14 = new openfl_utils__$AGALMiniAssembler_OpCode("nrm",2,14,0);
-	var _this14 = this114;
+	var _this14 = this15;
 	if(__map_reserved["nrm"] != null) {
 		_this14.setReserved("nrm",v14);
 	} else {
 		_this14.h["nrm"] = v14;
 	}
-	var this115 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this16 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v15 = new openfl_utils__$AGALMiniAssembler_OpCode("sin",2,15,0);
-	var _this15 = this115;
+	var _this15 = this16;
 	if(__map_reserved["sin"] != null) {
 		_this15.setReserved("sin",v15);
 	} else {
 		_this15.h["sin"] = v15;
 	}
-	var this116 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this17 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v16 = new openfl_utils__$AGALMiniAssembler_OpCode("cos",2,16,0);
-	var _this16 = this116;
+	var _this16 = this17;
 	if(__map_reserved["cos"] != null) {
 		_this16.setReserved("cos",v16);
 	} else {
 		_this16.h["cos"] = v16;
 	}
-	var this117 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this18 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v17 = new openfl_utils__$AGALMiniAssembler_OpCode("crs",3,17,0);
-	var _this17 = this117;
+	var _this17 = this18;
 	if(__map_reserved["crs"] != null) {
 		_this17.setReserved("crs",v17);
 	} else {
 		_this17.h["crs"] = v17;
 	}
-	var this118 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this19 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v18 = new openfl_utils__$AGALMiniAssembler_OpCode("dp3",3,18,0);
-	var _this18 = this118;
+	var _this18 = this19;
 	if(__map_reserved["dp3"] != null) {
 		_this18.setReserved("dp3",v18);
 	} else {
 		_this18.h["dp3"] = v18;
 	}
-	var this119 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this20 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v19 = new openfl_utils__$AGALMiniAssembler_OpCode("dp4",3,19,0);
-	var _this19 = this119;
+	var _this19 = this20;
 	if(__map_reserved["dp4"] != null) {
 		_this19.setReserved("dp4",v19);
 	} else {
 		_this19.h["dp4"] = v19;
 	}
-	var this120 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this21 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v20 = new openfl_utils__$AGALMiniAssembler_OpCode("abs",2,20,0);
-	var _this20 = this120;
+	var _this20 = this21;
 	if(__map_reserved["abs"] != null) {
 		_this20.setReserved("abs",v20);
 	} else {
 		_this20.h["abs"] = v20;
 	}
-	var this121 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this22 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v21 = new openfl_utils__$AGALMiniAssembler_OpCode("neg",2,21,0);
-	var _this21 = this121;
+	var _this21 = this22;
 	if(__map_reserved["neg"] != null) {
 		_this21.setReserved("neg",v21);
 	} else {
 		_this21.h["neg"] = v21;
 	}
-	var this122 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this23 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v22 = new openfl_utils__$AGALMiniAssembler_OpCode("sat",2,22,0);
-	var _this22 = this122;
+	var _this22 = this23;
 	if(__map_reserved["sat"] != null) {
 		_this22.setReserved("sat",v22);
 	} else {
 		_this22.h["sat"] = v22;
 	}
-	var this123 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this24 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v23 = new openfl_utils__$AGALMiniAssembler_OpCode("m33",3,23,16);
-	var _this23 = this123;
+	var _this23 = this24;
 	if(__map_reserved["m33"] != null) {
 		_this23.setReserved("m33",v23);
 	} else {
 		_this23.h["m33"] = v23;
 	}
-	var this124 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this25 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v24 = new openfl_utils__$AGALMiniAssembler_OpCode("m44",3,24,16);
-	var _this24 = this124;
+	var _this24 = this25;
 	if(__map_reserved["m44"] != null) {
 		_this24.setReserved("m44",v24);
 	} else {
 		_this24.h["m44"] = v24;
 	}
-	var this125 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this26 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v25 = new openfl_utils__$AGALMiniAssembler_OpCode("m34",3,25,16);
-	var _this25 = this125;
+	var _this25 = this26;
 	if(__map_reserved["m34"] != null) {
 		_this25.setReserved("m34",v25);
 	} else {
 		_this25.h["m34"] = v25;
 	}
-	var this126 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this27 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v26 = new openfl_utils__$AGALMiniAssembler_OpCode("ddx",2,26,288);
-	var _this26 = this126;
+	var _this26 = this27;
 	if(__map_reserved["ddx"] != null) {
 		_this26.setReserved("ddx",v26);
 	} else {
 		_this26.h["ddx"] = v26;
 	}
-	var this127 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this28 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v27 = new openfl_utils__$AGALMiniAssembler_OpCode("ddy",2,27,288);
-	var _this27 = this127;
+	var _this27 = this28;
 	if(__map_reserved["ddy"] != null) {
 		_this27.setReserved("ddy",v27);
 	} else {
 		_this27.h["ddy"] = v27;
 	}
-	var this128 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this29 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v28 = new openfl_utils__$AGALMiniAssembler_OpCode("ife",2,28,897);
-	var _this28 = this128;
+	var _this28 = this29;
 	if(__map_reserved["ife"] != null) {
 		_this28.setReserved("ife",v28);
 	} else {
 		_this28.h["ife"] = v28;
 	}
-	var this129 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this30 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v29 = new openfl_utils__$AGALMiniAssembler_OpCode("ine",2,29,897);
-	var _this29 = this129;
+	var _this29 = this30;
 	if(__map_reserved["ine"] != null) {
 		_this29.setReserved("ine",v29);
 	} else {
 		_this29.h["ine"] = v29;
 	}
-	var this130 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this31 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v30 = new openfl_utils__$AGALMiniAssembler_OpCode("ifg",2,30,897);
-	var _this30 = this130;
+	var _this30 = this31;
 	if(__map_reserved["ifg"] != null) {
 		_this30.setReserved("ifg",v30);
 	} else {
 		_this30.h["ifg"] = v30;
 	}
-	var this131 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this32 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v31 = new openfl_utils__$AGALMiniAssembler_OpCode("ifl",2,31,897);
-	var _this31 = this131;
+	var _this31 = this32;
 	if(__map_reserved["ifl"] != null) {
 		_this31.setReserved("ifl",v31);
 	} else {
 		_this31.h["ifl"] = v31;
 	}
-	var this132 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this33 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v32 = new openfl_utils__$AGALMiniAssembler_OpCode("els",0,32,1921);
-	var _this32 = this132;
+	var _this32 = this33;
 	if(__map_reserved["els"] != null) {
 		_this32.setReserved("els",v32);
 	} else {
 		_this32.h["els"] = v32;
 	}
-	var this133 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this34 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v33 = new openfl_utils__$AGALMiniAssembler_OpCode("eif",0,33,1409);
-	var _this33 = this133;
+	var _this33 = this34;
 	if(__map_reserved["eif"] != null) {
 		_this33.setReserved("eif",v33);
 	} else {
 		_this33.h["eif"] = v33;
 	}
-	var this134 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this35 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v34 = new openfl_utils__$AGALMiniAssembler_OpCode("kil",1,39,160);
-	var _this34 = this134;
+	var _this34 = this35;
 	if(__map_reserved["kil"] != null) {
 		_this34.setReserved("kil",v34);
 	} else {
 		_this34.h["kil"] = v34;
 	}
-	var this135 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this36 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v35 = new openfl_utils__$AGALMiniAssembler_OpCode("tex",3,40,40);
-	var _this35 = this135;
+	var _this35 = this36;
 	if(__map_reserved["tex"] != null) {
 		_this35.setReserved("tex",v35);
 	} else {
 		_this35.h["tex"] = v35;
 	}
-	var this136 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this37 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v36 = new openfl_utils__$AGALMiniAssembler_OpCode("sge",3,41,0);
-	var _this36 = this136;
+	var _this36 = this37;
 	if(__map_reserved["sge"] != null) {
 		_this36.setReserved("sge",v36);
 	} else {
 		_this36.h["sge"] = v36;
 	}
-	var this137 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this38 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v37 = new openfl_utils__$AGALMiniAssembler_OpCode("slt",3,42,0);
-	var _this37 = this137;
+	var _this37 = this38;
 	if(__map_reserved["slt"] != null) {
 		_this37.setReserved("slt",v37);
 	} else {
 		_this37.h["slt"] = v37;
 	}
-	var this138 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this39 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v38 = new openfl_utils__$AGALMiniAssembler_OpCode("sgn",2,43,0);
-	var _this38 = this138;
+	var _this38 = this39;
 	if(__map_reserved["sgn"] != null) {
 		_this38.setReserved("sgn",v38);
 	} else {
 		_this38.h["sgn"] = v38;
 	}
-	var this139 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this40 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v39 = new openfl_utils__$AGALMiniAssembler_OpCode("seq",3,44,0);
-	var _this39 = this139;
+	var _this39 = this40;
 	if(__map_reserved["seq"] != null) {
 		_this39.setReserved("seq",v39);
 	} else {
 		_this39.h["seq"] = v39;
 	}
-	var this140 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this41 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v40 = new openfl_utils__$AGALMiniAssembler_OpCode("sne",3,45,0);
-	var _this40 = this140;
+	var _this40 = this41;
 	if(__map_reserved["sne"] != null) {
 		_this40.setReserved("sne",v40);
 	} else {
 		_this40.h["sne"] = v40;
 	}
-	var this141 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this42 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v41 = new openfl_utils__$AGALMiniAssembler_Sampler("rgba",8,0);
-	var _this41 = this141;
+	var _this41 = this42;
 	if(__map_reserved["rgba"] != null) {
 		_this41.setReserved("rgba",v41);
 	} else {
 		_this41.h["rgba"] = v41;
 	}
-	var this142 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this43 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v42 = new openfl_utils__$AGALMiniAssembler_Sampler("compressed",8,1);
-	var _this42 = this142;
+	var _this42 = this43;
 	if(__map_reserved["compressed"] != null) {
 		_this42.setReserved("compressed",v42);
 	} else {
 		_this42.h["compressed"] = v42;
 	}
-	var this143 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this44 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v43 = new openfl_utils__$AGALMiniAssembler_Sampler("compressedalpha",8,2);
-	var _this43 = this143;
+	var _this43 = this44;
 	if(__map_reserved["compressedalpha"] != null) {
 		_this43.setReserved("compressedalpha",v43);
 	} else {
 		_this43.h["compressedalpha"] = v43;
 	}
-	var this144 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this45 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v44 = new openfl_utils__$AGALMiniAssembler_Sampler("dxt1",8,1);
-	var _this44 = this144;
+	var _this44 = this45;
 	if(__map_reserved["dxt1"] != null) {
 		_this44.setReserved("dxt1",v44);
 	} else {
 		_this44.h["dxt1"] = v44;
 	}
-	var this145 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this46 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v45 = new openfl_utils__$AGALMiniAssembler_Sampler("dxt5",8,2);
-	var _this45 = this145;
+	var _this45 = this46;
 	if(__map_reserved["dxt5"] != null) {
 		_this45.setReserved("dxt5",v45);
 	} else {
 		_this45.h["dxt5"] = v45;
 	}
-	var this146 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this47 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v46 = new openfl_utils__$AGALMiniAssembler_Sampler("video",8,3);
-	var _this46 = this146;
+	var _this46 = this47;
 	if(__map_reserved["video"] != null) {
 		_this46.setReserved("video",v46);
 	} else {
 		_this46.h["video"] = v46;
 	}
-	var this147 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this48 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v47 = new openfl_utils__$AGALMiniAssembler_Sampler("2d",12,0);
-	var _this47 = this147;
+	var _this47 = this48;
 	if(__map_reserved["2d"] != null) {
 		_this47.setReserved("2d",v47);
 	} else {
 		_this47.h["2d"] = v47;
 	}
-	var this148 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this49 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v48 = new openfl_utils__$AGALMiniAssembler_Sampler("3d",12,2);
-	var _this48 = this148;
+	var _this48 = this49;
 	if(__map_reserved["3d"] != null) {
 		_this48.setReserved("3d",v48);
 	} else {
 		_this48.h["3d"] = v48;
 	}
-	var this149 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this50 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v49 = new openfl_utils__$AGALMiniAssembler_Sampler("cube",12,1);
-	var _this49 = this149;
+	var _this49 = this50;
 	if(__map_reserved["cube"] != null) {
 		_this49.setReserved("cube",v49);
 	} else {
 		_this49.h["cube"] = v49;
 	}
-	var this150 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this51 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v50 = new openfl_utils__$AGALMiniAssembler_Sampler("mipnearest",24,1);
-	var _this50 = this150;
+	var _this50 = this51;
 	if(__map_reserved["mipnearest"] != null) {
 		_this50.setReserved("mipnearest",v50);
 	} else {
 		_this50.h["mipnearest"] = v50;
 	}
-	var this151 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this52 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v51 = new openfl_utils__$AGALMiniAssembler_Sampler("miplinear",24,2);
-	var _this51 = this151;
+	var _this51 = this52;
 	if(__map_reserved["miplinear"] != null) {
 		_this51.setReserved("miplinear",v51);
 	} else {
 		_this51.h["miplinear"] = v51;
 	}
-	var this152 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this53 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v52 = new openfl_utils__$AGALMiniAssembler_Sampler("mipnone",24,0);
-	var _this52 = this152;
+	var _this52 = this53;
 	if(__map_reserved["mipnone"] != null) {
 		_this52.setReserved("mipnone",v52);
 	} else {
 		_this52.h["mipnone"] = v52;
 	}
-	var this153 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this54 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v53 = new openfl_utils__$AGALMiniAssembler_Sampler("nomip",24,0);
-	var _this53 = this153;
+	var _this53 = this54;
 	if(__map_reserved["nomip"] != null) {
 		_this53.setReserved("nomip",v53);
 	} else {
 		_this53.h["nomip"] = v53;
 	}
-	var this154 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this55 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v54 = new openfl_utils__$AGALMiniAssembler_Sampler("nearest",28,0);
-	var _this54 = this154;
+	var _this54 = this55;
 	if(__map_reserved["nearest"] != null) {
 		_this54.setReserved("nearest",v54);
 	} else {
 		_this54.h["nearest"] = v54;
 	}
-	var this155 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this56 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v55 = new openfl_utils__$AGALMiniAssembler_Sampler("linear",28,1);
-	var _this55 = this155;
+	var _this55 = this56;
 	if(__map_reserved["linear"] != null) {
 		_this55.setReserved("linear",v55);
 	} else {
 		_this55.h["linear"] = v55;
 	}
-	var this156 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this57 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v56 = new openfl_utils__$AGALMiniAssembler_Sampler("anisotropic2x",28,2);
-	var _this56 = this156;
+	var _this56 = this57;
 	if(__map_reserved["anisotropic2x"] != null) {
 		_this56.setReserved("anisotropic2x",v56);
 	} else {
 		_this56.h["anisotropic2x"] = v56;
 	}
-	var this157 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this58 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v57 = new openfl_utils__$AGALMiniAssembler_Sampler("anisotropic4x",28,3);
-	var _this57 = this157;
+	var _this57 = this58;
 	if(__map_reserved["anisotropic4x"] != null) {
 		_this57.setReserved("anisotropic4x",v57);
 	} else {
 		_this57.h["anisotropic4x"] = v57;
 	}
-	var this158 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this59 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v58 = new openfl_utils__$AGALMiniAssembler_Sampler("anisotropic8x",28,4);
-	var _this58 = this158;
+	var _this58 = this59;
 	if(__map_reserved["anisotropic8x"] != null) {
 		_this58.setReserved("anisotropic8x",v58);
 	} else {
 		_this58.h["anisotropic8x"] = v58;
 	}
-	var this159 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this60 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v59 = new openfl_utils__$AGALMiniAssembler_Sampler("anisotropic16x",28,5);
-	var _this59 = this159;
+	var _this59 = this60;
 	if(__map_reserved["anisotropic16x"] != null) {
 		_this59.setReserved("anisotropic16x",v59);
 	} else {
 		_this59.h["anisotropic16x"] = v59;
 	}
-	var this160 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this61 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v60 = new openfl_utils__$AGALMiniAssembler_Sampler("centroid",16,1);
-	var _this60 = this160;
+	var _this60 = this61;
 	if(__map_reserved["centroid"] != null) {
 		_this60.setReserved("centroid",v60);
 	} else {
 		_this60.h["centroid"] = v60;
 	}
-	var this161 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this62 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v61 = new openfl_utils__$AGALMiniAssembler_Sampler("single",16,2);
-	var _this61 = this161;
+	var _this61 = this62;
 	if(__map_reserved["single"] != null) {
 		_this61.setReserved("single",v61);
 	} else {
 		_this61.h["single"] = v61;
 	}
-	var this162 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this63 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v62 = new openfl_utils__$AGALMiniAssembler_Sampler("ignoresampler",16,4);
-	var _this62 = this162;
+	var _this62 = this63;
 	if(__map_reserved["ignoresampler"] != null) {
 		_this62.setReserved("ignoresampler",v62);
 	} else {
 		_this62.h["ignoresampler"] = v62;
 	}
-	var this163 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this64 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v63 = new openfl_utils__$AGALMiniAssembler_Sampler("repeat",20,1);
-	var _this63 = this163;
+	var _this63 = this64;
 	if(__map_reserved["repeat"] != null) {
 		_this63.setReserved("repeat",v63);
 	} else {
 		_this63.h["repeat"] = v63;
 	}
-	var this164 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this65 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v64 = new openfl_utils__$AGALMiniAssembler_Sampler("wrap",20,1);
-	var _this64 = this164;
+	var _this64 = this65;
 	if(__map_reserved["wrap"] != null) {
 		_this64.setReserved("wrap",v64);
 	} else {
 		_this64.h["wrap"] = v64;
 	}
-	var this165 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this66 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v65 = new openfl_utils__$AGALMiniAssembler_Sampler("clamp",20,0);
-	var _this65 = this165;
+	var _this65 = this66;
 	if(__map_reserved["clamp"] != null) {
 		_this65.setReserved("clamp",v65);
 	} else {
 		_this65.h["clamp"] = v65;
 	}
-	var this166 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this67 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v66 = new openfl_utils__$AGALMiniAssembler_Sampler("clamp_u_repeat_v",20,2);
-	var _this66 = this166;
+	var _this66 = this67;
 	if(__map_reserved["clamp_u_repeat_v"] != null) {
 		_this66.setReserved("clamp_u_repeat_v",v66);
 	} else {
 		_this66.h["clamp_u_repeat_v"] = v66;
 	}
-	var this167 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this68 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v67 = new openfl_utils__$AGALMiniAssembler_Sampler("repeat_u_clamp_v",20,3);
-	var _this67 = this167;
+	var _this67 = this68;
 	if(__map_reserved["repeat_u_clamp_v"] != null) {
 		_this67.setReserved("repeat_u_clamp_v",v67);
 	} else {
@@ -73744,8 +73872,8 @@ openfl_utils_AGALMiniAssembler.prototype = {
 					regidx = Std.parseInt(idxmatch[0]);
 				}
 				if(_$UInt_UInt_$Impl_$.gt(regidx,regFound.range)) {
-					var this11 = regFound.range + 1;
-					this.error = "error: register operand " + j + " (" + regs[j] + ") index exceeds limit of " + Std.string(this11 == null ? null : _$UInt_UInt_$Impl_$.toFloat(this11)) + ".";
+					var this2 = regFound.range + 1;
+					this.error = "error: register operand " + j + " (" + regs[j] + ") index exceeds limit of " + Std.string(this2 == null ? null : _$UInt_UInt_$Impl_$.toFloat(this2)) + ".";
 					badreg = true;
 					break;
 				}
@@ -73930,135 +74058,135 @@ openfl_utils_AGALMiniAssembler.prototype = {
 		} else {
 			_this.h["va"] = v;
 		}
-		var this11 = openfl_utils_AGALMiniAssembler.REGMAP;
+		var this2 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var v1 = new openfl_utils__$AGALMiniAssembler_Register("vc","vertex constant",1,ignorelimits ? 1024 : version == 1 ? 127 : 249,66);
-		var _this1 = this11;
+		var _this1 = this2;
 		if(__map_reserved["vc"] != null) {
 			_this1.setReserved("vc",v1);
 		} else {
 			_this1.h["vc"] = v1;
 		}
-		var this12 = openfl_utils_AGALMiniAssembler.REGMAP;
+		var this3 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var v2 = new openfl_utils__$AGALMiniAssembler_Register("vt","vertex temporary",2,ignorelimits ? 1024 : version == 1 ? 7 : 25,67);
-		var _this2 = this12;
+		var _this2 = this3;
 		if(__map_reserved["vt"] != null) {
 			_this2.setReserved("vt",v2);
 		} else {
 			_this2.h["vt"] = v2;
 		}
-		var this13 = openfl_utils_AGALMiniAssembler.REGMAP;
+		var this4 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var v3 = new openfl_utils__$AGALMiniAssembler_Register("vo","vertex output",3,ignorelimits ? 1024 : 0,65);
-		var _this3 = this13;
+		var _this3 = this4;
 		if(__map_reserved["vo"] != null) {
 			_this3.setReserved("vo",v3);
 		} else {
 			_this3.h["vo"] = v3;
 		}
-		var this14 = openfl_utils_AGALMiniAssembler.REGMAP;
+		var this5 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var v4 = new openfl_utils__$AGALMiniAssembler_Register("vi","varying",4,ignorelimits ? 1024 : version == 1 ? 7 : 9,99);
-		var _this4 = this14;
+		var _this4 = this5;
 		if(__map_reserved["vi"] != null) {
 			_this4.setReserved("vi",v4);
 		} else {
 			_this4.h["vi"] = v4;
 		}
-		var this15 = openfl_utils_AGALMiniAssembler.REGMAP;
+		var this6 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var v5 = new openfl_utils__$AGALMiniAssembler_Register("fc","fragment constant",1,ignorelimits ? 1024 : version == 1 ? 27 : version == 2 ? 63 : 199,34);
-		var _this5 = this15;
+		var _this5 = this6;
 		if(__map_reserved["fc"] != null) {
 			_this5.setReserved("fc",v5);
 		} else {
 			_this5.h["fc"] = v5;
 		}
-		var this16 = openfl_utils_AGALMiniAssembler.REGMAP;
+		var this7 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var v6 = new openfl_utils__$AGALMiniAssembler_Register("ft","fragment temporary",2,ignorelimits ? 1024 : version == 1 ? 7 : 25,35);
-		var _this6 = this16;
+		var _this6 = this7;
 		if(__map_reserved["ft"] != null) {
 			_this6.setReserved("ft",v6);
 		} else {
 			_this6.h["ft"] = v6;
 		}
-		var this17 = openfl_utils_AGALMiniAssembler.REGMAP;
+		var this8 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var v7 = new openfl_utils__$AGALMiniAssembler_Register("fs","texture sampler",5,ignorelimits ? 1024 : 7,34);
-		var _this7 = this17;
+		var _this7 = this8;
 		if(__map_reserved["fs"] != null) {
 			_this7.setReserved("fs",v7);
 		} else {
 			_this7.h["fs"] = v7;
 		}
-		var this18 = openfl_utils_AGALMiniAssembler.REGMAP;
+		var this9 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var v8 = new openfl_utils__$AGALMiniAssembler_Register("fo","fragment output",3,ignorelimits ? 1024 : version == 1 ? 0 : 3,33);
-		var _this8 = this18;
+		var _this8 = this9;
 		if(__map_reserved["fo"] != null) {
 			_this8.setReserved("fo",v8);
 		} else {
 			_this8.h["fo"] = v8;
 		}
-		var this19 = openfl_utils_AGALMiniAssembler.REGMAP;
+		var this10 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var v9 = new openfl_utils__$AGALMiniAssembler_Register("fd","fragment depth output",6,ignorelimits ? 1024 : version == 1 ? -1 : 0,33);
-		var _this9 = this19;
+		var _this9 = this10;
 		if(__map_reserved["fd"] != null) {
 			_this9.setReserved("fd",v9);
 		} else {
 			_this9.h["fd"] = v9;
 		}
-		var this110 = openfl_utils_AGALMiniAssembler.REGMAP;
+		var this11 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var v10 = new openfl_utils__$AGALMiniAssembler_Register("iid","instance id",7,ignorelimits ? 1024 : 0,66);
-		var _this10 = this110;
+		var _this10 = this11;
 		if(__map_reserved["iid"] != null) {
 			_this10.setReserved("iid",v10);
 		} else {
 			_this10.h["iid"] = v10;
 		}
-		var this111 = openfl_utils_AGALMiniAssembler.REGMAP;
+		var this12 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var _this11 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var v11 = __map_reserved["vo"] != null ? _this11.getReserved("vo") : _this11.h["vo"];
-		var _this12 = this111;
+		var _this12 = this12;
 		if(__map_reserved["op"] != null) {
 			_this12.setReserved("op",v11);
 		} else {
 			_this12.h["op"] = v11;
 		}
-		var this112 = openfl_utils_AGALMiniAssembler.REGMAP;
+		var this13 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var _this13 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var v12 = __map_reserved["vi"] != null ? _this13.getReserved("vi") : _this13.h["vi"];
-		var _this14 = this112;
+		var _this14 = this13;
 		if(__map_reserved["i"] != null) {
 			_this14.setReserved("i",v12);
 		} else {
 			_this14.h["i"] = v12;
 		}
-		var this113 = openfl_utils_AGALMiniAssembler.REGMAP;
+		var this14 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var _this15 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var v13 = __map_reserved["vi"] != null ? _this15.getReserved("vi") : _this15.h["vi"];
-		var _this16 = this113;
+		var _this16 = this14;
 		if(__map_reserved["v"] != null) {
 			_this16.setReserved("v",v13);
 		} else {
 			_this16.h["v"] = v13;
 		}
-		var this114 = openfl_utils_AGALMiniAssembler.REGMAP;
+		var this15 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var _this17 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var v14 = __map_reserved["fo"] != null ? _this17.getReserved("fo") : _this17.h["fo"];
-		var _this18 = this114;
+		var _this18 = this15;
 		if(__map_reserved["oc"] != null) {
 			_this18.setReserved("oc",v14);
 		} else {
 			_this18.h["oc"] = v14;
 		}
-		var this115 = openfl_utils_AGALMiniAssembler.REGMAP;
+		var this16 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var _this19 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var v15 = __map_reserved["fd"] != null ? _this19.getReserved("fd") : _this19.h["fd"];
-		var _this20 = this115;
+		var _this20 = this16;
 		if(__map_reserved["od"] != null) {
 			_this20.setReserved("od",v15);
 		} else {
 			_this20.h["od"] = v15;
 		}
-		var this116 = openfl_utils_AGALMiniAssembler.REGMAP;
+		var this17 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var _this21 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var v16 = __map_reserved["vi"] != null ? _this21.getReserved("vi") : _this21.h["vi"];
-		var _this22 = this116;
+		var _this22 = this17;
 		if(__map_reserved["fi"] != null) {
 			_this22.setReserved("fi",v16);
 		} else {
@@ -74114,10 +74242,10 @@ openfl_utils__$AGALMiniAssembler_Register.prototype = {
 	,toString: function() {
 		var this1 = this.emitCode;
 		var tmp = "[Register name=\"" + this.name + "\", longName=\"" + this.longName + "\", emitCode=" + Std.string(this1 == null ? null : _$UInt_UInt_$Impl_$.toFloat(this1)) + ", range=";
-		var this11 = this.range;
-		var tmp1 = tmp + Std.string(this11 == null ? null : _$UInt_UInt_$Impl_$.toFloat(this11)) + ", flags=";
-		var this12 = this.flags;
-		return tmp1 + Std.string(this12 == null ? null : _$UInt_UInt_$Impl_$.toFloat(this12)) + "]";
+		var this2 = this.range;
+		var tmp1 = tmp + Std.string(this2 == null ? null : _$UInt_UInt_$Impl_$.toFloat(this2)) + ", flags=";
+		var this3 = this.flags;
+		return tmp1 + Std.string(this3 == null ? null : _$UInt_UInt_$Impl_$.toFloat(this3)) + "]";
 	}
 	,__class__: openfl_utils__$AGALMiniAssembler_Register
 };
@@ -74135,8 +74263,8 @@ openfl_utils__$AGALMiniAssembler_Sampler.prototype = {
 	,toString: function() {
 		var this1 = this.flag;
 		var tmp = "[Sampler name=\"" + this.name + "\", flag=\"" + Std.string(this1 == null ? null : _$UInt_UInt_$Impl_$.toFloat(this1)) + "\", mask=";
-		var this11 = this.mask;
-		return tmp + Std.string(this11 == null ? null : _$UInt_UInt_$Impl_$.toFloat(this11)) + "]";
+		var this2 = this.mask;
+		return tmp + Std.string(this2 == null ? null : _$UInt_UInt_$Impl_$.toFloat(this2)) + "]";
 	}
 	,__class__: openfl_utils__$AGALMiniAssembler_Sampler
 };
@@ -75894,42 +76022,38 @@ scenes_Level.__super__ = zero_openfl_utilities_Scene;
 scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 	tiles: null
 	,object_map: null
-	,selected_player: null
 	,can_move: null
 	,dolly: null
+	,available_tiles: null
 	,level: null
 	,indicators: null
+	,move_indicators: null
 	,under_objects: null
 	,objects: null
 	,over_objects: null
+	,gear_layer: null
+	,deck: null
 	,info_layer: null
 	,poofs: null
-	,set_selected_player: function(player) {
-		this.dolly.follow(player,false);
-		player.pulse();
-		return this.selected_player = player;
-	}
 	,create: function() {
 		zero_openfl_utilities_Scene.prototype.create.call(this);
 		this.init_dolly();
 		this.draw_map("000");
-		var player = this.make_player(2,9);
-		player.change_health(-16);
-		this.make_player(6,8);
 		zero_utilities_EventBus.listen(($_=this.dolly,$bind($_,$_.update)),"update");
-		var gear = new ui_cards_Gear(player);
-		var deck = new ui_cards_Deck();
-		this.addChild(gear);
-		gear.add_card(new ui_cards_GearCard(240,144,gear,{ title : "Test Card", cost : 3, description : "A test card", range : { min : 3, max : 6, type : ui_cards_RangeType.NONE}, gear_class : ui_cards_GearClass.FLAME, weakness : ui_cards_GearClass.PIERCING, requirement : ui_cards_Requirement.DIFF_SUIT, requirement_value : 3, effect : { type : ui_cards_EffectType.DAMAGE, factor : ui_cards_EffectFactor.VALUES}, bonus : { requirement : ui_cards_Requirement.CLUBS, type : ui_cards_BonusType.DOUBLE_EFFECT_VALUE}}));
-		gear.add_card(new ui_cards_GearCard(448,144,gear,{ title : "Test Utility Card", cost : 2, description : "A test utility card", range : { min : 0, max : 3, type : ui_cards_RangeType.NONE}, gear_class : ui_cards_GearClass.HEALTH, weakness : ui_cards_GearClass.EXPLOSIVE, requirement : ui_cards_Requirement.IS_FACE, effect : { type : ui_cards_EffectType.HEALTH, factor : ui_cards_EffectFactor.STATIC, value : 5}, bonus : { requirement : ui_cards_Requirement.TWO_CARDS, type : ui_cards_BonusType.DOUBLE_EFFECT_VALUE}}));
-		this.addChild(deck);
-		deck.deal();
+		this.deck = new ui_Deck();
+		this.addChild(this.gear_layer = new openfl_display_Sprite());
+		this.addChild(this.deck);
+		this.deck.deal();
 		this.addChild(this.info_layer = new ui_InfoLayer());
+		var player = new objects_Player(2,9,{ data : { id : "Test Player", health : { current : 48, max : 64}, movement : { requirement : "MAX_CARD", requirement_value : 5, type : ui_MoveType.FREE, factor : ui_MoveFactor.VALUE}, gear : ["test_d_01","test_h_01"]}, side : objects_PlayerSide.LEFT});
+		new objects_Player(6,8,{ data : { id : "Test Player", health : { current : 64, max : 64}, movement : { requirement : "MAX_CARD", requirement_value : 5, type : ui_MoveType.FREE, factor : ui_MoveFactor.VALUE}, gear : ["test_u_01","test_h_01"]}, side : objects_PlayerSide.RIGHT});
+		objects_Player.set_selected_player(player);
 	}
 	,init_dolly: function() {
 		this.addChild(this.dolly = new zero_openfl_utilities_Dolly());
 		this.dolly.addChild(this.level = new openfl_display_Sprite());
 		this.dolly.addChild(this.indicators = new openfl_display_Sprite());
+		this.dolly.addChild(this.move_indicators = new openfl_display_Sprite());
 		this.dolly.addChild(this.under_objects = new openfl_display_Sprite());
 		this.dolly.addChild(this.objects = new openfl_display_Sprite());
 		this.dolly.addChild(this.over_objects = new openfl_display_Sprite());
@@ -75944,6 +76068,7 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 		}
 		sprite.set_scaleX(x);
 		sprite.set_scaleY(y);
+		this.move_indicators.addEventListener("click",$bind(this,this.on_click));
 	}
 	,draw_map: function(src) {
 		var level_data = zero_utilities_OgmoUtils.parse_level_json(openfl_utils_Assets.getText("data/maps/" + src + ".json"));
@@ -75956,7 +76081,6 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 		}
 		this.tiles = new zero_openfl_utilities_Tilemap({ map : tmp, tileset : { image : "images/tiles.png", frame_height : 16, frame_width : 16}, smoothing : false, solids : _g});
 		this.level.addChild(this.tiles);
-		this.level.addEventListener("click",$bind(this,this.on_click));
 		var _g2 = [];
 		var _g3 = 0;
 		var _g4 = this.tiles.get_map(false);
@@ -75974,51 +76098,31 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 		}
 		this.object_map = _g2;
 	}
-	,make_player: function(x,y) {
-		var _gthis = this;
-		var player = new objects_Player(x * 16 + 8,y * 16 + 8);
-		player.addEventListener("click",function(e) {
-			if(_gthis.can_move) {
-				_gthis.set_selected_player(player);
-			}
-			return;
-		});
-		player.addEventListener("mouseOver",function(e1) {
-			_gthis.info_layer.show_info(player);
-			return;
-		});
-		player.addEventListener("mouseOut",function(e2) {
-			_gthis.info_layer.hide_info();
-			return;
-		});
-		this.objects.addChild(player);
-		this.set_selected_player(player);
-		this.dolly.follow(this.selected_player,true);
-		this.object_map[y][x] = -1;
-		return player;
-	}
 	,on_click: function(e) {
 		if(!this.can_move || e.localX < 0 || e.localY < 0) {
 			return;
 		}
 		var x = Math.floor(e.localX / 16);
 		var y = Math.floor(e.localY / 16);
+		zero_utilities_EventBus.dispatch("level_click",{ x : x, y : y});
 		var map = this.get_traversal_map();
 		if(map[y][x] != 0) {
 			return;
 		}
-		var player_x = Math.floor(this.selected_player.get_x() / 16);
-		var player_y = Math.floor(this.selected_player.get_y() / 16);
+		var player_x = Math.floor(objects_Player.selected_player.get_x() / 16);
+		var player_y = Math.floor(objects_Player.selected_player.get_y() / 16);
 		var path = zero_utilities_AStar.get_path(map,{ start : zero_utilities__$IntPoint_IntPoint_$Impl_$.from_array_int([player_x,player_y]), end : zero_utilities__$IntPoint_IntPoint_$Impl_$.from_array_int([x,y]), passable : [0], simplify : zero_utilities_EAStarSimplifyMode.NONE});
 		if(path.length == 0) {
 			return;
 		}
 		this.object_map[player_y][player_x] = 0;
 		this.object_map[y][x] = -1;
-		this.selected_player.follow_path(path);
+		objects_Player.selected_player.follow_path(path);
 		this.can_move = false;
+		this.move_indicators.get_graphics().clear();
+		ui_Gear.active_gear.move_card.set_expended(true);
 	}
-	,get_traversal_map: function() {
+	,get_traversal_map: function(ignore) {
 		var out = this.tiles.get_solids_array();
 		var _g = 0;
 		var _g1 = this.object_map.length;
@@ -76033,34 +76137,46 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 				}
 			}
 		}
+		if(ignore != null) {
+			out[ignore[1]][ignore[0]] = 0;
+		}
 		return out;
 	}
 	,clear_indicators: function() {
 		this.indicators.get_graphics().clear();
+		this.move_indicators.set_visible(true);
 	}
 	,draw_indicators: function(gear_card) {
-		haxe_Log.trace("indicators",{ fileName : "src/scenes/Level.hx", lineNumber : 181, className : "scenes.Level", methodName : "draw_indicators"});
 		this.indicators.get_graphics().clear();
+		this.move_indicators.set_visible(false);
 		var player = gear_card.gear.player;
-		var range = gear_card.data.range;
-		if(gear_card.data.bonus.type == ui_cards_BonusType.DOUBLE_RANGE && gear_card.vefify_bonus()) {
-			range.max *= 2;
+		var range_min = gear_card.gear_data.range.min;
+		var range_max = gear_card.gear_data.range.max;
+		var range_type = gear_card.gear_data.range.type;
+		if(gear_card.gear_data.bonus.type == "DOUBLE_RANGE" && gear_card.vefify_bonus()) {
+			range_max *= 2;
 		}
-		var tiles = this.get_available_tiles_array(zero_utilities__$IntPoint_IntPoint_$Impl_$.from_array_int([Math.floor(player.get_x() / 16),Math.floor(player.get_y() / 16)]),range.min,range.max);
+		if(range_type == "DIAGONAL") {
+			range_min *= 2;
+			range_max *= 2;
+		}
+		var tiles = this.get_available_tiles_array(zero_utilities__$IntPoint_IntPoint_$Impl_$.from_array_int([Math.floor(player.get_x() / 16),Math.floor(player.get_y() / 16)]),range_min,range_max,range_type);
 		var color;
-		switch(gear_card.data.effect.type._hx_index) {
-		case 0:
+		switch(gear_card.gear_data.effect.type) {
+		case "DAMAGE":
 			color = zero_utilities__$Color_Color_$Impl_$.PICO_8_RED;
 			break;
-		case 1:
-			color = zero_utilities__$Color_Color_$Impl_$.PICO_8_BLUE;
-			break;
-		case 2:
+		case "HEALTH":
 			color = zero_utilities__$Color_Color_$Impl_$.PICO_8_GREEN;
 			break;
-		case 3:
+		case "MOVE":
+			color = zero_utilities__$Color_Color_$Impl_$.PICO_8_BLUE;
+			break;
+		case "SHIELD":
 			color = zero_utilities__$Color_Color_$Impl_$.PICO_8_ORANGE;
 			break;
+		default:
+			color = zero_utilities__$Color_Color_$Impl_$.WHITE;
 		}
 		var color_fill = zero_utilities__$Vec4_Vec4_$Impl_$.get(color[0],color[1],color[2],color[3]);
 		color_fill[3] = Math.min(Math.max(0.25,0),1);
@@ -76102,9 +76218,9 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 			sprite1.get_graphics().lineStyle();
 		}
 	}
-	,get_available_tiles_array: function(origin,min_range,max_range,restrictions) {
-		if(restrictions == null) {
-			restrictions = ui_cards_RangeType.NONE;
+	,get_available_tiles_array: function(origin,min_range,max_range,restriction) {
+		if(restriction == null) {
+			restriction = "NONE";
 		}
 		var solids = this.tiles;
 		var _g = [];
@@ -76115,7 +76231,7 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 		}
 		var solids1 = solids.get_solids_array(_g);
 		var not_availables = this.tiles.get_solids_array();
-		var map = zero_extensions_ArrayExt.heat_map(solids1,origin[0],origin[1],max_range);
+		var map = zero_extensions_ArrayExt.heat_map(solids1,origin[0],origin[1],max_range + 1);
 		var out = [];
 		var _g2 = 0;
 		var _g3 = map.length;
@@ -76126,7 +76242,7 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 			while(_g21 < _g31) {
 				var i1 = _g21++;
 				if(map[j][i1] > 0) {
-					if(map[j][i1] > max_range - min_range) {
+					if(map[j][i1] > max_range + 1 - min_range) {
 						map[j][i1] = 0;
 					} else if(not_availables[j][i1] != 0) {
 						map[j][i1] = 0;
@@ -76139,17 +76255,1360 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 				}
 			}
 		}
-		var _g4 = 0;
-		while(_g4 < map.length) {
-			var row = map[_g4];
-			++_g4;
-			haxe_Log.trace(row,{ fileName : "src/scenes/Level.hx", lineNumber : 209, className : "scenes.Level", methodName : "get_available_tiles_array"});
+		this.apply_restriction(origin,out,restriction);
+		this.available_tiles = out;
+		return out;
+	}
+	,draw_move_indicators: function(move_card) {
+		this.move_indicators.get_graphics().clear();
+		var player = move_card.gear.player;
+		var range = move_card.get_moves_value();
+		if(range == 0) {
+			return;
+		}
+		var tiles = this.get_walkable_tiles_array(zero_utilities__$IntPoint_IntPoint_$Impl_$.from_array_int([Math.floor(player.get_x() / 16),Math.floor(player.get_y() / 16)]),range);
+		var color = zero_utilities__$Color_Color_$Impl_$.PICO_8_BLUE;
+		var color_fill = zero_utilities__$Vec4_Vec4_$Impl_$.get(color[0],color[1],color[2],color[3]);
+		color_fill[3] = Math.min(Math.max(0.25,0),1);
+		var _g = 0;
+		while(_g < tiles.length) {
+			var tile = tiles[_g];
+			++_g;
+			var sprite = this.move_indicators;
+			var x = tile[0] * 16 + 2;
+			var y = tile[1] * 16 + 2;
+			var radius = 2;
+			if(radius == null) {
+				radius = 0;
+			}
+			sprite.get_graphics().beginFill((Math.round(color_fill[0] * 255) & 255) << 16 | (Math.round(color_fill[1] * 255) & 255) << 8 | Math.round(color_fill[2] * 255) & 255,color_fill[3]);
+			if(radius == 0) {
+				sprite.get_graphics().drawRect(x,y,12,12);
+			} else {
+				sprite.get_graphics().drawRoundRect(x,y,12,12,radius);
+			}
+			sprite.get_graphics().endFill();
+			var sprite1 = sprite;
+			var x1 = tile[0] * 16 + 2;
+			var y1 = tile[1] * 16 + 2;
+			var radius1 = 2;
+			var line_width = 1;
+			if(line_width == null) {
+				line_width = 1;
+			}
+			if(radius1 == null) {
+				radius1 = 0;
+			}
+			sprite1.get_graphics().lineStyle(line_width,(Math.round(color[0] * 255) & 255) << 16 | (Math.round(color[1] * 255) & 255) << 8 | Math.round(color[2] * 255) & 255,color[3]);
+			if(radius1 == 0) {
+				sprite1.get_graphics().drawRect(x1,y1,12,12);
+			} else {
+				sprite1.get_graphics().drawRoundRect(x1,y1,12,12,radius1);
+			}
+			sprite1.get_graphics().lineStyle();
+		}
+	}
+	,get_walkable_tiles_array: function(origin,range,restriction) {
+		if(restriction == null) {
+			restriction = "NONE";
+		}
+		haxe_Log.trace("x: " + origin[0] + " | y: " + origin[1],{ fileName : "src/scenes/Level.hx", lineNumber : 216, className : "scenes.Level", methodName : "get_walkable_tiles_array"});
+		var solids = this.get_traversal_map(origin);
+		haxe_Log.trace(solids,{ fileName : "src/scenes/Level.hx", lineNumber : 218, className : "scenes.Level", methodName : "get_walkable_tiles_array"});
+		var map = zero_extensions_ArrayExt.heat_map(solids,origin[0],origin[1],range + 1);
+		var out = [];
+		var _g = 0;
+		var _g1 = map.length;
+		while(_g < _g1) {
+			var j = _g++;
+			var _g2 = 0;
+			var _g11 = map[j].length;
+			while(_g2 < _g11) {
+				var i = _g2++;
+				if(map[j][i] > 0 && map[j][i] <= range) {
+					out.push(zero_utilities__$IntPoint_IntPoint_$Impl_$.from_array_int([i,j]));
+				}
+			}
+		}
+		this.apply_restriction(origin,out,restriction);
+		return out;
+	}
+	,apply_restriction: function(origin,arr,restriction) {
+		switch(restriction) {
+		case "DIAGONAL":
+			var remove = [];
+			var _g = 0;
+			while(_g < arr.length) {
+				var p = arr[_g];
+				++_g;
+				if(Math.abs(p[0] - origin[0]) != Math.abs(p[1] - origin[1])) {
+					remove.push(p);
+				}
+			}
+			var _g1 = 0;
+			while(_g1 < remove.length) {
+				var p1 = remove[_g1];
+				++_g1;
+				HxOverrides.remove(arr,p1);
+			}
+			break;
+		case "NONE":
+			return arr;
+		case "ORTHOGONAL":
+			var remove1 = [];
+			var _g2 = 0;
+			while(_g2 < arr.length) {
+				var p2 = arr[_g2];
+				++_g2;
+				if(p2[0] != origin[0] && p2[1] != origin[1]) {
+					remove1.push(p2);
+				}
+			}
+			var _g11 = 0;
+			while(_g11 < remove1.length) {
+				var p3 = remove1[_g11];
+				++_g11;
+				HxOverrides.remove(arr,p3);
+			}
+			break;
+		}
+		return arr;
+	}
+	,__class__: scenes_Level
+});
+var ui_Card = function() {
+	this.dragging = false;
+	this.draggable = true;
+	openfl_display_Sprite.call(this);
+	this.addEventListener("mouseDown",$bind(this,this.mouse_down));
+	zero_openfl_utilities_Game.root.addEventListener("mouseUp",$bind(this,this.mouse_up));
+};
+$hxClasses["ui.Card"] = ui_Card;
+ui_Card.__name__ = "ui.Card";
+ui_Card.__super__ = openfl_display_Sprite;
+ui_Card.prototype = $extend(openfl_display_Sprite.prototype,{
+	draggable: null
+	,dragging: null
+	,mouse_down: function(e) {
+		if(!this.draggable) {
+			return;
+		}
+		this.startDrag();
+		this.dragging = true;
+	}
+	,mouse_up: function(e) {
+		if(!this.dragging) {
+			return;
+		}
+		this.stopDrag();
+		this.dragging = false;
+	}
+	,__class__: ui_Card
+});
+var ui_Deck = function() {
+	this.hand = [];
+	var _gthis = this;
+	openfl_display_Sprite.call(this);
+	ui_Deck.active_deck = this;
+	this.addEventListener("enterFrame",function(e) {
+		_gthis.update();
+		return;
+	});
+	var _g = [];
+	var _g1 = 0;
+	var _g2 = [];
+	var _g11 = 0;
+	var _g21 = ui_PlayingCardSuit.__empty_constructs__.slice();
+	while(_g11 < _g21.length) {
+		var e1 = _g21[_g11];
+		++_g11;
+		_g2.push(e1);
+	}
+	var _g22 = _g2;
+	while(_g1 < _g22.length) {
+		var suit = _g22[_g1];
+		++_g1;
+		var _g12 = 0;
+		var _g3 = [];
+		var _g13 = 0;
+		var _g23 = ui_PlayingCardValue.__empty_constructs__.slice();
+		while(_g13 < _g23.length) {
+			var e11 = _g23[_g13];
+			++_g13;
+			_g3.push(e11);
+		}
+		var _g24 = _g3;
+		while(_g12 < _g24.length) {
+			var value = _g24[_g12];
+			++_g12;
+			_g.push({ value : value, suit : suit});
+		}
+	}
+	this.cards = _g;
+	zero_extensions_ArrayExt.shuffle(this.cards);
+};
+$hxClasses["ui.Deck"] = ui_Deck;
+ui_Deck.__name__ = "ui.Deck";
+ui_Deck.__super__ = openfl_display_Sprite;
+ui_Deck.prototype = $extend(openfl_display_Sprite.prototype,{
+	hand: null
+	,cards: null
+	,deal: function(amt) {
+		if(amt == null) {
+			amt = 5;
+		}
+		var _gthis = this;
+		var _g = 0;
+		var _g1 = amt;
+		while(_g < _g1) {
+			var i = _g++;
+			if(this.cards.length == 0) {
+				continue;
+			}
+			var card_data = [this.cards.pop()];
+			zero_utilities_Timer.get(i * 0.1,(function(card_data1) {
+				return function() {
+					_gthis.deal_card(card_data1[0]);
+					return;
+				};
+			})(card_data));
+		}
+	}
+	,deal_card: function(data) {
+		var card = new ui_PlayingCard(this,data,zero_openfl_utilities_Game.get_width() / 2,zero_openfl_utilities_Game.get_height() + 128);
+		this.add_card(card);
+	}
+	,add_card: function(card) {
+		this.addChild(card);
+		this.add_to_hand(card);
+	}
+	,remove_from_hand: function(c) {
+		HxOverrides.remove(this.hand,c);
+	}
+	,add_to_hand: function(c) {
+		this.hand.push(c);
+	}
+	,update: function() {
+		var i = 0;
+		var sx = zero_openfl_utilities_Game.get_width() / 2 - this.hand.length / 2 * 144 + 72;
+		var _g = 0;
+		var _g1 = this.hand;
+		while(_g < _g1.length) {
+			var card = _g1[_g];
+			++_g;
+			var target = zero_utilities__$Vec2_Vec2_$Impl_$.get(sx + i * 144,zero_openfl_utilities_Game.get_height() - 48);
+			var _g2 = card;
+			_g2.set_x(_g2.get_x() + (target[0] - card.get_x()) * 0.25);
+			var _g3 = card;
+			_g3.set_y(_g3.get_y() + (target[1] - card.get_y()) * 0.25);
+			++i;
+			zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(target);
+			target = null;
+		}
+	}
+	,__class__: ui_Deck
+});
+var ui_DropCard = function() {
+	this.t = 0.0;
+	this.expended = false;
+	this.active = false;
+	this.cards = [];
+	this.grayscale_filter = new openfl_filters_ColorMatrixFilter([0.25,0.25,0.25,0,0,0.25,0.25,0.25,0,0,0.25,0.25,0.25,0,0,0,0,0,1,1]);
+	ui_Card.call(this);
+	this.last = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([this.get_x(),this.get_y()]);
+	this.anchor = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([0,0]);
+	this.addEventListener("enterFrame",$bind(this,this.update));
+};
+$hxClasses["ui.DropCard"] = ui_DropCard;
+ui_DropCard.__name__ = "ui.DropCard";
+ui_DropCard.__super__ = ui_Card;
+ui_DropCard.prototype = $extend(ui_Card.prototype,{
+	anchor: null
+	,handle: null
+	,grayscale_filter: null
+	,anchors: null
+	,cards: null
+	,data: null
+	,active: null
+	,set_active: function(b) {
+		return this.active = b && !this.expended;
+	}
+	,expended: null
+	,set_expended: function(b) {
+		this.set_filters(b ? [this.grayscale_filter] : []);
+		return this.expended = b;
+	}
+	,highlight: null
+	,last: null
+	,verify_card: function(card_data) {
+		if(this.cards.length >= 2) {
+			return false;
+		}
+		switch(this.data.requirement) {
+		case "CLUBS":
+			return card_data.suit == ui_PlayingCardSuit.CLUBS;
+		case "DIAMONDS":
+			return card_data.suit == ui_PlayingCardSuit.DIAMONDS;
+		case "DIFF_SUIT":
+			if(this.cards.length != 0) {
+				return this.cards[0].data.suit != card_data.suit;
+			} else {
+				return true;
+			}
+			break;
+		case "EXACT_CARD":
+			return util_CardUtil.value_to_int(card_data.value) == this.data.requirement_value;
+		case "EXACT_TOTAL":
+			var total = 0;
+			var _g = 0;
+			var _g1 = this.cards;
+			while(_g < _g1.length) {
+				var card = _g1[_g];
+				++_g;
+				total += util_CardUtil.value_to_int(card.data.value);
+			}
+			if(total + util_CardUtil.value_to_int(card_data.value) != this.data.requirement_value) {
+				return this.cards.length == 0;
+			} else {
+				return true;
+			}
+			break;
+		case "HEARTS":
+			return card_data.suit == ui_PlayingCardSuit.HEARTS;
+		case "IS_FACE":
+			return [ui_PlayingCardValue.JACK,ui_PlayingCardValue.QUEEN,ui_PlayingCardValue.KING].indexOf(card_data.value) >= 0;
+		case "MAX_CARD":
+			return util_CardUtil.value_to_int(card_data.value) <= this.data.requirement_value;
+		case "MAX_TOTAL":
+			var total1 = 0;
+			var _g2 = 0;
+			var _g11 = this.cards;
+			while(_g2 < _g11.length) {
+				var card1 = _g11[_g2];
+				++_g2;
+				total1 += util_CardUtil.value_to_int(card1.data.value);
+			}
+			return total1 + util_CardUtil.value_to_int(card_data.value) <= this.data.requirement_value;
+		case "MIN_CARD":
+			return util_CardUtil.value_to_int(card_data.value) >= this.data.requirement_value;
+		case "MIN_TOTAL":
+			var total2 = 0;
+			var _g3 = 0;
+			var _g12 = this.cards;
+			while(_g3 < _g12.length) {
+				var card2 = _g12[_g3];
+				++_g3;
+				total2 += util_CardUtil.value_to_int(card2.data.value);
+			}
+			if(total2 + util_CardUtil.value_to_int(card_data.value) < this.data.requirement_value) {
+				return this.cards.length == 0;
+			} else {
+				return true;
+			}
+			break;
+		case "NOT_FACE":
+			return [ui_PlayingCardValue.JACK,ui_PlayingCardValue.QUEEN,ui_PlayingCardValue.KING].indexOf(card_data.value) < 0;
+		case "NO_MATCH":
+			if(this.cards.length != 0) {
+				return this.cards[0].data.value != card_data.value;
+			} else {
+				return true;
+			}
+			break;
+		case "PAIR":
+			if(this.cards.length != 0) {
+				return this.cards[0].data.value == card_data.value;
+			} else {
+				return true;
+			}
+			break;
+		case "SAME_SUIT":
+			if(this.cards.length != 0) {
+				return this.cards[0].data.suit == card_data.suit;
+			} else {
+				return true;
+			}
+			break;
+		case "SPADES":
+			return card_data.suit == ui_PlayingCardSuit.CLUBS;
+		case "TWO_CARDS":
+			return true;
+		default:
+			return false;
+		}
+	}
+	,get_anchor: function(global) {
+		if(global == null) {
+			global = false;
+		}
+		if(global) {
+			return zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([this.anchor[0] + this.get_x(),this.anchor[1] + this.get_y()]);
+		} else {
+			return this.anchor;
+		}
+	}
+	,add_card: function(card) {
+		this.addChild(card);
+		this.cards.push(card);
+		card.drop = this;
+		var _g = card;
+		_g.set_x(_g.get_x() - this.get_x());
+		var _g1 = card;
+		_g1.set_y(_g1.get_y() - this.get_y());
+	}
+	,remove_card: function(card) {
+		HxOverrides.remove(this.cards,card);
+	}
+	,t: null
+	,update: function(e) {
+		var i = 0;
+		var _g = 0;
+		var _g1 = this.cards;
+		while(_g < _g1.length) {
+			var card = _g1[_g];
+			++_g;
+			if(card.dragging) {
+				continue;
+			}
+			var _g2 = card;
+			_g2.set_x(_g2.get_x() + (this.anchors[i][0] - card.get_x()) * 0.25);
+			var _g3 = card;
+			_g3.set_y(_g3.get_y() + (this.anchors[i][1] - card.get_y()) * 0.25);
+			++i;
+		}
+	}
+	,__class__: ui_DropCard
+	,__properties__: $extend(ui_Card.prototype.__properties__,{set_expended:"set_expended",set_active:"set_active"})
+});
+var ui_Gear = function(player,side) {
+	this.gear_cards = [];
+	this.active = false;
+	var _gthis = this;
+	openfl_display_Sprite.call(this);
+	this.player = player;
+	this.side = side;
+	this.addChild(this.link = new ui_LinkGraphic(openfl_utils_Assets.getBitmapData("images/ui/action_arrow_white.png")));
+	this.addChild(this.gear = new openfl_display_Sprite());
+	var sprite = new ui_MoveCard({ requirement : "MAX_CARD", requirement_value : 5, type : ui_MoveType.FREE, factor : ui_MoveFactor.VALUE},this);
+	sprite.set_x(side == objects_PlayerSide.LEFT ? -72 : zero_openfl_utilities_Game.get_width() + 72);
+	sprite.set_y(298);
+	this.addChild(this.move_card = sprite);
+	this.addChild(this.player_info = new ui_PlayerInfo(player,side));
+	this.addEventListener("enterFrame",function(e) {
+		_gthis.update();
+		return;
+	});
+};
+$hxClasses["ui.Gear"] = ui_Gear;
+ui_Gear.__name__ = "ui.Gear";
+ui_Gear.__properties__ = {set_active_gear:"set_active_gear"};
+ui_Gear.set_active_gear = function(gear) {
+	if(ui_Gear.active_gear != null) {
+		ui_Gear.active_gear.active = false;
+	}
+	gear.active = true;
+	return ui_Gear.active_gear = gear;
+};
+ui_Gear.__super__ = openfl_display_Sprite;
+ui_Gear.prototype = $extend(openfl_display_Sprite.prototype,{
+	active: null
+	,link: null
+	,gear_cards: null
+	,move_card: null
+	,player: null
+	,player_info: null
+	,gear: null
+	,side: null
+	,update: function() {
+		var i = 0;
+		var _g = 0;
+		var _g1 = this.gear_cards;
+		while(_g < _g1.length) {
+			var gear = _g1[_g];
+			++_g;
+			if(this.active) {
+				var _g2 = gear;
+				_g2.set_x(_g2.get_x() + ((this.side == objects_PlayerSide.LEFT ? 240 : zero_openfl_utilities_Game.get_width() - 240) + (this.side == objects_PlayerSide.LEFT ? 208 : -208) * i++ - gear.get_x()) * 0.25);
+				var _g3 = gear;
+				_g3.set_y(_g3.get_y() + (144 - gear.get_y()) * 0.25);
+				var _g4 = gear;
+				_g4.set_alpha(_g4.get_alpha() + (1 - gear.get_alpha()) * 0.25);
+			} else {
+				var _g5 = gear;
+				_g5.set_x(_g5.get_x() + ((this.side == objects_PlayerSide.LEFT ? -240 : zero_openfl_utilities_Game.get_width() + 240) - gear.get_x()) * 0.25);
+				var _g6 = gear;
+				_g6.set_y(_g6.get_y() + (144 - gear.get_y()) * 0.25);
+				var _g7 = gear;
+				_g7.set_alpha(_g7.get_alpha() + (0 - gear.get_alpha()) * 0.25);
+			}
+		}
+		var tx = this.active ? this.side == objects_PlayerSide.LEFT ? 72 : zero_openfl_utilities_Game.get_width() - 72 : this.side == objects_PlayerSide.LEFT ? -72 : zero_openfl_utilities_Game.get_width() + 72;
+		var _g21 = this.move_card;
+		_g21.set_x(_g21.get_x() + (tx - this.move_card.get_x()) * 0.25);
+	}
+	,add_card: function(card) {
+		this.gear.addChild(card);
+		this.gear_cards.push(card);
+	}
+	,__class__: ui_Gear
+});
+var ui_GearCard = function(gear,gear_data) {
+	ui_DropCard.call(this);
+	this.gear = gear;
+	this.gear_data = gear_data;
+	this.draggable = false;
+	this.anchors = [zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([-35,28]),zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([35,28])];
+	this.data = { requirement : gear_data.requirement, requirement_value : gear_data.requirement_value};
+	this.draw_card();
+	this.addEventListener("mouseOver",$bind(this,this.mouse_over));
+	this.addEventListener("mouseOut",$bind(this,this.mouse_out));
+};
+$hxClasses["ui.GearCard"] = ui_GearCard;
+ui_GearCard.__name__ = "ui.GearCard";
+ui_GearCard.__super__ = ui_DropCard;
+ui_GearCard.prototype = $extend(ui_DropCard.prototype,{
+	gear: null
+	,gear_data: null
+	,description: null
+	,req_text: null
+	,req_text_r: null
+	,mouse_over: function(e) {
+		if(!this.expended && this.gear_data.range.max > 0) {
+			scenes_Level.i.draw_indicators(this);
+		}
+	}
+	,mouse_out: function(e) {
+		if(!this.active) {
+			scenes_Level.i.clear_indicators();
+		}
+	}
+	,draw_card: function() {
+		var this1 = zero_utilities__$Color_Color_$Impl_$.get();
+		var x = 0.48627450980392156;
+		var y = 0.69411764705882351;
+		var z = 0.12156862745098039;
+		var w = 1.;
+		if(w == null) {
+			w = 0;
+		}
+		if(z == null) {
+			z = 0;
+		}
+		if(y == null) {
+			y = 0;
+		}
+		if(x == null) {
+			x = 0;
+		}
+		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this1,0,zero_utilities__$Color_Color_$Impl_$.zero(x));
+		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this1,1,zero_utilities__$Color_Color_$Impl_$.zero(y));
+		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this1,2,zero_utilities__$Color_Color_$Impl_$.zero(z));
+		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this1,3,zero_utilities__$Color_Color_$Impl_$.zero(w));
+		var color = this1;
+		var x1 = -ui_GearCard.card_width / 2;
+		var y1 = -ui_GearCard.card_height / 2;
+		var width = ui_GearCard.card_width;
+		var height = ui_GearCard.card_height;
+		var radius = 16;
+		if(radius == null) {
+			radius = 0;
+		}
+		this.get_graphics().beginFill((Math.round(color[0] * 255) & 255) << 16 | (Math.round(color[1] * 255) & 255) << 8 | Math.round(color[2] * 255) & 255,color[3]);
+		if(radius == 0) {
+			this.get_graphics().drawRect(x1,y1,width,height);
+		} else {
+			this.get_graphics().drawRoundRect(x1,y1,width,height,radius);
+		}
+		this.get_graphics().endFill();
+		var color1 = zero_utilities__$Color_Color_$Impl_$.BLACK;
+		var x2 = -ui_GearCard.card_width / 2 + 2;
+		var y2 = -ui_GearCard.card_height / 2 + 2;
+		var width1 = ui_GearCard.card_width - 4;
+		var height1 = ui_GearCard.card_height - 4;
+		var radius1 = 12;
+		var line_width = 4;
+		if(line_width == null) {
+			line_width = 1;
+		}
+		if(radius1 == null) {
+			radius1 = 0;
+		}
+		this.get_graphics().lineStyle(line_width,(Math.round(color1[0] * 255) & 255) << 16 | (Math.round(color1[1] * 255) & 255) << 8 | Math.round(color1[2] * 255) & 255,color1[3]);
+		if(radius1 == 0) {
+			this.get_graphics().drawRect(x2,y2,width1,height1);
+		} else {
+			this.get_graphics().drawRoundRect(x2,y2,width1,height1,radius1);
+		}
+		this.get_graphics().lineStyle();
+		var contents = new openfl_display_Sprite();
+		var y3 = -ui_GearCard.card_height / 2;
+		contents.set_x(-ui_GearCard.card_width / 2);
+		contents.set_y(y3);
+		this.addChild(contents);
+		var _g = 0;
+		var _g1 = this.gear_data.cost;
+		while(_g < _g1) {
+			var i = _g++;
+			var sprite = zero_openfl_extensions_SpriteTools.load_graphic(new openfl_display_Sprite(),"images/ui/ap_pip.png",zero_utilities_Anchor.TOP_LEFT,true);
+			sprite.set_x(165 - i * 11);
+			sprite.set_y(10);
+			var pip = sprite;
+			contents.addChild(pip);
+		}
+		var sprite1 = new openfl_display_Sprite();
+		var color2 = zero_utilities__$Color_Color_$Impl_$.PICO_8_WHITE;
+		var radius2 = 24;
+		if(radius2 == null) {
+			radius2 = 0;
+		}
+		sprite1.get_graphics().beginFill((Math.round(color2[0] * 255) & 255) << 16 | (Math.round(color2[1] * 255) & 255) << 8 | Math.round(color2[2] * 255) & 255,color2[3]);
+		if(radius2 == 0) {
+			sprite1.get_graphics().drawRect(26,28,140,24);
+		} else {
+			sprite1.get_graphics().drawRoundRect(26,28,140,24,radius2);
+		}
+		sprite1.get_graphics().endFill();
+		contents.addChild(sprite1);
+		var title = zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : "Oduda Bold", size : 16, color : zero_utilities__$Color_Color_$Impl_$.BLACK}),this.gear_data.title),40,38,zero_utilities_Anchor.MIDDLE_LEFT);
+		contents.addChild(title);
+		this.description = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : "Oduda Bold", size : 14, color : zero_utilities__$Color_Color_$Impl_$.BLACK, leading : -2});
+		contents.addChild(this.description);
+		this.set_description();
+		var sprite2 = new openfl_display_Sprite();
+		var color3 = zero_utilities__$Color_Color_$Impl_$.PICO_8_DARK_GREEN;
+		var radius3 = 16;
+		if(radius3 == null) {
+			radius3 = 0;
+		}
+		sprite2.get_graphics().beginFill((Math.round(color3[0] * 255) & 255) << 16 | (Math.round(color3[1] * 255) & 255) << 8 | Math.round(color3[2] * 255) & 255,color3[3]);
+		if(radius3 == 0) {
+			sprite2.get_graphics().drawRect(16,92,160,96);
+		} else {
+			sprite2.get_graphics().drawRoundRect(16,92,160,96,radius3);
+		}
+		sprite2.get_graphics().endFill();
+		contents.addChild(sprite2);
+		this.req_text = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : "Oduda Bold", size : 20, color : zero_utilities__$Color_Color_$Impl_$.PICO_8_DARK_BLUE});
+		contents.addChild(this.req_text);
+		this.set_req_text();
+		this.req_text_r = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : "Oduda Bold", size : 16, color : zero_utilities__$Color_Color_$Impl_$.PICO_8_DARK_BLUE, align : 0});
+		contents.addChild(this.req_text_r);
+		this.set_req_text_r();
+		var src;
+		switch(this.gear_data.bonus.requirement) {
+		case "CLUBS":
+			src = "images/ui/suit_club.png";
+			break;
+		case "DIAMONDS":
+			src = "images/ui/suit_diamond.png";
+			break;
+		case "HEARTS":
+			src = "images/ui/suit_heart.png";
+			break;
+		case "IS_FACE":
+			src = "images/ui/rule_face.png";
+			break;
+		case "SPADES":
+			src = "images/ui/suit_spade.png";
+			break;
+		case "TWO_CARDS":
+			src = "images/ui/rule_two_cards.png";
+			break;
+		default:
+			src = "images/blank.png";
+		}
+		var sprite3 = zero_openfl_extensions_SpriteTools.load_graphic(new openfl_display_Sprite(),src,zero_utilities_Anchor.MIDDLE_CENTER,true);
+		sprite3.set_x(20);
+		sprite3.set_y(92);
+		var sprite4 = sprite3;
+		var x3 = 0.125;
+		var y4 = null;
+		if(x3 == null) {
+			x3 = 0;
+		}
+		if(y4 == null) {
+			y4 = x3;
+		}
+		sprite4.set_scaleX(x3);
+		sprite4.set_scaleY(y4);
+		contents.addChild(sprite4);
+		var class_src;
+		switch(this.gear_data.gear_class) {
+		case "ELECTRICITY":
+			class_src = "images/ui/icons/on_white/icon_electrify.png";
+			break;
+		case "EXPLOSIVE":
+			class_src = "images/ui/icons/on_white/icon_explode.png";
+			break;
+		case "FLAME":
+			class_src = "images/ui/icons/on_white/icon_flame.png";
+			break;
+		case "HEALTH":
+			class_src = "images/ui/icons/on_white/icon_health.png";
+			break;
+		case "MOVE":
+			class_src = "images/ui/icons/on_white/icon_move.png";
+			break;
+		case "PIERCING":
+			class_src = "images/ui/icons/on_white/icon_pierce.png";
+			break;
+		case "SHIELD":
+			class_src = "images/ui/icons/on_white/icon_shield.png";
+			break;
+		case "UTILITY":
+			class_src = "images/ui/icons/on_white/icon_utility.png";
+			break;
+		case "WATER":
+			class_src = "images/ui/icons/on_white/icon_water.png";
+			break;
+		default:
+			class_src = "images/blank.png";
+		}
+		var weakness_src;
+		switch(this.gear_data.weakness) {
+		case "ELECTRICITY":
+			weakness_src = "images/ui/icons/on_white/icon_electrify.png";
+			break;
+		case "EXPLOSIVE":
+			weakness_src = "images/ui/icons/on_white/icon_explode.png";
+			break;
+		case "FLAME":
+			weakness_src = "images/ui/icons/on_white/icon_flame.png";
+			break;
+		case "HEALTH":
+			weakness_src = "images/ui/icons/on_white/icon_health.png";
+			break;
+		case "MOVE":
+			weakness_src = "images/ui/icons/on_white/icon_move.png";
+			break;
+		case "PIERCING":
+			weakness_src = "images/ui/icons/on_white/icon_pierce.png";
+			break;
+		case "SHIELD":
+			weakness_src = "images/ui/icons/on_white/icon_shield.png";
+			break;
+		case "UTILITY":
+			weakness_src = "images/ui/icons/on_white/icon_utility.png";
+			break;
+		case "WATER":
+			weakness_src = "images/ui/icons/on_white/icon_water.png";
+			break;
+		default:
+			weakness_src = "images/blank.png";
+		}
+		var sprite5 = zero_openfl_extensions_SpriteTools.load_graphic(new openfl_display_Sprite(),class_src,zero_utilities_Anchor.TOP_LEFT,true);
+		sprite5.set_x(16);
+		sprite5.set_y(196);
+		var sprite6 = sprite5;
+		var x4 = 0.25;
+		var y5 = null;
+		if(x4 == null) {
+			x4 = 0;
+		}
+		if(y5 == null) {
+			y5 = x4;
+		}
+		sprite6.set_scaleX(x4);
+		sprite6.set_scaleY(y5);
+		contents.addChild(sprite6);
+		var sprite7 = zero_openfl_extensions_SpriteTools.load_graphic(new openfl_display_Sprite(),weakness_src,zero_utilities_Anchor.TOP_LEFT,true);
+		sprite7.set_x(160);
+		sprite7.set_y(196);
+		var sprite8 = sprite7;
+		var x5 = 0.25;
+		var y6 = null;
+		if(x5 == null) {
+			x5 = 0;
+		}
+		if(y6 == null) {
+			y6 = x5;
+		}
+		sprite8.set_scaleX(x5);
+		sprite8.set_scaleY(y6);
+		contents.addChild(sprite8);
+		var sprite9 = zero_openfl_extensions_SpriteTools.load_graphic(new openfl_display_Sprite(),"images/ui/icons/icon_skull.png",zero_utilities_Anchor.TOP_LEFT,true);
+		sprite9.set_x(144);
+		sprite9.set_y(180);
+		var sprite10 = sprite9;
+		var x6 = 0.25;
+		var y7 = null;
+		if(x6 == null) {
+			x6 = 0;
+		}
+		if(y7 == null) {
+			y7 = x6;
+		}
+		sprite10.set_scaleX(x6);
+		sprite10.set_scaleY(y7);
+		contents.addChild(sprite10);
+		var sprite11 = new openfl_display_Sprite();
+		var color4 = zero_utilities__$Color_Color_$Impl_$.PICO_8_WHITE;
+		var x7 = -ui_GearCard.card_width / 2 + 4;
+		var y8 = -ui_GearCard.card_height / 2 + 4;
+		var width2 = ui_GearCard.card_width - 8;
+		var height2 = ui_GearCard.card_height - 8;
+		var radius4 = 16;
+		var line_width1 = 8;
+		if(line_width1 == null) {
+			line_width1 = 1;
+		}
+		if(radius4 == null) {
+			radius4 = 0;
+		}
+		sprite11.get_graphics().lineStyle(line_width1,(Math.round(color4[0] * 255) & 255) << 16 | (Math.round(color4[1] * 255) & 255) << 8 | Math.round(color4[2] * 255) & 255,color4[3]);
+		if(radius4 == 0) {
+			sprite11.get_graphics().drawRect(x7,y8,width2,height2);
+		} else {
+			sprite11.get_graphics().drawRoundRect(x7,y8,width2,height2,radius4);
+		}
+		sprite11.get_graphics().lineStyle();
+		this.addChild(this.highlight = sprite11);
+		zero_utilities_Tween.get(this.highlight).from_to("scaleX",1,1.1).from_to("scaleY",1,1.1).from_to("alpha",1,0).type(zero_utilities_TweenType.LOOP_FORWARDS).duration(1).ease(zero_utilities_Ease.quadOut);
+		this.highlight.set_visible(false);
+		this.handle = new ui_GearCardHandle(this.gear_data.range.max == 0 ? ui_HandleType.PRESS : ui_HandleType.AIM,this);
+	}
+	,set_description: function() {
+		var str;
+		switch(this.gear_data.effect.type) {
+		case "DAMAGE":
+			str = "Do " + this.get_effect_string() + " damage";
+			break;
+		case "DRAW":
+			str = "Draw " + this.get_effect_string() + " card" + (this.get_effect_value() > 1 ? "s" : "");
+			break;
+		case "HEALTH":
+			str = "Heal " + this.get_effect_string() + " hitpoints";
+			break;
+		case "MOVE":
+			str = "Move " + this.get_effect_string() + " spaces";
+			break;
+		case "SHIELD":
+			str = "Shield against " + this.get_effect_string() + " damage";
+			break;
+		}
+		zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(this.description,zero_openfl_extensions_TextTools.wrap_string(str,this.description,128)),ui_GearCard.card_width / 2,70,zero_utilities_Anchor.MIDDLE_CENTER);
+	}
+	,set_req_text: function() {
+		if(this.cards.length > 0) {
+			zero_openfl_extensions_TextTools.set_string(this.req_text,"");
+			return;
+		}
+		var str;
+		switch(this.gear_data.requirement) {
+		case "CLUBS":
+			str = "Clubs";
+			break;
+		case "DIAMONDS":
+			str = "Diamonds";
+			break;
+		case "DIFF_SUIT":
+			str = "Different Suit";
+			break;
+		case "EXACT_CARD":
+			str = "= " + this.gear_data.requirement_value;
+			break;
+		case "EXACT_TOTAL":
+			str = "All = " + this.gear_data.requirement_value;
+			break;
+		case "HEARTS":
+			str = "Hearts";
+			break;
+		case "IS_FACE":
+			str = "Face";
+			break;
+		case "MAX_CARD":
+			str = "< " + (this.gear_data.requirement_value + 1);
+			break;
+		case "MAX_TOTAL":
+			str = "All < " + (this.gear_data.requirement_value + 1);
+			break;
+		case "MIN_CARD":
+			str = "> " + (this.gear_data.requirement_value - 1);
+			break;
+		case "MIN_TOTAL":
+			str = "All > " + (this.gear_data.requirement_value - 1);
+			break;
+		case "NOT_FACE":
+			str = "Not Face";
+			break;
+		case "NO_MATCH":
+			str = "Not Pair";
+			break;
+		case "PAIR":
+			str = "Pair";
+			break;
+		case "SAME_SUIT":
+			str = "Same Suit";
+			break;
+		case "SPADES":
+			str = "Spades";
+			break;
+		case "TWO_CARDS":
+			str = "Two Cards";
+			break;
+		default:
+			str = "";
+		}
+		zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(this.req_text,str),ui_GearCard.card_width / 2,140,zero_utilities_Anchor.MIDDLE_CENTER);
+	}
+	,set_req_text_r: function() {
+		if(this.cards.length == 0 || this.cards.length == 2) {
+			zero_openfl_extensions_TextTools.set_string(this.req_text_r,"");
+			return;
+		}
+		var str;
+		switch(this.gear_data.requirement) {
+		case "CLUBS":
+			str = "Clubs";
+			break;
+		case "DIAMONDS":
+			str = "Diamonds";
+			break;
+		case "DIFF_SUIT":
+			str = "Not\n" + util_CardUtil.suit_to_string(this.cards[0].data.suit);
+			break;
+		case "EXACT_CARD":
+			str = "= " + this.gear_data.requirement_value;
+			break;
+		case "EXACT_TOTAL":
+			str = "= " + (this.gear_data.requirement_value - util_CardUtil.value_to_int(this.cards[0].data.value));
+			break;
+		case "HEARTS":
+			str = "Hearts";
+			break;
+		case "IS_FACE":
+			str = "Face";
+			break;
+		case "MAX_CARD":
+			str = "< " + (this.gear_data.requirement_value + 1);
+			break;
+		case "MAX_TOTAL":
+			str = "< " + (this.gear_data.requirement_value + 1 - util_CardUtil.value_to_int(this.cards[0].data.value));
+			break;
+		case "MIN_CARD":
+			str = "> " + (this.gear_data.requirement_value - 1);
+			break;
+		case "MIN_TOTAL":
+			str = "> " + Math.max(this.gear_data.requirement_value - 1 - util_CardUtil.value_to_int(this.cards[0].data.value),0);
+			break;
+		case "NOT_FACE":
+			str = "Not\nFace";
+			break;
+		case "NO_MATCH":
+			str = "Not\n" + util_CardUtil.value_to_string(this.cards[0].data.value);
+			break;
+		case "PAIR":
+			str = "= " + util_CardUtil.value_to_string(this.cards[0].data.value);
+			break;
+		case "SAME_SUIT":
+			str = "" + util_CardUtil.suit_to_string(this.cards[0].data.suit);
+			break;
+		case "SPADES":
+			str = "Spades";
+			break;
+		case "TWO_CARDS":
+			str = "Any";
+			break;
+		default:
+			str = "";
+		}
+		zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(this.req_text_r,str),ui_GearCard.card_width / 2 + 36,140,zero_utilities_Anchor.MIDDLE_CENTER);
+	}
+	,get_effect_value: function() {
+		var out = 0;
+		switch(this.gear_data.effect.factor) {
+		case "STATIC":
+			out = this.gear_data.effect.value;
+			break;
+		case "VALUES":
+			var _g = 0;
+			var _g1 = this.cards;
+			while(_g < _g1.length) {
+				var card = _g1[_g];
+				++_g;
+				out += util_CardUtil.value_to_int(card.data.value);
+			}
+			break;
+		}
+		if(this.vefify_bonus()) {
+			switch(this.gear_data.bonus.type) {
+			case "DOUBLE_EFFECT_VALUE":
+				out *= 2;
+				break;
+			case "DOUBLE_RANGE":
+				break;
+			}
 		}
 		return out;
 	}
-	,__class__: scenes_Level
-	,__properties__: $extend(zero_openfl_utilities_Scene.prototype.__properties__,{set_selected_player:"set_selected_player"})
+	,get_effect_string: function() {
+		var val = this.get_effect_value();
+		if(val == 0) {
+			return "_";
+		} else {
+			return "" + val;
+		}
+	}
+	,verify_gear: function() {
+		if(this.cards.length == 0) {
+			return false;
+		}
+		var total = 0;
+		var _g = 0;
+		var _g1 = this.cards;
+		while(_g < _g1.length) {
+			var card = _g1[_g];
+			++_g;
+			total += util_CardUtil.value_to_int(card.data.value);
+		}
+		switch(this.gear_data.requirement) {
+		case "EXACT_TOTAL":
+			return total == this.gear_data.requirement_value;
+		case "MAX_TOTAL":
+			return total <= this.gear_data.requirement_value;
+		case "MIN_TOTAL":
+			return total >= this.gear_data.requirement_value;
+		case "TWO_CARDS":
+			return this.cards.length == 2;
+		default:
+			return true;
+		}
+	}
+	,vefify_bonus: function() {
+		if(this.cards.length == 0) {
+			return false;
+		}
+		switch(this.gear_data.bonus.requirement) {
+		case "CLUBS":
+			var _g = 0;
+			var _g1 = this.cards;
+			while(_g < _g1.length) {
+				var card = _g1[_g];
+				++_g;
+				if(card.data.suit != ui_PlayingCardSuit.CLUBS) {
+					return false;
+				}
+			}
+			break;
+		case "DIAMONDS":
+			var _g2 = 0;
+			var _g11 = this.cards;
+			while(_g2 < _g11.length) {
+				var card1 = _g11[_g2];
+				++_g2;
+				if(card1.data.suit != ui_PlayingCardSuit.DIAMONDS) {
+					return false;
+				}
+			}
+			break;
+		case "HEARTS":
+			var _g3 = 0;
+			var _g12 = this.cards;
+			while(_g3 < _g12.length) {
+				var card2 = _g12[_g3];
+				++_g3;
+				if(card2.data.suit != ui_PlayingCardSuit.HEARTS) {
+					return false;
+				}
+			}
+			break;
+		case "IS_FACE":
+			var _g4 = 0;
+			var _g13 = this.cards;
+			while(_g4 < _g13.length) {
+				var card3 = _g13[_g4];
+				++_g4;
+				if([ui_PlayingCardValue.JACK,ui_PlayingCardValue.QUEEN,ui_PlayingCardValue.KING].indexOf(card3.data.value) < 0) {
+					return false;
+				}
+			}
+			break;
+		case "SPADES":
+			var _g5 = 0;
+			var _g14 = this.cards;
+			while(_g5 < _g14.length) {
+				var card4 = _g14[_g5];
+				++_g5;
+				if(card4.data.suit != ui_PlayingCardSuit.SPADES) {
+					return false;
+				}
+			}
+			break;
+		case "TWO_CARDS":
+			return this.cards.length == 2;
+		default:
+			return false;
+		}
+		return true;
+	}
+	,execute: function(target) {
+		this.set_active(false);
+		this.set_expended(true);
+		switch(this.gear_data.effect.type) {
+		case "DAMAGE":
+			if(target != null) {
+				target.change_health(-this.get_effect_value());
+			}
+			break;
+		case "DRAW":
+			scenes_Level.i.deck.deal(this.get_effect_value());
+			break;
+		case "HEALTH":
+			if(target != null) {
+				target.change_health(this.get_effect_value());
+			}
+			break;
+		case "MOVE":
+			break;
+		case "SHIELD":
+			break;
+		}
+	}
+	,add_card: function(card) {
+		ui_DropCard.prototype.add_card.call(this,card);
+		this.set_description();
+		this.set_req_text();
+		this.set_req_text_r();
+		if(this.verify_gear()) {
+			this.handle.show();
+		} else {
+			this.handle.hide();
+		}
+	}
+	,remove_card: function(card) {
+		ui_DropCard.prototype.remove_card.call(this,card);
+		this.set_description();
+		this.set_req_text();
+		this.set_req_text_r();
+		if(this.verify_gear()) {
+			this.handle.show();
+		} else {
+			this.handle.hide();
+		}
+	}
+	,update: function(e) {
+		ui_DropCard.prototype.update.call(this,e);
+		this.highlight.set_visible(this.active);
+		var rot_target;
+		if(this.active) {
+			var rot_target1 = this;
+			rot_target = Math.sin(rot_target1.t += 0.15) * 4;
+		} else {
+			rot_target = 0;
+		}
+		var _g = this;
+		_g.set_rotation(_g.get_rotation() + (rot_target - this.get_rotation()) * 0.25);
+	}
+	,__class__: ui_GearCard
 });
+var ui_GearCardHandle = function(type,parent) {
+	this.dragging = false;
+	this.home = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([]);
+	this.active = false;
+	openfl_display_Sprite.call(this);
+	this.gear_card = parent;
+	this.type = type;
+	this.addChild(this.graphic = new openfl_display_Sprite());
+	this.addEventListener("enterFrame",$bind(this,this.update));
+	this.addEventListener("mouseOver",$bind(this,this.mouse_over));
+	switch(type._hx_index) {
+	case 0:
+		zero_openfl_extensions_SpriteTools.load_graphic(this.graphic,"images/ui/aim_cta.png",zero_utilities_Anchor.MIDDLE_CENTER,true);
+		this.addEventListener("mouseDown",$bind(this,this.mouse_down));
+		this.addEventListener("mouseOut",function(e) {
+			scenes_Level.i.clear_indicators();
+			return;
+		});
+		zero_openfl_utilities_Game.root.addEventListener("mouseUp",$bind(this,this.mouse_up));
+		break;
+	case 1:
+		zero_openfl_extensions_SpriteTools.load_graphic(this.graphic,"images/ui/do_cta.png",zero_utilities_Anchor.MIDDLE_CENTER,true);
+		this.addEventListener("mouseDown",$bind(this,this.on_click));
+		this.addEventListener("mouseOut",$bind(this,this.mouse_out));
+		break;
+	}
+	var x = 0;
+	var y = null;
+	if(x == null) {
+		x = 0;
+	}
+	if(y == null) {
+		y = x;
+	}
+	this.set_scaleX(x);
+	this.set_scaleY(y);
+};
+$hxClasses["ui.GearCardHandle"] = ui_GearCardHandle;
+ui_GearCardHandle.__name__ = "ui.GearCardHandle";
+ui_GearCardHandle.__super__ = openfl_display_Sprite;
+ui_GearCardHandle.prototype = $extend(openfl_display_Sprite.prototype,{
+	active: null
+	,type: null
+	,graphic: null
+	,home: null
+	,dragging: null
+	,gear_card: null
+	,level_pos: null
+	,target: null
+	,mouse_over: function(e) {
+		if(this.type == ui_HandleType.PRESS) {
+			this.gear_card.set_active(true);
+		} else {
+			scenes_Level.i.draw_indicators(this.gear_card);
+		}
+	}
+	,mouse_out: function(e) {
+		this.gear_card.set_active(false);
+	}
+	,mouse_down: function(e) {
+		if(!this.active) {
+			return;
+		}
+		this.startDrag(true);
+		this.dragging = true;
+		this.gear_card.set_active(true);
+	}
+	,mouse_up: function(e) {
+		if(!this.dragging) {
+			return;
+		}
+		this.stopDrag();
+		this.dragging = false;
+		ui_Gear.active_gear.link.length = 0;
+		ui_Gear.active_gear.link.draw();
+		this.gear_card.set_active(false);
+		this.level_pos = this.get_level_pos();
+		scenes_Level.i.clear_indicators();
+		if(this.target != null) {
+			var execute = false;
+			var target_grid_pos = this.target.get_grid_pos();
+			var _g = 0;
+			var _g1 = scenes_Level.i.available_tiles;
+			while(_g < _g1.length) {
+				var pos = _g1[_g];
+				++_g;
+				if(pos[0] == target_grid_pos[0] && pos[1] == target_grid_pos[1]) {
+					execute = true;
+				}
+			}
+			zero_utilities__$IntPoint_IntPoint_$Impl_$.pool.push(target_grid_pos);
+			target_grid_pos = null;
+			if(!execute) {
+				return;
+			}
+			this.gear_card.execute(this.target);
+			scenes_Level.i.info_layer.show_info(this.target);
+			this.hide();
+		}
+	}
+	,get_level_pos: function() {
+		return this.level_pos = scenes_Level.i.level.globalToLocal(new openfl_geom_Point(this.get_x(),this.get_y()));
+	}
+	,on_click: function(e) {
+		if(!this.active) {
+			return;
+		}
+		zero_utilities_Tween.get(this).from_to("scaleX",0.5,1).from_to("scaleY",0.5,1).ease(zero_utilities_Ease.elasticOut).duration(0.4).on_complete($bind(this,this.hide));
+		this.gear_card.execute();
+	}
+	,show: function() {
+		if(this.active) {
+			return;
+		}
+		if(this.parent == null) {
+			ui_Gear.active_gear.addChild(this);
+		}
+		this.active = true;
+		zero_utilities_Tween.get(this).from_to("scaleX",0,1).from_to("scaleY",0,1).from_to("alpha",1,1).duration(0.4).ease(zero_utilities_Ease.backOut);
+	}
+	,hide: function() {
+		if(!this.active) {
+			return;
+		}
+		this.active = false;
+		zero_utilities_Tween.get(this).from_to("scaleX",1,0).from_to("scaleY",1,0).from_to("alpha",1,0).duration(0.4).ease(zero_utilities_Ease.backOut);
+	}
+	,update: function(e) {
+		ui_Gear.active_gear.link.active = this.dragging;
+		if(this.dragging) {
+			var card_pos = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([this.gear_card.get_x(),this.gear_card.get_y()]);
+			var this_pos = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([this.get_x(),this.get_y()]);
+			var diff = zero_utilities__$Vec2_Vec2_$Impl_$.subtract(this_pos,card_pos);
+			var sprite = ui_Gear.active_gear.link;
+			sprite.set_x(card_pos[0]);
+			sprite.set_y(card_pos[1]);
+			ui_Gear.active_gear.link.length = Math.sqrt(diff[0] * diff[0] + diff[1] * diff[1]);
+			ui_Gear.active_gear.link.set_rotation((Math.atan2(diff[1],diff[0]) * (180 / Math.PI) % 360 + 360) % 360);
+			zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(card_pos);
+			card_pos = null;
+			zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(this_pos);
+			this_pos = null;
+			zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(diff);
+			diff = null;
+			ui_Gear.active_gear.link.draw();
+			this.check_objects(this.get_x(),this.get_y());
+		} else {
+			var _g = this;
+			_g.set_x(_g.get_x() + (this.gear_card.get_x() - this.get_x()) * 0.5);
+			var _g1 = this;
+			_g1.set_y(_g1.get_y() + (this.gear_card.get_y() + ui_GearCard.card_height / 2 - this.get_y()) * 0.5);
+		}
+	}
+	,check_objects: function(x,y,target) {
+		this.level_pos = this.get_level_pos();
+		var _g = 0;
+		var sprite = scenes_Level.i.objects;
+		var _g1 = [];
+		var _g11 = 0;
+		var _g2 = sprite.get_numChildren();
+		while(_g11 < _g2) {
+			var i = _g11++;
+			_g1.push(sprite.getChildAt(i));
+		}
+		var _g12 = _g1;
+		while(_g < _g12.length) {
+			var object = _g12[_g];
+			++_g;
+			var pos = zero_utilities__$Vec2_Vec2_$Impl_$.get(this.level_pos.x,this.level_pos.y);
+			var obj_pos = zero_utilities__$Vec2_Vec2_$Impl_$.get(object.get_x(),object.get_y());
+			var this2 = zero_utilities__$Vec2_Vec2_$Impl_$.subtract(obj_pos,zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float(pos));
+			if(Math.sqrt(this2[0] * this2[0] + this2[1] * this2[1]) < 8) {
+				target = object;
+				var target_grid_pos = target.get_grid_pos();
+				var _g3 = 0;
+				var _g13 = scenes_Level.i.available_tiles;
+				while(_g3 < _g13.length) {
+					var pos1 = _g13[_g3];
+					++_g3;
+					if(pos1[0] == target_grid_pos[0] && pos1[1] == target_grid_pos[1]) {
+						scenes_Level.i.info_layer.show_info(target,this.gear_card);
+					}
+				}
+				zero_utilities__$IntPoint_IntPoint_$Impl_$.pool.push(target_grid_pos);
+				target_grid_pos = null;
+				zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(pos);
+				pos = null;
+				zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(obj_pos);
+				obj_pos = null;
+				break;
+			}
+			zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(pos);
+			pos = null;
+			zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(obj_pos);
+			obj_pos = null;
+		}
+		if(target == null) {
+			scenes_Level.i.info_layer.hide_info();
+		}
+		this.target = target;
+	}
+	,__class__: ui_GearCardHandle
+});
+var ui_HandleType = $hxEnums["ui.HandleType"] = { __ename__ : "ui.HandleType", __constructs__ : ["AIM","PRESS"]
+	,AIM: {_hx_index:0,__enum__:"ui.HandleType",toString:$estr}
+	,PRESS: {_hx_index:1,__enum__:"ui.HandleType",toString:$estr}
+};
+ui_HandleType.__empty_constructs__ = [ui_HandleType.AIM,ui_HandleType.PRESS];
 var ui_InfoLayer = function() {
 	openfl_display_Sprite.call(this);
 	this.addChild(this.object_info = new ui_ObjectInfo());
@@ -76168,6 +77627,258 @@ ui_InfoLayer.prototype = $extend(openfl_display_Sprite.prototype,{
 	}
 	,__class__: ui_InfoLayer
 });
+var ui_LinkGraphic = function(bitmap) {
+	this.offset_matrix = new openfl_geom_Matrix();
+	this.active = false;
+	this.length = 8;
+	openfl_display_Sprite.call(this);
+	this.bitmap = bitmap;
+	this.offset_matrix.ty = 12;
+};
+$hxClasses["ui.LinkGraphic"] = ui_LinkGraphic;
+ui_LinkGraphic.__name__ = "ui.LinkGraphic";
+ui_LinkGraphic.__super__ = openfl_display_Sprite;
+ui_LinkGraphic.prototype = $extend(openfl_display_Sprite.prototype,{
+	length: null
+	,active: null
+	,offset_matrix: null
+	,bitmap: null
+	,draw: function() {
+		this.set_visible(this.active);
+		if(!this.active) {
+			return;
+		}
+		this.offset_matrix.tx += 4;
+		this.get_graphics().clear();
+		this.get_graphics().beginBitmapFill(this.bitmap,this.offset_matrix,true,true);
+		this.get_graphics().drawRect(0,-12,this.length,24);
+		this.get_graphics().endFill();
+	}
+	,__class__: ui_LinkGraphic
+});
+var ui_MoveCard = function(data,gear) {
+	ui_DropCard.call(this);
+	this.gear = gear;
+	this.data = { requirement : data.requirement, requirement_value : data.requirement_value};
+	this.move_data = data;
+	this.make_graphic();
+	this.draggable = false;
+	this.anchors = [zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([0,16])];
+};
+$hxClasses["ui.MoveCard"] = ui_MoveCard;
+ui_MoveCard.__name__ = "ui.MoveCard";
+ui_MoveCard.__super__ = ui_DropCard;
+ui_MoveCard.prototype = $extend(ui_DropCard.prototype,{
+	req_text: null
+	,move_data: null
+	,gear: null
+	,make_graphic: function() {
+		var color = zero_utilities__$Color_Color_$Impl_$.BLACK;
+		var radius = 16;
+		if(radius == null) {
+			radius = 0;
+		}
+		this.get_graphics().beginFill((Math.round(color[0] * 255) & 255) << 16 | (Math.round(color[1] * 255) & 255) << 8 | Math.round(color[2] * 255) & 255,color[3]);
+		if(radius == 0) {
+			this.get_graphics().drawRect(-48,-72,96,144);
+		} else {
+			this.get_graphics().drawRoundRect(-48,-72,96,144,radius);
+		}
+		this.get_graphics().endFill();
+		var sprite = this;
+		var this1 = zero_utilities__$Color_Color_$Impl_$.get();
+		var x = 0.16078431372549021;
+		var y = 0.67843137254901964;
+		var z = 1.;
+		var w = 1.;
+		if(w == null) {
+			w = 0;
+		}
+		if(z == null) {
+			z = 0;
+		}
+		if(y == null) {
+			y = 0;
+		}
+		if(x == null) {
+			x = 0;
+		}
+		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this1,0,zero_utilities__$Color_Color_$Impl_$.zero(x));
+		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this1,1,zero_utilities__$Color_Color_$Impl_$.zero(y));
+		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this1,2,zero_utilities__$Color_Color_$Impl_$.zero(z));
+		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this1,3,zero_utilities__$Color_Color_$Impl_$.zero(w));
+		var color1 = this1;
+		var radius1 = 12;
+		if(radius1 == null) {
+			radius1 = 0;
+		}
+		sprite.get_graphics().beginFill((Math.round(color1[0] * 255) & 255) << 16 | (Math.round(color1[1] * 255) & 255) << 8 | Math.round(color1[2] * 255) & 255,color1[3]);
+		if(radius1 == 0) {
+			sprite.get_graphics().drawRect(-44,-68,88,136);
+		} else {
+			sprite.get_graphics().drawRoundRect(-44,-68,88,136,radius1);
+		}
+		sprite.get_graphics().endFill();
+		var sprite1 = sprite;
+		var this11 = zero_utilities__$Color_Color_$Impl_$.get();
+		var x1 = 0.086274509803921567;
+		var y1 = 0.54117647058823526;
+		var z1 = 1.;
+		var w1 = 1.;
+		if(w1 == null) {
+			w1 = 0;
+		}
+		if(z1 == null) {
+			z1 = 0;
+		}
+		if(y1 == null) {
+			y1 = 0;
+		}
+		if(x1 == null) {
+			x1 = 0;
+		}
+		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this11,0,zero_utilities__$Color_Color_$Impl_$.zero(x1));
+		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this11,1,zero_utilities__$Color_Color_$Impl_$.zero(y1));
+		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this11,2,zero_utilities__$Color_Color_$Impl_$.zero(z1));
+		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this11,3,zero_utilities__$Color_Color_$Impl_$.zero(w1));
+		var color2 = this11;
+		var radius2 = 16;
+		if(radius2 == null) {
+			radius2 = 0;
+		}
+		sprite1.get_graphics().beginFill((Math.round(color2[0] * 255) & 255) << 16 | (Math.round(color2[1] * 255) & 255) << 8 | Math.round(color2[2] * 255) & 255,color2[3]);
+		if(radius2 == 0) {
+			sprite1.get_graphics().drawRect(-32,-24,64,80);
+		} else {
+			sprite1.get_graphics().drawRoundRect(-32,-24,64,80,radius2);
+		}
+		sprite1.get_graphics().endFill();
+		var move_type = ui_MoveType.FREE;
+		var icon_src;
+		switch(move_type._hx_index) {
+		case 0:
+			icon_src = "images/ui/icons/move_free.png";
+			break;
+		case 1:
+			icon_src = "images/ui/icons/move_rook.png";
+			break;
+		case 2:
+			icon_src = "images/ui/icons/move_teleport.png";
+			break;
+		}
+		var sprite2 = zero_openfl_extensions_SpriteTools.load_graphic(new openfl_display_Sprite(),icon_src,zero_utilities_Anchor.MIDDLE_CENTER,true);
+		sprite2.set_x(0);
+		sprite2.set_y(-48);
+		var sprite3 = sprite2;
+		var x2 = 0.25;
+		var y2 = null;
+		if(x2 == null) {
+			x2 = 0;
+		}
+		if(y2 == null) {
+			y2 = x2;
+		}
+		sprite3.set_scaleX(x2);
+		sprite3.set_scaleY(y2);
+		this.addChild(sprite3);
+		var tmp = new openfl_text_TextField();
+		var this12 = zero_utilities__$Color_Color_$Impl_$.get();
+		var x3 = 0.031372549019607843;
+		var y3 = 0.24313725490196078;
+		var z2 = 0.69411764705882351;
+		var w2 = 1.;
+		if(w2 == null) {
+			w2 = 0;
+		}
+		if(z2 == null) {
+			z2 = 0;
+		}
+		if(y3 == null) {
+			y3 = 0;
+		}
+		if(x3 == null) {
+			x3 = 0;
+		}
+		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this12,0,zero_utilities__$Color_Color_$Impl_$.zero(x3));
+		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this12,1,zero_utilities__$Color_Color_$Impl_$.zero(y3));
+		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this12,2,zero_utilities__$Color_Color_$Impl_$.zero(z2));
+		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this12,3,zero_utilities__$Color_Color_$Impl_$.zero(w2));
+		this.req_text = zero_openfl_extensions_TextTools.format(tmp,{ font : "Oduda Bold", size : 24, color : this12});
+		this.addChild(this.req_text);
+		this.set_req_text();
+	}
+	,set_req_text: function() {
+		if(this.cards.length > 0) {
+			zero_openfl_extensions_TextTools.set_string(this.req_text,"");
+			return;
+		}
+		var str;
+		switch(this.data.requirement) {
+		case "EXACT_CARD":
+			str = "=" + this.data.requirement_value;
+			break;
+		case "IS_FACE":
+			str = "Face";
+			break;
+		case "MAX_CARD":
+			str = "<" + (this.data.requirement_value + 1);
+			break;
+		case "MIN_CARD":
+			str = ">" + (this.data.requirement_value - 1);
+			break;
+		default:
+			str = "";
+		}
+		zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(this.req_text,str),0,16,zero_utilities_Anchor.MIDDLE_CENTER);
+	}
+	,add_card: function(card) {
+		ui_DropCard.prototype.add_card.call(this,card);
+		this.set_moves();
+	}
+	,remove_card: function(card) {
+		ui_DropCard.prototype.remove_card.call(this,card);
+		scenes_Level.i.move_indicators.get_graphics().clear();
+	}
+	,set_moves: function() {
+		if(this.expended) {
+			return;
+		}
+		scenes_Level.i.draw_move_indicators(this);
+	}
+	,get_moves_value: function() {
+		if(this.cards.length == 0) {
+			return 0;
+		}
+		var card = this.cards[0];
+		switch(this.move_data.factor._hx_index) {
+		case 0:
+			return this.move_data.value;
+		case 1:
+			return util_CardUtil.value_to_int(card.data.value);
+		case 2:
+			return Math.floor(util_CardUtil.value_to_int(card.data.value) / 2);
+		case 3:
+			return util_CardUtil.value_to_int(card.data.value) * 2;
+		case 4:
+			return 9999;
+		}
+	}
+	,__class__: ui_MoveCard
+});
+var ui_MoveFactor = $hxEnums["ui.MoveFactor"] = { __ename__ : "ui.MoveFactor", __constructs__ : ["STATIC","VALUE","VALUE_HALF","VALUE_X_TWO","INFINITE"]
+	,STATIC: {_hx_index:0,__enum__:"ui.MoveFactor",toString:$estr}
+	,VALUE: {_hx_index:1,__enum__:"ui.MoveFactor",toString:$estr}
+	,VALUE_HALF: {_hx_index:2,__enum__:"ui.MoveFactor",toString:$estr}
+	,VALUE_X_TWO: {_hx_index:3,__enum__:"ui.MoveFactor",toString:$estr}
+	,INFINITE: {_hx_index:4,__enum__:"ui.MoveFactor",toString:$estr}
+};
+ui_MoveFactor.__empty_constructs__ = [ui_MoveFactor.STATIC,ui_MoveFactor.VALUE,ui_MoveFactor.VALUE_HALF,ui_MoveFactor.VALUE_X_TWO,ui_MoveFactor.INFINITE];
+var ui_MoveType = $hxEnums["ui.MoveType"] = { __ename__ : "ui.MoveType", __constructs__ : ["FREE","ROOK","TELEPORT"]
+	,FREE: {_hx_index:0,__enum__:"ui.MoveType",toString:$estr}
+	,ROOK: {_hx_index:1,__enum__:"ui.MoveType",toString:$estr}
+	,TELEPORT: {_hx_index:2,__enum__:"ui.MoveType",toString:$estr}
+};
+ui_MoveType.__empty_constructs__ = [ui_MoveType.FREE,ui_MoveType.ROOK,ui_MoveType.TELEPORT];
 var ui_ObjectInfo = function() {
 	this.active = false;
 	openfl_display_Sprite.call(this);
@@ -76237,23 +77948,25 @@ ui_ObjectInfo.prototype = $extend(openfl_display_Sprite.prototype,{
 			next_hp = cur_hp;
 		} else {
 			var next_hp1;
-			switch(gear.data.effect.type._hx_index) {
-			case 0:
+			switch(gear.gear_data.effect.type) {
+			case "DAMAGE":
 				next_hp1 = -gear.get_effect_value();
 				break;
-			case 1:
-				next_hp1 = 0;
-				break;
-			case 2:
+			case "HEALTH":
 				next_hp1 = gear.get_effect_value();
 				break;
-			case 3:
+			case "MOVE":
 				next_hp1 = 0;
 				break;
+			case "SHIELD":
+				next_hp1 = 0;
+				break;
+			default:
+				next_hp1 = 0;
 			}
 			next_hp = cur_hp + next_hp1;
 		}
-		next_hp = Math.max(Math.min(next_hp,target.health.max),0);
+		next_hp = Math.floor(Math.max(Math.min(next_hp,target.health.max),0));
 		this.health_bar.get_graphics().clear();
 		var sprite = this.health_bar;
 		var color = zero_utilities__$Color_Color_$Impl_$.PICO_8_DARK_BLUE;
@@ -76422,1212 +78135,156 @@ var ui_Comparison = $hxEnums["ui.Comparison"] = { __ename__ : "ui.Comparison", _
 	,GREATER_THAN: {_hx_index:2,__enum__:"ui.Comparison",toString:$estr}
 };
 ui_Comparison.__empty_constructs__ = [ui_Comparison.EQUAL_THAN,ui_Comparison.LESS_THAN,ui_Comparison.GREATER_THAN];
-var ui_cards_Card = function() {
-	this.dragging = false;
-	this.draggable = true;
+var ui_PlayerInfo = function(player,side) {
 	openfl_display_Sprite.call(this);
-	this.addEventListener("mouseDown",$bind(this,this.mouse_down));
-	zero_openfl_utilities_Game.root.addEventListener("mouseUp",$bind(this,this.mouse_up));
-};
-$hxClasses["ui.cards.Card"] = ui_cards_Card;
-ui_cards_Card.__name__ = "ui.cards.Card";
-ui_cards_Card.__super__ = openfl_display_Sprite;
-ui_cards_Card.prototype = $extend(openfl_display_Sprite.prototype,{
-	draggable: null
-	,dragging: null
-	,mouse_down: function(e) {
-		if(!this.draggable) {
-			return;
-		}
-		this.startDrag();
-		this.dragging = true;
-	}
-	,mouse_up: function(e) {
-		if(!this.dragging) {
-			return;
-		}
-		this.stopDrag();
-		this.dragging = false;
-	}
-	,__class__: ui_cards_Card
-});
-var ui_cards_Deck = function() {
-	this.hand = [];
-	var _gthis = this;
-	openfl_display_Sprite.call(this);
-	ui_cards_Deck.active_deck = this;
-	this.addEventListener("enterFrame",function(e) {
-		_gthis.update();
-		return;
-	});
-	var _g = [];
-	var _g1 = 0;
-	var _g2 = [];
-	var _g11 = 0;
-	var _g21 = ui_cards_PlayingCardSuit.__empty_constructs__.slice();
-	while(_g11 < _g21.length) {
-		var e1 = _g21[_g11];
-		++_g11;
-		_g2.push(e1);
-	}
-	var _g22 = _g2;
-	while(_g1 < _g22.length) {
-		var suit = _g22[_g1];
-		++_g1;
-		var _g12 = 0;
-		var _g3 = [];
-		var _g13 = 0;
-		var _g23 = ui_cards_PlayingCardValue.__empty_constructs__.slice();
-		while(_g13 < _g23.length) {
-			var e11 = _g23[_g13];
-			++_g13;
-			_g3.push(e11);
-		}
-		var _g24 = _g3;
-		while(_g12 < _g24.length) {
-			var value = _g24[_g12];
-			++_g12;
-			_g.push({ value : value, suit : suit});
-		}
-	}
-	this.cards = _g;
-	zero_extensions_ArrayExt.shuffle(this.cards);
-};
-$hxClasses["ui.cards.Deck"] = ui_cards_Deck;
-ui_cards_Deck.__name__ = "ui.cards.Deck";
-ui_cards_Deck.__super__ = openfl_display_Sprite;
-ui_cards_Deck.prototype = $extend(openfl_display_Sprite.prototype,{
-	hand: null
-	,cards: null
-	,deal: function(amt) {
-		if(amt == null) {
-			amt = 5;
-		}
-		var _gthis = this;
-		var _g = 0;
-		var _g1 = amt;
-		while(_g < _g1) {
-			var i = _g++;
-			if(this.cards.length == 0) {
-				continue;
-			}
-			var card_data = [this.cards.pop()];
-			zero_utilities_Timer.get(i * 0.1,(function(card_data1) {
-				return function() {
-					_gthis.deal_card(card_data1[0]);
-					return;
-				};
-			})(card_data));
-		}
-	}
-	,deal_card: function(data) {
-		var card = new ui_cards_PlayingCard(this,data,zero_openfl_utilities_Game.get_width() / 2,zero_openfl_utilities_Game.get_height() + 128);
-		this.add_card(card);
-	}
-	,add_card: function(card) {
-		this.addChild(card);
-		this.add_to_hand(card);
-	}
-	,remove_from_hand: function(c) {
-		HxOverrides.remove(this.hand,c);
-	}
-	,add_to_hand: function(c) {
-		this.hand.push(c);
-	}
-	,update: function() {
-		var i = 0;
-		var sx = zero_openfl_utilities_Game.get_width() / 2 - this.hand.length / 2 * 144 + 72;
-		var _g = 0;
-		var _g1 = this.hand;
-		while(_g < _g1.length) {
-			var card = _g1[_g];
-			++_g;
-			var target = zero_utilities__$Vec2_Vec2_$Impl_$.get(sx + i * 144,zero_openfl_utilities_Game.get_height() - 48);
-			var _g2 = card;
-			_g2.set_x(_g2.get_x() + (target[0] - card.get_x()) * 0.25);
-			var _g3 = card;
-			_g3.set_y(_g3.get_y() + (target[1] - card.get_y()) * 0.25);
-			++i;
-			zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(target);
-			target = null;
-		}
-	}
-	,__class__: ui_cards_Deck
-});
-var ui_cards_Gear = function(player) {
-	this.gear_cards = [];
-	openfl_display_Sprite.call(this);
-	ui_cards_Gear.active_gear = this;
 	this.player = player;
-	this.addChild(this.link = new ui_cards_LinkGraphic(openfl_utils_Assets.getBitmapData("images/ui/action_arrow_white.png")));
+	this.make_avatar();
+	this.make_ap_pts();
+	this.make_health();
+	this.set_x(side == objects_PlayerSide.LEFT ? 72 : zero_openfl_utilities_Game.get_width() - 72);
+	this.set_y(80);
 };
-$hxClasses["ui.cards.Gear"] = ui_cards_Gear;
-ui_cards_Gear.__name__ = "ui.cards.Gear";
-ui_cards_Gear.__super__ = openfl_display_Sprite;
-ui_cards_Gear.prototype = $extend(openfl_display_Sprite.prototype,{
-	link: null
-	,gear_cards: null
-	,move_card: null
-	,player: null
-	,add_card: function(card) {
-		this.addChild(card);
-		this.gear_cards.push(card);
+$hxClasses["ui.PlayerInfo"] = ui_PlayerInfo;
+ui_PlayerInfo.__name__ = "ui.PlayerInfo";
+ui_PlayerInfo.__super__ = openfl_display_Sprite;
+ui_PlayerInfo.prototype = $extend(openfl_display_Sprite.prototype,{
+	player: null
+	,avatar: null
+	,health: null
+	,ap_pts: null
+	,health_text: null
+	,health_text_sprite: null
+	,ap_pts_text: null
+	,make_avatar: function() {
+		this.avatar = new openfl_display_Sprite();
+		var sprite = this.avatar;
+		var color = zero_utilities__$Color_Color_$Impl_$.PICO_8_ORANGE;
+		sprite.get_graphics().beginFill((Math.round(color[0] * 255) & 255) << 16 | (Math.round(color[1] * 255) & 255) << 8 | Math.round(color[2] * 255) & 255,color[3]);
+		sprite.get_graphics().drawCircle(0,0,48);
+		sprite.get_graphics().endFill();
+		this.avatar.addEventListener("mouseDown",$bind(this,this.on_click));
+		this.addChild(this.avatar);
 	}
-	,__class__: ui_cards_Gear
-});
-var ui_cards_MoveCard = function() {
-	ui_cards_Card.call(this);
-};
-$hxClasses["ui.cards.MoveCard"] = ui_cards_MoveCard;
-ui_cards_MoveCard.__name__ = "ui.cards.MoveCard";
-ui_cards_MoveCard.__super__ = ui_cards_Card;
-ui_cards_MoveCard.prototype = $extend(ui_cards_Card.prototype,{
-	__class__: ui_cards_MoveCard
-});
-var ui_cards_MoveFactor = $hxEnums["ui.cards.MoveFactor"] = { __ename__ : "ui.cards.MoveFactor", __constructs__ : ["STATIC","VALUE","VALUE_HALF","VALUE_X_TWO","INFINITE"]
-	,STATIC: {_hx_index:0,__enum__:"ui.cards.MoveFactor",toString:$estr}
-	,VALUE: {_hx_index:1,__enum__:"ui.cards.MoveFactor",toString:$estr}
-	,VALUE_HALF: {_hx_index:2,__enum__:"ui.cards.MoveFactor",toString:$estr}
-	,VALUE_X_TWO: {_hx_index:3,__enum__:"ui.cards.MoveFactor",toString:$estr}
-	,INFINITE: {_hx_index:4,__enum__:"ui.cards.MoveFactor",toString:$estr}
-};
-ui_cards_MoveFactor.__empty_constructs__ = [ui_cards_MoveFactor.STATIC,ui_cards_MoveFactor.VALUE,ui_cards_MoveFactor.VALUE_HALF,ui_cards_MoveFactor.VALUE_X_TWO,ui_cards_MoveFactor.INFINITE];
-var ui_cards_MoveType = $hxEnums["ui.cards.MoveType"] = { __ename__ : "ui.cards.MoveType", __constructs__ : ["FREE","ROOK","TELEPORT"]
-	,FREE: {_hx_index:0,__enum__:"ui.cards.MoveType",toString:$estr}
-	,ROOK: {_hx_index:1,__enum__:"ui.cards.MoveType",toString:$estr}
-	,TELEPORT: {_hx_index:2,__enum__:"ui.cards.MoveType",toString:$estr}
-};
-ui_cards_MoveType.__empty_constructs__ = [ui_cards_MoveType.FREE,ui_cards_MoveType.ROOK,ui_cards_MoveType.TELEPORT];
-var ui_cards_LinkGraphic = function(bitmap) {
-	this.offset_matrix = new openfl_geom_Matrix();
-	this.active = false;
-	this.length = 8;
-	openfl_display_Sprite.call(this);
-	this.bitmap = bitmap;
-	this.offset_matrix.ty = 12;
-};
-$hxClasses["ui.cards.LinkGraphic"] = ui_cards_LinkGraphic;
-ui_cards_LinkGraphic.__name__ = "ui.cards.LinkGraphic";
-ui_cards_LinkGraphic.__super__ = openfl_display_Sprite;
-ui_cards_LinkGraphic.prototype = $extend(openfl_display_Sprite.prototype,{
-	length: null
-	,active: null
-	,offset_matrix: null
-	,bitmap: null
-	,draw: function() {
-		this.set_visible(this.active);
-		if(!this.active) {
-			return;
-		}
-		this.offset_matrix.tx += 4;
-		this.get_graphics().clear();
-		this.get_graphics().beginBitmapFill(this.bitmap,this.offset_matrix,true,true);
-		this.get_graphics().drawRect(0,-12,this.length,24);
-		this.get_graphics().endFill();
-	}
-	,__class__: ui_cards_LinkGraphic
-});
-var ui_cards_GearCard = function(x,y,gear,data) {
-	this.t = 0.0;
-	this.cards = [];
-	this.anchors = [zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([-35,28]),zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([35,28])];
-	this.active = false;
-	ui_cards_Card.call(this);
-	this.gear = gear;
-	this.data = data;
-	this.set_x(x);
-	this.set_y(y);
-	this.draggable = false;
-	this.last = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([x,y]);
-	this.home = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([x,y]);
-	this.anchor = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([0,0]);
-	this.draw_card();
-	this.addEventListener("enterFrame",$bind(this,this.update));
-	this.addEventListener("mouseOver",$bind(this,this.mouse_over));
-	this.addEventListener("mouseOut",$bind(this,this.mouse_out));
-};
-$hxClasses["ui.cards.GearCard"] = ui_cards_GearCard;
-ui_cards_GearCard.__name__ = "ui.cards.GearCard";
-ui_cards_GearCard.__super__ = ui_cards_Card;
-ui_cards_GearCard.prototype = $extend(ui_cards_Card.prototype,{
-	active: null
-	,gear: null
-	,data: null
-	,highlight: null
-	,last: null
-	,home: null
-	,anchor: null
-	,anchors: null
-	,cards: null
-	,description: null
-	,req_text: null
-	,req_text_r: null
-	,handle: null
-	,mouse_over: function(e) {
-		if(this.data.range.max > 0) {
-			scenes_Level.i.draw_indicators(this);
-		}
-	}
-	,mouse_out: function(e) {
-		if(!this.active) {
-			scenes_Level.i.clear_indicators();
-		}
-	}
-	,draw_card: function() {
-		var this1 = zero_utilities__$Color_Color_$Impl_$.get();
-		var x = 0.48627450980392156;
-		var y = 0.69411764705882351;
-		var z = 0.12156862745098039;
-		var w = 1.;
-		if(w == null) {
-			w = 0;
-		}
-		if(z == null) {
-			z = 0;
-		}
-		if(y == null) {
-			y = 0;
-		}
-		if(x == null) {
-			x = 0;
-		}
-		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this1,0,zero_utilities__$Color_Color_$Impl_$.zero(x));
-		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this1,1,zero_utilities__$Color_Color_$Impl_$.zero(y));
-		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this1,2,zero_utilities__$Color_Color_$Impl_$.zero(z));
-		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this1,3,zero_utilities__$Color_Color_$Impl_$.zero(w));
-		var color = this1;
-		var x1 = -ui_cards_GearCard.card_width / 2;
-		var y1 = -ui_cards_GearCard.card_height / 2;
-		var width = ui_cards_GearCard.card_width;
-		var height = ui_cards_GearCard.card_height;
-		var radius = 16;
+	,make_ap_pts: function() {
+		var sprite = new openfl_display_Sprite();
+		sprite.set_x(0);
+		sprite.set_y(80);
+		this.ap_pts = sprite;
+		this.ap_pts_text = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : "Oduda Bold", color : zero_utilities__$Color_Color_$Impl_$.PICO_8_WHITE, size : 24});
+		var sprite1 = this.ap_pts;
+		var color = zero_utilities__$Color_Color_$Impl_$.PICO_8_DARK_BLUE;
+		var radius = 32;
 		if(radius == null) {
 			radius = 0;
 		}
-		this.get_graphics().beginFill((Math.round(color[0] * 255) & 255) << 16 | (Math.round(color[1] * 255) & 255) << 8 | Math.round(color[2] * 255) & 255,color[3]);
+		sprite1.get_graphics().beginFill((Math.round(color[0] * 255) & 255) << 16 | (Math.round(color[1] * 255) & 255) << 8 | Math.round(color[2] * 255) & 255,color[3]);
 		if(radius == 0) {
-			this.get_graphics().drawRect(x1,y1,width,height);
+			sprite1.get_graphics().drawRect(-48,-16,96,32);
 		} else {
-			this.get_graphics().drawRoundRect(x1,y1,width,height,radius);
+			sprite1.get_graphics().drawRoundRect(-48,-16,96,32,radius);
 		}
-		this.get_graphics().endFill();
-		var color1 = zero_utilities__$Color_Color_$Impl_$.BLACK;
-		var x2 = -ui_cards_GearCard.card_width / 2 + 2;
-		var y2 = -ui_cards_GearCard.card_height / 2 + 2;
-		var width1 = ui_cards_GearCard.card_width - 4;
-		var height1 = ui_cards_GearCard.card_height - 4;
-		var radius1 = 12;
-		var line_width = 4;
-		if(line_width == null) {
-			line_width = 1;
+		sprite1.get_graphics().endFill();
+		var parent = this.ap_pts;
+		var sprite2 = zero_openfl_extensions_SpriteTools.load_graphic(new openfl_display_Sprite(),"images/ui/ap_pips.png",zero_utilities_Anchor.MIDDLE_CENTER,true);
+		sprite2.set_x(-26);
+		sprite2.set_y(0);
+		parent.addChild(sprite2);
+		this.addChild(this.ap_pts);
+		this.ap_pts.addChild(this.ap_pts_text);
+		this.update_ap_pts();
+	}
+	,make_health: function() {
+		var sprite = new openfl_display_Sprite();
+		sprite.set_x(0);
+		sprite.set_y(116);
+		this.health = sprite;
+		this.health_text_sprite = new openfl_display_Sprite();
+		this.health_text = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : "Oduda Bold", color : zero_utilities__$Color_Color_$Impl_$.PICO_8_WHITE, size : 24});
+		var filter = new openfl_filters_ShaderFilter(new filters_OutlineShader());
+		filter.topExtension = filter.bottomExtension = filter.leftExtension = filter.rightExtension = 64;
+		this.health_text_sprite.set_filters([filter]);
+		this.addChild(this.health);
+		this.health_text_sprite.addChild(this.health_text);
+		this.health.addChild(this.health_text_sprite);
+		this.update_health();
+	}
+	,update_ap_pts: function() {
+		zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(this.ap_pts_text,"" + this.player.AP),0,0,zero_utilities_Anchor.MIDDLE_CENTER);
+	}
+	,update_health: function() {
+		zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(this.health_text,"" + Math.floor(this.player.health.current)),0,0,zero_utilities_Anchor.MIDDLE_CENTER);
+		this.health.get_graphics().clear();
+		var sprite = this.health;
+		var color = zero_utilities__$Color_Color_$Impl_$.BLACK;
+		var radius = 32;
+		if(radius == null) {
+			radius = 0;
 		}
+		sprite.get_graphics().beginFill((Math.round(color[0] * 255) & 255) << 16 | (Math.round(color[1] * 255) & 255) << 8 | Math.round(color[2] * 255) & 255,color[3]);
+		if(radius == 0) {
+			sprite.get_graphics().drawRect(-48,-16,96,32);
+		} else {
+			sprite.get_graphics().drawRoundRect(-48,-16,96,32,radius);
+		}
+		sprite.get_graphics().endFill();
+		var sprite1 = sprite;
+		var color1 = zero_utilities__$Color_Color_$Impl_$.PICO_8_WHITE;
+		var radius1 = 28;
 		if(radius1 == null) {
 			radius1 = 0;
 		}
-		this.get_graphics().lineStyle(line_width,(Math.round(color1[0] * 255) & 255) << 16 | (Math.round(color1[1] * 255) & 255) << 8 | Math.round(color1[2] * 255) & 255,color1[3]);
+		sprite1.get_graphics().beginFill((Math.round(color1[0] * 255) & 255) << 16 | (Math.round(color1[1] * 255) & 255) << 8 | Math.round(color1[2] * 255) & 255,color1[3]);
 		if(radius1 == 0) {
-			this.get_graphics().drawRect(x2,y2,width1,height1);
+			sprite1.get_graphics().drawRect(-44,-12,88,24);
 		} else {
-			this.get_graphics().drawRoundRect(x2,y2,width1,height1,radius1);
+			sprite1.get_graphics().drawRoundRect(-44,-12,88,24,radius1);
 		}
-		this.get_graphics().lineStyle();
-		var contents = new openfl_display_Sprite();
-		var y3 = -ui_cards_GearCard.card_height / 2;
-		contents.set_x(-ui_cards_GearCard.card_width / 2);
-		contents.set_y(y3);
-		this.addChild(contents);
-		var _g = 0;
-		var _g1 = this.data.cost;
-		while(_g < _g1) {
-			var i = _g++;
-			var sprite = zero_openfl_extensions_SpriteTools.load_graphic(new openfl_display_Sprite(),"images/ui/ap_pip.png",zero_utilities_Anchor.TOP_LEFT,true);
-			sprite.set_x(165 - i * 11);
-			sprite.set_y(10);
-			var pip = sprite;
-			contents.addChild(pip);
-		}
-		var sprite1 = new openfl_display_Sprite();
-		var color2 = zero_utilities__$Color_Color_$Impl_$.PICO_8_WHITE;
-		var radius2 = 24;
+		sprite1.get_graphics().endFill();
+		var sprite2 = sprite1;
+		var color2 = zero_utilities__$Color_Color_$Impl_$.PICO_8_DARK_BLUE;
+		var radius2 = 16;
 		if(radius2 == null) {
 			radius2 = 0;
 		}
-		sprite1.get_graphics().beginFill((Math.round(color2[0] * 255) & 255) << 16 | (Math.round(color2[1] * 255) & 255) << 8 | Math.round(color2[2] * 255) & 255,color2[3]);
+		sprite2.get_graphics().beginFill((Math.round(color2[0] * 255) & 255) << 16 | (Math.round(color2[1] * 255) & 255) << 8 | Math.round(color2[2] * 255) & 255,color2[3]);
 		if(radius2 == 0) {
-			sprite1.get_graphics().drawRect(26,28,140,24);
+			sprite2.get_graphics().drawRect(-40,-8,80,16);
 		} else {
-			sprite1.get_graphics().drawRoundRect(26,28,140,24,radius2);
-		}
-		sprite1.get_graphics().endFill();
-		contents.addChild(sprite1);
-		var title = zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : "Oduda Bold", size : 16, color : zero_utilities__$Color_Color_$Impl_$.BLACK}),this.data.title),40,38,zero_utilities_Anchor.MIDDLE_LEFT);
-		contents.addChild(title);
-		this.description = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : "Oduda Bold", size : 14, color : zero_utilities__$Color_Color_$Impl_$.BLACK, leading : -2});
-		contents.addChild(this.description);
-		this.set_description();
-		var sprite2 = new openfl_display_Sprite();
-		var color3 = zero_utilities__$Color_Color_$Impl_$.PICO_8_DARK_GREEN;
-		var radius3 = 16;
-		if(radius3 == null) {
-			radius3 = 0;
-		}
-		sprite2.get_graphics().beginFill((Math.round(color3[0] * 255) & 255) << 16 | (Math.round(color3[1] * 255) & 255) << 8 | Math.round(color3[2] * 255) & 255,color3[3]);
-		if(radius3 == 0) {
-			sprite2.get_graphics().drawRect(16,92,160,96);
-		} else {
-			sprite2.get_graphics().drawRoundRect(16,92,160,96,radius3);
+			sprite2.get_graphics().drawRoundRect(-40,-8,80,16,radius2);
 		}
 		sprite2.get_graphics().endFill();
-		contents.addChild(sprite2);
-		this.req_text = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : "Oduda Bold", size : 20, color : zero_utilities__$Color_Color_$Impl_$.PICO_8_DARK_BLUE});
-		contents.addChild(this.req_text);
-		this.set_req_text();
-		this.req_text_r = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : "Oduda Bold", size : 16, color : zero_utilities__$Color_Color_$Impl_$.PICO_8_DARK_BLUE, align : 0});
-		contents.addChild(this.req_text_r);
-		this.set_req_text_r();
-		var src;
-		switch(this.data.bonus.requirement._hx_index) {
-		case 6:
-			src = "images/ui/rule_face.png";
-			break;
-		case 12:
-			src = "images/ui/suit_heart.png";
-			break;
-		case 13:
-			src = "images/ui/suit_diamond.png";
-			break;
-		case 14:
-			src = "images/ui/suit_club.png";
-			break;
-		case 15:
-			src = "images/ui/suit_spade.png";
-			break;
-		case 16:
-			src = "images/ui/rule_two_cards.png";
-			break;
-		default:
-			src = "images/blank.png";
-		}
-		var sprite3 = zero_openfl_extensions_SpriteTools.load_graphic(new openfl_display_Sprite(),src,zero_utilities_Anchor.MIDDLE_CENTER,true);
-		sprite3.set_x(20);
-		sprite3.set_y(92);
-		var sprite4 = sprite3;
-		var x3 = 0.125;
-		var y4 = null;
-		if(x3 == null) {
-			x3 = 0;
-		}
-		if(y4 == null) {
-			y4 = x3;
-		}
-		sprite4.set_scaleX(x3);
-		sprite4.set_scaleY(y4);
-		contents.addChild(sprite4);
-		var class_src;
-		switch(this.data.gear_class._hx_index) {
-		case 0:
-			class_src = "images/ui/icons/on_white/icon_flame.png";
-			break;
-		case 1:
-			class_src = "images/ui/icons/on_white/icon_pierce.png";
-			break;
-		case 2:
-			class_src = "images/ui/icons/on_white/icon_explode.png";
-			break;
-		case 3:
-			class_src = "images/ui/icons/on_white/icon_electrify.png";
-			break;
-		case 4:
-			class_src = "images/ui/icons/on_white/icon_water.png";
-			break;
-		case 5:
-			class_src = "images/ui/icons/on_white/icon_shield.png";
-			break;
-		case 6:
-			class_src = "images/ui/icons/on_white/icon_move.png";
-			break;
-		case 7:
-			class_src = "images/ui/icons/on_white/icon_health.png";
-			break;
-		case 8:
-			class_src = "images/ui/icons/on_white/icon_utility.png";
-			break;
-		}
-		var weakness_src;
-		switch(this.data.weakness._hx_index) {
-		case 0:
-			weakness_src = "images/ui/icons/on_white/icon_flame.png";
-			break;
-		case 1:
-			weakness_src = "images/ui/icons/on_white/icon_pierce.png";
-			break;
-		case 2:
-			weakness_src = "images/ui/icons/on_white/icon_explode.png";
-			break;
-		case 3:
-			weakness_src = "images/ui/icons/on_white/icon_electrify.png";
-			break;
-		case 4:
-			weakness_src = "images/ui/icons/on_white/icon_water.png";
-			break;
-		case 5:
-			weakness_src = "images/ui/icons/on_white/icon_shield.png";
-			break;
-		case 6:
-			weakness_src = "images/ui/icons/on_white/icon_move.png";
-			break;
-		case 7:
-			weakness_src = "images/ui/icons/on_white/icon_health.png";
-			break;
-		case 8:
-			weakness_src = "images/ui/icons/on_white/icon_utility.png";
-			break;
-		}
-		var sprite5 = zero_openfl_extensions_SpriteTools.load_graphic(new openfl_display_Sprite(),class_src,zero_utilities_Anchor.TOP_LEFT,true);
-		sprite5.set_x(16);
-		sprite5.set_y(196);
-		var sprite6 = sprite5;
-		var x4 = 0.25;
-		var y5 = null;
-		if(x4 == null) {
-			x4 = 0;
-		}
-		if(y5 == null) {
-			y5 = x4;
-		}
-		sprite6.set_scaleX(x4);
-		sprite6.set_scaleY(y5);
-		contents.addChild(sprite6);
-		var sprite7 = zero_openfl_extensions_SpriteTools.load_graphic(new openfl_display_Sprite(),weakness_src,zero_utilities_Anchor.TOP_LEFT,true);
-		sprite7.set_x(160);
-		sprite7.set_y(196);
-		var sprite8 = sprite7;
-		var x5 = 0.25;
-		var y6 = null;
-		if(x5 == null) {
-			x5 = 0;
-		}
-		if(y6 == null) {
-			y6 = x5;
-		}
-		sprite8.set_scaleX(x5);
-		sprite8.set_scaleY(y6);
-		contents.addChild(sprite8);
-		var sprite9 = zero_openfl_extensions_SpriteTools.load_graphic(new openfl_display_Sprite(),"images/ui/icons/icon_skull.png",zero_utilities_Anchor.TOP_LEFT,true);
-		sprite9.set_x(144);
-		sprite9.set_y(180);
-		var sprite10 = sprite9;
-		var x6 = 0.25;
-		var y7 = null;
-		if(x6 == null) {
-			x6 = 0;
-		}
-		if(y7 == null) {
-			y7 = x6;
-		}
-		sprite10.set_scaleX(x6);
-		sprite10.set_scaleY(y7);
-		contents.addChild(sprite10);
-		var sprite11 = new openfl_display_Sprite();
-		var color4 = zero_utilities__$Color_Color_$Impl_$.PICO_8_WHITE;
-		var x7 = -ui_cards_GearCard.card_width / 2 + 4;
-		var y8 = -ui_cards_GearCard.card_height / 2 + 4;
-		var width2 = ui_cards_GearCard.card_width - 8;
-		var height2 = ui_cards_GearCard.card_height - 8;
-		var radius4 = 16;
-		var line_width1 = 8;
-		if(line_width1 == null) {
-			line_width1 = 1;
-		}
-		if(radius4 == null) {
-			radius4 = 0;
-		}
-		sprite11.get_graphics().lineStyle(line_width1,(Math.round(color4[0] * 255) & 255) << 16 | (Math.round(color4[1] * 255) & 255) << 8 | Math.round(color4[2] * 255) & 255,color4[3]);
-		if(radius4 == 0) {
-			sprite11.get_graphics().drawRect(x7,y8,width2,height2);
-		} else {
-			sprite11.get_graphics().drawRoundRect(x7,y8,width2,height2,radius4);
-		}
-		sprite11.get_graphics().lineStyle();
-		this.addChild(this.highlight = sprite11);
-		zero_utilities_Tween.get(this.highlight).from_to("scaleX",1,1.1).from_to("scaleY",1,1.1).from_to("alpha",1,0).type(zero_utilities_TweenType.LOOP_FORWARDS).duration(1).ease(zero_utilities_Ease.quadOut);
-		this.highlight.set_visible(false);
-		this.handle = new ui_cards_GearCardHandle(this.data.range.max == 0 ? ui_cards_HandleType.PRESS : ui_cards_HandleType.AIM,this);
-	}
-	,set_description: function() {
-		var str;
-		switch(this.data.effect.type._hx_index) {
-		case 0:
-			str = "Do " + this.get_effect_string() + " damage";
-			break;
-		case 1:
-			str = "Move " + this.get_effect_string() + " spaces";
-			break;
-		case 2:
-			str = "Heal " + this.get_effect_string() + " hitpoints";
-			break;
-		case 3:
-			str = "Shield against " + this.get_effect_string() + " damage";
-			break;
-		}
-		zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(this.description,zero_openfl_extensions_TextTools.wrap_string(str,this.description,128)),ui_cards_GearCard.card_width / 2,70,zero_utilities_Anchor.MIDDLE_CENTER);
-	}
-	,get_effect_value: function() {
-		var out = 0;
-		switch(this.data.effect.factor._hx_index) {
-		case 0:
-			var _g = 0;
-			var _g1 = this.cards;
-			while(_g < _g1.length) {
-				var card = _g1[_g];
-				++_g;
-				out += util_CardUtil.value_to_int(card.data.value);
+		if(this.player.health.current > 0) {
+			var sprite3 = this.health;
+			var color3 = zero_utilities__$Color_Color_$Impl_$.PICO_8_RED;
+			var width = Math.max(this.player.health.current / this.player.health.max * 80,16);
+			var radius3 = 16;
+			if(radius3 == null) {
+				radius3 = 0;
 			}
-			break;
-		case 1:
-			out = this.data.effect.value;
-			break;
-		}
-		if(this.vefify_bonus()) {
-			switch(this.data.bonus.type._hx_index) {
-			case 0:
-				out *= 2;
-				break;
-			case 1:
-				break;
-			}
-		}
-		return out;
-	}
-	,get_effect_string: function() {
-		var val = this.get_effect_value();
-		if(val == 0) {
-			return "_";
-		} else {
-			return "" + val;
-		}
-	}
-	,set_req_text: function() {
-		if(this.cards.length > 0) {
-			zero_openfl_extensions_TextTools.set_string(this.req_text,"");
-			return;
-		}
-		var str;
-		switch(this.data.requirement._hx_index) {
-		case 0:
-			str = "All > " + (this.data.requirement_value - 1);
-			break;
-		case 1:
-			str = "All < " + (this.data.requirement_value + 1);
-			break;
-		case 2:
-			str = "> " + (this.data.requirement_value - 1);
-			break;
-		case 3:
-			str = "< " + (this.data.requirement_value + 1);
-			break;
-		case 4:
-			str = "= " + this.data.requirement_value;
-			break;
-		case 5:
-			str = "All = " + this.data.requirement_value;
-			break;
-		case 6:
-			str = "Face";
-			break;
-		case 7:
-			str = "Not Face";
-			break;
-		case 8:
-			str = "Pair";
-			break;
-		case 9:
-			str = "Not Pair";
-			break;
-		case 10:
-			str = "Same Suit";
-			break;
-		case 11:
-			str = "Different Suit";
-			break;
-		case 12:
-			str = "Hearts";
-			break;
-		case 13:
-			str = "Diamonds";
-			break;
-		case 14:
-			str = "Clubs";
-			break;
-		case 15:
-			str = "Spades";
-			break;
-		case 16:
-			str = "Two Cards";
-			break;
-		}
-		zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(this.req_text,str),ui_cards_GearCard.card_width / 2,140,zero_utilities_Anchor.MIDDLE_CENTER);
-	}
-	,set_req_text_r: function() {
-		if(this.cards.length == 0 || this.cards.length == 2) {
-			zero_openfl_extensions_TextTools.set_string(this.req_text_r,"");
-			return;
-		}
-		var str;
-		switch(this.data.requirement._hx_index) {
-		case 0:
-			str = "> " + Math.max(this.data.requirement_value - 1 - util_CardUtil.value_to_int(this.cards[0].data.value),0);
-			break;
-		case 1:
-			str = "< " + (this.data.requirement_value + 1 - util_CardUtil.value_to_int(this.cards[0].data.value));
-			break;
-		case 2:
-			str = "> " + (this.data.requirement_value - 1);
-			break;
-		case 3:
-			str = "< " + (this.data.requirement_value + 1);
-			break;
-		case 4:
-			str = "= " + this.data.requirement_value;
-			break;
-		case 5:
-			str = "= " + (this.data.requirement_value - util_CardUtil.value_to_int(this.cards[0].data.value));
-			break;
-		case 6:
-			str = "Face";
-			break;
-		case 7:
-			str = "Not\nFace";
-			break;
-		case 8:
-			str = "= " + util_CardUtil.value_to_string(this.cards[0].data.value);
-			break;
-		case 9:
-			str = "Not\n" + util_CardUtil.value_to_string(this.cards[0].data.value);
-			break;
-		case 10:
-			str = "" + util_CardUtil.suit_to_string(this.cards[0].data.suit);
-			break;
-		case 11:
-			str = "Not\n" + util_CardUtil.suit_to_string(this.cards[0].data.suit);
-			break;
-		case 12:
-			str = "Hearts";
-			break;
-		case 13:
-			str = "Diamonds";
-			break;
-		case 14:
-			str = "Clubs";
-			break;
-		case 15:
-			str = "Spades";
-			break;
-		case 16:
-			str = "Any";
-			break;
-		}
-		zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(this.req_text_r,str),ui_cards_GearCard.card_width / 2 + 36,140,zero_utilities_Anchor.MIDDLE_CENTER);
-	}
-	,t: null
-	,update: function(e) {
-		var i = 0;
-		var _g = 0;
-		var _g1 = this.cards;
-		while(_g < _g1.length) {
-			var card = _g1[_g];
-			++_g;
-			if(card.dragging) {
-				continue;
-			}
-			var _g2 = card;
-			_g2.set_x(_g2.get_x() + (this.anchors[i][0] - card.get_x()) * 0.25);
-			var _g3 = card;
-			_g3.set_y(_g3.get_y() + (this.anchors[i][1] - card.get_y()) * 0.25);
-			++i;
-		}
-		var tmp;
-		if(!this.dragging) {
-			var this1 = this.home;
-			tmp = Math.sqrt(this1[0] * this1[0] + this1[1] * this1[1]) > 0;
-		} else {
-			tmp = false;
-		}
-		if(tmp) {
-			var _g21 = this;
-			_g21.set_x(_g21.get_x() + (this.home[0] - this.get_x()) * 0.1);
-			var _g22 = this;
-			_g22.set_y(_g22.get_y() + (this.home[1] - this.get_y()) * 0.1);
-		}
-		this.highlight.set_visible(this.active);
-		var rot_target;
-		if(this.active) {
-			var rot_target1 = this;
-			rot_target = Math.sin(rot_target1.t += 0.15) * 4;
-		} else {
-			rot_target = 0;
-		}
-		var _g23 = this;
-		_g23.set_rotation(_g23.get_rotation() + (rot_target - this.get_rotation()) * 0.25);
-	}
-	,get_anchor: function(global) {
-		if(global == null) {
-			global = false;
-		}
-		if(global) {
-			return zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([this.anchor[0] + this.get_x(),this.anchor[1] + this.get_y()]);
-		} else {
-			return this.anchor;
-		}
-	}
-	,add_card: function(card) {
-		this.addChild(card);
-		this.cards.push(card);
-		var _g = card;
-		_g.set_x(_g.get_x() - this.get_x());
-		var _g1 = card;
-		_g1.set_y(_g1.get_y() - this.get_y());
-		card.gear = this;
-		this.set_description();
-		this.set_req_text();
-		this.set_req_text_r();
-		if(this.verify_gear()) {
-			this.handle.show();
-		} else {
-			this.handle.hide();
-		}
-	}
-	,remove_card: function(card) {
-		HxOverrides.remove(this.cards,card);
-		this.set_description();
-		this.set_req_text();
-		this.set_req_text_r();
-		if(this.verify_gear()) {
-			this.handle.show();
-		} else {
-			this.handle.hide();
-		}
-	}
-	,verify_card: function(card_data) {
-		if(this.cards.length >= 2) {
-			return false;
-		}
-		switch(this.data.requirement._hx_index) {
-		case 0:
-			var total = 0;
-			var _g = 0;
-			var _g1 = this.cards;
-			while(_g < _g1.length) {
-				var card = _g1[_g];
-				++_g;
-				total += util_CardUtil.value_to_int(card.data.value);
-			}
-			if(total + util_CardUtil.value_to_int(card_data.value) < this.data.requirement_value) {
-				return this.cards.length == 0;
+			sprite3.get_graphics().beginFill((Math.round(color3[0] * 255) & 255) << 16 | (Math.round(color3[1] * 255) & 255) << 8 | Math.round(color3[2] * 255) & 255,color3[3]);
+			if(radius3 == 0) {
+				sprite3.get_graphics().drawRect(-40,-8,width,16);
 			} else {
-				return true;
+				sprite3.get_graphics().drawRoundRect(-40,-8,width,16,radius3);
 			}
-			break;
-		case 1:
-			var total1 = 0;
-			var _g2 = 0;
-			var _g11 = this.cards;
-			while(_g2 < _g11.length) {
-				var card1 = _g11[_g2];
-				++_g2;
-				total1 += util_CardUtil.value_to_int(card1.data.value);
-			}
-			return total1 + util_CardUtil.value_to_int(card_data.value) <= this.data.requirement_value;
-		case 2:
-			return util_CardUtil.value_to_int(card_data.value) >= this.data.requirement_value;
-		case 3:
-			return util_CardUtil.value_to_int(card_data.value) <= this.data.requirement_value;
-		case 4:
-			return util_CardUtil.value_to_int(card_data.value) == this.data.requirement_value;
-		case 5:
-			var total2 = 0;
-			var _g3 = 0;
-			var _g12 = this.cards;
-			while(_g3 < _g12.length) {
-				var card2 = _g12[_g3];
-				++_g3;
-				total2 += util_CardUtil.value_to_int(card2.data.value);
-			}
-			if(total2 + util_CardUtil.value_to_int(card_data.value) != this.data.requirement_value) {
-				return this.cards.length == 0;
-			} else {
-				return true;
-			}
-			break;
-		case 6:
-			return [ui_cards_PlayingCardValue.JACK,ui_cards_PlayingCardValue.QUEEN,ui_cards_PlayingCardValue.KING].indexOf(card_data.value) >= 0;
-		case 7:
-			return [ui_cards_PlayingCardValue.JACK,ui_cards_PlayingCardValue.QUEEN,ui_cards_PlayingCardValue.KING].indexOf(card_data.value) < 0;
-		case 8:
-			if(this.cards.length != 0) {
-				return this.cards[0].data.value == card_data.value;
-			} else {
-				return true;
-			}
-			break;
-		case 9:
-			if(this.cards.length != 0) {
-				return this.cards[0].data.value != card_data.value;
-			} else {
-				return true;
-			}
-			break;
-		case 10:
-			if(this.cards.length != 0) {
-				return this.cards[0].data.suit == card_data.suit;
-			} else {
-				return true;
-			}
-			break;
-		case 11:
-			if(this.cards.length != 0) {
-				return this.cards[0].data.suit != card_data.suit;
-			} else {
-				return true;
-			}
-			break;
-		case 12:
-			return card_data.suit == ui_cards_PlayingCardSuit.HEARTS;
-		case 13:
-			return card_data.suit == ui_cards_PlayingCardSuit.DIAMONDS;
-		case 14:
-			return card_data.suit == ui_cards_PlayingCardSuit.CLUBS;
-		case 15:
-			return card_data.suit == ui_cards_PlayingCardSuit.CLUBS;
-		case 16:
-			return true;
+			sprite3.get_graphics().endFill();
 		}
-	}
-	,verify_gear: function() {
-		if(this.cards.length == 0) {
-			return false;
+		var tmp = zero_utilities_Tween.get(this.health_text_sprite).from_to("scaleX",1.5,1).from_to("scaleY",1.5,1);
+		var min = -45;
+		var max = null;
+		if(min == null) {
+			min = 0;
 		}
-		var total = 0;
-		var _g = 0;
-		var _g1 = this.cards;
-		while(_g < _g1.length) {
-			var card = _g1[_g];
-			++_g;
-			total += util_CardUtil.value_to_int(card.data.value);
-		}
-		switch(this.data.requirement._hx_index) {
-		case 0:
-			return total >= this.data.requirement_value;
-		case 1:
-			return total <= this.data.requirement_value;
-		case 5:
-			return total == this.data.requirement_value;
-		case 16:
-			return this.cards.length == 2;
-		default:
-			return true;
-		}
-	}
-	,vefify_bonus: function() {
-		if(this.cards.length == 0) {
-			return false;
-		}
-		switch(this.data.bonus.requirement._hx_index) {
-		case 6:
-			var _g = 0;
-			var _g1 = this.cards;
-			while(_g < _g1.length) {
-				var card = _g1[_g];
-				++_g;
-				if([ui_cards_PlayingCardValue.JACK,ui_cards_PlayingCardValue.QUEEN,ui_cards_PlayingCardValue.KING].indexOf(card.data.value) < 0) {
-					return false;
-				}
-			}
-			break;
-		case 12:
-			var _g2 = 0;
-			var _g11 = this.cards;
-			while(_g2 < _g11.length) {
-				var card1 = _g11[_g2];
-				++_g2;
-				if(card1.data.suit != ui_cards_PlayingCardSuit.HEARTS) {
-					return false;
-				}
-			}
-			break;
-		case 13:
-			var _g3 = 0;
-			var _g12 = this.cards;
-			while(_g3 < _g12.length) {
-				var card2 = _g12[_g3];
-				++_g3;
-				if(card2.data.suit != ui_cards_PlayingCardSuit.DIAMONDS) {
-					return false;
-				}
-			}
-			break;
-		case 14:
-			var _g4 = 0;
-			var _g13 = this.cards;
-			while(_g4 < _g13.length) {
-				var card3 = _g13[_g4];
-				++_g4;
-				if(card3.data.suit != ui_cards_PlayingCardSuit.CLUBS) {
-					return false;
-				}
-			}
-			break;
-		case 15:
-			var _g5 = 0;
-			var _g14 = this.cards;
-			while(_g5 < _g14.length) {
-				var card4 = _g14[_g5];
-				++_g5;
-				if(card4.data.suit != ui_cards_PlayingCardSuit.SPADES) {
-					return false;
-				}
-			}
-			break;
-		case 16:
-			return this.cards.length == 2;
-		default:
-			return false;
-		}
-		return true;
-	}
-	,__class__: ui_cards_GearCard
-});
-var ui_cards_RangeType = $hxEnums["ui.cards.RangeType"] = { __ename__ : "ui.cards.RangeType", __constructs__ : ["NONE","ORTHOGONAL","DIAGONAL"]
-	,NONE: {_hx_index:0,__enum__:"ui.cards.RangeType",toString:$estr}
-	,ORTHOGONAL: {_hx_index:1,__enum__:"ui.cards.RangeType",toString:$estr}
-	,DIAGONAL: {_hx_index:2,__enum__:"ui.cards.RangeType",toString:$estr}
-};
-ui_cards_RangeType.__empty_constructs__ = [ui_cards_RangeType.NONE,ui_cards_RangeType.ORTHOGONAL,ui_cards_RangeType.DIAGONAL];
-var ui_cards_EffectType = $hxEnums["ui.cards.EffectType"] = { __ename__ : "ui.cards.EffectType", __constructs__ : ["DAMAGE","MOVE","HEALTH","SHIELD"]
-	,DAMAGE: {_hx_index:0,__enum__:"ui.cards.EffectType",toString:$estr}
-	,MOVE: {_hx_index:1,__enum__:"ui.cards.EffectType",toString:$estr}
-	,HEALTH: {_hx_index:2,__enum__:"ui.cards.EffectType",toString:$estr}
-	,SHIELD: {_hx_index:3,__enum__:"ui.cards.EffectType",toString:$estr}
-};
-ui_cards_EffectType.__empty_constructs__ = [ui_cards_EffectType.DAMAGE,ui_cards_EffectType.MOVE,ui_cards_EffectType.HEALTH,ui_cards_EffectType.SHIELD];
-var ui_cards_EffectFactor = $hxEnums["ui.cards.EffectFactor"] = { __ename__ : "ui.cards.EffectFactor", __constructs__ : ["VALUES","STATIC"]
-	,VALUES: {_hx_index:0,__enum__:"ui.cards.EffectFactor",toString:$estr}
-	,STATIC: {_hx_index:1,__enum__:"ui.cards.EffectFactor",toString:$estr}
-};
-ui_cards_EffectFactor.__empty_constructs__ = [ui_cards_EffectFactor.VALUES,ui_cards_EffectFactor.STATIC];
-var ui_cards_BonusType = $hxEnums["ui.cards.BonusType"] = { __ename__ : "ui.cards.BonusType", __constructs__ : ["DOUBLE_EFFECT_VALUE","DOUBLE_RANGE"]
-	,DOUBLE_EFFECT_VALUE: {_hx_index:0,__enum__:"ui.cards.BonusType",toString:$estr}
-	,DOUBLE_RANGE: {_hx_index:1,__enum__:"ui.cards.BonusType",toString:$estr}
-};
-ui_cards_BonusType.__empty_constructs__ = [ui_cards_BonusType.DOUBLE_EFFECT_VALUE,ui_cards_BonusType.DOUBLE_RANGE];
-var ui_cards_Requirement = $hxEnums["ui.cards.Requirement"] = { __ename__ : "ui.cards.Requirement", __constructs__ : ["MIN_TOTAL","MAX_TOTAL","MIN_CARD","MAX_CARD","EXACT_CARD","EXACT_TOTAL","IS_FACE","NOT_FACE","PAIR","NO_MATCH","SAME_SUIT","DIFF_SUIT","HEARTS","DIAMONDS","CLUBS","SPADES","TWO_CARDS"]
-	,MIN_TOTAL: {_hx_index:0,__enum__:"ui.cards.Requirement",toString:$estr}
-	,MAX_TOTAL: {_hx_index:1,__enum__:"ui.cards.Requirement",toString:$estr}
-	,MIN_CARD: {_hx_index:2,__enum__:"ui.cards.Requirement",toString:$estr}
-	,MAX_CARD: {_hx_index:3,__enum__:"ui.cards.Requirement",toString:$estr}
-	,EXACT_CARD: {_hx_index:4,__enum__:"ui.cards.Requirement",toString:$estr}
-	,EXACT_TOTAL: {_hx_index:5,__enum__:"ui.cards.Requirement",toString:$estr}
-	,IS_FACE: {_hx_index:6,__enum__:"ui.cards.Requirement",toString:$estr}
-	,NOT_FACE: {_hx_index:7,__enum__:"ui.cards.Requirement",toString:$estr}
-	,PAIR: {_hx_index:8,__enum__:"ui.cards.Requirement",toString:$estr}
-	,NO_MATCH: {_hx_index:9,__enum__:"ui.cards.Requirement",toString:$estr}
-	,SAME_SUIT: {_hx_index:10,__enum__:"ui.cards.Requirement",toString:$estr}
-	,DIFF_SUIT: {_hx_index:11,__enum__:"ui.cards.Requirement",toString:$estr}
-	,HEARTS: {_hx_index:12,__enum__:"ui.cards.Requirement",toString:$estr}
-	,DIAMONDS: {_hx_index:13,__enum__:"ui.cards.Requirement",toString:$estr}
-	,CLUBS: {_hx_index:14,__enum__:"ui.cards.Requirement",toString:$estr}
-	,SPADES: {_hx_index:15,__enum__:"ui.cards.Requirement",toString:$estr}
-	,TWO_CARDS: {_hx_index:16,__enum__:"ui.cards.Requirement",toString:$estr}
-};
-ui_cards_Requirement.__empty_constructs__ = [ui_cards_Requirement.MIN_TOTAL,ui_cards_Requirement.MAX_TOTAL,ui_cards_Requirement.MIN_CARD,ui_cards_Requirement.MAX_CARD,ui_cards_Requirement.EXACT_CARD,ui_cards_Requirement.EXACT_TOTAL,ui_cards_Requirement.IS_FACE,ui_cards_Requirement.NOT_FACE,ui_cards_Requirement.PAIR,ui_cards_Requirement.NO_MATCH,ui_cards_Requirement.SAME_SUIT,ui_cards_Requirement.DIFF_SUIT,ui_cards_Requirement.HEARTS,ui_cards_Requirement.DIAMONDS,ui_cards_Requirement.CLUBS,ui_cards_Requirement.SPADES,ui_cards_Requirement.TWO_CARDS];
-var ui_cards_GearClass = $hxEnums["ui.cards.GearClass"] = { __ename__ : "ui.cards.GearClass", __constructs__ : ["FLAME","PIERCING","EXPLOSIVE","ELECTRICITY","WATER","SHIELD","MOVE","HEALTH","UTILITY"]
-	,FLAME: {_hx_index:0,__enum__:"ui.cards.GearClass",toString:$estr}
-	,PIERCING: {_hx_index:1,__enum__:"ui.cards.GearClass",toString:$estr}
-	,EXPLOSIVE: {_hx_index:2,__enum__:"ui.cards.GearClass",toString:$estr}
-	,ELECTRICITY: {_hx_index:3,__enum__:"ui.cards.GearClass",toString:$estr}
-	,WATER: {_hx_index:4,__enum__:"ui.cards.GearClass",toString:$estr}
-	,SHIELD: {_hx_index:5,__enum__:"ui.cards.GearClass",toString:$estr}
-	,MOVE: {_hx_index:6,__enum__:"ui.cards.GearClass",toString:$estr}
-	,HEALTH: {_hx_index:7,__enum__:"ui.cards.GearClass",toString:$estr}
-	,UTILITY: {_hx_index:8,__enum__:"ui.cards.GearClass",toString:$estr}
-};
-ui_cards_GearClass.__empty_constructs__ = [ui_cards_GearClass.FLAME,ui_cards_GearClass.PIERCING,ui_cards_GearClass.EXPLOSIVE,ui_cards_GearClass.ELECTRICITY,ui_cards_GearClass.WATER,ui_cards_GearClass.SHIELD,ui_cards_GearClass.MOVE,ui_cards_GearClass.HEALTH,ui_cards_GearClass.UTILITY];
-var ui_cards_GearCardHandle = function(type,parent) {
-	this.dragging = false;
-	this.home = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([]);
-	this.active = false;
-	openfl_display_Sprite.call(this);
-	this.gear_card = parent;
-	this.type = type;
-	this.addChild(this.graphic = new openfl_display_Sprite());
-	this.addEventListener("enterFrame",$bind(this,this.update));
-	this.addEventListener("mouseOver",$bind(this,this.mouse_over));
-	switch(type._hx_index) {
-	case 0:
-		zero_openfl_extensions_SpriteTools.load_graphic(this.graphic,"images/ui/aim_cta.png",zero_utilities_Anchor.MIDDLE_CENTER,true);
-		this.addEventListener("mouseDown",$bind(this,this.mouse_down));
-		zero_openfl_utilities_Game.root.addEventListener("mouseUp",$bind(this,this.mouse_up));
-		break;
-	case 1:
-		zero_openfl_extensions_SpriteTools.load_graphic(this.graphic,"images/ui/do_cta.png",zero_utilities_Anchor.MIDDLE_CENTER,true);
-		this.addEventListener("mouseDown",$bind(this,this.on_click));
-		this.addEventListener("mouseOut",$bind(this,this.mouse_out));
-		break;
-	}
-	var x = 0;
-	var y = null;
-	if(x == null) {
-		x = 0;
-	}
-	if(y == null) {
-		y = x;
-	}
-	this.set_scaleX(x);
-	this.set_scaleY(y);
-};
-$hxClasses["ui.cards.GearCardHandle"] = ui_cards_GearCardHandle;
-ui_cards_GearCardHandle.__name__ = "ui.cards.GearCardHandle";
-ui_cards_GearCardHandle.__super__ = openfl_display_Sprite;
-ui_cards_GearCardHandle.prototype = $extend(openfl_display_Sprite.prototype,{
-	active: null
-	,type: null
-	,graphic: null
-	,home: null
-	,dragging: null
-	,gear_card: null
-	,level_pos: null
-	,target: null
-	,mouse_over: function(e) {
-		if(this.type == ui_cards_HandleType.PRESS) {
-			this.gear_card.active = true;
-		} else {
-			scenes_Level.i.draw_indicators(this.gear_card);
-		}
-	}
-	,mouse_out: function(e) {
-		this.gear_card.active = false;
-	}
-	,mouse_down: function(e) {
-		if(!this.active) {
-			return;
-		}
-		this.startDrag(true);
-		this.dragging = true;
-		this.gear_card.active = true;
-	}
-	,mouse_up: function(e) {
-		if(!this.dragging) {
-			return;
-		}
-		this.stopDrag();
-		this.dragging = false;
-		ui_cards_Gear.active_gear.link.length = 0;
-		ui_cards_Gear.active_gear.link.draw();
-		this.gear_card.active = false;
-		haxe_Log.trace(this.get_x(),{ fileName : "src/ui/cards/GearCardHandle.hx", lineNumber : 71, className : "ui.cards.GearCardHandle", methodName : "mouse_up", customParams : [this.get_y()]});
-		this.level_pos = this.get_level_pos();
-		haxe_Log.trace(Math.floor(this.level_pos.x / 16),{ fileName : "src/ui/cards/GearCardHandle.hx", lineNumber : 73, className : "ui.cards.GearCardHandle", methodName : "mouse_up", customParams : [Math.floor(this.level_pos.y / 16)]});
-		scenes_Level.i.clear_indicators();
-	}
-	,get_level_pos: function() {
-		return this.level_pos = scenes_Level.i.level.globalToLocal(new openfl_geom_Point(this.get_x(),this.get_y()));
+		tmp.from_to("rotation",min + Math.random() * ((max == null ? 45 : max) - min),0).ease(zero_utilities_Ease.elasticOut);
 	}
 	,on_click: function(e) {
-		if(!this.active) {
-			return;
-		}
-		zero_utilities_Tween.get(this).from_to("scaleX",0.5,1).from_to("scaleY",0.5,1).ease(zero_utilities_Ease.elasticOut).duration(0.4);
+		objects_Player.set_selected_player(this.player);
 	}
-	,show: function() {
-		if(this.active) {
-			return;
-		}
-		if(this.parent == null) {
-			ui_cards_Gear.active_gear.addChild(this);
-		}
-		this.active = true;
-		zero_utilities_Tween.get(this).from_to("scaleX",0,1).from_to("scaleY",0,1).from_to("alpha",1,1).duration(0.4).ease(zero_utilities_Ease.backOut);
-	}
-	,hide: function() {
-		if(!this.active) {
-			return;
-		}
-		this.active = false;
-		zero_utilities_Tween.get(this).from_to("scaleX",1,0).from_to("scaleY",1,0).from_to("alpha",1,0).duration(0.4).ease(zero_utilities_Ease.backOut);
-	}
-	,update: function(e) {
-		ui_cards_Gear.active_gear.link.active = this.dragging;
-		if(this.dragging) {
-			var card_pos = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([this.gear_card.get_x(),this.gear_card.get_y()]);
-			var this_pos = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([this.get_x(),this.get_y()]);
-			var diff = zero_utilities__$Vec2_Vec2_$Impl_$.subtract(this_pos,card_pos);
-			var sprite = ui_cards_Gear.active_gear.link;
-			sprite.set_x(card_pos[0]);
-			sprite.set_y(card_pos[1]);
-			ui_cards_Gear.active_gear.link.length = Math.sqrt(diff[0] * diff[0] + diff[1] * diff[1]);
-			ui_cards_Gear.active_gear.link.set_rotation((Math.atan2(diff[1],diff[0]) * (180 / Math.PI) % 360 + 360) % 360);
-			zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(card_pos);
-			card_pos = null;
-			zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(this_pos);
-			this_pos = null;
-			zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(diff);
-			diff = null;
-			ui_cards_Gear.active_gear.link.draw();
-			this.check_objects(this.get_x(),this.get_y());
-		} else {
-			var _g = this;
-			_g.set_x(_g.get_x() + (this.gear_card.get_x() - this.get_x()) * 0.25);
-			var _g1 = this;
-			_g1.set_y(_g1.get_y() + (this.gear_card.get_y() + ui_cards_GearCard.card_height / 2 - this.get_y()) * 0.25);
-		}
-	}
-	,check_objects: function(x,y,target) {
-		this.level_pos = this.get_level_pos();
-		var _g = 0;
-		var sprite = scenes_Level.i.objects;
-		var _g1 = [];
-		var _g11 = 0;
-		var _g2 = sprite.get_numChildren();
-		while(_g11 < _g2) {
-			var i = _g11++;
-			_g1.push(sprite.getChildAt(i));
-		}
-		var _g12 = _g1;
-		while(_g < _g12.length) {
-			var object = _g12[_g];
-			++_g;
-			var pos = zero_utilities__$Vec2_Vec2_$Impl_$.get(this.level_pos.x,this.level_pos.y);
-			var obj_pos = zero_utilities__$Vec2_Vec2_$Impl_$.get(object.get_x(),object.get_y());
-			var this2 = zero_utilities__$Vec2_Vec2_$Impl_$.subtract(obj_pos,zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float(pos));
-			if(Math.sqrt(this2[0] * this2[0] + this2[1] * this2[1]) < 8) {
-				target = object;
-				scenes_Level.i.info_layer.show_info(target,this.gear_card);
-				zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(pos);
-				pos = null;
-				zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(obj_pos);
-				obj_pos = null;
-				break;
-			}
-			zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(pos);
-			pos = null;
-			zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(obj_pos);
-			obj_pos = null;
-		}
-		if(target == null) {
-			scenes_Level.i.info_layer.hide_info();
-		}
-		this.target = target;
-	}
-	,__class__: ui_cards_GearCardHandle
+	,__class__: ui_PlayerInfo
 });
-var ui_cards_HandleType = $hxEnums["ui.cards.HandleType"] = { __ename__ : "ui.cards.HandleType", __constructs__ : ["AIM","PRESS"]
-	,AIM: {_hx_index:0,__enum__:"ui.cards.HandleType",toString:$estr}
-	,PRESS: {_hx_index:1,__enum__:"ui.cards.HandleType",toString:$estr}
-};
-ui_cards_HandleType.__empty_constructs__ = [ui_cards_HandleType.AIM,ui_cards_HandleType.PRESS];
-var ui_cards_PlayingCard = function(deck,card_data,x,y) {
+var ui_PlayingCard = function(deck,card_data,x,y) {
 	this.equipped = false;
-	ui_cards_Card.call(this);
+	ui_Card.call(this);
 	this.deck = deck;
 	this.data = card_data;
 	this.set_x(x);
@@ -77636,11 +78293,11 @@ var ui_cards_PlayingCard = function(deck,card_data,x,y) {
 	zero_utilities_EventBus.listen($bind(this,this.update),"update");
 	this.draw_face();
 };
-$hxClasses["ui.cards.PlayingCard"] = ui_cards_PlayingCard;
-ui_cards_PlayingCard.__name__ = "ui.cards.PlayingCard";
-ui_cards_PlayingCard.__super__ = ui_cards_Card;
-ui_cards_PlayingCard.prototype = $extend(ui_cards_Card.prototype,{
-	gear: null
+$hxClasses["ui.PlayingCard"] = ui_PlayingCard;
+ui_PlayingCard.__name__ = "ui.PlayingCard";
+ui_PlayingCard.__super__ = ui_Card;
+ui_PlayingCard.prototype = $extend(ui_Card.prototype,{
+	drop: null
 	,data: null
 	,deck: null
 	,last: null
@@ -77708,10 +78365,10 @@ ui_cards_PlayingCard.prototype = $extend(ui_cards_Card.prototype,{
 		this.face = new openfl_display_Sprite();
 		var sprite = this.face;
 		var color = zero_utilities__$Color_Color_$Impl_$.PICO_8_WHITE;
-		var x = -ui_cards_PlayingCard.card_width / 2;
-		var y = -ui_cards_PlayingCard.card_height / 2;
-		var width = ui_cards_PlayingCard.card_width;
-		var height = ui_cards_PlayingCard.card_height;
+		var x = -ui_PlayingCard.card_width / 2;
+		var y = -ui_PlayingCard.card_height / 2;
+		var width = ui_PlayingCard.card_width;
+		var height = ui_PlayingCard.card_height;
 		var radius = 16;
 		if(radius == null) {
 			radius = 0;
@@ -77725,10 +78382,10 @@ ui_cards_PlayingCard.prototype = $extend(ui_cards_Card.prototype,{
 		sprite.get_graphics().endFill();
 		var sprite1 = this.face;
 		var color1 = zero_utilities__$Color_Color_$Impl_$.BLACK;
-		var x1 = -ui_cards_PlayingCard.card_width / 2 + 2;
-		var y1 = -ui_cards_PlayingCard.card_height / 2 + 2;
-		var width1 = ui_cards_PlayingCard.card_width - 4;
-		var height1 = ui_cards_PlayingCard.card_height - 4;
+		var x1 = -ui_PlayingCard.card_width / 2 + 2;
+		var y1 = -ui_PlayingCard.card_height / 2 + 2;
+		var width1 = ui_PlayingCard.card_width - 4;
+		var height1 = ui_PlayingCard.card_height - 4;
 		var radius1 = 12;
 		var line_width = 4.5;
 		if(line_width == null) {
@@ -77761,10 +78418,10 @@ ui_cards_PlayingCard.prototype = $extend(ui_cards_Card.prototype,{
 		this.mini_face = new openfl_display_Sprite();
 		var sprite3 = this.mini_face;
 		var color2 = zero_utilities__$Color_Color_$Impl_$.PICO_8_WHITE;
-		var x3 = -ui_cards_PlayingCard.mini_width / 2;
-		var y3 = -ui_cards_PlayingCard.mini_height / 2;
-		var width2 = ui_cards_PlayingCard.mini_width;
-		var height2 = ui_cards_PlayingCard.mini_height;
+		var x3 = -ui_PlayingCard.mini_width / 2;
+		var y3 = -ui_PlayingCard.mini_height / 2;
+		var width2 = ui_PlayingCard.mini_width;
+		var height2 = ui_PlayingCard.mini_height;
 		var radius2 = 16;
 		if(radius2 == null) {
 			radius2 = 0;
@@ -77778,10 +78435,10 @@ ui_cards_PlayingCard.prototype = $extend(ui_cards_Card.prototype,{
 		sprite3.get_graphics().endFill();
 		var sprite4 = this.mini_face;
 		var color3 = zero_utilities__$Color_Color_$Impl_$.BLACK;
-		var x4 = -ui_cards_PlayingCard.mini_width / 2 + 2;
-		var y4 = -ui_cards_PlayingCard.mini_height / 2 + 2;
-		var width3 = ui_cards_PlayingCard.mini_width - 4;
-		var height3 = ui_cards_PlayingCard.mini_height - 4;
+		var x4 = -ui_PlayingCard.mini_width / 2 + 2;
+		var y4 = -ui_PlayingCard.mini_height / 2 + 2;
+		var width3 = ui_PlayingCard.mini_width - 4;
+		var height3 = ui_PlayingCard.mini_height - 4;
 		var radius3 = 12;
 		var line_width1 = 4.5;
 		if(line_width1 == null) {
@@ -77798,8 +78455,8 @@ ui_cards_PlayingCard.prototype = $extend(ui_cards_Card.prototype,{
 		}
 		sprite4.get_graphics().lineStyle();
 		var sprite5 = this.mini_face;
-		var x5 = ui_cards_PlayingCard.card_width / ui_cards_PlayingCard.mini_width;
-		var y5 = ui_cards_PlayingCard.card_height / ui_cards_PlayingCard.mini_height;
+		var x5 = ui_PlayingCard.card_width / ui_PlayingCard.mini_width;
+		var y5 = ui_PlayingCard.card_height / ui_PlayingCard.mini_height;
 		if(x5 == null) {
 			x5 = 0;
 		}
@@ -77831,8 +78488,11 @@ ui_cards_PlayingCard.prototype = $extend(ui_cards_Card.prototype,{
 	}
 	,mouse_down: function(e) {
 		if(this.equipped) {
+			if(this.drop.expended) {
+				return;
+			}
 			var p = this.localToGlobal(new openfl_geom_Point(this.get_x(),this.get_y()));
-			this.gear.remove_card(this);
+			this.drop.remove_card(this);
 			this.deck.add_card(this);
 			this.set_x(p.x);
 			this.set_y(p.y);
@@ -77842,7 +78502,7 @@ ui_cards_PlayingCard.prototype = $extend(ui_cards_Card.prototype,{
 		if(!this.draggable) {
 			return;
 		}
-		ui_cards_Card.prototype.mouse_down.call(this,e);
+		ui_Card.prototype.mouse_down.call(this,e);
 		this.deck.remove_from_hand(this);
 		var p1 = this.parent;
 		p1.removeChild(this);
@@ -77852,31 +78512,52 @@ ui_cards_PlayingCard.prototype = $extend(ui_cards_Card.prototype,{
 		if(!this.dragging) {
 			return;
 		}
-		if(!this.equipped) {
+		if(!this.equipped && ui_Gear.active_gear != null) {
+			var move_card = ui_Gear.active_gear.move_card;
+			var pos = move_card.get_anchor(true);
+			var my_pos = zero_utilities__$Vec2_Vec2_$Impl_$.get(this.get_x(),this.get_y());
+			if(Math.abs(pos[0] - this.get_x()) < 96 && Math.abs(pos[1] - this.get_y()) < 144) {
+				if(!move_card.expended && move_card.verify_card(this.data)) {
+					move_card.add_card(this);
+					this.equipped = true;
+					ui_Card.prototype.mouse_up.call(this,e);
+					zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(pos);
+					pos = null;
+					zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(my_pos);
+					my_pos = null;
+					this.dragging = false;
+					return;
+				}
+			}
+			zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(pos);
+			pos = null;
 			var _g = 0;
-			var _g1 = ui_cards_Gear.active_gear.gear_cards;
+			var _g1 = ui_Gear.active_gear.gear_cards;
 			while(_g < _g1.length) {
 				var gear = _g1[_g];
 				++_g;
-				var pos = gear.get_anchor(true);
-				var this2 = zero_utilities__$Vec2_Vec2_$Impl_$.subtract(zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([this.get_x(),this.get_y()]),zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float(pos));
-				if(Math.sqrt(this2[0] * this2[0] + this2[1] * this2[1]) < 128) {
-					if(!gear.verify_card(this.data)) {
+				var pos1 = gear.get_anchor(true);
+				if(Math.abs(pos1[0] - this.get_x()) < 96 && Math.abs(pos1[1] - this.get_y()) < 112) {
+					if(gear.expended || !gear.verify_card(this.data)) {
 						continue;
 					}
 					gear.add_card(this);
 					this.equipped = true;
-					ui_cards_Card.prototype.mouse_up.call(this,e);
-					zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(pos);
-					pos = null;
-					this.draggable = false;
+					ui_Card.prototype.mouse_up.call(this,e);
+					zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(pos1);
+					pos1 = null;
+					zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(my_pos);
+					my_pos = null;
+					this.dragging = false;
 					return;
 				}
-				zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(pos);
-				pos = null;
+				zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(pos1);
+				pos1 = null;
 			}
+			zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(my_pos);
+			my_pos = null;
 		}
-		ui_cards_Card.prototype.mouse_up.call(this,e);
+		ui_Card.prototype.mouse_up.call(this,e);
 		this.deck.add_to_hand(this);
 	}
 	,update: function(dt) {
@@ -77896,8 +78577,8 @@ ui_cards_PlayingCard.prototype = $extend(ui_cards_Card.prototype,{
 		this.lerp_size();
 	}
 	,lerp_size: function() {
-		var sxt = this.equipped ? ui_cards_PlayingCard.mini_width / ui_cards_PlayingCard.card_width : 1;
-		var syt = this.equipped ? ui_cards_PlayingCard.mini_height / ui_cards_PlayingCard.card_height : 1;
+		var sxt = this.equipped ? ui_PlayingCard.mini_width / ui_PlayingCard.card_width : 1;
+		var syt = this.equipped ? ui_PlayingCard.mini_height / ui_PlayingCard.card_height : 1;
 		var _g = this;
 		_g.set_scaleX(_g.get_scaleX() + (sxt - this.get_scaleX()) * 0.25);
 		var _g1 = this;
@@ -77907,31 +78588,31 @@ ui_cards_PlayingCard.prototype = $extend(ui_cards_Card.prototype,{
 		var _g3 = this.face;
 		_g3.set_alpha(_g3.get_alpha() + ((this.equipped ? 0 : 1) - this.face.get_alpha()) * 0.25);
 	}
-	,__class__: ui_cards_PlayingCard
+	,__class__: ui_PlayingCard
 });
-var ui_cards_PlayingCardValue = $hxEnums["ui.cards.PlayingCardValue"] = { __ename__ : "ui.cards.PlayingCardValue", __constructs__ : ["ACE","TWO","THREE","FOUR","FIVE","SIX","SEVEN","EIGHT","NINE","TEN","JACK","QUEEN","KING"]
-	,ACE: {_hx_index:0,__enum__:"ui.cards.PlayingCardValue",toString:$estr}
-	,TWO: {_hx_index:1,__enum__:"ui.cards.PlayingCardValue",toString:$estr}
-	,THREE: {_hx_index:2,__enum__:"ui.cards.PlayingCardValue",toString:$estr}
-	,FOUR: {_hx_index:3,__enum__:"ui.cards.PlayingCardValue",toString:$estr}
-	,FIVE: {_hx_index:4,__enum__:"ui.cards.PlayingCardValue",toString:$estr}
-	,SIX: {_hx_index:5,__enum__:"ui.cards.PlayingCardValue",toString:$estr}
-	,SEVEN: {_hx_index:6,__enum__:"ui.cards.PlayingCardValue",toString:$estr}
-	,EIGHT: {_hx_index:7,__enum__:"ui.cards.PlayingCardValue",toString:$estr}
-	,NINE: {_hx_index:8,__enum__:"ui.cards.PlayingCardValue",toString:$estr}
-	,TEN: {_hx_index:9,__enum__:"ui.cards.PlayingCardValue",toString:$estr}
-	,JACK: {_hx_index:10,__enum__:"ui.cards.PlayingCardValue",toString:$estr}
-	,QUEEN: {_hx_index:11,__enum__:"ui.cards.PlayingCardValue",toString:$estr}
-	,KING: {_hx_index:12,__enum__:"ui.cards.PlayingCardValue",toString:$estr}
+var ui_PlayingCardValue = $hxEnums["ui.PlayingCardValue"] = { __ename__ : "ui.PlayingCardValue", __constructs__ : ["ACE","TWO","THREE","FOUR","FIVE","SIX","SEVEN","EIGHT","NINE","TEN","JACK","QUEEN","KING"]
+	,ACE: {_hx_index:0,__enum__:"ui.PlayingCardValue",toString:$estr}
+	,TWO: {_hx_index:1,__enum__:"ui.PlayingCardValue",toString:$estr}
+	,THREE: {_hx_index:2,__enum__:"ui.PlayingCardValue",toString:$estr}
+	,FOUR: {_hx_index:3,__enum__:"ui.PlayingCardValue",toString:$estr}
+	,FIVE: {_hx_index:4,__enum__:"ui.PlayingCardValue",toString:$estr}
+	,SIX: {_hx_index:5,__enum__:"ui.PlayingCardValue",toString:$estr}
+	,SEVEN: {_hx_index:6,__enum__:"ui.PlayingCardValue",toString:$estr}
+	,EIGHT: {_hx_index:7,__enum__:"ui.PlayingCardValue",toString:$estr}
+	,NINE: {_hx_index:8,__enum__:"ui.PlayingCardValue",toString:$estr}
+	,TEN: {_hx_index:9,__enum__:"ui.PlayingCardValue",toString:$estr}
+	,JACK: {_hx_index:10,__enum__:"ui.PlayingCardValue",toString:$estr}
+	,QUEEN: {_hx_index:11,__enum__:"ui.PlayingCardValue",toString:$estr}
+	,KING: {_hx_index:12,__enum__:"ui.PlayingCardValue",toString:$estr}
 };
-ui_cards_PlayingCardValue.__empty_constructs__ = [ui_cards_PlayingCardValue.ACE,ui_cards_PlayingCardValue.TWO,ui_cards_PlayingCardValue.THREE,ui_cards_PlayingCardValue.FOUR,ui_cards_PlayingCardValue.FIVE,ui_cards_PlayingCardValue.SIX,ui_cards_PlayingCardValue.SEVEN,ui_cards_PlayingCardValue.EIGHT,ui_cards_PlayingCardValue.NINE,ui_cards_PlayingCardValue.TEN,ui_cards_PlayingCardValue.JACK,ui_cards_PlayingCardValue.QUEEN,ui_cards_PlayingCardValue.KING];
-var ui_cards_PlayingCardSuit = $hxEnums["ui.cards.PlayingCardSuit"] = { __ename__ : "ui.cards.PlayingCardSuit", __constructs__ : ["HEARTS","DIAMONDS","CLUBS","SPADES"]
-	,HEARTS: {_hx_index:0,__enum__:"ui.cards.PlayingCardSuit",toString:$estr}
-	,DIAMONDS: {_hx_index:1,__enum__:"ui.cards.PlayingCardSuit",toString:$estr}
-	,CLUBS: {_hx_index:2,__enum__:"ui.cards.PlayingCardSuit",toString:$estr}
-	,SPADES: {_hx_index:3,__enum__:"ui.cards.PlayingCardSuit",toString:$estr}
+ui_PlayingCardValue.__empty_constructs__ = [ui_PlayingCardValue.ACE,ui_PlayingCardValue.TWO,ui_PlayingCardValue.THREE,ui_PlayingCardValue.FOUR,ui_PlayingCardValue.FIVE,ui_PlayingCardValue.SIX,ui_PlayingCardValue.SEVEN,ui_PlayingCardValue.EIGHT,ui_PlayingCardValue.NINE,ui_PlayingCardValue.TEN,ui_PlayingCardValue.JACK,ui_PlayingCardValue.QUEEN,ui_PlayingCardValue.KING];
+var ui_PlayingCardSuit = $hxEnums["ui.PlayingCardSuit"] = { __ename__ : "ui.PlayingCardSuit", __constructs__ : ["HEARTS","DIAMONDS","CLUBS","SPADES"]
+	,HEARTS: {_hx_index:0,__enum__:"ui.PlayingCardSuit",toString:$estr}
+	,DIAMONDS: {_hx_index:1,__enum__:"ui.PlayingCardSuit",toString:$estr}
+	,CLUBS: {_hx_index:2,__enum__:"ui.PlayingCardSuit",toString:$estr}
+	,SPADES: {_hx_index:3,__enum__:"ui.PlayingCardSuit",toString:$estr}
 };
-ui_cards_PlayingCardSuit.__empty_constructs__ = [ui_cards_PlayingCardSuit.HEARTS,ui_cards_PlayingCardSuit.DIAMONDS,ui_cards_PlayingCardSuit.CLUBS,ui_cards_PlayingCardSuit.SPADES];
+ui_PlayingCardSuit.__empty_constructs__ = [ui_PlayingCardSuit.HEARTS,ui_PlayingCardSuit.DIAMONDS,ui_PlayingCardSuit.CLUBS,ui_PlayingCardSuit.SPADES];
 var util_CardUtil = function() { };
 $hxClasses["util.CardUtil"] = util_CardUtil;
 util_CardUtil.__name__ = "util.CardUtil";
@@ -77998,33 +78679,33 @@ util_CardUtil.value_to_int = function(value) {
 util_CardUtil.int_to_value = function(i) {
 	switch(i) {
 	case 1:
-		return ui_cards_PlayingCardValue.ACE;
+		return ui_PlayingCardValue.ACE;
 	case 2:
-		return ui_cards_PlayingCardValue.TWO;
+		return ui_PlayingCardValue.TWO;
 	case 3:
-		return ui_cards_PlayingCardValue.THREE;
+		return ui_PlayingCardValue.THREE;
 	case 4:
-		return ui_cards_PlayingCardValue.FOUR;
+		return ui_PlayingCardValue.FOUR;
 	case 5:
-		return ui_cards_PlayingCardValue.FIVE;
+		return ui_PlayingCardValue.FIVE;
 	case 6:
-		return ui_cards_PlayingCardValue.SIX;
+		return ui_PlayingCardValue.SIX;
 	case 7:
-		return ui_cards_PlayingCardValue.SEVEN;
+		return ui_PlayingCardValue.SEVEN;
 	case 8:
-		return ui_cards_PlayingCardValue.EIGHT;
+		return ui_PlayingCardValue.EIGHT;
 	case 9:
-		return ui_cards_PlayingCardValue.NINE;
+		return ui_PlayingCardValue.NINE;
 	case 10:
-		return ui_cards_PlayingCardValue.TEN;
+		return ui_PlayingCardValue.TEN;
 	case 11:
-		return ui_cards_PlayingCardValue.JACK;
+		return ui_PlayingCardValue.JACK;
 	case 12:
-		return ui_cards_PlayingCardValue.QUEEN;
+		return ui_PlayingCardValue.QUEEN;
 	case 13:
-		return ui_cards_PlayingCardValue.KING;
+		return ui_PlayingCardValue.KING;
 	default:
-		return ui_cards_PlayingCardValue.ACE;
+		return ui_PlayingCardValue.ACE;
 	}
 };
 util_CardUtil.suit_to_string = function(suit) {
@@ -78038,6 +78719,32 @@ util_CardUtil.suit_to_string = function(suit) {
 	case 3:
 		return "Spades";
 	}
+};
+var util_GearUtil = function() { };
+$hxClasses["util.GearUtil"] = util_GearUtil;
+util_GearUtil.__name__ = "util.GearUtil";
+util_GearUtil.init = function() {
+	var _g = [];
+	var _g1 = 0;
+	var _g2 = openfl_utils_Assets.getText("data/gear.jsonc").split("\n");
+	while(_g1 < _g2.length) {
+		var line = _g2[_g1];
+		++_g1;
+		_g.push(line.split("//")[0]);
+	}
+	util_GearUtil.gear_data = JSON.parse(_g.join("\n"));
+};
+util_GearUtil.get_gear_data = function(id) {
+	var _g = 0;
+	var _g1 = util_GearUtil.gear_data;
+	while(_g < _g1.length) {
+		var gear = _g1[_g];
+		++_g;
+		if(gear.id == id) {
+			return gear;
+		}
+	}
+	return null;
 };
 var util_UpdateManager = function() { };
 $hxClasses["util.UpdateManager"] = util_UpdateManager;
@@ -79551,7 +80258,7 @@ zero_openfl_utilities_Game.prototype = {
 		this.scene = scene;
 		scene.create();
 		zero_openfl_utilities_Game.root.addChild(scene);
-		zero_openfl_utilities_Game.root.addChild(new zero_openfl_utilities_FPS(10,10,16777215));
+		zero_openfl_utilities_Game.root.addChild(new zero_openfl_utilities_FPS(10,zero_openfl_utilities_Game.get_height() - 64,16777215));
 	}
 	,__class__: zero_openfl_utilities_Game
 };
@@ -83586,8 +84293,8 @@ zero_utilities_Tween.prototype = {
 			var _g1 = _g.next();
 			var field = _g1.key;
 			var property = _g1.value;
-			var t1 = eased_period / 1;
-			var val = (1 - t1) * property.start + t1 * property.end;
+			var t = eased_period / 1;
+			var val = (1 - t) * property.start + t * property.end;
 			Reflect.setProperty(this.data.target,field,val);
 		}
 	}
@@ -84304,6 +85011,7 @@ openfl_display_DisplayObject.__tempStack = new lime_utils_ObjectPool(function() 
 });
 openfl_text_Font.__fontByName = new haxe_ds_StringMap();
 openfl_text_Font.__registeredFonts = [];
+openfl_display_Shader.__meta__ = { fields : { glProgram : { SuppressWarnings : ["checkstyle:Dynamic"]}}};
 haxe_Serializer.USE_CACHE = false;
 haxe_Serializer.USE_ENUM_INDEX = false;
 haxe_Serializer.BASE64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789%:";
@@ -85750,7 +86458,6 @@ openfl_geom_ColorTransform.__pool = new lime_utils_ObjectPool(function() {
 openfl__$internal_renderer_context3D_Context3DGraphics.__meta__ = { obj : { SuppressWarnings : ["checkstyle:FieldDocComment"]}};
 openfl__$internal_renderer_context3D_Context3DGraphics.blankBitmapData = new openfl_display_BitmapData(1,1,false,0);
 openfl__$internal_renderer_context3D_Context3DGraphics.tempColorTransform = new openfl_geom_ColorTransform(1,1,1,1,0,0,0,0);
-openfl_display_Shader.__meta__ = { fields : { glProgram : { SuppressWarnings : ["checkstyle:Dynamic"]}}};
 openfl__$internal_renderer_context3D_Context3DMaskShader.opaqueBitmapData = new openfl_display_BitmapData(1,1,false,0);
 openfl__$internal_renderer_context3D_Context3DShape.__meta__ = { obj : { SuppressWarnings : ["checkstyle:FieldDocComment"]}};
 openfl__$internal_renderer_context3D_Context3DState.__meta__ = { obj : { SuppressWarnings : ["checkstyle:FieldDocComment"]}};
@@ -86324,6 +87031,7 @@ openfl_filters_DisplacementMapFilter.__displacementMapShader = new openfl_filter
 openfl_filters_DisplacementMapFilter.__matrixData = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
 openfl_filters_DisplacementMapFilter.__offset = [0.5,0.5,0.0,0.0];
 openfl_filters_GlowFilter.__glowShader = new openfl_filters__$GlowFilter_GlowShader();
+openfl_filters_ShaderFilter.__meta__ = { fields : { blendMode : { SuppressWarnings : ["checkstyle:FieldDocComment"]}}};
 openfl_geom_Matrix3D.__meta__ = { statics : { create2D : { SuppressWarnings : ["checkstyle:FieldDocComment"]}, createABCD : { SuppressWarnings : ["checkstyle:FieldDocComment"]}, createOrtho : { SuppressWarnings : ["checkstyle:FieldDocComment"]}}};
 openfl_geom__$Orientation3D_Orientation3D_$Impl_$.AXIS_ANGLE = 0;
 openfl_geom__$Orientation3D_Orientation3D_$Impl_$.EULER_ANGLES = 1;
@@ -86631,14 +87339,14 @@ openfl_utils__$Endian_Endian_$Impl_$.LITTLE_ENDIAN = 1;
 openfl_utils__$Object_Object_$Impl_$.__meta__ = { statics : { iterator : { SuppressWarnings : ["checkstyle:FieldDocComment"]}, __get : { SuppressWarnings : ["checkstyle:FieldDocComment"]}, __set : { SuppressWarnings : ["checkstyle:FieldDocComment"]}}};
 haxe_lang_Iterator.__meta__ = { obj : { SuppressWarnings : ["checkstyle:FieldDocComment"]}};
 haxe_lang_Iterable.__meta__ = { obj : { SuppressWarnings : ["checkstyle:FieldDocComment"]}};
+ui_GearCard.card_width = 192;
+ui_GearCard.card_height = 224;
 ui_ObjectInfo.info_width = 160;
 ui_ObjectInfo.info_height = 76;
-ui_cards_GearCard.card_width = 192;
-ui_cards_GearCard.card_height = 224;
-ui_cards_PlayingCard.card_width = 128;
-ui_cards_PlayingCard.card_height = 192;
-ui_cards_PlayingCard.mini_width = 64;
-ui_cards_PlayingCard.mini_height = 80;
+ui_PlayingCard.card_width = 128;
+ui_PlayingCard.card_height = 192;
+ui_PlayingCard.mini_width = 64;
+ui_PlayingCard.mini_height = 80;
 util_UpdateManager.last = 0.0;
 util_UpdateManager.wait = false;
 util_UpdateManager.fps_array = [];
