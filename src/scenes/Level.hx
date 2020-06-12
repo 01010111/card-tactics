@@ -1,5 +1,7 @@
 package scenes;
 
+import ui.Gear;
+import ui.MoveCard;
 import ui.Deck;
 import zero.utilities.Color;
 import ui.GearCard;
@@ -37,6 +39,7 @@ class Level extends Scene {
 	// layers
 	public var level:Sprite;
 	public var indicators:Sprite;
+	public var move_indicators:Sprite;
 	public var under_objects:Sprite;
 	public var objects:Sprite;
 	public var over_objects:Sprite;
@@ -103,17 +106,18 @@ class Level extends Scene {
 		this.add(dolly = new Dolly());
 		dolly.add(level = new Sprite());
 		dolly.add(indicators = new Sprite());
+		dolly.add(move_indicators = new Sprite());
 		dolly.add(under_objects = new Sprite());
 		dolly.add(objects = new Sprite());
 		dolly.add(over_objects = new Sprite());
 		dolly.set_scale(3);
+		move_indicators.addEventListener(MouseEvent.CLICK, on_click);
 	}
 
 	function draw_map(src:String) {
 		var level_data = OgmoUtils.parse_level_json(Assets.getText('data/maps/$src.json'));
 		tiles = new Tilemap({ map: level_data.get_tile_layer('tiles').data2D, tileset: { image: 'images/tiles.png', frame_height: 16, frame_width: 16 }, smoothing: false, solids: [for (i in 64...256) i] });
 		level.add(tiles);
-		level.addEventListener(MouseEvent.CLICK, on_click);
 		object_map = [for (row in tiles.get_map(false)) [for (n in row) 0]];
 	}
 
@@ -137,24 +141,37 @@ class Level extends Scene {
 		object_map[y][x] = -1;
 		Player.selected_player.follow_path(path);
 		can_move = false;
+		move_indicators.graphics.clear();
+		Gear.active_gear.move_card.expended = true;
 	}
 
-	public function get_traversal_map():Array<Array<Int>> {
+	public function get_traversal_map(?ignore:IntPoint):Array<Array<Int>> {
 		var out = tiles.get_solids_array();
 		for (j in 0...object_map.length) for (i in 0...object_map[j].length) if (object_map[j][i] != 0) out[j][i] = 1;
+		if (ignore != null) out[ignore.y][ignore.x] = 0;
 		return out;
 	}
 
 	public function clear_indicators() {
 		indicators.graphics.clear();
+		move_indicators.visible = true;
 	}
 
 	public function draw_indicators(gear_card:GearCard) {
 		indicators.graphics.clear();
+		move_indicators.visible = false;
 		var player = gear_card.gear.player;
-		var range = gear_card.gear_data.range;
+		var range:RangeData = {
+			min: gear_card.gear_data.range.min,
+			max: gear_card.gear_data.range.max,
+			type: gear_card.gear_data.range.type
+		};
 		if (gear_card.gear_data.bonus.type == DOUBLE_RANGE && gear_card.vefify_bonus()) range.max *= 2;
-		var tiles = get_available_tiles_array([(player.x/16).floor(), (player.y/16).floor()], range.min, range.max);
+		if (range.type == DIAGONAL) {
+			range.min *= 2;
+			range.max *= 2;
+		}
+		var tiles = get_available_tiles_array([(player.x/16).floor(), (player.y/16).floor()], range.min, range.max, range.type);
 		var color = switch gear_card.gear_data.effect.type {
 			default: Color.WHITE;
 			case DAMAGE:Color.PICO_8_RED;
@@ -167,19 +184,58 @@ class Level extends Scene {
 		for (tile in tiles) indicators.fill_rect(color_fill, tile.x * 16 + 2, tile.y * 16 + 2, 12, 12, 2).rect(color, tile.x * 16 + 2, tile.y * 16 + 2, 12, 12, 2, 1);
 	}
 
-	function get_available_tiles_array(origin:IntPoint, min_range:Int, max_range:Int, restrictions:RangeType = NONE) {
+	function get_available_tiles_array(origin:IntPoint, min_range:Int, max_range:Int, restriction:RangeType = NONE):Array<IntPoint> {
 		var solids = tiles.get_solids_array([for (i in 128...256) i]);
 		var not_availables = tiles.get_solids_array();
-		var map = solids.heat_map(origin.x, origin.y, max_range);
+		var map = solids.heat_map(origin.x, origin.y, max_range + 1);
 		var out:Array<IntPoint> = [];
 		for (j in 0...map.length) for (i in 0...map[j].length) if (map[j][i] > 0) {
-			if (map[j][i] > max_range - min_range) map[j][i] = 0;
+			if (map[j][i] > max_range + 1 - min_range) map[j][i] = 0;
 			else if (not_availables[j][i] != 0) map[j][i] = 0;
 			else if (!AStar.los(origin, [i, j], solids, [0])) map[j][i] = 0;
 			if (map[j][i] > 0) out.push([i, j]);
 		}
+		apply_restriction(origin, out, restriction);
 		available_tiles = out;
 		return out;
+	}
+
+	public function draw_move_indicators(move_card:MoveCard) {
+		move_indicators.graphics.clear();
+		var player = move_card.gear.player;
+		var range = move_card.get_moves_value();
+		if (range == 0) return;
+		var tiles = get_walkable_tiles_array([(player.x/16).floor(), (player.y/16).floor()], range);
+		var color = Color.PICO_8_BLUE;
+		var color_fill:Color = cast color.copy();
+		color_fill.alpha = 0.25;
+		for (tile in tiles) move_indicators.fill_rect(color_fill, tile.x * 16 + 2, tile.y * 16 + 2, 12, 12, 2).rect(color, tile.x * 16 + 2, tile.y * 16 + 2, 12, 12, 2, 1);
+	}
+
+	function get_walkable_tiles_array(origin:IntPoint, range:Int, restriction:RangeType = NONE):Array<IntPoint> {
+		trace(origin);
+		var solids = get_traversal_map(origin);
+		trace(solids);
+		var map = solids.heat_map(origin.x, origin.y, range + 1);
+		var out:Array<IntPoint> = [];
+		for (j in 0...map.length) for (i in 0...map[j].length) if (map[j][i] > 0 && map[j][i] <= range) out.push([i, j]);
+		apply_restriction(origin, out, restriction);
+		return out;
+	}
+
+	function apply_restriction(origin:IntPoint, arr:Array<IntPoint>, restriction:RangeType):Array<IntPoint> {
+		switch restriction {
+			case NONE: return arr;
+			case ORTHOGONAL: 
+				var remove = [];
+				for (p in arr) if (p.x != origin.x && p.y != origin.y) remove.push(p);
+				for (p in remove) arr.remove(p);
+			case DIAGONAL:
+				var remove = [];
+				for (p in arr) if ((p.x - origin.x).abs() != (p.y - origin.y).abs()) remove.push(p);
+				for (p in remove) arr.remove(p);
+		}
+		return arr;
 	}
 
 }

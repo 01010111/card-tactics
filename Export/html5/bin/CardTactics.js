@@ -894,9 +894,9 @@ ApplicationMain.create = function(config) {
 	ManifestResources.init(config);
 	var _this = app.meta;
 	if(__map_reserved["build"] != null) {
-		_this.setReserved("build","19");
+		_this.setReserved("build","20");
 	} else {
-		_this.h["build"] = "19";
+		_this.h["build"] = "20";
 	}
 	var _this1 = app.meta;
 	if(__map_reserved["company"] != null) {
@@ -4814,7 +4814,7 @@ ManifestResources.init = function(config) {
 	}
 	openfl_text_Font.registerFont(_$_$ASSET_$_$OPENFL_$_$fonts_$oduda_$ttf);
 	var bundle;
-	var data = "{\"name\":null,\"assets\":\"aoy4:pathy18:images%2Fblank.pngy4:sizei123y4:typey5:IMAGEy2:idR1y7:preloadtgoR0y29:images%2Fparticles%2Fpoof.pngR2i452R3R4R5R7R6tgoR0y20:images%2Fplayers.pngR2i1824R3R4R5R8R6tgoR0y18:images%2Ftiles.pngR2i14787R3R4R5R9R6tgoR0y35:images%2Fui%2Faction_arrow_blue.pngR2i473R3R4R5R10R6tgoR0y36:images%2Fui%2Faction_arrow_green.pngR2i489R3R4R5R11R6tgoR0y34:images%2Fui%2Faction_arrow_red.pngR2i470R3R4R5R12R6tgoR0y36:images%2Fui%2Faction_arrow_white.pngR2i307R3R4R5R13R6tgoR0y25:images%2Fui%2Faim_cta.pngR2i1862R3R4R5R14R6tgoR0y24:images%2Fui%2Fap_pip.pngR2i270R3R4R5R15R6tgoR0y25:images%2Fui%2Fap_pips.pngR2i467R3R4R5R16R6tgoR0y28:images%2Fui%2Fap_pip_big.pngR2i370R3R4R5R17R6tgoR0y24:images%2Fui%2Fdo_cta.pngR2i1723R3R4R5R18R6tgoR0y36:images%2Fui%2Ficons%2Ficon_skull.pngR2i2850R3R4R5R19R6tgoR0y35:images%2Fui%2Ficons%2Fmove_free.pngR2i2776R3R4R5R20R6tgoR0y35:images%2Fui%2Ficons%2Fmove_rook.pngR2i3371R3R4R5R21R6tgoR0y39:images%2Fui%2Ficons%2Fmove_teleport.pngR2i3093R3R4R5R22R6tgoR0y51:images%2Fui%2Ficons%2Fon_white%2Ficon_electrify.pngR2i1737R3R4R5R23R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_explode.pngR2i2333R3R4R5R24R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_flame.pngR2i2026R3R4R5R25R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_health.pngR2i1796R3R4R5R26R6tgoR0y46:images%2Fui%2Ficons%2Fon_white%2Ficon_move.pngR2i1973R3R4R5R27R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_pierce.pngR2i1943R3R4R5R28R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_shield.pngR2i1973R3R4R5R29R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_utility.pngR2i1803R3R4R5R30R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_water.pngR2i1906R3R4R5R31R6tgoR0y27:images%2Fui%2Frule_face.pngR2i8721R3R4R5R32R6tgoR0y32:images%2Fui%2Frule_two_cards.pngR2i5319R3R4R5R33R6tgoR0y27:images%2Fui%2Fsuit_club.pngR2i4182R3R4R5R34R6tgoR0y30:images%2Fui%2Fsuit_diamond.pngR2i2985R3R4R5R35R6tgoR0y28:images%2Fui%2Fsuit_heart.pngR2i2540R3R4R5R36R6tgoR0y28:images%2Fui%2Fsuit_spade.pngR2i3507R3R4R5R37R6tgoR0y17:data%2Fgear.jsoncR2i1340R3y4:TEXTR5R38R6tgoR0y22:data%2Fmaps%2F000.jsonR2i1922R3R39R5R40R6tgoR0y23:data%2Fmaps%2Fmaps.ogmoR2i19048R3R39R5R41R6tgoR2i19636R3y4:FONTy9:classNamey24:__ASSET__fonts_oduda_ttfR5y17:fonts%2Foduda.ttfR6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
+	var data = "{\"name\":null,\"assets\":\"aoy4:pathy18:images%2Fblank.pngy4:sizei123y4:typey5:IMAGEy2:idR1y7:preloadtgoR0y29:images%2Fparticles%2Fpoof.pngR2i452R3R4R5R7R6tgoR0y20:images%2Fplayers.pngR2i1824R3R4R5R8R6tgoR0y18:images%2Ftiles.pngR2i14787R3R4R5R9R6tgoR0y35:images%2Fui%2Faction_arrow_blue.pngR2i473R3R4R5R10R6tgoR0y36:images%2Fui%2Faction_arrow_green.pngR2i489R3R4R5R11R6tgoR0y34:images%2Fui%2Faction_arrow_red.pngR2i470R3R4R5R12R6tgoR0y36:images%2Fui%2Faction_arrow_white.pngR2i307R3R4R5R13R6tgoR0y25:images%2Fui%2Faim_cta.pngR2i1862R3R4R5R14R6tgoR0y24:images%2Fui%2Fap_pip.pngR2i270R3R4R5R15R6tgoR0y25:images%2Fui%2Fap_pips.pngR2i467R3R4R5R16R6tgoR0y28:images%2Fui%2Fap_pip_big.pngR2i370R3R4R5R17R6tgoR0y24:images%2Fui%2Fdo_cta.pngR2i1723R3R4R5R18R6tgoR0y36:images%2Fui%2Ficons%2Ficon_skull.pngR2i2850R3R4R5R19R6tgoR0y35:images%2Fui%2Ficons%2Fmove_free.pngR2i2776R3R4R5R20R6tgoR0y35:images%2Fui%2Ficons%2Fmove_rook.pngR2i3371R3R4R5R21R6tgoR0y39:images%2Fui%2Ficons%2Fmove_teleport.pngR2i3093R3R4R5R22R6tgoR0y51:images%2Fui%2Ficons%2Fon_white%2Ficon_electrify.pngR2i1737R3R4R5R23R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_explode.pngR2i2333R3R4R5R24R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_flame.pngR2i2026R3R4R5R25R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_health.pngR2i1796R3R4R5R26R6tgoR0y46:images%2Fui%2Ficons%2Fon_white%2Ficon_move.pngR2i1973R3R4R5R27R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_pierce.pngR2i1943R3R4R5R28R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_shield.pngR2i1973R3R4R5R29R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_utility.pngR2i1803R3R4R5R30R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_water.pngR2i1906R3R4R5R31R6tgoR0y27:images%2Fui%2Frule_face.pngR2i8721R3R4R5R32R6tgoR0y32:images%2Fui%2Frule_two_cards.pngR2i5319R3R4R5R33R6tgoR0y27:images%2Fui%2Fsuit_club.pngR2i4182R3R4R5R34R6tgoR0y30:images%2Fui%2Fsuit_diamond.pngR2i2985R3R4R5R35R6tgoR0y28:images%2Fui%2Fsuit_heart.pngR2i2540R3R4R5R36R6tgoR0y28:images%2Fui%2Fsuit_spade.pngR2i3507R3R4R5R37R6tgoR0y17:data%2Fgear.jsoncR2i1350R3y4:TEXTR5R38R6tgoR0y22:data%2Fmaps%2F000.jsonR2i1922R3R39R5R40R6tgoR0y23:data%2Fmaps%2Fmaps.ogmoR2i19048R3R39R5R41R6tgoR2i19636R3y4:FONTy9:classNamey24:__ASSET__fonts_oduda_ttfR5y17:fonts%2Foduda.ttfR6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
 	var manifest = lime_utils_AssetManifest.parse(data,ManifestResources.rootPath);
 	var library = lime_utils_AssetLibrary.fromManifest(manifest);
 	lime_utils_Assets.registerLibrary("default",library);
@@ -76027,6 +76027,7 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 	,available_tiles: null
 	,level: null
 	,indicators: null
+	,move_indicators: null
 	,under_objects: null
 	,objects: null
 	,over_objects: null
@@ -76052,6 +76053,7 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 		this.addChild(this.dolly = new zero_openfl_utilities_Dolly());
 		this.dolly.addChild(this.level = new openfl_display_Sprite());
 		this.dolly.addChild(this.indicators = new openfl_display_Sprite());
+		this.dolly.addChild(this.move_indicators = new openfl_display_Sprite());
 		this.dolly.addChild(this.under_objects = new openfl_display_Sprite());
 		this.dolly.addChild(this.objects = new openfl_display_Sprite());
 		this.dolly.addChild(this.over_objects = new openfl_display_Sprite());
@@ -76066,6 +76068,7 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 		}
 		sprite.set_scaleX(x);
 		sprite.set_scaleY(y);
+		this.move_indicators.addEventListener("click",$bind(this,this.on_click));
 	}
 	,draw_map: function(src) {
 		var level_data = zero_utilities_OgmoUtils.parse_level_json(openfl_utils_Assets.getText("data/maps/" + src + ".json"));
@@ -76078,7 +76081,6 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 		}
 		this.tiles = new zero_openfl_utilities_Tilemap({ map : tmp, tileset : { image : "images/tiles.png", frame_height : 16, frame_width : 16}, smoothing : false, solids : _g});
 		this.level.addChild(this.tiles);
-		this.level.addEventListener("click",$bind(this,this.on_click));
 		var _g2 = [];
 		var _g3 = 0;
 		var _g4 = this.tiles.get_map(false);
@@ -76117,8 +76119,10 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 		this.object_map[y][x] = -1;
 		objects_Player.selected_player.follow_path(path);
 		this.can_move = false;
+		this.move_indicators.get_graphics().clear();
+		ui_Gear.active_gear.move_card.set_expended(true);
 	}
-	,get_traversal_map: function() {
+	,get_traversal_map: function(ignore) {
 		var out = this.tiles.get_solids_array();
 		var _g = 0;
 		var _g1 = this.object_map.length;
@@ -76133,19 +76137,30 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 				}
 			}
 		}
+		if(ignore != null) {
+			out[ignore[1]][ignore[0]] = 0;
+		}
 		return out;
 	}
 	,clear_indicators: function() {
 		this.indicators.get_graphics().clear();
+		this.move_indicators.set_visible(true);
 	}
 	,draw_indicators: function(gear_card) {
 		this.indicators.get_graphics().clear();
+		this.move_indicators.set_visible(false);
 		var player = gear_card.gear.player;
-		var range = gear_card.gear_data.range;
+		var range_min = gear_card.gear_data.range.min;
+		var range_max = gear_card.gear_data.range.max;
+		var range_type = gear_card.gear_data.range.type;
 		if(gear_card.gear_data.bonus.type == "DOUBLE_RANGE" && gear_card.vefify_bonus()) {
-			range.max *= 2;
+			range_max *= 2;
 		}
-		var tiles = this.get_available_tiles_array(zero_utilities__$IntPoint_IntPoint_$Impl_$.from_array_int([Math.floor(player.get_x() / 16),Math.floor(player.get_y() / 16)]),range.min,range.max);
+		if(range_type == "DIAGONAL") {
+			range_min *= 2;
+			range_max *= 2;
+		}
+		var tiles = this.get_available_tiles_array(zero_utilities__$IntPoint_IntPoint_$Impl_$.from_array_int([Math.floor(player.get_x() / 16),Math.floor(player.get_y() / 16)]),range_min,range_max,range_type);
 		var color;
 		switch(gear_card.gear_data.effect.type) {
 		case "DAMAGE":
@@ -76203,9 +76218,9 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 			sprite1.get_graphics().lineStyle();
 		}
 	}
-	,get_available_tiles_array: function(origin,min_range,max_range,restrictions) {
-		if(restrictions == null) {
-			restrictions = "NONE";
+	,get_available_tiles_array: function(origin,min_range,max_range,restriction) {
+		if(restriction == null) {
+			restriction = "NONE";
 		}
 		var solids = this.tiles;
 		var _g = [];
@@ -76216,7 +76231,7 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 		}
 		var solids1 = solids.get_solids_array(_g);
 		var not_availables = this.tiles.get_solids_array();
-		var map = zero_extensions_ArrayExt.heat_map(solids1,origin[0],origin[1],max_range);
+		var map = zero_extensions_ArrayExt.heat_map(solids1,origin[0],origin[1],max_range + 1);
 		var out = [];
 		var _g2 = 0;
 		var _g3 = map.length;
@@ -76227,7 +76242,7 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 			while(_g21 < _g31) {
 				var i1 = _g21++;
 				if(map[j][i1] > 0) {
-					if(map[j][i1] > max_range - min_range) {
+					if(map[j][i1] > max_range + 1 - min_range) {
 						map[j][i1] = 0;
 					} else if(not_availables[j][i1] != 0) {
 						map[j][i1] = 0;
@@ -76240,8 +76255,124 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 				}
 			}
 		}
+		this.apply_restriction(origin,out,restriction);
 		this.available_tiles = out;
 		return out;
+	}
+	,draw_move_indicators: function(move_card) {
+		this.move_indicators.get_graphics().clear();
+		var player = move_card.gear.player;
+		var range = move_card.get_moves_value();
+		if(range == 0) {
+			return;
+		}
+		var tiles = this.get_walkable_tiles_array(zero_utilities__$IntPoint_IntPoint_$Impl_$.from_array_int([Math.floor(player.get_x() / 16),Math.floor(player.get_y() / 16)]),range);
+		var color = zero_utilities__$Color_Color_$Impl_$.PICO_8_BLUE;
+		var color_fill = zero_utilities__$Vec4_Vec4_$Impl_$.get(color[0],color[1],color[2],color[3]);
+		color_fill[3] = Math.min(Math.max(0.25,0),1);
+		var _g = 0;
+		while(_g < tiles.length) {
+			var tile = tiles[_g];
+			++_g;
+			var sprite = this.move_indicators;
+			var x = tile[0] * 16 + 2;
+			var y = tile[1] * 16 + 2;
+			var radius = 2;
+			if(radius == null) {
+				radius = 0;
+			}
+			sprite.get_graphics().beginFill((Math.round(color_fill[0] * 255) & 255) << 16 | (Math.round(color_fill[1] * 255) & 255) << 8 | Math.round(color_fill[2] * 255) & 255,color_fill[3]);
+			if(radius == 0) {
+				sprite.get_graphics().drawRect(x,y,12,12);
+			} else {
+				sprite.get_graphics().drawRoundRect(x,y,12,12,radius);
+			}
+			sprite.get_graphics().endFill();
+			var sprite1 = sprite;
+			var x1 = tile[0] * 16 + 2;
+			var y1 = tile[1] * 16 + 2;
+			var radius1 = 2;
+			var line_width = 1;
+			if(line_width == null) {
+				line_width = 1;
+			}
+			if(radius1 == null) {
+				radius1 = 0;
+			}
+			sprite1.get_graphics().lineStyle(line_width,(Math.round(color[0] * 255) & 255) << 16 | (Math.round(color[1] * 255) & 255) << 8 | Math.round(color[2] * 255) & 255,color[3]);
+			if(radius1 == 0) {
+				sprite1.get_graphics().drawRect(x1,y1,12,12);
+			} else {
+				sprite1.get_graphics().drawRoundRect(x1,y1,12,12,radius1);
+			}
+			sprite1.get_graphics().lineStyle();
+		}
+	}
+	,get_walkable_tiles_array: function(origin,range,restriction) {
+		if(restriction == null) {
+			restriction = "NONE";
+		}
+		haxe_Log.trace("x: " + origin[0] + " | y: " + origin[1],{ fileName : "src/scenes/Level.hx", lineNumber : 216, className : "scenes.Level", methodName : "get_walkable_tiles_array"});
+		var solids = this.get_traversal_map(origin);
+		haxe_Log.trace(solids,{ fileName : "src/scenes/Level.hx", lineNumber : 218, className : "scenes.Level", methodName : "get_walkable_tiles_array"});
+		var map = zero_extensions_ArrayExt.heat_map(solids,origin[0],origin[1],range + 1);
+		var out = [];
+		var _g = 0;
+		var _g1 = map.length;
+		while(_g < _g1) {
+			var j = _g++;
+			var _g2 = 0;
+			var _g11 = map[j].length;
+			while(_g2 < _g11) {
+				var i = _g2++;
+				if(map[j][i] > 0 && map[j][i] <= range) {
+					out.push(zero_utilities__$IntPoint_IntPoint_$Impl_$.from_array_int([i,j]));
+				}
+			}
+		}
+		this.apply_restriction(origin,out,restriction);
+		return out;
+	}
+	,apply_restriction: function(origin,arr,restriction) {
+		switch(restriction) {
+		case "DIAGONAL":
+			var remove = [];
+			var _g = 0;
+			while(_g < arr.length) {
+				var p = arr[_g];
+				++_g;
+				if(Math.abs(p[0] - origin[0]) != Math.abs(p[1] - origin[1])) {
+					remove.push(p);
+				}
+			}
+			var _g1 = 0;
+			while(_g1 < remove.length) {
+				var p1 = remove[_g1];
+				++_g1;
+				HxOverrides.remove(arr,p1);
+			}
+			break;
+		case "NONE":
+			return arr;
+		case "ORTHOGONAL":
+			var remove1 = [];
+			var _g2 = 0;
+			while(_g2 < arr.length) {
+				var p2 = arr[_g2];
+				++_g2;
+				if(p2[0] != origin[0] && p2[1] != origin[1]) {
+					remove1.push(p2);
+				}
+			}
+			var _g11 = 0;
+			while(_g11 < remove1.length) {
+				var p3 = remove1[_g11];
+				++_g11;
+				HxOverrides.remove(arr,p3);
+			}
+			break;
+		}
+		return arr;
 	}
 	,__class__: scenes_Level
 });
@@ -76558,7 +76689,7 @@ var ui_Gear = function(player,side) {
 	this.side = side;
 	this.addChild(this.link = new ui_LinkGraphic(openfl_utils_Assets.getBitmapData("images/ui/action_arrow_white.png")));
 	this.addChild(this.gear = new openfl_display_Sprite());
-	var sprite = new ui_MoveCard({ requirement : "MIN_CARD", requirement_value : 3, type : ui_MoveType.FREE, factor : ui_MoveFactor.VALUE});
+	var sprite = new ui_MoveCard({ requirement : "MAX_CARD", requirement_value : 5, type : ui_MoveType.FREE, factor : ui_MoveFactor.VALUE},this);
 	sprite.set_x(side == objects_PlayerSide.LEFT ? -72 : zero_openfl_utilities_Game.get_width() + 72);
 	sprite.set_y(298);
 	this.addChild(this.move_card = sprite);
@@ -77525,8 +77656,9 @@ ui_LinkGraphic.prototype = $extend(openfl_display_Sprite.prototype,{
 	}
 	,__class__: ui_LinkGraphic
 });
-var ui_MoveCard = function(data) {
+var ui_MoveCard = function(data,gear) {
 	ui_DropCard.call(this);
+	this.gear = gear;
 	this.data = { requirement : data.requirement, requirement_value : data.requirement_value};
 	this.move_data = data;
 	this.make_graphic();
@@ -77539,6 +77671,7 @@ ui_MoveCard.__super__ = ui_DropCard;
 ui_MoveCard.prototype = $extend(ui_DropCard.prototype,{
 	req_text: null
 	,move_data: null
+	,gear: null
 	,make_graphic: function() {
 		var color = zero_utilities__$Color_Color_$Impl_$.BLACK;
 		var radius = 16;
@@ -77702,8 +77835,15 @@ ui_MoveCard.prototype = $extend(ui_DropCard.prototype,{
 		ui_DropCard.prototype.add_card.call(this,card);
 		this.set_moves();
 	}
+	,remove_card: function(card) {
+		ui_DropCard.prototype.remove_card.call(this,card);
+		scenes_Level.i.move_indicators.get_graphics().clear();
+	}
 	,set_moves: function() {
-		haxe_Log.trace(this.get_moves_value(),{ fileName : "src/ui/MoveCard.hx", lineNumber : 66, className : "ui.MoveCard", methodName : "set_moves"});
+		if(this.expended) {
+			return;
+		}
+		scenes_Level.i.draw_move_indicators(this);
 	}
 	,get_moves_value: function() {
 		if(this.cards.length == 0) {

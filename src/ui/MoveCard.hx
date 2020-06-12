@@ -1,5 +1,6 @@
 package ui;
 
+import scenes.Level;
 import openfl.text.TextField;
 import ui.DropCard.DropCardData;
 import openfl.display.Sprite;
@@ -14,10 +15,12 @@ using Math;
 class MoveCard extends DropCard {
 
 	var req_text:TextField;
-	var move_data:MoveData;
+	public var move_data:MoveData;
+	public var gear:Gear;
 	
-	public function new(data:MoveData) {
+	public function new(data:MoveData, gear:Gear) {
 		super();
+		this.gear = gear;
 		this.data = {
 			requirement: data.requirement,
 			requirement_value: data.requirement_value
@@ -62,8 +65,14 @@ class MoveCard extends DropCard {
 		set_moves();
 	}
 
+	override function remove_card(card:PlayingCard) {
+		super.remove_card(card);
+		Level.i.move_indicators.graphics.clear();
+	}
+
 	public function set_moves() {
-		trace(get_moves_value());
+		if (expended) return;
+		Level.i.draw_move_indicators(this);
 	}
 
 	public function get_moves_value():Int {
