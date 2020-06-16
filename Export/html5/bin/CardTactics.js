@@ -894,9 +894,9 @@ ApplicationMain.create = function(config) {
 	ManifestResources.init(config);
 	var _this = app.meta;
 	if(__map_reserved["build"] != null) {
-		_this.setReserved("build","20");
+		_this.setReserved("build","22");
 	} else {
-		_this.h["build"] = "20";
+		_this.h["build"] = "22";
 	}
 	var _this1 = app.meta;
 	if(__map_reserved["company"] != null) {
@@ -4619,6 +4619,7 @@ var Main = function() {
 	this.stage.set_color(0);
 	util_GearUtil.init();
 	new zero_openfl_utilities_Game(this,scenes_Level);
+	zero_openfl_utilities_Keys.init();
 	this.stage.addEventListener("enterFrame",util_UpdateManager.update);
 };
 $hxClasses["Main"] = Main;
@@ -4814,7 +4815,7 @@ ManifestResources.init = function(config) {
 	}
 	openfl_text_Font.registerFont(_$_$ASSET_$_$OPENFL_$_$fonts_$oduda_$ttf);
 	var bundle;
-	var data = "{\"name\":null,\"assets\":\"aoy4:pathy18:images%2Fblank.pngy4:sizei123y4:typey5:IMAGEy2:idR1y7:preloadtgoR0y29:images%2Fparticles%2Fpoof.pngR2i452R3R4R5R7R6tgoR0y20:images%2Fplayers.pngR2i1824R3R4R5R8R6tgoR0y18:images%2Ftiles.pngR2i14787R3R4R5R9R6tgoR0y35:images%2Fui%2Faction_arrow_blue.pngR2i473R3R4R5R10R6tgoR0y36:images%2Fui%2Faction_arrow_green.pngR2i489R3R4R5R11R6tgoR0y34:images%2Fui%2Faction_arrow_red.pngR2i470R3R4R5R12R6tgoR0y36:images%2Fui%2Faction_arrow_white.pngR2i307R3R4R5R13R6tgoR0y25:images%2Fui%2Faim_cta.pngR2i1862R3R4R5R14R6tgoR0y24:images%2Fui%2Fap_pip.pngR2i270R3R4R5R15R6tgoR0y25:images%2Fui%2Fap_pips.pngR2i467R3R4R5R16R6tgoR0y28:images%2Fui%2Fap_pip_big.pngR2i370R3R4R5R17R6tgoR0y24:images%2Fui%2Fdo_cta.pngR2i1723R3R4R5R18R6tgoR0y36:images%2Fui%2Ficons%2Ficon_skull.pngR2i2850R3R4R5R19R6tgoR0y35:images%2Fui%2Ficons%2Fmove_free.pngR2i2776R3R4R5R20R6tgoR0y35:images%2Fui%2Ficons%2Fmove_rook.pngR2i3371R3R4R5R21R6tgoR0y39:images%2Fui%2Ficons%2Fmove_teleport.pngR2i3093R3R4R5R22R6tgoR0y51:images%2Fui%2Ficons%2Fon_white%2Ficon_electrify.pngR2i1737R3R4R5R23R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_explode.pngR2i2333R3R4R5R24R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_flame.pngR2i2026R3R4R5R25R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_health.pngR2i1796R3R4R5R26R6tgoR0y46:images%2Fui%2Ficons%2Fon_white%2Ficon_move.pngR2i1973R3R4R5R27R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_pierce.pngR2i1943R3R4R5R28R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_shield.pngR2i1973R3R4R5R29R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_utility.pngR2i1803R3R4R5R30R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_water.pngR2i1906R3R4R5R31R6tgoR0y27:images%2Fui%2Frule_face.pngR2i8721R3R4R5R32R6tgoR0y32:images%2Fui%2Frule_two_cards.pngR2i5319R3R4R5R33R6tgoR0y27:images%2Fui%2Fsuit_club.pngR2i4182R3R4R5R34R6tgoR0y30:images%2Fui%2Fsuit_diamond.pngR2i2985R3R4R5R35R6tgoR0y28:images%2Fui%2Fsuit_heart.pngR2i2540R3R4R5R36R6tgoR0y28:images%2Fui%2Fsuit_spade.pngR2i3507R3R4R5R37R6tgoR0y17:data%2Fgear.jsoncR2i1350R3y4:TEXTR5R38R6tgoR0y22:data%2Fmaps%2F000.jsonR2i1922R3R39R5R40R6tgoR0y23:data%2Fmaps%2Fmaps.ogmoR2i19048R3R39R5R41R6tgoR2i19636R3y4:FONTy9:classNamey24:__ASSET__fonts_oduda_ttfR5y17:fonts%2Foduda.ttfR6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
+	var data = "{\"name\":null,\"assets\":\"aoy4:pathy18:images%2Fblank.pngy4:sizei123y4:typey5:IMAGEy2:idR1y7:preloadtgoR0y29:images%2Fparticles%2Fpoof.pngR2i452R3R4R5R7R6tgoR0y20:images%2Fplayers.pngR2i1824R3R4R5R8R6tgoR0y18:images%2Ftiles.pngR2i14787R3R4R5R9R6tgoR0y35:images%2Fui%2Faction_arrow_blue.pngR2i473R3R4R5R10R6tgoR0y36:images%2Fui%2Faction_arrow_green.pngR2i489R3R4R5R11R6tgoR0y34:images%2Fui%2Faction_arrow_red.pngR2i470R3R4R5R12R6tgoR0y36:images%2Fui%2Faction_arrow_white.pngR2i307R3R4R5R13R6tgoR0y25:images%2Fui%2Faim_cta.pngR2i1862R3R4R5R14R6tgoR0y24:images%2Fui%2Fap_pip.pngR2i270R3R4R5R15R6tgoR0y25:images%2Fui%2Fap_pips.pngR2i467R3R4R5R16R6tgoR0y28:images%2Fui%2Fap_pip_big.pngR2i370R3R4R5R17R6tgoR0y24:images%2Fui%2Fdo_cta.pngR2i1723R3R4R5R18R6tgoR0y36:images%2Fui%2Ficons%2Ficon_skull.pngR2i2850R3R4R5R19R6tgoR0y35:images%2Fui%2Ficons%2Fmove_free.pngR2i2776R3R4R5R20R6tgoR0y35:images%2Fui%2Ficons%2Fmove_rook.pngR2i3371R3R4R5R21R6tgoR0y39:images%2Fui%2Ficons%2Fmove_teleport.pngR2i3093R3R4R5R22R6tgoR0y51:images%2Fui%2Ficons%2Fon_white%2Ficon_electrify.pngR2i1737R3R4R5R23R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_explode.pngR2i2333R3R4R5R24R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_flame.pngR2i2026R3R4R5R25R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_health.pngR2i1796R3R4R5R26R6tgoR0y46:images%2Fui%2Ficons%2Fon_white%2Ficon_move.pngR2i1973R3R4R5R27R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_pierce.pngR2i1943R3R4R5R28R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_shield.pngR2i2051R3R4R5R29R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_utility.pngR2i1803R3R4R5R30R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_water.pngR2i1906R3R4R5R31R6tgoR0y29:images%2Fui%2Fmutant_card.pngR2i117869R3R4R5R32R6tgoR0y27:images%2Fui%2Frule_face.pngR2i8721R3R4R5R33R6tgoR0y32:images%2Fui%2Frule_two_cards.pngR2i5319R3R4R5R34R6tgoR0y29:images%2Fui%2Fshield_icon.pngR2i815R3R4R5R35R6tgoR0y27:images%2Fui%2Fsuit_club.pngR2i4182R3R4R5R36R6tgoR0y30:images%2Fui%2Fsuit_diamond.pngR2i2985R3R4R5R37R6tgoR0y28:images%2Fui%2Fsuit_heart.pngR2i2540R3R4R5R38R6tgoR0y28:images%2Fui%2Fsuit_spade.pngR2i3507R3R4R5R39R6tgoR0y17:data%2Fgear.jsoncR2i1350R3y4:TEXTR5R40R6tgoR0y22:data%2Fmaps%2F000.jsonR2i1922R3R41R5R42R6tgoR0y23:data%2Fmaps%2Fmaps.ogmoR2i19048R3R41R5R43R6tgoR2i19636R3y4:FONTy9:classNamey24:__ASSET__fonts_oduda_ttfR5y17:fonts%2Foduda.ttfR6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
 	var manifest = lime_utils_AssetManifest.parse(data,ManifestResources.rootPath);
 	var library = lime_utils_AssetLibrary.fromManifest(manifest);
 	lime_utils_Assets.registerLibrary("default",library);
@@ -25115,7 +25116,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 220651;
+	this.version = 664951;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
@@ -27767,6 +27768,7 @@ lime_utils__$UInt8ClampedArray_UInt8ClampedArray_$Impl_$._clamp = function(_in) 
 	}
 };
 var objects_GameObject = function(x,y,health,title) {
+	this.shield = 0;
 	var _gthis = this;
 	this.health = health;
 	this.title = title;
@@ -27793,6 +27795,7 @@ objects_GameObject.__name__ = "objects.GameObject";
 objects_GameObject.__super__ = openfl_display_Sprite;
 objects_GameObject.prototype = $extend(openfl_display_Sprite.prototype,{
 	health: null
+	,shield: null
 	,title: null
 	,get_grid_pos: function() {
 		return zero_utilities__$IntPoint_IntPoint_$Impl_$.from_array_int([Math.floor(this.get_x() / 16),Math.floor(this.get_y() / 16)]);
@@ -27830,6 +27833,14 @@ objects_GameObject.prototype = $extend(openfl_display_Sprite.prototype,{
 		return true;
 	}
 	,change_health: function(delta) {
+		if(delta < 0) {
+			scenes_Level.i.dolly.shake();
+		}
+		if(delta < 0 && this.shield != 0) {
+			var shield_amt = this.shield;
+			this.set_shield(Math.floor(Math.max(this.shield + delta,0)));
+			delta += shield_amt;
+		}
 		this.health.current += delta;
 		if(this.health.current <= 0) {
 			this.kill();
@@ -27844,8 +27855,11 @@ objects_GameObject.prototype = $extend(openfl_display_Sprite.prototype,{
 	,pulse: function() {
 		zero_utilities_Tween.get(this).from_to("scaleX",1.5,1).from_to("scaleY",0.5,1).ease(zero_utilities_Ease.elasticOut).duration(0.5);
 	}
+	,set_shield: function(amt) {
+		return this.shield = amt;
+	}
 	,__class__: objects_GameObject
-	,__properties__: $extend(openfl_display_Sprite.prototype.__properties__,{get_grid_pos:"get_grid_pos"})
+	,__properties__: $extend(openfl_display_Sprite.prototype.__properties__,{get_grid_pos:"get_grid_pos",set_shield:"set_shield"})
 });
 var objects_Actor = function(data,x,y) {
 	objects_GameObject.call(this,x,y,data.health,data.id);
@@ -27860,6 +27874,201 @@ objects_Actor.prototype = $extend(objects_GameObject.prototype,{
 var objects_ActorMovement = $hxEnums["objects.ActorMovement"] = { __ename__ : "objects.ActorMovement", __constructs__ : []
 };
 objects_ActorMovement.__empty_constructs__ = [];
+var zero_openfl_utilities_Dolly = function() {
+	this.offset_amt = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([96,64]);
+	this.offset = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([0,0]);
+	this.position = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([0,0]);
+	openfl_display_Sprite.call(this);
+};
+$hxClasses["zero.openfl.utilities.Dolly"] = zero_openfl_utilities_Dolly;
+zero_openfl_utilities_Dolly.__name__ = "zero.openfl.utilities.Dolly";
+zero_openfl_utilities_Dolly.__super__ = openfl_display_Sprite;
+zero_openfl_utilities_Dolly.prototype = $extend(openfl_display_Sprite.prototype,{
+	target: null
+	,tilemap: null
+	,position: null
+	,offset: null
+	,offset_amt: null
+	,follow: function(target,snap,tilemap) {
+		if(snap == null) {
+			snap = true;
+		}
+		this.target = target;
+		this.tilemap = tilemap;
+		if(snap) {
+			var this1 = this.position;
+			var x = -target.get_x() + zero_openfl_utilities_Game.get_width() / zero_openfl_utilities_Game.i.scene.get_zoom() / 2;
+			var y = -target.get_y() + zero_openfl_utilities_Game.get_height() / zero_openfl_utilities_Game.i.scene.get_zoom() / 2;
+			if(y == null) {
+				y = 0;
+			}
+			if(x == null) {
+				x = 0;
+			}
+			this1[0] = zero_utilities__$Vec2_Vec2_$Impl_$.zero(x);
+			this1[1] = zero_utilities__$Vec2_Vec2_$Impl_$.zero(y);
+			this.set_x(this.position[0]);
+			this.set_y(this.position[1]);
+		}
+	}
+	,update: function(dt) {
+		if(this.target == null) {
+			return;
+		}
+		var zoomX = this.get_scaleX();
+		var zoomY = this.get_scaleY();
+		var p = this.parent;
+		while(p != null) {
+			zoomX *= p.get_scaleX();
+			zoomY *= p.get_scaleY();
+			p = p.parent;
+		}
+		var this1 = this.position;
+		var x = -this.target.get_x() * zoomX + zero_openfl_utilities_Game.get_width() / 2;
+		var y = -this.target.get_y() * zoomY + zero_openfl_utilities_Game.get_height() / 2;
+		if(y == null) {
+			y = 0;
+		}
+		if(x == null) {
+			x = 0;
+		}
+		this1[0] = zero_utilities__$Vec2_Vec2_$Impl_$.zero(x);
+		this1[1] = zero_utilities__$Vec2_Vec2_$Impl_$.zero(y);
+		this.offset[0] += (-zero_openfl_utilities_Controller.get_axis(2) * this.offset_amt[0] - this.offset[0]) * 0.1;
+		this.offset[1] += (-zero_openfl_utilities_Controller.get_axis(3) * this.offset_amt[1] - this.offset[1]) * 0.1;
+		var _g = this;
+		_g.set_x(_g.get_x() + (this.position[0] + this.offset[0] - this.get_x()) * 0.1);
+		var _g1 = this;
+		_g1.set_y(_g1.get_y() + (this.position[1] + this.offset[1] - this.get_y()) * 0.1);
+		this.set_x(Math.floor(this.get_x()));
+		this.set_y(Math.floor(this.get_y()));
+	}
+	,__class__: zero_openfl_utilities_Dolly
+});
+var objects_Dolly = function() {
+	this.delta = 0.0;
+	this.spring_helper = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([0,0]);
+	this.spring_offset = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([0,0]);
+	this.following = true;
+	zero_openfl_utilities_Dolly.call(this);
+};
+$hxClasses["objects.Dolly"] = objects_Dolly;
+objects_Dolly.__name__ = "objects.Dolly";
+objects_Dolly.__super__ = zero_openfl_utilities_Dolly;
+objects_Dolly.prototype = $extend(zero_openfl_utilities_Dolly.prototype,{
+	following: null
+	,spring_offset: null
+	,spring_helper: null
+	,follow_object: function(target,snap,tilemap) {
+		if(snap == null) {
+			snap = true;
+		}
+		this.following = true;
+		this.follow(target,snap,tilemap);
+	}
+	,update: function(dt) {
+		var _g = this;
+		_g.set_x(_g.get_x() + this.spring_offset[0]);
+		var _g1 = this;
+		_g1.set_y(_g1.get_y() + this.spring_offset[1]);
+		var min = 0.1;
+		var max = null;
+		if(min == null) {
+			min = 0;
+		}
+		this.spring_helper[0] += ((0 - this.spring_offset[0]) * 0.5 - this.spring_helper[0]) * (min + Math.random() * ((max == null ? 0.3 : max) - min));
+		var min1 = 0.1;
+		var max1 = null;
+		if(min1 == null) {
+			min1 = 0;
+		}
+		this.spring_helper[1] += ((0 - this.spring_offset[1]) * 0.5 - this.spring_helper[1]) * (min1 + Math.random() * ((max1 == null ? 0.3 : max1) - min1));
+		this.spring_offset = zero_utilities__$Vec2_Vec2_$Impl_$.add(this.spring_offset,this.spring_helper);
+		if(this.check_keys()) {
+			return;
+		}
+		if(this.target == null || !this.following) {
+			return;
+		}
+		var zoomX = this.get_scaleX();
+		var zoomY = this.get_scaleY();
+		var p = this.parent;
+		while(p != null) {
+			zoomX *= p.get_scaleX();
+			zoomY *= p.get_scaleY();
+			p = p.parent;
+		}
+		var this1 = this.position;
+		var x = -this.target.get_x() * zoomX + zero_openfl_utilities_Game.get_width() / 2;
+		var y = -this.target.get_y() * zoomY + zero_openfl_utilities_Game.get_height() / 2;
+		if(y == null) {
+			y = 0;
+		}
+		if(x == null) {
+			x = 0;
+		}
+		this1[0] = zero_utilities__$Vec2_Vec2_$Impl_$.zero(x);
+		this1[1] = zero_utilities__$Vec2_Vec2_$Impl_$.zero(y);
+		var _g2 = this;
+		_g2.set_x(_g2.get_x() + (this.position[0] + this.offset[0] - this.get_x()) * 0.1);
+		var _g3 = this;
+		_g3.set_y(_g3.get_y() + (this.position[1] + this.offset[1] - this.get_y()) * 0.1);
+		this.set_x(Math.floor(this.get_x()));
+		this.set_y(Math.floor(this.get_y()));
+	}
+	,delta: null
+	,check_keys: function() {
+		var dx = 0;
+		var dy = 0;
+		if(zero_openfl_utilities_Keys.pressed(87)) {
+			++dy;
+		}
+		if(zero_openfl_utilities_Keys.pressed(83)) {
+			--dy;
+		}
+		if(zero_openfl_utilities_Keys.pressed(65)) {
+			++dx;
+		}
+		if(zero_openfl_utilities_Keys.pressed(68)) {
+			--dx;
+		}
+		var _g = this;
+		_g.set_x(_g.get_x() + dx * this.delta);
+		var _g1 = this;
+		_g1.set_y(_g1.get_y() + dy * this.delta);
+		var out = dx != 0 || dy != 0;
+		if(!out) {
+			this.delta = 0;
+		} else {
+			this.delta += (16 - this.delta) * 0.1;
+			this.following = false;
+		}
+		return out;
+	}
+	,shake: function(amt) {
+		if(amt == null) {
+			amt = 5;
+		}
+		var p = zero_utilities__$Vec2_Vec2_$Impl_$.get(0,amt);
+		var v = 360 * Math.random();
+		v *= Math.PI / 180;
+		var len = Math.sqrt(p[0] * p[0] + p[1] * p[1]);
+		var x = len * Math.cos(v);
+		var y = len * Math.sin(v);
+		if(y == null) {
+			y = 0;
+		}
+		if(x == null) {
+			x = 0;
+		}
+		p[0] = zero_utilities__$Vec2_Vec2_$Impl_$.zero(x);
+		p[1] = zero_utilities__$Vec2_Vec2_$Impl_$.zero(y);
+		this.spring_offset = zero_utilities__$Vec2_Vec2_$Impl_$.add(this.spring_offset,p);
+		zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(p);
+		p = null;
+	}
+	,__class__: objects_Dolly
+});
 var objects_Player = function(x,y,options) {
 	this.AP = 10;
 	var _gthis = this;
@@ -27871,7 +28080,7 @@ var objects_Player = function(x,y,options) {
 		return;
 	});
 	scenes_Level.i.objects.addChild(this);
-	scenes_Level.i.dolly.follow(this,true);
+	scenes_Level.i.dolly.follow_object(this,true);
 	scenes_Level.i.object_map[y][x] = -1;
 	this.init_graphic();
 	this.gear = new ui_Gear(this,options.side);
@@ -27889,7 +28098,7 @@ objects_Player.__name__ = "objects.Player";
 objects_Player.__properties__ = {set_selected_player:"set_selected_player"};
 objects_Player.set_selected_player = function(player) {
 	ui_Gear.set_active_gear(player.gear);
-	scenes_Level.i.dolly.follow(player,false);
+	scenes_Level.i.dolly.follow_object(player,false);
 	player.pulse();
 	player.gear.move_card.set_moves();
 	return objects_Player.selected_player = player;
@@ -27911,6 +28120,12 @@ objects_Player.prototype = $extend(objects_Actor.prototype,{
 	}
 	,health_callback: function() {
 		this.gear.player_info.update_health();
+	}
+	,set_shield: function(amt) {
+		objects_Actor.prototype.set_shield.call(this,amt);
+		this.gear.player_info.update_shield();
+		haxe_Log.trace(this.shield,{ fileName : "src/objects/Player.hx", lineNumber : 70, className : "objects.Player", methodName : "set_shield"});
+		return this.shield;
 	}
 	,__class__: objects_Player
 	,__properties__: $extend(objects_Actor.prototype.__properties__,{set_AP:"set_AP"})
@@ -76046,11 +76261,12 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 		this.deck.deal();
 		this.addChild(this.info_layer = new ui_InfoLayer());
 		var player = new objects_Player(2,9,{ data : { id : "Test Player", health : { current : 48, max : 64}, movement : { requirement : "MAX_CARD", requirement_value : 5, type : ui_MoveType.FREE, factor : ui_MoveFactor.VALUE}, gear : ["test_d_01","test_h_01"]}, side : objects_PlayerSide.LEFT});
-		new objects_Player(6,8,{ data : { id : "Test Player", health : { current : 64, max : 64}, movement : { requirement : "MAX_CARD", requirement_value : 5, type : ui_MoveType.FREE, factor : ui_MoveFactor.VALUE}, gear : ["test_u_01","test_h_01"]}, side : objects_PlayerSide.RIGHT});
+		var player2 = new objects_Player(6,8,{ data : { id : "Test Player", health : { current : 64, max : 64}, movement : { requirement : "MAX_CARD", requirement_value : 5, type : ui_MoveType.FREE, factor : ui_MoveFactor.VALUE}, gear : ["test_u_01","test_h_01"]}, side : objects_PlayerSide.RIGHT});
 		objects_Player.set_selected_player(player);
+		player2.set_shield(4);
 	}
 	,init_dolly: function() {
-		this.addChild(this.dolly = new zero_openfl_utilities_Dolly());
+		this.addChild(this.dolly = new objects_Dolly());
 		this.dolly.addChild(this.level = new openfl_display_Sprite());
 		this.dolly.addChild(this.indicators = new openfl_display_Sprite());
 		this.dolly.addChild(this.move_indicators = new openfl_display_Sprite());
@@ -76069,6 +76285,15 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 		sprite.set_scaleX(x);
 		sprite.set_scaleY(y);
 		this.move_indicators.addEventListener("click",$bind(this,this.on_click));
+		this.level.addEventListener("mouseDown",$bind(this,this.level_mouse_down));
+		zero_openfl_utilities_Game.root.stage.addEventListener("mouseUp",$bind(this,this.level_mouse_up));
+	}
+	,level_mouse_down: function(e) {
+		this.dolly.startDrag(false);
+		this.dolly.following = false;
+	}
+	,level_mouse_up: function(e) {
+		this.dolly.stopDrag();
 	}
 	,draw_map: function(src) {
 		var level_data = zero_utilities_OgmoUtils.parse_level_json(openfl_utils_Assets.getText("data/maps/" + src + ".json"));
@@ -76312,9 +76537,9 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 		if(restriction == null) {
 			restriction = "NONE";
 		}
-		haxe_Log.trace("x: " + origin[0] + " | y: " + origin[1],{ fileName : "src/scenes/Level.hx", lineNumber : 216, className : "scenes.Level", methodName : "get_walkable_tiles_array"});
+		haxe_Log.trace("x: " + origin[0] + " | y: " + origin[1],{ fileName : "src/scenes/Level.hx", lineNumber : 231, className : "scenes.Level", methodName : "get_walkable_tiles_array"});
 		var solids = this.get_traversal_map(origin);
-		haxe_Log.trace(solids,{ fileName : "src/scenes/Level.hx", lineNumber : 218, className : "scenes.Level", methodName : "get_walkable_tiles_array"});
+		haxe_Log.trace(solids,{ fileName : "src/scenes/Level.hx", lineNumber : 233, className : "scenes.Level", methodName : "get_walkable_tiles_array"});
 		var map = zero_extensions_ArrayExt.heat_map(solids,origin[0],origin[1],range + 1);
 		var out = [];
 		var _g = 0;
@@ -77942,7 +78167,8 @@ ui_ObjectInfo.prototype = $extend(openfl_display_Sprite.prototype,{
 		this.set_y(y);
 	}
 	,draw_target_info: function(target,gear) {
-		var cur_hp = target.health.current;
+		var cur_hp = target.health.current + target.shield;
+		var max_hp = target.health.max + target.shield;
 		var next_hp;
 		if(gear == null) {
 			next_hp = cur_hp;
@@ -77966,7 +78192,7 @@ ui_ObjectInfo.prototype = $extend(openfl_display_Sprite.prototype,{
 			}
 			next_hp = cur_hp + next_hp1;
 		}
-		next_hp = Math.floor(Math.max(Math.min(next_hp,target.health.max),0));
+		next_hp = Math.floor(Math.max(Math.min(next_hp,max_hp),0));
 		this.health_bar.get_graphics().clear();
 		var sprite = this.health_bar;
 		var color = zero_utilities__$Color_Color_$Impl_$.PICO_8_DARK_BLUE;
@@ -78002,7 +78228,7 @@ ui_ObjectInfo.prototype = $extend(openfl_display_Sprite.prototype,{
 			if(cur_hp > next_hp) {
 				var sprite2 = this.health_bar;
 				var color2 = zero_utilities__$Color_Color_$Impl_$.PICO_8_RED;
-				var width = Math.max(target.health.current / target.health.max * 92,8);
+				var width = Math.max(cur_hp / max_hp * 92,8);
 				var radius2 = 8;
 				if(radius2 == null) {
 					radius2 = 0;
@@ -78016,12 +78242,12 @@ ui_ObjectInfo.prototype = $extend(openfl_display_Sprite.prototype,{
 				sprite2.get_graphics().endFill();
 			}
 		}
-		var hp = "" + cur_hp + "hp";
+		var hp = target.shield == 0 ? "" + cur_hp : "" + target.health.current + "+" + target.shield;
 		switch(this.compare(cur_hp,next_hp)._hx_index) {
 		case 0:
 			var sprite3 = this.health_bar;
 			var color3 = zero_utilities__$Color_Color_$Impl_$.PICO_8_RED;
-			var width1 = Math.max(cur_hp / target.health.max * 92,8);
+			var width1 = Math.max(cur_hp / max_hp * 92,8);
 			var radius3 = 8;
 			if(radius3 == null) {
 				radius3 = 0;
@@ -78034,11 +78260,12 @@ ui_ObjectInfo.prototype = $extend(openfl_display_Sprite.prototype,{
 			}
 			sprite3.get_graphics().endFill();
 			this.hp_text.set_textColor(16777215);
+			hp += "hp";
 			break;
 		case 1:
 			var sprite4 = this.health_bar;
 			var color4 = zero_utilities__$Color_Color_$Impl_$.PICO_8_GREEN;
-			var width2 = Math.max(next_hp / target.health.max * 92,8);
+			var width2 = Math.max(next_hp / max_hp * 92,8);
 			var radius4 = 8;
 			if(radius4 == null) {
 				radius4 = 0;
@@ -78052,7 +78279,7 @@ ui_ObjectInfo.prototype = $extend(openfl_display_Sprite.prototype,{
 			sprite4.get_graphics().endFill();
 			var sprite5 = this.health_bar;
 			var color5 = zero_utilities__$Color_Color_$Impl_$.PICO_8_RED;
-			var width3 = Math.max(cur_hp / target.health.max * 92,8);
+			var width3 = Math.max(cur_hp / max_hp * 92,8);
 			var radius5 = 8;
 			if(radius5 == null) {
 				radius5 = 0;
@@ -78064,14 +78291,14 @@ ui_ObjectInfo.prototype = $extend(openfl_display_Sprite.prototype,{
 				sprite5.get_graphics().drawRoundRect(-46.,-4,width3,8,radius5);
 			}
 			sprite5.get_graphics().endFill();
-			hp = "" + cur_hp + "+" + (next_hp - cur_hp) + "hp";
+			hp += "+" + (next_hp - cur_hp) + "hp";
 			var this1 = zero_utilities__$Color_Color_$Impl_$.PICO_8_GREEN;
 			this.hp_text.set_textColor((Math.round(this1[0] * 255) & 255) << 16 | (Math.round(this1[1] * 255) & 255) << 8 | Math.round(this1[2] * 255) & 255);
 			break;
 		case 2:
 			var sprite6 = this.health_bar;
 			var color6 = zero_utilities__$Color_Color_$Impl_$.PICO_8_ORANGE;
-			var width4 = Math.max(cur_hp / target.health.max * 92,8);
+			var width4 = Math.max(cur_hp / max_hp * 92,8);
 			var radius6 = 8;
 			if(radius6 == null) {
 				radius6 = 0;
@@ -78086,7 +78313,7 @@ ui_ObjectInfo.prototype = $extend(openfl_display_Sprite.prototype,{
 			if(next_hp > 0) {
 				var sprite7 = this.health_bar;
 				var color7 = zero_utilities__$Color_Color_$Impl_$.PICO_8_RED;
-				var width5 = Math.max(next_hp / target.health.max * 92,8);
+				var width5 = Math.max(next_hp / max_hp * 92,8);
 				var radius7 = 8;
 				if(radius7 == null) {
 					radius7 = 0;
@@ -78099,7 +78326,7 @@ ui_ObjectInfo.prototype = $extend(openfl_display_Sprite.prototype,{
 				}
 				sprite7.get_graphics().endFill();
 			}
-			hp = "" + cur_hp + "-" + (cur_hp - next_hp) + "hp";
+			hp += "-" + (cur_hp - next_hp) + "hp";
 			var tmp;
 			if(next_hp > 0) {
 				var this11 = zero_utilities__$Color_Color_$Impl_$.PICO_8_ORANGE;
@@ -78141,6 +78368,7 @@ var ui_PlayerInfo = function(player,side) {
 	this.make_avatar();
 	this.make_ap_pts();
 	this.make_health();
+	this.make_shield();
 	this.set_x(side == objects_PlayerSide.LEFT ? 72 : zero_openfl_utilities_Game.get_width() - 72);
 	this.set_y(80);
 };
@@ -78152,9 +78380,11 @@ ui_PlayerInfo.prototype = $extend(openfl_display_Sprite.prototype,{
 	,avatar: null
 	,health: null
 	,ap_pts: null
+	,shield: null
 	,health_text: null
 	,health_text_sprite: null
 	,ap_pts_text: null
+	,shield_text: null
 	,make_avatar: function() {
 		this.avatar = new openfl_display_Sprite();
 		var sprite = this.avatar;
@@ -78207,6 +78437,33 @@ ui_PlayerInfo.prototype = $extend(openfl_display_Sprite.prototype,{
 		this.health_text_sprite.addChild(this.health_text);
 		this.health.addChild(this.health_text_sprite);
 		this.update_health();
+	}
+	,make_shield: function() {
+		var sprite = new openfl_display_Sprite();
+		sprite.set_x(28);
+		sprite.set_y(124);
+		var sprite1 = sprite;
+		var x = 0;
+		var y = null;
+		if(x == null) {
+			x = 0;
+		}
+		if(y == null) {
+			y = x;
+		}
+		sprite1.set_scaleX(x);
+		sprite1.set_scaleY(y);
+		this.shield = sprite1;
+		var shield_sprite = zero_openfl_extensions_SpriteTools.load_graphic(new openfl_display_Sprite(),"images/ui/shield_icon.png",zero_utilities_Anchor.MIDDLE_CENTER,true);
+		this.shield.addChild(shield_sprite);
+		var shield_text_sprite = new openfl_display_Sprite();
+		this.shield_text = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : "Oduda Bold", color : zero_utilities__$Color_Color_$Impl_$.BLACK, size : 14});
+		shield_text_sprite.addChild(this.shield_text);
+		var filter = new openfl_filters_ShaderFilter(new filters_OutlineShader());
+		filter.topExtension = filter.bottomExtension = filter.leftExtension = filter.rightExtension = 16;
+		this.health_text_sprite.set_filters([filter]);
+		this.addChild(this.shield);
+		this.shield.addChild(shield_text_sprite);
 	}
 	,update_ap_pts: function() {
 		zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(this.ap_pts_text,"" + this.player.AP),0,0,zero_utilities_Anchor.MIDDLE_CENTER);
@@ -78276,6 +78533,12 @@ ui_PlayerInfo.prototype = $extend(openfl_display_Sprite.prototype,{
 			min = 0;
 		}
 		tmp.from_to("rotation",min + Math.random() * ((max == null ? 45 : max) - min),0).ease(zero_utilities_Ease.elasticOut);
+	}
+	,update_shield: function() {
+		var from = this.shield.get_scaleX();
+		var to = this.player.shield == 0 ? 0 : 1;
+		zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(this.shield_text,"" + this.player.shield),0,-2,zero_utilities_Anchor.MIDDLE_CENTER);
+		zero_utilities_Tween.get(this.shield).from_to("scaleX",from,to).from_to("scaleY",from,to).duration(0.5).ease(zero_utilities_Ease.backOut);
 	}
 	,on_click: function(e) {
 		objects_Player.set_selected_player(this.player);
@@ -79455,8 +79718,8 @@ zero_openfl_extensions_SpriteTools.set_position = function(sprite,x,y) {
 zero_openfl_extensions_SpriteTools.distance = function(sprite1,sprite2) {
 	var p1 = zero_utilities__$Vec2_Vec2_$Impl_$.get(sprite1.get_x(),sprite1.get_y());
 	var p2 = zero_utilities__$Vec2_Vec2_$Impl_$.get(sprite2.get_x(),sprite2.get_y());
-	var this2 = zero_utilities__$Vec2_Vec2_$Impl_$.subtract(p2,zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float(p1));
-	var out = Math.sqrt(this2[0] * this2[0] + this2[1] * this2[1]);
+	var this1 = zero_utilities__$Vec2_Vec2_$Impl_$.subtract(p2,zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float(p1));
+	var out = Math.sqrt(this1[0] * this1[0] + this1[1] * this1[1]);
 	zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(p1);
 	p1 = null;
 	zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(p2);
@@ -79775,77 +80038,6 @@ zero_openfl_utilities_Controller.get_axis = function(id) {
 	}
 	return 0;
 };
-var zero_openfl_utilities_Dolly = function() {
-	this.offset_amt = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([96,64]);
-	this.offset = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([0,0]);
-	this.position = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([0,0]);
-	openfl_display_Sprite.call(this);
-};
-$hxClasses["zero.openfl.utilities.Dolly"] = zero_openfl_utilities_Dolly;
-zero_openfl_utilities_Dolly.__name__ = "zero.openfl.utilities.Dolly";
-zero_openfl_utilities_Dolly.__super__ = openfl_display_Sprite;
-zero_openfl_utilities_Dolly.prototype = $extend(openfl_display_Sprite.prototype,{
-	target: null
-	,tilemap: null
-	,position: null
-	,offset: null
-	,offset_amt: null
-	,follow: function(target,snap,tilemap) {
-		if(snap == null) {
-			snap = true;
-		}
-		this.target = target;
-		this.tilemap = tilemap;
-		if(snap) {
-			var this1 = this.position;
-			var x = -target.get_x() + zero_openfl_utilities_Game.get_width() / zero_openfl_utilities_Game.i.scene.get_zoom() / 2;
-			var y = -target.get_y() + zero_openfl_utilities_Game.get_height() / zero_openfl_utilities_Game.i.scene.get_zoom() / 2;
-			if(y == null) {
-				y = 0;
-			}
-			if(x == null) {
-				x = 0;
-			}
-			this1[0] = zero_utilities__$Vec2_Vec2_$Impl_$.zero(x);
-			this1[1] = zero_utilities__$Vec2_Vec2_$Impl_$.zero(y);
-			this.set_x(this.position[0]);
-			this.set_y(this.position[1]);
-		}
-	}
-	,update: function(dt) {
-		if(this.target == null) {
-			return;
-		}
-		var zoomX = this.get_scaleX();
-		var zoomY = this.get_scaleY();
-		var p = this.parent;
-		while(p != null) {
-			zoomX *= p.get_scaleX();
-			zoomY *= p.get_scaleY();
-			p = p.parent;
-		}
-		var this1 = this.position;
-		var x = -this.target.get_x() * zoomX + zero_openfl_utilities_Game.get_width() / 2;
-		var y = -this.target.get_y() * zoomY + zero_openfl_utilities_Game.get_height() / 2;
-		if(y == null) {
-			y = 0;
-		}
-		if(x == null) {
-			x = 0;
-		}
-		this1[0] = zero_utilities__$Vec2_Vec2_$Impl_$.zero(x);
-		this1[1] = zero_utilities__$Vec2_Vec2_$Impl_$.zero(y);
-		this.offset[0] += (-zero_openfl_utilities_Controller.get_axis(2) * this.offset_amt[0] - this.offset[0]) * 0.1;
-		this.offset[1] += (-zero_openfl_utilities_Controller.get_axis(3) * this.offset_amt[1] - this.offset[1]) * 0.1;
-		var _g = this;
-		_g.set_x(_g.get_x() + (this.position[0] + this.offset[0] - this.get_x()) * 0.1);
-		var _g1 = this;
-		_g1.set_y(_g1.get_y() + (this.position[1] + this.offset[1] - this.get_y()) * 0.1);
-		this.set_x(Math.floor(this.get_x()));
-		this.set_y(Math.floor(this.get_y()));
-	}
-	,__class__: zero_openfl_utilities_Dolly
-});
 var zero_openfl_utilities_FPS = function(inX,inY,inCol) {
 	if(inCol == null) {
 		inCol = 0;

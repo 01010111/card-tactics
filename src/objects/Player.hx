@@ -29,7 +29,7 @@ class Player extends Actor {
 		super(options.data, x, y);
 		addEventListener(MouseEvent.CLICK, (e) -> if (Level.i.can_move) selected_player = this);
 		Level.i.objects.add(this);
-		Level.i.dolly.follow(this, true);
+		Level.i.dolly.follow_object(this, true);
 		Level.i.object_map[y][x] = -1;
 
 		init_graphic();
@@ -54,7 +54,7 @@ class Player extends Actor {
 
 	static function set_selected_player(player:Player) {
 		Gear.active_gear = player.gear;
-		Level.i.dolly.follow(player, false);
+		Level.i.dolly.follow_object(player, false);
 		player.pulse();
 		player.gear.move_card.set_moves();
 		return selected_player = player;
@@ -62,6 +62,13 @@ class Player extends Actor {
 
 	override function health_callback() {
 		gear.player_info.update_health();
+	}
+
+	override function set_shield(amt:Int):Int {
+		super.set_shield(amt);
+		gear.player_info.update_shield();
+		trace(shield);
+		return shield;
 	}
 
 }

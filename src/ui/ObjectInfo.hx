@@ -46,7 +46,8 @@ class ObjectInfo extends Sprite {
 	}
 
 	function draw_target_info(target:GameObject, ?gear:GearCard) {
-		var cur_hp = target.health.current;
+		var cur_hp = target.health.current + target.shield;
+		var max_hp = target.health.max + target.shield;
 		var next_hp = gear == null ? cur_hp : cur_hp + switch gear.gear_data.effect.type {
 			default: 0;
 			case DAMAGE: -gear.get_effect_value();
@@ -54,7 +55,7 @@ class ObjectInfo extends Sprite {
 			case HEALTH: gear.get_effect_value();
 			case SHIELD: 0;
 		}
-		next_hp = next_hp.min(target.health.max).max(0).floor();
+		next_hp = next_hp.min(max_hp).max(0).floor();
 
 		health_bar.graphics.clear();
 		health_bar.fill_rect(Color.PICO_8_DARK_BLUE, -48, -6, 96, 12, 12);
@@ -62,24 +63,27 @@ class ObjectInfo extends Sprite {
 		if (cur_hp == next_hp) {
 		}
 		else if (cur_hp > next_hp) {
-			health_bar.fill_rect(Color.PICO_8_RED, -92/2, -4, (target.health.current/target.health.max * 92).max(8), 8, 8);
+			health_bar.fill_rect(Color.PICO_8_RED, -92/2, -4, (cur_hp/max_hp * 92).max(8), 8, 8);
 		}
 		
-		var hp = '${cur_hp}hp';
+		var hp = target.shield == 0 ? '${cur_hp}' : '${target.health.current}+${target.shield}';
 
 		switch compare(cur_hp, next_hp) {
 			case EQUAL_THAN:
-				health_bar.fill_rect(Color.PICO_8_RED, -92/2, -4, (cur_hp/target.health.max * 92).max(8), 8, 8);
+				health_bar.fill_rect(Color.PICO_8_RED, -92/2, -4, (cur_hp/max_hp * 92).max(8), 8, 8);
 				hp_text.textColor = 0xFFFFFF;
+				hp += 'hp';
 			case LESS_THAN:
-				health_bar.fill_rect(Color.PICO_8_GREEN, -92/2, -4, (next_hp/target.health.max * 92).max(8), 8, 8);
-				health_bar.fill_rect(Color.PICO_8_RED, -92/2, -4, (cur_hp/target.health.max * 92).max(8), 8, 8);
-				hp = '${cur_hp}+${next_hp - cur_hp}hp';
+				health_bar.fill_rect(Color.PICO_8_GREEN, -92/2, -4, (next_hp/max_hp * 92).max(8), 8, 8);
+				health_bar.fill_rect(Color.PICO_8_RED, -92/2, -4, (cur_hp/max_hp * 92).max(8), 8, 8);
+				//hp = '${cur_hp}+${next_hp - cur_hp}hp';
+				hp += '+${next_hp - cur_hp}hp';
 				hp_text.textColor = Color.PICO_8_GREEN.to_hex_24();
 			case GREATER_THAN:
-				health_bar.fill_rect(Color.PICO_8_ORANGE, -92/2, -4, (cur_hp/target.health.max * 92).max(8), 8, 8);
-				if (next_hp > 0) health_bar.fill_rect(Color.PICO_8_RED, -92/2, -4, (next_hp/target.health.max * 92).max(8), 8, 8);
-				hp = '${cur_hp}-${cur_hp - next_hp}hp';
+				health_bar.fill_rect(Color.PICO_8_ORANGE, -92/2, -4, (cur_hp/max_hp * 92).max(8), 8, 8);
+				if (next_hp > 0) health_bar.fill_rect(Color.PICO_8_RED, -92/2, -4, (next_hp/max_hp * 92).max(8), 8, 8);
+				//hp = '${cur_hp}-${cur_hp - next_hp}hp';
+				hp += '-${cur_hp - next_hp}hp';
 				hp_text.textColor = next_hp > 0 ? Color.PICO_8_ORANGE.to_hex_24() : Color.PICO_8_RED.to_hex_24();
 		}
 

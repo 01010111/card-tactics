@@ -22,9 +22,11 @@ class PlayerInfo extends Sprite {
 	var avatar:Sprite;
 	var health:Sprite;
 	var ap_pts:Sprite;
+	var shield:Sprite;
 	var health_text:TextField;
 	var health_text_sprite:Sprite;
 	var ap_pts_text:TextField;
+	var shield_text:TextField;
 
 	public function new(player:Player, side:PlayerSide) {
 		super();
@@ -32,6 +34,7 @@ class PlayerInfo extends Sprite {
 		make_avatar();
 		make_ap_pts();
 		make_health();
+		make_shield();
 		this.set_position(side == LEFT ? 72 : Game.width - 72, 80);
 	}
 	
@@ -70,6 +73,21 @@ class PlayerInfo extends Sprite {
 		update_health();
 	}
 
+	function make_shield() {
+		shield = new Sprite().set_position(28, 124).set_scale(0);
+		var shield_sprite = new Sprite().load_graphic('images/ui/shield_icon.png', MIDDLE_CENTER, true);
+		shield.add(shield_sprite);
+		var shield_text_sprite = new Sprite();
+		shield_text = new TextField().format({ font: "Oduda Bold", color: Color.BLACK, size: 14 });
+		shield_text_sprite.add(shield_text);
+		var filter = new ShaderFilter(new OutlineShader());
+		filter.topExtension = filter.bottomExtension = filter.leftExtension = filter.rightExtension = 16;
+		health_text_sprite.filters = [filter];
+
+		this.add(shield);
+		shield.add(shield_text_sprite);
+	}
+
 	public function update_ap_pts() {
 		ap_pts_text.set_string('${player.AP}').set_position(0, 0, MIDDLE_CENTER);
 	}
@@ -84,6 +102,13 @@ class PlayerInfo extends Sprite {
 		if (player.health.current > 0) health.fill_rect(Color.PICO_8_RED, -40, -8, ((player.health.current/player.health.max) * 80).max(16), 16, 16);
 
 		Tween.get(health_text_sprite).from_to('scaleX', 1.5, 1).from_to('scaleY', 1.5, 1).from_to('rotation', 45.get_random(-45), 0).ease(Ease.elasticOut);
+	}
+
+	public function update_shield() {
+		var from = shield.scaleX;
+		var to = player.shield == 0 ? 0 : 1;
+		shield_text.set_string('${player.shield}').set_position(0, -2, MIDDLE_CENTER);
+		Tween.get(shield).from_to('scaleX', from, to).from_to('scaleY', from, to).duration(0.5).ease(Ease.backOut);
 	}
 
 	function on_click(e:MouseEvent) {

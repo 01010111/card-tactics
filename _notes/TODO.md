@@ -1,20 +1,33 @@
 # Broad Strokes
 
 - [x] Movement
-- [ ] Mutation Gear
+- [ ] Mutant Gear
 - [ ] Gear Pickups
 - [ ] Props
 - [ ] Turns
 
-# Tomorrow
+# Small Things
 
-- [ ] Mutant Gear
-  - [ ] Artwork
-    - [ ] Layout
-    - [ ] Illustration
-  - [ ] Implementation
-    - [ ] Drawing new card Type
-    - [ ] Event system?
+- [ ] Mutant Gear Implementation
+  - [ ] Drawing new card Type
+  - [ ] Event system?
+
+6/16/2020
+- [x] Shields
+  - [x] Artwork
+  - [x] Implementation
+
+6/15/2020
+- [x] Mutant Gear Artwork
+  - [x] Layout
+  - [x] Illustration
+
+6/14/2020
+- [x] Camera
+  - [x] Shake
+  - [x] Panning
+    - [x] On Level Drag
+    - [x] On WASD
 
 6/12/2020
 - [x] Range Restrictions

@@ -16,6 +16,7 @@ using Math;
 class GameObject extends Sprite {
 
 	public var health:HealthData;
+	public var shield(default, set):Int = 0;
 	public var title:String;
 	public var grid_pos(get, never):IntPoint;
 	function get_grid_pos():IntPoint return [(x/16).floor(), (y/16).floor()];
@@ -60,6 +61,12 @@ class GameObject extends Sprite {
 	}
 
 	public function change_health(delta:Int) {
+		if (delta < 0) Level.i.dolly.shake();
+		if (delta < 0 && shield != 0) {
+			var shield_amt = shield;
+			shield = (shield + delta).max(0).floor();
+			delta += shield_amt;
+		}
 		health.current += delta;
 		if (health.current <= 0) kill();
 		health.current = health.current.min(health.max).max(0).floor();
@@ -74,6 +81,10 @@ class GameObject extends Sprite {
 
 	public function pulse() {
 		Tween.get(this).from_to('scaleX', 1.5, 1).from_to('scaleY', 0.5, 1).ease(zero.utilities.Ease.elasticOut).duration(0.5);
+	}
+
+	function set_shield(amt:Int) {
+		return shield = amt;
 	}
 
 }

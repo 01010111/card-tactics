@@ -1,12 +1,15 @@
 package scenes;
 
+import zero.openfl.utilities.Keys;
+import openfl.geom.Rectangle;
+import zero.openfl.utilities.Game;
 import ui.Gear;
 import ui.MoveCard;
 import ui.Deck;
 import zero.utilities.Color;
 import ui.GearCard;
 import zero.openfl.utilities.Particles;
-import zero.openfl.utilities.Dolly;
+import objects.Dolly;
 import zero.openfl.utilities.Tilemap;
 import openfl.Assets;
 import openfl.events.Event;
@@ -82,7 +85,7 @@ class Level extends Scene {
 			},
 			side: LEFT,
 		});
-		new Player(6, 8, {
+		var player2 = new Player(6, 8, {
 			data: {
 				id: 'Test Player',
 				health: {
@@ -100,6 +103,7 @@ class Level extends Scene {
 			side: RIGHT,
 		});
 		Player.selected_player = player;
+		player2.shield = 4;
 	}
 
 	function init_dolly() {
@@ -112,6 +116,17 @@ class Level extends Scene {
 		dolly.add(over_objects = new Sprite());
 		dolly.set_scale(3);
 		move_indicators.addEventListener(MouseEvent.CLICK, on_click);
+		level.addEventListener(MouseEvent.MOUSE_DOWN, level_mouse_down);
+		Game.root.stage.addEventListener(MouseEvent.MOUSE_UP, level_mouse_up);
+	}
+
+	function level_mouse_down(e:MouseEvent) {
+		dolly.startDrag(false);
+		dolly.following = false;
+	}
+
+	function level_mouse_up(e:MouseEvent) {
+		dolly.stopDrag();
 	}
 
 	function draw_map(src:String) {
