@@ -1,5 +1,6 @@
 package ui;
 
+import util.Translation;
 import zero.utilities.Ease;
 import zero.utilities.Tween;
 import filters.OutlineShader;
@@ -47,7 +48,7 @@ class PlayerInfo extends Sprite {
 
 	function make_ap_pts() {
 		ap_pts = new Sprite().set_position(0, 80);
-		ap_pts_text = new TextField().format({ font: "Oduda Bold", color: Color.PICO_8_WHITE, size: 24 });
+		ap_pts_text = new TextField().format({ font: Translation.get_font(BOLD), color: Color.PICO_8_WHITE, size: 24 });
 
 		ap_pts.fill_rect(Color.PICO_8_DARK_BLUE, -48, -16, 96, 32, 32);
 		ap_pts.add(new Sprite().load_graphic('images/ui/ap_pips.png', MIDDLE_CENTER, true).set_position(-26, 0));
@@ -61,7 +62,7 @@ class PlayerInfo extends Sprite {
 	function make_health() {
 		health = new Sprite().set_position(0, 116);
 		health_text_sprite = new Sprite();
-		health_text = new TextField().format({ font: "Oduda Bold", color: Color.PICO_8_WHITE, size: 24 });
+		health_text = new TextField().format({ font: Translation.get_font(BOLD), color: Color.PICO_8_WHITE, size: 24 });
 		var filter = new ShaderFilter(new OutlineShader());
 		filter.topExtension = filter.bottomExtension = filter.leftExtension = filter.rightExtension = 64;
 		health_text_sprite.filters = [filter];
@@ -78,7 +79,7 @@ class PlayerInfo extends Sprite {
 		var shield_sprite = new Sprite().load_graphic('images/ui/shield_icon.png', MIDDLE_CENTER, true);
 		shield.add(shield_sprite);
 		var shield_text_sprite = new Sprite();
-		shield_text = new TextField().format({ font: "Oduda Bold", color: Color.BLACK, size: 14 });
+		shield_text = new TextField().format({ font: Translation.get_font(BOLD), color: Color.BLACK, size: 14 });
 		shield_text_sprite.add(shield_text);
 		var filter = new ShaderFilter(new OutlineShader());
 		filter.topExtension = filter.bottomExtension = filter.leftExtension = filter.rightExtension = 16;

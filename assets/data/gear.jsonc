@@ -4,8 +4,6 @@
 	//
 	{
 		"id": "test_d_01",
-		"title": "Damage Card",
-		"description": "Test Card Description",
 		"cost": 2,
 		"range": {
 			"min": 1,
@@ -21,18 +19,37 @@
 			"type": "DOUBLE_EFFECT_VALUE"
 		},
 		"requirement": "DIFF_SUIT",
-		"gear_class": "EXPLOSIVE",
+		"gear_class": "PIERCING",
 		"weakness": "ELECTRICITY"
 	},
 	{
+		"id": "test_d_02",
+		"cost": 4,
+		"range": {
+			"min": 3,
+			"max": 4,
+			"type": "NONE"
+		},
+		"effect": {
+			"type": "DAMAGE",
+			"factor": "VALUES"
+		},
+		"bonus": {
+			"requirement": "HEARTS",
+			"type": "RANGE_PLUS_TWO"
+		},
+		"requirement": "MIN_CARD",
+		"requirement_value": 7,
+		"gear_class": "EXPLOSIVE",
+		"weakness": "FLAME"
+	},
+	{
 		"id": "test_h_01",
-		"title": "Health Card",
-		"description": "Test Card Description",
 		"cost": 1,
 		"range": {
 			"min": 0,
 			"max": 3,
-			"type": "DIAGONAL"
+			"type": "NONE"
 		},
 		"effect": {
 			"type": "HEALTH",
@@ -49,8 +66,6 @@
 	},
 	{
 		"id": "test_u_01",
-		"title": "Draw Card",
-		"description": "Test Card Description",
 		"cost": 3,
 		"range": {
 			"min": 0,

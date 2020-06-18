@@ -1,5 +1,6 @@
 package ui;
 
+import util.Translation;
 import openfl.text.TextField;
 import ui.GearCard;
 import scenes.Level;
@@ -33,8 +34,8 @@ class ObjectInfo extends Sprite {
 		this.fill_rect(Color.BLACK, -info_width/2, -info_height/2, info_width, info_height, 16);
 		this.fill_poly(Color.BLACK, [[-8, info_height/2], [8, info_height/2], [0, info_height/2 + 8]]);
 		this.add(health_bar = new Sprite());
-		this.add(title_text = new TextField().format({ font: 'Oduda Bold', size: 14, color: Color.WHITE }));
-		this.add(hp_text = new TextField().format({ font: 'Oduda Bold', size: 14, color: Color.WHITE }));
+		this.add(title_text = new TextField().format({ font: Translation.get_font(BOLD), size: 14, color: Color.WHITE }));
+		this.add(hp_text = new TextField().format({ font: Translation.get_font(BOLD), size: 14, color: Color.WHITE }));
 		addEventListener(Event.ENTER_FRAME, update);
 	}
 

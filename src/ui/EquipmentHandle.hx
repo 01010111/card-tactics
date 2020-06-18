@@ -14,7 +14,7 @@ import openfl.display.Sprite;
 using zero.openfl.extensions.SpriteTools;
 using Math;
 
-class GearCardHandle extends Sprite {
+class EquipmentHandle extends Sprite {
 
 	var active:Bool = false;
 	var type:HandleType;
@@ -36,7 +36,7 @@ class GearCardHandle extends Sprite {
 			case AIM:
 				graphic.load_graphic('images/ui/aim_cta.png', MIDDLE_CENTER, true);
 				addEventListener(MouseEvent.MOUSE_DOWN, mouse_down);
-				addEventListener(MouseEvent.MOUSE_OUT, (e) -> Level.i.clear_indicators());
+				addEventListener(MouseEvent.MOUSE_OUT, (e) -> if (!dragging) Level.i.clear_indicators());
 				Game.root.addEventListener(MouseEvent.MOUSE_UP, mouse_up);
 			case PRESS:
 				graphic.load_graphic('images/ui/do_cta.png', MIDDLE_CENTER, true);
@@ -66,8 +66,8 @@ class GearCardHandle extends Sprite {
 		if (!dragging) return;
 		stopDrag();
 		dragging = false;
-		Gear.active_gear.link.length = 0;
-		Gear.active_gear.link.draw();
+		Equipment.active_equipment.link.length = 0;
+		Equipment.active_equipment.link.draw();
 		gear_card.active = false;
 		level_pos = get_level_pos();
 		Level.i.clear_indicators();
@@ -95,7 +95,7 @@ class GearCardHandle extends Sprite {
 
 	public function show() {
 		if (active) return;
-		if (parent == null) Gear.active_gear.add(this);
+		if (parent == null) Equipment.active_equipment.add(this);
 		active = true;
 		Tween.get(this).from_to('scaleX', 0, 1).from_to('scaleY', 0, 1).from_to('alpha', 1, 1).duration(0.4).ease(Ease.backOut);
 	}
@@ -107,23 +107,23 @@ class GearCardHandle extends Sprite {
 	}
 
 	function update(e:Event) {
-		Gear.active_gear.link.active = dragging;
+		Equipment.active_equipment.link.active = dragging;
 		if (dragging) {
 			var card_pos:Vec2 = [gear_card.x, gear_card.y];
 			var this_pos:Vec2 = [x, y];
 			var diff = this_pos - card_pos;
-			Gear.active_gear.link.set_position(card_pos.x, card_pos.y);
-			Gear.active_gear.link.length = diff.length;
-			Gear.active_gear.link.rotation = diff.angle;
+			Equipment.active_equipment.link.set_position(card_pos.x, card_pos.y);
+			Equipment.active_equipment.link.length = diff.length;
+			Equipment.active_equipment.link.rotation = diff.angle;
 			card_pos.put();
 			this_pos.put();
 			diff.put();
-			Gear.active_gear.link.draw();
+			Equipment.active_equipment.link.draw();
 			check_objects(x, y);
 		}
 		else {
 			x += (gear_card.x - x) * 0.5;
-			y += (gear_card.y + GearCard.card_height/2 - y) * 0.5;
+			y += (gear_card.y + EquipmentCard.card_height/2 - y) * 0.5;
 		}
 	}
 
@@ -144,7 +144,7 @@ class GearCardHandle extends Sprite {
 			pos.put();
 			obj_pos.put();
 		}
-		if (target == null) Level.i.info_layer.hide_info();
+		if (target == null) Level.i.info_layer.hide_info(false);
 		this.target = target;
 	}
 

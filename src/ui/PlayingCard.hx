@@ -122,8 +122,8 @@ class PlayingCard extends Card {
 
 	override function mouse_up(e:MouseEvent) {
 		if (!dragging) return;
-		if (!equipped && Gear.active_gear != null) {
-			var move_card = Gear.active_gear.move_card;
+		if (!equipped && Equipment.active_equipment != null) {
+			var move_card = Equipment.active_equipment.move_card;
 			var pos = move_card.get_anchor(true);
 			var my_pos = Vec2.get(x, y);
 			if ((pos.x - x).abs() < 96 && (pos.y - y).abs() < 144) {
@@ -138,7 +138,7 @@ class PlayingCard extends Card {
 				}
 			}
 			pos.put();
-			for (gear in Gear.active_gear.gear_cards) {
+			for (gear in Equipment.active_equipment.gear_cards) {
 				var pos = gear.get_anchor(true);
 				if ((pos.x - x).abs() < 96 && (pos.y - y).abs() < 112) {
 					if (gear.expended || !gear.verify_card(data)) continue;

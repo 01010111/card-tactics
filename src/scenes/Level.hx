@@ -1,9 +1,10 @@
 package scenes;
 
+import ui.EquipmentCard;
 import zero.openfl.utilities.Keys;
 import openfl.geom.Rectangle;
 import zero.openfl.utilities.Game;
-import ui.Gear;
+import ui.Equipment;
 import ui.MoveCard;
 import ui.Deck;
 import zero.utilities.Color;
@@ -28,6 +29,7 @@ using zero.utilities.AStar;
 using zero.utilities.OgmoUtils;
 using zero.utilities.EventBus;
 using zero.extensions.Tools;
+using Std;
 
 class Level extends Scene {
 
@@ -81,7 +83,7 @@ class Level extends Scene {
 					type: FREE,
 					factor: VALUE,
 				},
-				gear: ['test_d_01', 'test_h_01'],
+				equipment: ['test_d_01', 'test_d_02', 'test_h_01'],
 			},
 			side: LEFT,
 		});
@@ -98,7 +100,7 @@ class Level extends Scene {
 					type: FREE,
 					factor: VALUE,
 				},
-				gear: ['test_u_01', 'test_h_01'],
+				equipment: ['test_u_01', 'test_h_01'],
 			},
 			side: RIGHT,
 		});
@@ -157,7 +159,7 @@ class Level extends Scene {
 		Player.selected_player.follow_path(path);
 		can_move = false;
 		move_indicators.graphics.clear();
-		Gear.active_gear.move_card.expended = true;
+		Equipment.active_equipment.move_card.expended = true;
 	}
 
 	public function get_traversal_map(?ignore:IntPoint):Array<Array<Int>> {
@@ -172,31 +174,52 @@ class Level extends Scene {
 		move_indicators.visible = true;
 	}
 
-	public function draw_indicators(gear_card:GearCard) {
+	public function draw_indicators(?equipment:EquipmentCard, ?equipment_array:Array<EquipmentCard>) {
+		var gear = equipment_array == null ? equipment == null ? [] : [equipment] : equipment_array;
 		indicators.graphics.clear();
 		move_indicators.visible = false;
-		var player = gear_card.gear.player;
-		var range:RangeData = {
-			min: gear_card.gear_data.range.min,
-			max: gear_card.gear_data.range.max,
-			type: gear_card.gear_data.range.type
-		};
-		if (gear_card.gear_data.bonus.type == DOUBLE_RANGE && gear_card.vefify_bonus()) range.max *= 2;
-		if (range.type == DIAGONAL) {
-			range.min *= 2;
-			range.max *= 2;
+		var placed_tiles:Array<IntPoint> = [];
+		for (card in gear) {
+			var player = card.equipment.player;
+			var range:RangeData = {
+				min: card.equipment_data.range.min,
+				max: card.equipment_data.range.max,
+				type: card.equipment_data.range.type
+			};
+			if (card.is(GearCard) && (cast card:GearCard).vefify_bonus()) {
+				var gear_card:GearCard = cast card;
+				switch gear_card.gear_data.bonus.type {
+					case DOUBLE_RANGE: range.max *= 2;
+					case RANGE_PLUS_ONE: range.max += 1;
+					case RANGE_PLUS_TWO: range.max += 2;
+					case DOUBLE_EFFECT_VALUE, EFFECT_PLUS_ONE, EFFECT_PLUS_TWO: {};
+				}
+			}
+			if (range.type == DIAGONAL) {
+				range.min *= 2;
+				range.max *= 2;
+			}
+			var tiles = get_available_tiles_array([(player.x/16).floor(), (player.y/16).floor()], range.min, range.max, range.type);
+			var color = switch card.equipment_data.effect.type {
+				default: Color.WHITE;
+				case DAMAGE:Color.PICO_8_RED;
+				case MOVE:Color.PICO_8_BLUE;
+				case HEALTH:Color.PICO_8_GREEN;
+				case SHIELD:Color.PICO_8_ORANGE;
+			}
+			var color_fill:Color = cast color.copy();
+			color_fill.alpha = 0.25;
+			for (tile in tiles) {
+				var cont = false;
+				for (prev_tile in placed_tiles) {
+					if (cont) break;
+					if (prev_tile.equals(tile)) cont = true;
+				}
+				if (cont) continue;
+				placed_tiles.push(tile);
+				indicators.fill_rect(color_fill, tile.x * 16 + 2, tile.y * 16 + 2, 12, 12, 2).rect(color, tile.x * 16 + 2, tile.y * 16 + 2, 12, 12, 2, 1);
+			}
 		}
-		var tiles = get_available_tiles_array([(player.x/16).floor(), (player.y/16).floor()], range.min, range.max, range.type);
-		var color = switch gear_card.gear_data.effect.type {
-			default: Color.WHITE;
-			case DAMAGE:Color.PICO_8_RED;
-			case MOVE:Color.PICO_8_BLUE;
-			case HEALTH:Color.PICO_8_GREEN;
-			case SHIELD:Color.PICO_8_ORANGE;
-		}
-		var color_fill:Color = cast color.copy();
-		color_fill.alpha = 0.25;
-		for (tile in tiles) indicators.fill_rect(color_fill, tile.x * 16 + 2, tile.y * 16 + 2, 12, 12, 2).rect(color, tile.x * 16 + 2, tile.y * 16 + 2, 12, 12, 2, 1);
 	}
 
 	function get_available_tiles_array(origin:IntPoint, min_range:Int, max_range:Int, restriction:RangeType = NONE):Array<IntPoint> {
@@ -217,7 +240,7 @@ class Level extends Scene {
 
 	public function draw_move_indicators(move_card:MoveCard) {
 		move_indicators.graphics.clear();
-		var player = move_card.gear.player;
+		var player = move_card.equipment.player;
 		var range = move_card.get_moves_value();
 		if (range == 0) return;
 		var tiles = get_walkable_tiles_array([(player.x/16).floor(), (player.y/16).floor()], range);
@@ -228,9 +251,7 @@ class Level extends Scene {
 	}
 
 	function get_walkable_tiles_array(origin:IntPoint, range:Int, restriction:RangeType = NONE):Array<IntPoint> {
-		trace(origin);
 		var solids = get_traversal_map(origin);
-		trace(solids);
 		var map = solids.heat_map(origin.x, origin.y, range + 1);
 		var out:Array<IntPoint> = [];
 		for (j in 0...map.length) for (i in 0...map[j].length) if (map[j][i] > 0 && map[j][i] <= range) out.push([i, j]);

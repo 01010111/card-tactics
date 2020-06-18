@@ -3,7 +3,7 @@ package objects;
 import objects.Actor.ActorData;
 import ui.GearCard;
 import openfl.events.MouseEvent;
-import ui.Gear;
+import ui.Equipment;
 import scenes.Level;
 import zero.openfl.utilities.AnimatedSprite;
 import util.GearUtil;
@@ -19,11 +19,9 @@ class Player extends Actor {
 	public var AP(default, set):Int = 10;
 	function set_AP(n:Int) {
 		AP = n;
-		gear.player_info.update_ap_pts();
+		equipment.player_info.update_ap_pts();
 		return AP;
 	}
-
-	var gear:Gear;
 
 	public function new(x:Int, y:Int, options:PlayerOptions) {
 		super(options.data, x, y);
@@ -34,9 +32,9 @@ class Player extends Actor {
 
 		init_graphic();
 		
-		gear = new Gear(this, options.side);
-		for (g in options.data.gear) gear.add_card(new GearCard(gear, GearUtil.get_gear_data(g)));
-		Level.i.gear_layer.add(gear);
+		equipment = new Equipment(this, options.side);
+		for (g in options.data.equipment) equipment.add_card(new GearCard(equipment, GearUtil.get_gear_data(g)));
+		Level.i.gear_layer.add(equipment);
 	}
 
 	function init_graphic() {
@@ -53,21 +51,21 @@ class Player extends Actor {
 	}
 
 	static function set_selected_player(player:Player) {
-		Gear.active_gear = player.gear;
+		Equipment.active_equipment = player.equipment;
+		Level.i.clear_indicators();
 		Level.i.dolly.follow_object(player, false);
 		player.pulse();
-		player.gear.move_card.set_moves();
+		player.equipment.move_card.set_moves();
 		return selected_player = player;
 	}
 
 	override function health_callback() {
-		gear.player_info.update_health();
+		equipment.player_info.update_health();
 	}
 
 	override function set_shield(amt:Int):Int {
 		super.set_shield(amt);
-		gear.player_info.update_shield();
-		trace(shield);
+		equipment.player_info.update_shield();
 		return shield;
 	}
 

@@ -16,8 +16,6 @@
                 "examples": [
                     {
                         "id": "Test",
-                        "title": "Test Card",
-                        "description": "Test Card Description",
                         "cost": 1,
                         "range": {
                             "min": 0,
@@ -41,8 +39,6 @@
                 ],
                 "required": [
                     "id",
-                    "title",
-                    "description",
                     "cost",
                     "range",
                     "effect",
@@ -61,27 +57,6 @@
                         "default":"",
                         "examples": [
                             "Test"
-                        ]
-                    },
-                    "title": {
-                        "$id": "#/items/anyOf/0/properties/title",
-                        "type": "string",
-                        "title": "The title schema",
-                        "description": "The title of the card, appears at the top of a gear card.",
-                        "default": "",
-                        "maxLength": 12,
-                        "examples": [
-                            "Test Card"
-                        ]
-                    },
-                    "description": {
-                        "$id": "#/items/anyOf/0/properties/description",
-                        "type": "string",
-                        "title": "The description schema",
-                        "description": "A description of a piece of gear. May appear on gear card hover in an info box.",
-                        "default": "",
-                        "examples": [
-                            "Test Card Description"
                         ]
                     },
                     "cost": {
@@ -311,7 +286,11 @@
                                 "default": "",
                                 "enum": [
                                     "DOUBLE_EFFECT_VALUE",
-                                    "DOUBLE_RANGE"
+                                    "EFFECT_PLUS_ONE",
+                                    "EFFECT_PLUS_TWO",
+                                    "DOUBLE_RANGE",
+                                    "RANGE_PLUS_ONE",
+                                    "RANGE_PLUS_TWO"
                                 ]
                             }
                         }

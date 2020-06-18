@@ -8,18 +8,18 @@ import objects.Player;
 
 using zero.openfl.extensions.SpriteTools;
 
-class Gear extends Sprite {
+class Equipment extends Sprite {
 
-	public static var active_gear(default, set):Gear;
-	static function set_active_gear(gear:Gear) {
-		if (active_gear != null) active_gear.active = false;
-		gear.active = true;
-		return active_gear = gear;
+	public static var active_equipment(default, set):Equipment;
+	static function set_active_equipment(equipment:Equipment) {
+		if (active_equipment != null) active_equipment.active = false;
+		equipment.active = true;
+		return active_equipment = equipment;
 	}
 	
 	public var active:Bool = false;
 	public var link:LinkGraphic;
-	public var gear_cards:Array<GearCard> = [];
+	public var gear_cards:Array<EquipmentCard> = [];
 	public var move_card:MoveCard;
 	public var player:Player;
 	public var player_info:PlayerInfo;

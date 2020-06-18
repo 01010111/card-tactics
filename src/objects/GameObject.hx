@@ -1,5 +1,6 @@
 package objects;
 
+import ui.Equipment;
 import zero.openfl.utilities.AnimatedSprite;
 import openfl.events.Event;
 import zero.utilities.Vec2;
@@ -18,6 +19,7 @@ class GameObject extends Sprite {
 	public var health:HealthData;
 	public var shield(default, set):Int = 0;
 	public var title:String;
+	public var equipment:Equipment;
 	public var grid_pos(get, never):IntPoint;
 	function get_grid_pos():IntPoint return [(x/16).floor(), (y/16).floor()];
 

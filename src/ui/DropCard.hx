@@ -1,6 +1,5 @@
 package ui;
 
-import ui.GearCard.Requirement;
 import openfl.filters.ColorMatrixFilter;
 import objects.GameObject;
 import scenes.Level;
@@ -24,7 +23,7 @@ using zero.extensions.Tools;
 class DropCard extends Card {
 
 	var anchor:Vec2;
-	var handle:GearCardHandle;
+	var handle:EquipmentHandle;
 	var grayscale_filter:ColorMatrixFilter = new ColorMatrixFilter([0.25, 0.25, 0.25, 0, 0, 0.25, 0.25, 0.25, 0, 0, 0.25, 0.25, 0.25, 0, 0, 0, 0, 0, 1, 1]);
 	var anchors:Array<Vec2>;
 	var cards:Array<PlayingCard> = [];
@@ -125,4 +124,24 @@ class DropCard extends Card {
 typedef DropCardData = {
 	requirement:Requirement,
 	?requirement_value:Int,
+}
+
+enum abstract Requirement(String) {
+	var MIN_TOTAL;
+	var MAX_TOTAL;
+	var MIN_CARD;
+	var MAX_CARD;
+	var EXACT_CARD;
+	var EXACT_TOTAL;
+	var IS_FACE;
+	var NOT_FACE;
+	var PAIR;
+	var NO_MATCH;
+	var SAME_SUIT;
+	var DIFF_SUIT;
+	var HEARTS;
+	var DIAMONDS;
+	var CLUBS;
+	var SPADES;
+	var TWO_CARDS;
 }

@@ -12,10 +12,20 @@
   - [ ] Drawing new card Type
   - [ ] Event system?
 
+6/17/2020
+- [x] Implement translations
+  - [x] Make Spreadsheet
+  - [x] Implement look up map
+- [x] Refactor Gear -> Equipment
+  - [x] Gear -> Equipment
+  - [x] Create EquipmentCard
+  - [x] Extend Equipment->GearCard
+
 6/16/2020
 - [x] Shields
   - [x] Artwork
   - [x] Implementation
+- [x] Show object attack range
 
 6/15/2020
 - [x] Mutant Gear Artwork
@@ -58,4 +68,4 @@
     - [x] Switch Players on click
   - [x] Show Player AP
   - [x] Show Player HP
-  - [x] Show Move Card (don't worry about functionality)
+  - [x] Show Move Card

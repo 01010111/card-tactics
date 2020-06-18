@@ -1,5 +1,6 @@
 package ui;
 
+import util.Translation;
 import scenes.Level;
 import openfl.text.TextField;
 import ui.DropCard.DropCardData;
@@ -16,11 +17,11 @@ class MoveCard extends DropCard {
 
 	var req_text:TextField;
 	public var move_data:MoveData;
-	public var gear:Gear;
+	public var equipment:Equipment;
 	
-	public function new(data:MoveData, gear:Gear) {
+	public function new(data:MoveData, equipment:Equipment) {
 		super();
-		this.gear = gear;
+		this.equipment = equipment;
 		this.data = {
 			requirement: data.requirement,
 			requirement_value: data.requirement_value
@@ -40,7 +41,7 @@ class MoveCard extends DropCard {
 			case TELEPORT:'images/ui/icons/move_teleport.png';
 		}
 		addChild(new Sprite().load_graphic(icon_src, MIDDLE_CENTER, true).set_position(0, -48).set_scale(0.25));
-		req_text = new TextField().format({ font: 'Oduda Bold', size: 24, color: Color.get().from_int32(0xFF083EB1) });
+		req_text = new TextField().format({ font: Translation.get_font(BOLD), size: 24, color: Color.get().from_int32(0xFF083EB1) });
 		addChild(req_text);
 		set_req_text();
 	}

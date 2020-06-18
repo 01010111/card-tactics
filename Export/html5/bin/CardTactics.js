@@ -894,9 +894,9 @@ ApplicationMain.create = function(config) {
 	ManifestResources.init(config);
 	var _this = app.meta;
 	if(__map_reserved["build"] != null) {
-		_this.setReserved("build","22");
+		_this.setReserved("build","23");
 	} else {
-		_this.h["build"] = "22";
+		_this.h["build"] = "23";
 	}
 	var _this1 = app.meta;
 	if(__map_reserved["company"] != null) {
@@ -4618,6 +4618,8 @@ var Main = function() {
 	openfl_display_Sprite.call(this);
 	this.stage.set_color(0);
 	util_GearUtil.init();
+	util_Translation.init();
+	util_Translation.get_gear_title("test_d_01");
 	new zero_openfl_utilities_Game(this,scenes_Level);
 	zero_openfl_utilities_Keys.init();
 	this.stage.addEventListener("enterFrame",util_UpdateManager.update);
@@ -4813,9 +4815,10 @@ ManifestResources.init = function(config) {
 	if(ManifestResources.rootPath == null) {
 		ManifestResources.rootPath = "./";
 	}
-	openfl_text_Font.registerFont(_$_$ASSET_$_$OPENFL_$_$fonts_$oduda_$ttf);
+	openfl_text_Font.registerFont(_$_$ASSET_$_$OPENFL_$_$fonts_$nunito_$black_$ttf);
+	openfl_text_Font.registerFont(_$_$ASSET_$_$OPENFL_$_$fonts_$oduda_$bold_$ttf);
 	var bundle;
-	var data = "{\"name\":null,\"assets\":\"aoy4:pathy18:images%2Fblank.pngy4:sizei123y4:typey5:IMAGEy2:idR1y7:preloadtgoR0y29:images%2Fparticles%2Fpoof.pngR2i452R3R4R5R7R6tgoR0y20:images%2Fplayers.pngR2i1824R3R4R5R8R6tgoR0y18:images%2Ftiles.pngR2i14787R3R4R5R9R6tgoR0y35:images%2Fui%2Faction_arrow_blue.pngR2i473R3R4R5R10R6tgoR0y36:images%2Fui%2Faction_arrow_green.pngR2i489R3R4R5R11R6tgoR0y34:images%2Fui%2Faction_arrow_red.pngR2i470R3R4R5R12R6tgoR0y36:images%2Fui%2Faction_arrow_white.pngR2i307R3R4R5R13R6tgoR0y25:images%2Fui%2Faim_cta.pngR2i1862R3R4R5R14R6tgoR0y24:images%2Fui%2Fap_pip.pngR2i270R3R4R5R15R6tgoR0y25:images%2Fui%2Fap_pips.pngR2i467R3R4R5R16R6tgoR0y28:images%2Fui%2Fap_pip_big.pngR2i370R3R4R5R17R6tgoR0y24:images%2Fui%2Fdo_cta.pngR2i1723R3R4R5R18R6tgoR0y36:images%2Fui%2Ficons%2Ficon_skull.pngR2i2850R3R4R5R19R6tgoR0y35:images%2Fui%2Ficons%2Fmove_free.pngR2i2776R3R4R5R20R6tgoR0y35:images%2Fui%2Ficons%2Fmove_rook.pngR2i3371R3R4R5R21R6tgoR0y39:images%2Fui%2Ficons%2Fmove_teleport.pngR2i3093R3R4R5R22R6tgoR0y51:images%2Fui%2Ficons%2Fon_white%2Ficon_electrify.pngR2i1737R3R4R5R23R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_explode.pngR2i2333R3R4R5R24R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_flame.pngR2i2026R3R4R5R25R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_health.pngR2i1796R3R4R5R26R6tgoR0y46:images%2Fui%2Ficons%2Fon_white%2Ficon_move.pngR2i1973R3R4R5R27R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_pierce.pngR2i1943R3R4R5R28R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_shield.pngR2i2051R3R4R5R29R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_utility.pngR2i1803R3R4R5R30R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_water.pngR2i1906R3R4R5R31R6tgoR0y29:images%2Fui%2Fmutant_card.pngR2i117869R3R4R5R32R6tgoR0y27:images%2Fui%2Frule_face.pngR2i8721R3R4R5R33R6tgoR0y32:images%2Fui%2Frule_two_cards.pngR2i5319R3R4R5R34R6tgoR0y29:images%2Fui%2Fshield_icon.pngR2i815R3R4R5R35R6tgoR0y27:images%2Fui%2Fsuit_club.pngR2i4182R3R4R5R36R6tgoR0y30:images%2Fui%2Fsuit_diamond.pngR2i2985R3R4R5R37R6tgoR0y28:images%2Fui%2Fsuit_heart.pngR2i2540R3R4R5R38R6tgoR0y28:images%2Fui%2Fsuit_spade.pngR2i3507R3R4R5R39R6tgoR0y17:data%2Fgear.jsoncR2i1350R3y4:TEXTR5R40R6tgoR0y22:data%2Fmaps%2F000.jsonR2i1922R3R41R5R42R6tgoR0y23:data%2Fmaps%2Fmaps.ogmoR2i19048R3R41R5R43R6tgoR2i19636R3y4:FONTy9:classNamey24:__ASSET__fonts_oduda_ttfR5y17:fonts%2Foduda.ttfR6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
+	var data = "{\"name\":null,\"assets\":\"aoy4:pathy18:images%2Fblank.pngy4:sizei123y4:typey5:IMAGEy2:idR1y7:preloadtgoR0y29:images%2Fparticles%2Fpoof.pngR2i452R3R4R5R7R6tgoR0y20:images%2Fplayers.pngR2i1824R3R4R5R8R6tgoR0y18:images%2Ftiles.pngR2i14787R3R4R5R9R6tgoR0y35:images%2Fui%2Faction_arrow_blue.pngR2i473R3R4R5R10R6tgoR0y36:images%2Fui%2Faction_arrow_green.pngR2i489R3R4R5R11R6tgoR0y34:images%2Fui%2Faction_arrow_red.pngR2i470R3R4R5R12R6tgoR0y36:images%2Fui%2Faction_arrow_white.pngR2i307R3R4R5R13R6tgoR0y25:images%2Fui%2Faim_cta.pngR2i1862R3R4R5R14R6tgoR0y24:images%2Fui%2Fap_pip.pngR2i270R3R4R5R15R6tgoR0y25:images%2Fui%2Fap_pips.pngR2i467R3R4R5R16R6tgoR0y28:images%2Fui%2Fap_pip_big.pngR2i370R3R4R5R17R6tgoR0y24:images%2Fui%2Fdo_cta.pngR2i1723R3R4R5R18R6tgoR0y36:images%2Fui%2Ficons%2Ficon_skull.pngR2i2850R3R4R5R19R6tgoR0y35:images%2Fui%2Ficons%2Fmove_free.pngR2i2776R3R4R5R20R6tgoR0y35:images%2Fui%2Ficons%2Fmove_rook.pngR2i3371R3R4R5R21R6tgoR0y39:images%2Fui%2Ficons%2Fmove_teleport.pngR2i3093R3R4R5R22R6tgoR0y51:images%2Fui%2Ficons%2Fon_white%2Ficon_electrify.pngR2i1737R3R4R5R23R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_explode.pngR2i2333R3R4R5R24R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_flame.pngR2i2026R3R4R5R25R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_health.pngR2i1796R3R4R5R26R6tgoR0y46:images%2Fui%2Ficons%2Fon_white%2Ficon_move.pngR2i1973R3R4R5R27R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_pierce.pngR2i1943R3R4R5R28R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_shield.pngR2i2051R3R4R5R29R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_utility.pngR2i1803R3R4R5R30R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_water.pngR2i1906R3R4R5R31R6tgoR0y29:images%2Fui%2Fmutant_card.pngR2i117869R3R4R5R32R6tgoR0y27:images%2Fui%2Frule_face.pngR2i8721R3R4R5R33R6tgoR0y32:images%2Fui%2Frule_two_cards.pngR2i5319R3R4R5R34R6tgoR0y29:images%2Fui%2Fshield_icon.pngR2i815R3R4R5R35R6tgoR0y27:images%2Fui%2Fsuit_club.pngR2i4182R3R4R5R36R6tgoR0y30:images%2Fui%2Fsuit_diamond.pngR2i2985R3R4R5R37R6tgoR0y28:images%2Fui%2Fsuit_heart.pngR2i2540R3R4R5R38R6tgoR0y28:images%2Fui%2Fsuit_spade.pngR2i3507R3R4R5R39R6tgoR0y17:data%2Fgear.jsoncR2i1503R3y4:TEXTR5R40R6tgoR0y22:data%2Fmaps%2F000.jsonR2i1922R3R41R5R42R6tgoR0y23:data%2Fmaps%2Fmaps.ogmoR2i19048R3R41R5R43R6tgoR0y36:data%2Ftranslations%2Fgameplay.jsoncR2i102911R3R41R5R44R6tgoR0y39:data%2Ftranslations%2Fgear_titles.jsoncR2i14313R3R41R5R45R6tgoR2i171180R3y4:FONTy9:classNamey31:__ASSET__fonts_nunito_black_ttfR5y24:fonts%2Fnunito_black.ttfR6tgoR2i19636R3R46R47y29:__ASSET__fonts_oduda_bold_ttfR5y22:fonts%2Foduda_bold.ttfR6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
 	var manifest = lime_utils_AssetManifest.parse(data,ManifestResources.rootPath);
 	var library = lime_utils_AssetLibrary.fromManifest(manifest);
 	lime_utils_Assets.registerLibrary("default",library);
@@ -5026,7 +5029,24 @@ lime_text_Font.prototype = {
 	}
 	,__class__: lime_text_Font
 };
-var _$_$ASSET_$_$fonts_$oduda_$ttf = $hx_exports["__ASSET__fonts_oduda_ttf"] = function() {
+var _$_$ASSET_$_$fonts_$nunito_$black_$ttf = $hx_exports["__ASSET__fonts_nunito_black_ttf"] = function() {
+	this.ascender = 1011;
+	this.descender = -353;
+	this.height = 1364;
+	this.numGlyphs = 1039;
+	this.underlinePosition = -100;
+	this.underlineThickness = 50;
+	this.unitsPerEM = 1000;
+	this.name = "Nunito Black";
+	lime_text_Font.call(this);
+};
+$hxClasses["__ASSET__fonts_nunito_black_ttf"] = _$_$ASSET_$_$fonts_$nunito_$black_$ttf;
+_$_$ASSET_$_$fonts_$nunito_$black_$ttf.__name__ = "__ASSET__fonts_nunito_black_ttf";
+_$_$ASSET_$_$fonts_$nunito_$black_$ttf.__super__ = lime_text_Font;
+_$_$ASSET_$_$fonts_$nunito_$black_$ttf.prototype = $extend(lime_text_Font.prototype,{
+	__class__: _$_$ASSET_$_$fonts_$nunito_$black_$ttf
+});
+var _$_$ASSET_$_$fonts_$oduda_$bold_$ttf = $hx_exports["__ASSET__fonts_oduda_bold_ttf"] = function() {
 	this.ascender = 1010;
 	this.descender = -190;
 	this.height = 1200;
@@ -5037,11 +5057,11 @@ var _$_$ASSET_$_$fonts_$oduda_$ttf = $hx_exports["__ASSET__fonts_oduda_ttf"] = f
 	this.name = "Oduda Bold";
 	lime_text_Font.call(this);
 };
-$hxClasses["__ASSET__fonts_oduda_ttf"] = _$_$ASSET_$_$fonts_$oduda_$ttf;
-_$_$ASSET_$_$fonts_$oduda_$ttf.__name__ = "__ASSET__fonts_oduda_ttf";
-_$_$ASSET_$_$fonts_$oduda_$ttf.__super__ = lime_text_Font;
-_$_$ASSET_$_$fonts_$oduda_$ttf.prototype = $extend(lime_text_Font.prototype,{
-	__class__: _$_$ASSET_$_$fonts_$oduda_$ttf
+$hxClasses["__ASSET__fonts_oduda_bold_ttf"] = _$_$ASSET_$_$fonts_$oduda_$bold_$ttf;
+_$_$ASSET_$_$fonts_$oduda_$bold_$ttf.__name__ = "__ASSET__fonts_oduda_bold_ttf";
+_$_$ASSET_$_$fonts_$oduda_$bold_$ttf.__super__ = lime_text_Font;
+_$_$ASSET_$_$fonts_$oduda_$bold_$ttf.prototype = $extend(lime_text_Font.prototype,{
+	__class__: _$_$ASSET_$_$fonts_$oduda_$bold_$ttf
 });
 var openfl_text_Font = function(name) {
 	lime_text_Font.call(this,name);
@@ -5123,15 +5143,25 @@ openfl_text_Font.prototype = $extend(lime_text_Font.prototype,{
 	,__class__: openfl_text_Font
 	,__properties__: {set_fontName:"set_fontName",get_fontName:"get_fontName"}
 });
-var _$_$ASSET_$_$OPENFL_$_$fonts_$oduda_$ttf = $hx_exports["__ASSET__OPENFL__fonts_oduda_ttf"] = function() {
-	this.__fromLimeFont(new _$_$ASSET_$_$fonts_$oduda_$ttf());
+var _$_$ASSET_$_$OPENFL_$_$fonts_$nunito_$black_$ttf = $hx_exports["__ASSET__OPENFL__fonts_nunito_black_ttf"] = function() {
+	this.__fromLimeFont(new _$_$ASSET_$_$fonts_$nunito_$black_$ttf());
 	openfl_text_Font.call(this);
 };
-$hxClasses["__ASSET__OPENFL__fonts_oduda_ttf"] = _$_$ASSET_$_$OPENFL_$_$fonts_$oduda_$ttf;
-_$_$ASSET_$_$OPENFL_$_$fonts_$oduda_$ttf.__name__ = "__ASSET__OPENFL__fonts_oduda_ttf";
-_$_$ASSET_$_$OPENFL_$_$fonts_$oduda_$ttf.__super__ = openfl_text_Font;
-_$_$ASSET_$_$OPENFL_$_$fonts_$oduda_$ttf.prototype = $extend(openfl_text_Font.prototype,{
-	__class__: _$_$ASSET_$_$OPENFL_$_$fonts_$oduda_$ttf
+$hxClasses["__ASSET__OPENFL__fonts_nunito_black_ttf"] = _$_$ASSET_$_$OPENFL_$_$fonts_$nunito_$black_$ttf;
+_$_$ASSET_$_$OPENFL_$_$fonts_$nunito_$black_$ttf.__name__ = "__ASSET__OPENFL__fonts_nunito_black_ttf";
+_$_$ASSET_$_$OPENFL_$_$fonts_$nunito_$black_$ttf.__super__ = openfl_text_Font;
+_$_$ASSET_$_$OPENFL_$_$fonts_$nunito_$black_$ttf.prototype = $extend(openfl_text_Font.prototype,{
+	__class__: _$_$ASSET_$_$OPENFL_$_$fonts_$nunito_$black_$ttf
+});
+var _$_$ASSET_$_$OPENFL_$_$fonts_$oduda_$bold_$ttf = $hx_exports["__ASSET__OPENFL__fonts_oduda_bold_ttf"] = function() {
+	this.__fromLimeFont(new _$_$ASSET_$_$fonts_$oduda_$bold_$ttf());
+	openfl_text_Font.call(this);
+};
+$hxClasses["__ASSET__OPENFL__fonts_oduda_bold_ttf"] = _$_$ASSET_$_$OPENFL_$_$fonts_$oduda_$bold_$ttf;
+_$_$ASSET_$_$OPENFL_$_$fonts_$oduda_$bold_$ttf.__name__ = "__ASSET__OPENFL__fonts_oduda_bold_ttf";
+_$_$ASSET_$_$OPENFL_$_$fonts_$oduda_$bold_$ttf.__super__ = openfl_text_Font;
+_$_$ASSET_$_$OPENFL_$_$fonts_$oduda_$bold_$ttf.prototype = $extend(openfl_text_Font.prototype,{
+	__class__: _$_$ASSET_$_$OPENFL_$_$fonts_$oduda_$bold_$ttf
 });
 Math.__name__ = "Math";
 var Reflect = function() { };
@@ -25116,7 +25146,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 664951;
+	this.version = 155811;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
@@ -27797,6 +27827,7 @@ objects_GameObject.prototype = $extend(openfl_display_Sprite.prototype,{
 	health: null
 	,shield: null
 	,title: null
+	,equipment: null
 	,get_grid_pos: function() {
 		return zero_utilities__$IntPoint_IntPoint_$Impl_$.from_array_int([Math.floor(this.get_x() / 16),Math.floor(this.get_y() / 16)]);
 	}
@@ -28083,24 +28114,25 @@ var objects_Player = function(x,y,options) {
 	scenes_Level.i.dolly.follow_object(this,true);
 	scenes_Level.i.object_map[y][x] = -1;
 	this.init_graphic();
-	this.gear = new ui_Gear(this,options.side);
+	this.equipment = new ui_Equipment(this,options.side);
 	var _g = 0;
-	var _g1 = options.data.gear;
+	var _g1 = options.data.equipment;
 	while(_g < _g1.length) {
 		var g = _g1[_g];
 		++_g;
-		this.gear.add_card(new ui_GearCard(this.gear,util_GearUtil.get_gear_data(g)));
+		this.equipment.add_card(new ui_GearCard(this.equipment,util_GearUtil.get_gear_data(g)));
 	}
-	scenes_Level.i.gear_layer.addChild(this.gear);
+	scenes_Level.i.gear_layer.addChild(this.equipment);
 };
 $hxClasses["objects.Player"] = objects_Player;
 objects_Player.__name__ = "objects.Player";
 objects_Player.__properties__ = {set_selected_player:"set_selected_player"};
 objects_Player.set_selected_player = function(player) {
-	ui_Gear.set_active_gear(player.gear);
+	ui_Equipment.set_active_equipment(player.equipment);
+	scenes_Level.i.clear_indicators();
 	scenes_Level.i.dolly.follow_object(player,false);
 	player.pulse();
-	player.gear.move_card.set_moves();
+	player.equipment.move_card.set_moves();
 	return objects_Player.selected_player = player;
 };
 objects_Player.__super__ = objects_Actor;
@@ -28108,10 +28140,9 @@ objects_Player.prototype = $extend(objects_Actor.prototype,{
 	AP: null
 	,set_AP: function(n) {
 		this.AP = n;
-		this.gear.player_info.update_ap_pts();
+		this.equipment.player_info.update_ap_pts();
 		return this.AP;
 	}
-	,gear: null
 	,init_graphic: function() {
 		this.graphic = new zero_openfl_utilities_AnimatedSprite({ source : "images/players.png", animations : [], frame_width : 16, frame_height : 16, offset_x : 8, offset_y : 12});
 		var max = null;
@@ -28119,12 +28150,11 @@ objects_Player.prototype = $extend(objects_Actor.prototype,{
 		this.addChild(this.graphic);
 	}
 	,health_callback: function() {
-		this.gear.player_info.update_health();
+		this.equipment.player_info.update_health();
 	}
 	,set_shield: function(amt) {
 		objects_Actor.prototype.set_shield.call(this,amt);
-		this.gear.player_info.update_shield();
-		haxe_Log.trace(this.shield,{ fileName : "src/objects/Player.hx", lineNumber : 70, className : "objects.Player", methodName : "set_shield"});
+		this.equipment.player_info.update_shield();
 		return this.shield;
 	}
 	,__class__: objects_Player
@@ -76260,8 +76290,8 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 		this.addChild(this.deck);
 		this.deck.deal();
 		this.addChild(this.info_layer = new ui_InfoLayer());
-		var player = new objects_Player(2,9,{ data : { id : "Test Player", health : { current : 48, max : 64}, movement : { requirement : "MAX_CARD", requirement_value : 5, type : ui_MoveType.FREE, factor : ui_MoveFactor.VALUE}, gear : ["test_d_01","test_h_01"]}, side : objects_PlayerSide.LEFT});
-		var player2 = new objects_Player(6,8,{ data : { id : "Test Player", health : { current : 64, max : 64}, movement : { requirement : "MAX_CARD", requirement_value : 5, type : ui_MoveType.FREE, factor : ui_MoveFactor.VALUE}, gear : ["test_u_01","test_h_01"]}, side : objects_PlayerSide.RIGHT});
+		var player = new objects_Player(2,9,{ data : { id : "Test Player", health : { current : 48, max : 64}, movement : { requirement : "MAX_CARD", requirement_value : 5, type : ui_MoveType.FREE, factor : ui_MoveFactor.VALUE}, equipment : ["test_d_01","test_d_02","test_h_01"]}, side : objects_PlayerSide.LEFT});
+		var player2 = new objects_Player(6,8,{ data : { id : "Test Player", health : { current : 64, max : 64}, movement : { requirement : "MAX_CARD", requirement_value : 5, type : ui_MoveType.FREE, factor : ui_MoveFactor.VALUE}, equipment : ["test_u_01","test_h_01"]}, side : objects_PlayerSide.RIGHT});
 		objects_Player.set_selected_player(player);
 		player2.set_shield(4);
 	}
@@ -76345,7 +76375,7 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 		objects_Player.selected_player.follow_path(path);
 		this.can_move = false;
 		this.move_indicators.get_graphics().clear();
-		ui_Gear.active_gear.move_card.set_expended(true);
+		ui_Equipment.active_equipment.move_card.set_expended(true);
 	}
 	,get_traversal_map: function(ignore) {
 		var out = this.tiles.get_solids_array();
@@ -76371,76 +76401,112 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 		this.indicators.get_graphics().clear();
 		this.move_indicators.set_visible(true);
 	}
-	,draw_indicators: function(gear_card) {
+	,draw_indicators: function(equipment,equipment_array) {
+		var gear = equipment_array == null ? equipment == null ? [] : [equipment] : equipment_array;
 		this.indicators.get_graphics().clear();
 		this.move_indicators.set_visible(false);
-		var player = gear_card.gear.player;
-		var range_min = gear_card.gear_data.range.min;
-		var range_max = gear_card.gear_data.range.max;
-		var range_type = gear_card.gear_data.range.type;
-		if(gear_card.gear_data.bonus.type == "DOUBLE_RANGE" && gear_card.vefify_bonus()) {
-			range_max *= 2;
-		}
-		if(range_type == "DIAGONAL") {
-			range_min *= 2;
-			range_max *= 2;
-		}
-		var tiles = this.get_available_tiles_array(zero_utilities__$IntPoint_IntPoint_$Impl_$.from_array_int([Math.floor(player.get_x() / 16),Math.floor(player.get_y() / 16)]),range_min,range_max,range_type);
-		var color;
-		switch(gear_card.gear_data.effect.type) {
-		case "DAMAGE":
-			color = zero_utilities__$Color_Color_$Impl_$.PICO_8_RED;
-			break;
-		case "HEALTH":
-			color = zero_utilities__$Color_Color_$Impl_$.PICO_8_GREEN;
-			break;
-		case "MOVE":
-			color = zero_utilities__$Color_Color_$Impl_$.PICO_8_BLUE;
-			break;
-		case "SHIELD":
-			color = zero_utilities__$Color_Color_$Impl_$.PICO_8_ORANGE;
-			break;
-		default:
-			color = zero_utilities__$Color_Color_$Impl_$.WHITE;
-		}
-		var color_fill = zero_utilities__$Vec4_Vec4_$Impl_$.get(color[0],color[1],color[2],color[3]);
-		color_fill[3] = Math.min(Math.max(0.25,0),1);
-		var _g1 = 0;
-		while(_g1 < tiles.length) {
-			var tile = tiles[_g1];
-			++_g1;
-			var sprite = this.indicators;
-			var x = tile[0] * 16 + 2;
-			var y = tile[1] * 16 + 2;
-			var radius = 2;
-			if(radius == null) {
-				radius = 0;
+		var placed_tiles = [];
+		var _g = 0;
+		while(_g < gear.length) {
+			var card = gear[_g];
+			++_g;
+			var player = card.equipment.player;
+			var range_min = card.equipment_data.range.min;
+			var range_max = card.equipment_data.range.max;
+			var range_type = card.equipment_data.range.type;
+			if(((card) instanceof ui_GearCard) && card.vefify_bonus()) {
+				var gear_card = card;
+				switch(gear_card.gear_data.bonus.type) {
+				case "DOUBLE_RANGE":
+					range_max *= 2;
+					break;
+				case "DOUBLE_EFFECT_VALUE":case "EFFECT_PLUS_ONE":case "EFFECT_PLUS_TWO":
+					break;
+				case "RANGE_PLUS_ONE":
+					++range_max;
+					break;
+				case "RANGE_PLUS_TWO":
+					range_max += 2;
+					break;
+				}
 			}
-			sprite.get_graphics().beginFill((Math.round(color_fill[0] * 255) & 255) << 16 | (Math.round(color_fill[1] * 255) & 255) << 8 | Math.round(color_fill[2] * 255) & 255,color_fill[3]);
-			if(radius == 0) {
-				sprite.get_graphics().drawRect(x,y,12,12);
-			} else {
-				sprite.get_graphics().drawRoundRect(x,y,12,12,radius);
+			if(range_type == "DIAGONAL") {
+				range_min *= 2;
+				range_max *= 2;
 			}
-			sprite.get_graphics().endFill();
-			var sprite1 = sprite;
-			var x1 = tile[0] * 16 + 2;
-			var y1 = tile[1] * 16 + 2;
-			var radius1 = 2;
-			var line_width = 1;
-			if(line_width == null) {
-				line_width = 1;
+			var tiles = this.get_available_tiles_array(zero_utilities__$IntPoint_IntPoint_$Impl_$.from_array_int([Math.floor(player.get_x() / 16),Math.floor(player.get_y() / 16)]),range_min,range_max,range_type);
+			var color;
+			switch(card.equipment_data.effect.type) {
+			case "DAMAGE":
+				color = zero_utilities__$Color_Color_$Impl_$.PICO_8_RED;
+				break;
+			case "HEALTH":
+				color = zero_utilities__$Color_Color_$Impl_$.PICO_8_GREEN;
+				break;
+			case "MOVE":
+				color = zero_utilities__$Color_Color_$Impl_$.PICO_8_BLUE;
+				break;
+			case "SHIELD":
+				color = zero_utilities__$Color_Color_$Impl_$.PICO_8_ORANGE;
+				break;
+			default:
+				color = zero_utilities__$Color_Color_$Impl_$.WHITE;
 			}
-			if(radius1 == null) {
-				radius1 = 0;
+			var color_fill = zero_utilities__$Vec4_Vec4_$Impl_$.get(color[0],color[1],color[2],color[3]);
+			color_fill[3] = Math.min(Math.max(0.25,0),1);
+			var _g1 = 0;
+			while(_g1 < tiles.length) {
+				var tile = tiles[_g1];
+				++_g1;
+				var cont = false;
+				var _g11 = 0;
+				while(_g11 < placed_tiles.length) {
+					var prev_tile = placed_tiles[_g11];
+					++_g11;
+					if(cont) {
+						break;
+					}
+					if(prev_tile[0] == tile[0] && prev_tile[1] == tile[1]) {
+						cont = true;
+					}
+				}
+				if(cont) {
+					continue;
+				}
+				placed_tiles.push(tile);
+				var sprite = this.indicators;
+				var x = tile[0] * 16 + 2;
+				var y = tile[1] * 16 + 2;
+				var radius = 2;
+				if(radius == null) {
+					radius = 0;
+				}
+				sprite.get_graphics().beginFill((Math.round(color_fill[0] * 255) & 255) << 16 | (Math.round(color_fill[1] * 255) & 255) << 8 | Math.round(color_fill[2] * 255) & 255,color_fill[3]);
+				if(radius == 0) {
+					sprite.get_graphics().drawRect(x,y,12,12);
+				} else {
+					sprite.get_graphics().drawRoundRect(x,y,12,12,radius);
+				}
+				sprite.get_graphics().endFill();
+				var sprite1 = sprite;
+				var x1 = tile[0] * 16 + 2;
+				var y1 = tile[1] * 16 + 2;
+				var radius1 = 2;
+				var line_width = 1;
+				if(line_width == null) {
+					line_width = 1;
+				}
+				if(radius1 == null) {
+					radius1 = 0;
+				}
+				sprite1.get_graphics().lineStyle(line_width,(Math.round(color[0] * 255) & 255) << 16 | (Math.round(color[1] * 255) & 255) << 8 | Math.round(color[2] * 255) & 255,color[3]);
+				if(radius1 == 0) {
+					sprite1.get_graphics().drawRect(x1,y1,12,12);
+				} else {
+					sprite1.get_graphics().drawRoundRect(x1,y1,12,12,radius1);
+				}
+				sprite1.get_graphics().lineStyle();
 			}
-			sprite1.get_graphics().lineStyle(line_width,(Math.round(color[0] * 255) & 255) << 16 | (Math.round(color[1] * 255) & 255) << 8 | Math.round(color[2] * 255) & 255,color[3]);
-			if(radius1 == 0) {
-				sprite1.get_graphics().drawRect(x1,y1,12,12);
-			} else {
-				sprite1.get_graphics().drawRoundRect(x1,y1,12,12,radius1);
-			}
-			sprite1.get_graphics().lineStyle();
 		}
 	}
 	,get_available_tiles_array: function(origin,min_range,max_range,restriction) {
@@ -76486,7 +76552,7 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 	}
 	,draw_move_indicators: function(move_card) {
 		this.move_indicators.get_graphics().clear();
-		var player = move_card.gear.player;
+		var player = move_card.equipment.player;
 		var range = move_card.get_moves_value();
 		if(range == 0) {
 			return;
@@ -76537,9 +76603,7 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 		if(restriction == null) {
 			restriction = "NONE";
 		}
-		haxe_Log.trace("x: " + origin[0] + " | y: " + origin[1],{ fileName : "src/scenes/Level.hx", lineNumber : 231, className : "scenes.Level", methodName : "get_walkable_tiles_array"});
 		var solids = this.get_traversal_map(origin);
-		haxe_Log.trace(solids,{ fileName : "src/scenes/Level.hx", lineNumber : 233, className : "scenes.Level", methodName : "get_walkable_tiles_array"});
 		var map = zero_extensions_ArrayExt.heat_map(solids,origin[0],origin[1],range + 1);
 		var out = [];
 		var _g = 0;
@@ -76905,7 +76969,7 @@ ui_DropCard.prototype = $extend(ui_Card.prototype,{
 	,__class__: ui_DropCard
 	,__properties__: $extend(ui_Card.prototype.__properties__,{set_expended:"set_expended",set_active:"set_active"})
 });
-var ui_Gear = function(player,side) {
+var ui_Equipment = function(player,side) {
 	this.gear_cards = [];
 	this.active = false;
 	var _gthis = this;
@@ -76924,18 +76988,18 @@ var ui_Gear = function(player,side) {
 		return;
 	});
 };
-$hxClasses["ui.Gear"] = ui_Gear;
-ui_Gear.__name__ = "ui.Gear";
-ui_Gear.__properties__ = {set_active_gear:"set_active_gear"};
-ui_Gear.set_active_gear = function(gear) {
-	if(ui_Gear.active_gear != null) {
-		ui_Gear.active_gear.active = false;
+$hxClasses["ui.Equipment"] = ui_Equipment;
+ui_Equipment.__name__ = "ui.Equipment";
+ui_Equipment.__properties__ = {set_active_equipment:"set_active_equipment"};
+ui_Equipment.set_active_equipment = function(equipment) {
+	if(ui_Equipment.active_equipment != null) {
+		ui_Equipment.active_equipment.active = false;
 	}
-	gear.active = true;
-	return ui_Gear.active_gear = gear;
+	equipment.active = true;
+	return ui_Equipment.active_equipment = equipment;
 };
-ui_Gear.__super__ = openfl_display_Sprite;
-ui_Gear.prototype = $extend(openfl_display_Sprite.prototype,{
+ui_Equipment.__super__ = openfl_display_Sprite;
+ui_Equipment.prototype = $extend(openfl_display_Sprite.prototype,{
 	active: null
 	,link: null
 	,gear_cards: null
@@ -76975,25 +77039,251 @@ ui_Gear.prototype = $extend(openfl_display_Sprite.prototype,{
 		this.gear.addChild(card);
 		this.gear_cards.push(card);
 	}
-	,__class__: ui_Gear
+	,__class__: ui_Equipment
 });
-var ui_GearCard = function(gear,gear_data) {
+var ui_EquipmentCard = function(equipment) {
 	ui_DropCard.call(this);
-	this.gear = gear;
-	this.gear_data = gear_data;
+	this.equipment = equipment;
 	this.draggable = false;
-	this.anchors = [zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([-35,28]),zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([35,28])];
-	this.data = { requirement : gear_data.requirement, requirement_value : gear_data.requirement_value};
-	this.draw_card();
 	this.addEventListener("mouseOver",$bind(this,this.mouse_over));
 	this.addEventListener("mouseOut",$bind(this,this.mouse_out));
 };
+$hxClasses["ui.EquipmentCard"] = ui_EquipmentCard;
+ui_EquipmentCard.__name__ = "ui.EquipmentCard";
+ui_EquipmentCard.__super__ = ui_DropCard;
+ui_EquipmentCard.prototype = $extend(ui_DropCard.prototype,{
+	equipment: null
+	,equipment_data: null
+	,mouse_over: function(e) {
+	}
+	,mouse_out: function(e) {
+	}
+	,__class__: ui_EquipmentCard
+});
+var ui_EquipmentHandle = function(type,parent) {
+	this.dragging = false;
+	this.home = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([]);
+	this.active = false;
+	var _gthis = this;
+	openfl_display_Sprite.call(this);
+	this.gear_card = parent;
+	this.type = type;
+	this.addChild(this.graphic = new openfl_display_Sprite());
+	this.addEventListener("enterFrame",$bind(this,this.update));
+	this.addEventListener("mouseOver",$bind(this,this.mouse_over));
+	switch(type._hx_index) {
+	case 0:
+		zero_openfl_extensions_SpriteTools.load_graphic(this.graphic,"images/ui/aim_cta.png",zero_utilities_Anchor.MIDDLE_CENTER,true);
+		this.addEventListener("mouseDown",$bind(this,this.mouse_down));
+		this.addEventListener("mouseOut",function(e) {
+			if(!_gthis.dragging) {
+				scenes_Level.i.clear_indicators();
+			}
+			return;
+		});
+		zero_openfl_utilities_Game.root.addEventListener("mouseUp",$bind(this,this.mouse_up));
+		break;
+	case 1:
+		zero_openfl_extensions_SpriteTools.load_graphic(this.graphic,"images/ui/do_cta.png",zero_utilities_Anchor.MIDDLE_CENTER,true);
+		this.addEventListener("mouseDown",$bind(this,this.on_click));
+		this.addEventListener("mouseOut",$bind(this,this.mouse_out));
+		break;
+	}
+	var x = 0;
+	var y = null;
+	if(x == null) {
+		x = 0;
+	}
+	if(y == null) {
+		y = x;
+	}
+	this.set_scaleX(x);
+	this.set_scaleY(y);
+};
+$hxClasses["ui.EquipmentHandle"] = ui_EquipmentHandle;
+ui_EquipmentHandle.__name__ = "ui.EquipmentHandle";
+ui_EquipmentHandle.__super__ = openfl_display_Sprite;
+ui_EquipmentHandle.prototype = $extend(openfl_display_Sprite.prototype,{
+	active: null
+	,type: null
+	,graphic: null
+	,home: null
+	,dragging: null
+	,gear_card: null
+	,level_pos: null
+	,target: null
+	,mouse_over: function(e) {
+		if(this.type == ui_HandleType.PRESS) {
+			this.gear_card.set_active(true);
+		} else {
+			scenes_Level.i.draw_indicators(this.gear_card);
+		}
+	}
+	,mouse_out: function(e) {
+		this.gear_card.set_active(false);
+	}
+	,mouse_down: function(e) {
+		if(!this.active) {
+			return;
+		}
+		this.startDrag(true);
+		this.dragging = true;
+		this.gear_card.set_active(true);
+	}
+	,mouse_up: function(e) {
+		if(!this.dragging) {
+			return;
+		}
+		this.stopDrag();
+		this.dragging = false;
+		ui_Equipment.active_equipment.link.length = 0;
+		ui_Equipment.active_equipment.link.draw();
+		this.gear_card.set_active(false);
+		this.level_pos = this.get_level_pos();
+		scenes_Level.i.clear_indicators();
+		if(this.target != null) {
+			var execute = false;
+			var target_grid_pos = this.target.get_grid_pos();
+			var _g = 0;
+			var _g1 = scenes_Level.i.available_tiles;
+			while(_g < _g1.length) {
+				var pos = _g1[_g];
+				++_g;
+				if(pos[0] == target_grid_pos[0] && pos[1] == target_grid_pos[1]) {
+					execute = true;
+				}
+			}
+			zero_utilities__$IntPoint_IntPoint_$Impl_$.pool.push(target_grid_pos);
+			target_grid_pos = null;
+			if(!execute) {
+				return;
+			}
+			this.gear_card.execute(this.target);
+			scenes_Level.i.info_layer.show_info(this.target);
+			this.hide();
+		}
+	}
+	,get_level_pos: function() {
+		return this.level_pos = scenes_Level.i.level.globalToLocal(new openfl_geom_Point(this.get_x(),this.get_y()));
+	}
+	,on_click: function(e) {
+		if(!this.active) {
+			return;
+		}
+		zero_utilities_Tween.get(this).from_to("scaleX",0.5,1).from_to("scaleY",0.5,1).ease(zero_utilities_Ease.elasticOut).duration(0.4).on_complete($bind(this,this.hide));
+		this.gear_card.execute();
+	}
+	,show: function() {
+		if(this.active) {
+			return;
+		}
+		if(this.parent == null) {
+			ui_Equipment.active_equipment.addChild(this);
+		}
+		this.active = true;
+		zero_utilities_Tween.get(this).from_to("scaleX",0,1).from_to("scaleY",0,1).from_to("alpha",1,1).duration(0.4).ease(zero_utilities_Ease.backOut);
+	}
+	,hide: function() {
+		if(!this.active) {
+			return;
+		}
+		this.active = false;
+		zero_utilities_Tween.get(this).from_to("scaleX",1,0).from_to("scaleY",1,0).from_to("alpha",1,0).duration(0.4).ease(zero_utilities_Ease.backOut);
+	}
+	,update: function(e) {
+		ui_Equipment.active_equipment.link.active = this.dragging;
+		if(this.dragging) {
+			var card_pos = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([this.gear_card.get_x(),this.gear_card.get_y()]);
+			var this_pos = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([this.get_x(),this.get_y()]);
+			var diff = zero_utilities__$Vec2_Vec2_$Impl_$.subtract(this_pos,card_pos);
+			var sprite = ui_Equipment.active_equipment.link;
+			sprite.set_x(card_pos[0]);
+			sprite.set_y(card_pos[1]);
+			ui_Equipment.active_equipment.link.length = Math.sqrt(diff[0] * diff[0] + diff[1] * diff[1]);
+			ui_Equipment.active_equipment.link.set_rotation((Math.atan2(diff[1],diff[0]) * (180 / Math.PI) % 360 + 360) % 360);
+			zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(card_pos);
+			card_pos = null;
+			zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(this_pos);
+			this_pos = null;
+			zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(diff);
+			diff = null;
+			ui_Equipment.active_equipment.link.draw();
+			this.check_objects(this.get_x(),this.get_y());
+		} else {
+			var _g = this;
+			_g.set_x(_g.get_x() + (this.gear_card.get_x() - this.get_x()) * 0.5);
+			var _g1 = this;
+			_g1.set_y(_g1.get_y() + (this.gear_card.get_y() + ui_EquipmentCard.card_height / 2 - this.get_y()) * 0.5);
+		}
+	}
+	,check_objects: function(x,y,target) {
+		this.level_pos = this.get_level_pos();
+		var _g = 0;
+		var sprite = scenes_Level.i.objects;
+		var _g1 = [];
+		var _g11 = 0;
+		var _g2 = sprite.get_numChildren();
+		while(_g11 < _g2) {
+			var i = _g11++;
+			_g1.push(sprite.getChildAt(i));
+		}
+		var _g12 = _g1;
+		while(_g < _g12.length) {
+			var object = _g12[_g];
+			++_g;
+			var pos = zero_utilities__$Vec2_Vec2_$Impl_$.get(this.level_pos.x,this.level_pos.y);
+			var obj_pos = zero_utilities__$Vec2_Vec2_$Impl_$.get(object.get_x(),object.get_y());
+			var this2 = zero_utilities__$Vec2_Vec2_$Impl_$.subtract(obj_pos,zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float(pos));
+			if(Math.sqrt(this2[0] * this2[0] + this2[1] * this2[1]) < 8) {
+				target = object;
+				var target_grid_pos = target.get_grid_pos();
+				var _g3 = 0;
+				var _g13 = scenes_Level.i.available_tiles;
+				while(_g3 < _g13.length) {
+					var pos1 = _g13[_g3];
+					++_g3;
+					if(pos1[0] == target_grid_pos[0] && pos1[1] == target_grid_pos[1]) {
+						scenes_Level.i.info_layer.show_info(target,this.gear_card);
+					}
+				}
+				zero_utilities__$IntPoint_IntPoint_$Impl_$.pool.push(target_grid_pos);
+				target_grid_pos = null;
+				zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(pos);
+				pos = null;
+				zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(obj_pos);
+				obj_pos = null;
+				break;
+			}
+			zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(pos);
+			pos = null;
+			zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(obj_pos);
+			obj_pos = null;
+		}
+		if(target == null) {
+			scenes_Level.i.info_layer.hide_info(false);
+		}
+		this.target = target;
+	}
+	,__class__: ui_EquipmentHandle
+});
+var ui_HandleType = $hxEnums["ui.HandleType"] = { __ename__ : "ui.HandleType", __constructs__ : ["AIM","PRESS"]
+	,AIM: {_hx_index:0,__enum__:"ui.HandleType",toString:$estr}
+	,PRESS: {_hx_index:1,__enum__:"ui.HandleType",toString:$estr}
+};
+ui_HandleType.__empty_constructs__ = [ui_HandleType.AIM,ui_HandleType.PRESS];
+var ui_GearCard = function(equipment,gear_data) {
+	ui_EquipmentCard.call(this,equipment);
+	this.gear_data = gear_data;
+	this.equipment_data = gear_data;
+	this.data = gear_data;
+	this.anchors = [zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([-35,28]),zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([35,28])];
+	this.draw_card();
+};
 $hxClasses["ui.GearCard"] = ui_GearCard;
 ui_GearCard.__name__ = "ui.GearCard";
-ui_GearCard.__super__ = ui_DropCard;
-ui_GearCard.prototype = $extend(ui_DropCard.prototype,{
-	gear: null
-	,gear_data: null
+ui_GearCard.__super__ = ui_EquipmentCard;
+ui_GearCard.prototype = $extend(ui_EquipmentCard.prototype,{
+	gear_data: null
 	,description: null
 	,req_text: null
 	,req_text_r: null
@@ -77030,10 +77320,10 @@ ui_GearCard.prototype = $extend(ui_DropCard.prototype,{
 		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this1,2,zero_utilities__$Color_Color_$Impl_$.zero(z));
 		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this1,3,zero_utilities__$Color_Color_$Impl_$.zero(w));
 		var color = this1;
-		var x1 = -ui_GearCard.card_width / 2;
-		var y1 = -ui_GearCard.card_height / 2;
-		var width = ui_GearCard.card_width;
-		var height = ui_GearCard.card_height;
+		var x1 = -ui_EquipmentCard.card_width / 2;
+		var y1 = -ui_EquipmentCard.card_height / 2;
+		var width = ui_EquipmentCard.card_width;
+		var height = ui_EquipmentCard.card_height;
 		var radius = 16;
 		if(radius == null) {
 			radius = 0;
@@ -77046,10 +77336,10 @@ ui_GearCard.prototype = $extend(ui_DropCard.prototype,{
 		}
 		this.get_graphics().endFill();
 		var color1 = zero_utilities__$Color_Color_$Impl_$.BLACK;
-		var x2 = -ui_GearCard.card_width / 2 + 2;
-		var y2 = -ui_GearCard.card_height / 2 + 2;
-		var width1 = ui_GearCard.card_width - 4;
-		var height1 = ui_GearCard.card_height - 4;
+		var x2 = -ui_EquipmentCard.card_width / 2 + 2;
+		var y2 = -ui_EquipmentCard.card_height / 2 + 2;
+		var width1 = ui_EquipmentCard.card_width - 4;
+		var height1 = ui_EquipmentCard.card_height - 4;
 		var radius1 = 12;
 		var line_width = 4;
 		if(line_width == null) {
@@ -77066,8 +77356,8 @@ ui_GearCard.prototype = $extend(ui_DropCard.prototype,{
 		}
 		this.get_graphics().lineStyle();
 		var contents = new openfl_display_Sprite();
-		var y3 = -ui_GearCard.card_height / 2;
-		contents.set_x(-ui_GearCard.card_width / 2);
+		var y3 = -ui_EquipmentCard.card_height / 2;
+		contents.set_x(-ui_EquipmentCard.card_width / 2);
 		contents.set_y(y3);
 		this.addChild(contents);
 		var _g = 0;
@@ -77094,9 +77384,9 @@ ui_GearCard.prototype = $extend(ui_DropCard.prototype,{
 		}
 		sprite1.get_graphics().endFill();
 		contents.addChild(sprite1);
-		var title = zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : "Oduda Bold", size : 16, color : zero_utilities__$Color_Color_$Impl_$.BLACK}),this.gear_data.title),40,38,zero_utilities_Anchor.MIDDLE_LEFT);
+		var title = zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : util_Translation.get_font(util_Font.BOLD), size : 16, color : zero_utilities__$Color_Color_$Impl_$.BLACK}),util_Translation.get_gear_title(this.gear_data.id)),40,38,zero_utilities_Anchor.MIDDLE_LEFT);
 		contents.addChild(title);
-		this.description = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : "Oduda Bold", size : 14, color : zero_utilities__$Color_Color_$Impl_$.BLACK, leading : -2});
+		this.description = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : util_Translation.get_font(util_Font.BOLD), size : 14, color : zero_utilities__$Color_Color_$Impl_$.BLACK, leading : -2});
 		contents.addChild(this.description);
 		this.set_description();
 		var sprite2 = new openfl_display_Sprite();
@@ -77113,10 +77403,10 @@ ui_GearCard.prototype = $extend(ui_DropCard.prototype,{
 		}
 		sprite2.get_graphics().endFill();
 		contents.addChild(sprite2);
-		this.req_text = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : "Oduda Bold", size : 20, color : zero_utilities__$Color_Color_$Impl_$.PICO_8_DARK_BLUE});
+		this.req_text = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : util_Translation.get_font(util_Font.BOLD), size : 20, color : zero_utilities__$Color_Color_$Impl_$.PICO_8_DARK_BLUE});
 		contents.addChild(this.req_text);
 		this.set_req_text();
-		this.req_text_r = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : "Oduda Bold", size : 16, color : zero_utilities__$Color_Color_$Impl_$.PICO_8_DARK_BLUE, align : 0});
+		this.req_text_r = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : util_Translation.get_font(util_Font.BOLD), size : 16, color : zero_utilities__$Color_Color_$Impl_$.PICO_8_DARK_BLUE, align : 0});
 		contents.addChild(this.req_text_r);
 		this.set_req_text_r();
 		var src;
@@ -77268,10 +77558,10 @@ ui_GearCard.prototype = $extend(ui_DropCard.prototype,{
 		contents.addChild(sprite10);
 		var sprite11 = new openfl_display_Sprite();
 		var color4 = zero_utilities__$Color_Color_$Impl_$.PICO_8_WHITE;
-		var x7 = -ui_GearCard.card_width / 2 + 4;
-		var y8 = -ui_GearCard.card_height / 2 + 4;
-		var width2 = ui_GearCard.card_width - 8;
-		var height2 = ui_GearCard.card_height - 8;
+		var x7 = -ui_EquipmentCard.card_width / 2 + 4;
+		var y8 = -ui_EquipmentCard.card_height / 2 + 4;
+		var width2 = ui_EquipmentCard.card_width - 8;
+		var height2 = ui_EquipmentCard.card_height - 8;
 		var radius4 = 16;
 		var line_width1 = 8;
 		if(line_width1 == null) {
@@ -77290,28 +77580,28 @@ ui_GearCard.prototype = $extend(ui_DropCard.prototype,{
 		this.addChild(this.highlight = sprite11);
 		zero_utilities_Tween.get(this.highlight).from_to("scaleX",1,1.1).from_to("scaleY",1,1.1).from_to("alpha",1,0).type(zero_utilities_TweenType.LOOP_FORWARDS).duration(1).ease(zero_utilities_Ease.quadOut);
 		this.highlight.set_visible(false);
-		this.handle = new ui_GearCardHandle(this.gear_data.range.max == 0 ? ui_HandleType.PRESS : ui_HandleType.AIM,this);
+		this.handle = new ui_EquipmentHandle(this.gear_data.range.max == 0 ? ui_HandleType.PRESS : ui_HandleType.AIM,this);
 	}
 	,set_description: function() {
 		var str;
 		switch(this.gear_data.effect.type) {
 		case "DAMAGE":
-			str = "Do " + this.get_effect_string() + " damage";
+			str = util_Translation.replace(util_Translation.get_gameplay_text("gear_desc_damage"),this.get_effect_string());
 			break;
 		case "DRAW":
-			str = "Draw " + this.get_effect_string() + " card" + (this.get_effect_value() > 1 ? "s" : "");
+			str = util_Translation.replace(util_Translation.get_gameplay_text("gear_desc_draw"),this.get_effect_string());
 			break;
 		case "HEALTH":
-			str = "Heal " + this.get_effect_string() + " hitpoints";
+			str = util_Translation.replace(util_Translation.get_gameplay_text("gear_desc_health"),this.get_effect_string());
 			break;
 		case "MOVE":
-			str = "Move " + this.get_effect_string() + " spaces";
+			str = util_Translation.replace(util_Translation.get_gameplay_text("gear_desc_move"),this.get_effect_string());
 			break;
 		case "SHIELD":
-			str = "Shield against " + this.get_effect_string() + " damage";
+			str = util_Translation.replace(util_Translation.get_gameplay_text("gear_desc_shield"),this.get_effect_string());
 			break;
 		}
-		zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(this.description,zero_openfl_extensions_TextTools.wrap_string(str,this.description,128)),ui_GearCard.card_width / 2,70,zero_utilities_Anchor.MIDDLE_CENTER);
+		zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(this.description,zero_openfl_extensions_TextTools.wrap_string(str,this.description,128)),ui_EquipmentCard.card_width / 2,70,zero_utilities_Anchor.MIDDLE_CENTER);
 	}
 	,set_req_text: function() {
 		if(this.cards.length > 0) {
@@ -77321,60 +77611,60 @@ ui_GearCard.prototype = $extend(ui_DropCard.prototype,{
 		var str;
 		switch(this.gear_data.requirement) {
 		case "CLUBS":
-			str = "Clubs";
+			str = util_Translation.get_gameplay_text("gear_req_clubs");
 			break;
 		case "DIAMONDS":
-			str = "Diamonds";
+			str = util_Translation.get_gameplay_text("gear_req_diamonds");
 			break;
 		case "DIFF_SUIT":
-			str = "Different Suit";
+			str = util_Translation.get_gameplay_text("gear_req_diff_suit");
 			break;
 		case "EXACT_CARD":
-			str = "= " + this.gear_data.requirement_value;
+			str = util_Translation.replace(util_Translation.get_gameplay_text("gear_req_exact_card"),"" + this.gear_data.requirement_value);
 			break;
 		case "EXACT_TOTAL":
-			str = "All = " + this.gear_data.requirement_value;
+			str = util_Translation.replace(util_Translation.get_gameplay_text("gear_req_exact_total"),"" + this.gear_data.requirement_value);
 			break;
 		case "HEARTS":
-			str = "Hearts";
+			str = util_Translation.get_gameplay_text("gear_req_hearts");
 			break;
 		case "IS_FACE":
-			str = "Face";
+			str = util_Translation.get_gameplay_text("gear_req_face");
 			break;
 		case "MAX_CARD":
-			str = "< " + (this.gear_data.requirement_value + 1);
+			str = util_Translation.replace(util_Translation.get_gameplay_text("gear_req_max_card"),"" + (this.gear_data.requirement_value + 1));
 			break;
 		case "MAX_TOTAL":
-			str = "All < " + (this.gear_data.requirement_value + 1);
+			str = util_Translation.replace(util_Translation.get_gameplay_text("gear_req_max_total"),"" + (this.gear_data.requirement_value + 1));
 			break;
 		case "MIN_CARD":
-			str = "> " + (this.gear_data.requirement_value - 1);
+			str = util_Translation.replace(util_Translation.get_gameplay_text("gear_req_min_card"),"" + (this.gear_data.requirement_value - 1));
 			break;
 		case "MIN_TOTAL":
-			str = "All > " + (this.gear_data.requirement_value - 1);
+			str = util_Translation.replace(util_Translation.get_gameplay_text("gear_req_min_total"),"" + (this.gear_data.requirement_value - 1));
 			break;
 		case "NOT_FACE":
-			str = "Not Face";
+			str = util_Translation.get_gameplay_text("gear_req_not_face");
 			break;
 		case "NO_MATCH":
-			str = "Not Pair";
+			str = util_Translation.get_gameplay_text("gear_req_no_match");
 			break;
 		case "PAIR":
-			str = "Pair";
+			str = util_Translation.get_gameplay_text("gear_req_pair");
 			break;
 		case "SAME_SUIT":
-			str = "Same Suit";
+			str = util_Translation.get_gameplay_text("gear_req_same_suit");
 			break;
 		case "SPADES":
-			str = "Spades";
+			str = util_Translation.get_gameplay_text("gear_req_spades");
 			break;
 		case "TWO_CARDS":
-			str = "Two Cards";
+			str = util_Translation.get_gameplay_text("gear_req_two_cards");
 			break;
 		default:
 			str = "";
 		}
-		zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(this.req_text,str),ui_GearCard.card_width / 2,140,zero_utilities_Anchor.MIDDLE_CENTER);
+		zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(this.req_text,str),ui_EquipmentCard.card_width / 2,140,zero_utilities_Anchor.MIDDLE_CENTER);
 	}
 	,set_req_text_r: function() {
 		if(this.cards.length == 0 || this.cards.length == 2) {
@@ -77384,60 +77674,60 @@ ui_GearCard.prototype = $extend(ui_DropCard.prototype,{
 		var str;
 		switch(this.gear_data.requirement) {
 		case "CLUBS":
-			str = "Clubs";
+			str = util_Translation.get_gameplay_text("gear_req_sm_clubs");
 			break;
 		case "DIAMONDS":
-			str = "Diamonds";
+			str = util_Translation.get_gameplay_text("gear_req_sm_diamonds");
 			break;
 		case "DIFF_SUIT":
-			str = "Not\n" + util_CardUtil.suit_to_string(this.cards[0].data.suit);
+			str = util_Translation.replace(util_Translation.get_gameplay_text("gear_req_sm_diff_suit"),"\n" + util_CardUtil.suit_to_string(this.cards[0].data.suit));
 			break;
 		case "EXACT_CARD":
-			str = "= " + this.gear_data.requirement_value;
+			str = util_Translation.replace(util_Translation.get_gameplay_text("gear_req_sm_exact_card"),"" + this.gear_data.requirement_value);
 			break;
 		case "EXACT_TOTAL":
-			str = "= " + (this.gear_data.requirement_value - util_CardUtil.value_to_int(this.cards[0].data.value));
+			str = util_Translation.replace(util_Translation.get_gameplay_text("gear_req_sm_exact_total"),"" + (this.gear_data.requirement_value - util_CardUtil.value_to_int(this.cards[0].data.value)));
 			break;
 		case "HEARTS":
-			str = "Hearts";
+			str = util_Translation.get_gameplay_text("gear_req_sm_hearts");
 			break;
 		case "IS_FACE":
-			str = "Face";
+			str = util_Translation.get_gameplay_text("gear_req_sm_face");
 			break;
 		case "MAX_CARD":
-			str = "< " + (this.gear_data.requirement_value + 1);
+			str = util_Translation.replace(util_Translation.get_gameplay_text("gear_req_sm_max_card"),"" + (this.gear_data.requirement_value + 1));
 			break;
 		case "MAX_TOTAL":
-			str = "< " + (this.gear_data.requirement_value + 1 - util_CardUtil.value_to_int(this.cards[0].data.value));
+			str = util_Translation.replace(util_Translation.get_gameplay_text("gear_req_sm_max_total"),"" + (this.gear_data.requirement_value + 1 - util_CardUtil.value_to_int(this.cards[0].data.value)));
 			break;
 		case "MIN_CARD":
-			str = "> " + (this.gear_data.requirement_value - 1);
+			str = util_Translation.replace(util_Translation.get_gameplay_text("gear_req_sm_min_card"),"" + (this.gear_data.requirement_value - 1));
 			break;
 		case "MIN_TOTAL":
-			str = "> " + Math.max(this.gear_data.requirement_value - 1 - util_CardUtil.value_to_int(this.cards[0].data.value),0);
+			str = util_Translation.replace(util_Translation.get_gameplay_text("gear_req_sm_min_total"),"" + Math.max(this.gear_data.requirement_value - 1 - util_CardUtil.value_to_int(this.cards[0].data.value),0));
 			break;
 		case "NOT_FACE":
-			str = "Not\nFace";
+			str = util_Translation.get_gameplay_text("gear_req_sm_not_face").split(" ").join("\n");
 			break;
 		case "NO_MATCH":
-			str = "Not\n" + util_CardUtil.value_to_string(this.cards[0].data.value);
+			str = util_Translation.replace(util_Translation.get_gameplay_text("gear_req_sm_no_match"),"\n" + util_CardUtil.value_to_string(this.cards[0].data.value));
 			break;
 		case "PAIR":
-			str = "= " + util_CardUtil.value_to_string(this.cards[0].data.value);
+			str = util_Translation.replace(util_Translation.get_gameplay_text("gear_req_sm_pair"),"" + util_CardUtil.value_to_string(this.cards[0].data.value));
 			break;
 		case "SAME_SUIT":
-			str = "" + util_CardUtil.suit_to_string(this.cards[0].data.suit);
+			str = util_Translation.replace(util_Translation.get_gameplay_text("gear_req_sm_same_suit"),"" + util_CardUtil.suit_to_string(this.cards[0].data.suit));
 			break;
 		case "SPADES":
-			str = "Spades";
+			str = util_Translation.get_gameplay_text("gear_req_sm_spades");
 			break;
 		case "TWO_CARDS":
-			str = "Any";
+			str = util_Translation.get_gameplay_text("gear_req_sm_two_cards");
 			break;
 		default:
 			str = "";
 		}
-		zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(this.req_text_r,str),ui_GearCard.card_width / 2 + 36,140,zero_utilities_Anchor.MIDDLE_CENTER);
+		zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(this.req_text_r,str),ui_EquipmentCard.card_width / 2 + 36,140,zero_utilities_Anchor.MIDDLE_CENTER);
 	}
 	,get_effect_value: function() {
 		var out = 0;
@@ -77460,7 +77750,13 @@ ui_GearCard.prototype = $extend(ui_DropCard.prototype,{
 			case "DOUBLE_EFFECT_VALUE":
 				out *= 2;
 				break;
-			case "DOUBLE_RANGE":
+			case "EFFECT_PLUS_ONE":
+				++out;
+				break;
+			case "EFFECT_PLUS_TWO":
+				out += 2;
+				break;
+			case "DOUBLE_RANGE":case "RANGE_PLUS_ONE":case "RANGE_PLUS_TWO":
 				break;
 			}
 		}
@@ -77590,7 +77886,7 @@ ui_GearCard.prototype = $extend(ui_DropCard.prototype,{
 		}
 	}
 	,add_card: function(card) {
-		ui_DropCard.prototype.add_card.call(this,card);
+		ui_EquipmentCard.prototype.add_card.call(this,card);
 		this.set_description();
 		this.set_req_text();
 		this.set_req_text_r();
@@ -77601,7 +77897,7 @@ ui_GearCard.prototype = $extend(ui_DropCard.prototype,{
 		}
 	}
 	,remove_card: function(card) {
-		ui_DropCard.prototype.remove_card.call(this,card);
+		ui_EquipmentCard.prototype.remove_card.call(this,card);
 		this.set_description();
 		this.set_req_text();
 		this.set_req_text_r();
@@ -77612,7 +77908,7 @@ ui_GearCard.prototype = $extend(ui_DropCard.prototype,{
 		}
 	}
 	,update: function(e) {
-		ui_DropCard.prototype.update.call(this,e);
+		ui_EquipmentCard.prototype.update.call(this,e);
 		this.highlight.set_visible(this.active);
 		var rot_target;
 		if(this.active) {
@@ -77626,214 +77922,6 @@ ui_GearCard.prototype = $extend(ui_DropCard.prototype,{
 	}
 	,__class__: ui_GearCard
 });
-var ui_GearCardHandle = function(type,parent) {
-	this.dragging = false;
-	this.home = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([]);
-	this.active = false;
-	openfl_display_Sprite.call(this);
-	this.gear_card = parent;
-	this.type = type;
-	this.addChild(this.graphic = new openfl_display_Sprite());
-	this.addEventListener("enterFrame",$bind(this,this.update));
-	this.addEventListener("mouseOver",$bind(this,this.mouse_over));
-	switch(type._hx_index) {
-	case 0:
-		zero_openfl_extensions_SpriteTools.load_graphic(this.graphic,"images/ui/aim_cta.png",zero_utilities_Anchor.MIDDLE_CENTER,true);
-		this.addEventListener("mouseDown",$bind(this,this.mouse_down));
-		this.addEventListener("mouseOut",function(e) {
-			scenes_Level.i.clear_indicators();
-			return;
-		});
-		zero_openfl_utilities_Game.root.addEventListener("mouseUp",$bind(this,this.mouse_up));
-		break;
-	case 1:
-		zero_openfl_extensions_SpriteTools.load_graphic(this.graphic,"images/ui/do_cta.png",zero_utilities_Anchor.MIDDLE_CENTER,true);
-		this.addEventListener("mouseDown",$bind(this,this.on_click));
-		this.addEventListener("mouseOut",$bind(this,this.mouse_out));
-		break;
-	}
-	var x = 0;
-	var y = null;
-	if(x == null) {
-		x = 0;
-	}
-	if(y == null) {
-		y = x;
-	}
-	this.set_scaleX(x);
-	this.set_scaleY(y);
-};
-$hxClasses["ui.GearCardHandle"] = ui_GearCardHandle;
-ui_GearCardHandle.__name__ = "ui.GearCardHandle";
-ui_GearCardHandle.__super__ = openfl_display_Sprite;
-ui_GearCardHandle.prototype = $extend(openfl_display_Sprite.prototype,{
-	active: null
-	,type: null
-	,graphic: null
-	,home: null
-	,dragging: null
-	,gear_card: null
-	,level_pos: null
-	,target: null
-	,mouse_over: function(e) {
-		if(this.type == ui_HandleType.PRESS) {
-			this.gear_card.set_active(true);
-		} else {
-			scenes_Level.i.draw_indicators(this.gear_card);
-		}
-	}
-	,mouse_out: function(e) {
-		this.gear_card.set_active(false);
-	}
-	,mouse_down: function(e) {
-		if(!this.active) {
-			return;
-		}
-		this.startDrag(true);
-		this.dragging = true;
-		this.gear_card.set_active(true);
-	}
-	,mouse_up: function(e) {
-		if(!this.dragging) {
-			return;
-		}
-		this.stopDrag();
-		this.dragging = false;
-		ui_Gear.active_gear.link.length = 0;
-		ui_Gear.active_gear.link.draw();
-		this.gear_card.set_active(false);
-		this.level_pos = this.get_level_pos();
-		scenes_Level.i.clear_indicators();
-		if(this.target != null) {
-			var execute = false;
-			var target_grid_pos = this.target.get_grid_pos();
-			var _g = 0;
-			var _g1 = scenes_Level.i.available_tiles;
-			while(_g < _g1.length) {
-				var pos = _g1[_g];
-				++_g;
-				if(pos[0] == target_grid_pos[0] && pos[1] == target_grid_pos[1]) {
-					execute = true;
-				}
-			}
-			zero_utilities__$IntPoint_IntPoint_$Impl_$.pool.push(target_grid_pos);
-			target_grid_pos = null;
-			if(!execute) {
-				return;
-			}
-			this.gear_card.execute(this.target);
-			scenes_Level.i.info_layer.show_info(this.target);
-			this.hide();
-		}
-	}
-	,get_level_pos: function() {
-		return this.level_pos = scenes_Level.i.level.globalToLocal(new openfl_geom_Point(this.get_x(),this.get_y()));
-	}
-	,on_click: function(e) {
-		if(!this.active) {
-			return;
-		}
-		zero_utilities_Tween.get(this).from_to("scaleX",0.5,1).from_to("scaleY",0.5,1).ease(zero_utilities_Ease.elasticOut).duration(0.4).on_complete($bind(this,this.hide));
-		this.gear_card.execute();
-	}
-	,show: function() {
-		if(this.active) {
-			return;
-		}
-		if(this.parent == null) {
-			ui_Gear.active_gear.addChild(this);
-		}
-		this.active = true;
-		zero_utilities_Tween.get(this).from_to("scaleX",0,1).from_to("scaleY",0,1).from_to("alpha",1,1).duration(0.4).ease(zero_utilities_Ease.backOut);
-	}
-	,hide: function() {
-		if(!this.active) {
-			return;
-		}
-		this.active = false;
-		zero_utilities_Tween.get(this).from_to("scaleX",1,0).from_to("scaleY",1,0).from_to("alpha",1,0).duration(0.4).ease(zero_utilities_Ease.backOut);
-	}
-	,update: function(e) {
-		ui_Gear.active_gear.link.active = this.dragging;
-		if(this.dragging) {
-			var card_pos = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([this.gear_card.get_x(),this.gear_card.get_y()]);
-			var this_pos = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([this.get_x(),this.get_y()]);
-			var diff = zero_utilities__$Vec2_Vec2_$Impl_$.subtract(this_pos,card_pos);
-			var sprite = ui_Gear.active_gear.link;
-			sprite.set_x(card_pos[0]);
-			sprite.set_y(card_pos[1]);
-			ui_Gear.active_gear.link.length = Math.sqrt(diff[0] * diff[0] + diff[1] * diff[1]);
-			ui_Gear.active_gear.link.set_rotation((Math.atan2(diff[1],diff[0]) * (180 / Math.PI) % 360 + 360) % 360);
-			zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(card_pos);
-			card_pos = null;
-			zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(this_pos);
-			this_pos = null;
-			zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(diff);
-			diff = null;
-			ui_Gear.active_gear.link.draw();
-			this.check_objects(this.get_x(),this.get_y());
-		} else {
-			var _g = this;
-			_g.set_x(_g.get_x() + (this.gear_card.get_x() - this.get_x()) * 0.5);
-			var _g1 = this;
-			_g1.set_y(_g1.get_y() + (this.gear_card.get_y() + ui_GearCard.card_height / 2 - this.get_y()) * 0.5);
-		}
-	}
-	,check_objects: function(x,y,target) {
-		this.level_pos = this.get_level_pos();
-		var _g = 0;
-		var sprite = scenes_Level.i.objects;
-		var _g1 = [];
-		var _g11 = 0;
-		var _g2 = sprite.get_numChildren();
-		while(_g11 < _g2) {
-			var i = _g11++;
-			_g1.push(sprite.getChildAt(i));
-		}
-		var _g12 = _g1;
-		while(_g < _g12.length) {
-			var object = _g12[_g];
-			++_g;
-			var pos = zero_utilities__$Vec2_Vec2_$Impl_$.get(this.level_pos.x,this.level_pos.y);
-			var obj_pos = zero_utilities__$Vec2_Vec2_$Impl_$.get(object.get_x(),object.get_y());
-			var this2 = zero_utilities__$Vec2_Vec2_$Impl_$.subtract(obj_pos,zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float(pos));
-			if(Math.sqrt(this2[0] * this2[0] + this2[1] * this2[1]) < 8) {
-				target = object;
-				var target_grid_pos = target.get_grid_pos();
-				var _g3 = 0;
-				var _g13 = scenes_Level.i.available_tiles;
-				while(_g3 < _g13.length) {
-					var pos1 = _g13[_g3];
-					++_g3;
-					if(pos1[0] == target_grid_pos[0] && pos1[1] == target_grid_pos[1]) {
-						scenes_Level.i.info_layer.show_info(target,this.gear_card);
-					}
-				}
-				zero_utilities__$IntPoint_IntPoint_$Impl_$.pool.push(target_grid_pos);
-				target_grid_pos = null;
-				zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(pos);
-				pos = null;
-				zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(obj_pos);
-				obj_pos = null;
-				break;
-			}
-			zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(pos);
-			pos = null;
-			zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(obj_pos);
-			obj_pos = null;
-		}
-		if(target == null) {
-			scenes_Level.i.info_layer.hide_info();
-		}
-		this.target = target;
-	}
-	,__class__: ui_GearCardHandle
-});
-var ui_HandleType = $hxEnums["ui.HandleType"] = { __ename__ : "ui.HandleType", __constructs__ : ["AIM","PRESS"]
-	,AIM: {_hx_index:0,__enum__:"ui.HandleType",toString:$estr}
-	,PRESS: {_hx_index:1,__enum__:"ui.HandleType",toString:$estr}
-};
-ui_HandleType.__empty_constructs__ = [ui_HandleType.AIM,ui_HandleType.PRESS];
 var ui_InfoLayer = function() {
 	openfl_display_Sprite.call(this);
 	this.addChild(this.object_info = new ui_ObjectInfo());
@@ -77844,11 +77932,29 @@ ui_InfoLayer.__super__ = openfl_display_Sprite;
 ui_InfoLayer.prototype = $extend(openfl_display_Sprite.prototype,{
 	object_info: null
 	,show_info: function(object,gear) {
+		var _g = [];
+		var _g1 = 0;
+		var _g2 = object.equipment.gear_cards;
+		while(_g1 < _g2.length) {
+			var card = _g2[_g1];
+			++_g1;
+			if(card.equipment_data.effect.type == "DAMAGE") {
+				_g.push(card);
+			}
+		}
+		var cards = _g;
+		scenes_Level.i.draw_indicators(null,cards);
 		this.object_info.set_target(object,gear);
 		this.object_info.active = true;
 	}
-	,hide_info: function() {
+	,hide_info: function(clear_indicators) {
+		if(clear_indicators == null) {
+			clear_indicators = true;
+		}
 		this.object_info.active = false;
+		if(clear_indicators) {
+			scenes_Level.i.clear_indicators();
+		}
 	}
 	,__class__: ui_InfoLayer
 });
@@ -77881,9 +77987,9 @@ ui_LinkGraphic.prototype = $extend(openfl_display_Sprite.prototype,{
 	}
 	,__class__: ui_LinkGraphic
 });
-var ui_MoveCard = function(data,gear) {
+var ui_MoveCard = function(data,equipment) {
 	ui_DropCard.call(this);
-	this.gear = gear;
+	this.equipment = equipment;
 	this.data = { requirement : data.requirement, requirement_value : data.requirement_value};
 	this.move_data = data;
 	this.make_graphic();
@@ -77896,7 +78002,7 @@ ui_MoveCard.__super__ = ui_DropCard;
 ui_MoveCard.prototype = $extend(ui_DropCard.prototype,{
 	req_text: null
 	,move_data: null
-	,gear: null
+	,equipment: null
 	,make_graphic: function() {
 		var color = zero_utilities__$Color_Color_$Impl_$.BLACK;
 		var radius = 16;
@@ -78007,6 +78113,7 @@ ui_MoveCard.prototype = $extend(ui_DropCard.prototype,{
 		sprite3.set_scaleY(y2);
 		this.addChild(sprite3);
 		var tmp = new openfl_text_TextField();
+		var tmp1 = util_Translation.get_font(util_Font.BOLD);
 		var this12 = zero_utilities__$Color_Color_$Impl_$.get();
 		var x3 = 0.031372549019607843;
 		var y3 = 0.24313725490196078;
@@ -78028,7 +78135,7 @@ ui_MoveCard.prototype = $extend(ui_DropCard.prototype,{
 		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this12,1,zero_utilities__$Color_Color_$Impl_$.zero(y3));
 		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this12,2,zero_utilities__$Color_Color_$Impl_$.zero(z2));
 		zero_utilities__$Vec4_Vec4_$Impl_$.arr_set(this12,3,zero_utilities__$Color_Color_$Impl_$.zero(w2));
-		this.req_text = zero_openfl_extensions_TextTools.format(tmp,{ font : "Oduda Bold", size : 24, color : this12});
+		this.req_text = zero_openfl_extensions_TextTools.format(tmp,{ font : tmp1, size : 24, color : this12});
 		this.addChild(this.req_text);
 		this.set_req_text();
 	}
@@ -78141,8 +78248,8 @@ var ui_ObjectInfo = function() {
 		this.get_graphics().endFill();
 	}
 	this.addChild(this.health_bar = new openfl_display_Sprite());
-	this.addChild(this.title_text = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : "Oduda Bold", size : 14, color : zero_utilities__$Color_Color_$Impl_$.WHITE}));
-	this.addChild(this.hp_text = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : "Oduda Bold", size : 14, color : zero_utilities__$Color_Color_$Impl_$.WHITE}));
+	this.addChild(this.title_text = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : util_Translation.get_font(util_Font.BOLD), size : 14, color : zero_utilities__$Color_Color_$Impl_$.WHITE}));
+	this.addChild(this.hp_text = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : util_Translation.get_font(util_Font.BOLD), size : 14, color : zero_utilities__$Color_Color_$Impl_$.WHITE}));
 	this.addEventListener("enterFrame",$bind(this,this.update));
 };
 $hxClasses["ui.ObjectInfo"] = ui_ObjectInfo;
@@ -78400,7 +78507,7 @@ ui_PlayerInfo.prototype = $extend(openfl_display_Sprite.prototype,{
 		sprite.set_x(0);
 		sprite.set_y(80);
 		this.ap_pts = sprite;
-		this.ap_pts_text = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : "Oduda Bold", color : zero_utilities__$Color_Color_$Impl_$.PICO_8_WHITE, size : 24});
+		this.ap_pts_text = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : util_Translation.get_font(util_Font.BOLD), color : zero_utilities__$Color_Color_$Impl_$.PICO_8_WHITE, size : 24});
 		var sprite1 = this.ap_pts;
 		var color = zero_utilities__$Color_Color_$Impl_$.PICO_8_DARK_BLUE;
 		var radius = 32;
@@ -78429,7 +78536,7 @@ ui_PlayerInfo.prototype = $extend(openfl_display_Sprite.prototype,{
 		sprite.set_y(116);
 		this.health = sprite;
 		this.health_text_sprite = new openfl_display_Sprite();
-		this.health_text = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : "Oduda Bold", color : zero_utilities__$Color_Color_$Impl_$.PICO_8_WHITE, size : 24});
+		this.health_text = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : util_Translation.get_font(util_Font.BOLD), color : zero_utilities__$Color_Color_$Impl_$.PICO_8_WHITE, size : 24});
 		var filter = new openfl_filters_ShaderFilter(new filters_OutlineShader());
 		filter.topExtension = filter.bottomExtension = filter.leftExtension = filter.rightExtension = 64;
 		this.health_text_sprite.set_filters([filter]);
@@ -78457,7 +78564,7 @@ ui_PlayerInfo.prototype = $extend(openfl_display_Sprite.prototype,{
 		var shield_sprite = zero_openfl_extensions_SpriteTools.load_graphic(new openfl_display_Sprite(),"images/ui/shield_icon.png",zero_utilities_Anchor.MIDDLE_CENTER,true);
 		this.shield.addChild(shield_sprite);
 		var shield_text_sprite = new openfl_display_Sprite();
-		this.shield_text = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : "Oduda Bold", color : zero_utilities__$Color_Color_$Impl_$.BLACK, size : 14});
+		this.shield_text = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : util_Translation.get_font(util_Font.BOLD), color : zero_utilities__$Color_Color_$Impl_$.BLACK, size : 14});
 		shield_text_sprite.addChild(this.shield_text);
 		var filter = new openfl_filters_ShaderFilter(new filters_OutlineShader());
 		filter.topExtension = filter.bottomExtension = filter.leftExtension = filter.rightExtension = 16;
@@ -78775,8 +78882,8 @@ ui_PlayingCard.prototype = $extend(ui_Card.prototype,{
 		if(!this.dragging) {
 			return;
 		}
-		if(!this.equipped && ui_Gear.active_gear != null) {
-			var move_card = ui_Gear.active_gear.move_card;
+		if(!this.equipped && ui_Equipment.active_equipment != null) {
+			var move_card = ui_Equipment.active_equipment.move_card;
 			var pos = move_card.get_anchor(true);
 			var my_pos = zero_utilities__$Vec2_Vec2_$Impl_$.get(this.get_x(),this.get_y());
 			if(Math.abs(pos[0] - this.get_x()) < 96 && Math.abs(pos[1] - this.get_y()) < 144) {
@@ -78795,7 +78902,7 @@ ui_PlayingCard.prototype = $extend(ui_Card.prototype,{
 			zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(pos);
 			pos = null;
 			var _g = 0;
-			var _g1 = ui_Gear.active_gear.gear_cards;
+			var _g1 = ui_Equipment.active_equipment.gear_cards;
 			while(_g < _g1.length) {
 				var gear = _g1[_g];
 				++_g;
@@ -79009,6 +79116,86 @@ util_GearUtil.get_gear_data = function(id) {
 	}
 	return null;
 };
+var util_Translation = function() { };
+$hxClasses["util.Translation"] = util_Translation;
+util_Translation.__name__ = "util.Translation";
+util_Translation.init = function() {
+	var _g = [];
+	var _g1 = 0;
+	var _g2 = openfl_utils_Assets.getText("data/translations/gear_titles.jsonc").split("\n");
+	while(_g1 < _g2.length) {
+		var line = _g2[_g1];
+		++_g1;
+		_g.push(line.split("//")[0]);
+	}
+	util_Translation.gear_titles = JSON.parse(_g.join("\n"));
+	var _g3 = [];
+	var _g11 = 0;
+	var _g21 = openfl_utils_Assets.getText("data/translations/gameplay.jsonc").split("\n");
+	while(_g11 < _g21.length) {
+		var line1 = _g21[_g11];
+		++_g11;
+		_g3.push(line1.split("//")[0]);
+	}
+	util_Translation.gameplay = JSON.parse(_g3.join("\n"));
+	var _g4 = 0;
+	var _g5 = [];
+	var _g12 = 0;
+	var _g22 = util_Font.__empty_constructs__.slice();
+	while(_g12 < _g22.length) {
+		var e1 = _g22[_g12];
+		++_g12;
+		_g5.push(e1);
+	}
+	var _g13 = _g5;
+	while(_g4 < _g13.length) {
+		var font = _g13[_g4];
+		++_g4;
+		util_Translation.fonts.set(font,new haxe_ds_StringMap());
+		var _g6 = 0;
+		var _g14 = util_Translation.languages;
+		while(_g6 < _g14.length) {
+			var ln = _g14[_g6];
+			++_g6;
+			var _this = util_Translation.fonts.get(font);
+			var key = ln;
+			if(__map_reserved[key] != null) {
+				_this.setReserved(key,"Nunito Black");
+			} else {
+				_this.h[key] = "Nunito Black";
+			}
+		}
+	}
+	var _this1 = util_Translation.fonts.get(util_Font.BOLD);
+	if(__map_reserved["en"] != null) {
+		_this1.setReserved("en","Oduda Bold");
+	} else {
+		_this1.h["en"] = "Oduda Bold";
+	}
+};
+util_Translation.get_gear_title = function(id) {
+	return Reflect.field(util_Translation.gear_titles[id],util_Translation.language);
+};
+util_Translation.get_gameplay_text = function(id) {
+	return Reflect.field(util_Translation.gameplay[id],util_Translation.language);
+};
+util_Translation.replace = function(str,v) {
+	return StringTools.replace(str,"$",v);
+};
+util_Translation.get_font = function(font) {
+	var this1 = util_Translation.fonts.get(font);
+	var key = util_Translation.language;
+	var _this = this1;
+	if(__map_reserved[key] != null) {
+		return _this.getReserved(key);
+	} else {
+		return _this.h[key];
+	}
+};
+var util_Font = $hxEnums["util.Font"] = { __ename__ : "util.Font", __constructs__ : ["BOLD"]
+	,BOLD: {_hx_index:0,__enum__:"util.Font",toString:$estr}
+};
+util_Font.__empty_constructs__ = [util_Font.BOLD];
 var util_UpdateManager = function() { };
 $hxClasses["util.UpdateManager"] = util_UpdateManager;
 util_UpdateManager.__name__ = "util.UpdateManager";
@@ -79718,8 +79905,8 @@ zero_openfl_extensions_SpriteTools.set_position = function(sprite,x,y) {
 zero_openfl_extensions_SpriteTools.distance = function(sprite1,sprite2) {
 	var p1 = zero_utilities__$Vec2_Vec2_$Impl_$.get(sprite1.get_x(),sprite1.get_y());
 	var p2 = zero_utilities__$Vec2_Vec2_$Impl_$.get(sprite2.get_x(),sprite2.get_y());
-	var this1 = zero_utilities__$Vec2_Vec2_$Impl_$.subtract(p2,zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float(p1));
-	var out = Math.sqrt(this1[0] * this1[0] + this1[1] * this1[1]);
+	var this2 = zero_utilities__$Vec2_Vec2_$Impl_$.subtract(p2,zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float(p1));
+	var out = Math.sqrt(this2[0] * this2[0] + this2[1] * this2[1]);
 	zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(p1);
 	p1 = null;
 	zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(p2);
@@ -87531,14 +87718,18 @@ openfl_utils__$Endian_Endian_$Impl_$.LITTLE_ENDIAN = 1;
 openfl_utils__$Object_Object_$Impl_$.__meta__ = { statics : { iterator : { SuppressWarnings : ["checkstyle:FieldDocComment"]}, __get : { SuppressWarnings : ["checkstyle:FieldDocComment"]}, __set : { SuppressWarnings : ["checkstyle:FieldDocComment"]}}};
 haxe_lang_Iterator.__meta__ = { obj : { SuppressWarnings : ["checkstyle:FieldDocComment"]}};
 haxe_lang_Iterable.__meta__ = { obj : { SuppressWarnings : ["checkstyle:FieldDocComment"]}};
-ui_GearCard.card_width = 192;
-ui_GearCard.card_height = 224;
+ui_EquipmentCard.card_width = 192;
+ui_EquipmentCard.card_height = 224;
 ui_ObjectInfo.info_width = 160;
 ui_ObjectInfo.info_height = 76;
 ui_PlayingCard.card_width = 128;
 ui_PlayingCard.card_height = 192;
 ui_PlayingCard.mini_width = 64;
 ui_PlayingCard.mini_height = 80;
+util_Translation.language = "en";
+util_Translation.fonts = new haxe_ds_EnumValueMap();
+util_Translation.languages = ["en","af","sq","am","ar","hy","az","eu","be","bn","bs","bg","ca","ceb","zh","zh_CN","zh_TW","co","hr","cs","da","nl","eo","et","fi","fr","fy","gl","ka","de","el","gu","ht","ha","haw","he","hi","hmn","hu","is","ig","id","ga","it","ja","jw","kn","kk","km","ko","ku","ky","lo","la","lv","lt","lb","mk","mg","ms","ml","mt","mi","mr","mn","my","ne","no","ny","ps","fa","pl","pt","pa","ro","ru","sm","gd","sr","st","sn","sd","si","sk","sl","so","es","su","sw","sv","tl","tg","ta","te","th","tr","uk","ur","uz","vi","cy","xh","yi","yo","zu"];
+util_Translation.supported_languages = ["en"];
 util_UpdateManager.last = 0.0;
 util_UpdateManager.wait = false;
 util_UpdateManager.fps_array = [];

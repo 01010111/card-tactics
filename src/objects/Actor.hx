@@ -15,7 +15,7 @@ class Actor extends GameObject {
 
 typedef ActorData = {
 	id:String,
-	gear:Array<String>,
+	equipment:Array<String>,
 	movement:MoveData,
 	health:HealthData,
 }

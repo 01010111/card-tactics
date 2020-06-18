@@ -1,7 +1,8 @@
 package ui;
 
+import ui.DropCard.Requirement;
+import ui.EquipmentCard.EquipmentData;
 import ui.DropCard.DropCardData;
-import openfl.filters.ColorMatrixFilter;
 import objects.GameObject;
 import scenes.Level;
 import openfl.events.MouseEvent;
@@ -12,59 +13,50 @@ import openfl.text.TextField;
 import openfl.display.Sprite;
 import zero.utilities.Color;
 import openfl.events.Event;
-import zero.utilities.Vec2;
 import ui.PlayingCard;
 
 using zero.openfl.extensions.SpriteTools;
 using zero.openfl.extensions.TextTools;
 using Math;
 using util.CardUtil;
+using util.Translation;
 using zero.extensions.Tools;
 
-class GearCard extends DropCard {
+class GearCard extends EquipmentCard {
 	
-	public static var card_width:Float = 192;
-	public static var card_height:Float = 224;
-	public var gear:Gear;
 	public var gear_data:GearData;
 	var description:TextField;
 	var req_text:TextField;
 	var req_text_r:TextField;
 		
-	public function new(gear:Gear, gear_data:GearData) {
-		super();
-		this.gear = gear;
+	public function new(equipment:Equipment, gear_data:GearData) {
+		super(equipment);
 		this.gear_data = gear_data;
-		draggable = false;
+		this.equipment_data = gear_data;
+		this.data = gear_data;
 		anchors = [[-35, 28], [35, 28]];
-		this.data = {
-			requirement: gear_data.requirement,
-			requirement_value: gear_data.requirement_value,
-		};
 		draw_card();
-		addEventListener(MouseEvent.MOUSE_OVER, mouse_over);
-		addEventListener(MouseEvent.MOUSE_OUT, mouse_out);
 	}
 
-	function mouse_over(e:MouseEvent) {
+	override function mouse_over(e:MouseEvent) {
 		if (!expended && gear_data.range.max > 0) Level.i.draw_indicators(this);
 	}
 	
-	function mouse_out(e:MouseEvent) {
+	override function mouse_out(e:MouseEvent) {
 		if (!active) Level.i.clear_indicators();
 	}
 	
 	function draw_card() {
 		// Back
 		{
-			this.fill_rect(Color.get().from_int32(0xFF7CB11F), -card_width/2, -card_height/2, card_width, card_height, 16);
-			this.rect(Color.BLACK, -card_width/2 + 2, -card_height/2 + 2, card_width - 4, card_height - 4, 12, 4);
+			this.fill_rect(Color.get().from_int32(0xFF7CB11F), -EquipmentCard.card_width/2, -EquipmentCard.card_height/2, EquipmentCard.card_width, EquipmentCard.card_height, 16);
+			this.rect(Color.BLACK, -EquipmentCard.card_width/2 + 2, -EquipmentCard.card_height/2 + 2, EquipmentCard.card_width - 4, EquipmentCard.card_height - 4, 12, 4);
 		}
 		
 		// Contents
 		{
 			var contents = new Sprite();
-			contents.set_position(-card_width/2, -card_height/2);
+			contents.set_position(-EquipmentCard.card_width/2, -EquipmentCard.card_height/2);
 			this.add(contents);
 
 			// AP cost
@@ -78,13 +70,13 @@ class GearCard extends DropCard {
 			// Title
 			{
 				contents.add(new Sprite().fill_rect(Color.PICO_8_WHITE, 26, 28, 140, 24, 24));
-				var title = new TextField().format({ font: 'Oduda Bold', size: 16, color: Color.BLACK }).set_string(gear_data.title).set_position(40, 38, MIDDLE_LEFT);
+				var title = new TextField().format({ font: Translation.get_font(BOLD), size: 16, color: Color.BLACK }).set_string(Translation.get_gear_title(gear_data.id)).set_position(40, 38, MIDDLE_LEFT);
 				contents.add(title);
 			}
 
 			// Description
 			{
-				description = new TextField().format({ font: 'Oduda Bold', size: 14, color: Color.BLACK, leading: -2 });
+				description = new TextField().format({ font: Translation.get_font(BOLD), size: 14, color: Color.BLACK, leading: -2 });
 				contents.add(description);
 				set_description();
 			}
@@ -93,11 +85,11 @@ class GearCard extends DropCard {
 			{
 				contents.add(new Sprite().fill_rect(Color.PICO_8_DARK_GREEN, 16, 92, 160, 96, 16));
 
-				req_text = new TextField().format({ font: 'Oduda Bold', size: 20, color: Color.PICO_8_DARK_BLUE });
+				req_text = new TextField().format({ font: Translation.get_font(BOLD), size: 20, color: Color.PICO_8_DARK_BLUE });
 				contents.add(req_text);
 				set_req_text();
 
-				req_text_r = new TextField().format({ font: 'Oduda Bold', size: 16, color: Color.PICO_8_DARK_BLUE, align: TextFormatAlign.CENTER });
+				req_text_r = new TextField().format({ font: Translation.get_font(BOLD), size: 16, color: Color.PICO_8_DARK_BLUE, align: TextFormatAlign.CENTER });
 				contents.add(req_text_r);
 				set_req_text_r();
 			}
@@ -149,23 +141,23 @@ class GearCard extends DropCard {
 		}
 
 		// Highlight
-		addChild(highlight = new Sprite().rect(Color.PICO_8_WHITE, -card_width/2 + 4, -card_height/2 + 4, card_width - 8, card_height - 8, 16, 8));
+		addChild(highlight = new Sprite().rect(Color.PICO_8_WHITE, -EquipmentCard.card_width/2 + 4, -EquipmentCard.card_height/2 + 4, EquipmentCard.card_width - 8, EquipmentCard.card_height - 8, 16, 8));
 		Tween.get(highlight).from_to('scaleX', 1, 1.1).from_to('scaleY', 1, 1.1).from_to('alpha', 1, 0).type(LOOP_FORWARDS).duration(1).ease(Ease.quadOut);
 		highlight.visible = false;
 
 		// Handle
-		handle = new GearCardHandle(gear_data.range.max == 0 ? PRESS : AIM, this);
+		handle = new EquipmentHandle(gear_data.range.max == 0 ? PRESS : AIM, this);
 	}
 
 	function set_description() {
 		var str = switch gear_data.effect.type {
-			case DAMAGE: 'Do ${get_effect_string()} damage';
-			case MOVE: 'Move ${get_effect_string()} spaces';
-			case SHIELD: 'Shield against ${get_effect_string()} damage';
-			case HEALTH: 'Heal ${get_effect_string()} hitpoints';
-			case DRAW: 'Draw ${get_effect_string()} card${get_effect_value() > 1 ? 's' : ''}';
+			case DAMAGE: 'gear_desc_damage'.get_gameplay_text().replace(get_effect_string());
+			case MOVE: 'gear_desc_move'.get_gameplay_text().replace(get_effect_string());
+			case SHIELD: 'gear_desc_shield'.get_gameplay_text().replace(get_effect_string());
+			case HEALTH: 'gear_desc_health'.get_gameplay_text().replace(get_effect_string());
+			case DRAW: 'gear_desc_draw'.get_gameplay_text().replace(get_effect_string());
 		}
-		description.set_string(str.wrap_string(description, 128)).set_position(card_width/2, 70, MIDDLE_CENTER);
+		description.set_string(str.wrap_string(description, 128)).set_position(EquipmentCard.card_width/2, 70, MIDDLE_CENTER);
 	}
 
 	function set_req_text() {
@@ -175,25 +167,25 @@ class GearCard extends DropCard {
 		}
 		var str = switch gear_data.requirement {
 			default: '';
-			case MIN_TOTAL: 'All > ${gear_data.requirement_value - 1}';
-			case MAX_TOTAL: 'All < ${gear_data.requirement_value + 1}';
-			case MIN_CARD: '> ${gear_data.requirement_value - 1}';
-			case MAX_CARD: '< ${gear_data.requirement_value + 1}';
-			case EXACT_CARD: '= ${gear_data.requirement_value}';
-			case EXACT_TOTAL: 'All = ${gear_data.requirement_value}';
-			case IS_FACE: 'Face';
-			case NOT_FACE: 'Not Face';
-			case PAIR: 'Pair';
-			case NO_MATCH: 'Not Pair';
-			case SAME_SUIT: 'Same Suit';
-			case DIFF_SUIT: 'Different Suit';
-			case HEARTS: 'Hearts';
-			case DIAMONDS: 'Diamonds';
-			case CLUBS: 'Clubs';
-			case SPADES: 'Spades';
-			case TWO_CARDS: 'Two Cards';
+			case MIN_TOTAL:'gear_req_min_total'.get_gameplay_text().replace('${gear_data.requirement_value - 1}');
+			case MAX_TOTAL:'gear_req_max_total'.get_gameplay_text().replace('${gear_data.requirement_value + 1}');
+			case MIN_CARD:'gear_req_min_card'.get_gameplay_text().replace('${gear_data.requirement_value - 1}');
+			case MAX_CARD:'gear_req_max_card'.get_gameplay_text().replace('${gear_data.requirement_value + 1}');
+			case EXACT_CARD:'gear_req_exact_card'.get_gameplay_text().replace('${gear_data.requirement_value}');
+			case EXACT_TOTAL:'gear_req_exact_total'.get_gameplay_text().replace('${gear_data.requirement_value}');
+			case IS_FACE:'gear_req_face'.get_gameplay_text();
+			case NOT_FACE:'gear_req_not_face'.get_gameplay_text();
+			case PAIR:'gear_req_pair'.get_gameplay_text();
+			case NO_MATCH:'gear_req_no_match'.get_gameplay_text();
+			case SAME_SUIT:'gear_req_same_suit'.get_gameplay_text();
+			case DIFF_SUIT:'gear_req_diff_suit'.get_gameplay_text();
+			case HEARTS:'gear_req_hearts'.get_gameplay_text();
+			case DIAMONDS:'gear_req_diamonds'.get_gameplay_text();
+			case CLUBS:'gear_req_clubs'.get_gameplay_text();
+			case SPADES:'gear_req_spades'.get_gameplay_text();
+			case TWO_CARDS:'gear_req_two_cards'.get_gameplay_text();
 		}
-		req_text.set_string(str).set_position(card_width/2, 140, MIDDLE_CENTER);
+		req_text.set_string(str).set_position(EquipmentCard.card_width/2, 140, MIDDLE_CENTER);
 	}
 
 	function set_req_text_r() {
@@ -203,25 +195,25 @@ class GearCard extends DropCard {
 		}
 		var str = switch gear_data.requirement {
 			default: '';
-			case MIN_TOTAL: '> ${(gear_data.requirement_value - 1 - cards[0].data.value.value_to_int()).max(0)}';
-			case MAX_TOTAL: '< ${gear_data.requirement_value + 1 - cards[0].data.value.value_to_int()}';
-			case MIN_CARD: '> ${gear_data.requirement_value - 1}';
-			case MAX_CARD: '< ${gear_data.requirement_value + 1}';
-			case EXACT_CARD: '= ${gear_data.requirement_value}';
-			case EXACT_TOTAL: '= ${gear_data.requirement_value - cards[0].data.value.value_to_int()}';
-			case IS_FACE: 'Face';
-			case NOT_FACE: 'Not\nFace';
-			case PAIR: '= ${cards[0].data.value.value_to_string()}';
-			case NO_MATCH: 'Not\n${cards[0].data.value.value_to_string()}';
-			case SAME_SUIT: '${cards[0].data.suit.suit_to_string()}';
-			case DIFF_SUIT: 'Not\n${cards[0].data.suit.suit_to_string()}';
-			case HEARTS: 'Hearts';
-			case DIAMONDS: 'Diamonds';
-			case CLUBS: 'Clubs';
-			case SPADES: 'Spades';
-			case TWO_CARDS: 'Any';
+			case MIN_TOTAL:'gear_req_sm_min_total'.get_gameplay_text().replace('${(gear_data.requirement_value - 1 - cards[0].data.value.value_to_int()).max(0)}');
+			case MAX_TOTAL:'gear_req_sm_max_total'.get_gameplay_text().replace('${gear_data.requirement_value + 1 - cards[0].data.value.value_to_int()}');
+			case MIN_CARD:'gear_req_sm_min_card'.get_gameplay_text().replace('${gear_data.requirement_value - 1}');
+			case MAX_CARD:'gear_req_sm_max_card'.get_gameplay_text().replace('${gear_data.requirement_value + 1}');
+			case EXACT_CARD:'gear_req_sm_exact_card'.get_gameplay_text().replace('${gear_data.requirement_value}');
+			case EXACT_TOTAL:'gear_req_sm_exact_total'.get_gameplay_text().replace('${gear_data.requirement_value - cards[0].data.value.value_to_int()}');
+			case IS_FACE:'gear_req_sm_face'.get_gameplay_text();
+			case NOT_FACE:'gear_req_sm_not_face'.get_gameplay_text().split(' ').join('\n');
+			case PAIR:'gear_req_sm_pair'.get_gameplay_text().replace('${cards[0].data.value.value_to_string()}');
+			case NO_MATCH:'gear_req_sm_no_match'.get_gameplay_text().replace('\n${cards[0].data.value.value_to_string()}');
+			case SAME_SUIT:'gear_req_sm_same_suit'.get_gameplay_text().replace('${cards[0].data.suit.suit_to_string()}');
+			case DIFF_SUIT:'gear_req_sm_diff_suit'.get_gameplay_text().replace('\n${cards[0].data.suit.suit_to_string()}');
+			case HEARTS:'gear_req_sm_hearts'.get_gameplay_text();
+			case DIAMONDS:'gear_req_sm_diamonds'.get_gameplay_text();
+			case CLUBS:'gear_req_sm_clubs'.get_gameplay_text();
+			case SPADES:'gear_req_sm_spades'.get_gameplay_text();
+			case TWO_CARDS:'gear_req_sm_two_cards'.get_gameplay_text();
 		}
-		req_text_r.set_string(str).set_position(card_width/2 + 36, 140, MIDDLE_CENTER);
+		req_text_r.set_string(str).set_position(EquipmentCard.card_width/2 + 36, 140, MIDDLE_CENTER);
 	}
 
 	public function get_effect_value() {
@@ -235,7 +227,9 @@ class GearCard extends DropCard {
 		if (vefify_bonus()) {
 			switch gear_data.bonus.type {
 				case DOUBLE_EFFECT_VALUE: out *= 2;
-				case DOUBLE_RANGE: {}
+				case EFFECT_PLUS_ONE: out += 1;
+				case EFFECT_PLUS_TWO: out += 2;
+				case DOUBLE_RANGE, RANGE_PLUS_ONE, RANGE_PLUS_TWO: {}
 			}
 		}
 		return out;
@@ -245,7 +239,6 @@ class GearCard extends DropCard {
 		var val = get_effect_value();
 		return val == 0 ? '_' : '$val';
 	}
-
 
 	public function verify_gear():Bool {
 		if (cards.length == 0) return false;
@@ -316,79 +309,29 @@ class GearCard extends DropCard {
 
 typedef GearData = {
 	> DropCardData,
+	> EquipmentData,
 	id:String,
-	title:String,
-	description:String,
 	cost:Int,
 	gear_class:GearClass,
 	weakness:GearClass,
-	range:RangeData,
-	effect:EffectData,
 	bonus:BonusData,
-  }
-  
-  typedef RangeData = {
-	min:Int,
-	max:Int,
-	type:RangeType,
-  }
-  
-  typedef EffectData = {
-	type:EffectType,
-	factor:EffectFactor,
-	?value:Int,
-  }
-  
-  typedef BonusData = {
+}
+
+typedef BonusData = {
 	requirement:Requirement,
 	type:BonusType,
-  }
-  
-  enum abstract RangeType(String) {
-	var NONE;
-	var ORTHOGONAL;
-	var DIAGONAL;
-  }
-  
-  enum abstract EffectType(String) {
-	var DAMAGE;
-	var MOVE;
-	var HEALTH;
-	var SHIELD;
-	var DRAW;
-  }
-  
-  enum abstract EffectFactor(String) {
-	var VALUES;
-	var STATIC;
-  }
-  
-  enum abstract BonusType(String) {
+}
+
+enum abstract BonusType(String) {
 	var DOUBLE_EFFECT_VALUE;
 	var DOUBLE_RANGE;
-  }
-  
-  enum abstract Requirement(String) {
-	var MIN_TOTAL;
-	var MAX_TOTAL;
-	var MIN_CARD;
-	var MAX_CARD;
-	var EXACT_CARD;
-	var EXACT_TOTAL;
-	var IS_FACE;
-	var NOT_FACE;
-	var PAIR;
-	var NO_MATCH;
-	var SAME_SUIT;
-	var DIFF_SUIT;
-	var HEARTS;
-	var DIAMONDS;
-	var CLUBS;
-	var SPADES;
-	var TWO_CARDS;
-  }
-  
-  enum abstract GearClass(String) {
+	var EFFECT_PLUS_ONE;
+	var EFFECT_PLUS_TWO;
+	var RANGE_PLUS_ONE;
+	var RANGE_PLUS_TWO;
+}
+
+enum abstract GearClass(String) {
 	var FLAME;
 	var PIERCING;
 	var EXPLOSIVE;
@@ -398,4 +341,4 @@ typedef GearData = {
 	var MOVE;
 	var HEALTH;
 	var UTILITY;
-  }
+}
