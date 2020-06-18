@@ -1,4 +1,4 @@
-# Underneath Planet Monster
+# Beneath Planet Monster
 
 Underneath Planet Monster is a roguelike deck builder being made by 01010111 (Will Blanton). Hopefully it'll be fun! I'm making this repo public so that people can follow progress on this project on a more intimate level.
 
