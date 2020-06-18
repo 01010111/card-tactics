@@ -13,14 +13,17 @@ class Translation {
 
 	public static var language:String = 'en';
 
-	static var gear_titles:DynamicAccess<TranslationMap>;
+	static var equipment_titles:DynamicAccess<TranslationMap>;
 	static var gameplay:DynamicAccess<TranslationMap>;
+	static var mutant_descriptions:DynamicAccess<TranslationMap>;
 	
 	static var fonts:Map<Font, Map<String, String>> = [];
 
 	public static function init() {
-		gear_titles = Assets.getText('data/translations/gear_titles.jsonc').parse_json();
+		equipment_titles = Assets.getText('data/translations/equipment_titles.jsonc').parse_json();
 		gameplay = Assets.getText('data/translations/gameplay.jsonc').parse_json();
+		mutant_descriptions = Assets.getText('data/translations/mutant_descriptions.jsonc').parse_json();
+
 		for (font in Font.all()) {
 			fonts.set(font, []);
 			for (ln in languages) {
@@ -30,8 +33,12 @@ class Translation {
 		fonts[BOLD].set('en', 'Oduda Bold');
 	}
 	
-	public static function get_gear_title(id:String):String {
-		return gear_titles.get(id).field(cast language);
+	public static function get_equipment_title(id:String):String {
+		return equipment_titles.get(id).field(cast language);
+	}
+
+	public static function get_mutant_description(id:String):String {
+		return mutant_descriptions.get(id).field(cast language);
 	}
 
 	public static function get_gameplay_text(id:String):String {

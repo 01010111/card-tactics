@@ -1,5 +1,6 @@
 package ui;
 
+import zero.utilities.IntPoint;
 import ui.DropCard.Requirement;
 import ui.EquipmentCard.EquipmentData;
 import ui.DropCard.DropCardData;
@@ -29,11 +30,11 @@ class GearCard extends EquipmentCard {
 	var req_text:TextField;
 	var req_text_r:TextField;
 		
-	public function new(equipment:Equipment, gear_data:GearData) {
+	public function new(equipment:Equipment, data:GearData) {
 		super(equipment);
-		this.gear_data = gear_data;
-		this.equipment_data = gear_data;
-		this.data = gear_data;
+		this.gear_data = data;
+		this.equipment_data = data;
+		this.data = data;
 		anchors = [[-35, 28], [35, 28]];
 		draw_card();
 	}
@@ -70,7 +71,7 @@ class GearCard extends EquipmentCard {
 			// Title
 			{
 				contents.add(new Sprite().fill_rect(Color.PICO_8_WHITE, 26, 28, 140, 24, 24));
-				var title = new TextField().format({ font: Translation.get_font(BOLD), size: 16, color: Color.BLACK }).set_string(Translation.get_gear_title(gear_data.id)).set_position(40, 38, MIDDLE_LEFT);
+				var title = new TextField().format({ font: Translation.get_font(BOLD), size: 16, color: Color.BLACK }).set_string(Translation.get_equipment_title(gear_data.id)).set_position(40, 38, MIDDLE_LEFT);
 				contents.add(title);
 			}
 
@@ -110,7 +111,7 @@ class GearCard extends EquipmentCard {
 
 			// Classes
 			{
-				var class_src = switch gear_data.gear_class {
+				var class_src = switch gear_data.equipment_class {
 					default: 'images/blank.png';
 					case FLAME:'images/ui/icons/on_white/icon_flame.png';
 					case PIERCING:'images/ui/icons/on_white/icon_pierce.png';
@@ -216,14 +217,8 @@ class GearCard extends EquipmentCard {
 		req_text_r.set_string(str).set_position(EquipmentCard.card_width/2 + 36, 140, MIDDLE_CENTER);
 	}
 
-	public function get_effect_value() {
-		var out = 0;
-		switch gear_data.effect.factor {
-			case VALUES:
-				for (card in cards) out += card.data.value.value_to_int();
-			case STATIC:
-				out = gear_data.effect.value;
-		}
+	override public function get_effect_value() {
+		var out = super.get_effect_value();
 		if (vefify_bonus()) {
 			switch gear_data.bonus.type {
 				case DOUBLE_EFFECT_VALUE: out *= 2;
@@ -233,11 +228,6 @@ class GearCard extends EquipmentCard {
 			}
 		}
 		return out;
-	}
-
-	public function get_effect_string() {
-		var val = get_effect_value();
-		return val == 0 ? '_' : '$val';
 	}
 
 	public function verify_gear():Bool {
@@ -265,21 +255,6 @@ class GearCard extends EquipmentCard {
 			default: return false;
 		}
 		return true;
-	}
-
-	public function execute(?target:GameObject) {
-		active = false;
-		expended = true;
-		switch gear_data.effect.type {
-			case DAMAGE:
-				if (target != null) target.change_health(-get_effect_value());
-			case MOVE:
-			case HEALTH:
-				if (target != null) target.change_health(get_effect_value());
-			case SHIELD:
-			case DRAW:
-				Level.i.deck.deal(get_effect_value());
-		}
 	}
 
 	override function add_card(card:PlayingCard) {
@@ -310,10 +285,7 @@ class GearCard extends EquipmentCard {
 typedef GearData = {
 	> DropCardData,
 	> EquipmentData,
-	id:String,
 	cost:Int,
-	gear_class:GearClass,
-	weakness:GearClass,
 	bonus:BonusData,
 }
 
@@ -329,16 +301,4 @@ enum abstract BonusType(String) {
 	var EFFECT_PLUS_TWO;
 	var RANGE_PLUS_ONE;
 	var RANGE_PLUS_TWO;
-}
-
-enum abstract GearClass(String) {
-	var FLAME;
-	var PIERCING;
-	var EXPLOSIVE;
-	var ELECTRICITY;
-	var WATER;
-	var SHIELD;
-	var MOVE;
-	var HEALTH;
-	var UTILITY;
 }

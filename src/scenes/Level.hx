@@ -1,5 +1,6 @@
 package scenes;
 
+import util.EquipmentUtil;
 import ui.EquipmentCard;
 import zero.openfl.utilities.Keys;
 import openfl.geom.Rectangle;
@@ -83,7 +84,7 @@ class Level extends Scene {
 					type: FREE,
 					factor: VALUE,
 				},
-				equipment: ['test_d_01', 'test_d_02', 'test_h_01'],
+				equipment: ['test_d_01', 'test_d_02', 'test_m_01'],
 			},
 			side: LEFT,
 		});
@@ -139,24 +140,12 @@ class Level extends Scene {
 	}
 
 	function on_click(e:MouseEvent) {
+		trace('on click');
 		if (!can_move || e.localX < 0 || e.localY < 0) return;
+		trace('pass');
 		var x = (e.localX/16).floor();
 		var y = (e.localY/16).floor();
-		'level_click'.dispatch({ x: x, y: y });
-		var map = get_traversal_map();
-		if (map[y][x] != 0) return;
-		var player_x = (Player.selected_player.x/16).floor();
-		var player_y = (Player.selected_player.y/16).floor();
-		var path = map.get_path({
-			start: [player_x, player_y],
-			end: [x, y],
-			passable: [0],
-			simplify: NONE,
-		});
-		if (path.length == 0) return;
-		object_map[player_y][player_x] = 0;
-		object_map[y][x] = -1;
-		Player.selected_player.follow_path(path);
+		Player.selected_player.move_to(x, y);
 		can_move = false;
 		move_indicators.graphics.clear();
 		Equipment.active_equipment.move_card.expended = true;
@@ -180,7 +169,7 @@ class Level extends Scene {
 		move_indicators.visible = false;
 		var placed_tiles:Array<IntPoint> = [];
 		for (card in gear) {
-			var player = card.equipment.player;
+			var object = card.equipment.owner;
 			var range:RangeData = {
 				min: card.equipment_data.range.min,
 				max: card.equipment_data.range.max,
@@ -199,7 +188,7 @@ class Level extends Scene {
 				range.min *= 2;
 				range.max *= 2;
 			}
-			var tiles = get_available_tiles_array([(player.x/16).floor(), (player.y/16).floor()], range.min, range.max, range.type);
+			var tiles = get_available_tiles_array([(object.x/16).floor(), (object.y/16).floor()], range.min, range.max, range.type);
 			var color = switch card.equipment_data.effect.type {
 				default: Color.WHITE;
 				case DAMAGE:Color.PICO_8_RED;
@@ -208,7 +197,7 @@ class Level extends Scene {
 				case SHIELD:Color.PICO_8_ORANGE;
 			}
 			var color_fill:Color = cast color.copy();
-			color_fill.alpha = 0.25;
+			color_fill.alpha = 0.2;
 			for (tile in tiles) {
 				var cont = false;
 				for (prev_tile in placed_tiles) {
@@ -240,13 +229,13 @@ class Level extends Scene {
 
 	public function draw_move_indicators(move_card:MoveCard) {
 		move_indicators.graphics.clear();
-		var player = move_card.equipment.player;
+		var object = move_card.equipment.owner;
 		var range = move_card.get_moves_value();
 		if (range == 0) return;
-		var tiles = get_walkable_tiles_array([(player.x/16).floor(), (player.y/16).floor()], range);
+		var tiles = get_walkable_tiles_array([(object.x/16).floor(), (object.y/16).floor()], range);
 		var color = Color.PICO_8_BLUE;
 		var color_fill:Color = cast color.copy();
-		color_fill.alpha = 0.25;
+		color_fill.alpha = 0.2;
 		for (tile in tiles) move_indicators.fill_rect(color_fill, tile.x * 16 + 2, tile.y * 16 + 2, 12, 12, 2).rect(color, tile.x * 16 + 2, tile.y * 16 + 2, 12, 12, 2, 1);
 	}
 

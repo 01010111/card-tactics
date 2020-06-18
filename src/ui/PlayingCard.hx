@@ -138,7 +138,7 @@ class PlayingCard extends Card {
 				}
 			}
 			pos.put();
-			for (gear in Equipment.active_equipment.gear_cards) {
+			for (gear in Equipment.active_equipment.equipment_cards) {
 				var pos = gear.get_anchor(true);
 				if ((pos.x - x).abs() < 96 && (pos.y - y).abs() < 112) {
 					if (gear.expended || !gear.verify_card(data)) continue;

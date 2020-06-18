@@ -77448,7 +77448,7 @@ ui_GearCard.prototype = $extend(ui_EquipmentCard.prototype,{
 		sprite4.set_scaleY(y4);
 		contents.addChild(sprite4);
 		var class_src;
-		switch(this.gear_data.gear_class) {
+		switch(this.gear_data.equipment_class) {
 		case "ELECTRICITY":
 			class_src = "images/ui/icons/on_white/icon_electrify.png";
 			break;

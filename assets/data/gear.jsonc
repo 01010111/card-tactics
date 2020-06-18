@@ -19,7 +19,7 @@
 			"type": "DOUBLE_EFFECT_VALUE"
 		},
 		"requirement": "DIFF_SUIT",
-		"gear_class": "PIERCING",
+		"equipment_class": "PIERCING",
 		"weakness": "ELECTRICITY"
 	},
 	{
@@ -40,7 +40,7 @@
 		},
 		"requirement": "MIN_CARD",
 		"requirement_value": 7,
-		"gear_class": "EXPLOSIVE",
+		"equipment_class": "EXPLOSIVE",
 		"weakness": "FLAME"
 	},
 	{
@@ -61,8 +61,8 @@
 			"type": "DOUBLE_EFFECT_VALUE"
 		},
 		"requirement": "IS_FACE",
-		"gear_class": "HEALTH",
-		"weakness": "FLAME"
+		"equipment_class": "HEALTH",
+		"weakness": "EXPLOSIVE"
 	},
 	{
 		"id": "test_u_01",
@@ -83,7 +83,7 @@
 		},
 		"requirement": "MIN_TOTAL",
 		"requirement_value": 10,
-		"gear_class": "UTILITY",
+		"equipment_class": "UTILITY",
 		"weakness": "ELECTRICITY"
 	}
 ]

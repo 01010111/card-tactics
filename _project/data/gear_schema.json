@@ -29,7 +29,7 @@
                         },
                         "requirement": "MIN_TOTAL",
                         "requirement_value": 10,
-                        "gear_class": "FLAME",
+                        "equipment_class": "FLAME",
                         "weakness": "PIERCING",
                         "bonus": {
                             "requirement": "FACE",
@@ -43,7 +43,7 @@
                     "range",
                     "effect",
                     "requirement",
-                    "gear_class",
+                    "equipment_class",
                     "weakness",
                     "bonus"
                 ],
@@ -213,10 +213,10 @@
                             10
                         ]
                     },
-                    "gear_class": {
-                        "$id": "#/items/anyOf/0/properties/gear_class",
+                    "equipment_class": {
+                        "$id": "#/items/anyOf/0/properties/equipment_class",
                         "type": "string",
-                        "title": "The gear_class schema",
+                        "title": "The equipment_class schema",
                         "description": "The class of this gear. Determines the class of damage dealt to target.",
                         "default": "",
                         "enum": [

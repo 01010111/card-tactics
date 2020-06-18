@@ -11,6 +11,7 @@ import openfl.events.MouseEvent;
 import openfl.display.Sprite;
 
 using zero.openfl.extensions.SpriteTools;
+using zero.utilities.AStar;
 using zero.extensions.Tools;
 using Math;
 
@@ -46,6 +47,18 @@ class GameObject extends Sprite {
 		last.x = x;
 	}
 
+	public function move_to(x:Int, y:Int) {
+		var map = Level.i.get_traversal_map();
+		if (map[y][x] != 0) return;
+		var sx = (this.x/16).floor();
+		var sy = (this.y/16).floor();
+		trace(sx, sy, x, y);
+		var path = map.get_path({ start: [sx, sy], end: [x, y], passable: [0], simplify: NONE });
+		if (path.length == 0) return;
+		Level.i.object_map[sy][sx] = 0;
+		Level.i.object_map[y][x] = -1;
+		follow_path(path);
+	}
 
 	public function follow_path(path:Array<IntPoint>) {
 		var t = path.shift();

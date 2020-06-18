@@ -17,7 +17,7 @@ class InfoLayer extends Sprite {
 	}
 
 	public function show_info(object:GameObject, ?gear:GearCard) {
-		var cards = [for (card in object.equipment.gear_cards) if (card.equipment_data.effect.type == DAMAGE) card];
+		var cards = [for (card in object.equipment.equipment_cards) if (card.equipment_data.effect.type == DAMAGE) card];
 		Level.i.draw_indicators(cards);
 		object_info.set_target(object, gear);
 		object_info.active = true;

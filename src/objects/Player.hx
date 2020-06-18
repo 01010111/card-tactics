@@ -1,16 +1,21 @@
 package objects;
 
+import ui.MutantCard;
+import ui.EquipmentCard;
+import zero.utilities.Color;
+import openfl.display.Sprite;
 import objects.Actor.ActorData;
 import ui.GearCard;
 import openfl.events.MouseEvent;
 import ui.Equipment;
 import scenes.Level;
 import zero.openfl.utilities.AnimatedSprite;
-import util.GearUtil;
+import util.EquipmentUtil;
 
 using zero.extensions.Tools;
 using zero.openfl.extensions.SpriteTools;
 using Math;
+using Std;
 
 class Player extends Actor {
 
@@ -33,7 +38,13 @@ class Player extends Actor {
 		init_graphic();
 		
 		equipment = new Equipment(this, options.side);
-		for (g in options.data.equipment) equipment.add_card(new GearCard(equipment, GearUtil.get_gear_data(g)));
+		for (id in options.data.equipment) {
+			switch EquipmentUtil.id_type(id) {
+				case NONE:continue;
+				case GEAR:equipment.add_card(new GearCard(equipment, EquipmentUtil.get_gear_data(id)));
+				case MUTANT:equipment.add_card(new MutantCard(equipment, EquipmentUtil.get_mutant_data(id)));
+			}
+		}
 		Level.i.gear_layer.add(equipment);
 	}
 

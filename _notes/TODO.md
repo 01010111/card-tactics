@@ -8,9 +8,14 @@
 
 # Small Things
 
-- [ ] Mutant Gear Implementation
-  - [ ] Drawing new card Type
-  - [ ] Event system?
+- [ ] Mutant Gear Content
+  - [ ] Create new mutant gears
+  - [ ] Implement events
+
+6/18/2020
+- [x] Mutant Gear Implementation
+  - [x] Drawing new card Type
+  - [x] Event system
 
 6/17/2020
 - [x] Implement translations
