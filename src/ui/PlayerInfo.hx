@@ -63,7 +63,7 @@ class PlayerInfo extends Sprite {
 		health = new Sprite().set_position(0, 116);
 		health_text_sprite = new Sprite();
 		health_text = new TextField().format({ font: Translation.get_font(BOLD), color: Color.PICO_8_WHITE, size: 24 });
-		var filter = new ShaderFilter(new OutlineShader());
+		var filter = new ShaderFilter(new OutlineShader(Color.BLACK));
 		filter.topExtension = filter.bottomExtension = filter.leftExtension = filter.rightExtension = 64;
 		health_text_sprite.filters = [filter];
 
@@ -81,7 +81,7 @@ class PlayerInfo extends Sprite {
 		var shield_text_sprite = new Sprite();
 		shield_text = new TextField().format({ font: Translation.get_font(BOLD), color: Color.BLACK, size: 14 });
 		shield_text_sprite.add(shield_text);
-		var filter = new ShaderFilter(new OutlineShader());
+		var filter = new ShaderFilter(new OutlineShader(Color.BLACK));
 		filter.topExtension = filter.bottomExtension = filter.leftExtension = filter.rightExtension = 16;
 		health_text_sprite.filters = [filter];
 
@@ -94,7 +94,7 @@ class PlayerInfo extends Sprite {
 	}
 
 	public function update_health() {
-		health_text.set_string('${player.health.current.floor()}').set_position(0, 0, MIDDLE_CENTER);
+		health_text.set_string('${player.health.current.floor()}').set_position(0, -1, MIDDLE_CENTER);
 		health.graphics.clear();
 		health
 			.fill_rect(Color.BLACK, -48, -16, 96, 32, 32)

@@ -41,47 +41,40 @@ class OutlineShader extends Shader
 		varying vec4 openfl_ColorMultiplierv;
 		varying vec4 openfl_ColorOffsetv;
 		varying vec2 openfl_TextureCoordv;
-		
+
 		uniform bool openfl_HasColorTransform;
 		uniform vec2 openfl_TextureSize;
 		uniform sampler2D bitmap;
 
+		vec4 color = vec4(0.,0.,0.,1.);
+		float thickness = 3.;
+		const int samples = 16;
+
 		void main(void) {
 			vec4 sample = texture2D(bitmap, openfl_TextureCoordv);
-			vec2 size = vec2(3.,3.);
-
-			if (sample.a < 1.) {
-				float w = size.x / openfl_TextureSize.x;
-				float h = size.y / openfl_TextureSize.y;
-
-				/*if (texture2D(bitmap, vec2(	openfl_TextureCoordv.x + w, 		openfl_TextureCoordv.y				)).a != 0.
-				||	texture2D(bitmap, vec2(	openfl_TextureCoordv.x - w, 		openfl_TextureCoordv.y				)).a != 0.
-				||	texture2D(bitmap, vec2(	openfl_TextureCoordv.x, 			openfl_TextureCoordv.y - h			)).a != 0.
-				||	texture2D(bitmap, vec2(	openfl_TextureCoordv.x, 			openfl_TextureCoordv.y + h			)).a != 0.
-				||	texture2D(bitmap, vec2(	openfl_TextureCoordv.x - w * 0.5, 	openfl_TextureCoordv.y - h * 0.5	)).a != 0.
-				||	texture2D(bitmap, vec2(	openfl_TextureCoordv.x + w * 0.5, 	openfl_TextureCoordv.y - h * 0.5	)).a != 0.
-				||	texture2D(bitmap, vec2(	openfl_TextureCoordv.x - w * 0.5, 	openfl_TextureCoordv.y + h * 0.5	)).a != 0.
-				||	texture2D(bitmap, vec2(	openfl_TextureCoordv.x + w * 0.5, 	openfl_TextureCoordv.y + h * 0.5	)).a != 0.)
-					sample += vec4(0., 0., 0., 1.);*/
-				float a = 0.;
-				a += texture2D(bitmap, vec2(openfl_TextureCoordv.x + w, openfl_TextureCoordv.y)).a;
-				a += texture2D(bitmap, vec2(openfl_TextureCoordv.x - w, openfl_TextureCoordv.y)).a;
-				a += texture2D(bitmap, vec2(openfl_TextureCoordv.x, openfl_TextureCoordv.y - h)).a;
-				a += texture2D(bitmap, vec2(openfl_TextureCoordv.x, openfl_TextureCoordv.y + h)).a;
-				a += texture2D(bitmap, vec2(openfl_TextureCoordv.x - w, openfl_TextureCoordv.y - h)).a;
-				a += texture2D(bitmap, vec2(openfl_TextureCoordv.x + w, openfl_TextureCoordv.y - h)).a;
-				a += texture2D(bitmap, vec2(openfl_TextureCoordv.x - w, openfl_TextureCoordv.y + h)).a;
-				a += texture2D(bitmap, vec2(openfl_TextureCoordv.x + w, openfl_TextureCoordv.y + h)).a;
-				a = min(a, 1.);
-				sample += vec4(0.,0.,0.,a);
+			float radius = thickness / ((openfl_TextureSize.x + openfl_TextureSize.y) / 2.);
+			float a = 0.;
+			float angle;
+			vec2 p;
+			for (int i = 0; i < samples; i++) {
+				angle = 360./float(samples) * float(i);
+				p = vec2(cos(angle), sin(angle)) * radius + openfl_TextureCoordv;
+				a += texture2D(bitmap, p).a;
 			}
-
+			if (sample.a < 1.) {
+				color.a = a;
+				sample += color;
+			}
 			gl_FragColor = sample;
 		}
 	")
 
-	public function new() {
+	public function new(color:Color, thickness:Float = 4, quality:Int = 8) {
 		super();
+		// TODO: Make these work
+		//this.color.value = cast color;
+		//this.thickness.value = [thickness];
+		//this.samples.value = [quality];
 	}
 	
 }
