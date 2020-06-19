@@ -81,9 +81,6 @@ class PlayerInfo extends Sprite {
 		var shield_text_sprite = new Sprite();
 		shield_text = new TextField().format({ font: Translation.get_font(BOLD), color: Color.BLACK, size: 14 });
 		shield_text_sprite.add(shield_text);
-		var filter = new ShaderFilter(new OutlineShader(Color.BLACK));
-		filter.topExtension = filter.bottomExtension = filter.leftExtension = filter.rightExtension = 16;
-		health_text_sprite.filters = [filter];
 
 		this.add(shield);
 		shield.add(shield_text_sprite);
