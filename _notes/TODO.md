@@ -12,6 +12,11 @@
   - [ ] Create new mutant gears
   - [ ] Implement events
 
+- [ ] Make uniforms work in Shaders
+
+6/19/2020
+- [x] Make Outline Shader smooth
+
 6/18/2020
 - [x] Mutant Gear Implementation
   - [x] Drawing new card Type
