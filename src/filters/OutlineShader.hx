@@ -54,7 +54,7 @@ class OutlineShader extends Shader
 				float w = size.x / openfl_TextureSize.x;
 				float h = size.y / openfl_TextureSize.y;
 
-				if (texture2D(bitmap, vec2(	openfl_TextureCoordv.x + w, 		openfl_TextureCoordv.y				)).a != 0.
+				/*if (texture2D(bitmap, vec2(	openfl_TextureCoordv.x + w, 		openfl_TextureCoordv.y				)).a != 0.
 				||	texture2D(bitmap, vec2(	openfl_TextureCoordv.x - w, 		openfl_TextureCoordv.y				)).a != 0.
 				||	texture2D(bitmap, vec2(	openfl_TextureCoordv.x, 			openfl_TextureCoordv.y - h			)).a != 0.
 				||	texture2D(bitmap, vec2(	openfl_TextureCoordv.x, 			openfl_TextureCoordv.y + h			)).a != 0.
@@ -62,7 +62,18 @@ class OutlineShader extends Shader
 				||	texture2D(bitmap, vec2(	openfl_TextureCoordv.x + w * 0.5, 	openfl_TextureCoordv.y - h * 0.5	)).a != 0.
 				||	texture2D(bitmap, vec2(	openfl_TextureCoordv.x - w * 0.5, 	openfl_TextureCoordv.y + h * 0.5	)).a != 0.
 				||	texture2D(bitmap, vec2(	openfl_TextureCoordv.x + w * 0.5, 	openfl_TextureCoordv.y + h * 0.5	)).a != 0.)
-					sample += vec4(0., 0., 0., 1.);
+					sample += vec4(0., 0., 0., 1.);*/
+				float a = 0.;
+				a += texture2D(bitmap, vec2(openfl_TextureCoordv.x + w, openfl_TextureCoordv.y)).a;
+				a += texture2D(bitmap, vec2(openfl_TextureCoordv.x - w, openfl_TextureCoordv.y)).a;
+				a += texture2D(bitmap, vec2(openfl_TextureCoordv.x, openfl_TextureCoordv.y - h)).a;
+				a += texture2D(bitmap, vec2(openfl_TextureCoordv.x, openfl_TextureCoordv.y + h)).a;
+				a += texture2D(bitmap, vec2(openfl_TextureCoordv.x - w, openfl_TextureCoordv.y - h)).a;
+				a += texture2D(bitmap, vec2(openfl_TextureCoordv.x + w, openfl_TextureCoordv.y - h)).a;
+				a += texture2D(bitmap, vec2(openfl_TextureCoordv.x - w, openfl_TextureCoordv.y + h)).a;
+				a += texture2D(bitmap, vec2(openfl_TextureCoordv.x + w, openfl_TextureCoordv.y + h)).a;
+				a = min(a, 1.);
+				sample += vec4(0.,0.,0.,a);
 			}
 
 			gl_FragColor = sample;
