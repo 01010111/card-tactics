@@ -46,14 +46,14 @@ class ObjectInfo extends Sprite {
 		this.set_position(global_pos.x, global_pos.y - 48 - info_height/2 - 8);
 	}
 
-	function draw_target_info(target:GameObject, ?gear:GearCard) {
+	function draw_target_info(target:GameObject, ?equipment:EquipmentCard) {
 		var cur_hp = target.health.current + target.shield;
 		var max_hp = target.health.max + target.shield;
-		var next_hp = gear == null ? cur_hp : cur_hp + switch gear.gear_data.effect.type {
+		var next_hp = equipment == null ? cur_hp : cur_hp + switch equipment.equipment_data.effect.type {
 			default: 0;
-			case DAMAGE: -gear.get_effect_value();
+			case DAMAGE: -equipment.get_effect_value();
 			case MOVE: 0;
-			case HEALTH: gear.get_effect_value();
+			case HEALTH: equipment.get_effect_value();
 			case SHIELD: 0;
 		}
 		next_hp = next_hp.min(max_hp).max(0).floor();
@@ -77,13 +77,11 @@ class ObjectInfo extends Sprite {
 			case LESS_THAN:
 				health_bar.fill_rect(Color.PICO_8_GREEN, -92/2, -4, (next_hp/max_hp * 92).max(8), 8, 8);
 				health_bar.fill_rect(Color.PICO_8_RED, -92/2, -4, (cur_hp/max_hp * 92).max(8), 8, 8);
-				//hp = '${cur_hp}+${next_hp - cur_hp}hp';
 				hp += '+${next_hp - cur_hp}hp';
 				hp_text.textColor = Color.PICO_8_GREEN.to_hex_24();
 			case GREATER_THAN:
 				health_bar.fill_rect(Color.PICO_8_ORANGE, -92/2, -4, (cur_hp/max_hp * 92).max(8), 8, 8);
 				if (next_hp > 0) health_bar.fill_rect(Color.PICO_8_RED, -92/2, -4, (next_hp/max_hp * 92).max(8), 8, 8);
-				//hp = '${cur_hp}-${cur_hp - next_hp}hp';
 				hp += '-${cur_hp - next_hp}hp';
 				hp_text.textColor = next_hp > 0 ? Color.PICO_8_ORANGE.to_hex_24() : Color.PICO_8_RED.to_hex_24();
 		}
@@ -92,7 +90,7 @@ class ObjectInfo extends Sprite {
 		hp_text.set_string(hp).set_position(0, info_height/4, MIDDLE_CENTER);
 	}
 
-	public function set_target(target:GameObject, ?gear:GearCard) {
+	public function set_target(target:GameObject, ?gear:EquipmentCard) {
 		draw_target_info(target, gear);
 		return this.target = target;
 	}

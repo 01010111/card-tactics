@@ -21,13 +21,13 @@ class EquipmentHandle extends Sprite {
 	var graphic:Sprite;
 	var home:Vec2 = [];
 	var dragging:Bool = false;
-	var gear_card:GearCard;
+	var equipment_card:EquipmentCard;
 	var level_pos:Point;
 	var target:Null<GameObject>;
 
-	public function new(type:HandleType, parent:GearCard) {
+	public function new(type:HandleType, parent:EquipmentCard) {
 		super();
-		gear_card = parent;
+		equipment_card = parent;
 		this.type = type;
 		this.add(graphic = new Sprite());
 		addEventListener(Event.ENTER_FRAME, update);
@@ -47,19 +47,19 @@ class EquipmentHandle extends Sprite {
 	}
 
 	function mouse_over(e:MouseEvent) {
-		if (type == PRESS) gear_card.active = true;
-		else Level.i.draw_indicators(gear_card);
+		if (type == PRESS) equipment_card.active = true;
+		else Level.i.draw_indicators(equipment_card);
 	}
 
 	function mouse_out(e:MouseEvent) {
-		gear_card.active = false;
+		equipment_card.active = false;
 	}
 
 	function mouse_down(e:MouseEvent) {
 		if (!active) return;
 		startDrag(true);
 		dragging = true;
-		gear_card.active = true;
+		equipment_card.active = true;
 	}
 	
 	function mouse_up(e:MouseEvent) {
@@ -68,7 +68,7 @@ class EquipmentHandle extends Sprite {
 		dragging = false;
 		Equipment.active_equipment.link.length = 0;
 		Equipment.active_equipment.link.draw();
-		gear_card.active = false;
+		equipment_card.active = false;
 		level_pos = get_level_pos();
 		Level.i.clear_indicators();
 		if (target != null) {
@@ -77,7 +77,7 @@ class EquipmentHandle extends Sprite {
 			for (pos in Level.i.available_tiles) if (pos.equals(target_grid_pos)) execute = true;
 			target_grid_pos.put();
 			if (!execute) return;
-			gear_card.execute(target);
+			equipment_card.execute(target);
 			Level.i.info_layer.show_info(target);
 			hide();
 		}
@@ -90,7 +90,7 @@ class EquipmentHandle extends Sprite {
 	function on_click(e:MouseEvent) {
 		if (!active) return;
 		Tween.get(this).from_to('scaleX', 0.5, 1).from_to('scaleY', 0.5, 1).ease(Ease.elasticOut).duration(0.4).on_complete(hide);
-		gear_card.execute();
+		equipment_card.execute();
 	}
 
 	public function show() {
@@ -109,7 +109,7 @@ class EquipmentHandle extends Sprite {
 	function update(e:Event) {
 		Equipment.active_equipment.link.active = dragging;
 		if (dragging) {
-			var card_pos:Vec2 = [gear_card.x, gear_card.y];
+			var card_pos:Vec2 = [equipment_card.x, equipment_card.y];
 			var this_pos:Vec2 = [x, y];
 			var diff = this_pos - card_pos;
 			Equipment.active_equipment.link.set_position(card_pos.x, card_pos.y);
@@ -122,8 +122,8 @@ class EquipmentHandle extends Sprite {
 			check_objects(x, y);
 		}
 		else {
-			x += (gear_card.x - x) * 0.5;
-			y += (gear_card.y + EquipmentCard.card_height/2 - y) * 0.5;
+			x += (equipment_card.x - x) * 0.5;
+			y += (equipment_card.y + EquipmentCard.card_height/2 - y) * 0.5;
 		}
 	}
 
@@ -135,7 +135,7 @@ class EquipmentHandle extends Sprite {
 			if (pos.distance(obj_pos) < 8) {
 				target = cast object;
 				var target_grid_pos = target.grid_pos;
-				for (pos in Level.i.available_tiles) if (pos.equals(target_grid_pos)) Level.i.info_layer.show_info(target, gear_card);
+				for (pos in Level.i.available_tiles) if (pos.equals(target_grid_pos)) Level.i.info_layer.show_info(target, false, equipment_card);
 				target_grid_pos.put();
 				pos.put();
 				obj_pos.put();

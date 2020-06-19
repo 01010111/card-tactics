@@ -1,5 +1,9 @@
 package ui;
 
+import zero.utilities.Ease;
+import zero.utilities.Tween;
+import objects.GameObject;
+import zero.utilities.IntPoint;
 import ui.PlayingCard.PlayingCardData;
 import util.EventUtil;
 import zero.utilities.Color;
@@ -19,6 +23,7 @@ using util.CardUtil;
 class MutantCard extends EquipmentCard {
 	
 	public var mutant_data:MutantData;
+	var one_shot_highlight:Sprite;
 
 	public function new(equipment:Equipment, data:MutantData) {
 		super(equipment);
@@ -50,6 +55,19 @@ class MutantCard extends EquipmentCard {
 		var description = new TextField().format({ font: Translation.get_font(BOLD), size: 14, color: Color.BLACK, leading: -2, align: CENTER });
 		description.set_string(Translation.get_mutant_description(mutant_data.id).wrap_string(description, 112)).set_position(EquipmentCard.card_width/2, EquipmentCard.card_height/2 + 12, MIDDLE_CENTER);
 		content.add(description);
+
+		draw_classes(content);
+
+		addChild(one_shot_highlight = new Sprite().rect(Color.PICO_8_WHITE, -EquipmentCard.card_width/2 + 4, -EquipmentCard.card_height/2 + 4, EquipmentCard.card_width - 8, EquipmentCard.card_height - 8, 16, 8));
+		one_shot_highlight.alpha = 0;
+
+		make_handle();
+	}
+
+	override function execute(?target:GameObject, ?point:IntPoint) {
+		super.execute(target, point);
+		Tween.get(one_shot_highlight).from_to('alpha', 1, 0).from_to('scaleX', 1, 1.1).from_to('scaleY', 1, 1.1).duration(0.5).ease(Ease.quadOut);
+		Tween.get(this).from_to('scaleX', 1.1, 1).from_to('scaleY', 1.1, 1).duration(0.5).ease(Ease.quadOut);
 	}
 
 	public function verify() {
@@ -57,11 +75,13 @@ class MutantCard extends EquipmentCard {
 	}
 
 	function listen(?ev:{ type:EventType, data:Dynamic }) {
+		if (mutant_data.listen != ev.type) return;
 		switch ev.type {
 			case PLAYER_TURN:
 			case ENEMY_TURN:
 			case ATTACK:
 			case USE_CARD: if (ev.data.object == equipment.owner) check_card(ev.data.card_data);
+			case SHIELD: if (ev.data.object == equipment.owner) ev.data.value > 0 ? handle.show() : handle.hide();
 		}
 	}
 
@@ -86,4 +106,5 @@ class MutantCard extends EquipmentCard {
 typedef MutantData = {
 	> DropCardData,
 	> EquipmentData,
+	?listen:EventType,
 }

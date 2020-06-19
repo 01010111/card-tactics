@@ -99,7 +99,9 @@ class GameObject extends Sprite {
 	}
 
 	function set_shield(amt:Int) {
-		return shield = amt;
+		shield = amt;
+		'game_event'.dispatch({ type:SHIELD, data: { object:this, value:amt }});
+		return shield;
 	}
 
 }

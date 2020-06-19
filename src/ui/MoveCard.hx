@@ -88,6 +88,11 @@ class MoveCard extends DropCard {
 		}
 	}
 
+	public function execute() {
+		expended = true;
+		for (card in cards) 'game_event'.dispatch({ type:USE_CARD, data: { object:equipment.owner, card_data:card.data }});
+	}
+
 }
 
 typedef MoveData = {

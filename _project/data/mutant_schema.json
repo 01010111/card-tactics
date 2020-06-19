@@ -16,7 +16,6 @@
                 "examples": [
                     {
                         "id": "Test",
-                        "cost": 1,
                         "range": {
                             "min": 0,
                             "max": 5,
@@ -31,21 +30,16 @@
                         "requirement_value": 10,
                         "equipment_class": "FLAME",
                         "weakness": "PIERCING",
-                        "bonus": {
-                            "requirement": "FACE",
-                            "type": "DOUBLE_EFFECT_VALUE"
-                        }
+                        "listen": "USE_CARD"
                     }
                 ],
                 "required": [
                     "id",
-                    "cost",
                     "range",
                     "effect",
                     "requirement",
                     "equipment_class",
-                    "weakness",
-                    "bonus"
+                    "weakness"
                 ],
                 "additionalProperties": true,
                 "properties": {
@@ -58,15 +52,6 @@
                         "examples": [
                             "Test"
                         ]
-                    },
-                    "cost": {
-                        "$id": "#/items/anyOf/0/properties/cost",
-                        "type": "integer",
-                        "title": "The cost schema",
-                        "description": "AP cost of equipping this gear.",
-                        "default": 1,
-                        "minimum": 1,
-                        "maximum": 4
                     },
                     "range": {
                         "$id": "#/items/anyOf/0/properties/range",
@@ -250,55 +235,19 @@
                             "WATER"
                         ]
                     },
-                    "bonus": {
-                        "$id": "#/items/anyOf/0/properties/bonus",
-                        "type": "object",
-                        "title": "The bonus schema",
-                        "description": "An object describing the bonus effect for this gear.",
-                        "default": {},
-                        "examples": [
-                            {
-                                "requirement": "FACE",
-                                "type": "DOUBLE_EFFECT_VALUE"
-                            }
-                        ],
-                        "required": [
-                            "requirement",
-                            "type"
-                        ],
-                        "additionalProperties": true,
-                        "properties": {
-                            "requirement": {
-                                "$id": "#/items/anyOf/0/properties/bonus/properties/requirement",
-                                "type": "string",
-                                "title": "The requirement schema",
-                                "description": "The requirement for activating the bonus.",
-                                "default": "",
-                                "enum": [
-                                    "IS_FACE",
-                                    "TWO_CARDS",
-                                    "HEARTS",
-                                    "DIAMONDS",
-                                    "CLUBS",
-                                    "SPADES"
-                                ]
-                            },
-                            "type": {
-                                "$id": "#/items/anyOf/0/properties/bonus/properties/type",
-                                "type": "string",
-                                "title": "The type schema",
-                                "description": "The effect the bonus has on this gear.",
-                                "default": "",
-                                "enum": [
-                                    "DOUBLE_EFFECT_VALUE",
-                                    "EFFECT_PLUS_ONE",
-                                    "EFFECT_PLUS_TWO",
-                                    "DOUBLE_RANGE",
-                                    "RANGE_PLUS_ONE",
-                                    "RANGE_PLUS_TWO"
-                                ]
-                            }
-                        }
+                    "listen": {
+                        "$id": "#/items/anyOf/0/properties/id",
+                        "type":"string",
+                        "title": "The listen schema",
+                        "description": "Which event to listen for",
+                        "default":"",
+                        "enum": [
+                            "PLAYER_TURN",
+                            "ENEMY_TURN",
+                            "ATTACK",
+                            "USE_CARD",
+                            "SHIELD"
+                        ]
                     }
                 }
             }

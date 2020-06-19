@@ -16,10 +16,10 @@ class InfoLayer extends Sprite {
 		this.add(object_info = new ObjectInfo());
 	}
 
-	public function show_info(object:GameObject, ?gear:GearCard) {
-		var cards = [for (card in object.equipment.equipment_cards) if (card.equipment_data.effect.type == DAMAGE) card];
-		Level.i.draw_indicators(cards);
-		object_info.set_target(object, gear);
+	public function show_info(object:GameObject, draw_indicators:Bool = true, ?equipment:EquipmentCard) {
+		var cards = [for (card in object.equipment.equipment_cards) if (!card.expended && card.equipment_data.effect.type == DAMAGE) card];
+		if (draw_indicators) Level.i.draw_indicators(cards);
+		object_info.set_target(object, equipment);
 		object_info.active = true;
 	}
 

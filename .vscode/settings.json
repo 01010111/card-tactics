@@ -1,11 +1,7 @@
 {
 	"json.schemas": [
-		{
-			"fileMatch": [
-				"assets/data/gear.jsonc"
-			],
-			"url": "./_project/data/gear_schema.json"
-		}
+		{ "fileMatch": [ "assets/data/gear.jsonc"], "url": "./_project/data/gear_schema.json" },
+		{ "fileMatch": [ "assets/data/mutant.jsonc"], "url": "./_project/data/mutant_schema.json" }
 	],
 	"files.exclude": {
 		"**/.git": true,

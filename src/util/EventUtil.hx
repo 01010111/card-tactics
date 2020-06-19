@@ -15,4 +15,5 @@ enum EventType {
 	ENEMY_TURN;
 	ATTACK;
 	USE_CARD;
+	SHIELD;
 }

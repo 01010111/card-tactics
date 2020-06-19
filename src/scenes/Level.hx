@@ -84,7 +84,7 @@ class Level extends Scene {
 					type: FREE,
 					factor: VALUE,
 				},
-				equipment: ['test_d_01', 'test_d_02', 'test_m_01'],
+				equipment: ['test_d_02', 'test_m_01', 'test_m_02'],
 			},
 			side: LEFT,
 		});
@@ -101,7 +101,7 @@ class Level extends Scene {
 					type: FREE,
 					factor: VALUE,
 				},
-				equipment: ['test_u_01', 'test_h_01'],
+				equipment: ['test_d_01', 'test_u_01', 'test_h_01'],
 			},
 			side: RIGHT,
 		});
@@ -148,7 +148,7 @@ class Level extends Scene {
 		Player.selected_player.move_to(x, y);
 		can_move = false;
 		move_indicators.graphics.clear();
-		Equipment.active_equipment.move_card.expended = true;
+		Equipment.active_equipment.move_card.execute();
 	}
 
 	public function get_traversal_map(?ignore:IntPoint):Array<Array<Int>> {

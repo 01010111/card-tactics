@@ -109,45 +109,11 @@ class GearCard extends EquipmentCard {
 				contents.add(new Sprite().load_graphic(src, MIDDLE_CENTER, true).set_position(20, 92).set_scale(0.125));
 			}
 
-			// Classes
-			{
-				var class_src = switch gear_data.equipment_class {
-					default: 'images/blank.png';
-					case FLAME:'images/ui/icons/on_white/icon_flame.png';
-					case PIERCING:'images/ui/icons/on_white/icon_pierce.png';
-					case EXPLOSIVE:'images/ui/icons/on_white/icon_explode.png';
-					case ELECTRICITY:'images/ui/icons/on_white/icon_electrify.png';
-					case WATER:'images/ui/icons/on_white/icon_water.png';
-					case SHIELD:'images/ui/icons/on_white/icon_shield.png';
-					case MOVE:'images/ui/icons/on_white/icon_move.png';
-					case HEALTH:'images/ui/icons/on_white/icon_health.png';
-					case UTILITY:'images/ui/icons/on_white/icon_utility.png';
-				}
-				var weakness_src = switch gear_data.weakness {
-					default: 'images/blank.png';
-					case FLAME:'images/ui/icons/on_white/icon_flame.png';
-					case PIERCING:'images/ui/icons/on_white/icon_pierce.png';
-					case EXPLOSIVE:'images/ui/icons/on_white/icon_explode.png';
-					case ELECTRICITY:'images/ui/icons/on_white/icon_electrify.png';
-					case WATER:'images/ui/icons/on_white/icon_water.png';
-					case SHIELD:'images/ui/icons/on_white/icon_shield.png';
-					case MOVE:'images/ui/icons/on_white/icon_move.png';
-					case HEALTH:'images/ui/icons/on_white/icon_health.png';
-					case UTILITY:'images/ui/icons/on_white/icon_utility.png';
-				}
-				contents.addChild(new Sprite().load_graphic(class_src, TOP_LEFT, true).set_position(16, 196).set_scale(0.25));
-				contents.addChild(new Sprite().load_graphic(weakness_src, TOP_LEFT, true).set_position(160, 196).set_scale(0.25));
-				contents.addChild(new Sprite().load_graphic('images/ui/icons/icon_skull.png', TOP_LEFT, true).set_position(144, 180).set_scale(0.25));
-			}
+			draw_classes(contents);
 		}
 
-		// Highlight
-		addChild(highlight = new Sprite().rect(Color.PICO_8_WHITE, -EquipmentCard.card_width/2 + 4, -EquipmentCard.card_height/2 + 4, EquipmentCard.card_width - 8, EquipmentCard.card_height - 8, 16, 8));
-		Tween.get(highlight).from_to('scaleX', 1, 1.1).from_to('scaleY', 1, 1.1).from_to('alpha', 1, 0).type(LOOP_FORWARDS).duration(1).ease(Ease.quadOut);
-		highlight.visible = false;
-
-		// Handle
-		handle = new EquipmentHandle(gear_data.range.max == 0 ? PRESS : AIM, this);
+		add_highlight();
+		make_handle();
 	}
 
 	function set_description() {

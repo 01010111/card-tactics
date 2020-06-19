@@ -119,6 +119,12 @@ class DropCard extends Card {
 		}
 	}
 
+	function add_highlight() {
+		addChild(highlight = new Sprite().rect(Color.PICO_8_WHITE, -EquipmentCard.card_width/2 + 4, -EquipmentCard.card_height/2 + 4, EquipmentCard.card_width - 8, EquipmentCard.card_height - 8, 16, 8));
+		Tween.get(highlight).from_to('scaleX', 1, 1.1).from_to('scaleY', 1, 1.1).from_to('alpha', 1, 0).type(LOOP_FORWARDS).duration(1).ease(Ease.quadOut);
+		highlight.visible = false;
+	}
+
 }
 
 typedef DropCardData = {
@@ -127,6 +133,7 @@ typedef DropCardData = {
 }
 
 enum abstract Requirement(String) {
+	var NONE;
 	var MIN_TOTAL;
 	var MAX_TOTAL;
 	var MIN_CARD;
