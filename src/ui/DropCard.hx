@@ -1,13 +1,8 @@
 package ui;
 
 import openfl.filters.ColorMatrixFilter;
-import objects.GameObject;
-import scenes.Level;
-import openfl.events.MouseEvent;
-import openfl.text.TextFormatAlign;
 import zero.utilities.Ease;
 import zero.utilities.Tween;
-import openfl.text.TextField;
 import openfl.display.Sprite;
 import zero.utilities.Color;
 import openfl.events.Event;
@@ -15,8 +10,6 @@ import zero.utilities.Vec2;
 import ui.PlayingCard;
 
 using zero.openfl.extensions.SpriteTools;
-using zero.openfl.extensions.TextTools;
-using Math;
 using util.CardUtil;
 using zero.extensions.Tools;
 

@@ -12,7 +12,11 @@
   - [ ] Create new mutant gears
   - [ ] Implement events
 
+# Bugs
+
 - [ ] Make uniforms work in Shaders
+- [ ] Text not showing in Windows build
+- [ ] Mutant cards invisible when expended shader applied
 
 6/19/2020
 - [x] Make Outline Shader smooth

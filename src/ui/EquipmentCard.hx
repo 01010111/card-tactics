@@ -81,10 +81,7 @@ class EquipmentCard extends DropCard {
 			case HP:
 				out = equipment.owner.health.current;
 		}
-		trace(equipment_data);
-		trace(out);
 		if (equipment_data.effect.scalar != null) out *= equipment_data.effect.scalar;
-		trace(out);
 		return out;
 	}
 
