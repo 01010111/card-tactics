@@ -46,11 +46,12 @@ class OutlineShader extends Shader
 		uniform vec2 openfl_TextureSize;
 		uniform sampler2D bitmap;
 
-		vec4 color = vec4(0.,0.,0.,1.);
-		float thickness = 3.;
+		uniform vec4 color;
+		uniform float thickness;
 		const int samples = 16;
 
 		void main(void) {
+			vec4 col = vec4(color.r, color.g, color.b, 1.);
 			vec4 sample = texture2D(bitmap, openfl_TextureCoordv);
 			float radius = thickness / ((openfl_TextureSize.x + openfl_TextureSize.y) / 2.);
 			float a = 0.;
@@ -62,19 +63,18 @@ class OutlineShader extends Shader
 				a += texture2D(bitmap, p).a;
 			}
 			if (sample.a < 1.) {
-				color.a = a;
-				sample += color;
+				col.a = a;
+				sample += col;
 			}
 			gl_FragColor = sample;
 		}
 	")
 
-	public function new(color:Color, thickness:Float = 4, quality:Int = 8) {
+	public function new(color:Color, thickness:Float = 3, quality:Int = 16) {
 		super();
 		// TODO: Make these work
-		//this.color.value = cast color;
-		//this.thickness.value = [thickness];
-		//this.samples.value = [quality];
+		data.color.value = color;
+		data.thickness.value = [thickness];
 	}
 	
 }

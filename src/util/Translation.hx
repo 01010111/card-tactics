@@ -1,11 +1,8 @@
 package util;
 
 import openfl.Assets;
-import haxe.Json;
-import haxe.DynamicAccess;
 
 using zero.extensions.Tools;
-using Std;
 using Reflect;
 using StringTools;
 
@@ -13,16 +10,16 @@ class Translation {
 
 	public static var language:String = 'en';
 
-	static var equipment_titles:DynamicAccess<TranslationMap>;
-	static var gameplay:DynamicAccess<TranslationMap>;
-	static var mutant_descriptions:DynamicAccess<TranslationMap>;
+	static var equipment_titles:TranslationMap;
+	static var gameplay:TranslationMap;
+	static var mutant_descriptions:TranslationMap;
 	
 	static var fonts:Map<Font, Map<String, String>> = [];
 
 	public static function init() {
-		equipment_titles = Assets.getText('data/translations/equipment_titles.jsonc').parse_json();
-		gameplay = Assets.getText('data/translations/gameplay.jsonc').parse_json();
-		mutant_descriptions = Assets.getText('data/translations/mutant_descriptions.jsonc').parse_json();
+		equipment_titles = map(Assets.getText('data/translations/equipment_titles.jsonc').parse_json());
+		gameplay = map(Assets.getText('data/translations/gameplay.jsonc').parse_json());
+		mutant_descriptions = map(Assets.getText('data/translations/mutant_descriptions.jsonc').parse_json());
 
 		for (font in Font.all()) {
 			fonts.set(font, []);
@@ -32,17 +29,30 @@ class Translation {
 		}
 		fonts[BOLD].set('en', 'Oduda Bold');
 	}
+
+	public static function map(data:Dynamic):TranslationMap {
+		var out:TranslationMap = [];
+		for (f in data.fields()) {
+			var set:Map<String, String> = [];
+			var set_data:Dynamic = data.field(f);
+			for (ff in set_data.fields()) {
+				set.set(ff, set_data.field(ff));
+			}
+			out.set(f, set);
+		}
+		return out;
+	}
 	
 	public static function get_equipment_title(id:String):String {
-		return equipment_titles.get(id).field(cast language);
+		return equipment_titles[id][language];
 	}
 
 	public static function get_mutant_description(id:String):String {
-		return mutant_descriptions.get(id).field(cast language);
+		return mutant_descriptions[id][language];
 	}
-
+	
 	public static function get_gameplay_text(id:String):String {
-		return gameplay.get(id).field(cast language);
+		return gameplay[id][language];
 	}
 
 	public static function replace(str:String, v:String):String {

@@ -14,9 +14,12 @@
 
 # Bugs
 
-- [ ] Make uniforms work in Shaders
-- [ ] Text not showing in Windows build
-- [ ] Mutant cards invisible when expended shader applied
+# Completed
+
+6/27/2020
+- [x] Make uniforms work in Shaders
+- [x] Mutant cards invisible when expended shader applied
+- [x] Text not showing in Windows build
 
 6/19/2020
 - [x] Make Outline Shader smooth

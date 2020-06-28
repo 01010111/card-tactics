@@ -110,6 +110,7 @@ class DropCard extends Card {
 			card.y += (anchors[i].y - card.y) * 0.25;
 			i++;
 		}
+		invalidate(); // TODO - this is a hack that forces a redraw, fixes expended cards disappearing until onclick event
 	}
 
 	function add_highlight() {
