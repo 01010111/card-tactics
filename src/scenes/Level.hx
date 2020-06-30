@@ -1,9 +1,6 @@
 package scenes;
 
-import util.EquipmentUtil;
 import ui.EquipmentCard;
-import zero.openfl.utilities.Keys;
-import openfl.geom.Rectangle;
 import zero.openfl.utilities.Game;
 import ui.Equipment;
 import ui.MoveCard;
@@ -14,12 +11,10 @@ import zero.openfl.utilities.Particles;
 import objects.Dolly;
 import zero.openfl.utilities.Tilemap;
 import openfl.Assets;
-import openfl.events.Event;
 import zero.utilities.IntPoint;
 import openfl.events.MouseEvent;
 import openfl.display.Sprite;
 import zero.openfl.utilities.Scene;
-import zero.utilities.Tween;
 import particles.Poof;
 import ui.InfoLayer;
 import objects.Player;
@@ -107,6 +102,7 @@ class Level extends Scene {
 		});
 		Player.selected_player = player;
 		player2.shield = 4;
+		var pickup = new objects.GearPickup(4, 10, 'test pickup');
 	}
 
 	function init_dolly() {

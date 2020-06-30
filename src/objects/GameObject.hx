@@ -34,10 +34,19 @@ class GameObject extends Sprite {
 
 		last = [x * 16 + 8, y * 16 + 8];
 		this.set_position(last.x, last.y);
+		update_object_map(x, y, x, y);
 
-		addEventListener(MouseEvent.MOUSE_OVER, (e) -> Level.i.info_layer.show_info(this));
-		addEventListener(MouseEvent.MOUSE_OUT, (e) -> Level.i.info_layer.hide_info());
+		addEventListener(MouseEvent.MOUSE_OVER, mouse_over);
+		addEventListener(MouseEvent.MOUSE_OUT, mouse_out);
 		addEventListener(Event.ENTER_FRAME, (e) -> update(1/60));
+	}
+
+	function mouse_over(e:MouseEvent) {
+		Level.i.info_layer.show_info(this);
+	}
+
+	function mouse_out(e:MouseEvent) {
+		Level.i.info_layer.hide_info();
 	}
 
 	function update(dt:Float) {
@@ -55,9 +64,13 @@ class GameObject extends Sprite {
 		trace(sx, sy, x, y);
 		var path = map.get_path({ start: [sx, sy], end: [x, y], passable: [0], simplify: NONE });
 		if (path.length == 0) return;
+		update_object_map(sx, sy, x, y);
+		follow_path(path);
+	}
+
+	function update_object_map(sx:Int, sy:Int, x:Int, y:Int) {
 		Level.i.object_map[sy][sx] = 0;
 		Level.i.object_map[y][x] = -1;
-		follow_path(path);
 	}
 
 	public function follow_path(path:Array<IntPoint>) {

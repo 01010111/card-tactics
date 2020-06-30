@@ -12,6 +12,11 @@
   - [ ] Create new mutant gears
   - [ ] Implement events
 
+- [ ] Gear Pickups
+  - [x] Create clickable object
+  - [ ] Create UI for placing new Gear
+  - [ ] Create interaction for (re)placing gear
+
 # Bugs
 
 # Completed
