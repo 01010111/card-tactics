@@ -1,5 +1,7 @@
 package scenes;
 
+import zero.openfl.utilities.Keys;
+import util.TurnUtil;
 import ui.EquipmentCard;
 import zero.openfl.utilities.Game;
 import ui.Equipment;
@@ -54,6 +56,7 @@ class Level extends Scene {
 	public function new() {
 		i = this;
 		super();
+		((?_) -> if (Keys.just_pressed(84)) TurnUtil.player_turn = !TurnUtil.player_turn).listen('update');
 	}
 
 	override function create() {
@@ -102,7 +105,7 @@ class Level extends Scene {
 		});
 		Player.selected_player = player;
 		player2.shield = 4;
-		var pickup = new objects.GearPickup(4, 10, 'test pickup');
+		var pickup = new objects.GearPickup(4, 10, 'test_u_01');
 	}
 
 	function init_dolly() {
@@ -120,6 +123,7 @@ class Level extends Scene {
 	}
 
 	function level_mouse_down(e:MouseEvent) {
+		if (!TurnUtil.player_turn) return;
 		dolly.startDrag(false);
 		dolly.following = false;
 	}

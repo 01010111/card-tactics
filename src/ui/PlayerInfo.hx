@@ -1,5 +1,6 @@
 package ui;
 
+import util.TurnUtil;
 import util.Translation;
 import zero.utilities.Ease;
 import zero.utilities.Tween;
@@ -110,6 +111,7 @@ class PlayerInfo extends Sprite {
 	}
 
 	function on_click(e:MouseEvent) {
+		if (!TurnUtil.player_turn) return;
 		Player.selected_player = player;
 	}
 

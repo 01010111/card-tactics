@@ -1,5 +1,6 @@
 package objects;
 
+import util.TurnUtil;
 import ui.Equipment;
 import zero.openfl.utilities.AnimatedSprite;
 import openfl.events.Event;
@@ -42,6 +43,7 @@ class GameObject extends Sprite {
 	}
 
 	function mouse_over(e:MouseEvent) {
+		if (!TurnUtil.player_turn) return;
 		Level.i.info_layer.show_info(this);
 	}
 

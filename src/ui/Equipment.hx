@@ -1,5 +1,6 @@
 package ui;
 
+import util.TurnUtil;
 import objects.GameObject;
 import zero.openfl.utilities.Game;
 import openfl.events.Event;
@@ -50,7 +51,7 @@ class Equipment extends Sprite {
 		if (side == null) return;
 		var i = 0;
 		for (equipment in equipment_cards) {
-			if (active) {
+			if (active && TurnUtil.player_turn) {
 				equipment.x += ((side == LEFT ? 240 : Game.width - 240) + (side == LEFT ? 208 : -208) * i++ - equipment.x) * 0.25;
 				equipment.y += (144 - equipment.y) * 0.25;
 				equipment.alpha += (1 - equipment.alpha) * 0.25;

@@ -1,5 +1,6 @@
 package objects;
 
+import util.TurnUtil;
 import ui.MutantCard;
 import ui.EquipmentCard;
 import zero.utilities.Color;
@@ -30,7 +31,7 @@ class Player extends Actor {
 
 	public function new(x:Int, y:Int, options:PlayerOptions) {
 		super(options.data, x, y);
-		addEventListener(MouseEvent.CLICK, (e) -> if (Level.i.can_move) selected_player = this);
+		addEventListener(MouseEvent.CLICK, (e) -> if (Level.i.can_move && TurnUtil.player_turn) selected_player = this);
 		Level.i.objects.add(this);
 		Level.i.dolly.follow_object(this, true);
 		Level.i.object_map[y][x] = -1;
