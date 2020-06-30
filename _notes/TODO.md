@@ -13,13 +13,19 @@
   - [ ] Implement events
 
 - [ ] Gear Pickups
-  - [x] Create clickable object
   - [ ] Create UI for placing new Gear
-  - [ ] Create interaction for (re)placing gear
+  - [ ] Interaction for (re)placing gear
+
 
 # Bugs
 
 # Completed
+
+6/29/2020
+- [x] Pickups
+  - [x] Create clickable object
+- [x] Turns
+  - [x] Remove player interactions during enemy turn
 
 6/27/2020
 - [x] Make uniforms work in Shaders
