@@ -49,6 +49,10 @@ class Equipment extends Sprite {
 		if (side == null) return;
 		var i = 0;
 		for (equipment in equipment_cards) {
+			if (equipment.dragging) {
+				i++;
+				continue;
+			}
 			if (active && TurnUtil.player_turn) {
 				equipment.x += ((side == LEFT ? 240 : Game.width - 240) + (side == LEFT ? 208 : -208) * i++ - equipment.x) * 0.25;
 				equipment.y += (144 - equipment.y) * 0.25;

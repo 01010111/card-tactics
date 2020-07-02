@@ -1,5 +1,6 @@
 package ui;
 
+import openfl.events.MouseEvent;
 import openfl.filters.ColorMatrixFilter;
 import zero.utilities.Ease;
 import zero.utilities.Tween;
@@ -34,6 +35,13 @@ class DropCard extends Card {
 		last = [x, y];
 		anchor = [0, 0];
 		addEventListener(Event.ENTER_FRAME, update);
+	}
+
+	override function mouse_down(e:MouseEvent) {
+		super.mouse_down(e);
+		var p = parent;
+		this.remove();
+		p.addChild(this);
 	}
 
 	public function verify_card(card_data:PlayingCardData):Bool {
@@ -108,6 +116,8 @@ class DropCard extends Card {
 			card.y += (anchors[i].y - card.y) * 0.25;
 			i++;
 		}
+		if (dragging) rotation += ((x - last.x)/2 - rotation) * 0.1;
+		last.set(x, y);
 		invalidate(); // TODO - this is a hack that forces a redraw, fixes expended cards disappearing until onclick event
 	}
 

@@ -29,6 +29,7 @@ class GearCard extends EquipmentCard {
 		this.data = data;
 		anchors = [[-35, 28], [35, 28]];
 		draw_card();
+		draggable = true;
 	}
 
 	override function mouse_over(e:MouseEvent) {
