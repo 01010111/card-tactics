@@ -7,8 +7,6 @@ import zero.utilities.Tween;
 import zero.utilities.Color;
 import ui.GearCard;
 
-using zero.openfl.extensions.SpriteTools;
-
 class GearPickup extends Pickup {
 	
 	var data:GearData;

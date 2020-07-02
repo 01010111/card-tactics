@@ -2,7 +2,6 @@ package util;
 
 import openfl.Assets;
 
-using zero.extensions.Tools;
 using Reflect;
 using StringTools;
 
@@ -13,6 +12,7 @@ class Translation {
 	static var equipment_titles:TranslationMap;
 	static var gameplay:TranslationMap;
 	static var mutant_descriptions:TranslationMap;
+	static var tooltip_text:TranslationMap;
 	
 	static var fonts:Map<Font, Map<String, String>> = [];
 
@@ -20,6 +20,7 @@ class Translation {
 		equipment_titles = map(Assets.getText('data/translations/equipment_titles.jsonc').parse_json());
 		gameplay = map(Assets.getText('data/translations/gameplay.jsonc').parse_json());
 		mutant_descriptions = map(Assets.getText('data/translations/mutant_descriptions.jsonc').parse_json());
+		tooltip_text = map(Assets.getText('data/translations/tooltip_text.jsonc').parse_json());
 
 		for (font in Font.all()) {
 			fonts.set(font, []);
@@ -53,6 +54,10 @@ class Translation {
 	
 	public static function get_gameplay_text(id:String):String {
 		return gameplay[id][language];
+	}
+
+	public static function get_tooltip_text(id:String):String {
+		return tooltip_text[id][language];
 	}
 
 	public static function replace(str:String, v:String):String {

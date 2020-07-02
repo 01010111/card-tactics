@@ -9,9 +9,7 @@ import openfl.events.Event;
 import zero.utilities.Vec2;
 import ui.PlayingCard;
 
-using zero.openfl.extensions.SpriteTools;
 using util.CardUtil;
-using zero.extensions.Tools;
 
 class DropCard extends Card {
 

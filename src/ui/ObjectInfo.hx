@@ -2,17 +2,12 @@ package ui;
 
 import util.Translation;
 import openfl.text.TextField;
-import ui.GearCard;
 import scenes.Level;
 import openfl.events.Event;
 import zero.utilities.Color;
 import openfl.geom.Point;
 import objects.GameObject;
 import openfl.display.Sprite;
-
-using zero.openfl.extensions.SpriteTools;
-using zero.openfl.extensions.TextTools;
-using Math;
 
 class ObjectInfo extends Sprite {
 

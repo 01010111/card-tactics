@@ -13,11 +13,6 @@ import scenes.Level;
 import zero.openfl.utilities.AnimatedSprite;
 import util.EquipmentUtil;
 
-using zero.extensions.Tools;
-using zero.openfl.extensions.SpriteTools;
-using Math;
-using Std;
-
 class Player extends Actor {
 
 	public static var selected_player(default, set):Player;

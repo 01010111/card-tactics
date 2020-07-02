@@ -5,13 +5,7 @@ import zero.openfl.utilities.Scene;
 import zero.utilities.Color;
 import zero.utilities.Anchor;
 import openfl.text.TextField;
-import openfl.text.TextFormat;
 import zero.utilities.Timer;
-
-using Math;
-using zero.extensions.Tools;
-using zero.openfl.extensions.TextTools;
-using zero.openfl.extensions.SpriteTools;
 
 class TextTest extends Scene {
 

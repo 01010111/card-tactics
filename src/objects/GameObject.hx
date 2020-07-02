@@ -11,10 +11,7 @@ import scenes.Level;
 import openfl.events.MouseEvent;
 import openfl.display.Sprite;
 
-using zero.openfl.extensions.SpriteTools;
 using zero.utilities.AStar;
-using zero.extensions.Tools;
-using Math;
 
 class GameObject extends Sprite {
 

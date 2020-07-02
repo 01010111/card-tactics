@@ -21,13 +21,8 @@ import particles.Poof;
 import ui.InfoLayer;
 import objects.Player;
 
-using Math;
-using zero.openfl.extensions.SpriteTools;
 using zero.utilities.AStar;
 using zero.utilities.OgmoUtils;
-using zero.utilities.EventBus;
-using zero.extensions.Tools;
-using Std;
 
 class Level extends Scene {
 

@@ -11,9 +11,6 @@ import openfl.events.Event;
 import zero.utilities.Vec2;
 import openfl.display.Sprite;
 
-using zero.openfl.extensions.SpriteTools;
-using Math;
-
 class EquipmentHandle extends Sprite {
 
 	var active:Bool = false;

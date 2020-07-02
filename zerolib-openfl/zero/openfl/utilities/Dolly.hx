@@ -4,7 +4,6 @@ import openfl.display.DisplayObject;
 import openfl.display.Sprite;
 import zero.utilities.Vec2;
 
-using zero.utilities.EventBus;
 using Math;
 
 class Dolly extends Sprite {

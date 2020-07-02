@@ -1,27 +1,19 @@
 package ui;
 
-import zero.utilities.IntPoint;
 import ui.DropCard.Requirement;
 import ui.EquipmentCard.EquipmentData;
 import ui.DropCard.DropCardData;
-import objects.GameObject;
 import scenes.Level;
 import openfl.events.MouseEvent;
 import openfl.text.TextFormatAlign;
-import zero.utilities.Ease;
-import zero.utilities.Tween;
 import openfl.text.TextField;
 import openfl.display.Sprite;
 import zero.utilities.Color;
 import openfl.events.Event;
 import ui.PlayingCard;
 
-using zero.openfl.extensions.SpriteTools;
-using zero.openfl.extensions.TextTools;
-using Math;
 using util.CardUtil;
 using util.Translation;
-using zero.extensions.Tools;
 
 class GearCard extends EquipmentCard {
 	
@@ -64,6 +56,7 @@ class GearCard extends EquipmentCard {
 			{
 				for (i in 0...gear_data.cost) {
 					var pip = new Sprite().load_graphic('images/ui/ap_pip.png', TOP_LEFT, true).set_position(165 - i * 11, 10);
+					pip.add_info('gear_ap');
 					contents.add(pip);
 				}
 			}

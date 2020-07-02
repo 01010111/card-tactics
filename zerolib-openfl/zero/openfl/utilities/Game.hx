@@ -1,15 +1,11 @@
 package zero.openfl.utilities;
 
-import openfl.display.DisplayObject;
 import zero.utilities.Vec2;
-import openfl.events.MouseEvent;
 import openfl.display.Sprite;
 import zero.openfl.utilities.Scene;
 import zero.openfl.utilities.FPS;
 import openfl.Lib;
 
-using Std;
-using Math;
 using zero.openfl.extensions.SpriteTools;
 
 class Game {
@@ -54,7 +50,7 @@ class Game {
 		scene.create();
 		root.add(scene);
 		#if debug
-		root.add(new FPS(10, Game.height - 64, 0xFFFFFF));
+		root.add(new FPS(10, Game.height - 128, 0xFFFFFF));
 		#end
 	}
 	

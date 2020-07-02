@@ -8,8 +8,6 @@ import objects.GameObject;
 import openfl.events.MouseEvent;
 
 using util.CardUtil;
-using zero.utilities.EventBus;
-using zero.openfl.extensions.SpriteTools;
 
 class EquipmentCard extends DropCard {
 	

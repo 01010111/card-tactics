@@ -1,18 +1,11 @@
 package ui;
 
 import openfl.geom.Point;
-import zero.utilities.Tween;
 import zero.utilities.Vec2;
 import zero.utilities.Color;
 import openfl.text.TextField;
 import openfl.display.Sprite;
 import openfl.events.MouseEvent;
-
-using zero.openfl.extensions.SpriteTools;
-using zero.openfl.extensions.TextTools;
-using zero.extensions.Tools;
-using zero.utilities.EventBus;
-using Math;
 
 class PlayingCard extends Card {
 

@@ -13,11 +13,6 @@ import openfl.events.MouseEvent;
 import objects.Player;
 import openfl.display.Sprite;
 
-using zero.openfl.extensions.SpriteTools;
-using zero.openfl.extensions.TextTools;
-using zero.extensions.Tools;
-using Math;
-
 class PlayerInfo extends Sprite {
 
 	var player:Player;
@@ -57,6 +52,8 @@ class PlayerInfo extends Sprite {
 		this.add(ap_pts);
 		ap_pts.add(ap_pts_text);
 
+		ap_pts.add_info('player_ap');
+
 		update_ap_pts();
 	}
 
@@ -67,10 +64,12 @@ class PlayerInfo extends Sprite {
 		var filter = new ShaderFilter(new OutlineShader(Color.BLACK));
 		filter.topExtension = filter.bottomExtension = filter.leftExtension = filter.rightExtension = 64;
 		health_text_sprite.filters = [filter];
-
+		
 		this.add(health);
 		health_text_sprite.add(health_text);
 		health.add(health_text_sprite);
+		
+		health.add_info('player_health');
 
 		update_health();
 	}
@@ -85,6 +84,8 @@ class PlayerInfo extends Sprite {
 
 		this.add(shield);
 		shield.add(shield_text_sprite);
+
+		shield.add_info('player_shield');
 	}
 
 	public function update_ap_pts() {

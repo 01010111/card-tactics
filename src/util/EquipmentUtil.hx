@@ -4,8 +4,6 @@ import openfl.Assets;
 import ui.GearCard.GearData;
 import ui.MutantCard.MutantData;
 
-using zero.extensions.Tools;
-
 class EquipmentUtil {
 
 	static var gear_data:Array<GearData>;

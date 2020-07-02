@@ -5,9 +5,6 @@ import zero.utilities.Ease;
 import zero.openfl.utilities.AnimatedSprite;
 import zero.openfl.utilities.Particles.Particle;
 
-using zero.openfl.extensions.SpriteTools;
-using zero.extensions.Tools;
-
 class Poof extends AnimatedSprite implements Particle {
 
     var available:Bool = true;

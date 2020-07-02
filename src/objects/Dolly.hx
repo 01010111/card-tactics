@@ -7,9 +7,6 @@ import zero.openfl.utilities.Tilemap;
 import zero.openfl.utilities.Game;
 import zero.openfl.utilities.Dolly as ZDolly;
 
-using Math;
-using zero.extensions.Tools;
-
 class Dolly extends ZDolly {
 
 	public var following = true;

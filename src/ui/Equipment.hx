@@ -8,8 +8,6 @@ import openfl.Assets;
 import openfl.display.Sprite;
 import objects.Player;
 
-using zero.openfl.extensions.SpriteTools;
-
 class Equipment extends Sprite {
 
 	public static var active_equipment(default, set):Equipment;

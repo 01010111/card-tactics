@@ -2,16 +2,10 @@ package ui;
 
 import zero.utilities.Vec2;
 import openfl.display.Sprite;
-import openfl.display.DisplayObject;
 import zero.openfl.utilities.Game;
 import zero.utilities.Timer;
 import openfl.events.Event;
-import openfl.display.InteractiveObject;
 import ui.PlayingCard;
-
-using zero.openfl.extensions.SpriteTools;
-using zero.openfl.extensions.TextTools;
-using zero.extensions.Tools;
 
 class Deck extends Sprite {
 

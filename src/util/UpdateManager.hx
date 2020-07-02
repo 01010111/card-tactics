@@ -4,9 +4,6 @@ import zero.utilities.Tween;
 import zero.utilities.Timer;
 import openfl.events.Event;
 
-using Math;
-using zero.utilities.EventBus;
-
 class UpdateManager {
 	static var last = 0.0;
 	public static var wait:Bool = false;

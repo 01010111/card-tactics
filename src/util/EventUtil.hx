@@ -1,7 +1,5 @@
 package util;
 
-using zero.utilities.EventBus;
-
 class EventUtil {
 	
 	public static function dispatch(ev_type:EventType, data:Dynamic) {

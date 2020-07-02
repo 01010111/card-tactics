@@ -15,9 +15,6 @@ import ui.EquipmentCard.EquipmentData;
 import ui.DropCard.DropCardData;
 import openfl.display.Sprite;
 
-using zero.openfl.extensions.SpriteTools;
-using zero.openfl.extensions.TextTools;
-using zero.utilities.EventBus;
 using util.CardUtil;
 
 class MutantCard extends EquipmentCard {

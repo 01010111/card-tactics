@@ -16,10 +16,14 @@
   - [ ] Create UI for placing new Gear
   - [ ] Interaction for (re)placing gear
 
-
 # Bugs
 
 # Completed
+
+7/2/2020
+- [x] Info
+  - [x] Create Info Window
+  - [x] Create Util for adding info on hover on objects
 
 6/29/2020
 - [x] Pickups

@@ -1,12 +1,8 @@
 package ui;
 
 import scenes.Level;
-import ui.GearCard;
 import objects.GameObject;
 import openfl.display.Sprite;
-
-using zero.openfl.extensions.SpriteTools;
-using Std;
 
 class InfoLayer extends Sprite {
 

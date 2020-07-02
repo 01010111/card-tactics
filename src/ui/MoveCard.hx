@@ -6,12 +6,8 @@ import openfl.text.TextField;
 import ui.DropCard.DropCardData;
 import openfl.display.Sprite;
 import zero.utilities.Color;
-import ui.GearCard;
 
-using zero.openfl.extensions.SpriteTools;
-using zero.openfl.extensions.TextTools;
 using util.CardUtil;
-using Math;
 
 class MoveCard extends DropCard {
 
