@@ -24,6 +24,7 @@
 - [x] Info
   - [x] Create Info Window
   - [x] Create Util for adding info on hover on objects
+- [x] After gear is disabled, if previously active, handle can still be used to carry out action
 
 6/29/2020
 - [x] Pickups

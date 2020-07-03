@@ -22,14 +22,13 @@ class GearCard extends EquipmentCard {
 	var req_text:TextField;
 	var req_text_r:TextField;
 		
-	public function new(equipment:Equipment, data:GearData) {
-		super(equipment);
+	public function new(equipment:Equipment, data:GearData, position:Int) {
+		super(equipment, position);
 		this.gear_data = data;
 		this.equipment_data = data;
 		this.data = data;
 		anchors = [[-35, 28], [35, 28]];
 		draw_card();
-		draggable = true;
 	}
 
 	override function mouse_over(e:MouseEvent) {

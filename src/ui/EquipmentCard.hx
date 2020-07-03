@@ -15,10 +15,12 @@ class EquipmentCard extends DropCard {
 	public static var card_height:Float = 224;
 	public var equipment:Equipment;
 	public var equipment_data:EquipmentData;
+	public var equipment_position:Int;
 
-	public function new(equipment:Equipment) {
+	public function new(equipment:Equipment, position:Int) {
 		super();
 		this.equipment = equipment;
+		this.equipment_position = position;
 		draggable = false;
 		addEventListener(MouseEvent.MOUSE_OVER, mouse_over);
 		addEventListener(MouseEvent.MOUSE_OUT, mouse_out);

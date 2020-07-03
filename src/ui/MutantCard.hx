@@ -22,8 +22,8 @@ class MutantCard extends EquipmentCard {
 	public var mutant_data:MutantData;
 	var one_shot_highlight:Sprite;
 
-	public function new(equipment:Equipment, data:MutantData) {
-		super(equipment);
+	public function new(equipment:Equipment, data:MutantData, position:Int) {
+		super(equipment, position);
 		this.mutant_data = data;
 		this.equipment_data = data;
 		this.data = data;

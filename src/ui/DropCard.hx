@@ -25,6 +25,7 @@ class DropCard extends Card {
 	public var expended(default, set):Bool = false;
 	function set_expended(b:Bool) {
 		filters = b ? [grayscale_filter] : [];
+		if (b) handle.hide();
 		return expended = b;
 	}
 	var highlight:Sprite;
@@ -116,7 +117,7 @@ class DropCard extends Card {
 			card.y += (anchors[i].y - card.y) * 0.25;
 			i++;
 		}
-		if (dragging) rotation += ((x - last.x)/2 - rotation) * 0.1;
+		if (dragging) rotation += ((x - last.x) - rotation) * 0.1;
 		last.set(x, y);
 		invalidate(); // TODO - this is a hack that forces a redraw, fixes expended cards disappearing until onclick event
 	}

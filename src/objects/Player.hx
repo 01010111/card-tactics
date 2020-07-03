@@ -34,11 +34,12 @@ class Player extends Actor {
 		init_graphic();
 		
 		equipment = new Equipment(this, options.side);
+		var i = 0;
 		for (id in options.data.equipment) {
 			switch EquipmentUtil.id_type(id) {
 				case NONE:continue;
-				case GEAR:equipment.add_card(new GearCard(equipment, EquipmentUtil.get_gear_data(id)));
-				case MUTANT:equipment.add_card(new MutantCard(equipment, EquipmentUtil.get_mutant_data(id)));
+				case GEAR:equipment.add_card(new GearCard(equipment, EquipmentUtil.get_gear_data(id), i++));
+				case MUTANT:equipment.add_card(new MutantCard(equipment, EquipmentUtil.get_mutant_data(id), i++));
 			}
 		}
 		Level.i.gear_layer.add(equipment);
