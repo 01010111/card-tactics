@@ -894,9 +894,9 @@ ApplicationMain.create = function(config) {
 	ManifestResources.init(config);
 	var _this = app.meta;
 	if(__map_reserved["build"] != null) {
-		_this.setReserved("build","26");
+		_this.setReserved("build","42");
 	} else {
-		_this.h["build"] = "26";
+		_this.h["build"] = "42";
 	}
 	var _this1 = app.meta;
 	if(__map_reserved["company"] != null) {
@@ -4617,12 +4617,16 @@ openfl_display_Sprite.prototype = $extend(openfl_display_DisplayObjectContainer.
 var Main = function() {
 	openfl_display_Sprite.call(this);
 	this.stage.set_color(0);
-	util_GearUtil.init();
+	util_EquipmentUtil.init();
 	util_Translation.init();
-	util_Translation.get_gear_title("test_d_01");
 	new zero_openfl_utilities_Game(this,scenes_Level);
 	zero_openfl_utilities_Keys.init();
 	this.stage.addEventListener("enterFrame",util_UpdateManager.update);
+	var sprite = new ui_InfoBox();
+	var y = zero_openfl_utilities_Game.get_height() - 64;
+	sprite.set_x(32);
+	sprite.set_y(y);
+	this.addChild(sprite);
 };
 $hxClasses["Main"] = Main;
 Main.__name__ = "Main";
@@ -4818,7 +4822,7 @@ ManifestResources.init = function(config) {
 	openfl_text_Font.registerFont(_$_$ASSET_$_$OPENFL_$_$fonts_$nunito_$black_$ttf);
 	openfl_text_Font.registerFont(_$_$ASSET_$_$OPENFL_$_$fonts_$oduda_$bold_$ttf);
 	var bundle;
-	var data = "{\"name\":null,\"assets\":\"aoy4:pathy18:images%2Fblank.pngy4:sizei123y4:typey5:IMAGEy2:idR1y7:preloadtgoR0y29:images%2Fparticles%2Fpoof.pngR2i452R3R4R5R7R6tgoR0y20:images%2Fplayers.pngR2i1824R3R4R5R8R6tgoR0y18:images%2Ftiles.pngR2i14787R3R4R5R9R6tgoR0y35:images%2Fui%2Faction_arrow_blue.pngR2i473R3R4R5R10R6tgoR0y36:images%2Fui%2Faction_arrow_green.pngR2i489R3R4R5R11R6tgoR0y34:images%2Fui%2Faction_arrow_red.pngR2i470R3R4R5R12R6tgoR0y36:images%2Fui%2Faction_arrow_white.pngR2i307R3R4R5R13R6tgoR0y25:images%2Fui%2Faim_cta.pngR2i1862R3R4R5R14R6tgoR0y24:images%2Fui%2Fap_pip.pngR2i270R3R4R5R15R6tgoR0y25:images%2Fui%2Fap_pips.pngR2i467R3R4R5R16R6tgoR0y28:images%2Fui%2Fap_pip_big.pngR2i370R3R4R5R17R6tgoR0y24:images%2Fui%2Fdo_cta.pngR2i1723R3R4R5R18R6tgoR0y36:images%2Fui%2Ficons%2Ficon_skull.pngR2i2850R3R4R5R19R6tgoR0y35:images%2Fui%2Ficons%2Fmove_free.pngR2i2776R3R4R5R20R6tgoR0y35:images%2Fui%2Ficons%2Fmove_rook.pngR2i3371R3R4R5R21R6tgoR0y39:images%2Fui%2Ficons%2Fmove_teleport.pngR2i3093R3R4R5R22R6tgoR0y51:images%2Fui%2Ficons%2Fon_white%2Ficon_electrify.pngR2i1737R3R4R5R23R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_explode.pngR2i2333R3R4R5R24R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_flame.pngR2i2026R3R4R5R25R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_health.pngR2i1796R3R4R5R26R6tgoR0y46:images%2Fui%2Ficons%2Fon_white%2Ficon_move.pngR2i1973R3R4R5R27R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_pierce.pngR2i1943R3R4R5R28R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_shield.pngR2i2051R3R4R5R29R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_utility.pngR2i1803R3R4R5R30R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_water.pngR2i1906R3R4R5R31R6tgoR0y29:images%2Fui%2Fmutant_card.pngR2i117869R3R4R5R32R6tgoR0y27:images%2Fui%2Frule_face.pngR2i8721R3R4R5R33R6tgoR0y32:images%2Fui%2Frule_two_cards.pngR2i5319R3R4R5R34R6tgoR0y29:images%2Fui%2Fshield_icon.pngR2i815R3R4R5R35R6tgoR0y27:images%2Fui%2Fsuit_club.pngR2i4182R3R4R5R36R6tgoR0y30:images%2Fui%2Fsuit_diamond.pngR2i2985R3R4R5R37R6tgoR0y28:images%2Fui%2Fsuit_heart.pngR2i2540R3R4R5R38R6tgoR0y28:images%2Fui%2Fsuit_spade.pngR2i3507R3R4R5R39R6tgoR0y17:data%2Fgear.jsoncR2i1503R3y4:TEXTR5R40R6tgoR0y22:data%2Fmaps%2F000.jsonR2i1922R3R41R5R42R6tgoR0y23:data%2Fmaps%2Fmaps.ogmoR2i19048R3R41R5R43R6tgoR0y36:data%2Ftranslations%2Fgameplay.jsoncR2i102911R3R41R5R44R6tgoR0y39:data%2Ftranslations%2Fgear_titles.jsoncR2i14313R3R41R5R45R6tgoR2i171180R3y4:FONTy9:classNamey31:__ASSET__fonts_nunito_black_ttfR5y24:fonts%2Fnunito_black.ttfR6tgoR2i19636R3R46R47y29:__ASSET__fonts_oduda_bold_ttfR5y22:fonts%2Foduda_bold.ttfR6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
+	var data = "{\"name\":null,\"assets\":\"aoy4:pathy18:images%2Fblank.pngy4:sizei123y4:typey5:IMAGEy2:idR1y7:preloadtgoR0y29:images%2Fparticles%2Fpoof.pngR2i452R3R4R5R7R6tgoR0y20:images%2Fplayers.pngR2i1824R3R4R5R8R6tgoR0y18:images%2Ftiles.pngR2i14787R3R4R5R9R6tgoR0y35:images%2Fui%2Faction_arrow_blue.pngR2i473R3R4R5R10R6tgoR0y36:images%2Fui%2Faction_arrow_green.pngR2i489R3R4R5R11R6tgoR0y34:images%2Fui%2Faction_arrow_red.pngR2i470R3R4R5R12R6tgoR0y36:images%2Fui%2Faction_arrow_white.pngR2i307R3R4R5R13R6tgoR0y25:images%2Fui%2Faim_cta.pngR2i1862R3R4R5R14R6tgoR0y24:images%2Fui%2Fap_pip.pngR2i270R3R4R5R15R6tgoR0y25:images%2Fui%2Fap_pips.pngR2i467R3R4R5R16R6tgoR0y28:images%2Fui%2Fap_pip_big.pngR2i370R3R4R5R17R6tgoR0y25:images%2Fui%2Fcard_bg.pngR2i2030R3R4R5R18R6tgoR0y24:images%2Fui%2Fdo_cta.pngR2i1723R3R4R5R19R6tgoR0y36:images%2Fui%2Ficons%2Ficon_skull.pngR2i2850R3R4R5R20R6tgoR0y35:images%2Fui%2Ficons%2Fmove_free.pngR2i2776R3R4R5R21R6tgoR0y35:images%2Fui%2Ficons%2Fmove_rook.pngR2i3371R3R4R5R22R6tgoR0y39:images%2Fui%2Ficons%2Fmove_teleport.pngR2i3093R3R4R5R23R6tgoR0y51:images%2Fui%2Ficons%2Fon_white%2Ficon_electrify.pngR2i1737R3R4R5R24R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_explode.pngR2i2333R3R4R5R25R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_flame.pngR2i2026R3R4R5R26R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_health.pngR2i1796R3R4R5R27R6tgoR0y46:images%2Fui%2Ficons%2Fon_white%2Ficon_move.pngR2i1973R3R4R5R28R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_pierce.pngR2i1943R3R4R5R29R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_shield.pngR2i2051R3R4R5R30R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_utility.pngR2i1803R3R4R5R31R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_water.pngR2i1906R3R4R5R32R6tgoR0y29:images%2Fui%2Fmutant_card.pngR2i117869R3R4R5R33R6tgoR0y27:images%2Fui%2Frule_face.pngR2i8721R3R4R5R34R6tgoR0y32:images%2Fui%2Frule_two_cards.pngR2i5319R3R4R5R35R6tgoR0y29:images%2Fui%2Fshield_icon.pngR2i815R3R4R5R36R6tgoR0y27:images%2Fui%2Fsuit_club.pngR2i4182R3R4R5R37R6tgoR0y30:images%2Fui%2Fsuit_diamond.pngR2i2985R3R4R5R38R6tgoR0y28:images%2Fui%2Fsuit_heart.pngR2i2540R3R4R5R39R6tgoR0y28:images%2Fui%2Fsuit_spade.pngR2i3507R3R4R5R40R6tgoR0y17:data%2Fgear.jsoncR2i1527R3y4:TEXTR5R41R6tgoR0y22:data%2Fmaps%2F000.jsonR2i1961R3R42R5R43R6tgoR0y23:data%2Fmaps%2Fmaps.ogmoR2i19081R3R42R5R44R6tgoR0y19:data%2Fmutant.jsoncR2i582R3R42R5R45R6tgoR0y44:data%2Ftranslations%2Fequipment_titles.jsoncR2i21213R3R42R5R46R6tgoR0y36:data%2Ftranslations%2Fgameplay.jsoncR2i102911R3R42R5R47R6tgoR0y47:data%2Ftranslations%2Fmutant_descriptions.jsoncR2i14329R3R42R5R48R6tgoR0y40:data%2Ftranslations%2Ftooltip_text.jsoncR2i26543R3R42R5R49R6tgoR2i171180R3y4:FONTy9:classNamey31:__ASSET__fonts_nunito_black_ttfR5y24:fonts%2Fnunito_black.ttfR6tgoR2i19636R3R50R51y29:__ASSET__fonts_oduda_bold_ttfR5y22:fonts%2Foduda_bold.ttfR6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
 	var manifest = lime_utils_AssetManifest.parse(data,ManifestResources.rootPath);
 	var library = lime_utils_AssetLibrary.fromManifest(manifest);
 	lime_utils_Assets.registerLibrary("default",library);
@@ -5586,7 +5590,7 @@ openfl_display_Shader.prototype = {
 			var message = type == gl.VERTEX_SHADER ? "Error compiling vertex shader" : "Error compiling fragment shader";
 			message += "\n" + gl.getShaderInfoLog(shader);
 			message += "\n" + source;
-			lime_utils_Log.error(message,{ fileName : "openfl/display/Shader.hx", lineNumber : 328, className : "openfl.display.Shader", methodName : "__createGLShader"});
+			lime_utils_Log.error(message,{ fileName : "openfl/display/Shader.hx", lineNumber : 329, className : "openfl.display.Shader", methodName : "__createGLShader"});
 		}
 		return shader;
 	}
@@ -5611,7 +5615,7 @@ openfl_display_Shader.prototype = {
 		if(gl.getProgramParameter(program,gl.LINK_STATUS) == 0) {
 			var message = "Unable to initialize the shader program";
 			message += "\n" + gl.getProgramInfoLog(program);
-			lime_utils_Log.error(message,{ fileName : "openfl/display/Shader.hx", lineNumber : 361, className : "openfl.display.Shader", methodName : "__createGLProgram"});
+			lime_utils_Log.error(message,{ fileName : "openfl/display/Shader.hx", lineNumber : 362, className : "openfl.display.Shader", methodName : "__createGLProgram"});
 		}
 		return program;
 	}
@@ -5700,7 +5704,7 @@ openfl_display_Shader.prototype = {
 		}
 		if(this.__context != null && this.program == null) {
 			var gl = this.__context.gl;
-			var prefix = "#ifdef GL_ES\n\t\t\t\t" + (this.precisionHint == 1 ? "#ifdef GL_FRAGMENT_PRECISION_HIGH\n\t\t\t\tprecision highp float;\n\t\t\t\t#else\n\t\t\t\tprecision mediump float;\n\t\t\t\t#endif" : "precision lowp float;") + "\n\t\t\t\t#endif\n\t\t\t\t";
+			var prefix = "#ifdef GL_ES\r\n\t\t\t\t" + (this.precisionHint == 1 ? "#ifdef GL_FRAGMENT_PRECISION_HIGH\r\n\t\t\t\tprecision highp float;\r\n\t\t\t\t#else\r\n\t\t\t\tprecision mediump float;\r\n\t\t\t\t#endif" : "precision lowp float;") + "\r\n\t\t\t\t#endif\r\n\t\t\t\t";
 			var vertex = prefix + this.get_glVertexSource();
 			var fragment = prefix + this.get_glFragmentSource();
 			var id = vertex + fragment;
@@ -6189,14 +6193,22 @@ openfl_display_Shader.prototype = {
 	,__class__: openfl_display_Shader
 	,__properties__: {set_glVertexSource:"set_glVertexSource",get_glVertexSource:"get_glVertexSource",set_glFragmentSource:"set_glFragmentSource",get_glFragmentSource:"get_glFragmentSource",set_data:"set_data",get_data:"get_data"}
 };
-var filters_OutlineShader = function() {
+var filters_OutlineShader = function(color,thickness,quality) {
+	if(quality == null) {
+		quality = 16;
+	}
+	if(thickness == null) {
+		thickness = 3;
+	}
 	if(this.__glFragmentSource == null) {
-		this.__glFragmentSource = "\r\n\t\tvarying float openfl_Alphav;\r\n\t\tvarying vec4 openfl_ColorMultiplierv;\r\n\t\tvarying vec4 openfl_ColorOffsetv;\r\n\t\tvarying vec2 openfl_TextureCoordv;\r\n\t\t\r\n\t\tuniform bool openfl_HasColorTransform;\r\n\t\tuniform vec2 openfl_TextureSize;\r\n\t\tuniform sampler2D bitmap;\r\n\r\n\t\tvoid main(void) {\r\n\t\t\tvec4 sample = texture2D(bitmap, openfl_TextureCoordv);\r\n\t\t\tvec2 size = vec2(3.,3.);\r\n\r\n\t\t\tif (sample.a < 1.) {\r\n\t\t\t\tfloat w = size.x / openfl_TextureSize.x;\r\n\t\t\t\tfloat h = size.y / openfl_TextureSize.y;\r\n\r\n\t\t\t\tif (texture2D(bitmap, vec2(\topenfl_TextureCoordv.x + w, \t\topenfl_TextureCoordv.y\t\t\t\t)).a != 0.\r\n\t\t\t\t||\ttexture2D(bitmap, vec2(\topenfl_TextureCoordv.x - w, \t\topenfl_TextureCoordv.y\t\t\t\t)).a != 0.\r\n\t\t\t\t||\ttexture2D(bitmap, vec2(\topenfl_TextureCoordv.x, \t\t\topenfl_TextureCoordv.y - h\t\t\t)).a != 0.\r\n\t\t\t\t||\ttexture2D(bitmap, vec2(\topenfl_TextureCoordv.x, \t\t\topenfl_TextureCoordv.y + h\t\t\t)).a != 0.\r\n\t\t\t\t||\ttexture2D(bitmap, vec2(\topenfl_TextureCoordv.x - w * 0.5, \topenfl_TextureCoordv.y - h * 0.5\t)).a != 0.\r\n\t\t\t\t||\ttexture2D(bitmap, vec2(\topenfl_TextureCoordv.x + w * 0.5, \topenfl_TextureCoordv.y - h * 0.5\t)).a != 0.\r\n\t\t\t\t||\ttexture2D(bitmap, vec2(\topenfl_TextureCoordv.x - w * 0.5, \topenfl_TextureCoordv.y + h * 0.5\t)).a != 0.\r\n\t\t\t\t||\ttexture2D(bitmap, vec2(\topenfl_TextureCoordv.x + w * 0.5, \topenfl_TextureCoordv.y + h * 0.5\t)).a != 0.)\r\n\t\t\t\t\tsample += vec4(0., 0., 0., 1.);\r\n\t\t\t}\r\n\r\n\t\t\tgl_FragColor = sample;\r\n\t\t}\r\n\t";
+		this.__glFragmentSource = "\r\n\t\tvarying float openfl_Alphav;\r\n\t\tvarying vec4 openfl_ColorMultiplierv;\r\n\t\tvarying vec4 openfl_ColorOffsetv;\r\n\t\tvarying vec2 openfl_TextureCoordv;\r\n\r\n\t\tuniform bool openfl_HasColorTransform;\r\n\t\tuniform vec2 openfl_TextureSize;\r\n\t\tuniform sampler2D bitmap;\r\n\r\n\t\tuniform vec4 color;\r\n\t\tuniform float thickness;\r\n\t\tconst int samples = 16;\r\n\r\n\t\tvoid main(void) {\r\n\t\t\tvec4 col = vec4(color.r, color.g, color.b, 1.);\r\n\t\t\tvec4 sample = texture2D(bitmap, openfl_TextureCoordv);\r\n\t\t\tfloat radius = thickness / ((openfl_TextureSize.x + openfl_TextureSize.y) / 2.);\r\n\t\t\tfloat a = 0.;\r\n\t\t\tfloat angle;\r\n\t\t\tvec2 p;\r\n\t\t\tfor (int i = 0; i < samples; i++) {\r\n\t\t\t\tangle = 360./float(samples) * float(i);\r\n\t\t\t\tp = vec2(cos(angle), sin(angle)) * radius + openfl_TextureCoordv;\r\n\t\t\t\ta += texture2D(bitmap, p).a;\r\n\t\t\t}\r\n\t\t\tif (sample.a < 1.) {\r\n\t\t\t\tcol.a = a;\r\n\t\t\t\tsample += col;\r\n\t\t\t}\r\n\t\t\tgl_FragColor = sample;\r\n\t\t}\r\n\t";
 	}
 	if(this.__glVertexSource == null) {
 		this.__glVertexSource = "\r\n\t\tattribute float openfl_Alpha;\r\n\t\tattribute vec4 openfl_ColorMultiplier;\r\n\t\tattribute vec4 openfl_ColorOffset;\r\n\t\tattribute vec4 openfl_Position;\r\n\t\tattribute vec2 openfl_TextureCoord;\r\n\t\t\r\n\t\tvarying float openfl_Alphav;\r\n\t\tvarying vec4 openfl_ColorMultiplierv;\r\n\t\tvarying vec4 openfl_ColorOffsetv;\r\n\t\tvarying vec2 openfl_TextureCoordv;\r\n\t\t\r\n\t\tuniform mat4 openfl_Matrix;\r\n\t\tuniform bool openfl_HasColorTransform;\r\n\t\tuniform vec2 openfl_TextureSize;\r\n\t\r\n\t\tvoid main(void) {\r\n\t\t\topenfl_Alphav = openfl_Alpha;\r\n\t\t\topenfl_TextureCoordv = openfl_TextureCoord;\r\n\t\t\t\r\n\t\t\tif (openfl_HasColorTransform) {\r\n\t\t\t\topenfl_ColorMultiplierv = openfl_ColorMultiplier;\r\n\t\t\t\topenfl_ColorOffsetv = openfl_ColorOffset / 255.0;\r\n\t\t\t}\r\n\t\t\t\r\n\t\t\tgl_Position = openfl_Matrix * openfl_Position;\r\n\t\t}\r\n\t";
 	}
 	openfl_display_Shader.call(this);
+	this.get_data().color.value = color;
+	this.get_data().thickness.value = [thickness];
 	this.__isGenerated = true;
 	this.__initGL();
 };
@@ -6213,6 +6225,8 @@ filters_OutlineShader.prototype = $extend(openfl_display_Shader.prototype,{
 	,openfl_HasColorTransform: null
 	,openfl_TextureSize: null
 	,bitmap: null
+	,color: null
+	,thickness: null
 	,__class__: filters_OutlineShader
 });
 var haxe_StackItem = $hxEnums["haxe.StackItem"] = { __ename__ : "haxe.StackItem", __constructs__ : ["CFunction","Module","FilePos","Method","LocalFunction"]
@@ -25146,7 +25160,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 155811;
+	this.version = 877120;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
@@ -27807,15 +27821,10 @@ var objects_GameObject = function(x,y,health,title) {
 	var y1 = this.last[1];
 	this.set_x(this.last[0]);
 	this.set_y(y1);
-	this.addEventListener("mouseOver",function(e) {
-		scenes_Level.i.info_layer.show_info(_gthis);
-		return;
-	});
-	this.addEventListener("mouseOut",function(e1) {
-		scenes_Level.i.info_layer.hide_info();
-		return;
-	});
-	this.addEventListener("enterFrame",function(e2) {
+	this.update_object_map(x,y,x,y);
+	this.addEventListener("mouseOver",$bind(this,this.mouse_over));
+	this.addEventListener("mouseOut",$bind(this,this.mouse_out));
+	this.addEventListener("enterFrame",function(e) {
 		_gthis.update(0.016666666666666666);
 		return;
 	});
@@ -27833,6 +27842,15 @@ objects_GameObject.prototype = $extend(openfl_display_Sprite.prototype,{
 	}
 	,last: null
 	,graphic: null
+	,mouse_over: function(e) {
+		if(!util_TurnUtil.player_turn) {
+			return;
+		}
+		scenes_Level.i.info_layer.show_info(this);
+	}
+	,mouse_out: function(e) {
+		scenes_Level.i.info_layer.hide_info();
+	}
 	,update: function(dt) {
 		var rot;
 		if(this.last[0] == this.get_x()) {
@@ -27847,6 +27865,25 @@ objects_GameObject.prototype = $extend(openfl_display_Sprite.prototype,{
 			this.graphic.set_scaleX(-(rot > 0 ? 1 : rot < 0 ? -1 : 0));
 		}
 		this.last[0] = this.get_x();
+	}
+	,move_to: function(x,y) {
+		var map = scenes_Level.i.get_traversal_map();
+		if(map[y][x] != 0) {
+			return;
+		}
+		var sx = Math.floor(this.get_x() / 16);
+		var sy = Math.floor(this.get_y() / 16);
+		haxe_Log.trace(sx,{ fileName : "src/objects/GameObject.hx", lineNumber : 63, className : "objects.GameObject", methodName : "move_to", customParams : [sy,x,y]});
+		var path = zero_utilities_AStar.get_path(map,{ start : zero_utilities__$IntPoint_IntPoint_$Impl_$.from_array_int([sx,sy]), end : zero_utilities__$IntPoint_IntPoint_$Impl_$.from_array_int([x,y]), passable : [0], simplify : zero_utilities_EAStarSimplifyMode.NONE});
+		if(path.length == 0) {
+			return;
+		}
+		this.update_object_map(sx,sy,x,y);
+		this.follow_path(path);
+	}
+	,update_object_map: function(sx,sy,x,y) {
+		scenes_Level.i.object_map[sy][sx] = 0;
+		scenes_Level.i.object_map[y][x] = -1;
 	}
 	,follow_path: function(path) {
 		var _gthis = this;
@@ -27887,7 +27924,9 @@ objects_GameObject.prototype = $extend(openfl_display_Sprite.prototype,{
 		zero_utilities_Tween.get(this).from_to("scaleX",1.5,1).from_to("scaleY",0.5,1).ease(zero_utilities_Ease.elasticOut).duration(0.5);
 	}
 	,set_shield: function(amt) {
-		return this.shield = amt;
+		this.shield = amt;
+		zero_utilities_EventBus.dispatch("game_event",{ type : util_EventType.SHIELD, data : { object : this, value : amt}});
+		return this.shield;
 	}
 	,__class__: objects_GameObject
 	,__properties__: $extend(openfl_display_Sprite.prototype.__properties__,{get_grid_pos:"get_grid_pos",set_shield:"set_shield"})
@@ -28100,12 +28139,65 @@ objects_Dolly.prototype = $extend(zero_openfl_utilities_Dolly.prototype,{
 	}
 	,__class__: objects_Dolly
 });
+var objects_Pickup = function(x,y,title) {
+	var _gthis = this;
+	objects_GameObject.call(this,x,y,{ current : 0, max : 0},title);
+	this.draw_pickup();
+	this.addEventListener("mouseDown",function(e) {
+		if(util_TurnUtil.player_turn) {
+			_gthis.mouse_down();
+		}
+		return;
+	});
+	scenes_Level.i.objects.addChild(this);
+};
+$hxClasses["objects.Pickup"] = objects_Pickup;
+objects_Pickup.__name__ = "objects.Pickup";
+objects_Pickup.__super__ = objects_GameObject;
+objects_Pickup.prototype = $extend(objects_GameObject.prototype,{
+	draw_pickup: function() {
+	}
+	,mouse_down: function() {
+		haxe_Log.trace("Pickup Clicked!",{ fileName : "src/objects/Pickup.hx", lineNumber : 17, className : "objects.Pickup", methodName : "mouse_down"});
+	}
+	,__class__: objects_Pickup
+});
+var objects_GearPickup = function(x,y,title) {
+	this.data = util_EquipmentUtil.get_gear_data(title);
+	objects_Pickup.call(this,x,y,title);
+};
+$hxClasses["objects.GearPickup"] = objects_GearPickup;
+objects_GearPickup.__name__ = "objects.GearPickup";
+objects_GearPickup.__super__ = objects_Pickup;
+objects_GearPickup.prototype = $extend(objects_Pickup.prototype,{
+	data: null
+	,mouse_down: function() {
+		haxe_Log.trace(this.data,{ fileName : "src/objects/GearPickup.hx", lineNumber : 20, className : "objects.GearPickup", methodName : "mouse_down"});
+		zero_utilities_Tween.get(this).from_to("rotation",-360,0).ease(zero_utilities_Ease.backInOut);
+	}
+	,draw_pickup: function() {
+		var color = zero_utilities__$Color_Color_$Impl_$.PICO_8_RED;
+		var radius = 2;
+		if(radius == null) {
+			radius = 0;
+		}
+		this.get_graphics().beginFill((Math.round(color[0] * 255) & 255) << 16 | (Math.round(color[1] * 255) & 255) << 8 | Math.round(color[2] * 255) & 255,color[3]);
+		if(radius == 0) {
+			this.get_graphics().drawRect(-4,-4,8,8);
+		} else {
+			this.get_graphics().drawRoundRect(-4,-4,8,8,radius);
+		}
+		this.get_graphics().endFill();
+		zero_utilities_Tween.get(this).from_to("scaleX",0,1).from_to("scaleY",0,1).ease(zero_utilities_Ease.elasticOut);
+	}
+	,__class__: objects_GearPickup
+});
 var objects_Player = function(x,y,options) {
 	this.AP = 10;
 	var _gthis = this;
 	objects_Actor.call(this,options.data,x,y);
 	this.addEventListener("click",function(e) {
-		if(scenes_Level.i.can_move) {
+		if(scenes_Level.i.can_move && util_TurnUtil.player_turn) {
 			objects_Player.set_selected_player(_gthis);
 		}
 		return;
@@ -28115,12 +28207,22 @@ var objects_Player = function(x,y,options) {
 	scenes_Level.i.object_map[y][x] = -1;
 	this.init_graphic();
 	this.equipment = new ui_Equipment(this,options.side);
+	var i = 0;
 	var _g = 0;
 	var _g1 = options.data.equipment;
 	while(_g < _g1.length) {
-		var g = _g1[_g];
+		var id = _g1[_g];
 		++_g;
-		this.equipment.add_card(new ui_GearCard(this.equipment,util_GearUtil.get_gear_data(g)));
+		switch(util_EquipmentUtil.id_type(id)._hx_index) {
+		case 0:
+			continue;
+		case 1:
+			this.equipment.add_card(new ui_GearCard(this.equipment,util_EquipmentUtil.get_gear_data(id),i++));
+			break;
+		case 2:
+			this.equipment.add_card(new ui_MutantCard(this.equipment,util_EquipmentUtil.get_mutant_data(id),i++));
+			break;
+		}
 	}
 	scenes_Level.i.gear_layer.addChild(this.equipment);
 };
@@ -48131,10 +48233,10 @@ openfl__$internal_renderer_context3D_Context3DGraphics.resizeVertexBuffer = func
 };
 var openfl__$internal_renderer_context3D_Context3DMaskShader = function() {
 	if(this.__glFragmentSource == null) {
-		this.__glFragmentSource = "varying vec2 openfl_TextureCoordv;\n\t\t\n\t\tuniform sampler2D openfl_Texture;\n\t\t\n\t\tvoid main(void) {\n\t\t\t\n\t\t\tvec4 color = texture2D (openfl_Texture, openfl_TextureCoordv);\n\t\t\t\n\t\t\tif (color.a == 0.0) {\n\t\t\t\t\n\t\t\t\tdiscard;\n\t\t\t\t\n\t\t\t} else {\n\t\t\t\t\n\t\t\t\tgl_FragColor = color;\n\t\t\t\t\n\t\t\t}\n\t\t\t\n\t\t}";
+		this.__glFragmentSource = "varying vec2 openfl_TextureCoordv;\r\n\t\t\r\n\t\tuniform sampler2D openfl_Texture;\r\n\t\t\r\n\t\tvoid main(void) {\r\n\t\t\t\r\n\t\t\tvec4 color = texture2D (openfl_Texture, openfl_TextureCoordv);\r\n\t\t\t\r\n\t\t\tif (color.a == 0.0) {\r\n\t\t\t\t\r\n\t\t\t\tdiscard;\r\n\t\t\t\t\r\n\t\t\t} else {\r\n\t\t\t\t\r\n\t\t\t\tgl_FragColor = color;\r\n\t\t\t\t\r\n\t\t\t}\r\n\t\t\t\r\n\t\t}";
 	}
 	if(this.__glVertexSource == null) {
-		this.__glVertexSource = "attribute vec4 openfl_Position;\n\t\tattribute vec2 openfl_TextureCoord;\n\t\tvarying vec2 openfl_TextureCoordv;\n\t\t\n\t\tuniform mat4 openfl_Matrix;\n\t\t\n\t\tvoid main(void) {\n\t\t\t\n\t\t\topenfl_TextureCoordv = openfl_TextureCoord;\n\t\t\t\n\t\t\tgl_Position = openfl_Matrix * openfl_Position;\n\t\t\t\n\t\t}";
+		this.__glVertexSource = "attribute vec4 openfl_Position;\r\n\t\tattribute vec2 openfl_TextureCoord;\r\n\t\tvarying vec2 openfl_TextureCoordv;\r\n\t\t\r\n\t\tuniform mat4 openfl_Matrix;\r\n\t\t\r\n\t\tvoid main(void) {\r\n\t\t\t\r\n\t\t\topenfl_TextureCoordv = openfl_TextureCoord;\r\n\t\t\t\r\n\t\t\tgl_Position = openfl_Matrix * openfl_Position;\r\n\t\t\t\r\n\t\t}";
 	}
 	openfl_display_Shader.call(this);
 	this.__isGenerated = true;
@@ -52543,7 +52645,7 @@ var openfl_display_DOMRenderer = function(element) {
 	openfl_display_DisplayObjectRenderer.call(this);
 	this.element = element;
 	openfl_display_DisplayObject.__supportDOM = true;
-	var prefix = (function () {
+	var prefix = ((function () {
 		  var styles = window.getComputedStyle(document.documentElement, ''),
 			pre = (Array.prototype.slice
 			  .call(styles)
@@ -52557,7 +52659,7 @@ var openfl_display_DOMRenderer = function(element) {
 			css: '-' + pre + '-',
 			js: pre[0].toUpperCase() + pre.substr(1)
 		  };
-		})();
+		}))();
 	this.__vendorPrefix = prefix.lowercase;
 	this.__transformProperty = prefix.lowercase == "webkit" ? "-webkit-transform" : "transform";
 	this.__transformOriginProperty = prefix.lowercase == "webkit" ? "-webkit-transform-origin" : "transform-origin";
@@ -52743,10 +52845,10 @@ openfl_display_DOMRenderer.prototype = $extend(openfl_display_DisplayObjectRende
 });
 var openfl_display_DisplayObjectShader = function(code) {
 	if(this.__glFragmentSource == null) {
-		this.__glFragmentSource = "varying float openfl_Alphav;\n\t\tvarying vec4 openfl_ColorMultiplierv;\n\t\tvarying vec4 openfl_ColorOffsetv;\n\t\tvarying vec2 openfl_TextureCoordv;\n\n\t\tuniform bool openfl_HasColorTransform;\n\t\tuniform sampler2D openfl_Texture;\n\t\tuniform vec2 openfl_TextureSize;\n\n\t\tvoid main(void) {\n\n\t\t\tvec4 color = texture2D (openfl_Texture, openfl_TextureCoordv);\n\n\t\tif (color.a == 0.0) {\n\n\t\t\tgl_FragColor = vec4 (0.0, 0.0, 0.0, 0.0);\n\n\t\t} else if (openfl_HasColorTransform) {\n\n\t\t\tcolor = vec4 (color.rgb / color.a, color.a);\n\n\t\t\tmat4 colorMultiplier = mat4 (0);\n\t\t\tcolorMultiplier[0][0] = openfl_ColorMultiplierv.x;\n\t\t\tcolorMultiplier[1][1] = openfl_ColorMultiplierv.y;\n\t\t\tcolorMultiplier[2][2] = openfl_ColorMultiplierv.z;\n\t\t\tcolorMultiplier[3][3] = 1.0; // openfl_ColorMultiplierv.w;\n\n\t\t\tcolor = clamp (openfl_ColorOffsetv + (color * colorMultiplier), 0.0, 1.0);\n\n\t\t\tif (color.a > 0.0) {\n\n\t\t\t\tgl_FragColor = vec4 (color.rgb * color.a * openfl_Alphav, color.a * openfl_Alphav);\n\n\t\t\t} else {\n\n\t\t\t\tgl_FragColor = vec4 (0.0, 0.0, 0.0, 0.0);\n\n\t\t\t}\n\n\t\t} else {\n\n\t\t\tgl_FragColor = color * openfl_Alphav;\n\n\t\t}\n\n\t\t}";
+		this.__glFragmentSource = "varying float openfl_Alphav;\r\n\t\tvarying vec4 openfl_ColorMultiplierv;\r\n\t\tvarying vec4 openfl_ColorOffsetv;\r\n\t\tvarying vec2 openfl_TextureCoordv;\r\n\r\n\t\tuniform bool openfl_HasColorTransform;\r\n\t\tuniform sampler2D openfl_Texture;\r\n\t\tuniform vec2 openfl_TextureSize;\r\n\r\n\t\tvoid main(void) {\r\n\r\n\t\t\tvec4 color = texture2D (openfl_Texture, openfl_TextureCoordv);\r\n\r\n\t\tif (color.a == 0.0) {\r\n\r\n\t\t\tgl_FragColor = vec4 (0.0, 0.0, 0.0, 0.0);\r\n\r\n\t\t} else if (openfl_HasColorTransform) {\r\n\r\n\t\t\tcolor = vec4 (color.rgb / color.a, color.a);\r\n\r\n\t\t\tmat4 colorMultiplier = mat4 (0);\r\n\t\t\tcolorMultiplier[0][0] = openfl_ColorMultiplierv.x;\r\n\t\t\tcolorMultiplier[1][1] = openfl_ColorMultiplierv.y;\r\n\t\t\tcolorMultiplier[2][2] = openfl_ColorMultiplierv.z;\r\n\t\t\tcolorMultiplier[3][3] = 1.0; // openfl_ColorMultiplierv.w;\r\n\r\n\t\t\tcolor = clamp (openfl_ColorOffsetv + (color * colorMultiplier), 0.0, 1.0);\r\n\r\n\t\t\tif (color.a > 0.0) {\r\n\r\n\t\t\t\tgl_FragColor = vec4 (color.rgb * color.a * openfl_Alphav, color.a * openfl_Alphav);\r\n\r\n\t\t\t} else {\r\n\r\n\t\t\t\tgl_FragColor = vec4 (0.0, 0.0, 0.0, 0.0);\r\n\r\n\t\t\t}\r\n\r\n\t\t} else {\r\n\r\n\t\t\tgl_FragColor = color * openfl_Alphav;\r\n\r\n\t\t}\r\n\r\n\t\t}";
 	}
 	if(this.__glVertexSource == null) {
-		this.__glVertexSource = "attribute float openfl_Alpha;\n\t\tattribute vec4 openfl_ColorMultiplier;\n\t\tattribute vec4 openfl_ColorOffset;\n\t\tattribute vec4 openfl_Position;\n\t\tattribute vec2 openfl_TextureCoord;\n\n\t\tvarying float openfl_Alphav;\n\t\tvarying vec4 openfl_ColorMultiplierv;\n\t\tvarying vec4 openfl_ColorOffsetv;\n\t\tvarying vec2 openfl_TextureCoordv;\n\n\t\tuniform mat4 openfl_Matrix;\n\t\tuniform bool openfl_HasColorTransform;\n\t\tuniform vec2 openfl_TextureSize;\n\n\t\tvoid main(void) {\n\n\t\t\topenfl_Alphav = openfl_Alpha;\n\t\topenfl_TextureCoordv = openfl_TextureCoord;\n\n\t\tif (openfl_HasColorTransform) {\n\n\t\t\topenfl_ColorMultiplierv = openfl_ColorMultiplier;\n\t\t\topenfl_ColorOffsetv = openfl_ColorOffset / 255.0;\n\n\t\t}\n\n\t\tgl_Position = openfl_Matrix * openfl_Position;\n\n\t\t}";
+		this.__glVertexSource = "attribute float openfl_Alpha;\r\n\t\tattribute vec4 openfl_ColorMultiplier;\r\n\t\tattribute vec4 openfl_ColorOffset;\r\n\t\tattribute vec4 openfl_Position;\r\n\t\tattribute vec2 openfl_TextureCoord;\r\n\r\n\t\tvarying float openfl_Alphav;\r\n\t\tvarying vec4 openfl_ColorMultiplierv;\r\n\t\tvarying vec4 openfl_ColorOffsetv;\r\n\t\tvarying vec2 openfl_TextureCoordv;\r\n\r\n\t\tuniform mat4 openfl_Matrix;\r\n\t\tuniform bool openfl_HasColorTransform;\r\n\t\tuniform vec2 openfl_TextureSize;\r\n\r\n\t\tvoid main(void) {\r\n\r\n\t\t\topenfl_Alphav = openfl_Alpha;\r\n\t\topenfl_TextureCoordv = openfl_TextureCoord;\r\n\r\n\t\tif (openfl_HasColorTransform) {\r\n\r\n\t\t\topenfl_ColorMultiplierv = openfl_ColorMultiplier;\r\n\t\t\topenfl_ColorOffsetv = openfl_ColorOffset / 255.0;\r\n\r\n\t\t}\r\n\r\n\t\tgl_Position = openfl_Matrix * openfl_Position;\r\n\r\n\t\t}";
 	}
 	openfl_display_Shader.call(this,code);
 	this.__isGenerated = true;
@@ -55236,10 +55338,10 @@ openfl_display_GraphicsQuadPath.prototype = {
 };
 var openfl_display_GraphicsShader = function(code) {
 	if(this.__glFragmentSource == null) {
-		this.__glFragmentSource = "varying float openfl_Alphav;\n\t\tvarying vec4 openfl_ColorMultiplierv;\n\t\tvarying vec4 openfl_ColorOffsetv;\n\t\tvarying vec2 openfl_TextureCoordv;\n\n\t\tuniform bool openfl_HasColorTransform;\n\t\tuniform vec2 openfl_TextureSize;\n\t\tuniform sampler2D bitmap;\n\n\t\tvoid main(void) {\n\n\t\t\tvec4 color = texture2D (bitmap, openfl_TextureCoordv);\n\n\t\tif (color.a == 0.0) {\n\n\t\t\tgl_FragColor = vec4 (0.0, 0.0, 0.0, 0.0);\n\n\t\t} else if (openfl_HasColorTransform) {\n\n\t\t\tcolor = vec4 (color.rgb / color.a, color.a);\n\n\t\t\tmat4 colorMultiplier = mat4 (0);\n\t\t\tcolorMultiplier[0][0] = openfl_ColorMultiplierv.x;\n\t\t\tcolorMultiplier[1][1] = openfl_ColorMultiplierv.y;\n\t\t\tcolorMultiplier[2][2] = openfl_ColorMultiplierv.z;\n\t\t\tcolorMultiplier[3][3] = 1.0; // openfl_ColorMultiplierv.w;\n\n\t\t\tcolor = clamp (openfl_ColorOffsetv + (color * colorMultiplier), 0.0, 1.0);\n\n\t\t\tif (color.a > 0.0) {\n\n\t\t\t\tgl_FragColor = vec4 (color.rgb * color.a * openfl_Alphav, color.a * openfl_Alphav);\n\n\t\t\t} else {\n\n\t\t\t\tgl_FragColor = vec4 (0.0, 0.0, 0.0, 0.0);\n\n\t\t\t}\n\n\t\t} else {\n\n\t\t\tgl_FragColor = color * openfl_Alphav;\n\n\t\t}\n\n\t\t}";
+		this.__glFragmentSource = "varying float openfl_Alphav;\r\n\t\tvarying vec4 openfl_ColorMultiplierv;\r\n\t\tvarying vec4 openfl_ColorOffsetv;\r\n\t\tvarying vec2 openfl_TextureCoordv;\r\n\r\n\t\tuniform bool openfl_HasColorTransform;\r\n\t\tuniform vec2 openfl_TextureSize;\r\n\t\tuniform sampler2D bitmap;\r\n\r\n\t\tvoid main(void) {\r\n\r\n\t\t\tvec4 color = texture2D (bitmap, openfl_TextureCoordv);\r\n\r\n\t\tif (color.a == 0.0) {\r\n\r\n\t\t\tgl_FragColor = vec4 (0.0, 0.0, 0.0, 0.0);\r\n\r\n\t\t} else if (openfl_HasColorTransform) {\r\n\r\n\t\t\tcolor = vec4 (color.rgb / color.a, color.a);\r\n\r\n\t\t\tmat4 colorMultiplier = mat4 (0);\r\n\t\t\tcolorMultiplier[0][0] = openfl_ColorMultiplierv.x;\r\n\t\t\tcolorMultiplier[1][1] = openfl_ColorMultiplierv.y;\r\n\t\t\tcolorMultiplier[2][2] = openfl_ColorMultiplierv.z;\r\n\t\t\tcolorMultiplier[3][3] = 1.0; // openfl_ColorMultiplierv.w;\r\n\r\n\t\t\tcolor = clamp (openfl_ColorOffsetv + (color * colorMultiplier), 0.0, 1.0);\r\n\r\n\t\t\tif (color.a > 0.0) {\r\n\r\n\t\t\t\tgl_FragColor = vec4 (color.rgb * color.a * openfl_Alphav, color.a * openfl_Alphav);\r\n\r\n\t\t\t} else {\r\n\r\n\t\t\t\tgl_FragColor = vec4 (0.0, 0.0, 0.0, 0.0);\r\n\r\n\t\t\t}\r\n\r\n\t\t} else {\r\n\r\n\t\t\tgl_FragColor = color * openfl_Alphav;\r\n\r\n\t\t}\r\n\r\n\t\t}";
 	}
 	if(this.__glVertexSource == null) {
-		this.__glVertexSource = "attribute float openfl_Alpha;\n\t\tattribute vec4 openfl_ColorMultiplier;\n\t\tattribute vec4 openfl_ColorOffset;\n\t\tattribute vec4 openfl_Position;\n\t\tattribute vec2 openfl_TextureCoord;\n\n\t\tvarying float openfl_Alphav;\n\t\tvarying vec4 openfl_ColorMultiplierv;\n\t\tvarying vec4 openfl_ColorOffsetv;\n\t\tvarying vec2 openfl_TextureCoordv;\n\n\t\tuniform mat4 openfl_Matrix;\n\t\tuniform bool openfl_HasColorTransform;\n\t\tuniform vec2 openfl_TextureSize;\n\n\t\tvoid main(void) {\n\n\t\t\topenfl_Alphav = openfl_Alpha;\n\t\topenfl_TextureCoordv = openfl_TextureCoord;\n\n\t\tif (openfl_HasColorTransform) {\n\n\t\t\topenfl_ColorMultiplierv = openfl_ColorMultiplier;\n\t\t\topenfl_ColorOffsetv = openfl_ColorOffset / 255.0;\n\n\t\t}\n\n\t\tgl_Position = openfl_Matrix * openfl_Position;\n\n\t\t}";
+		this.__glVertexSource = "attribute float openfl_Alpha;\r\n\t\tattribute vec4 openfl_ColorMultiplier;\r\n\t\tattribute vec4 openfl_ColorOffset;\r\n\t\tattribute vec4 openfl_Position;\r\n\t\tattribute vec2 openfl_TextureCoord;\r\n\r\n\t\tvarying float openfl_Alphav;\r\n\t\tvarying vec4 openfl_ColorMultiplierv;\r\n\t\tvarying vec4 openfl_ColorOffsetv;\r\n\t\tvarying vec2 openfl_TextureCoordv;\r\n\r\n\t\tuniform mat4 openfl_Matrix;\r\n\t\tuniform bool openfl_HasColorTransform;\r\n\t\tuniform vec2 openfl_TextureSize;\r\n\r\n\t\tvoid main(void) {\r\n\r\n\t\t\topenfl_Alphav = openfl_Alpha;\r\n\t\topenfl_TextureCoordv = openfl_TextureCoord;\r\n\r\n\t\tif (openfl_HasColorTransform) {\r\n\r\n\t\t\topenfl_ColorMultiplierv = openfl_ColorMultiplier;\r\n\t\t\topenfl_ColorOffsetv = openfl_ColorOffset / 255.0;\r\n\r\n\t\t}\r\n\r\n\t\tgl_Position = openfl_Matrix * openfl_Position;\r\n\r\n\t\t}";
 	}
 	openfl_display_Shader.call(this,code);
 	this.__isGenerated = true;
@@ -55686,7 +55788,7 @@ openfl_display_Loader.prototype = $extend(openfl_display_DisplayObjectContainer.
 			}
 		} else if(this.contentLoaderInfo.contentType != null && (this.contentLoaderInfo.contentType.indexOf("/javascript") > -1 || this.contentLoaderInfo.contentType.indexOf("/ecmascript") > -1)) {
 			this.__setContent(new openfl_display_Sprite(),0,0);
-			eval("(function () {" + Std.string(loader.data) + "})()");
+			(eval)("(function () {" + Std.string(loader.data) + "})()");
 			this.contentLoaderInfo.dispatchEvent(new openfl_events_Event("complete"));
 		} else {
 			this.contentLoaderInfo.bytes = loader.data;
@@ -56060,7 +56162,7 @@ openfl_display_MovieClip.prototype = $extend(openfl_display_Sprite.prototype,{
 									var i1 = _g2++;
 									result[i1] = _this[i1][2];
 								}
-								lime_utils_Log.info(wrapper1 + result.join("\n") + "\n" + Std.string(e1.stack) + "\n" + script1[0].toString(),{ fileName : "openfl/display/MovieClip.hx", lineNumber : 654, className : "openfl.display.MovieClip", methodName : "__fromSymbol"});
+								lime_utils_Log.info(wrapper1 + result.join("\n") + "\n" + Std.string(e1.stack) + "\n" + script1[0].toString(),{ fileName : "openfl/display/MovieClip.hx", lineNumber : 656, className : "openfl.display.MovieClip", methodName : "__fromSymbol"});
 							}
 						};
 					})(script);
@@ -56069,9 +56171,9 @@ openfl_display_MovieClip.prototype = $extend(openfl_display_Sprite.prototype,{
 					haxe_CallStack.lastException = e2;
 					var e3 = ((e2) instanceof js__$Boot_HaxeError) ? e2.val : e2;
 					if(this.__symbol.className != null) {
-						lime_utils_Log.warn("Unable to evaluate frame script source for symbol \"" + this.__symbol.className + "\" frame " + frame + "\n" + frameData.scriptSource,{ fileName : "openfl/display/MovieClip.hx", lineNumber : 675, className : "openfl.display.MovieClip", methodName : "__fromSymbol"});
+						lime_utils_Log.warn("Unable to evaluate frame script source for symbol \"" + this.__symbol.className + "\" frame " + frame + "\n" + frameData.scriptSource,{ fileName : "openfl/display/MovieClip.hx", lineNumber : 677, className : "openfl.display.MovieClip", methodName : "__fromSymbol"});
 					} else {
-						lime_utils_Log.warn("Unable to evaluate frame script source:\n" + frameData.scriptSource,{ fileName : "openfl/display/MovieClip.hx", lineNumber : 680, className : "openfl.display.MovieClip", methodName : "__fromSymbol"});
+						lime_utils_Log.warn("Unable to evaluate frame script source:\n" + frameData.scriptSource,{ fileName : "openfl/display/MovieClip.hx", lineNumber : 682, className : "openfl.display.MovieClip", methodName : "__fromSymbol"});
 					}
 				}
 			}
@@ -58628,14 +58730,17 @@ openfl_display_Stage.prototype = $extend(openfl_display_DisplayObjectContainer.p
 			var e2 = ((e1) instanceof js__$Boot_HaxeError) ? e1.val : e1;
 		}
 		if(!event.__preventDefault) {
+			var message = haxe_CallStack.toString(haxe_CallStack.exceptionStack());
+			console.log(message);
+			console.log(Std.string(e));
 			try {
 				var exc = haxe_CallStack.lastException;
 				if(exc != null && Object.prototype.hasOwnProperty.call(exc,"stack") && exc.stack != null && exc.stack != "") {
-					console.log(exc.stack);
+					(console.log)(exc.stack);
 					e.stack = exc.stack;
 				} else {
 					var msg = haxe_CallStack.toString(haxe_CallStack.callStack());
-					console.log(msg);
+					(console.log)(msg);
 				}
 			} catch( e21 ) {
 				haxe_CallStack.lastException = e21;
@@ -63832,7 +63937,7 @@ openfl_display3D_Program3D.prototype = {
 		if(this.__format != 1) {
 			return;
 		}
-		var prefix = "#ifdef GL_ES\n\t\t\t#ifdef GL_FRAGMENT_PRECISION_HIGH\n\t\t\tprecision highp float;\n\t\t\t#else\n\t\t\tprecision mediump float;\n\t\t\t#endif\n\t\t\t#endif\n\t\t\t";
+		var prefix = "#ifdef GL_ES\r\n\t\t\t#ifdef GL_FRAGMENT_PRECISION_HIGH\r\n\t\t\tprecision highp float;\r\n\t\t\t#else\r\n\t\t\tprecision mediump float;\r\n\t\t\t#endif\r\n\t\t\t#endif\r\n\t\t\t";
 		var vertex = prefix + vertexSource;
 		var fragment = prefix + fragmentSource;
 		if(vertex == this.__glVertexSource && fragment == this.__glFragmentSource) {
@@ -66761,10 +66866,10 @@ openfl_filters_BitmapFilter.prototype = {
 };
 var openfl_filters_BitmapFilterShader = function(code) {
 	if(this.__glFragmentSource == null) {
-		this.__glFragmentSource = "varying vec2 openfl_TextureCoordv;\n\n\t\tuniform sampler2D openfl_Texture;\n\t\tuniform vec2 openfl_TextureSize;\n\n\t\tvoid main(void) {\n\n\t\t\tgl_FragColor = texture2D (openfl_Texture, openfl_TextureCoordv);\n\n\t\t}";
+		this.__glFragmentSource = "varying vec2 openfl_TextureCoordv;\r\n\r\n\t\tuniform sampler2D openfl_Texture;\r\n\t\tuniform vec2 openfl_TextureSize;\r\n\r\n\t\tvoid main(void) {\r\n\r\n\t\t\tgl_FragColor = texture2D (openfl_Texture, openfl_TextureCoordv);\r\n\r\n\t\t}";
 	}
 	if(this.__glVertexSource == null) {
-		this.__glVertexSource = "attribute vec4 openfl_Position;\n\t\tattribute vec2 openfl_TextureCoord;\n\n\t\tvarying vec2 openfl_TextureCoordv;\n\n\t\tuniform mat4 openfl_Matrix;\n\t\tuniform vec2 openfl_TextureSize;\n\n\t\tvoid main(void) {\n\n\t\t\topenfl_TextureCoordv = openfl_TextureCoord;\n\n\t\tgl_Position = openfl_Matrix * openfl_Position;\n\n\t\t}";
+		this.__glVertexSource = "attribute vec4 openfl_Position;\r\n\t\tattribute vec2 openfl_TextureCoord;\r\n\r\n\t\tvarying vec2 openfl_TextureCoordv;\r\n\r\n\t\tuniform mat4 openfl_Matrix;\r\n\t\tuniform vec2 openfl_TextureSize;\r\n\r\n\t\tvoid main(void) {\r\n\r\n\t\t\topenfl_TextureCoordv = openfl_TextureCoord;\r\n\r\n\t\tgl_Position = openfl_Matrix * openfl_Position;\r\n\r\n\t\t}";
 	}
 	openfl_display_Shader.call(this,code);
 	this.__isGenerated = true;
@@ -66783,10 +66888,10 @@ openfl_filters_BitmapFilterShader.prototype = $extend(openfl_display_Shader.prot
 });
 var openfl_filters__$BlurFilter_BlurShader = function() {
 	if(this.__glFragmentSource == null) {
-		this.__glFragmentSource = "uniform sampler2D openfl_Texture;\n\n\t\tvarying vec2 vBlurCoords[7];\n\n\t\tvoid main(void) {\n\n\t\t\tvec4 sum = vec4(0.0);\n\t\t\tsum += texture2D(openfl_Texture, vBlurCoords[0]) * 0.00443;\n\t\t\tsum += texture2D(openfl_Texture, vBlurCoords[1]) * 0.05399;\n\t\t\tsum += texture2D(openfl_Texture, vBlurCoords[2]) * 0.24197;\n\t\t\tsum += texture2D(openfl_Texture, vBlurCoords[3]) * 0.39894;\n\t\t\tsum += texture2D(openfl_Texture, vBlurCoords[4]) * 0.24197;\n\t\t\tsum += texture2D(openfl_Texture, vBlurCoords[5]) * 0.05399;\n\t\t\tsum += texture2D(openfl_Texture, vBlurCoords[6]) * 0.00443;\n\n\t\t\tgl_FragColor = sum;\n\n\t\t}";
+		this.__glFragmentSource = "uniform sampler2D openfl_Texture;\r\n\r\n\t\tvarying vec2 vBlurCoords[7];\r\n\r\n\t\tvoid main(void) {\r\n\r\n\t\t\tvec4 sum = vec4(0.0);\r\n\t\t\tsum += texture2D(openfl_Texture, vBlurCoords[0]) * 0.00443;\r\n\t\t\tsum += texture2D(openfl_Texture, vBlurCoords[1]) * 0.05399;\r\n\t\t\tsum += texture2D(openfl_Texture, vBlurCoords[2]) * 0.24197;\r\n\t\t\tsum += texture2D(openfl_Texture, vBlurCoords[3]) * 0.39894;\r\n\t\t\tsum += texture2D(openfl_Texture, vBlurCoords[4]) * 0.24197;\r\n\t\t\tsum += texture2D(openfl_Texture, vBlurCoords[5]) * 0.05399;\r\n\t\t\tsum += texture2D(openfl_Texture, vBlurCoords[6]) * 0.00443;\r\n\r\n\t\t\tgl_FragColor = sum;\r\n\r\n\t\t}";
 	}
 	if(this.__glVertexSource == null) {
-		this.__glVertexSource = "attribute vec4 openfl_Position;\n\t\tattribute vec2 openfl_TextureCoord;\n\n\t\tuniform mat4 openfl_Matrix;\n\n\t\tuniform vec2 uRadius;\n\t\tvarying vec2 vBlurCoords[7];\n\t\tuniform vec2 uTextureSize;\n\n\t\tvoid main(void) {\n\n\t\t\tgl_Position = openfl_Matrix * openfl_Position;\n\n\t\t\tvec2 r = uRadius / uTextureSize;\n\t\t\tvBlurCoords[0] = openfl_TextureCoord - r * 1.0;\n\t\t\tvBlurCoords[1] = openfl_TextureCoord - r * 0.75;\n\t\t\tvBlurCoords[2] = openfl_TextureCoord - r * 0.5;\n\t\t\tvBlurCoords[3] = openfl_TextureCoord;\n\t\t\tvBlurCoords[4] = openfl_TextureCoord + r * 0.5;\n\t\t\tvBlurCoords[5] = openfl_TextureCoord + r * 0.75;\n\t\t\tvBlurCoords[6] = openfl_TextureCoord + r * 1.0;\n\n\t\t}";
+		this.__glVertexSource = "attribute vec4 openfl_Position;\r\n\t\tattribute vec2 openfl_TextureCoord;\r\n\r\n\t\tuniform mat4 openfl_Matrix;\r\n\r\n\t\tuniform vec2 uRadius;\r\n\t\tvarying vec2 vBlurCoords[7];\r\n\t\tuniform vec2 uTextureSize;\r\n\r\n\t\tvoid main(void) {\r\n\r\n\t\t\tgl_Position = openfl_Matrix * openfl_Position;\r\n\r\n\t\t\tvec2 r = uRadius / uTextureSize;\r\n\t\t\tvBlurCoords[0] = openfl_TextureCoord - r * 1.0;\r\n\t\t\tvBlurCoords[1] = openfl_TextureCoord - r * 0.75;\r\n\t\t\tvBlurCoords[2] = openfl_TextureCoord - r * 0.5;\r\n\t\t\tvBlurCoords[3] = openfl_TextureCoord;\r\n\t\t\tvBlurCoords[4] = openfl_TextureCoord + r * 0.5;\r\n\t\t\tvBlurCoords[5] = openfl_TextureCoord + r * 0.75;\r\n\t\t\tvBlurCoords[6] = openfl_TextureCoord + r * 1.0;\r\n\r\n\t\t}";
 	}
 	openfl_filters_BitmapFilterShader.call(this);
 	this.uRadius.value = [0,0];
@@ -66897,10 +67002,10 @@ openfl_filters_BlurFilter.prototype = $extend(openfl_filters_BitmapFilter.protot
 });
 var openfl_filters__$ColorMatrixFilter_ColorMatrixShader = function() {
 	if(this.__glFragmentSource == null) {
-		this.__glFragmentSource = "varying vec2 openfl_TextureCoordv;\n\t\tuniform sampler2D openfl_Texture;\n\n\t\tuniform mat4 uMultipliers;\n\t\tuniform vec4 uOffsets;\n\n\t\tvoid main(void) {\n\n\t\t\tvec4 color = texture2D (openfl_Texture, openfl_TextureCoordv);\n\n\t\t\tif (color.a == 0.0) {\n\n\t\t\t\tgl_FragColor = vec4 (0.0, 0.0, 0.0, 0.0);\n\n\t\t\t} else {\n\n\t\t\t\tcolor = vec4 (color.rgb / color.a, color.a);\n\t\t\t\tcolor = uOffsets + color * uMultipliers;\n\n\t\t\t\tgl_FragColor = vec4 (color.rgb * color.a, color.a);\n\n\t\t\t}\n\n\t\t}";
+		this.__glFragmentSource = "varying vec2 openfl_TextureCoordv;\r\n\t\tuniform sampler2D openfl_Texture;\r\n\r\n\t\tuniform mat4 uMultipliers;\r\n\t\tuniform vec4 uOffsets;\r\n\r\n\t\tvoid main(void) {\r\n\r\n\t\t\tvec4 color = texture2D (openfl_Texture, openfl_TextureCoordv);\r\n\r\n\t\t\tif (color.a == 0.0) {\r\n\r\n\t\t\t\tgl_FragColor = vec4 (0.0, 0.0, 0.0, 0.0);\r\n\r\n\t\t\t} else {\r\n\r\n\t\t\t\tcolor = vec4 (color.rgb / color.a, color.a);\r\n\t\t\t\tcolor = uOffsets + color * uMultipliers;\r\n\r\n\t\t\t\tgl_FragColor = vec4 (color.rgb * color.a, color.a);\r\n\r\n\t\t\t}\r\n\r\n\t\t}";
 	}
 	if(this.__glVertexSource == null) {
-		this.__glVertexSource = "attribute vec4 openfl_Position;\n\t\tattribute vec2 openfl_TextureCoord;\n\n\t\tvarying vec2 openfl_TextureCoordv;\n\n\t\tuniform mat4 openfl_Matrix;\n\t\tuniform vec2 openfl_TextureSize;\n\n\n\t\tvoid main(void) {\n\n\t\t\topenfl_TextureCoordv = openfl_TextureCoord;\n\n\t\tgl_Position = openfl_Matrix * openfl_Position;\n\n\n\t\t}";
+		this.__glVertexSource = "attribute vec4 openfl_Position;\r\n\t\tattribute vec2 openfl_TextureCoord;\r\n\r\n\t\tvarying vec2 openfl_TextureCoordv;\r\n\r\n\t\tuniform mat4 openfl_Matrix;\r\n\t\tuniform vec2 openfl_TextureSize;\n\r\n\r\n\t\tvoid main(void) {\r\n\r\n\t\t\topenfl_TextureCoordv = openfl_TextureCoord;\r\n\r\n\t\tgl_Position = openfl_Matrix * openfl_Position;\n\r\n\r\n\t\t}";
 	}
 	openfl_filters_BitmapFilterShader.call(this);
 	this.uMultipliers.value = [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1];
@@ -67081,10 +67186,10 @@ openfl_filters_ColorMatrixFilter.prototype = $extend(openfl_filters_BitmapFilter
 });
 var openfl_filters__$ConvolutionFilter_ConvolutionShader = function() {
 	if(this.__glFragmentSource == null) {
-		this.__glFragmentSource = "varying vec2 vBlurCoords[9];\n\n\t\tuniform sampler2D openfl_Texture;\n\n\t\tuniform float uBias;\n\t\tuniform mat3 uConvoMatrix;\n\t\tuniform float uDivisor;\n\t\tuniform bool uPreserveAlpha;\n\n\t\tvoid main(void) {\n\n\t\t\tvec4 tc = texture2D (openfl_Texture, vBlurCoords[4]);\n\t\t\tvec4 c = vec4 (0.0);\n\n\t\t\tc += texture2D (openfl_Texture, vBlurCoords[0]) * uConvoMatrix[0][0];\n\t\t\tc += texture2D (openfl_Texture, vBlurCoords[1]) * uConvoMatrix[0][1];\n\t\t\tc += texture2D (openfl_Texture, vBlurCoords[2]) * uConvoMatrix[0][2];\n\n\t\t\tc += texture2D (openfl_Texture, vBlurCoords[3]) * uConvoMatrix[1][0];\n\t\t\tc += tc * uConvoMatrix[1][1];\n\t\t\tc += texture2D (openfl_Texture, vBlurCoords[5]) * uConvoMatrix[1][2];\n\n\t\t\tc += texture2D (openfl_Texture, vBlurCoords[6]) * uConvoMatrix[2][0];\n\t\t\tc += texture2D (openfl_Texture, vBlurCoords[7]) * uConvoMatrix[2][1];\n\t\t\tc += texture2D (openfl_Texture, vBlurCoords[8]) * uConvoMatrix[2][2];\n\n\t\t\tif (uDivisor > 0.0) {\n\n\t\t\t\tc /= vec4 (uDivisor, uDivisor, uDivisor, uDivisor);\n\n\t\t\t}\n\n\t\t\tc += vec4 (uBias, uBias, uBias, uBias);\n\n\t\t\tif (uPreserveAlpha) {\n\n\t\t\t\tc.a = tc.a;\n\n\t\t\t}\n\n\t\t\tgl_FragColor = c;\n\n\t\t}";
+		this.__glFragmentSource = "varying vec2 vBlurCoords[9];\r\n\r\n\t\tuniform sampler2D openfl_Texture;\r\n\r\n\t\tuniform float uBias;\r\n\t\tuniform mat3 uConvoMatrix;\r\n\t\tuniform float uDivisor;\r\n\t\tuniform bool uPreserveAlpha;\r\n\r\n\t\tvoid main(void) {\r\n\r\n\t\t\tvec4 tc = texture2D (openfl_Texture, vBlurCoords[4]);\r\n\t\t\tvec4 c = vec4 (0.0);\r\n\r\n\t\t\tc += texture2D (openfl_Texture, vBlurCoords[0]) * uConvoMatrix[0][0];\r\n\t\t\tc += texture2D (openfl_Texture, vBlurCoords[1]) * uConvoMatrix[0][1];\r\n\t\t\tc += texture2D (openfl_Texture, vBlurCoords[2]) * uConvoMatrix[0][2];\r\n\r\n\t\t\tc += texture2D (openfl_Texture, vBlurCoords[3]) * uConvoMatrix[1][0];\r\n\t\t\tc += tc * uConvoMatrix[1][1];\r\n\t\t\tc += texture2D (openfl_Texture, vBlurCoords[5]) * uConvoMatrix[1][2];\r\n\r\n\t\t\tc += texture2D (openfl_Texture, vBlurCoords[6]) * uConvoMatrix[2][0];\r\n\t\t\tc += texture2D (openfl_Texture, vBlurCoords[7]) * uConvoMatrix[2][1];\r\n\t\t\tc += texture2D (openfl_Texture, vBlurCoords[8]) * uConvoMatrix[2][2];\r\n\r\n\t\t\tif (uDivisor > 0.0) {\r\n\r\n\t\t\t\tc /= vec4 (uDivisor, uDivisor, uDivisor, uDivisor);\r\n\r\n\t\t\t}\r\n\r\n\t\t\tc += vec4 (uBias, uBias, uBias, uBias);\r\n\r\n\t\t\tif (uPreserveAlpha) {\r\n\r\n\t\t\t\tc.a = tc.a;\r\n\r\n\t\t\t}\r\n\r\n\t\t\tgl_FragColor = c;\r\n\r\n\t\t}";
 	}
 	if(this.__glVertexSource == null) {
-		this.__glVertexSource = "attribute vec4 openfl_Position;\n\t\tattribute vec2 openfl_TextureCoord;\n\n\t\tvarying vec2 vBlurCoords[9];\n\n\t\tuniform mat4 openfl_Matrix;\n\t\tuniform vec2 openfl_TextureSize;\n\n\t\tvoid main(void) {\n\n\t\t\tvec2 r = vec2 (1.0, 1.0) / openfl_TextureSize;\n\t\t\tvec2 t = openfl_TextureCoord;\n\n\t\t\tvBlurCoords[0] = t + r * vec2 (-1.0, -1.0);\n\t\t\tvBlurCoords[1] = t + r * vec2 (0.0, -1.0);\n\t\t\tvBlurCoords[2] = t + r * vec2 (1.0, -1.0);\n\n\t\t\tvBlurCoords[3] = t + r * vec2 (-1.0, 0.0);\n\t\t\tvBlurCoords[4] = t;\n\t\t\tvBlurCoords[5] = t + r * vec2 (1.0, 0.0);\n\n\t\t\tvBlurCoords[6] = t + r * vec2 (-1.0, 1.0);\n\t\t\tvBlurCoords[7] = t + r * vec2 (0.0, 1.0);\n\t\t\tvBlurCoords[8] = t + r * vec2 (1.0, 1.0);\n\n\t\t\tgl_Position = openfl_Matrix * openfl_Position;\n\n\t\t}";
+		this.__glVertexSource = "attribute vec4 openfl_Position;\r\n\t\tattribute vec2 openfl_TextureCoord;\r\n\r\n\t\tvarying vec2 vBlurCoords[9];\r\n\r\n\t\tuniform mat4 openfl_Matrix;\r\n\t\tuniform vec2 openfl_TextureSize;\r\n\r\n\t\tvoid main(void) {\r\n\r\n\t\t\tvec2 r = vec2 (1.0, 1.0) / openfl_TextureSize;\r\n\t\t\tvec2 t = openfl_TextureCoord;\r\n\r\n\t\t\tvBlurCoords[0] = t + r * vec2 (-1.0, -1.0);\r\n\t\t\tvBlurCoords[1] = t + r * vec2 (0.0, -1.0);\r\n\t\t\tvBlurCoords[2] = t + r * vec2 (1.0, -1.0);\r\n\r\n\t\t\tvBlurCoords[3] = t + r * vec2 (-1.0, 0.0);\r\n\t\t\tvBlurCoords[4] = t;\r\n\t\t\tvBlurCoords[5] = t + r * vec2 (1.0, 0.0);\r\n\r\n\t\t\tvBlurCoords[6] = t + r * vec2 (-1.0, 1.0);\r\n\t\t\tvBlurCoords[7] = t + r * vec2 (0.0, 1.0);\r\n\t\t\tvBlurCoords[8] = t + r * vec2 (1.0, 1.0);\r\n\r\n\t\t\tgl_Position = openfl_Matrix * openfl_Position;\r\n\r\n\t\t}";
 	}
 	openfl_filters_BitmapFilterShader.call(this);
 	this.uDivisor.value = [1];
@@ -67180,10 +67285,10 @@ openfl_filters_ConvolutionFilter.prototype = $extend(openfl_filters_BitmapFilter
 });
 var openfl_filters__$DisplacementMapFilter_DisplacementMapShader = function() {
 	if(this.__glFragmentSource == null) {
-		this.__glFragmentSource = "\n\n\t\tuniform sampler2D openfl_Texture;\n\t\tuniform sampler2D mapTexture;\n\n\t\tuniform mat4 openfl_Matrix;\n\n\t\tuniform vec4 uOffsets;\n\t\tuniform mat4 uDisplacements;\n\n\t\tvarying vec2 openfl_TextureCoordV;\n\t\tvarying vec2 mapTextureCoords;\n\n\t\tvoid main(void) {\n\n\t\t\tvec4 map_color = texture2D(mapTexture, mapTextureCoords);\n\t\t\tvec4 map_color_mod = map_color - uOffsets;\n\n\t\t\tmap_color_mod = map_color_mod * vec4(map_color.w, map_color.w, 1.0, 1.0);\n\n\t\t\tvec4 displacements_multiplied = map_color_mod * uDisplacements;\n\t\t\tvec4 result = vec4(openfl_TextureCoordV.x, openfl_TextureCoordV.y, 0.0, 1.0) + displacements_multiplied;\n\n\t\t\tgl_FragColor = texture2D(openfl_Texture, vec2(result));\n\n\t\t}\n\n\t";
+		this.__glFragmentSource = "\r\n\r\n\t\tuniform sampler2D openfl_Texture;\r\n\t\tuniform sampler2D mapTexture;\r\n\r\n\t\tuniform mat4 openfl_Matrix;\r\n\r\n\t\tuniform vec4 uOffsets;\r\n\t\tuniform mat4 uDisplacements;\r\n\r\n\t\tvarying vec2 openfl_TextureCoordV;\r\n\t\tvarying vec2 mapTextureCoords;\r\n\r\n\t\tvoid main(void) {\r\n\r\n\t\t\tvec4 map_color = texture2D(mapTexture, mapTextureCoords);\r\n\t\t\tvec4 map_color_mod = map_color - uOffsets;\r\n\r\n\t\t\tmap_color_mod = map_color_mod * vec4(map_color.w, map_color.w, 1.0, 1.0);\r\n\r\n\t\t\tvec4 displacements_multiplied = map_color_mod * uDisplacements;\r\n\t\t\tvec4 result = vec4(openfl_TextureCoordV.x, openfl_TextureCoordV.y, 0.0, 1.0) + displacements_multiplied;\r\n\r\n\t\t\tgl_FragColor = texture2D(openfl_Texture, vec2(result));\r\n\r\n\t\t}\r\n\r\n\t";
 	}
 	if(this.__glVertexSource == null) {
-		this.__glVertexSource = "\n\n\t\tuniform mat4 openfl_Matrix;\n\n\t\tuniform vec2 mapTextureCoordsOffset;\n\n\t\tattribute vec4 openfl_Position;\n\t\tattribute vec2 openfl_TextureCoord;\n\n\t\tvarying vec2 openfl_TextureCoordV;\n\n\t\tvarying vec2 mapTextureCoords;\n\n\t\tvoid main(void) {\n\n\t\t\tgl_Position = openfl_Matrix * openfl_Position;\n\n\t\t\topenfl_TextureCoordV = openfl_TextureCoord;\n\t\t\tmapTextureCoords = openfl_TextureCoord - mapTextureCoordsOffset;\n\n\t\t}\n\n\t";
+		this.__glVertexSource = "\r\n\r\n\t\tuniform mat4 openfl_Matrix;\r\n\r\n\t\tuniform vec2 mapTextureCoordsOffset;\r\n\r\n\t\tattribute vec4 openfl_Position;\r\n\t\tattribute vec2 openfl_TextureCoord;\r\n\r\n\t\tvarying vec2 openfl_TextureCoordV;\r\n\r\n\t\tvarying vec2 mapTextureCoords;\r\n\r\n\t\tvoid main(void) {\r\n\r\n\t\t\tgl_Position = openfl_Matrix * openfl_Position;\r\n\r\n\t\t\topenfl_TextureCoordV = openfl_TextureCoord;\r\n\t\t\tmapTextureCoords = openfl_TextureCoord - mapTextureCoordsOffset;\r\n\r\n\t\t}\r\n\r\n\t";
 	}
 	openfl_filters_BitmapFilterShader.call(this);
 	this.__isGenerated = true;
@@ -67603,10 +67708,10 @@ openfl_filters_DropShadowFilter.prototype = $extend(openfl_filters_BitmapFilter.
 });
 var openfl_filters__$GlowFilter_GlowShader = function() {
 	if(this.__glFragmentSource == null) {
-		this.__glFragmentSource = "uniform sampler2D openfl_Texture;\n\t\t\n\t\tuniform vec4 uColor;\n\t\t\n\t\tvarying vec2 vBlurCoords[7];\n\t\t\n\t\tvoid main(void) {\n\t\t\t\n\t\t\tfloat a = 0.0;\n\t\t\ta += texture2D(openfl_Texture, vBlurCoords[0]).a * 0.00443;\n\t\t\ta += texture2D(openfl_Texture, vBlurCoords[1]).a * 0.05399;\n\t\t\ta += texture2D(openfl_Texture, vBlurCoords[2]).a * 0.24197;\n\t\t\ta += texture2D(openfl_Texture, vBlurCoords[3]).a * 0.39894;\n\t\t\ta += texture2D(openfl_Texture, vBlurCoords[4]).a * 0.24197;\n\t\t\ta += texture2D(openfl_Texture, vBlurCoords[5]).a * 0.05399;\n\t\t\ta += texture2D(openfl_Texture, vBlurCoords[6]).a * 0.00443;\n\t\t\ta *= uColor.a;\n\t\t\t\n\t\t\tgl_FragColor = vec4(uColor.rgb * a, a);\n\t\t\t\n\t\t}";
+		this.__glFragmentSource = "uniform sampler2D openfl_Texture;\r\n\r\n\t\tuniform vec4 uColor;\r\n\r\n\t\tvarying vec2 vBlurCoords[7];\r\n\r\n\t\tvoid main(void) {\r\n\r\n\t\t\tfloat a = 0.0;\r\n\t\t\ta += texture2D(openfl_Texture, vBlurCoords[0]).a * 0.00443;\r\n\t\t\ta += texture2D(openfl_Texture, vBlurCoords[1]).a * 0.05399;\r\n\t\t\ta += texture2D(openfl_Texture, vBlurCoords[2]).a * 0.24197;\r\n\t\t\ta += texture2D(openfl_Texture, vBlurCoords[3]).a * 0.39894;\r\n\t\t\ta += texture2D(openfl_Texture, vBlurCoords[4]).a * 0.24197;\r\n\t\t\ta += texture2D(openfl_Texture, vBlurCoords[5]).a * 0.05399;\r\n\t\t\ta += texture2D(openfl_Texture, vBlurCoords[6]).a * 0.00443;\r\n\t\t\ta *= uColor.a;\r\n\r\n\t\t\tgl_FragColor = vec4(uColor.rgb * a, a);\r\n\r\n\t\t}";
 	}
 	if(this.__glVertexSource == null) {
-		this.__glVertexSource = "attribute vec4 openfl_Position;\n\t\tattribute vec2 openfl_TextureCoord;\n\t\t\n\t\tuniform mat4 openfl_Matrix;\n\t\tuniform vec2 openfl_TextureSize;\n\t\t\n\t\tuniform vec2 uRadius;\n\t\tvarying vec2 vBlurCoords[7];\n\t\t\n\t\tvoid main(void) {\n\t\t\t\n\t\t\tgl_Position = openfl_Matrix * openfl_Position;\n\t\t\t\n\t\t\tvec2 r = uRadius / openfl_TextureSize;\n\t\t\tvBlurCoords[0] = openfl_TextureCoord - r * 1.0;\n\t\t\tvBlurCoords[1] = openfl_TextureCoord - r * 0.75;\n\t\t\tvBlurCoords[2] = openfl_TextureCoord - r * 0.5;\n\t\t\tvBlurCoords[3] = openfl_TextureCoord;\n\t\t\tvBlurCoords[4] = openfl_TextureCoord + r * 0.5;\n\t\t\tvBlurCoords[5] = openfl_TextureCoord + r * 0.75;\n\t\t\tvBlurCoords[6] = openfl_TextureCoord + r * 1.0;\n\t\t\t\n\t\t}";
+		this.__glVertexSource = "attribute vec4 openfl_Position;\r\n\t\tattribute vec2 openfl_TextureCoord;\r\n\r\n\t\tuniform mat4 openfl_Matrix;\r\n\t\tuniform vec2 openfl_TextureSize;\r\n\r\n\t\tuniform vec2 uRadius;\r\n\t\tvarying vec2 vBlurCoords[7];\r\n\r\n\t\tvoid main(void) {\r\n\r\n\t\t\tgl_Position = openfl_Matrix * openfl_Position;\r\n\r\n\t\t\tvec2 r = uRadius / openfl_TextureSize;\r\n\t\t\tvBlurCoords[0] = openfl_TextureCoord - r * 1.0;\r\n\t\t\tvBlurCoords[1] = openfl_TextureCoord - r * 0.75;\r\n\t\t\tvBlurCoords[2] = openfl_TextureCoord - r * 0.5;\r\n\t\t\tvBlurCoords[3] = openfl_TextureCoord;\r\n\t\t\tvBlurCoords[4] = openfl_TextureCoord + r * 0.5;\r\n\t\t\tvBlurCoords[5] = openfl_TextureCoord + r * 0.75;\r\n\t\t\tvBlurCoords[6] = openfl_TextureCoord + r * 1.0;\r\n\r\n\t\t}";
 	}
 	openfl_filters_BitmapFilterShader.call(this);
 	this.uRadius.value = [0,0];
@@ -70516,7 +70621,7 @@ openfl_text_TextField.prototype = $extend(openfl_display_InteractiveObject.proto
 				} else {
 					_this1.h[k] = true;
 				}
-				lime_utils_Log.warn("Could not find required font \"" + format.font + "\", it has not been embedded",{ fileName : "openfl/text/TextField.hx", lineNumber : 1773, className : "openfl.text.TextField", methodName : "__fromSymbol"});
+				lime_utils_Log.warn("Could not find required font \"" + format.font + "\", it has not been embedded",{ fileName : "openfl/text/TextField.hx", lineNumber : 1776, className : "openfl.text.TextField", methodName : "__fromSymbol"});
 			}
 		}
 		if(symbol.align != null) {
@@ -76260,6 +76365,12 @@ var scenes_Level = function() {
 	this.object_map = [];
 	scenes_Level.i = this;
 	zero_openfl_utilities_Scene.call(this);
+	zero_utilities_EventBus.listen(function(_) {
+		if(zero_openfl_utilities_Keys.just_pressed(84)) {
+			util_TurnUtil.player_turn = !util_TurnUtil.player_turn;
+		}
+		return;
+	},"update");
 };
 $hxClasses["scenes.Level"] = scenes_Level;
 scenes_Level.__name__ = "scenes.Level";
@@ -76290,10 +76401,11 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 		this.addChild(this.deck);
 		this.deck.deal();
 		this.addChild(this.info_layer = new ui_InfoLayer());
-		var player = new objects_Player(2,9,{ data : { id : "Test Player", health : { current : 48, max : 64}, movement : { requirement : "MAX_CARD", requirement_value : 5, type : ui_MoveType.FREE, factor : ui_MoveFactor.VALUE}, equipment : ["test_d_01","test_d_02","test_h_01"]}, side : objects_PlayerSide.LEFT});
-		var player2 = new objects_Player(6,8,{ data : { id : "Test Player", health : { current : 64, max : 64}, movement : { requirement : "MAX_CARD", requirement_value : 5, type : ui_MoveType.FREE, factor : ui_MoveFactor.VALUE}, equipment : ["test_u_01","test_h_01"]}, side : objects_PlayerSide.RIGHT});
+		var player = new objects_Player(2,9,{ data : { id : "Test Player", health : { current : 48, max : 64}, movement : { requirement : "MAX_CARD", requirement_value : 5, type : ui_MoveType.FREE, factor : ui_MoveFactor.VALUE}, equipment : ["test_d_02","test_m_01","test_m_02"]}, side : objects_PlayerSide.LEFT});
+		var player2 = new objects_Player(6,8,{ data : { id : "Test Player", health : { current : 64, max : 64}, movement : { requirement : "MAX_CARD", requirement_value : 5, type : ui_MoveType.FREE, factor : ui_MoveFactor.VALUE}, equipment : ["test_d_01","test_u_01","test_h_01"]}, side : objects_PlayerSide.RIGHT});
 		objects_Player.set_selected_player(player);
 		player2.set_shield(4);
+		var pickup = new objects_GearPickup(4,10,"test_u_01");
 	}
 	,init_dolly: function() {
 		this.addChild(this.dolly = new objects_Dolly());
@@ -76319,6 +76431,9 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 		zero_openfl_utilities_Game.root.stage.addEventListener("mouseUp",$bind(this,this.level_mouse_up));
 	}
 	,level_mouse_down: function(e) {
+		if(!util_TurnUtil.player_turn) {
+			return;
+		}
 		this.dolly.startDrag(false);
 		this.dolly.following = false;
 	}
@@ -76354,28 +76469,17 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 		this.object_map = _g2;
 	}
 	,on_click: function(e) {
+		haxe_Log.trace("on click",{ fileName : "src/scenes/Level.hx", lineNumber : 138, className : "scenes.Level", methodName : "on_click"});
 		if(!this.can_move || e.localX < 0 || e.localY < 0) {
 			return;
 		}
+		haxe_Log.trace("pass",{ fileName : "src/scenes/Level.hx", lineNumber : 140, className : "scenes.Level", methodName : "on_click"});
 		var x = Math.floor(e.localX / 16);
 		var y = Math.floor(e.localY / 16);
-		zero_utilities_EventBus.dispatch("level_click",{ x : x, y : y});
-		var map = this.get_traversal_map();
-		if(map[y][x] != 0) {
-			return;
-		}
-		var player_x = Math.floor(objects_Player.selected_player.get_x() / 16);
-		var player_y = Math.floor(objects_Player.selected_player.get_y() / 16);
-		var path = zero_utilities_AStar.get_path(map,{ start : zero_utilities__$IntPoint_IntPoint_$Impl_$.from_array_int([player_x,player_y]), end : zero_utilities__$IntPoint_IntPoint_$Impl_$.from_array_int([x,y]), passable : [0], simplify : zero_utilities_EAStarSimplifyMode.NONE});
-		if(path.length == 0) {
-			return;
-		}
-		this.object_map[player_y][player_x] = 0;
-		this.object_map[y][x] = -1;
-		objects_Player.selected_player.follow_path(path);
+		objects_Player.selected_player.move_to(x,y);
 		this.can_move = false;
 		this.move_indicators.get_graphics().clear();
-		ui_Equipment.active_equipment.move_card.set_expended(true);
+		ui_Equipment.active_equipment.move_card.execute();
 	}
 	,get_traversal_map: function(ignore) {
 		var out = this.tiles.get_solids_array();
@@ -76410,7 +76514,7 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 		while(_g < gear.length) {
 			var card = gear[_g];
 			++_g;
-			var player = card.equipment.player;
+			var object = card.equipment.owner;
 			var range_min = card.equipment_data.range.min;
 			var range_max = card.equipment_data.range.max;
 			var range_type = card.equipment_data.range.type;
@@ -76434,7 +76538,7 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 				range_min *= 2;
 				range_max *= 2;
 			}
-			var tiles = this.get_available_tiles_array(zero_utilities__$IntPoint_IntPoint_$Impl_$.from_array_int([Math.floor(player.get_x() / 16),Math.floor(player.get_y() / 16)]),range_min,range_max,range_type);
+			var tiles = this.get_available_tiles_array(zero_utilities__$IntPoint_IntPoint_$Impl_$.from_array_int([Math.floor(object.get_x() / 16),Math.floor(object.get_y() / 16)]),range_min,range_max,range_type);
 			var color;
 			switch(card.equipment_data.effect.type) {
 			case "DAMAGE":
@@ -76453,7 +76557,7 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 				color = zero_utilities__$Color_Color_$Impl_$.WHITE;
 			}
 			var color_fill = zero_utilities__$Vec4_Vec4_$Impl_$.get(color[0],color[1],color[2],color[3]);
-			color_fill[3] = Math.min(Math.max(0.25,0),1);
+			color_fill[3] = Math.min(Math.max(0.2,0),1);
 			var _g1 = 0;
 			while(_g1 < tiles.length) {
 				var tile = tiles[_g1];
@@ -76552,15 +76656,15 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 	}
 	,draw_move_indicators: function(move_card) {
 		this.move_indicators.get_graphics().clear();
-		var player = move_card.equipment.player;
+		var object = move_card.equipment.owner;
 		var range = move_card.get_moves_value();
 		if(range == 0) {
 			return;
 		}
-		var tiles = this.get_walkable_tiles_array(zero_utilities__$IntPoint_IntPoint_$Impl_$.from_array_int([Math.floor(player.get_x() / 16),Math.floor(player.get_y() / 16)]),range);
+		var tiles = this.get_walkable_tiles_array(zero_utilities__$IntPoint_IntPoint_$Impl_$.from_array_int([Math.floor(object.get_x() / 16),Math.floor(object.get_y() / 16)]),range);
 		var color = zero_utilities__$Color_Color_$Impl_$.PICO_8_BLUE;
 		var color_fill = zero_utilities__$Vec4_Vec4_$Impl_$.get(color[0],color[1],color[2],color[3]);
-		color_fill[3] = Math.min(Math.max(0.25,0),1);
+		color_fill[3] = Math.min(Math.max(0.2,0),1);
 		var _g = 0;
 		while(_g < tiles.length) {
 			var tile = tiles[_g];
@@ -76668,8 +76772,14 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 var ui_Card = function() {
 	this.dragging = false;
 	this.draggable = true;
+	var _gthis = this;
 	openfl_display_Sprite.call(this);
-	this.addEventListener("mouseDown",$bind(this,this.mouse_down));
+	this.addEventListener("mouseDown",function(e) {
+		if(util_TurnUtil.player_turn) {
+			_gthis.mouse_down(e);
+		}
+		return;
+	});
 	zero_openfl_utilities_Game.root.addEventListener("mouseUp",$bind(this,this.mouse_up));
 };
 $hxClasses["ui.Card"] = ui_Card;
@@ -76825,10 +76935,21 @@ ui_DropCard.prototype = $extend(ui_Card.prototype,{
 	,expended: null
 	,set_expended: function(b) {
 		this.set_filters(b ? [this.grayscale_filter] : []);
+		if(b) {
+			this.handle.hide();
+		}
 		return this.expended = b;
 	}
 	,highlight: null
 	,last: null
+	,mouse_down: function(e) {
+		ui_Card.prototype.mouse_down.call(this,e);
+		var p = this.parent;
+		if(this.parent != null) {
+			this.parent.removeChild(this);
+		}
+		p.addChild(this);
+	}
 	,verify_card: function(card_data) {
 		if(this.cards.length >= 2) {
 			return false;
@@ -76965,24 +77086,88 @@ ui_DropCard.prototype = $extend(ui_Card.prototype,{
 			_g3.set_y(_g3.get_y() + (this.anchors[i][1] - card.get_y()) * 0.25);
 			++i;
 		}
+		if(this.dragging) {
+			var _g21 = this;
+			_g21.set_rotation(_g21.get_rotation() + (this.get_x() - this.last[0] - this.get_rotation()) * 0.1);
+		}
+		var this1 = this.last;
+		var x = this.get_x();
+		var y = this.get_y();
+		if(y == null) {
+			y = 0;
+		}
+		if(x == null) {
+			x = 0;
+		}
+		this1[0] = zero_utilities__$Vec2_Vec2_$Impl_$.zero(x);
+		this1[1] = zero_utilities__$Vec2_Vec2_$Impl_$.zero(y);
+		this.invalidate();
+	}
+	,add_highlight: function() {
+		var sprite = new openfl_display_Sprite();
+		var color = zero_utilities__$Color_Color_$Impl_$.PICO_8_WHITE;
+		var x = -ui_EquipmentCard.card_width / 2 + 4;
+		var y = -ui_EquipmentCard.card_height / 2 + 4;
+		var width = ui_EquipmentCard.card_width - 8;
+		var height = ui_EquipmentCard.card_height - 8;
+		var radius = 16;
+		var line_width = 8;
+		if(line_width == null) {
+			line_width = 1;
+		}
+		if(radius == null) {
+			radius = 0;
+		}
+		sprite.get_graphics().lineStyle(line_width,(Math.round(color[0] * 255) & 255) << 16 | (Math.round(color[1] * 255) & 255) << 8 | Math.round(color[2] * 255) & 255,color[3]);
+		if(radius == 0) {
+			sprite.get_graphics().drawRect(x,y,width,height);
+		} else {
+			sprite.get_graphics().drawRoundRect(x,y,width,height,radius);
+		}
+		sprite.get_graphics().lineStyle();
+		this.addChild(this.highlight = sprite);
+		zero_utilities_Tween.get(this.highlight).from_to("scaleX",1,1.1).from_to("scaleY",1,1.1).from_to("alpha",1,0).type(zero_utilities_TweenType.LOOP_FORWARDS).duration(1).ease(zero_utilities_Ease.quadOut);
+		this.highlight.set_visible(false);
 	}
 	,__class__: ui_DropCard
 	,__properties__: $extend(ui_Card.prototype.__properties__,{set_expended:"set_expended",set_active:"set_active"})
 });
-var ui_Equipment = function(player,side) {
-	this.gear_cards = [];
+var ui_Equipment = function(owner,side) {
+	this.empty_sprites = [];
+	this.editting = false;
+	this.equipment_cards = [];
 	this.active = false;
 	var _gthis = this;
 	openfl_display_Sprite.call(this);
-	this.player = player;
-	this.side = side;
-	this.addChild(this.link = new ui_LinkGraphic(openfl_utils_Assets.getBitmapData("images/ui/action_arrow_white.png")));
-	this.addChild(this.gear = new openfl_display_Sprite());
-	var sprite = new ui_MoveCard({ requirement : "MAX_CARD", requirement_value : 5, type : ui_MoveType.FREE, factor : ui_MoveFactor.VALUE},this);
-	sprite.set_x(side == objects_PlayerSide.LEFT ? -72 : zero_openfl_utilities_Game.get_width() + 72);
-	sprite.set_y(298);
-	this.addChild(this.move_card = sprite);
-	this.addChild(this.player_info = new ui_PlayerInfo(player,side));
+	this.owner = owner;
+	if(side != null) {
+		this.side = side;
+		var sprite = zero_openfl_extensions_SpriteTools.load_graphic(new openfl_display_Sprite(),"images/ui/card_bg.png",zero_utilities_Anchor.MIDDLE_CENTER,true);
+		sprite.set_x(side == objects_PlayerSide.LEFT ? -72 : zero_openfl_utilities_Game.get_width() + 72);
+		sprite.set_y(298);
+		var s = sprite;
+		this.addChild(s);
+		this.empty_sprites.push(s);
+		var sprite1 = zero_openfl_extensions_SpriteTools.load_graphic(new openfl_display_Sprite(),"images/ui/card_bg.png",zero_utilities_Anchor.MIDDLE_CENTER,true);
+		sprite1.set_x(side == objects_PlayerSide.LEFT ? -72 : zero_openfl_utilities_Game.get_width() + 72);
+		sprite1.set_y(298);
+		var s1 = sprite1;
+		this.addChild(s1);
+		this.empty_sprites.push(s1);
+		var sprite2 = zero_openfl_extensions_SpriteTools.load_graphic(new openfl_display_Sprite(),"images/ui/card_bg.png",zero_utilities_Anchor.MIDDLE_CENTER,true);
+		sprite2.set_x(side == objects_PlayerSide.LEFT ? -72 : zero_openfl_utilities_Game.get_width() + 72);
+		sprite2.set_y(298);
+		var s2 = sprite2;
+		this.addChild(s2);
+		this.empty_sprites.push(s2);
+		this.addChild(this.link = new ui_LinkGraphic(openfl_utils_Assets.getBitmapData("images/ui/action_arrow_white.png")));
+		this.addChild(this.gear = new openfl_display_Sprite());
+		var sprite3 = new ui_MoveCard({ requirement : "MAX_CARD", requirement_value : 5, type : ui_MoveType.FREE, factor : ui_MoveFactor.VALUE},this);
+		sprite3.set_x(side == objects_PlayerSide.LEFT ? -72 : zero_openfl_utilities_Game.get_width() + 72);
+		sprite3.set_y(298);
+		this.addChild(this.move_card = sprite3);
+		this.addChild(this.player_info = new ui_PlayerInfo(owner,side));
+	}
 	this.addEventListener("enterFrame",function(e) {
 		_gthis.update();
 		return;
@@ -77002,48 +77187,73 @@ ui_Equipment.__super__ = openfl_display_Sprite;
 ui_Equipment.prototype = $extend(openfl_display_Sprite.prototype,{
 	active: null
 	,link: null
-	,gear_cards: null
+	,equipment_cards: null
 	,move_card: null
-	,player: null
+	,owner: null
 	,player_info: null
+	,editting: null
 	,gear: null
 	,side: null
+	,empty_sprites: null
 	,update: function() {
+		this.move_graphics();
+	}
+	,move_graphics: function() {
+		if(this.side == null) {
+			return;
+		}
 		var i = 0;
 		var _g = 0;
-		var _g1 = this.gear_cards;
-		while(_g < _g1.length) {
-			var gear = _g1[_g];
-			++_g;
-			if(this.active) {
-				var _g2 = gear;
-				_g2.set_x(_g2.get_x() + ((this.side == objects_PlayerSide.LEFT ? 240 : zero_openfl_utilities_Game.get_width() - 240) + (this.side == objects_PlayerSide.LEFT ? 208 : -208) * i++ - gear.get_x()) * 0.25);
-				var _g3 = gear;
-				_g3.set_y(_g3.get_y() + (144 - gear.get_y()) * 0.25);
-				var _g4 = gear;
-				_g4.set_alpha(_g4.get_alpha() + (1 - gear.get_alpha()) * 0.25);
+		var _g1 = this.empty_sprites.length;
+		while(_g < _g1) {
+			var i1 = _g++;
+			var s = this.empty_sprites[i1];
+			var tx = this.active ? (this.side == objects_PlayerSide.LEFT ? 240 : zero_openfl_utilities_Game.get_width() - 240) + (this.side == objects_PlayerSide.LEFT ? 208 : -208) * i1 : this.side == objects_PlayerSide.LEFT ? -240 : zero_openfl_utilities_Game.get_width() + 240;
+			var _g11 = s;
+			_g11.set_x(_g11.get_x() + (tx - s.get_x()) * 0.25);
+			var _g12 = s;
+			_g12.set_y(_g12.get_y() + (144 - s.get_y()) * 0.25);
+			s.set_visible(this.editting);
+		}
+		var _g2 = 0;
+		var _g3 = this.equipment_cards;
+		while(_g2 < _g3.length) {
+			var equipment = _g3[_g2];
+			++_g2;
+			if(equipment.dragging) {
+				continue;
+			}
+			equipment.draggable = this.editting;
+			if(this.active && util_TurnUtil.player_turn) {
+				var _g21 = equipment;
+				_g21.set_x(_g21.get_x() + ((this.side == objects_PlayerSide.LEFT ? 240 : zero_openfl_utilities_Game.get_width() - 240) + (this.side == objects_PlayerSide.LEFT ? 208 : -208) * equipment.equipment_position - equipment.get_x()) * 0.25);
+				var _g22 = equipment;
+				_g22.set_y(_g22.get_y() + (144 - equipment.get_y()) * 0.25);
+				var _g23 = equipment;
+				_g23.set_alpha(_g23.get_alpha() + (1 - equipment.get_alpha()) * 0.25);
 			} else {
-				var _g5 = gear;
-				_g5.set_x(_g5.get_x() + ((this.side == objects_PlayerSide.LEFT ? -240 : zero_openfl_utilities_Game.get_width() + 240) - gear.get_x()) * 0.25);
-				var _g6 = gear;
-				_g6.set_y(_g6.get_y() + (144 - gear.get_y()) * 0.25);
-				var _g7 = gear;
-				_g7.set_alpha(_g7.get_alpha() + (0 - gear.get_alpha()) * 0.25);
+				var _g24 = equipment;
+				_g24.set_x(_g24.get_x() + ((this.side == objects_PlayerSide.LEFT ? -240 : zero_openfl_utilities_Game.get_width() + 240) - equipment.get_x()) * 0.25);
+				var _g25 = equipment;
+				_g25.set_y(_g25.get_y() + (144 - equipment.get_y()) * 0.25);
+				var _g26 = equipment;
+				_g26.set_alpha(_g26.get_alpha() + (0 - equipment.get_alpha()) * 0.25);
 			}
 		}
-		var tx = this.active ? this.side == objects_PlayerSide.LEFT ? 72 : zero_openfl_utilities_Game.get_width() - 72 : this.side == objects_PlayerSide.LEFT ? -72 : zero_openfl_utilities_Game.get_width() + 72;
-		var _g21 = this.move_card;
-		_g21.set_x(_g21.get_x() + (tx - this.move_card.get_x()) * 0.25);
+		var tx1 = this.active ? this.side == objects_PlayerSide.LEFT ? 72 : zero_openfl_utilities_Game.get_width() - 72 : this.side == objects_PlayerSide.LEFT ? -72 : zero_openfl_utilities_Game.get_width() + 72;
+		var _g4 = this.move_card;
+		_g4.set_x(_g4.get_x() + (tx1 - this.move_card.get_x()) * 0.25);
 	}
 	,add_card: function(card) {
 		this.gear.addChild(card);
-		this.gear_cards.push(card);
+		this.equipment_cards.push(card);
 	}
 	,__class__: ui_Equipment
 });
-var ui_EquipmentCard = function(equipment) {
+var ui_EquipmentCard = function(equipment,position) {
 	ui_DropCard.call(this);
 	this.equipment = equipment;
+	this.equipment_position = position;
 	this.draggable = false;
 	this.addEventListener("mouseOver",$bind(this,this.mouse_over));
 	this.addEventListener("mouseOut",$bind(this,this.mouse_out));
@@ -77054,9 +77264,209 @@ ui_EquipmentCard.__super__ = ui_DropCard;
 ui_EquipmentCard.prototype = $extend(ui_DropCard.prototype,{
 	equipment: null
 	,equipment_data: null
+	,equipment_position: null
 	,mouse_over: function(e) {
 	}
 	,mouse_out: function(e) {
+	}
+	,draw_classes: function(container) {
+		var class_src;
+		switch(this.equipment_data.equipment_class) {
+		case "ELECTRICITY":
+			class_src = "images/ui/icons/on_white/icon_electrify.png";
+			break;
+		case "EXPLOSIVE":
+			class_src = "images/ui/icons/on_white/icon_explode.png";
+			break;
+		case "FLAME":
+			class_src = "images/ui/icons/on_white/icon_flame.png";
+			break;
+		case "HEALTH":
+			class_src = "images/ui/icons/on_white/icon_health.png";
+			break;
+		case "MOVE":
+			class_src = "images/ui/icons/on_white/icon_move.png";
+			break;
+		case "PIERCING":
+			class_src = "images/ui/icons/on_white/icon_pierce.png";
+			break;
+		case "SHIELD":
+			class_src = "images/ui/icons/on_white/icon_shield.png";
+			break;
+		case "UTILITY":
+			class_src = "images/ui/icons/on_white/icon_utility.png";
+			break;
+		case "WATER":
+			class_src = "images/ui/icons/on_white/icon_water.png";
+			break;
+		default:
+			class_src = "images/blank.png";
+		}
+		var weakness_src;
+		switch(this.equipment_data.weakness) {
+		case "ELECTRICITY":
+			weakness_src = "images/ui/icons/on_white/icon_electrify.png";
+			break;
+		case "EXPLOSIVE":
+			weakness_src = "images/ui/icons/on_white/icon_explode.png";
+			break;
+		case "FLAME":
+			weakness_src = "images/ui/icons/on_white/icon_flame.png";
+			break;
+		case "HEALTH":
+			weakness_src = "images/ui/icons/on_white/icon_health.png";
+			break;
+		case "MOVE":
+			weakness_src = "images/ui/icons/on_white/icon_move.png";
+			break;
+		case "PIERCING":
+			weakness_src = "images/ui/icons/on_white/icon_pierce.png";
+			break;
+		case "SHIELD":
+			weakness_src = "images/ui/icons/on_white/icon_shield.png";
+			break;
+		case "UTILITY":
+			weakness_src = "images/ui/icons/on_white/icon_utility.png";
+			break;
+		case "WATER":
+			weakness_src = "images/ui/icons/on_white/icon_water.png";
+			break;
+		default:
+			weakness_src = "images/blank.png";
+		}
+		var sprite = zero_openfl_extensions_SpriteTools.load_graphic(new openfl_display_Sprite(),class_src,zero_utilities_Anchor.TOP_LEFT,true);
+		sprite.set_x(16);
+		sprite.set_y(196);
+		var sprite1 = sprite;
+		var x = 0.25;
+		var y = null;
+		if(x == null) {
+			x = 0;
+		}
+		if(y == null) {
+			y = x;
+		}
+		sprite1.set_scaleX(x);
+		sprite1.set_scaleY(y);
+		container.addChild(sprite1);
+		var sprite2 = zero_openfl_extensions_SpriteTools.load_graphic(new openfl_display_Sprite(),weakness_src,zero_utilities_Anchor.TOP_LEFT,true);
+		sprite2.set_x(160);
+		sprite2.set_y(196);
+		var sprite3 = sprite2;
+		var x1 = 0.25;
+		var y1 = null;
+		if(x1 == null) {
+			x1 = 0;
+		}
+		if(y1 == null) {
+			y1 = x1;
+		}
+		sprite3.set_scaleX(x1);
+		sprite3.set_scaleY(y1);
+		container.addChild(sprite3);
+		var sprite4 = zero_openfl_extensions_SpriteTools.load_graphic(new openfl_display_Sprite(),"images/ui/icons/icon_skull.png",zero_utilities_Anchor.TOP_LEFT,true);
+		sprite4.set_x(144);
+		sprite4.set_y(180);
+		var sprite5 = sprite4;
+		var x2 = 0.25;
+		var y2 = null;
+		if(x2 == null) {
+			x2 = 0;
+		}
+		if(y2 == null) {
+			y2 = x2;
+		}
+		sprite5.set_scaleX(x2);
+		sprite5.set_scaleY(y2);
+		container.addChild(sprite5);
+	}
+	,make_handle: function() {
+		this.handle = new ui_EquipmentHandle(this.equipment_data.range.max == 0 ? ui_HandleType.PRESS : ui_HandleType.AIM,this);
+	}
+	,get_effect_value: function() {
+		var out = 0;
+		switch(this.equipment_data.effect.factor) {
+		case "HP":
+			out = this.equipment.owner.health.current;
+			break;
+		case "SHIELD":
+			haxe_Log.trace(this.equipment.owner.shield,{ fileName : "src/ui/EquipmentCard.hx", lineNumber : 79, className : "ui.EquipmentCard", methodName : "get_effect_value"});
+			out = this.equipment.owner.shield;
+			break;
+		case "STATIC":
+			out = this.equipment_data.effect.value;
+			break;
+		case "VALUES":
+			var _g = 0;
+			var _g1 = this.cards;
+			while(_g < _g1.length) {
+				var card = _g1[_g];
+				++_g;
+				out += util_CardUtil.value_to_int(card.data.value);
+			}
+			break;
+		}
+		if(this.equipment_data.effect.scalar != null) {
+			out *= this.equipment_data.effect.scalar;
+		}
+		return out;
+	}
+	,get_effect_string: function() {
+		var val = this.get_effect_value();
+		if(val == 0) {
+			return "_";
+		} else {
+			return "" + val;
+		}
+	}
+	,execute: function(target,point) {
+		this.set_active(false);
+		this.set_expended(true);
+		switch(this.equipment_data.effect.type) {
+		case "DAMAGE":
+			if(target != null) {
+				target.change_health(-this.get_effect_value());
+				var _g = 0;
+				var _g1 = target.equipment.equipment_cards;
+				while(_g < _g1.length) {
+					var equipment = _g1[_g];
+					++_g;
+					if(equipment.equipment_data.weakness == this.equipment_data.equipment_class) {
+						equipment.set_expended(true);
+					}
+				}
+			}
+			break;
+		case "DRAW":
+			scenes_Level.i.deck.deal(this.get_effect_value());
+			break;
+		case "HEALTH":
+			if(target != null) {
+				target.change_health(this.get_effect_value());
+			}
+			break;
+		case "MOVE":
+			if(point != null) {
+				this.equipment.owner.move_to(point[0],point[1]);
+			}
+			break;
+		case "SHIELD":
+			if(target != null) {
+				var _g2 = target;
+				_g2.set_shield(_g2.shield + this.get_effect_value());
+			} else {
+				var _g3 = this.equipment.owner;
+				_g3.set_shield(_g3.shield + this.get_effect_value());
+			}
+			break;
+		}
+		var _g11 = 0;
+		var _g21 = this.cards;
+		while(_g11 < _g21.length) {
+			var card = _g21[_g11];
+			++_g11;
+			zero_utilities_EventBus.dispatch("game_event",{ type : util_EventType.USE_CARD, data : { object : this.equipment.owner, card_data : card.data}});
+		}
 	}
 	,__class__: ui_EquipmentCard
 });
@@ -77066,7 +77476,7 @@ var ui_EquipmentHandle = function(type,parent) {
 	this.active = false;
 	var _gthis = this;
 	openfl_display_Sprite.call(this);
-	this.gear_card = parent;
+	this.equipment_card = parent;
 	this.type = type;
 	this.addChild(this.graphic = new openfl_display_Sprite());
 	this.addEventListener("enterFrame",$bind(this,this.update));
@@ -77109,18 +77519,18 @@ ui_EquipmentHandle.prototype = $extend(openfl_display_Sprite.prototype,{
 	,graphic: null
 	,home: null
 	,dragging: null
-	,gear_card: null
+	,equipment_card: null
 	,level_pos: null
 	,target: null
 	,mouse_over: function(e) {
 		if(this.type == ui_HandleType.PRESS) {
-			this.gear_card.set_active(true);
+			this.equipment_card.set_active(true);
 		} else {
-			scenes_Level.i.draw_indicators(this.gear_card);
+			scenes_Level.i.draw_indicators(this.equipment_card);
 		}
 	}
 	,mouse_out: function(e) {
-		this.gear_card.set_active(false);
+		this.equipment_card.set_active(false);
 	}
 	,mouse_down: function(e) {
 		if(!this.active) {
@@ -77128,7 +77538,7 @@ ui_EquipmentHandle.prototype = $extend(openfl_display_Sprite.prototype,{
 		}
 		this.startDrag(true);
 		this.dragging = true;
-		this.gear_card.set_active(true);
+		this.equipment_card.set_active(true);
 	}
 	,mouse_up: function(e) {
 		if(!this.dragging) {
@@ -77138,7 +77548,7 @@ ui_EquipmentHandle.prototype = $extend(openfl_display_Sprite.prototype,{
 		this.dragging = false;
 		ui_Equipment.active_equipment.link.length = 0;
 		ui_Equipment.active_equipment.link.draw();
-		this.gear_card.set_active(false);
+		this.equipment_card.set_active(false);
 		this.level_pos = this.get_level_pos();
 		scenes_Level.i.clear_indicators();
 		if(this.target != null) {
@@ -77158,7 +77568,7 @@ ui_EquipmentHandle.prototype = $extend(openfl_display_Sprite.prototype,{
 			if(!execute) {
 				return;
 			}
-			this.gear_card.execute(this.target);
+			this.equipment_card.execute(this.target);
 			scenes_Level.i.info_layer.show_info(this.target);
 			this.hide();
 		}
@@ -77171,7 +77581,7 @@ ui_EquipmentHandle.prototype = $extend(openfl_display_Sprite.prototype,{
 			return;
 		}
 		zero_utilities_Tween.get(this).from_to("scaleX",0.5,1).from_to("scaleY",0.5,1).ease(zero_utilities_Ease.elasticOut).duration(0.4).on_complete($bind(this,this.hide));
-		this.gear_card.execute();
+		this.equipment_card.execute();
 	}
 	,show: function() {
 		if(this.active) {
@@ -77193,7 +77603,7 @@ ui_EquipmentHandle.prototype = $extend(openfl_display_Sprite.prototype,{
 	,update: function(e) {
 		ui_Equipment.active_equipment.link.active = this.dragging;
 		if(this.dragging) {
-			var card_pos = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([this.gear_card.get_x(),this.gear_card.get_y()]);
+			var card_pos = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([this.equipment_card.get_x(),this.equipment_card.get_y()]);
 			var this_pos = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([this.get_x(),this.get_y()]);
 			var diff = zero_utilities__$Vec2_Vec2_$Impl_$.subtract(this_pos,card_pos);
 			var sprite = ui_Equipment.active_equipment.link;
@@ -77211,9 +77621,9 @@ ui_EquipmentHandle.prototype = $extend(openfl_display_Sprite.prototype,{
 			this.check_objects(this.get_x(),this.get_y());
 		} else {
 			var _g = this;
-			_g.set_x(_g.get_x() + (this.gear_card.get_x() - this.get_x()) * 0.5);
+			_g.set_x(_g.get_x() + (this.equipment_card.get_x() - this.get_x()) * 0.5);
 			var _g1 = this;
-			_g1.set_y(_g1.get_y() + (this.gear_card.get_y() + ui_EquipmentCard.card_height / 2 - this.get_y()) * 0.5);
+			_g1.set_y(_g1.get_y() + (this.equipment_card.get_y() + ui_EquipmentCard.card_height / 2 - this.get_y()) * 0.5);
 		}
 	}
 	,check_objects: function(x,y,target) {
@@ -77243,7 +77653,7 @@ ui_EquipmentHandle.prototype = $extend(openfl_display_Sprite.prototype,{
 					var pos1 = _g13[_g3];
 					++_g3;
 					if(pos1[0] == target_grid_pos[0] && pos1[1] == target_grid_pos[1]) {
-						scenes_Level.i.info_layer.show_info(target,this.gear_card);
+						scenes_Level.i.info_layer.show_info(target,false,this.equipment_card);
 					}
 				}
 				zero_utilities__$IntPoint_IntPoint_$Impl_$.pool.push(target_grid_pos);
@@ -77271,11 +77681,11 @@ var ui_HandleType = $hxEnums["ui.HandleType"] = { __ename__ : "ui.HandleType", _
 	,PRESS: {_hx_index:1,__enum__:"ui.HandleType",toString:$estr}
 };
 ui_HandleType.__empty_constructs__ = [ui_HandleType.AIM,ui_HandleType.PRESS];
-var ui_GearCard = function(equipment,gear_data) {
-	ui_EquipmentCard.call(this,equipment);
-	this.gear_data = gear_data;
-	this.equipment_data = gear_data;
-	this.data = gear_data;
+var ui_GearCard = function(equipment,data,position) {
+	ui_EquipmentCard.call(this,equipment,position);
+	this.gear_data = data;
+	this.equipment_data = data;
+	this.data = data;
 	this.anchors = [zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([-35,28]),zero_utilities__$Vec2_Vec2_$Impl_$.from_array_int([35,28])];
 	this.draw_card();
 };
@@ -77368,6 +77778,7 @@ ui_GearCard.prototype = $extend(ui_EquipmentCard.prototype,{
 			sprite.set_x(165 - i * 11);
 			sprite.set_y(10);
 			var pip = sprite;
+			util_TooltipUtil.add_info(pip,"gear_ap");
 			contents.addChild(pip);
 		}
 		var sprite1 = new openfl_display_Sprite();
@@ -77384,7 +77795,7 @@ ui_GearCard.prototype = $extend(ui_EquipmentCard.prototype,{
 		}
 		sprite1.get_graphics().endFill();
 		contents.addChild(sprite1);
-		var title = zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : util_Translation.get_font(util_Font.BOLD), size : 16, color : zero_utilities__$Color_Color_$Impl_$.BLACK}),util_Translation.get_gear_title(this.gear_data.id)),40,38,zero_utilities_Anchor.MIDDLE_LEFT);
+		var title = zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : util_Translation.get_font(util_Font.BOLD), size : 16, color : zero_utilities__$Color_Color_$Impl_$.BLACK}),util_Translation.get_equipment_title(this.gear_data.id)),40,38,zero_utilities_Anchor.MIDDLE_LEFT);
 		contents.addChild(title);
 		this.description = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : util_Translation.get_font(util_Font.BOLD), size : 14, color : zero_utilities__$Color_Color_$Impl_$.BLACK, leading : -2});
 		contents.addChild(this.description);
@@ -77447,140 +77858,9 @@ ui_GearCard.prototype = $extend(ui_EquipmentCard.prototype,{
 		sprite4.set_scaleX(x3);
 		sprite4.set_scaleY(y4);
 		contents.addChild(sprite4);
-		var class_src;
-		switch(this.gear_data.equipment_class) {
-		case "ELECTRICITY":
-			class_src = "images/ui/icons/on_white/icon_electrify.png";
-			break;
-		case "EXPLOSIVE":
-			class_src = "images/ui/icons/on_white/icon_explode.png";
-			break;
-		case "FLAME":
-			class_src = "images/ui/icons/on_white/icon_flame.png";
-			break;
-		case "HEALTH":
-			class_src = "images/ui/icons/on_white/icon_health.png";
-			break;
-		case "MOVE":
-			class_src = "images/ui/icons/on_white/icon_move.png";
-			break;
-		case "PIERCING":
-			class_src = "images/ui/icons/on_white/icon_pierce.png";
-			break;
-		case "SHIELD":
-			class_src = "images/ui/icons/on_white/icon_shield.png";
-			break;
-		case "UTILITY":
-			class_src = "images/ui/icons/on_white/icon_utility.png";
-			break;
-		case "WATER":
-			class_src = "images/ui/icons/on_white/icon_water.png";
-			break;
-		default:
-			class_src = "images/blank.png";
-		}
-		var weakness_src;
-		switch(this.gear_data.weakness) {
-		case "ELECTRICITY":
-			weakness_src = "images/ui/icons/on_white/icon_electrify.png";
-			break;
-		case "EXPLOSIVE":
-			weakness_src = "images/ui/icons/on_white/icon_explode.png";
-			break;
-		case "FLAME":
-			weakness_src = "images/ui/icons/on_white/icon_flame.png";
-			break;
-		case "HEALTH":
-			weakness_src = "images/ui/icons/on_white/icon_health.png";
-			break;
-		case "MOVE":
-			weakness_src = "images/ui/icons/on_white/icon_move.png";
-			break;
-		case "PIERCING":
-			weakness_src = "images/ui/icons/on_white/icon_pierce.png";
-			break;
-		case "SHIELD":
-			weakness_src = "images/ui/icons/on_white/icon_shield.png";
-			break;
-		case "UTILITY":
-			weakness_src = "images/ui/icons/on_white/icon_utility.png";
-			break;
-		case "WATER":
-			weakness_src = "images/ui/icons/on_white/icon_water.png";
-			break;
-		default:
-			weakness_src = "images/blank.png";
-		}
-		var sprite5 = zero_openfl_extensions_SpriteTools.load_graphic(new openfl_display_Sprite(),class_src,zero_utilities_Anchor.TOP_LEFT,true);
-		sprite5.set_x(16);
-		sprite5.set_y(196);
-		var sprite6 = sprite5;
-		var x4 = 0.25;
-		var y5 = null;
-		if(x4 == null) {
-			x4 = 0;
-		}
-		if(y5 == null) {
-			y5 = x4;
-		}
-		sprite6.set_scaleX(x4);
-		sprite6.set_scaleY(y5);
-		contents.addChild(sprite6);
-		var sprite7 = zero_openfl_extensions_SpriteTools.load_graphic(new openfl_display_Sprite(),weakness_src,zero_utilities_Anchor.TOP_LEFT,true);
-		sprite7.set_x(160);
-		sprite7.set_y(196);
-		var sprite8 = sprite7;
-		var x5 = 0.25;
-		var y6 = null;
-		if(x5 == null) {
-			x5 = 0;
-		}
-		if(y6 == null) {
-			y6 = x5;
-		}
-		sprite8.set_scaleX(x5);
-		sprite8.set_scaleY(y6);
-		contents.addChild(sprite8);
-		var sprite9 = zero_openfl_extensions_SpriteTools.load_graphic(new openfl_display_Sprite(),"images/ui/icons/icon_skull.png",zero_utilities_Anchor.TOP_LEFT,true);
-		sprite9.set_x(144);
-		sprite9.set_y(180);
-		var sprite10 = sprite9;
-		var x6 = 0.25;
-		var y7 = null;
-		if(x6 == null) {
-			x6 = 0;
-		}
-		if(y7 == null) {
-			y7 = x6;
-		}
-		sprite10.set_scaleX(x6);
-		sprite10.set_scaleY(y7);
-		contents.addChild(sprite10);
-		var sprite11 = new openfl_display_Sprite();
-		var color4 = zero_utilities__$Color_Color_$Impl_$.PICO_8_WHITE;
-		var x7 = -ui_EquipmentCard.card_width / 2 + 4;
-		var y8 = -ui_EquipmentCard.card_height / 2 + 4;
-		var width2 = ui_EquipmentCard.card_width - 8;
-		var height2 = ui_EquipmentCard.card_height - 8;
-		var radius4 = 16;
-		var line_width1 = 8;
-		if(line_width1 == null) {
-			line_width1 = 1;
-		}
-		if(radius4 == null) {
-			radius4 = 0;
-		}
-		sprite11.get_graphics().lineStyle(line_width1,(Math.round(color4[0] * 255) & 255) << 16 | (Math.round(color4[1] * 255) & 255) << 8 | Math.round(color4[2] * 255) & 255,color4[3]);
-		if(radius4 == 0) {
-			sprite11.get_graphics().drawRect(x7,y8,width2,height2);
-		} else {
-			sprite11.get_graphics().drawRoundRect(x7,y8,width2,height2,radius4);
-		}
-		sprite11.get_graphics().lineStyle();
-		this.addChild(this.highlight = sprite11);
-		zero_utilities_Tween.get(this.highlight).from_to("scaleX",1,1.1).from_to("scaleY",1,1.1).from_to("alpha",1,0).type(zero_utilities_TweenType.LOOP_FORWARDS).duration(1).ease(zero_utilities_Ease.quadOut);
-		this.highlight.set_visible(false);
-		this.handle = new ui_EquipmentHandle(this.gear_data.range.max == 0 ? ui_HandleType.PRESS : ui_HandleType.AIM,this);
+		this.draw_classes(contents);
+		this.add_highlight();
+		this.make_handle();
 	}
 	,set_description: function() {
 		var str;
@@ -77730,21 +78010,7 @@ ui_GearCard.prototype = $extend(ui_EquipmentCard.prototype,{
 		zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(this.req_text_r,str),ui_EquipmentCard.card_width / 2 + 36,140,zero_utilities_Anchor.MIDDLE_CENTER);
 	}
 	,get_effect_value: function() {
-		var out = 0;
-		switch(this.gear_data.effect.factor) {
-		case "STATIC":
-			out = this.gear_data.effect.value;
-			break;
-		case "VALUES":
-			var _g = 0;
-			var _g1 = this.cards;
-			while(_g < _g1.length) {
-				var card = _g1[_g];
-				++_g;
-				out += util_CardUtil.value_to_int(card.data.value);
-			}
-			break;
-		}
+		var out = ui_EquipmentCard.prototype.get_effect_value.call(this);
 		if(this.vefify_bonus()) {
 			switch(this.gear_data.bonus.type) {
 			case "DOUBLE_EFFECT_VALUE":
@@ -77761,14 +78027,6 @@ ui_GearCard.prototype = $extend(ui_EquipmentCard.prototype,{
 			}
 		}
 		return out;
-	}
-	,get_effect_string: function() {
-		var val = this.get_effect_value();
-		if(val == 0) {
-			return "_";
-		} else {
-			return "" + val;
-		}
 	}
 	,verify_gear: function() {
 		if(this.cards.length == 0) {
@@ -77862,29 +78120,6 @@ ui_GearCard.prototype = $extend(ui_EquipmentCard.prototype,{
 		}
 		return true;
 	}
-	,execute: function(target) {
-		this.set_active(false);
-		this.set_expended(true);
-		switch(this.gear_data.effect.type) {
-		case "DAMAGE":
-			if(target != null) {
-				target.change_health(-this.get_effect_value());
-			}
-			break;
-		case "DRAW":
-			scenes_Level.i.deck.deal(this.get_effect_value());
-			break;
-		case "HEALTH":
-			if(target != null) {
-				target.change_health(this.get_effect_value());
-			}
-			break;
-		case "MOVE":
-			break;
-		case "SHIELD":
-			break;
-		}
-	}
 	,add_card: function(card) {
 		ui_EquipmentCard.prototype.add_card.call(this,card);
 		this.set_description();
@@ -77922,6 +78157,48 @@ ui_GearCard.prototype = $extend(ui_EquipmentCard.prototype,{
 	}
 	,__class__: ui_GearCard
 });
+var ui_InfoBox = function() {
+	openfl_display_Sprite.call(this);
+	this.make_graphics();
+	zero_utilities_EventBus.listen($bind(this,this.show_info),"tooltip");
+};
+$hxClasses["ui.InfoBox"] = ui_InfoBox;
+ui_InfoBox.__name__ = "ui.InfoBox";
+ui_InfoBox.__super__ = openfl_display_Sprite;
+ui_InfoBox.prototype = $extend(openfl_display_Sprite.prototype,{
+	text: null
+	,bg: null
+	,make_graphics: function() {
+		this.bg = new openfl_display_Sprite();
+		this.text = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : util_Translation.get_font(util_Font.BOLD), size : 16, color : zero_utilities__$Color_Color_$Impl_$.WHITE});
+		this.addChild(this.bg);
+		this.addChild(this.text);
+	}
+	,show_info: function(options) {
+		if(options.info == null) {
+			this.set_visible(false);
+			return;
+		}
+		this.set_visible(true);
+		this.bg.get_graphics().clear();
+		zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(this.text,options.info),16,0,zero_utilities_Anchor.MIDDLE_LEFT);
+		var sprite = this.bg;
+		var color = zero_utilities__$Color_Color_$Impl_$.PICO_8_DARK_BLUE;
+		var width = this.text.get_width() + 32;
+		var radius = 4;
+		if(radius == null) {
+			radius = 0;
+		}
+		sprite.get_graphics().beginFill((Math.round(color[0] * 255) & 255) << 16 | (Math.round(color[1] * 255) & 255) << 8 | Math.round(color[2] * 255) & 255,color[3]);
+		if(radius == 0) {
+			sprite.get_graphics().drawRect(0,-24,width,48);
+		} else {
+			sprite.get_graphics().drawRoundRect(0,-24,width,48,radius);
+		}
+		sprite.get_graphics().endFill();
+	}
+	,__class__: ui_InfoBox
+});
 var ui_InfoLayer = function() {
 	openfl_display_Sprite.call(this);
 	this.addChild(this.object_info = new ui_ObjectInfo());
@@ -77931,20 +78208,28 @@ ui_InfoLayer.__name__ = "ui.InfoLayer";
 ui_InfoLayer.__super__ = openfl_display_Sprite;
 ui_InfoLayer.prototype = $extend(openfl_display_Sprite.prototype,{
 	object_info: null
-	,show_info: function(object,gear) {
+	,show_info: function(object,draw_indicators,equipment) {
+		if(draw_indicators == null) {
+			draw_indicators = true;
+		}
+		if(((object) instanceof objects_Pickup)) {
+			return;
+		}
 		var _g = [];
 		var _g1 = 0;
-		var _g2 = object.equipment.gear_cards;
+		var _g2 = object.equipment.equipment_cards;
 		while(_g1 < _g2.length) {
 			var card = _g2[_g1];
 			++_g1;
-			if(card.equipment_data.effect.type == "DAMAGE") {
+			if(!card.expended && card.equipment_data.effect.type == "DAMAGE") {
 				_g.push(card);
 			}
 		}
 		var cards = _g;
-		scenes_Level.i.draw_indicators(null,cards);
-		this.object_info.set_target(object,gear);
+		if(draw_indicators) {
+			scenes_Level.i.draw_indicators(null,cards);
+		}
+		this.object_info.set_target(object,equipment);
 		this.object_info.active = true;
 	}
 	,hide_info: function(clear_indicators) {
@@ -78195,6 +78480,16 @@ ui_MoveCard.prototype = $extend(ui_DropCard.prototype,{
 			return 9999;
 		}
 	}
+	,execute: function() {
+		this.set_expended(true);
+		var _g = 0;
+		var _g1 = this.cards;
+		while(_g < _g1.length) {
+			var card = _g1[_g];
+			++_g;
+			zero_utilities_EventBus.dispatch("game_event",{ type : util_EventType.USE_CARD, data : { object : this.equipment.owner, card_data : card.data}});
+		}
+	}
 	,__class__: ui_MoveCard
 });
 var ui_MoveFactor = $hxEnums["ui.MoveFactor"] = { __ename__ : "ui.MoveFactor", __constructs__ : ["STATIC","VALUE","VALUE_HALF","VALUE_X_TWO","INFINITE"]
@@ -78211,6 +78506,169 @@ var ui_MoveType = $hxEnums["ui.MoveType"] = { __ename__ : "ui.MoveType", __const
 	,TELEPORT: {_hx_index:2,__enum__:"ui.MoveType",toString:$estr}
 };
 ui_MoveType.__empty_constructs__ = [ui_MoveType.FREE,ui_MoveType.ROOK,ui_MoveType.TELEPORT];
+var ui_MutantCard = function(equipment,data,position) {
+	ui_EquipmentCard.call(this,equipment,position);
+	this.mutant_data = data;
+	this.equipment_data = data;
+	this.data = data;
+	this.draw_card();
+	zero_utilities_EventBus.listen($bind(this,this.listen),"game_event");
+};
+$hxClasses["ui.MutantCard"] = ui_MutantCard;
+ui_MutantCard.__name__ = "ui.MutantCard";
+ui_MutantCard.__super__ = ui_EquipmentCard;
+ui_MutantCard.prototype = $extend(ui_EquipmentCard.prototype,{
+	mutant_data: null
+	,one_shot_highlight: null
+	,mouse_over: function(e) {
+		if(!this.expended && this.mutant_data.range.max > 0) {
+			scenes_Level.i.draw_indicators(this);
+		}
+	}
+	,mouse_out: function(e) {
+		if(!this.active) {
+			scenes_Level.i.clear_indicators();
+		}
+	}
+	,draw_card: function() {
+		var sprite = zero_openfl_extensions_SpriteTools.load_graphic(new openfl_display_Sprite(),"images/ui/mutant_card.png",zero_utilities_Anchor.MIDDLE_CENTER,true);
+		var x = 0.25;
+		var y = null;
+		if(x == null) {
+			x = 0;
+		}
+		if(y == null) {
+			y = x;
+		}
+		sprite.set_scaleX(x);
+		sprite.set_scaleY(y);
+		var back = sprite;
+		this.addChild(back);
+		var sprite1 = new openfl_display_Sprite();
+		var y1 = -ui_EquipmentCard.card_height / 2;
+		sprite1.set_x(-ui_EquipmentCard.card_width / 2);
+		sprite1.set_y(y1);
+		var content = sprite1;
+		this.addChild(content);
+		var title = zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : util_Translation.get_font(util_Font.BOLD), size : 16, color : zero_utilities__$Color_Color_$Impl_$.BLACK}),util_Translation.get_equipment_title(this.mutant_data.id)),40,42,zero_utilities_Anchor.MIDDLE_LEFT);
+		content.addChild(title);
+		var description = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : util_Translation.get_font(util_Font.BOLD), size : 14, color : zero_utilities__$Color_Color_$Impl_$.BLACK, leading : -2, align : 0});
+		zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(description,zero_openfl_extensions_TextTools.wrap_string(util_Translation.get_mutant_description(this.mutant_data.id),description,112)),ui_EquipmentCard.card_width / 2,ui_EquipmentCard.card_height / 2 + 12,zero_utilities_Anchor.MIDDLE_CENTER);
+		content.addChild(description);
+		this.draw_classes(content);
+		var sprite2 = new openfl_display_Sprite();
+		var color = zero_utilities__$Color_Color_$Impl_$.PICO_8_WHITE;
+		var x1 = -ui_EquipmentCard.card_width / 2 + 4;
+		var y2 = -ui_EquipmentCard.card_height / 2 + 4;
+		var width = ui_EquipmentCard.card_width - 8;
+		var height = ui_EquipmentCard.card_height - 8;
+		var radius = 16;
+		var line_width = 8;
+		if(line_width == null) {
+			line_width = 1;
+		}
+		if(radius == null) {
+			radius = 0;
+		}
+		sprite2.get_graphics().lineStyle(line_width,(Math.round(color[0] * 255) & 255) << 16 | (Math.round(color[1] * 255) & 255) << 8 | Math.round(color[2] * 255) & 255,color[3]);
+		if(radius == 0) {
+			sprite2.get_graphics().drawRect(x1,y2,width,height);
+		} else {
+			sprite2.get_graphics().drawRoundRect(x1,y2,width,height,radius);
+		}
+		sprite2.get_graphics().lineStyle();
+		this.addChild(this.one_shot_highlight = sprite2);
+		this.one_shot_highlight.set_alpha(0);
+		this.make_handle();
+	}
+	,execute: function(target,point) {
+		ui_EquipmentCard.prototype.execute.call(this,target,point);
+		zero_utilities_Tween.get(this.one_shot_highlight).from_to("alpha",1,0).from_to("scaleX",1,1.1).from_to("scaleY",1,1.1).duration(0.5).ease(zero_utilities_Ease.quadOut);
+		zero_utilities_Tween.get(this).from_to("scaleX",1.1,1).from_to("scaleY",1.1,1).duration(0.5).ease(zero_utilities_Ease.quadOut);
+	}
+	,verify: function() {
+	}
+	,listen: function(ev) {
+		if(this.mutant_data.listen != ev.type) {
+			return;
+		}
+		switch(ev.type._hx_index) {
+		case 0:
+			break;
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			if(ev.data.object == this.equipment.owner) {
+				this.check_card(ev.data.card_data);
+			}
+			break;
+		case 4:
+			if(ev.data.object == this.equipment.owner) {
+				if(ev.data.value > 0) {
+					this.handle.show();
+				} else {
+					this.handle.hide();
+				}
+			}
+			break;
+		}
+	}
+	,check_card: function(card_data) {
+		switch(this.data.requirement) {
+		case "CLUBS":
+			if(card_data.suit == ui_PlayingCardSuit.CLUBS) {
+				this.execute(this.equipment.owner);
+			}
+			break;
+		case "DIAMONDS":
+			if(card_data.suit == ui_PlayingCardSuit.DIAMONDS) {
+				this.execute(this.equipment.owner);
+			}
+			break;
+		case "EXACT_CARD":
+			if(util_CardUtil.value_to_int(card_data.value) == this.data.requirement_value) {
+				this.execute(this.equipment.owner);
+			}
+			break;
+		case "HEARTS":
+			if(card_data.suit == ui_PlayingCardSuit.HEARTS) {
+				this.execute(this.equipment.owner);
+			}
+			break;
+		case "IS_FACE":
+			if(util_CardUtil.value_to_int(card_data.value) >= 11) {
+				this.execute(this.equipment.owner);
+			}
+			break;
+		case "MAX_CARD":
+			if(util_CardUtil.value_to_int(card_data.value) <= this.data.requirement_value) {
+				this.execute(this.equipment.owner);
+			}
+			break;
+		case "MIN_CARD":
+			if(util_CardUtil.value_to_int(card_data.value) >= this.data.requirement_value) {
+				this.execute(this.equipment.owner);
+			}
+			break;
+		case "NOT_FACE":
+			if(util_CardUtil.value_to_int(card_data.value) <= 10) {
+				this.execute(this.equipment.owner);
+			}
+			break;
+		case "SPADES":
+			if(card_data.suit == ui_PlayingCardSuit.SPADES) {
+				this.execute(this.equipment.owner);
+			}
+			break;
+		default:
+			return;
+		}
+		this.set_expended(false);
+	}
+	,__class__: ui_MutantCard
+});
 var ui_ObjectInfo = function() {
 	this.active = false;
 	openfl_display_Sprite.call(this);
@@ -78273,20 +78731,20 @@ ui_ObjectInfo.prototype = $extend(openfl_display_Sprite.prototype,{
 		this.set_x(this.global_pos.x);
 		this.set_y(y);
 	}
-	,draw_target_info: function(target,gear) {
+	,draw_target_info: function(target,equipment) {
 		var cur_hp = target.health.current + target.shield;
 		var max_hp = target.health.max + target.shield;
 		var next_hp;
-		if(gear == null) {
+		if(equipment == null) {
 			next_hp = cur_hp;
 		} else {
 			var next_hp1;
-			switch(gear.gear_data.effect.type) {
+			switch(equipment.equipment_data.effect.type) {
 			case "DAMAGE":
-				next_hp1 = -gear.get_effect_value();
+				next_hp1 = -equipment.get_effect_value();
 				break;
 			case "HEALTH":
-				next_hp1 = gear.get_effect_value();
+				next_hp1 = equipment.get_effect_value();
 				break;
 			case "MOVE":
 				next_hp1 = 0;
@@ -78528,6 +78986,7 @@ ui_PlayerInfo.prototype = $extend(openfl_display_Sprite.prototype,{
 		parent.addChild(sprite2);
 		this.addChild(this.ap_pts);
 		this.ap_pts.addChild(this.ap_pts_text);
+		util_TooltipUtil.add_info(this.ap_pts,"player_ap");
 		this.update_ap_pts();
 	}
 	,make_health: function() {
@@ -78537,12 +78996,13 @@ ui_PlayerInfo.prototype = $extend(openfl_display_Sprite.prototype,{
 		this.health = sprite;
 		this.health_text_sprite = new openfl_display_Sprite();
 		this.health_text = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : util_Translation.get_font(util_Font.BOLD), color : zero_utilities__$Color_Color_$Impl_$.PICO_8_WHITE, size : 24});
-		var filter = new openfl_filters_ShaderFilter(new filters_OutlineShader());
+		var filter = new openfl_filters_ShaderFilter(new filters_OutlineShader(zero_utilities__$Color_Color_$Impl_$.BLACK));
 		filter.topExtension = filter.bottomExtension = filter.leftExtension = filter.rightExtension = 64;
 		this.health_text_sprite.set_filters([filter]);
 		this.addChild(this.health);
 		this.health_text_sprite.addChild(this.health_text);
 		this.health.addChild(this.health_text_sprite);
+		util_TooltipUtil.add_info(this.health,"player_health");
 		this.update_health();
 	}
 	,make_shield: function() {
@@ -78566,17 +79026,15 @@ ui_PlayerInfo.prototype = $extend(openfl_display_Sprite.prototype,{
 		var shield_text_sprite = new openfl_display_Sprite();
 		this.shield_text = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : util_Translation.get_font(util_Font.BOLD), color : zero_utilities__$Color_Color_$Impl_$.BLACK, size : 14});
 		shield_text_sprite.addChild(this.shield_text);
-		var filter = new openfl_filters_ShaderFilter(new filters_OutlineShader());
-		filter.topExtension = filter.bottomExtension = filter.leftExtension = filter.rightExtension = 16;
-		this.health_text_sprite.set_filters([filter]);
 		this.addChild(this.shield);
 		this.shield.addChild(shield_text_sprite);
+		util_TooltipUtil.add_info(this.shield,"player_shield");
 	}
 	,update_ap_pts: function() {
 		zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(this.ap_pts_text,"" + this.player.AP),0,0,zero_utilities_Anchor.MIDDLE_CENTER);
 	}
 	,update_health: function() {
-		zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(this.health_text,"" + Math.floor(this.player.health.current)),0,0,zero_utilities_Anchor.MIDDLE_CENTER);
+		zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(this.health_text,"" + Math.floor(this.player.health.current)),0,-1,zero_utilities_Anchor.MIDDLE_CENTER);
 		this.health.get_graphics().clear();
 		var sprite = this.health;
 		var color = zero_utilities__$Color_Color_$Impl_$.BLACK;
@@ -78648,6 +79106,9 @@ ui_PlayerInfo.prototype = $extend(openfl_display_Sprite.prototype,{
 		zero_utilities_Tween.get(this.shield).from_to("scaleX",from,to).from_to("scaleY",from,to).duration(0.5).ease(zero_utilities_Ease.backOut);
 	}
 	,on_click: function(e) {
+		if(!util_TurnUtil.player_turn) {
+			return;
+		}
 		objects_Player.set_selected_player(this.player);
 	}
 	,__class__: ui_PlayerInfo
@@ -78902,7 +79363,7 @@ ui_PlayingCard.prototype = $extend(ui_Card.prototype,{
 			zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(pos);
 			pos = null;
 			var _g = 0;
-			var _g1 = ui_Equipment.active_equipment.gear_cards;
+			var _g1 = ui_Equipment.active_equipment.equipment_cards;
 			while(_g < _g1.length) {
 				var gear = _g1[_g];
 				++_g;
@@ -79090,10 +79551,10 @@ util_CardUtil.suit_to_string = function(suit) {
 		return "Spades";
 	}
 };
-var util_GearUtil = function() { };
-$hxClasses["util.GearUtil"] = util_GearUtil;
-util_GearUtil.__name__ = "util.GearUtil";
-util_GearUtil.init = function() {
+var util_EquipmentUtil = function() { };
+$hxClasses["util.EquipmentUtil"] = util_EquipmentUtil;
+util_EquipmentUtil.__name__ = "util.EquipmentUtil";
+util_EquipmentUtil.init = function() {
 	var _g = [];
 	var _g1 = 0;
 	var _g2 = openfl_utils_Assets.getText("data/gear.jsonc").split("\n");
@@ -79102,19 +79563,94 @@ util_GearUtil.init = function() {
 		++_g1;
 		_g.push(line.split("//")[0]);
 	}
-	util_GearUtil.gear_data = JSON.parse(_g.join("\n"));
+	util_EquipmentUtil.gear_data = JSON.parse(_g.join("\n"));
+	var _g3 = [];
+	var _g11 = 0;
+	var _g21 = openfl_utils_Assets.getText("data/mutant.jsonc").split("\n");
+	while(_g11 < _g21.length) {
+		var line1 = _g21[_g11];
+		++_g11;
+		_g3.push(line1.split("//")[0]);
+	}
+	util_EquipmentUtil.mutant_data = JSON.parse(_g3.join("\n"));
 };
-util_GearUtil.get_gear_data = function(id) {
+util_EquipmentUtil.id_type = function(id) {
 	var _g = 0;
-	var _g1 = util_GearUtil.gear_data;
+	var _g1 = util_EquipmentUtil.gear_data;
 	while(_g < _g1.length) {
-		var gear = _g1[_g];
+		var data = _g1[_g];
 		++_g;
-		if(gear.id == id) {
-			return gear;
+		if(data.id == id) {
+			return util_IDType.GEAR;
+		}
+	}
+	var _g2 = 0;
+	var _g3 = util_EquipmentUtil.mutant_data;
+	while(_g2 < _g3.length) {
+		var data1 = _g3[_g2];
+		++_g2;
+		if(data1.id == id) {
+			return util_IDType.MUTANT;
+		}
+	}
+	return util_IDType.NONE;
+};
+util_EquipmentUtil.get_gear_data = function(id) {
+	var _g = 0;
+	var _g1 = util_EquipmentUtil.gear_data;
+	while(_g < _g1.length) {
+		var data = _g1[_g];
+		++_g;
+		if(data.id == id) {
+			return data;
 		}
 	}
 	return null;
+};
+util_EquipmentUtil.get_mutant_data = function(id) {
+	var _g = 0;
+	var _g1 = util_EquipmentUtil.mutant_data;
+	while(_g < _g1.length) {
+		var data = _g1[_g];
+		++_g;
+		if(data.id == id) {
+			return data;
+		}
+	}
+	return null;
+};
+var util_IDType = $hxEnums["util.IDType"] = { __ename__ : "util.IDType", __constructs__ : ["NONE","GEAR","MUTANT"]
+	,NONE: {_hx_index:0,__enum__:"util.IDType",toString:$estr}
+	,GEAR: {_hx_index:1,__enum__:"util.IDType",toString:$estr}
+	,MUTANT: {_hx_index:2,__enum__:"util.IDType",toString:$estr}
+};
+util_IDType.__empty_constructs__ = [util_IDType.NONE,util_IDType.GEAR,util_IDType.MUTANT];
+var util_EventUtil = function() { };
+$hxClasses["util.EventUtil"] = util_EventUtil;
+util_EventUtil.__name__ = "util.EventUtil";
+util_EventUtil.dispatch = function(ev_type,data) {
+	zero_utilities_EventBus.dispatch("game_event",{ type : ev_type, data : data});
+};
+var util_EventType = $hxEnums["util.EventType"] = { __ename__ : "util.EventType", __constructs__ : ["PLAYER_TURN","ENEMY_TURN","ATTACK","USE_CARD","SHIELD"]
+	,PLAYER_TURN: {_hx_index:0,__enum__:"util.EventType",toString:$estr}
+	,ENEMY_TURN: {_hx_index:1,__enum__:"util.EventType",toString:$estr}
+	,ATTACK: {_hx_index:2,__enum__:"util.EventType",toString:$estr}
+	,USE_CARD: {_hx_index:3,__enum__:"util.EventType",toString:$estr}
+	,SHIELD: {_hx_index:4,__enum__:"util.EventType",toString:$estr}
+};
+util_EventType.__empty_constructs__ = [util_EventType.PLAYER_TURN,util_EventType.ENEMY_TURN,util_EventType.ATTACK,util_EventType.USE_CARD,util_EventType.SHIELD];
+var util_TooltipUtil = function() { };
+$hxClasses["util.TooltipUtil"] = util_TooltipUtil;
+util_TooltipUtil.__name__ = "util.TooltipUtil";
+util_TooltipUtil.add_info = function(object,info_id) {
+	object.addEventListener("mouseOver",function(e) {
+		zero_utilities_EventBus.dispatch("tooltip",{ info : util_Translation.get_tooltip_text(info_id)});
+		return;
+	});
+	object.addEventListener("mouseOut",function(e1) {
+		zero_utilities_EventBus.dispatch("tooltip",{ });
+		return;
+	});
 };
 var util_Translation = function() { };
 $hxClasses["util.Translation"] = util_Translation;
@@ -79122,13 +79658,13 @@ util_Translation.__name__ = "util.Translation";
 util_Translation.init = function() {
 	var _g = [];
 	var _g1 = 0;
-	var _g2 = openfl_utils_Assets.getText("data/translations/gear_titles.jsonc").split("\n");
+	var _g2 = openfl_utils_Assets.getText("data/translations/equipment_titles.jsonc").split("\n");
 	while(_g1 < _g2.length) {
 		var line = _g2[_g1];
 		++_g1;
 		_g.push(line.split("//")[0]);
 	}
-	util_Translation.gear_titles = JSON.parse(_g.join("\n"));
+	util_Translation.equipment_titles = util_Translation.map(JSON.parse(_g.join("\n")));
 	var _g3 = [];
 	var _g11 = 0;
 	var _g21 = openfl_utils_Assets.getText("data/translations/gameplay.jsonc").split("\n");
@@ -79137,26 +79673,44 @@ util_Translation.init = function() {
 		++_g11;
 		_g3.push(line1.split("//")[0]);
 	}
-	util_Translation.gameplay = JSON.parse(_g3.join("\n"));
-	var _g4 = 0;
-	var _g5 = [];
+	util_Translation.gameplay = util_Translation.map(JSON.parse(_g3.join("\n")));
+	var _g4 = [];
 	var _g12 = 0;
-	var _g22 = util_Font.__empty_constructs__.slice();
+	var _g22 = openfl_utils_Assets.getText("data/translations/mutant_descriptions.jsonc").split("\n");
 	while(_g12 < _g22.length) {
-		var e1 = _g22[_g12];
+		var line2 = _g22[_g12];
 		++_g12;
-		_g5.push(e1);
+		_g4.push(line2.split("//")[0]);
 	}
-	var _g13 = _g5;
-	while(_g4 < _g13.length) {
-		var font = _g13[_g4];
-		++_g4;
+	util_Translation.mutant_descriptions = util_Translation.map(JSON.parse(_g4.join("\n")));
+	var _g5 = [];
+	var _g13 = 0;
+	var _g23 = openfl_utils_Assets.getText("data/translations/tooltip_text.jsonc").split("\n");
+	while(_g13 < _g23.length) {
+		var line3 = _g23[_g13];
+		++_g13;
+		_g5.push(line3.split("//")[0]);
+	}
+	util_Translation.tooltip_text = util_Translation.map(JSON.parse(_g5.join("\n")));
+	var _g6 = 0;
+	var _g7 = [];
+	var _g14 = 0;
+	var _g24 = util_Font.__empty_constructs__.slice();
+	while(_g14 < _g24.length) {
+		var e1 = _g24[_g14];
+		++_g14;
+		_g7.push(e1);
+	}
+	var _g15 = _g7;
+	while(_g6 < _g15.length) {
+		var font = _g15[_g6];
+		++_g6;
 		util_Translation.fonts.set(font,new haxe_ds_StringMap());
-		var _g6 = 0;
-		var _g14 = util_Translation.languages;
-		while(_g6 < _g14.length) {
-			var ln = _g14[_g6];
-			++_g6;
+		var _g8 = 0;
+		var _g16 = util_Translation.languages;
+		while(_g8 < _g16.length) {
+			var ln = _g16[_g8];
+			++_g8;
 			var _this = util_Translation.fonts.get(font);
 			var key = ln;
 			if(__map_reserved[key] != null) {
@@ -79173,11 +79727,78 @@ util_Translation.init = function() {
 		_this1.h["en"] = "Oduda Bold";
 	}
 };
-util_Translation.get_gear_title = function(id) {
-	return Reflect.field(util_Translation.gear_titles[id],util_Translation.language);
+util_Translation.map = function(data) {
+	var out = new haxe_ds_StringMap();
+	var _g = 0;
+	var _g1 = Reflect.fields(data);
+	while(_g < _g1.length) {
+		var f = _g1[_g];
+		++_g;
+		var set = new haxe_ds_StringMap();
+		var set_data = Reflect.field(data,f);
+		var _g2 = 0;
+		var _g11 = Reflect.fields(set_data);
+		while(_g2 < _g11.length) {
+			var ff = _g11[_g2];
+			++_g2;
+			var value = Reflect.field(set_data,ff);
+			if(__map_reserved[ff] != null) {
+				set.setReserved(ff,value);
+			} else {
+				set.h[ff] = value;
+			}
+		}
+		if(__map_reserved[f] != null) {
+			out.setReserved(f,set);
+		} else {
+			out.h[f] = set;
+		}
+	}
+	return out;
+};
+util_Translation.get_equipment_title = function(id) {
+	var _this = util_Translation.equipment_titles;
+	var this1 = __map_reserved[id] != null ? _this.getReserved(id) : _this.h[id];
+	var key = util_Translation.language;
+	var _this1 = this1;
+	if(__map_reserved[key] != null) {
+		return _this1.getReserved(key);
+	} else {
+		return _this1.h[key];
+	}
+};
+util_Translation.get_mutant_description = function(id) {
+	var _this = util_Translation.mutant_descriptions;
+	var this1 = __map_reserved[id] != null ? _this.getReserved(id) : _this.h[id];
+	var key = util_Translation.language;
+	var _this1 = this1;
+	if(__map_reserved[key] != null) {
+		return _this1.getReserved(key);
+	} else {
+		return _this1.h[key];
+	}
 };
 util_Translation.get_gameplay_text = function(id) {
-	return Reflect.field(util_Translation.gameplay[id],util_Translation.language);
+	var _this = util_Translation.gameplay;
+	var this1 = __map_reserved[id] != null ? _this.getReserved(id) : _this.h[id];
+	var key = util_Translation.language;
+	var _this1 = this1;
+	if(__map_reserved[key] != null) {
+		return _this1.getReserved(key);
+	} else {
+		return _this1.h[key];
+	}
+};
+util_Translation.get_tooltip_text = function(id) {
+	var _this = util_Translation.tooltip_text;
+	var this1 = __map_reserved[id] != null ? _this.getReserved(id) : _this.h[id];
+	var key = util_Translation.language;
+	var _this1 = this1;
+	if(__map_reserved[key] != null) {
+		return _this1.getReserved(key);
+	} else {
+		return _this1.h[key];
+	}
 };
 util_Translation.replace = function(str,v) {
 	return StringTools.replace(str,"$",v);
@@ -79196,6 +79817,9 @@ var util_Font = $hxEnums["util.Font"] = { __ename__ : "util.Font", __constructs_
 	,BOLD: {_hx_index:0,__enum__:"util.Font",toString:$estr}
 };
 util_Font.__empty_constructs__ = [util_Font.BOLD];
+var util_TurnUtil = function() { };
+$hxClasses["util.TurnUtil"] = util_TurnUtil;
+util_TurnUtil.__name__ = "util.TurnUtil";
 var util_UpdateManager = function() { };
 $hxClasses["util.UpdateManager"] = util_UpdateManager;
 util_UpdateManager.__name__ = "util.UpdateManager";
@@ -80637,7 +81261,7 @@ zero_openfl_utilities_Game.prototype = {
 		this.scene = scene;
 		scene.create();
 		zero_openfl_utilities_Game.root.addChild(scene);
-		zero_openfl_utilities_Game.root.addChild(new zero_openfl_utilities_FPS(10,zero_openfl_utilities_Game.get_height() - 64,16777215));
+		zero_openfl_utilities_Game.root.addChild(new zero_openfl_utilities_FPS(10,zero_openfl_utilities_Game.get_height() - 128,16777215));
 	}
 	,__class__: zero_openfl_utilities_Game
 };
@@ -85367,7 +85991,7 @@ while(_g2 < _g3) {
 }
 lime_system_CFFI.available = false;
 lime_system_CFFI.enabled = false;
-lime_utils_Log.level = 4;
+lime_utils_Log.level = 5;
 if(typeof console == "undefined") {
 	console = {}
 }
@@ -87730,6 +88354,7 @@ util_Translation.language = "en";
 util_Translation.fonts = new haxe_ds_EnumValueMap();
 util_Translation.languages = ["en","af","sq","am","ar","hy","az","eu","be","bn","bs","bg","ca","ceb","zh","zh_CN","zh_TW","co","hr","cs","da","nl","eo","et","fi","fr","fy","gl","ka","de","el","gu","ht","ha","haw","he","hi","hmn","hu","is","ig","id","ga","it","ja","jw","kn","kk","km","ko","ku","ky","lo","la","lv","lt","lb","mk","mg","ms","ml","mt","mi","mr","mn","my","ne","no","ny","ps","fa","pl","pt","pa","ro","ru","sm","gd","sr","st","sn","sd","si","sk","sl","so","es","su","sw","sv","tl","tg","ta","te","th","tr","uk","ur","uz","vi","cy","xh","yi","yo","zu"];
 util_Translation.supported_languages = ["en"];
+util_TurnUtil.player_turn = true;
 util_UpdateManager.last = 0.0;
 util_UpdateManager.wait = false;
 util_UpdateManager.fps_array = [];

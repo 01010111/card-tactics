@@ -62,7 +62,7 @@
 		},
 		"requirement": "IS_FACE",
 		"equipment_class": "HEALTH",
-		"weakness": "FLAME"
+		"weakness": "EXPLOSIVE"
 	},
 	{
 		"id": "test_u_01",
