@@ -14,20 +14,13 @@ using util.CardUtil;
 
 class DropCard extends Card {
 
-	var anchor:Vec2;
-	var handle:EquipmentHandle;
+	public var active(default, set):Bool = false;
+	public var expended(default, set):Bool = false;
 	var grayscale_filter:ColorMatrixFilter = new ColorMatrixFilter([0.25, 0.25, 0.25, 0, 0, 0.25, 0.25, 0.25, 0, 0, 0.25, 0.25, 0.25, 0, 0, 0, 0, 0, 1, 1]);
+	var anchor:Vec2;
 	var anchors:Array<Vec2>;
 	var cards:Array<PlayingCard> = [];
 	var data:DropCardData;
-	public var active(default, set):Bool = false;
-	function set_active(b:Bool) return active = b && !expended;
-	public var expended(default, set):Bool = false;
-	function set_expended(b:Bool) {
-		filters = b ? [grayscale_filter] : [];
-		if (b) handle.hide();
-		return expended = b;
-	}
 	var highlight:Sprite;
 	var last:Vec2;
 
@@ -108,7 +101,6 @@ class DropCard extends Card {
 		cards.remove(card);
 	}
 
-	var t = 0.0;
 	function update(e:Event) {
 		var i = 0;
 		for (card in cards) {
@@ -126,6 +118,15 @@ class DropCard extends Card {
 		addChild(highlight = new Sprite().rect(Color.PICO_8_WHITE, -EquipmentCard.card_width/2 + 4, -EquipmentCard.card_height/2 + 4, EquipmentCard.card_width - 8, EquipmentCard.card_height - 8, 16, 8));
 		Tween.get(highlight).from_to('scaleX', 1, 1.1).from_to('scaleY', 1, 1.1).from_to('alpha', 1, 0).type(LOOP_FORWARDS).duration(1).ease(Ease.quadOut);
 		highlight.visible = false;
+	}
+
+	function set_active(b:Bool) {
+		return active = b && !expended;
+	}
+	
+	function set_expended(b:Bool) {
+		filters = b ? [grayscale_filter] : [];
+		return expended = b;
 	}
 
 }

@@ -2,9 +2,6 @@ package objects;
 
 import util.TurnUtil;
 import ui.MutantCard;
-import ui.EquipmentCard;
-import zero.utilities.Color;
-import openfl.display.Sprite;
 import objects.Actor.ActorData;
 import ui.GearCard;
 import openfl.events.MouseEvent;
@@ -36,6 +33,10 @@ class Player extends Actor {
 		equipment = new Equipment(this, options.side);
 		var i = 0;
 		for (id in options.data.equipment) {
+			if (id == null) {
+				i++;
+				continue;
+			}
 			switch EquipmentUtil.id_type(id) {
 				case NONE:continue;
 				case GEAR:equipment.add_card(new GearCard(equipment, EquipmentUtil.get_gear_data(id), i++));

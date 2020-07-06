@@ -232,6 +232,7 @@ class GearCard extends EquipmentCard {
 		verify_gear() ? handle.show() : handle.hide();
 	}
 
+	var t = 0.0;
 	override function update(e:Event) {
 		super.update(e);
 		highlight.visible = active;

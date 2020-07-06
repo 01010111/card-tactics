@@ -16,9 +16,18 @@
   - [ ] Create UI for placing new Gear
   - [ ] Interaction for (re)placing gear
 
+- [ ] Refactor Equipment
+  - [ ] Data first
+  - [ ] Generate Sprites from data
+
 # Bugs
 
 # Completed
+
+7/6/2020
+- [x] Move Card
+  - [x] Cards not counted as played
+  - [x] Cards are movable after played
 
 7/2/2020
 - [x] Info

@@ -1,6 +1,5 @@
 package objects;
 
-import openfl.events.MouseEvent;
 import util.EquipmentUtil;
 import zero.utilities.Ease;
 import zero.utilities.Tween;

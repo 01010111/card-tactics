@@ -29,6 +29,7 @@ class MutantCard extends EquipmentCard {
 		this.data = data;
 		draw_card();
 		listen.listen('game_event');
+		can_be_replaced = false;
 	}
 
 	override function mouse_over(e:MouseEvent) {

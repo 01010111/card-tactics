@@ -10,6 +10,10 @@ import objects.Player;
 
 class Equipment extends Sprite {
 
+	public static var editting(default, set):Bool = false;
+	static function set_editting(v:Bool) {
+		return editting = v;
+	}
 	public static var active_equipment(default, set):Equipment;
 	static function set_active_equipment(equipment:Equipment) {
 		if (active_equipment != null) active_equipment.active = false;
@@ -23,7 +27,6 @@ class Equipment extends Sprite {
 	public var move_card:MoveCard;
 	public var owner:GameObject;
 	public var player_info:PlayerInfo;
-	public var editting:Bool = false;
 
 	var gear:Sprite;
 	var side:PlayerSide;

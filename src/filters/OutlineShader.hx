@@ -1,7 +1,6 @@
 package filters;
 
 import zero.utilities.Color;
-import zero.utilities.Vec2;
 import openfl.display.Shader;
 
 class OutlineShader extends Shader 
@@ -70,9 +69,8 @@ class OutlineShader extends Shader
 		}
 	")
 
-	public function new(color:Color, thickness:Float = 3, quality:Int = 16) {
+	public function new(color:Color, thickness:Float = 3) {
 		super();
-		// TODO: Make these work
 		data.color.value = color;
 		data.thickness.value = [thickness];
 	}

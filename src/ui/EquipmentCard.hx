@@ -16,6 +16,8 @@ class EquipmentCard extends DropCard {
 	public var equipment:Equipment;
 	public var equipment_data:EquipmentData;
 	public var equipment_position:Int;
+	public var can_be_replaced:Bool = true;
+	var handle:EquipmentHandle;
 
 	public function new(equipment:Equipment, position:Int) {
 		super();
@@ -26,13 +28,8 @@ class EquipmentCard extends DropCard {
 		addEventListener(MouseEvent.MOUSE_OUT, mouse_out);
 	}
 
-	function mouse_over(e:MouseEvent) {
-		
-	}
-
-	function mouse_out(e:MouseEvent) {
-		
-	}
+	function mouse_over(e:MouseEvent) {}
+	function mouse_out(e:MouseEvent) {}
 
 	public function draw_classes(container:Sprite) {
 		var class_src = switch equipment_data.equipment_class {
@@ -76,7 +73,6 @@ class EquipmentCard extends DropCard {
 			case STATIC:
 				out = equipment_data.effect.value;
 			case SHIELD:
-				trace(equipment.owner.shield);
 				out = equipment.owner.shield;
 			case HP:
 				out = equipment.owner.health.current;
@@ -110,6 +106,11 @@ class EquipmentCard extends DropCard {
 				Level.i.deck.deal(get_effect_value());
 		}
 		for (card in cards) 'game_event'.dispatch({ type:USE_CARD, data: { object:equipment.owner, card_data:card.data }});
+	}
+
+	override function set_expended(b:Bool):Bool {
+		if (b) handle.hide();
+		return super.set_expended(b);
 	}
 	
 }
