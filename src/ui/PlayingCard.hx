@@ -14,7 +14,7 @@ class PlayingCard extends Card {
 	static var mini_width:Float = 64;
 	static var mini_height:Float = 80;
 	
-	public var drop:DropCard;
+	public var drop:DropSprite;
 	public var data:PlayingCardData;
 	var deck:Deck;
 	var last:Vec2;
@@ -115,23 +115,21 @@ class PlayingCard extends Card {
 
 	override function mouse_up(e:MouseEvent) {
 		if (!dragging) return;
-		if (!equipped && Equipment.active_equipment != null) {
-			var move_card = Equipment.active_equipment.move_card;
-			var pos = move_card.get_anchor(true);
-			var my_pos = Vec2.get(x, y);
+		if (!equipped && InventorySprite.active_inventory != null) {
+			var movement = InventorySprite.active_inventory.inventory.movement;
+			var pos = movement.sprite.get_anchor(true);
 			if ((pos.x - x).abs() < 96 && (pos.y - y).abs() < 144) {
-				if (!move_card.expended && move_card.verify_card(data)) {
-					move_card.add_card(this);
+				if (!movement.expended && movement.sprite.verify_card(data)) {
+					movement.sprite.add_card(this);
 					equipped = true;
 					super.mouse_up(e);
 					pos.put();
-					my_pos.put();
 					dragging = false;
 					return;
 				}
 			}
 			pos.put();
-			for (gear in Equipment.active_equipment.equipment_cards) {
+			for (gear in InventorySprite.active_inventory.equipment) {
 				var pos = gear.get_anchor(true);
 				if ((pos.x - x).abs() < 96 && (pos.y - y).abs() < 112) {
 					if (gear.expended || !gear.verify_card(data)) continue;
@@ -139,22 +137,24 @@ class PlayingCard extends Card {
 					equipped = true;
 					super.mouse_up(e);
 					pos.put();
-					my_pos.put();
 					dragging = false;
 					return;
 				}
 				pos.put();
 			}
-			my_pos.put();
 		}
 		super.mouse_up(e);
 		deck.add_to_hand(this);
 	}
 	
 	function update(?dt) {
+		lerp_size();
+		if (equipped) {
+			rotation += (0 - rotation) * 0.1;
+			return;
+		}
 		rotation += ((x - last.x)/2 - rotation) * 0.1;
 		last.set(x, y);
-		lerp_size();
 	}
 	
 	function lerp_size() {

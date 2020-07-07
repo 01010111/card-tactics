@@ -1,14 +1,15 @@
 package scenes;
 
+import ui.InventorySprite;
+import data.Gear;
+import ui.GearSprite;
+import data.Movement;
+import data.Equipment;
 import zero.openfl.utilities.Keys;
 import util.TurnUtil;
-import ui.EquipmentCard;
 import zero.openfl.utilities.Game;
-import ui.Equipment;
-import ui.MoveCard;
 import ui.Deck;
 import zero.utilities.Color;
-import ui.GearCard;
 import zero.openfl.utilities.Particles;
 import objects.Dolly;
 import zero.openfl.utilities.Tilemap;
@@ -143,7 +144,7 @@ class Level extends Scene {
 		Player.selected_player.move_to(x, y);
 		can_move = false;
 		move_indicators.graphics.clear();
-		Equipment.active_equipment.move_card.execute();
+		InventorySprite.active_inventory.inventory.movement.execute();
 	}
 
 	public function get_traversal_map(?ignore:IntPoint):Array<Array<Int>> {
@@ -158,21 +159,21 @@ class Level extends Scene {
 		move_indicators.visible = true;
 	}
 
-	public function draw_indicators(?equipment:EquipmentCard, ?equipment_array:Array<EquipmentCard>) {
-		var gear = equipment_array == null ? equipment == null ? [] : [equipment] : equipment_array;
+	public function draw_indicators(?equipment:Equipment, ?equipment_array:Array<Equipment>) {
+		var equips = equipment_array == null ? equipment == null ? [] : [equipment] : equipment_array;
 		indicators.graphics.clear();
 		move_indicators.visible = false;
 		var placed_tiles:Array<IntPoint> = [];
-		for (card in gear) {
-			var object = card.equipment.owner;
+		for (eq in equips) {
+			var object = eq.inventory.owner;
 			var range:RangeData = {
-				min: card.equipment_data.range.min,
-				max: card.equipment_data.range.max,
-				type: card.equipment_data.range.type
+				min: eq.data.range.min,
+				max: eq.data.range.max,
+				type: eq.data.range.type
 			};
-			if (card.is(GearCard) && (cast card:GearCard).vefify_bonus()) {
-				var gear_card:GearCard = cast card;
-				switch gear_card.gear_data.bonus.type {
+			if (eq.is(Gear) && (cast eq:Gear).verify_bonus()) {
+				var gear:Gear = cast eq;
+				switch gear.gear_data.bonus.type {
 					case DOUBLE_RANGE: range.max *= 2;
 					case RANGE_PLUS_ONE: range.max += 1;
 					case RANGE_PLUS_TWO: range.max += 2;
@@ -184,7 +185,7 @@ class Level extends Scene {
 				range.max *= 2;
 			}
 			var tiles = get_available_tiles_array([(object.x/16).floor(), (object.y/16).floor()], range.min, range.max, range.type);
-			var color = switch card.equipment_data.effect.type {
+			var color = switch eq.data.effect.type {
 				default: Color.WHITE;
 				case DAMAGE:Color.PICO_8_RED;
 				case MOVE:Color.PICO_8_BLUE;
@@ -222,10 +223,10 @@ class Level extends Scene {
 		return out;
 	}
 
-	public function draw_move_indicators(move_card:MoveCard) {
+	public function draw_move_indicators(movement:Movement) {
 		move_indicators.graphics.clear();
-		var object = move_card.equipment.owner;
-		var range = move_card.get_moves_value();
+		var object = movement.owner;
+		var range = movement.get_moves_value();
 		if (range == 0) return;
 		var tiles = get_walkable_tiles_array([(object.x/16).floor(), (object.y/16).floor()], range);
 		var color = Color.PICO_8_BLUE;

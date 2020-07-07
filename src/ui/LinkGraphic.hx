@@ -1,6 +1,6 @@
 package ui;
 
-import openfl.display.BitmapData;
+import openfl.Assets;
 import openfl.display.Sprite;
 import openfl.geom.Matrix;
 
@@ -10,11 +10,9 @@ class LinkGraphic extends Sprite {
 	public var active:Bool = false;
 
 	var offset_matrix:Matrix = new Matrix();
-	var bitmap:BitmapData;
 
-	public function new(bitmap:BitmapData) {
+	public function new() {
 		super();
-		this.bitmap = bitmap;
 		offset_matrix.ty = 12;
 	}
 
@@ -23,7 +21,7 @@ class LinkGraphic extends Sprite {
 		if (!active) return;
 		offset_matrix.tx += 4;
 		graphics.clear();
-		graphics.beginBitmapFill(bitmap, offset_matrix, true, true);
+		graphics.beginBitmapFill(Assets.getBitmapData('images/ui/action_arrow_white.png'), offset_matrix, true, true);
 		graphics.drawRect(0, -12, length, 24);
 		graphics.endFill();
 	}

@@ -1,5 +1,6 @@
 package ui;
 
+import data.Equipment;
 import scenes.Level;
 import objects.GameObject;
 import openfl.display.Sprite;
@@ -13,9 +14,9 @@ class InfoLayer extends Sprite {
 		this.add(object_info = new ObjectInfo());
 	}
 
-	public function show_info(object:GameObject, draw_indicators:Bool = true, ?equipment:EquipmentCard) {
+	public function show_info(object:GameObject, draw_indicators:Bool = true, ?equipment:Equipment) {
 		if (object.is(objects.Pickup)) return;
-		var cards = [for (card in object.equipment.equipment_cards) if (!card.expended && card.equipment_data.effect.type == DAMAGE) card];
+		var cards = [for (card in object.inventory.equipment) if (!card.expended && card.data.effect.type == DAMAGE) card];
 		if (draw_indicators) Level.i.draw_indicators(cards);
 		object_info.set_target(object, equipment);
 		object_info.active = true;

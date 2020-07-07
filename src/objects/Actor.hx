@@ -1,14 +1,15 @@
 package objects;
 
 import objects.GameObject.HealthData;
-import ui.MoveCard.MoveData;
+import data.Movement;
 
 class Actor extends GameObject {
 
-	var data:ActorData;
+	public var data:ActorData;
 
 	public function new(data:ActorData, x:Int, y:Int) {
 		super(x, y, data.health, data.id);
+		this.data = data;
 	}
 
 }

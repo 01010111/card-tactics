@@ -16,13 +16,14 @@
   - [ ] Create UI for placing new Gear
   - [ ] Interaction for (re)placing gear
 
-- [ ] Refactor Equipment
-  - [ ] Data first
-  - [ ] Generate Sprites from data
-
 # Bugs
 
 # Completed
+
+7/7/2020
+- [x] Refactor Equipment
+  - [x] Data first
+  - [x] Generate Sprites from data
 
 7/6/2020
 - [x] Move Card

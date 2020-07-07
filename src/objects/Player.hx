@@ -1,11 +1,13 @@
 package objects;
 
+import ui.InventorySprite;
+import ui.PlayerInfo;
+import data.Mutation;
+import data.Gear;
+import data.Inventory;
 import util.TurnUtil;
-import ui.MutantCard;
 import objects.Actor.ActorData;
-import ui.GearCard;
 import openfl.events.MouseEvent;
-import ui.Equipment;
 import scenes.Level;
 import zero.openfl.utilities.AnimatedSprite;
 import util.EquipmentUtil;
@@ -17,9 +19,11 @@ class Player extends Actor {
 	public var AP(default, set):Int = 10;
 	function set_AP(n:Int) {
 		AP = n;
-		equipment.player_info.update_ap_pts();
+		player_info.update_ap_pts();
 		return AP;
 	}
+
+	var player_info:PlayerInfo;
 
 	public function new(x:Int, y:Int, options:PlayerOptions) {
 		super(options.data, x, y);
@@ -30,7 +34,7 @@ class Player extends Actor {
 
 		init_graphic();
 		
-		equipment = new Equipment(this, options.side);
+		/*equipment = new Equipment(this, options.side);
 		var i = 0;
 		for (id in options.data.equipment) {
 			if (id == null) {
@@ -43,7 +47,21 @@ class Player extends Actor {
 				case MUTANT:equipment.add_card(new MutantCard(equipment, EquipmentUtil.get_mutant_data(id), i++));
 			}
 		}
-		Level.i.gear_layer.add(equipment);
+		Level.i.gear_layer.add(equipment);*/
+		inventory = new Inventory(this);
+		var i = 0;
+		for (id in options.data.equipment) {
+			if (id == null) {
+				i++;
+				continue;
+			}
+			switch EquipmentUtil.id_type(id) {
+				case NONE: continue;
+				case GEAR: inventory.add_equipment(new Gear(inventory, i++, EquipmentUtil.get_gear_data(id)));
+				case MUTANT: inventory.add_equipment(new Mutation(inventory, i++, EquipmentUtil.get_mutant_data(id)));
+			}
+		}
+		Level.i.gear_layer.add(player_info = new PlayerInfo(this, options.side));
 	}
 
 	function init_graphic() {
@@ -60,21 +78,23 @@ class Player extends Actor {
 	}
 
 	static function set_selected_player(player:Player) {
-		Equipment.active_equipment = player.equipment;
+		//InventorySprite.active_inventory = player.equipment;
+		InventorySprite.active_inventory = player.inventory.sprite;
 		Level.i.clear_indicators();
 		Level.i.dolly.follow_object(player, false);
 		player.pulse();
-		player.equipment.move_card.set_moves();
+		//player.equipment.move_card.set_moves();
+		player.inventory.movement.set_moves();
 		return selected_player = player;
 	}
 
 	override function health_callback() {
-		equipment.player_info.update_health();
+		player_info.update_health();
 	}
 
 	override function set_shield(amt:Int):Int {
 		super.set_shield(amt);
-		equipment.player_info.update_shield();
+		player_info.update_shield();
 		return shield;
 	}
 

@@ -1,7 +1,9 @@
 package ui;
 
+import openfl.geom.Point;
+import interfaces.Expendable;
+import data.Equipment.Requirement;
 import openfl.events.MouseEvent;
-import openfl.filters.ColorMatrixFilter;
 import zero.utilities.Ease;
 import zero.utilities.Tween;
 import openfl.display.Sprite;
@@ -12,17 +14,18 @@ import ui.PlayingCard;
 
 using util.CardUtil;
 
-class DropCard extends Card {
+class DropSprite extends Card {
 
 	public var active(default, set):Bool = false;
-	public var expended(default, set):Bool = false;
-	var grayscale_filter:ColorMatrixFilter = new ColorMatrixFilter([0.25, 0.25, 0.25, 0, 0, 0.25, 0.25, 0.25, 0, 0, 0.25, 0.25, 0.25, 0, 0, 0, 0, 0, 1, 1]);
+	public var expended(get, never):Bool;
 	var anchor:Vec2;
 	var anchors:Array<Vec2>;
 	var cards:Array<PlayingCard> = [];
-	var data:DropCardData;
-	var highlight:Sprite;
+	var data:DropSpriteData;
+	var active_highlight:Sprite;
+	var execute_highlight:Sprite;
 	var last:Vec2;
+	var expendable:Expendable;
 
 	public function new() {
 		super();
@@ -86,21 +89,28 @@ class DropCard extends Card {
 	}
 
 	public function get_anchor(global:Bool = false):Vec2 {
-		return global ? [anchor.x + x, anchor.y + y] : anchor;
+		if (global) {
+			var p = localToGlobal(new Point(anchor.x, anchor.y));
+			trace(p);
+			return [p.x, p.y];
+		}
+		else return anchor;
 	}
 
 	public function add_card(card:PlayingCard) {
 		this.add(card);
 		cards.push(card);
 		card.drop = this;
-		card.x -= x;
-		card.y -= y;
+		var p = globalToLocal(new Point(card.x, card.y));
+		card.x = p.x;
+		card.y = p.y;
 	}
 
 	public function remove_card(card:PlayingCard) {
 		cards.remove(card);
 	}
 
+	var t = 0.0;
 	function update(e:Event) {
 		var i = 0;
 		for (card in cards) {
@@ -111,48 +121,37 @@ class DropCard extends Card {
 		}
 		if (dragging) rotation += ((x - last.x) - rotation) * 0.1;
 		last.set(x, y);
+		var rot_target = active ? (t += 0.15).sin() * 4 : 0;
+		rotation += (rot_target - rotation) * 0.25;
 		invalidate(); // TODO - this is a hack that forces a redraw, fixes expended cards disappearing until onclick event
 	}
 
-	function add_highlight() {
-		addChild(highlight = new Sprite().rect(Color.PICO_8_WHITE, -EquipmentCard.card_width/2 + 4, -EquipmentCard.card_height/2 + 4, EquipmentCard.card_width - 8, EquipmentCard.card_height - 8, 16, 8));
-		Tween.get(highlight).from_to('scaleX', 1, 1.1).from_to('scaleY', 1, 1.1).from_to('alpha', 1, 0).type(LOOP_FORWARDS).duration(1).ease(Ease.quadOut);
-		highlight.visible = false;
+	function make_highlights() {
+		addChild(active_highlight = new Sprite().rect(Color.PICO_8_WHITE, -EquipmentSprite.WIDTH/2 + 4, -EquipmentSprite.HEIGHT/2 + 4, EquipmentSprite.WIDTH - 8, EquipmentSprite.HEIGHT - 8, 16, 8));
+		Tween.get(active_highlight).from_to('scaleX', 1, 1.1).from_to('scaleY', 1, 1.1).from_to('alpha', 1, 0).type(LOOP_FORWARDS).duration(1).ease(Ease.quadOut);
+		active_highlight.visible = false;
+
+		addChild(execute_highlight = new Sprite().rect(Color.PICO_8_WHITE, -EquipmentSprite.WIDTH/2 + 4, -EquipmentSprite.HEIGHT/2 + 4, EquipmentSprite.WIDTH - 8, EquipmentSprite.HEIGHT - 8, 16, 8));
+		execute_highlight.alpha = 0;
 	}
 
 	function set_active(b:Bool) {
+		active_highlight.visible = b;
 		return active = b && !expended;
 	}
-	
-	function set_expended(b:Bool) {
-		filters = b ? [grayscale_filter] : [];
-		return expended = b;
+
+	function get_expended() {
+		return expendable.expended;
+	}
+
+	public function execute() {
+		Tween.get(execute_highlight).from_to('alpha', 1, 0).from_to('scaleX', 1, 1.1).from_to('scaleY', 1, 1.1).duration(0.5).ease(Ease.quadOut);
+		Tween.get(this).from_to('scaleX', 1.1, 1).from_to('scaleY', 1.1, 1).duration(0.5).ease(Ease.quadOut);
 	}
 
 }
 
-typedef DropCardData = {
+typedef DropSpriteData = {
 	requirement:Requirement,
 	?requirement_value:Int,
-}
-
-enum abstract Requirement(String) {
-	var NONE;
-	var MIN_TOTAL;
-	var MAX_TOTAL;
-	var MIN_CARD;
-	var MAX_CARD;
-	var EXACT_CARD;
-	var EXACT_TOTAL;
-	var IS_FACE;
-	var NOT_FACE;
-	var PAIR;
-	var NO_MATCH;
-	var SAME_SUIT;
-	var DIFF_SUIT;
-	var HEARTS;
-	var DIAMONDS;
-	var CLUBS;
-	var SPADES;
-	var TWO_CARDS;
 }

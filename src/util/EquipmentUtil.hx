@@ -1,8 +1,8 @@
 package util;
 
 import openfl.Assets;
-import ui.GearCard.GearData;
-import ui.MutantCard.MutantData;
+import data.Gear;
+import data.Mutation;
 
 class EquipmentUtil {
 

@@ -4,7 +4,7 @@ import util.EquipmentUtil;
 import zero.utilities.Ease;
 import zero.utilities.Tween;
 import zero.utilities.Color;
-import ui.GearCard;
+import data.Gear;
 
 class GearPickup extends Pickup {
 	

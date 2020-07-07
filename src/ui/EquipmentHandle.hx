@@ -1,5 +1,6 @@
 package ui;
 
+import haxe.ds.Map;
 import objects.GameObject;
 import scenes.Level;
 import openfl.geom.Point;
@@ -18,13 +19,13 @@ class EquipmentHandle extends Sprite {
 	var graphic:Sprite;
 	var home:Vec2 = [];
 	var dragging:Bool = false;
-	var equipment_card:EquipmentCard;
+	var equipment:EquipmentSprite;
 	var level_pos:Point;
 	var target:Null<GameObject>;
 
-	public function new(type:HandleType, parent:EquipmentCard) {
+	public function new(type:HandleType, parent:EquipmentSprite) { // TODO
 		super();
-		equipment_card = parent;
+		equipment = parent;
 		this.type = type;
 		this.add(graphic = new Sprite());
 		addEventListener(Event.ENTER_FRAME, update);
@@ -44,28 +45,28 @@ class EquipmentHandle extends Sprite {
 	}
 
 	function mouse_over(e:MouseEvent) {
-		if (type == PRESS) equipment_card.active = true;
-		else Level.i.draw_indicators(equipment_card);
+		if (type == PRESS) equipment.active = true;
+		else Level.i.draw_indicators(equipment.equipment);
 	}
 
 	function mouse_out(e:MouseEvent) {
-		equipment_card.active = false;
+		equipment.active = false;
 	}
 
 	function mouse_down(e:MouseEvent) {
 		if (!active) return;
 		startDrag(true);
 		dragging = true;
-		equipment_card.active = true;
+		equipment.active = true;
 	}
 	
 	function mouse_up(e:MouseEvent) {
 		if (!dragging) return;
 		stopDrag();
 		dragging = false;
-		Equipment.active_equipment.link.length = 0;
-		Equipment.active_equipment.link.draw();
-		equipment_card.active = false;
+		InventorySprite.active_inventory.link.length = 0;
+		InventorySprite.active_inventory.link.draw();
+		equipment.active = false;
 		level_pos = get_level_pos();
 		Level.i.clear_indicators();
 		if (target != null) {
@@ -74,25 +75,28 @@ class EquipmentHandle extends Sprite {
 			for (pos in Level.i.available_tiles) if (pos.equals(target_grid_pos)) execute = true;
 			target_grid_pos.put();
 			if (!execute) return;
-			equipment_card.execute(target);
+			equipment.equipment.execute(target);
 			Level.i.info_layer.show_info(target);
 			hide();
 		}
 	}
 
 	function get_level_pos() {
-		return level_pos = Level.i.level.globalToLocal(new Point(x, y));
+		var global_pos = parent.parent.localToGlobal(new Point(x, y));
+		level_pos = Level.i.level.globalToLocal(global_pos);
+		trace(global_pos, level_pos);
+		return level_pos;
 	}
 
 	function on_click(e:MouseEvent) {
 		if (!active) return;
 		Tween.get(this).from_to('scaleX', 0.5, 1).from_to('scaleY', 0.5, 1).ease(Ease.elasticOut).duration(0.4).on_complete(hide);
-		equipment_card.execute();
+		equipment.equipment.execute();
 	}
 
 	public function show() {
 		if (active) return;
-		if (parent == null) Equipment.active_equipment.add(this);
+		if (parent == null) InventorySprite.active_inventory.add(this);
 		active = true;
 		Tween.get(this).from_to('scaleX', 0, 1).from_to('scaleY', 0, 1).from_to('alpha', 1, 1).duration(0.4).ease(Ease.backOut);
 	}
@@ -104,27 +108,27 @@ class EquipmentHandle extends Sprite {
 	}
 
 	function update(e:Event) {
-		Equipment.active_equipment.link.active = dragging;
+		InventorySprite.active_inventory.link.active = dragging;
 		if (dragging) {
-			var card_pos:Vec2 = [equipment_card.x, equipment_card.y];
+			var card_pos:Vec2 = [equipment.x, equipment.y];
 			var this_pos:Vec2 = [x, y];
 			var diff = this_pos - card_pos;
-			Equipment.active_equipment.link.set_position(card_pos.x, card_pos.y);
-			Equipment.active_equipment.link.length = diff.length;
-			Equipment.active_equipment.link.rotation = diff.angle;
+			InventorySprite.active_inventory.link.set_position(card_pos.x, card_pos.y);
+			InventorySprite.active_inventory.link.length = diff.length;
+			InventorySprite.active_inventory.link.rotation = diff.angle;
 			card_pos.put();
 			this_pos.put();
 			diff.put();
-			Equipment.active_equipment.link.draw();
-			check_objects(x, y);
+			InventorySprite.active_inventory.link.draw();
+			check_objects();
 		}
 		else {
-			x += (equipment_card.x - x) * 0.5;
-			y += (equipment_card.y + EquipmentCard.card_height/2 - y) * 0.5;
+			x += (equipment.x - x) * 0.5;
+			y += (equipment.y + EquipmentSprite.HEIGHT/2 - y) * 0.5;
 		}
 	}
 
-	function check_objects(x:Float, y:Float, ?target:GameObject) {
+	function check_objects(?target:GameObject) {
 		level_pos = get_level_pos();
 		for (object in Level.i.objects.children()) {
 			var pos = Vec2.get(level_pos.x, level_pos.y);
@@ -132,7 +136,7 @@ class EquipmentHandle extends Sprite {
 			if (pos.distance(obj_pos) < 8) {
 				target = cast object;
 				var target_grid_pos = target.grid_pos;
-				for (pos in Level.i.available_tiles) if (pos.equals(target_grid_pos)) Level.i.info_layer.show_info(target, false, equipment_card);
+				for (pos in Level.i.available_tiles) if (pos.equals(target_grid_pos)) Level.i.info_layer.show_info(target, false, equipment.equipment);
 				target_grid_pos.put();
 				pos.put();
 				obj_pos.put();

@@ -1,7 +1,6 @@
 package objects;
 
 import util.TurnUtil;
-import ui.Equipment;
 import zero.openfl.utilities.AnimatedSprite;
 import openfl.events.Event;
 import zero.utilities.Vec2;
@@ -10,6 +9,7 @@ import zero.utilities.Tween;
 import scenes.Level;
 import openfl.events.MouseEvent;
 import openfl.display.Sprite;
+import data.Inventory;
 
 using zero.utilities.AStar;
 
@@ -18,7 +18,7 @@ class GameObject extends Sprite {
 	public var health:HealthData;
 	public var shield(default, set):Int = 0;
 	public var title:String;
-	public var equipment:Equipment;
+	public var inventory:Inventory;
 	public var grid_pos(get, never):IntPoint;
 	function get_grid_pos():IntPoint return [(x/16).floor(), (y/16).floor()];
 

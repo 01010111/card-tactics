@@ -20,6 +20,6 @@ class Main extends Sprite
 		new Game(this, Level);
 		Keys.init();
 		stage.addEventListener(Event.ENTER_FRAME, UpdateManager.update);
-		addChild(new ui.InfoBox().set_position(32, Game.height - 64));
+		addChild(new ui.InfoBox().set_position(32, Game.height - 56));
 	}
 }

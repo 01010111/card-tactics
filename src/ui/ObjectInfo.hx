@@ -1,5 +1,6 @@
 package ui;
 
+import data.Equipment;
 import util.Translation;
 import openfl.text.TextField;
 import scenes.Level;
@@ -41,10 +42,10 @@ class ObjectInfo extends Sprite {
 		this.set_position(global_pos.x, global_pos.y - 48 - info_height/2 - 8);
 	}
 
-	function draw_target_info(target:GameObject, ?equipment:EquipmentCard) {
+	function draw_target_info(target:GameObject, ?equipment:Equipment) {
 		var cur_hp = target.health.current + target.shield;
 		var max_hp = target.health.max + target.shield;
-		var next_hp = equipment == null ? cur_hp : cur_hp + switch equipment.equipment_data.effect.type {
+		var next_hp = equipment == null ? cur_hp : cur_hp + switch equipment.data.effect.type {
 			default: 0;
 			case DAMAGE: -equipment.get_effect_value();
 			case MOVE: 0;
@@ -85,7 +86,7 @@ class ObjectInfo extends Sprite {
 		hp_text.set_string(hp).set_position(0, info_height/4, MIDDLE_CENTER);
 	}
 
-	public function set_target(target:GameObject, ?gear:EquipmentCard) {
+	public function set_target(target:GameObject, ?gear:Equipment) {
 		draw_target_info(target, gear);
 		return this.target = target;
 	}

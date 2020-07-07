@@ -20,6 +20,7 @@ class PlayerInfo extends Sprite {
 	var health:Sprite;
 	var ap_pts:Sprite;
 	var shield:Sprite;
+	var inventory:InventorySprite;
 	var health_text:TextField;
 	var health_text_sprite:Sprite;
 	var ap_pts_text:TextField;
@@ -28,11 +29,17 @@ class PlayerInfo extends Sprite {
 	public function new(player:Player, side:PlayerSide) {
 		super();
 		this.player = player;
+		make_inventory(side);
 		make_avatar();
 		make_ap_pts();
 		make_health();
 		make_shield();
 		this.set_position(side == LEFT ? 72 : Game.width - 72, 80);
+	}
+
+	function make_inventory(side:PlayerSide) {
+		inventory = new InventorySprite(player.inventory, side);
+		this.add(inventory);
 	}
 	
 	function make_avatar() {
