@@ -76,7 +76,7 @@ class EquipmentHandle extends Sprite {
 			target_grid_pos.put();
 			if (!execute) return;
 			equipment.equipment.execute(target);
-			Level.i.info_layer.show_info(target);
+			if (target.exists) Level.i.info_layer.show_info(target);
 			hide();
 		}
 	}
@@ -84,7 +84,6 @@ class EquipmentHandle extends Sprite {
 	function get_level_pos() {
 		var global_pos = parent.parent.localToGlobal(new Point(x, y));
 		level_pos = Level.i.level.globalToLocal(global_pos);
-		trace(global_pos, level_pos);
 		return level_pos;
 	}
 

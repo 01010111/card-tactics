@@ -20,19 +20,22 @@ class GameObject extends Sprite {
 	public var title:String;
 	public var inventory:Inventory;
 	public var grid_pos(get, never):IntPoint;
+	public var exists:Bool;
 	function get_grid_pos():IntPoint return [(x/16).floor(), (y/16).floor()];
 
 	var last:Vec2;
 	var graphic:AnimatedSprite;
 
 	public function new(x:Int, y:Int, health:HealthData, title:String) {
+		exists = true;
 		this.health = health;
 		this.title = title;
+		inventory = new Inventory(this);
 		super();
 
+		update_object_map(x, y);
 		last = [x * 16 + 8, y * 16 + 8];
 		this.set_position(last.x, last.y);
-		update_object_map(x, y, x, y);
 
 		addEventListener(MouseEvent.MOUSE_OVER, mouse_over);
 		addEventListener(MouseEvent.MOUSE_OUT, mouse_out);
@@ -60,16 +63,17 @@ class GameObject extends Sprite {
 		if (map[y][x] != 0) return;
 		var sx = (this.x/16).floor();
 		var sy = (this.y/16).floor();
-		trace(sx, sy, x, y);
 		var path = map.get_path({ start: [sx, sy], end: [x, y], passable: [0], simplify: NONE });
 		if (path.length == 0) return;
 		update_object_map(sx, sy, x, y);
 		follow_path(path);
 	}
 
-	function update_object_map(sx:Int, sy:Int, x:Int, y:Int) {
-		Level.i.object_map[sy][sx] = 0;
-		Level.i.object_map[y][x] = -1;
+	function update_object_map(sx:Int, sy:Int, ?x:Int, ?y:Int) {
+		if (x == null) x = sx;
+		if (y == null) y = sy;
+		if (sx >= 0 && sy >= 0) Level.i.object_map[sy][sx] = 0;
+		if (x >= 0 && y >= 0) Level.i.object_map[y][x] = -1;
 	}
 
 	public function follow_path(path:Array<IntPoint>) {
@@ -103,7 +107,10 @@ class GameObject extends Sprite {
 	function health_callback() {}
 
 	function kill() {
-		
+		exists = false;
+		this.remove();
+		update_object_map(grid_pos.x, grid_pos.y, -1, -1);
+		Level.i.info_layer.hide_info();
 	}
 
 	public function pulse() {

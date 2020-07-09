@@ -4,7 +4,6 @@ import ui.InventorySprite;
 import ui.PlayerInfo;
 import data.Mutation;
 import data.Gear;
-import data.Inventory;
 import util.TurnUtil;
 import objects.Actor.ActorData;
 import openfl.events.MouseEvent;
@@ -30,35 +29,16 @@ class Player extends Actor {
 		addEventListener(MouseEvent.CLICK, (e) -> if (Level.i.can_move && TurnUtil.player_turn) selected_player = this);
 		Level.i.objects.add(this);
 		Level.i.dolly.follow_object(this, true);
-		Level.i.object_map[y][x] = -1;
 
 		init_graphic();
-		
-		/*equipment = new Equipment(this, options.side);
-		var i = 0;
+		var i = -1;
 		for (id in options.data.equipment) {
-			if (id == null) {
-				i++;
-				continue;
-			}
-			switch EquipmentUtil.id_type(id) {
-				case NONE:continue;
-				case GEAR:equipment.add_card(new GearCard(equipment, EquipmentUtil.get_gear_data(id), i++));
-				case MUTANT:equipment.add_card(new MutantCard(equipment, EquipmentUtil.get_mutant_data(id), i++));
-			}
-		}
-		Level.i.gear_layer.add(equipment);*/
-		inventory = new Inventory(this);
-		var i = 0;
-		for (id in options.data.equipment) {
-			if (id == null) {
-				i++;
-				continue;
-			}
+			i++;
+			if (id == null) continue;
 			switch EquipmentUtil.id_type(id) {
 				case NONE: continue;
-				case GEAR: inventory.add_equipment(new Gear(inventory, i++, EquipmentUtil.get_gear_data(id)));
-				case MUTANT: inventory.add_equipment(new Mutation(inventory, i++, EquipmentUtil.get_mutant_data(id)));
+				case GEAR: inventory.add_equipment(new Gear(inventory, i, EquipmentUtil.get_gear_data(id)));
+				case MUTANT: inventory.add_equipment(new Mutation(inventory, i, EquipmentUtil.get_mutant_data(id)));
 			}
 		}
 		Level.i.gear_layer.add(player_info = new PlayerInfo(this, options.side));
@@ -78,12 +58,10 @@ class Player extends Actor {
 	}
 
 	static function set_selected_player(player:Player) {
-		//InventorySprite.active_inventory = player.equipment;
 		InventorySprite.active_inventory = player.inventory.sprite;
 		Level.i.clear_indicators();
 		Level.i.dolly.follow_object(player, false);
 		player.pulse();
-		//player.equipment.move_card.set_moves();
 		player.inventory.movement.set_moves();
 		return selected_player = player;
 	}

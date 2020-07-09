@@ -1,8 +1,8 @@
 package scenes;
 
+import util.PlayerData;
 import ui.InventorySprite;
 import data.Gear;
-import ui.GearSprite;
 import data.Movement;
 import data.Equipment;
 import zero.openfl.utilities.Keys;
@@ -65,43 +65,12 @@ class Level extends Scene {
 		this.add(deck);
 		deck.deal();
 		this.add(info_layer = new InfoLayer());
-		var player = new Player(2, 9, {
-			data: {
-				id: 'Test Player',
-				health: {
-					current: 48,
-					max: 64,
-				},
-				movement: {
-					requirement: MAX_CARD,
-					requirement_value: 5,
-					type: FREE,
-					factor: VALUE,
-				},
-				equipment: ['test_d_02', 'test_m_01', 'test_m_02'],
-			},
-			side: LEFT,
-		});
-		var player2 = new Player(6, 8, {
-			data: {
-				id: 'Test Player',
-				health: {
-					current: 64,
-					max: 64,
-				},
-				movement: {
-					requirement: MAX_CARD,
-					requirement_value: 5,
-					type: FREE,
-					factor: VALUE,
-				},
-				equipment: ['test_d_01', 'test_u_01', 'test_h_01'],
-			},
-			side: RIGHT,
-		});
+		var player = new Player(2, 9, { data: PlayerData.player1, side: LEFT });
+		var player2 = new Player(6, 8, { data: PlayerData.player2, side: RIGHT });
 		Player.selected_player = player;
 		player2.shield = 4;
 		var pickup = new objects.GearPickup(4, 10, 'test_u_01');
+		var box = new objects.Box(8, 8);
 	}
 
 	function init_dolly() {
@@ -136,9 +105,7 @@ class Level extends Scene {
 	}
 
 	function on_click(e:MouseEvent) {
-		trace('on click');
 		if (!can_move || e.localX < 0 || e.localY < 0) return;
-		trace('pass');
 		var x = (e.localX/16).floor();
 		var y = (e.localY/16).floor();
 		Player.selected_player.move_to(x, y);

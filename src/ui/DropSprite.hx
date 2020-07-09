@@ -91,7 +91,6 @@ class DropSprite extends Card {
 	public function get_anchor(global:Bool = false):Vec2 {
 		if (global) {
 			var p = localToGlobal(new Point(anchor.x, anchor.y));
-			trace(p);
 			return [p.x, p.y];
 		}
 		else return anchor;

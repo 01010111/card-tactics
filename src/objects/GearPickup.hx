@@ -16,7 +16,6 @@ class GearPickup extends Pickup {
 	}
 
 	override function mouse_down() {
-		trace(data);
 		Tween.get(this).from_to('rotation', -360, 0).ease(Ease.backInOut);
 	}
 

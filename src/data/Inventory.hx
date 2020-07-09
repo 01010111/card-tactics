@@ -13,9 +13,9 @@ class Inventory {
 	public var movement:Movement;
 	public var sprite:InventorySprite;
 
-	public function new(owner:Actor, ?equipment:Array<Equipment>) {
+	public function new(owner:GameObject, ?equipment:Array<Equipment>) {
 		this.owner = owner;
-		movement = new Movement(owner.data.movement, owner);
+		if (owner.is(Actor)) movement = new Movement((cast owner:Actor).data.movement, owner);
 		if (equipment != null) for (eq in equipment) add_equipment(eq);
 	}
 
