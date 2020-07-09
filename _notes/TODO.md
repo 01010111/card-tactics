@@ -16,6 +16,10 @@
   - [ ] Create UI for placing new Gear
   - [ ] Interaction for (re)placing gear
 
+- [ ] Props
+  - [ ] Create destructable box
+  - [ ] Implement kill()
+
 # Bugs
 
 # Completed
