@@ -50,8 +50,7 @@ class Dolly extends ZDolly {
 		x += (position.x + offset.x - x) * 0.1;
 		y += (position.y + offset.y - y) * 0.1;
 		color_shader.set_color(overlay);
-		color_shader.set_mix(color_mix.normalize(2));
-		trace(color_mix.normalize(2));
+		color_shader.set_mix(color_mix);
 		invalidate();
 	}
 
