@@ -16,13 +16,19 @@
   - [ ] Create UI for placing new Gear
   - [ ] Interaction for (re)placing gear
 
-- [ ] Props
-  - [ ] Create destructable box
-  - [ ] Implement kill()
-
 # Bugs
 
+- [ ] Sometimes ColorShader doesn't respond to uMix
+
 # Completed
+
+7/14/2020
+- [x] Camera effects
+  - [x] ColorShader
+  - [x] Dolly.flash()
+- [x] Props
+  - [x] Create destructable box
+  - [x] Implement kill()
 
 7/7/2020
 - [x] Refactor Equipment
