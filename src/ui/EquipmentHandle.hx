@@ -34,7 +34,7 @@ class EquipmentHandle extends Sprite {
 			case AIM:
 				graphic.load_graphic('images/ui/aim_cta.png', MIDDLE_CENTER, true);
 				addEventListener(MouseEvent.MOUSE_DOWN, mouse_down);
-				addEventListener(MouseEvent.MOUSE_OUT, (e) -> if (!dragging) Level.i.clear_indicators());
+				addEventListener(MouseEvent.MOUSE_OUT, (e) -> if (!dragging) LEVEL.clear_indicators());
 				Game.root.addEventListener(MouseEvent.MOUSE_UP, mouse_up);
 			case PRESS:
 				graphic.load_graphic('images/ui/do_cta.png', MIDDLE_CENTER, true);
@@ -46,7 +46,7 @@ class EquipmentHandle extends Sprite {
 
 	function mouse_over(e:MouseEvent) {
 		if (type == PRESS) equipment.active = true;
-		else Level.i.draw_indicators(equipment.equipment);
+		else LEVEL.draw_indicators(equipment.equipment);
 	}
 
 	function mouse_out(e:MouseEvent) {
@@ -68,22 +68,22 @@ class EquipmentHandle extends Sprite {
 		InventorySprite.active_inventory.link.draw();
 		equipment.active = false;
 		level_pos = get_level_pos();
-		Level.i.clear_indicators();
+		LEVEL.clear_indicators();
 		if (target != null) {
 			var execute = false;
 			var target_grid_pos = target.grid_pos;
-			for (pos in Level.i.available_tiles) if (pos.equals(target_grid_pos)) execute = true;
+			for (pos in LEVEL.available_tiles) if (pos.equals(target_grid_pos)) execute = true;
 			target_grid_pos.put();
 			if (!execute) return;
 			equipment.equipment.execute(target);
-			if (target.exists) Level.i.info_layer.show_info(target);
+			if (target.exists) LEVEL.info_layer.show_info(target);
 			hide();
 		}
 	}
 
 	function get_level_pos() {
 		var global_pos = parent.parent.localToGlobal(new Point(x, y));
-		level_pos = Level.i.level.globalToLocal(global_pos);
+		level_pos = LEVEL.level.globalToLocal(global_pos);
 		return level_pos;
 	}
 
@@ -129,13 +129,13 @@ class EquipmentHandle extends Sprite {
 
 	function check_objects(?target:GameObject) {
 		level_pos = get_level_pos();
-		for (object in Level.i.objects.children()) {
+		for (object in LEVEL.objects.children()) {
 			var pos = Vec2.get(level_pos.x, level_pos.y);
 			var obj_pos = Vec2.get(object.x, object.y);
 			if (pos.distance(obj_pos) < 8) {
 				target = cast object;
 				var target_grid_pos = target.grid_pos;
-				for (pos in Level.i.available_tiles) if (pos.equals(target_grid_pos)) Level.i.info_layer.show_info(target, false, equipment.equipment);
+				for (pos in LEVEL.available_tiles) if (pos.equals(target_grid_pos)) LEVEL.info_layer.show_info(target, false, equipment.equipment);
 				target_grid_pos.put();
 				pos.put();
 				obj_pos.put();
@@ -144,7 +144,7 @@ class EquipmentHandle extends Sprite {
 			pos.put();
 			obj_pos.put();
 		}
-		if (target == null) Level.i.info_layer.hide_info(false);
+		if (target == null) LEVEL.info_layer.hide_info(false);
 		this.target = target;
 	}
 

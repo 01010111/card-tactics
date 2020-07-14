@@ -1,5 +1,9 @@
 package objects;
 
+import zero.utilities.Tween;
+import openfl.filters.ShaderFilter;
+import zero.utilities.Color;
+import filters.ColorShader;
 import zero.utilities.Vec2;
 import zero.openfl.utilities.Keys;
 import openfl.display.DisplayObject;
@@ -12,6 +16,14 @@ class Dolly extends ZDolly {
 	public var following = true;
 	var spring_offset:Vec2 = [0, 0];
 	var spring_helper:Vec2 = [0, 0];
+	var color_shader:ColorShader = new ColorShader(Color.WHITE);
+	var color_mix:Float = 0;
+	var overlay:Color = Color.WHITE;
+
+	public function new() {
+		super();
+		filters = [new ShaderFilter(color_shader)];
+	}
 
 	public function follow_object(target:DisplayObject, snap:Bool = true, ?tilemap:Tilemap) {
 		following = true;
@@ -37,8 +49,10 @@ class Dolly extends ZDolly {
 		position.set(-target.x * zoomX + Game.width/2, -target.y * zoomY + Game.height/2);
 		x += (position.x + offset.x - x) * 0.1;
 		y += (position.y + offset.y - y) * 0.1;
-		x = x.floor();
-		y = y.floor();
+		color_shader.set_color(overlay);
+		color_shader.set_mix(color_mix.normalize(2));
+		trace(color_mix.normalize(2));
+		invalidate();
 	}
 
 	var delta = 0.0;
@@ -66,6 +80,11 @@ class Dolly extends ZDolly {
 		p.angle = 360 * Math.random();
 		spring_offset += p;
 		p.put();
+	}
+
+	public function flash(color:Color, duration:Float = 0.25, from:Float = 1, to:Float = 0) {
+		overlay = color;
+		Tween.get(this).from_to('color_mix', from, to).duration(duration);
 	}
 
 }

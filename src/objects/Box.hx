@@ -8,7 +8,7 @@ class Box extends GameObject {
 
 	public function new(x:Int, y:Int) {
 		super(x, y, { current: 10, max: 10 }, 'Box');
-		Level.i.objects.add(this);
+		LEVEL.objects.add(this);
 		init_graphic();
 	}
 
@@ -19,7 +19,7 @@ class Box extends GameObject {
 			frame_width: 16,
 			frame_height: 16,
 			offset_x: 8,
-			offset_y: 12,
+			offset_y: 10,
 		});
 		graphic.set_frame_index(0);
 		addChild(graphic);

@@ -55,7 +55,7 @@ class Equipment implements Expendable {
 				if (target == null) inventory.owner.shield += get_effect_value();
 				else target.shield += get_effect_value();
 			case DRAW:
-				Level.i.deck.deal(get_effect_value());
+				LEVEL.deck.deal(get_effect_value());
 		}
 		for (card in cards) USE_CARD.dispatch({
 			object: inventory.owner,

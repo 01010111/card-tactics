@@ -38,7 +38,7 @@ class ObjectInfo extends Sprite {
 	function update(e:Event) {
 		visible = active;
 		if (!active) return;
-		global_pos = Level.i.dolly.localToGlobal(target_pos = new Point(target.x, target.y));
+		global_pos = LEVEL.dolly.localToGlobal(target_pos = new Point(target.x, target.y));
 		this.set_position(global_pos.x, global_pos.y - 48 - info_height/2 - 8);
 	}
 

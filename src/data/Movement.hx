@@ -25,7 +25,7 @@ class Movement implements Expendable {
 
 	public function set_moves() {
 		if (expended) return;
-		Level.i.draw_move_indicators(this);
+		LEVEL.draw_move_indicators(this);
 	}
 
 	public function add_card(card:PlayingCardData) {
@@ -34,7 +34,7 @@ class Movement implements Expendable {
 	}
 
 	public function remove_card(card:PlayingCardData) {
-		Level.i.move_indicators.graphics.clear();
+		LEVEL.move_indicators.graphics.clear();
 		card = null;
 	}
 

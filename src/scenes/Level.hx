@@ -1,5 +1,6 @@
 package scenes;
 
+import openfl.events.Event;
 import util.PlayerData;
 import ui.InventorySprite;
 import data.Gear;
@@ -19,6 +20,7 @@ import openfl.events.MouseEvent;
 import openfl.display.Sprite;
 import zero.openfl.utilities.Scene;
 import particles.Poof;
+import particles.Pop;
 import ui.InfoLayer;
 import objects.Player;
 
@@ -48,6 +50,7 @@ class Level extends Scene {
 
 	// Particles
 	public var poofs:Particles = new Particles(() -> new Poof());
+	public var pops:Particles = new Particles(() -> new Pop());
 
 	public function new() {
 		i = this;
@@ -69,8 +72,11 @@ class Level extends Scene {
 		var player2 = new Player(6, 8, { data: PlayerData.player2, side: RIGHT });
 		Player.selected_player = player;
 		player2.shield = 4;
-		var pickup = new objects.GearPickup(4, 10, 'test_u_01');
+		//var pickup = new objects.GearPickup(4, 10, 'test_u_01');
 		var box = new objects.Box(8, 8);
+		dolly.flash(Color.BLACK, 1);
+
+		addEventListener(Event.ENTER_FRAME, (e) -> if (Keys.just_pressed(82)) Game.i.change_scene(new Level()));
 	}
 
 	function init_dolly() {

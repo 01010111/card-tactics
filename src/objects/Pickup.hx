@@ -10,7 +10,7 @@ class Pickup extends GameObject {
 		super(x, y, { current: 0, max: 0 }, title);
 		draw_pickup();
 		addEventListener(MouseEvent.MOUSE_DOWN, (e) -> if (TurnUtil.player_turn) mouse_down());
-		Level.i.objects.addChild(this);
+		LEVEL.objects.addChild(this);
 	}
 
 	function draw_pickup() {}

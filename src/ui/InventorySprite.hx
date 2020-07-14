@@ -55,11 +55,13 @@ class InventorySprite extends Sprite {
 		for (eq in inventory.equipment) {
 			if (eq.is(Gear)) {
 				var gear = new GearSprite(cast eq);
+				gear.set_position(side == LEFT ? -168 : 168, 64);
 				equipment_layer.add(gear);
 				equipment.push(gear);
 			}
 			if (eq.is(Mutation)) {
 				var mutation = new MutationSprite(cast eq);
+				mutation.set_position(side == LEFT ? -168 : 168, 64);
 				equipment_layer.add(mutation);
 				equipment.push(mutation);
 			}

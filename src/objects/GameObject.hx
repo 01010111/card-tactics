@@ -1,5 +1,6 @@
 package objects;
 
+import zero.utilities.Color;
 import util.TurnUtil;
 import zero.openfl.utilities.AnimatedSprite;
 import openfl.events.Event;
@@ -44,11 +45,11 @@ class GameObject extends Sprite {
 
 	function mouse_over(e:MouseEvent) {
 		if (!TurnUtil.player_turn) return;
-		Level.i.info_layer.show_info(this);
+		LEVEL.info_layer.show_info(this);
 	}
 
 	function mouse_out(e:MouseEvent) {
-		Level.i.info_layer.hide_info();
+		LEVEL.info_layer.hide_info();
 	}
 
 	function update(dt:Float) {
@@ -59,7 +60,7 @@ class GameObject extends Sprite {
 	}
 
 	public function move_to(x:Int, y:Int) {
-		var map = Level.i.get_traversal_map();
+		var map = LEVEL.get_traversal_map();
 		if (map[y][x] != 0) return;
 		var sx = (this.x/16).floor();
 		var sy = (this.y/16).floor();
@@ -72,8 +73,8 @@ class GameObject extends Sprite {
 	function update_object_map(sx:Int, sy:Int, ?x:Int, ?y:Int) {
 		if (x == null) x = sx;
 		if (y == null) y = sy;
-		if (sx >= 0 && sy >= 0) Level.i.object_map[sy][sx] = 0;
-		if (x >= 0 && y >= 0) Level.i.object_map[y][x] = -1;
+		if (sx >= 0 && sy >= 0) LEVEL.object_map[sy][sx] = 0;
+		if (x >= 0 && y >= 0) LEVEL.object_map[y][x] = -1;
 	}
 
 	public function follow_path(path:Array<IntPoint>) {
@@ -81,18 +82,18 @@ class GameObject extends Sprite {
 		Tween.get(this).from_to('x', x, t.x * 16 + 8).from_to('y', y, t.y * 16 + 8).duration(0.05).on_complete(() -> {
 			if (path.length > 0) {
 				follow_path(path);
-				Level.i.poofs.fire({ x: t.x * 16 + 8, y: t.y * 16 + 8 });
+				LEVEL.poofs.fire({ x: t.x * 16 + 8, y: t.y * 16 + 8 });
 			}
 			else {
 				pulse();
-				Level.i.can_move = true;
+				LEVEL.can_move = true;
 			}
 		});
 		return true;
 	}
 
 	public function change_health(delta:Int) {
-		if (delta < 0) Level.i.dolly.shake();
+		if (delta < 0) LEVEL.dolly.shake();
 		if (delta < 0 && shield != 0) {
 			var shield_amt = shield;
 			shield = (shield + delta).max(0).floor();
@@ -110,7 +111,9 @@ class GameObject extends Sprite {
 		exists = false;
 		this.remove();
 		update_object_map(grid_pos.x, grid_pos.y, -1, -1);
-		Level.i.info_layer.hide_info();
+		LEVEL.info_layer.hide_info();
+		LEVEL.pops.fire({ x: x, y: y });
+		LEVEL.dolly.flash(Color.WHITE, 0.25, 0.25);
 	}
 
 	public function pulse() {

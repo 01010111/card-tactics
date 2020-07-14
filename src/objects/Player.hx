@@ -1,5 +1,6 @@
 package objects;
 
+import zero.utilities.Color;
 import ui.InventorySprite;
 import ui.PlayerInfo;
 import data.Mutation;
@@ -26,9 +27,9 @@ class Player extends Actor {
 
 	public function new(x:Int, y:Int, options:PlayerOptions) {
 		super(options.data, x, y);
-		addEventListener(MouseEvent.CLICK, (e) -> if (Level.i.can_move && TurnUtil.player_turn) selected_player = this);
-		Level.i.objects.add(this);
-		Level.i.dolly.follow_object(this, true);
+		addEventListener(MouseEvent.CLICK, (e) -> if (LEVEL.can_move && TurnUtil.player_turn) selected_player = this);
+		LEVEL.objects.add(this);
+		LEVEL.dolly.follow_object(this, true);
 
 		init_graphic();
 		var i = -1;
@@ -41,7 +42,7 @@ class Player extends Actor {
 				case MUTANT: inventory.add_equipment(new Mutation(inventory, i, EquipmentUtil.get_mutant_data(id)));
 			}
 		}
-		Level.i.gear_layer.add(player_info = new PlayerInfo(this, options.side));
+		LEVEL.gear_layer.add(player_info = new PlayerInfo(this, options.side));
 	}
 
 	function init_graphic() {
@@ -59,8 +60,8 @@ class Player extends Actor {
 
 	static function set_selected_player(player:Player) {
 		InventorySprite.active_inventory = player.inventory.sprite;
-		Level.i.clear_indicators();
-		Level.i.dolly.follow_object(player, false);
+		LEVEL.clear_indicators();
+		LEVEL.dolly.follow_object(player, false);
 		player.pulse();
 		player.inventory.movement.set_moves();
 		return selected_player = player;
@@ -74,6 +75,11 @@ class Player extends Actor {
 		super.set_shield(amt);
 		player_info.update_shield();
 		return shield;
+	}
+
+	override function change_health(delta:Int) {
+		if (delta < 0) LEVEL.dolly.flash(Color.PICO_8_RED, 0.25, 0.25);
+		super.change_health(delta);
 	}
 
 }
