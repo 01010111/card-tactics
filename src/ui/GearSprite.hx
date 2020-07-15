@@ -220,6 +220,7 @@ class GearSprite extends EquipmentSprite {
 	
 	function insert_into_inventory(position:Int, inventory:InventorySprite):Bool {
 		if (inventory.inventory.owner.AP < gear.gear_data.cost) return false;
+		inventory.inventory.owner.AP -= gear.gear_data.cost;
 		draggable = false;
 		gear.position = position;
 		inventory.add_equipment(this);

@@ -894,9 +894,9 @@ ApplicationMain.create = function(config) {
 	ManifestResources.init(config);
 	var _this = app.meta;
 	if(__map_reserved["build"] != null) {
-		_this.setReserved("build","54");
+		_this.setReserved("build","55");
 	} else {
-		_this.h["build"] = "54";
+		_this.h["build"] = "55";
 	}
 	var _this1 = app.meta;
 	if(__map_reserved["company"] != null) {
@@ -78683,6 +78683,8 @@ ui_GearSprite.prototype = $extend(ui_EquipmentSprite.prototype,{
 		if(inventory.inventory.owner.AP < this.gear.gear_data.cost) {
 			return false;
 		}
+		var _g = inventory.inventory.owner;
+		_g.set_AP(_g.AP - this.gear.gear_data.cost);
 		this.draggable = false;
 		this.gear.position = position;
 		inventory.add_equipment(this);
