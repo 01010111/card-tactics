@@ -1,5 +1,6 @@
 package ui;
 
+import data.Inventory;
 import zero.utilities.Vec2;
 import openfl.display.Sprite;
 import zero.openfl.utilities.Game;
@@ -52,7 +53,7 @@ class Deck extends Sprite {
 		var i = 0;
 		var sx = Game.width/2 - hand.length/2 * 144 + 72;
 		for (card in hand) {
-            var target = Vec2.get(sx + i * 144, Game.height - 48);
+			var target = Vec2.get(sx + i * 144, Game.height - 48);
 			card.x += (target.x - card.x) * 0.25;
             card.y += (target.y - card.y) * 0.25;
             i++;

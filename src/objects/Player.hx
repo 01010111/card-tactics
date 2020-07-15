@@ -5,7 +5,6 @@ import ui.InventorySprite;
 import ui.PlayerInfo;
 import data.Mutation;
 import data.Gear;
-import util.TurnUtil;
 import objects.Actor.ActorData;
 import openfl.events.MouseEvent;
 import scenes.Level;
@@ -27,7 +26,7 @@ class Player extends Actor {
 
 	public function new(x:Int, y:Int, options:PlayerOptions) {
 		super(options.data, x, y);
-		addEventListener(MouseEvent.CLICK, (e) -> if (LEVEL.can_move && TurnUtil.player_turn) selected_player = this);
+		addEventListener(MouseEvent.CLICK, (e) -> if (GAMESTATE != ENEMY_TURN) selected_player = this);
 		LEVEL.objects.add(this);
 		LEVEL.dolly.follow_object(this, true);
 
@@ -60,11 +59,12 @@ class Player extends Actor {
 
 	static function set_selected_player(player:Player) {
 		InventorySprite.active_inventory = player.inventory.sprite;
+		selected_player = player;
 		LEVEL.clear_indicators();
 		LEVEL.dolly.follow_object(player, false);
 		player.pulse();
 		player.inventory.movement.set_moves();
-		return selected_player = player;
+		return player;
 	}
 
 	override function health_callback() {

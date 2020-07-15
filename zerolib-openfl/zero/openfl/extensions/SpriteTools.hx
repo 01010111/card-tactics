@@ -1,5 +1,6 @@
 package zero.openfl.extensions;
 
+import zero.openfl.utilities.Game;
 import openfl.display.Bitmap;
 import openfl.display.DisplayObject;
 import openfl.display.Sprite;
@@ -9,27 +10,33 @@ import zero.utilities.Vec2;
 import zero.utilities.Anchor;
 
 class SpriteTools {
+
 	public static inline function add(parent:Sprite, child:DisplayObject) {
 		parent.addChild(child);
 	}
+
 	public static inline function add_at(parent:Sprite, child:DisplayObject, index:Int) {
 		parent.addChildAt(child, index);
 	}
+
 	public static inline function remove(sprite:Sprite) {
 		if (sprite.parent != null) sprite.parent.removeChild(sprite);
 	}
+
 	public static inline function fill_circle(sprite:Sprite, color:Color, x:Float, y:Float, radius:Float):Sprite {
 		sprite.graphics.beginFill(color.to_hex_24(), color.alpha);
 		sprite.graphics.drawCircle(x, y, radius);
 		sprite.graphics.endFill();
 		return sprite;
 	}
+
 	public static inline function fill_rect(sprite:Sprite, color:Color, x:Float, y:Float, width:Float, height:Float, radius:Float = 0):Sprite {
 		sprite.graphics.beginFill(color.to_hex_24(), color.alpha);
 		radius == 0 ? sprite.graphics.drawRect(x, y, width, height) : sprite.graphics.drawRoundRect(x, y, width, height, radius);
 		sprite.graphics.endFill();
 		return sprite;
 	}
+
 	public static inline function fill_poly(sprite:Sprite, color:Color, poly:Array<Vec2>) {
 		if (poly.length <= 2) return sprite;
 		sprite.graphics.beginFill(color.to_hex_24());
@@ -45,18 +52,21 @@ class SpriteTools {
 		sprite.graphics.endFill();
 		return sprite;
 	}
+
 	public static inline function circle(sprite:Sprite, color:Color, x:Float, y:Float, radius:Float, line_width:Float = 1):Sprite {
 		sprite.graphics.lineStyle(line_width, color.to_hex_24(), color.alpha);
 		sprite.graphics.drawCircle(x, y, radius);
 		sprite.graphics.lineStyle();
 		return sprite;
 	}
+
 	public static inline function rect(sprite:Sprite, color:Color, x:Float, y:Float, width:Float, height:Float, radius:Float = 0, line_width:Float = 1):Sprite {
 		sprite.graphics.lineStyle(line_width, color.to_hex_24(), color.alpha);
 		radius == 0 ? sprite.graphics.drawRect(x, y, width, height) : sprite.graphics.drawRoundRect(x, y, width, height, radius);
 		sprite.graphics.lineStyle();
 		return sprite;
 	}
+
 	public static inline function line(sprite:Sprite, color:Color, p0x:Float, p0y:Float, p1x:Float, p1y:Float, thickness:Float = 1):Sprite {
 		sprite.graphics.lineStyle(thickness, color.to_hex_24(), color.alpha);
 		sprite.graphics.moveTo(p0x, p0y);
@@ -64,6 +74,7 @@ class SpriteTools {
 		sprite.graphics.lineStyle();
 		return sprite;
 	}
+
 	public static inline function poly(sprite:Sprite, color:Color, poly:Array<Vec2>, thickness:Float = 1) {
 		if (poly.length < 2) return sprite;
 		if (poly.length == 2) return line(sprite, color, poly[0].x, poly[0].y, poly[1].x, poly[2].y, thickness);
@@ -80,20 +91,24 @@ class SpriteTools {
 		p1.put();
 		return sprite;
 	}
+
 	public static inline function set_scale(sprite:Sprite, x:Float = 0, ?y:Float) {
 		if (y == null) y = x;
 		sprite.scaleX = x;
 		sprite.scaleY = y;
 		return sprite;
 	}
+
 	public static inline function children(sprite:Sprite):Array<DisplayObject> {
 		return [for (i in 0...sprite.numChildren) sprite.getChildAt(i)];
 	}
+
 	public static inline function set_position(sprite:Sprite, x:Float, y:Float) {
 		sprite.x = x;
 		sprite.y = y;
 		return sprite;
 	}
+
 	public static inline function distance(sprite1:Sprite, sprite2:Sprite):Float {
 		var p1 = Vec2.get(sprite1.x, sprite1.y);
 		var p2 = Vec2.get(sprite2.x, sprite2.y);
@@ -102,6 +117,7 @@ class SpriteTools {
 		p2.put();
 		return out;
 	}
+
 	public static inline function vector_between(sprite1:Sprite, sprite2:Sprite):Vec2 {
 		var p1 = Vec2.get(sprite1.x, sprite1.y);
 		var p2 = Vec2.get(sprite2.x, sprite2.y);
@@ -110,6 +126,7 @@ class SpriteTools {
 		p2.put();
 		return out;
 	}
+
 	public static function load_graphic(sprite:Sprite, graphic:String, anchor:Anchor, smoothing:Bool = false) {
 		var bitmap = new Bitmap(Assets.getBitmapData(graphic));
 		bitmap.smoothing = smoothing;
@@ -126,4 +143,10 @@ class SpriteTools {
 		sprite.addChild(bitmap);
 		return sprite;
 	}
+
+	public static function center(sprite:Sprite):Sprite {
+		set_position(sprite, Game.width/2, Game.height/2);
+		return sprite;
+	}
+
 }

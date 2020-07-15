@@ -894,9 +894,9 @@ ApplicationMain.create = function(config) {
 	ManifestResources.init(config);
 	var _this = app.meta;
 	if(__map_reserved["build"] != null) {
-		_this.setReserved("build","49");
+		_this.setReserved("build","53");
 	} else {
-		_this.h["build"] = "49";
+		_this.h["build"] = "53";
 	}
 	var _this1 = app.meta;
 	if(__map_reserved["company"] != null) {
@@ -4822,7 +4822,7 @@ ManifestResources.init = function(config) {
 	openfl_text_Font.registerFont(_$_$ASSET_$_$OPENFL_$_$fonts_$nunito_$black_$ttf);
 	openfl_text_Font.registerFont(_$_$ASSET_$_$OPENFL_$_$fonts_$oduda_$bold_$ttf);
 	var bundle;
-	var data = "{\"name\":null,\"assets\":\"aoy4:pathy18:images%2Fblank.pngy4:sizei123y4:typey5:IMAGEy2:idR1y7:preloadtgoR0y20:images%2Fobjects.pngR2i264R3R4R5R7R6tgoR0y29:images%2Fparticles%2Fpoof.pngR2i452R3R4R5R8R6tgoR0y28:images%2Fparticles%2Fpop.pngR2i848R3R4R5R9R6tgoR0y20:images%2Fplayers.pngR2i1824R3R4R5R10R6tgoR0y18:images%2Ftiles.pngR2i14787R3R4R5R11R6tgoR0y35:images%2Fui%2Faction_arrow_blue.pngR2i473R3R4R5R12R6tgoR0y36:images%2Fui%2Faction_arrow_green.pngR2i489R3R4R5R13R6tgoR0y34:images%2Fui%2Faction_arrow_red.pngR2i470R3R4R5R14R6tgoR0y36:images%2Fui%2Faction_arrow_white.pngR2i307R3R4R5R15R6tgoR0y25:images%2Fui%2Faim_cta.pngR2i1862R3R4R5R16R6tgoR0y24:images%2Fui%2Fap_pip.pngR2i270R3R4R5R17R6tgoR0y25:images%2Fui%2Fap_pips.pngR2i467R3R4R5R18R6tgoR0y28:images%2Fui%2Fap_pip_big.pngR2i370R3R4R5R19R6tgoR0y25:images%2Fui%2Fcard_bg.pngR2i2030R3R4R5R20R6tgoR0y24:images%2Fui%2Fdo_cta.pngR2i1723R3R4R5R21R6tgoR0y36:images%2Fui%2Ficons%2Ficon_skull.pngR2i2850R3R4R5R22R6tgoR0y35:images%2Fui%2Ficons%2Fmove_free.pngR2i2776R3R4R5R23R6tgoR0y35:images%2Fui%2Ficons%2Fmove_rook.pngR2i3371R3R4R5R24R6tgoR0y39:images%2Fui%2Ficons%2Fmove_teleport.pngR2i3093R3R4R5R25R6tgoR0y51:images%2Fui%2Ficons%2Fon_white%2Ficon_electrify.pngR2i1737R3R4R5R26R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_explode.pngR2i2333R3R4R5R27R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_flame.pngR2i2026R3R4R5R28R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_health.pngR2i1796R3R4R5R29R6tgoR0y46:images%2Fui%2Ficons%2Fon_white%2Ficon_move.pngR2i1973R3R4R5R30R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_pierce.pngR2i1943R3R4R5R31R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_shield.pngR2i2051R3R4R5R32R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_utility.pngR2i1803R3R4R5R33R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_water.pngR2i1906R3R4R5R34R6tgoR0y29:images%2Fui%2Fmutant_card.pngR2i117869R3R4R5R35R6tgoR0y27:images%2Fui%2Frule_face.pngR2i8721R3R4R5R36R6tgoR0y32:images%2Fui%2Frule_two_cards.pngR2i5319R3R4R5R37R6tgoR0y29:images%2Fui%2Fshield_icon.pngR2i815R3R4R5R38R6tgoR0y27:images%2Fui%2Fsuit_club.pngR2i4182R3R4R5R39R6tgoR0y30:images%2Fui%2Fsuit_diamond.pngR2i2985R3R4R5R40R6tgoR0y28:images%2Fui%2Fsuit_heart.pngR2i2540R3R4R5R41R6tgoR0y28:images%2Fui%2Fsuit_spade.pngR2i3507R3R4R5R42R6tgoR0y17:data%2Fgear.jsoncR2i1527R3y4:TEXTR5R43R6tgoR0y22:data%2Fmaps%2F000.jsonR2i1961R3R44R5R45R6tgoR0y23:data%2Fmaps%2Fmaps.ogmoR2i19081R3R44R5R46R6tgoR0y19:data%2Fmutant.jsoncR2i582R3R44R5R47R6tgoR0y44:data%2Ftranslations%2Fequipment_titles.jsoncR2i21213R3R44R5R48R6tgoR0y36:data%2Ftranslations%2Fgameplay.jsoncR2i102911R3R44R5R49R6tgoR0y47:data%2Ftranslations%2Fmutant_descriptions.jsoncR2i14329R3R44R5R50R6tgoR0y40:data%2Ftranslations%2Ftooltip_text.jsoncR2i26543R3R44R5R51R6tgoR2i171180R3y4:FONTy9:classNamey31:__ASSET__fonts_nunito_black_ttfR5y24:fonts%2Fnunito_black.ttfR6tgoR2i19636R3R52R53y29:__ASSET__fonts_oduda_bold_ttfR5y22:fonts%2Foduda_bold.ttfR6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
+	var data = "{\"name\":null,\"assets\":\"aoy4:pathy18:images%2Fblank.pngy4:sizei123y4:typey5:IMAGEy2:idR1y7:preloadtgoR0y20:images%2Fobjects.pngR2i264R3R4R5R7R6tgoR0y29:images%2Fparticles%2Fpoof.pngR2i452R3R4R5R8R6tgoR0y28:images%2Fparticles%2Fpop.pngR2i848R3R4R5R9R6tgoR0y20:images%2Fpickups.pngR2i878R3R4R5R10R6tgoR0y20:images%2Fplayers.pngR2i1824R3R4R5R11R6tgoR0y18:images%2Ftiles.pngR2i14787R3R4R5R12R6tgoR0y35:images%2Fui%2Faction_arrow_blue.pngR2i473R3R4R5R13R6tgoR0y36:images%2Fui%2Faction_arrow_green.pngR2i489R3R4R5R14R6tgoR0y34:images%2Fui%2Faction_arrow_red.pngR2i470R3R4R5R15R6tgoR0y36:images%2Fui%2Faction_arrow_white.pngR2i307R3R4R5R16R6tgoR0y25:images%2Fui%2Faim_cta.pngR2i1862R3R4R5R17R6tgoR0y24:images%2Fui%2Fap_pip.pngR2i270R3R4R5R18R6tgoR0y25:images%2Fui%2Fap_pips.pngR2i467R3R4R5R19R6tgoR0y28:images%2Fui%2Fap_pip_big.pngR2i370R3R4R5R20R6tgoR0y25:images%2Fui%2Fcard_bg.pngR2i2030R3R4R5R21R6tgoR0y24:images%2Fui%2Fdo_cta.pngR2i1723R3R4R5R22R6tgoR0y36:images%2Fui%2Ficons%2Ficon_skull.pngR2i2850R3R4R5R23R6tgoR0y35:images%2Fui%2Ficons%2Fmove_free.pngR2i2776R3R4R5R24R6tgoR0y35:images%2Fui%2Ficons%2Fmove_rook.pngR2i3371R3R4R5R25R6tgoR0y39:images%2Fui%2Ficons%2Fmove_teleport.pngR2i3093R3R4R5R26R6tgoR0y51:images%2Fui%2Ficons%2Fon_white%2Ficon_electrify.pngR2i1737R3R4R5R27R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_explode.pngR2i2333R3R4R5R28R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_flame.pngR2i2026R3R4R5R29R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_health.pngR2i1796R3R4R5R30R6tgoR0y46:images%2Fui%2Ficons%2Fon_white%2Ficon_move.pngR2i1973R3R4R5R31R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_pierce.pngR2i1943R3R4R5R32R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_shield.pngR2i2051R3R4R5R33R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_utility.pngR2i1803R3R4R5R34R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_water.pngR2i1906R3R4R5R35R6tgoR0y29:images%2Fui%2Fmutant_card.pngR2i117869R3R4R5R36R6tgoR0y27:images%2Fui%2Frule_face.pngR2i8721R3R4R5R37R6tgoR0y32:images%2Fui%2Frule_two_cards.pngR2i5319R3R4R5R38R6tgoR0y29:images%2Fui%2Fshield_icon.pngR2i815R3R4R5R39R6tgoR0y27:images%2Fui%2Fsuit_club.pngR2i4182R3R4R5R40R6tgoR0y30:images%2Fui%2Fsuit_diamond.pngR2i2985R3R4R5R41R6tgoR0y28:images%2Fui%2Fsuit_heart.pngR2i2540R3R4R5R42R6tgoR0y28:images%2Fui%2Fsuit_spade.pngR2i3507R3R4R5R43R6tgoR0y17:data%2Fgear.jsoncR2i1527R3y4:TEXTR5R44R6tgoR0y22:data%2Fmaps%2F000.jsonR2i1961R3R45R5R46R6tgoR0y23:data%2Fmaps%2Fmaps.ogmoR2i19081R3R45R5R47R6tgoR0y19:data%2Fmutant.jsoncR2i582R3R45R5R48R6tgoR0y44:data%2Ftranslations%2Fequipment_titles.jsoncR2i21213R3R45R5R49R6tgoR0y36:data%2Ftranslations%2Fgameplay.jsoncR2i102911R3R45R5R50R6tgoR0y47:data%2Ftranslations%2Fmutant_descriptions.jsoncR2i14329R3R45R5R51R6tgoR0y40:data%2Ftranslations%2Ftooltip_text.jsoncR2i26543R3R45R5R52R6tgoR2i171180R3y4:FONTy9:classNamey31:__ASSET__fonts_nunito_black_ttfR5y24:fonts%2Fnunito_black.ttfR6tgoR2i19636R3R53R54y29:__ASSET__fonts_oduda_bold_ttfR5y22:fonts%2Foduda_bold.ttfR6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
 	var manifest = lime_utils_AssetManifest.parse(data,ManifestResources.rootPath);
 	var library = lime_utils_AssetLibrary.fromManifest(manifest);
 	lime_utils_Assets.registerLibrary("default",library);
@@ -5816,6 +5816,7 @@ data_Inventory.prototype = {
 	,movement: null
 	,sprite: null
 	,add_equipment: function(eq) {
+		eq.inventory = this;
 		this.equipment.push(eq);
 	}
 	,remove_equipment: function(eq) {
@@ -25653,7 +25654,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 973117;
+	this.version = 437945;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
@@ -28339,7 +28340,7 @@ objects_GameObject.prototype = $extend(openfl_display_Sprite.prototype,{
 	,last: null
 	,graphic: null
 	,mouse_over: function(e) {
-		if(!util_TurnUtil.player_turn) {
+		if(util_GameState.state != util_State.USING_GEAR) {
 			return;
 		}
 		scenes_Level.i.info_layer.show_info(this);
@@ -28399,7 +28400,9 @@ objects_GameObject.prototype = $extend(openfl_display_Sprite.prototype,{
 				scenes_Level.i.poofs.fire({ x : t[0] * 16 + 8, y : t[1] * 16 + 8});
 			} else {
 				_gthis.pulse();
-				scenes_Level.i.can_move = true;
+				if(util_GameState.state == util_State.WAITING) {
+					util_GameState.set_state(util_State.USING_GEAR);
+				}
 			}
 			return;
 		});
@@ -28471,6 +28474,10 @@ objects_Box.prototype = $extend(objects_GameObject.prototype,{
 		this.graphic = new zero_openfl_utilities_AnimatedSprite({ source : "images/objects.png", animations : [], frame_width : 16, frame_height : 16, offset_x : 8, offset_y : 10});
 		this.graphic.set_frame_index(0);
 		this.addChild(this.graphic);
+	}
+	,kill: function() {
+		new objects_GearPickup(this.get_grid_pos()[0],this.get_grid_pos()[1],"test_d_01");
+		objects_GameObject.prototype.kill.call(this);
 	}
 	,__class__: objects_Box
 });
@@ -28621,8 +28628,7 @@ objects_Dolly.prototype = $extend(zero_openfl_utilities_Dolly.prototype,{
 		var _g3 = this;
 		_g3.set_y(_g3.get_y() + (this.position[1] + this.offset[1] - this.get_y()) * 0.1);
 		this.color_shader.set_color(this.overlay);
-		this.color_shader.set_mix(Math.round(this.color_mix * Math.pow(10,2)) / Math.pow(10,2));
-		haxe_Log.trace(Math.round(this.color_mix * Math.pow(10,2)) / Math.pow(10,2),{ fileName : "src/objects/Dolly.hx", lineNumber : 55, className : "objects.Dolly", methodName : "update"});
+		this.color_shader.set_mix(this.color_mix);
 		this.invalidate();
 	}
 	,delta: null
@@ -28696,7 +28702,7 @@ var objects_Pickup = function(x,y,title) {
 	objects_GameObject.call(this,x,y,{ current : 0, max : 0},title);
 	this.draw_pickup();
 	this.addEventListener("mouseDown",function(e) {
-		if(util_TurnUtil.player_turn) {
+		if(util_GameState.state == util_State.USING_GEAR) {
 			_gthis.mouse_down();
 		}
 		return;
@@ -28710,16 +28716,53 @@ objects_Pickup.prototype = $extend(objects_GameObject.prototype,{
 	draw_pickup: function() {
 	}
 	,mouse_down: function() {
-		haxe_Log.trace("Pickup Clicked!",{ fileName : "src/objects/Pickup.hx", lineNumber : 17, className : "objects.Pickup", methodName : "mouse_down"});
 	}
 	,__class__: objects_Pickup
+});
+var objects_GearPickup = function(x,y,title) {
+	this.data = util_EquipmentUtil.get_gear_data(title);
+	objects_Pickup.call(this,x,y,title);
+};
+$hxClasses["objects.GearPickup"] = objects_GearPickup;
+objects_GearPickup.__name__ = "objects.GearPickup";
+objects_GearPickup.__super__ = objects_Pickup;
+objects_GearPickup.prototype = $extend(objects_Pickup.prototype,{
+	data: null
+	,mouse_down: function() {
+		if(util_GameState.state != util_State.USING_GEAR) {
+			return;
+		}
+		var pos = this.parent.parent.localToGlobal(new openfl_geom_Point(this.get_x(),this.get_y()));
+		var sprite = new ui_GearSprite(new data_Gear(new data_Inventory(this),0,this.data));
+		var y = pos.y;
+		sprite.set_x(pos.x);
+		sprite.set_y(y);
+		var gear = sprite;
+		gear.home = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([zero_openfl_utilities_Game.get_width() - 32 - ui_EquipmentSprite.WIDTH / 2,zero_openfl_utilities_Game.get_height() - 32 - ui_EquipmentSprite.HEIGHT / 2]);
+		gear.draggable = true;
+		zero_utilities_Tween.get(gear).from_to("scaleX",0.25,1).from_to("scaleY",0.25,1).ease(zero_utilities_Ease.backOut).duration(0.4);
+		scenes_Level.i.info_layer.addChild(gear);
+		if(this.parent != null) {
+			this.parent.removeChild(this);
+		}
+		gear.set_active(true);
+		ui_GearSprite.PLACEABLE_GEAR = gear;
+		util_GameState.set_state(util_State.PLACING_GEAR);
+	}
+	,draw_pickup: function() {
+		var graphic = new zero_openfl_utilities_AnimatedSprite({ source : "images/pickups.png", frame_width : 16, frame_height : 16, offset_x : 8, offset_y : 8, animations : []});
+		graphic.set_frame_index(2);
+		this.addChild(graphic);
+		zero_utilities_Tween.get(this).from_to("scaleX",0,1).from_to("scaleY",0,1).ease(zero_utilities_Ease.elasticOut);
+	}
+	,__class__: objects_GearPickup
 });
 var objects_Player = function(x,y,options) {
 	this.AP = 10;
 	var _gthis = this;
 	objects_Actor.call(this,options.data,x,y);
 	this.addEventListener("click",function(e) {
-		if(scenes_Level.i.can_move && util_TurnUtil.player_turn) {
+		if(util_GameState.state != util_State.ENEMY_TURN) {
 			objects_Player.set_selected_player(_gthis);
 		}
 		return;
@@ -28755,11 +28798,12 @@ objects_Player.__name__ = "objects.Player";
 objects_Player.__properties__ = {set_selected_player:"set_selected_player"};
 objects_Player.set_selected_player = function(player) {
 	ui_InventorySprite.set_active_inventory(player.inventory.sprite);
+	objects_Player.selected_player = player;
 	scenes_Level.i.clear_indicators();
 	scenes_Level.i.dolly.follow_object(player,false);
 	player.pulse();
 	player.inventory.movement.set_moves();
-	return objects_Player.selected_player = player;
+	return player;
 };
 objects_Player.__super__ = objects_Actor;
 objects_Player.prototype = $extend(objects_Actor.prototype,{
@@ -76928,16 +76972,9 @@ var scenes_Level = function() {
 	this.poofs = new zero_openfl_utilities_Particles(function() {
 		return new particles_Poof();
 	});
-	this.can_move = true;
 	this.object_map = [];
 	scenes_Level.i = this;
 	zero_openfl_utilities_Scene.call(this);
-	zero_utilities_EventBus.listen(function(_) {
-		if(zero_openfl_utilities_Keys.just_pressed(84)) {
-			util_TurnUtil.player_turn = !util_TurnUtil.player_turn;
-		}
-		return;
-	},"update");
 };
 $hxClasses["scenes.Level"] = scenes_Level;
 scenes_Level.__name__ = "scenes.Level";
@@ -76945,7 +76982,6 @@ scenes_Level.__super__ = zero_openfl_utilities_Scene;
 scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 	tiles: null
 	,object_map: null
-	,can_move: null
 	,dolly: null
 	,available_tiles: null
 	,level: null
@@ -77006,7 +77042,7 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 		zero_openfl_utilities_Game.root.stage.addEventListener("mouseUp",$bind(this,this.level_mouse_up));
 	}
 	,level_mouse_down: function(e) {
-		if(!util_TurnUtil.player_turn) {
+		if(util_GameState.state == util_State.ENEMY_TURN) {
 			return;
 		}
 		this.dolly.startDrag(false);
@@ -77044,13 +77080,13 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 		this.object_map = _g2;
 	}
 	,on_click: function(e) {
-		if(!this.can_move || e.localX < 0 || e.localY < 0) {
+		if(util_GameState.state != util_State.USING_GEAR || e.localX < 0 || e.localY < 0) {
 			return;
 		}
 		var x = Math.floor(e.localX / 16);
 		var y = Math.floor(e.localY / 16);
 		objects_Player.selected_player.move_to(x,y);
-		this.can_move = false;
+		util_GameState.set_state(util_State.WAITING);
 		this.move_indicators.get_graphics().clear();
 		ui_InventorySprite.active_inventory.inventory.movement.execute();
 	}
@@ -77076,9 +77112,15 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 	}
 	,clear_indicators: function() {
 		this.indicators.get_graphics().clear();
+		if(util_GameState.state == util_State.PLACING_GEAR && ui_GearSprite.PLACEABLE_GEAR != null) {
+			this.draw_indicators(ui_GearSprite.PLACEABLE_GEAR.equipment,null,objects_Player.selected_player);
+		}
+		if(util_GameState.state != util_State.USING_GEAR) {
+			return;
+		}
 		this.move_indicators.set_visible(true);
 	}
-	,draw_indicators: function(equipment,equipment_array) {
+	,draw_indicators: function(equipment,equipment_array,owner) {
 		var equips = equipment_array == null ? equipment == null ? [] : [equipment] : equipment_array;
 		this.indicators.get_graphics().clear();
 		this.move_indicators.set_visible(false);
@@ -77087,7 +77129,7 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 		while(_g < equips.length) {
 			var eq = equips[_g];
 			++_g;
-			var object = eq.inventory.owner;
+			var object = owner == null ? eq.inventory.owner : owner;
 			var range_min = eq.data.range.min;
 			var range_max = eq.data.range.max;
 			var range_type = eq.data.range.type;
@@ -77116,6 +77158,9 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 			switch(eq.data.effect.type) {
 			case "DAMAGE":
 				color = zero_utilities__$Color_Color_$Impl_$.PICO_8_RED;
+				break;
+			case "DRAW":
+				color = zero_utilities__$Color_Color_$Impl_$.PICO_8_GREEN;
 				break;
 			case "HEALTH":
 				color = zero_utilities__$Color_Color_$Impl_$.PICO_8_GREEN;
@@ -77348,7 +77393,7 @@ var ui_Card = function() {
 	var _gthis = this;
 	openfl_display_Sprite.call(this);
 	this.addEventListener("mouseDown",function(e) {
-		if(util_TurnUtil.player_turn) {
+		if(util_GameState.state != util_State.ENEMY_TURN) {
 			_gthis.mouse_down(e);
 		}
 		return;
@@ -77798,7 +77843,7 @@ ui_EquipmentHandle.prototype = $extend(openfl_display_Sprite.prototype,{
 		this.equipment.set_active(false);
 	}
 	,mouse_down: function(e) {
-		if(!this.active) {
+		if(!this.active || util_GameState.state != util_State.USING_GEAR) {
 			return;
 		}
 		this.startDrag(true);
@@ -77967,8 +78012,14 @@ ui_EquipmentSprite.prototype = $extend(ui_DropSprite.prototype,{
 	equipment: null
 	,handle: null
 	,mouse_over: function(e) {
+		if(!this.get_expended() || this.active) {
+			scenes_Level.i.draw_indicators(this.equipment,null,objects_Player.selected_player);
+		}
 	}
 	,mouse_out: function(e) {
+		if(!this.active) {
+			scenes_Level.i.clear_indicators();
+		}
 	}
 	,draw_classes: function(sprite) {
 		var class_src;
@@ -78118,9 +78169,11 @@ ui_GearSprite.__name__ = "ui.GearSprite";
 ui_GearSprite.__super__ = ui_EquipmentSprite;
 ui_GearSprite.prototype = $extend(ui_EquipmentSprite.prototype,{
 	gear: null
+	,home: null
 	,description: null
 	,req_text: null
 	,req_text_r: null
+	,destroy_button: null
 	,draw: function() {
 		var this1 = zero_utilities__$Color_Color_$Impl_$.get();
 		var x = 0.48627450980392156;
@@ -78274,6 +78327,62 @@ ui_GearSprite.prototype = $extend(ui_EquipmentSprite.prototype,{
 		this.draw_classes(contents);
 		this.make_highlights();
 		this.make_handle();
+		this.make_destroy_button();
+	}
+	,make_destroy_button: function() {
+		var _gthis = this;
+		var sprite = new openfl_display_Sprite();
+		var color = zero_utilities__$Color_Color_$Impl_$.PICO_8_RED;
+		var radius = 48;
+		if(radius == null) {
+			radius = 0;
+		}
+		sprite.get_graphics().beginFill((Math.round(color[0] * 255) & 255) << 16 | (Math.round(color[1] * 255) & 255) << 8 | Math.round(color[2] * 255) & 255,color[3]);
+		if(radius == 0) {
+			sprite.get_graphics().drawRect(-48,-24,96,48);
+		} else {
+			sprite.get_graphics().drawRoundRect(-48,-24,96,48,radius);
+		}
+		sprite.get_graphics().endFill();
+		var sprite1 = sprite;
+		var color1 = zero_utilities__$Color_Color_$Impl_$.BLACK;
+		var radius1 = 48;
+		var line_width = 4;
+		if(line_width == null) {
+			line_width = 1;
+		}
+		if(radius1 == null) {
+			radius1 = 0;
+		}
+		sprite1.get_graphics().lineStyle(line_width,(Math.round(color1[0] * 255) & 255) << 16 | (Math.round(color1[1] * 255) & 255) << 8 | Math.round(color1[2] * 255) & 255,color1[3]);
+		if(radius1 == 0) {
+			sprite1.get_graphics().drawRect(-48,-24,96,48);
+		} else {
+			sprite1.get_graphics().drawRoundRect(-48,-24,96,48,radius1);
+		}
+		sprite1.get_graphics().lineStyle();
+		var sprite2 = sprite1;
+		sprite2.set_x(0);
+		sprite2.set_y(ui_EquipmentSprite.HEIGHT / 2);
+		var sprite3 = sprite2;
+		var x = 0;
+		var y = null;
+		if(x == null) {
+			x = 0;
+		}
+		if(y == null) {
+			y = x;
+		}
+		sprite3.set_scaleX(x);
+		sprite3.set_scaleY(y);
+		this.destroy_button = sprite3;
+		this.destroy_button.addChild(zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : util_Translation.get_font(util_Font.BOLD), size : 16, color : zero_utilities__$Color_Color_$Impl_$.WHITE}),"DESTROY"),0,0,zero_utilities_Anchor.MIDDLE_CENTER));
+		this.destroy_button.set_buttonMode(true);
+		this.destroy_button.addEventListener("click",function(e) {
+			_gthis.destroy();
+			return;
+		});
+		this.addChild(this.destroy_button);
 	}
 	,set_description: function() {
 		var str;
@@ -78427,6 +78536,62 @@ ui_GearSprite.prototype = $extend(ui_EquipmentSprite.prototype,{
 		this.set_req_text();
 		this.set_req_text_r();
 	}
+	,update: function(e) {
+		ui_EquipmentSprite.prototype.update.call(this,e);
+		if(this.draggable && !this.dragging && this.home != null) {
+			var _g = this;
+			_g.set_x(_g.get_x() + (this.home[0] - this.get_x()) * 0.25);
+			var _g1 = this;
+			_g1.set_y(_g1.get_y() + (this.home[1] - this.get_y()) * 0.25);
+		}
+		var destroy_scale = util_GameState.state._hx_index == 0 ? this.get_expended() || this.active ? 0 : 1 : 0;
+		var _g11 = this.destroy_button;
+		this.destroy_button.set_scaleY(_g11.set_scaleX(_g11.get_scaleX() + (destroy_scale - this.destroy_button.get_scaleX()) * 0.1));
+	}
+	,mouse_up: function(e) {
+		ui_EquipmentSprite.prototype.mouse_up.call(this,e);
+		if(ui_GearSprite.PLACEABLE_GEAR == this) {
+			var _g = 0;
+			var _g1 = ui_InventorySprite.active_inventory.placeholder_sprites;
+			while(_g < _g1.length) {
+				var spot = _g1[_g];
+				++_g;
+				if(spot.get_visible()) {
+					var pos = spot.parent.localToGlobal(new openfl_geom_Point(spot.get_x(),spot.get_y()));
+					var v1 = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([pos.x,pos.y]);
+					var v2 = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([this.get_x(),this.get_y()]);
+					var d = zero_utilities__$Vec2_Vec2_$Impl_$.subtract(v1,v2);
+					if(Math.sqrt(d[0] * d[0] + d[1] * d[1]) < 64) {
+						var x = spot.get_x() + d[0];
+						var y = spot.get_y() + d[1];
+						this.set_x(x);
+						this.set_y(y);
+						this.insert_into_inventory(spot.position,ui_InventorySprite.active_inventory);
+						util_GameState.set_state(util_State.USING_GEAR);
+					}
+					zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(v1);
+					v1 = null;
+					zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(v2);
+					v2 = null;
+					zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(d);
+					d = null;
+				}
+			}
+		}
+	}
+	,insert_into_inventory: function(position,inventory) {
+		this.draggable = false;
+		this.gear.position = position;
+		inventory.add_equipment(this);
+		ui_GearSprite.PLACEABLE_GEAR = null;
+		this.set_active(false);
+	}
+	,destroy: function() {
+		this.equipment.inventory.sprite.remove_equipment(this);
+		if(this.parent != null) {
+			this.parent.removeChild(this);
+		}
+	}
 	,__class__: ui_GearSprite
 });
 var ui_InfoBox = function() {
@@ -78553,19 +78718,20 @@ ui_InventorySprite.prototype = $extend(openfl_display_Sprite.prototype,{
 	,link: null
 	,inventory: null
 	,equipment: null
+	,placeholder_sprites: null
 	,equipment_layer: null
 	,side: null
-	,placeholder_sprites: null
 	,movement_sprite: null
 	,make_placeholders: function() {
 		var _g = 0;
 		var _g1 = data_Inventory.max_equipment;
 		while(_g < _g1) {
 			var i = _g++;
-			var sprite = zero_openfl_extensions_SpriteTools.load_graphic(new openfl_display_Sprite(),"images/ui/card_bg.png",zero_utilities_Anchor.MIDDLE_CENTER,true);
+			var sprite = zero_openfl_extensions_SpriteTools.load_graphic(new ui_PlaceholderSprite(),"images/ui/card_bg.png",zero_utilities_Anchor.MIDDLE_CENTER,true);
 			sprite.set_x(this.side == objects_PlayerSide.LEFT ? -72 : zero_openfl_utilities_Game.get_width() + 72);
 			sprite.set_y(298);
 			var s = sprite;
+			s.position = i;
 			this.placeholder_sprites.push(s);
 			this.addChild(s);
 		}
@@ -78601,12 +78767,12 @@ ui_InventorySprite.prototype = $extend(openfl_display_Sprite.prototype,{
 		while(_g < _g1) {
 			var i = _g++;
 			var s = this.placeholder_sprites[i];
-			var tx = this.active ? (this.side == objects_PlayerSide.LEFT ? 240 : zero_openfl_utilities_Game.get_width() - 240) + (this.side == objects_PlayerSide.LEFT ? 208 : -208) * i : this.side == objects_PlayerSide.LEFT ? -240 : zero_openfl_utilities_Game.get_width() + 240;
+			var tx = this.active ? (this.side == objects_PlayerSide.LEFT ? 168 : -168) + (this.side == objects_PlayerSide.LEFT ? 208 : -208) * i : this.side == objects_PlayerSide.LEFT ? -168 : 168;
 			var _g11 = s;
 			_g11.set_x(_g11.get_x() + (tx - s.get_x()) * 0.25);
 			var _g12 = s;
-			_g12.set_y(_g12.get_y() + (144 - s.get_y()) * 0.25);
-			s.set_visible(ui_InventorySprite.editting);
+			_g12.set_y(_g12.get_y() + (64 - s.get_y()) * 0.25);
+			s.set_visible(util_GameState.state == util_State.PLACING_GEAR);
 		}
 		var _g2 = 0;
 		var _g3 = this.equipment.length;
@@ -78616,8 +78782,10 @@ ui_InventorySprite.prototype = $extend(openfl_display_Sprite.prototype,{
 			if(s1.dragging) {
 				continue;
 			}
-			s1.draggable = ui_InventorySprite.editting;
-			if(this.active && util_TurnUtil.player_turn) {
+			if(util_GameState.state == util_State.PLACING_GEAR) {
+				this.placeholder_sprites[s1.equipment.position].set_visible(false);
+			}
+			if(this.active && util_GameState.state != util_State.ENEMY_TURN) {
 				var _g21 = s1;
 				_g21.set_x(_g21.get_x() + ((this.side == objects_PlayerSide.LEFT ? 168 : -168) + (this.side == objects_PlayerSide.LEFT ? 208 : -208) * s1.equipment.position - s1.get_x()) * 0.25);
 				var _g22 = s1;
@@ -78650,6 +78818,16 @@ ui_InventorySprite.prototype = $extend(openfl_display_Sprite.prototype,{
 		this.inventory.remove_equipment(eq.equipment);
 	}
 	,__class__: ui_InventorySprite
+});
+var ui_PlaceholderSprite = function() {
+	openfl_display_Sprite.call(this);
+};
+$hxClasses["ui.PlaceholderSprite"] = ui_PlaceholderSprite;
+ui_PlaceholderSprite.__name__ = "ui.PlaceholderSprite";
+ui_PlaceholderSprite.__super__ = openfl_display_Sprite;
+ui_PlaceholderSprite.prototype = $extend(openfl_display_Sprite.prototype,{
+	position: null
+	,__class__: ui_PlaceholderSprite
 });
 var ui_LinkGraphic = function() {
 	this.offset_matrix = new openfl_geom_Matrix();
@@ -79363,7 +79541,7 @@ ui_PlayerInfo.prototype = $extend(openfl_display_Sprite.prototype,{
 		zero_utilities_Tween.get(this.shield).from_to("scaleX",from,to).from_to("scaleY",from,to).duration(0.5).ease(zero_utilities_Ease.backOut);
 	}
 	,on_click: function(e) {
-		if(!util_TurnUtil.player_turn) {
+		if(util_GameState.state == util_State.ENEMY_TURN) {
 			return;
 		}
 		objects_Player.set_selected_player(this.player);
@@ -79575,6 +79753,9 @@ ui_PlayingCard.prototype = $extend(ui_Card.prototype,{
 		this.mini_face.set_alpha(0);
 	}
 	,mouse_down: function(e) {
+		if(util_GameState.state != util_State.USING_GEAR) {
+			return;
+		}
 		if(this.equipped) {
 			if(this.drop.get_expended()) {
 				return;
@@ -79897,6 +80078,27 @@ util_EventType.__empty_constructs__ = [util_EventType.PLAYER_TURN,util_EventType
 var util_FilterUtil = function() { };
 $hxClasses["util.FilterUtil"] = util_FilterUtil;
 util_FilterUtil.__name__ = "util.FilterUtil";
+var util_State = $hxEnums["util.State"] = { __ename__ : "util.State", __constructs__ : ["PLACING_GEAR","PLACING_POWERUP","USING_GEAR","WAITING","ENEMY_TURN"]
+	,PLACING_GEAR: {_hx_index:0,__enum__:"util.State",toString:$estr}
+	,PLACING_POWERUP: {_hx_index:1,__enum__:"util.State",toString:$estr}
+	,USING_GEAR: {_hx_index:2,__enum__:"util.State",toString:$estr}
+	,WAITING: {_hx_index:3,__enum__:"util.State",toString:$estr}
+	,ENEMY_TURN: {_hx_index:4,__enum__:"util.State",toString:$estr}
+};
+util_State.__empty_constructs__ = [util_State.PLACING_GEAR,util_State.PLACING_POWERUP,util_State.USING_GEAR,util_State.WAITING,util_State.ENEMY_TURN];
+var util_GameState = function() { };
+$hxClasses["util.GameState"] = util_GameState;
+util_GameState.__name__ = "util.GameState";
+util_GameState.__properties__ = {set_state:"set_state"};
+util_GameState.set_state = function(s) {
+	if((util_GameState.state == util_State.PLACING_GEAR || util_GameState.state == util_State.PLACING_POWERUP) && s == util_State.USING_GEAR) {
+		scenes_Level.i.dolly.flash(zero_utilities__$Color_Color_$Impl_$.BLACK,0.25,0.5,0);
+	}
+	if(util_GameState.state == util_State.USING_GEAR && (s == util_State.PLACING_GEAR || s == util_State.PLACING_POWERUP)) {
+		scenes_Level.i.dolly.flash(zero_utilities__$Color_Color_$Impl_$.BLACK,0.25,0,0.5);
+	}
+	return util_GameState.state = s;
+};
 var util_PlayerData = function() { };
 $hxClasses["util.PlayerData"] = util_PlayerData;
 util_PlayerData.__name__ = "util.PlayerData";
@@ -80078,9 +80280,6 @@ var util_Font = $hxEnums["util.Font"] = { __ename__ : "util.Font", __constructs_
 	,BOLD: {_hx_index:0,__enum__:"util.Font",toString:$estr}
 };
 util_Font.__empty_constructs__ = [util_Font.BOLD];
-var util_TurnUtil = function() { };
-$hxClasses["util.TurnUtil"] = util_TurnUtil;
-util_TurnUtil.__name__ = "util.TurnUtil";
 var util_UpdateManager = function() { };
 $hxClasses["util.UpdateManager"] = util_UpdateManager;
 util_UpdateManager.__name__ = "util.UpdateManager";
@@ -80790,8 +80989,8 @@ zero_openfl_extensions_SpriteTools.set_position = function(sprite,x,y) {
 zero_openfl_extensions_SpriteTools.distance = function(sprite1,sprite2) {
 	var p1 = zero_utilities__$Vec2_Vec2_$Impl_$.get(sprite1.get_x(),sprite1.get_y());
 	var p2 = zero_utilities__$Vec2_Vec2_$Impl_$.get(sprite2.get_x(),sprite2.get_y());
-	var this1 = zero_utilities__$Vec2_Vec2_$Impl_$.subtract(p2,zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float(p1));
-	var out = Math.sqrt(this1[0] * this1[0] + this1[1] * this1[1]);
+	var this2 = zero_utilities__$Vec2_Vec2_$Impl_$.subtract(p2,zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float(p1));
+	var out = Math.sqrt(this2[0] * this2[0] + this2[1] * this2[1]);
 	zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(p1);
 	p1 = null;
 	zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(p2);
@@ -80841,6 +81040,13 @@ zero_openfl_extensions_SpriteTools.load_graphic = function(sprite,graphic,anchor
 	}
 	bitmap.set_y(tmp1);
 	sprite.addChild(bitmap);
+	return sprite;
+};
+zero_openfl_extensions_SpriteTools.center = function(sprite) {
+	var x = zero_openfl_utilities_Game.get_width() / 2;
+	var y = zero_openfl_utilities_Game.get_height() / 2;
+	sprite.set_x(x);
+	sprite.set_y(y);
 	return sprite;
 };
 var zero_openfl_extensions_TextTools = function() { };
@@ -88606,7 +88812,6 @@ haxe_lang_Iterator.__meta__ = { obj : { SuppressWarnings : ["checkstyle:FieldDoc
 haxe_lang_Iterable.__meta__ = { obj : { SuppressWarnings : ["checkstyle:FieldDocComment"]}};
 ui_EquipmentSprite.WIDTH = 192;
 ui_EquipmentSprite.HEIGHT = 224;
-ui_InventorySprite.editting = false;
 ui_ObjectInfo.info_width = 160;
 ui_ObjectInfo.info_height = 76;
 ui_PlayingCard.card_width = 128;
@@ -88614,13 +88819,13 @@ ui_PlayingCard.card_height = 192;
 ui_PlayingCard.mini_width = 64;
 ui_PlayingCard.mini_height = 80;
 util_FilterUtil.grayscale_filter = new openfl_filters_ColorMatrixFilter([0.25,0.25,0.25,0.00,0.00,0.25,0.25,0.25,0.00,0.00,0.25,0.25,0.25,0.00,0.00,0.00,0.00,0.00,1.00,1.00]);
+util_GameState.state = util_State.USING_GEAR;
 util_PlayerData.player1 = { id : "Test Player", health : { current : 48, max : 64}, movement : { requirement : "MAX_CARD", requirement_value : 5, type : data_MoveType.FREE, factor : data_MoveFactor.VALUE}, equipment : ["test_d_02","test_m_01","test_m_02"]};
-util_PlayerData.player2 = { id : "Test Player", health : { current : 64, max : 64}, movement : { requirement : "MAX_CARD", requirement_value : 5, type : data_MoveType.FREE, factor : data_MoveFactor.VALUE}, equipment : ["test_d_01","test_u_01","test_h_01"]};
+util_PlayerData.player2 = { id : "Test Player", health : { current : 64, max : 64}, movement : { requirement : "MAX_CARD", requirement_value : 5, type : data_MoveType.FREE, factor : data_MoveFactor.VALUE}, equipment : ["test_d_01","test_h_01"]};
 util_Translation.language = "en";
 util_Translation.fonts = new haxe_ds_EnumValueMap();
 util_Translation.languages = ["en","af","sq","am","ar","hy","az","eu","be","bn","bs","bg","ca","ceb","zh","zh_CN","zh_TW","co","hr","cs","da","nl","eo","et","fi","fr","fy","gl","ka","de","el","gu","ht","ha","haw","he","hi","hmn","hu","is","ig","id","ga","it","ja","jw","kn","kk","km","ko","ku","ky","lo","la","lv","lt","lb","mk","mg","ms","ml","mt","mi","mr","mn","my","ne","no","ny","ps","fa","pl","pt","pa","ro","ru","sm","gd","sr","st","sn","sd","si","sk","sl","so","es","su","sw","sv","tl","tg","ta","te","th","tr","uk","ur","uz","vi","cy","xh","yi","yo","zu"];
 util_Translation.supported_languages = ["en"];
-util_TurnUtil.player_turn = true;
 util_UpdateManager.last = 0.0;
 util_UpdateManager.wait = false;
 util_UpdateManager.fps_array = [];

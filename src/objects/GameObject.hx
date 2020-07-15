@@ -1,7 +1,6 @@
 package objects;
 
 import zero.utilities.Color;
-import util.TurnUtil;
 import zero.openfl.utilities.AnimatedSprite;
 import openfl.events.Event;
 import zero.utilities.Vec2;
@@ -44,7 +43,7 @@ class GameObject extends Sprite {
 	}
 
 	function mouse_over(e:MouseEvent) {
-		if (!TurnUtil.player_turn) return;
+		if (GAMESTATE != USING_GEAR) return;
 		LEVEL.info_layer.show_info(this);
 	}
 
@@ -86,7 +85,7 @@ class GameObject extends Sprite {
 			}
 			else {
 				pulse();
-				LEVEL.can_move = true;
+				if (GAMESTATE == WAITING) GAMESTATE = USING_GEAR;
 			}
 		});
 		return true;

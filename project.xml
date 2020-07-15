@@ -11,9 +11,11 @@
 	<haxelib name="openfl" />
 	<haxelib name="zerolib" />
 	
-	<assets path="assets/images" rename="images" />
-	<assets path="assets/audio" rename="audio" />
-	<assets path="assets/data" rename="data" />
-	<assets path="assets/fonts" rename="fonts" />
+	<assets path="assets/images" rename="images" embed="true" />
+	<assets path="assets/audio" rename="audio" embed="true" />
+	<assets path="assets/data" rename="data" embed="true" />
+	<assets path="assets/fonts" rename="fonts" embed="true" />
+
+	<postbuild cmd="xcopy /s /y .\export\html5\bin\* .\docs" if="html5" />
 	
 </project>

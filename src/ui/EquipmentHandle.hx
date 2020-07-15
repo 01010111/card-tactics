@@ -54,7 +54,7 @@ class EquipmentHandle extends Sprite {
 	}
 
 	function mouse_down(e:MouseEvent) {
-		if (!active) return;
+		if (!active || GAMESTATE != USING_GEAR) return;
 		startDrag(true);
 		dragging = true;
 		equipment.active = true;

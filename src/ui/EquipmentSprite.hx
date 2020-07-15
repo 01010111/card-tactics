@@ -1,5 +1,6 @@
 package ui;
 
+import objects.Player;
 import openfl.events.MouseEvent;
 import openfl.display.Sprite;
 
@@ -25,8 +26,8 @@ class EquipmentSprite extends DropSprite {
 		addEventListener(MouseEvent.MOUSE_OUT, mouse_out);
 	}
 
-	function mouse_over(e:MouseEvent) {}
-	function mouse_out(e:MouseEvent) {}
+	function mouse_over(e:MouseEvent) if (!expended || active) LEVEL.draw_indicators(equipment, Player.selected_player);
+	function mouse_out(e:MouseEvent) if (!active) LEVEL.clear_indicators();
 
 	function draw_classes(sprite:Sprite) {
 		var class_src = switch equipment.data.equipment_class {

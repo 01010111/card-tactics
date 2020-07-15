@@ -1,22 +1,29 @@
 package ui;
 
+import openfl.geom.Point;
+import openfl.events.MouseEvent;
+import openfl.events.Event;
+import zero.utilities.Vec2;
 import openfl.text.TextFormatAlign;
 import openfl.text.TextField;
 import openfl.display.Sprite;
 import zero.utilities.Color;
 import data.Gear;
-import data.Equipment;
 
 using util.Translation;
 using util.CardUtil;
 
 class GearSprite extends EquipmentSprite {
 	
+	public static var PLACEABLE_GEAR:GearSprite;
+
 	public var gear:Gear;
+	public var home:Vec2;
 
 	var description:TextField;
 	var req_text:TextField;
 	var req_text_r:TextField;
+	var destroy_button:Sprite;
 
 	public function new(gear:Gear) {
 		super(gear);
@@ -94,6 +101,16 @@ class GearSprite extends EquipmentSprite {
 
 		make_highlights();
 		make_handle();
+
+		make_destroy_button();
+	}
+
+	function make_destroy_button() {
+		destroy_button = new Sprite().fill_rect(Color.PICO_8_RED, -48, -24, 96, 48, 48).rect(Color.BLACK, -48, -24, 96, 48, 48, 4).set_position(0, EquipmentSprite.HEIGHT/2).set_scale(0);
+		destroy_button.add(new TextField().format({ font: Translation.get_font(BOLD), size: 16, color: Color.WHITE }).set_string('DESTROY').set_position(0, 0, MIDDLE_CENTER));
+		destroy_button.buttonMode = true;
+		destroy_button.addEventListener(MouseEvent.CLICK, (e) -> destroy());
+		this.add(destroy_button);
 	}
 
 	function set_description() {
@@ -167,6 +184,52 @@ class GearSprite extends EquipmentSprite {
 		set_description();
 		set_req_text();
 		set_req_text_r();
+	}
+
+	override function update(e:Event) {
+		super.update(e);
+		if (draggable && !dragging && home != null) {
+			x += (home.x - x) * 0.25;
+			y += (home.y - y) * 0.25;
+		}
+		var destroy_scale = switch GAMESTATE {
+			case PLACING_GEAR: expended || active ? 0 : 1;
+			default: 0;
+		}
+		destroy_button.scaleY = destroy_button.scaleX += (destroy_scale - destroy_button.scaleX) * 0.1;
+	}
+
+	override function mouse_up(e:MouseEvent) {
+		super.mouse_up(e);
+		if (PLACEABLE_GEAR == this) {
+			for (spot in InventorySprite.active_inventory.placeholder_sprites) if (spot.visible) {
+				var pos = spot.parent.localToGlobal(new Point(spot.x, spot.y));
+				var v1:Vec2 = [pos.x, pos.y];
+				var v2:Vec2 = [x, y];
+				var d = v1 - v2;
+				if(d.length < 64) {
+					this.set_position(spot.x + d.x, spot.y + d.y);
+					insert_into_inventory(spot.position, InventorySprite.active_inventory);
+					GAMESTATE = USING_GEAR;
+				}
+				v1.put();
+				v2.put();
+				d.put();
+			}
+		}
+	}
+	
+	function insert_into_inventory(position:Int, inventory:InventorySprite) {
+		draggable = false;
+		gear.position = position;
+		inventory.add_equipment(this);
+		PLACEABLE_GEAR = null;
+		active = false;
+	}
+
+	function destroy() {
+		equipment.inventory.sprite.remove_equipment(this);
+		this.remove();
 	}
 
 }

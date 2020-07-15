@@ -1,6 +1,5 @@
 package ui;
 
-import util.TurnUtil;
 import zero.openfl.utilities.Game;
 import openfl.events.MouseEvent;
 import openfl.display.Sprite;
@@ -12,7 +11,7 @@ class Card extends Sprite {
 	
 	public function new() {
 		super();
-		addEventListener(MouseEvent.MOUSE_DOWN, (e) -> if (TurnUtil.player_turn) mouse_down(e));
+		addEventListener(MouseEvent.MOUSE_DOWN, (e) -> if (GAMESTATE != ENEMY_TURN) mouse_down(e));
 		Game.root.addEventListener(MouseEvent.MOUSE_UP, mouse_up);
 	}
 	

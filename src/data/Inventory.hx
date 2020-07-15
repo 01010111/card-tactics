@@ -20,6 +20,7 @@ class Inventory {
 	}
 
 	public function add_equipment(eq:Equipment) {
+		eq.inventory = this;
 		equipment.push(eq);
 	}
 

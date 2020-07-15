@@ -1,8 +1,8 @@
 package ui;
 
+import zero.utilities.Color;
 import data.Mutation;
 import data.Gear;
-import util.TurnUtil;
 import openfl.events.Event;
 import zero.openfl.utilities.Game;
 import objects.Player.PlayerSide;
@@ -11,7 +11,6 @@ import openfl.display.Sprite;
 
 class InventorySprite extends Sprite {
 	
-	public static var editting:Bool = false;
 	public static var active_inventory(default, set):InventorySprite;
 
 	static function set_active_inventory(inventory:InventorySprite) {
@@ -24,10 +23,10 @@ class InventorySprite extends Sprite {
 	public var link:LinkGraphic;
 	public var inventory:Inventory;
 	public var equipment:Array<EquipmentSprite> = [];
+	public var placeholder_sprites:Array<PlaceholderSprite> = [];
 
 	var equipment_layer:Sprite;
 	var side:PlayerSide;
-	var placeholder_sprites:Array<Sprite> = [];
 	var movement_sprite:MovementSprite;
 
 	public function new(inventory:Inventory, side:PlayerSide) {
@@ -45,7 +44,8 @@ class InventorySprite extends Sprite {
 
 	function make_placeholders() {
 		for (i in 0...Inventory.max_equipment) {
-			var s = new Sprite().load_graphic('images/ui/card_bg.png', MIDDLE_CENTER, true).set_position(side == LEFT ? -72 : Game.width + 72, 298);
+			var s:PlaceholderSprite = cast new PlaceholderSprite().load_graphic('images/ui/card_bg.png', MIDDLE_CENTER, true).set_position(side == LEFT ? -72 : Game.width + 72, 298);
+			s.position = i;
 			placeholder_sprites.push(s);
 			addChild(s);
 		}
@@ -76,18 +76,18 @@ class InventorySprite extends Sprite {
 		for (i in 0...placeholder_sprites.length) {
 			var s = placeholder_sprites[i];
 			var tx = switch active {
-				case true: (side == LEFT ? 240 : Game.width - 240) + (side == LEFT ? 208 : -208) * i;
-				case false: (side == LEFT ? -240 : Game.width + 240);
+				case true: (side == LEFT ? 168 : -168) + (side == LEFT ? 208 : -208) * i;
+				case false: (side == LEFT ? -168 : 168);
 			}
 			s.x += (tx - s.x) * 0.25;
-			s.y += (144 - s.y) * 0.25;
-			s.visible = editting;
+			s.y += (64 - s.y) * 0.25;
+			s.visible = GAMESTATE == PLACING_GEAR;
 		}
 		for (i in 0...equipment.length) {
 			var s = equipment[i];
 			if (s.dragging) continue;
-			s.draggable = editting;
-			if (active && TurnUtil.player_turn) {
+			if (GAMESTATE == PLACING_GEAR) placeholder_sprites[s.equipment.position].visible = false;
+			if (active && GAMESTATE != ENEMY_TURN) {
 				s.x += ((side == LEFT ? 168 : -168) + (side == LEFT ? 208 : -208) * s.equipment.position - s.x) * 0.25;
 				s.y += (64 - s.y) * 0.25;
 				s.alpha += (1 - s.alpha) * 0.25;
@@ -113,5 +113,11 @@ class InventorySprite extends Sprite {
 		equipment_layer.removeChild(eq);
 		inventory.remove_equipment(eq.equipment);
 	}
+
+}
+
+class PlaceholderSprite extends Sprite {
+	
+	public var position:Int;
 
 }

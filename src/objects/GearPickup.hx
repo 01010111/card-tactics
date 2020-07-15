@@ -1,5 +1,12 @@
 package objects;
 
+import ui.EquipmentSprite;
+import ui.InventorySprite;
+import openfl.geom.Point;
+import zero.openfl.utilities.Game;
+import data.Inventory;
+import ui.GearSprite;
+import zero.openfl.utilities.AnimatedSprite;
 import util.EquipmentUtil;
 import zero.utilities.Ease;
 import zero.utilities.Tween;
@@ -16,11 +23,30 @@ class GearPickup extends Pickup {
 	}
 
 	override function mouse_down() {
-		Tween.get(this).from_to('rotation', -360, 0).ease(Ease.backInOut);
+		if (GAMESTATE != USING_GEAR) return;
+		var pos = parent.parent.localToGlobal(new Point(x, y));
+		var gear:GearSprite = cast new GearSprite(new Gear(new Inventory(this), 0, data)).set_position(pos.x, pos.y);
+		gear.home = [Game.width - 32 - EquipmentSprite.WIDTH/2, Game.height - 32 - EquipmentSprite.HEIGHT/2];
+		gear.draggable = true;
+		Tween.get(gear).from_to('scaleX', 0.25, 1).from_to('scaleY', 0.25, 1).ease(Ease.backOut).duration(0.4);
+		LEVEL.info_layer.add(gear);
+		this.remove();
+		gear.active = true;
+		GearSprite.PLACEABLE_GEAR = gear;
+		GAMESTATE = PLACING_GEAR;
 	}
 
 	override function draw_pickup() {
-		this.fill_rect(Color.PICO_8_RED, -4, -4, 8, 8, 2);
+		var graphic = new AnimatedSprite({
+			source: 'images/pickups.png',
+			frame_width: 16,
+			frame_height: 16,
+			offset_x: 8,
+			offset_y: 8,
+			animations: []
+		});
+		graphic.frame_index = 2;
+		this.add(graphic);
 		Tween.get(this).from_to('scaleX', 0, 1).from_to('scaleY', 0, 1).ease(Ease.elasticOut);
 	}
 

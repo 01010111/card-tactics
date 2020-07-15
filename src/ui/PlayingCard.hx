@@ -95,6 +95,7 @@ class PlayingCard extends Card {
 	}
 
 	override function mouse_down(e:MouseEvent) {
+		if (GAMESTATE != USING_GEAR) return;
 		if (equipped) {
 			if (drop.expended) return;
 			var p = localToGlobal(new Point(x, y));

@@ -1,5 +1,7 @@
 package scenes;
 
+import ui.GearSprite;
+import objects.GameObject;
 import openfl.events.Event;
 import util.PlayerData;
 import ui.InventorySprite;
@@ -7,7 +9,6 @@ import data.Gear;
 import data.Movement;
 import data.Equipment;
 import zero.openfl.utilities.Keys;
-import util.TurnUtil;
 import zero.openfl.utilities.Game;
 import ui.Deck;
 import zero.utilities.Color;
@@ -33,7 +34,6 @@ class Level extends Scene {
 
 	var tiles:Tilemap;
 	public var object_map:Array<Array<Int>> = [];
-	public var can_move:Bool = true;
 	public var dolly:Dolly;
 	public var available_tiles:Array<IntPoint>;
 
@@ -55,7 +55,6 @@ class Level extends Scene {
 	public function new() {
 		i = this;
 		super();
-		((?_) -> if (Keys.just_pressed(84)) TurnUtil.player_turn = !TurnUtil.player_turn).listen('update');
 	}
 
 	override function create() {
@@ -72,7 +71,6 @@ class Level extends Scene {
 		var player2 = new Player(6, 8, { data: PlayerData.player2, side: RIGHT });
 		Player.selected_player = player;
 		player2.shield = 4;
-		//var pickup = new objects.GearPickup(4, 10, 'test_u_01');
 		var box = new objects.Box(8, 8);
 		dolly.flash(Color.BLACK, 1);
 
@@ -94,7 +92,7 @@ class Level extends Scene {
 	}
 
 	function level_mouse_down(e:MouseEvent) {
-		if (!TurnUtil.player_turn) return;
+		if (GAMESTATE == ENEMY_TURN) return;
 		dolly.startDrag(false);
 		dolly.following = false;
 	}
@@ -111,11 +109,11 @@ class Level extends Scene {
 	}
 
 	function on_click(e:MouseEvent) {
-		if (!can_move || e.localX < 0 || e.localY < 0) return;
+		if (GAMESTATE != USING_GEAR || e.localX < 0 || e.localY < 0) return;
 		var x = (e.localX/16).floor();
 		var y = (e.localY/16).floor();
 		Player.selected_player.move_to(x, y);
-		can_move = false;
+		GAMESTATE = WAITING;
 		move_indicators.graphics.clear();
 		InventorySprite.active_inventory.inventory.movement.execute();
 	}
@@ -129,16 +127,18 @@ class Level extends Scene {
 
 	public function clear_indicators() {
 		indicators.graphics.clear();
+		if (GAMESTATE == PLACING_GEAR && GearSprite.PLACEABLE_GEAR != null) draw_indicators(GearSprite.PLACEABLE_GEAR.equipment, Player.selected_player);
+		if (GAMESTATE != USING_GEAR) return;
 		move_indicators.visible = true;
 	}
 
-	public function draw_indicators(?equipment:Equipment, ?equipment_array:Array<Equipment>) {
+	public function draw_indicators(?equipment:Equipment, ?equipment_array:Array<Equipment>, ?owner:GameObject) {
 		var equips = equipment_array == null ? equipment == null ? [] : [equipment] : equipment_array;
 		indicators.graphics.clear();
 		move_indicators.visible = false;
 		var placed_tiles:Array<IntPoint> = [];
 		for (eq in equips) {
-			var object = eq.inventory.owner;
+			var object = owner == null ? eq.inventory.owner : owner;
 			var range:RangeData = {
 				min: eq.data.range.min,
 				max: eq.data.range.max,
@@ -164,6 +164,7 @@ class Level extends Scene {
 				case MOVE:Color.PICO_8_BLUE;
 				case HEALTH:Color.PICO_8_GREEN;
 				case SHIELD:Color.PICO_8_ORANGE;
+				case DRAW:Color.PICO_8_GREEN;
 			}
 			var color_fill:Color = cast color.copy();
 			color_fill.alpha = 0.2;

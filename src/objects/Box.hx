@@ -25,4 +25,9 @@ class Box extends GameObject {
 		addChild(graphic);
 	}
 
+	override function kill() {
+		new GearPickup(grid_pos.x, grid_pos.y, 'test_d_01');
+		super.kill();
+	}
+
 }
