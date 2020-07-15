@@ -894,9 +894,9 @@ ApplicationMain.create = function(config) {
 	ManifestResources.init(config);
 	var _this = app.meta;
 	if(__map_reserved["build"] != null) {
-		_this.setReserved("build","53");
+		_this.setReserved("build","54");
 	} else {
-		_this.h["build"] = "53";
+		_this.h["build"] = "54";
 	}
 	var _this1 = app.meta;
 	if(__map_reserved["company"] != null) {
@@ -5912,12 +5912,6 @@ data_Mutation.prototype = $extend(data_Equipment.prototype,{
 			return;
 		}
 		switch(ev.type._hx_index) {
-		case 0:
-			break;
-		case 1:
-			break;
-		case 2:
-			break;
 		case 3:
 			if(ev.data.object == this.inventory.owner) {
 				this.check_card(ev.data.card_data);
@@ -5928,6 +5922,7 @@ data_Mutation.prototype = $extend(data_Equipment.prototype,{
 				this.set_available(ev.data.value > 0);
 			}
 			break;
+		default:
 		}
 	}
 	,check_card: function(card_data) {
@@ -28306,6 +28301,7 @@ lime_utils__$UInt8ClampedArray_UInt8ClampedArray_$Impl_$._clamp = function(_in) 
 	}
 };
 var objects_GameObject = function(x,y,health,title) {
+	this.AP = 0;
 	this.shield = 0;
 	var _gthis = this;
 	this.exists = true;
@@ -28334,6 +28330,7 @@ objects_GameObject.prototype = $extend(openfl_display_Sprite.prototype,{
 	,title: null
 	,inventory: null
 	,exists: null
+	,AP: null
 	,get_grid_pos: function() {
 		return zero_utilities__$IntPoint_IntPoint_$Impl_$.from_array_int([Math.floor(this.get_x() / 16),Math.floor(this.get_y() / 16)]);
 	}
@@ -28444,8 +28441,11 @@ objects_GameObject.prototype = $extend(openfl_display_Sprite.prototype,{
 		zero_utilities_EventBus.dispatch("game_event",{ type : util_EventType.SHIELD, data : { object : this, value : amt}});
 		return this.shield;
 	}
+	,set_AP: function(v) {
+		return this.AP = v;
+	}
 	,__class__: objects_GameObject
-	,__properties__: $extend(openfl_display_Sprite.prototype.__properties__,{get_grid_pos:"get_grid_pos",set_shield:"set_shield"})
+	,__properties__: $extend(openfl_display_Sprite.prototype.__properties__,{set_AP:"set_AP",get_grid_pos:"get_grid_pos",set_shield:"set_shield"})
 });
 var objects_Actor = function(data,x,y) {
 	this.data = data;
@@ -28721,6 +28721,7 @@ objects_Pickup.prototype = $extend(objects_GameObject.prototype,{
 });
 var objects_GearPickup = function(x,y,title) {
 	this.data = util_EquipmentUtil.get_gear_data(title);
+	this.pos = zero_utilities__$IntPoint_IntPoint_$Impl_$.from_array_int([x,y]);
 	objects_Pickup.call(this,x,y,title);
 };
 $hxClasses["objects.GearPickup"] = objects_GearPickup;
@@ -28728,7 +28729,9 @@ objects_GearPickup.__name__ = "objects.GearPickup";
 objects_GearPickup.__super__ = objects_Pickup;
 objects_GearPickup.prototype = $extend(objects_Pickup.prototype,{
 	data: null
+	,pos: null
 	,mouse_down: function() {
+		var _gthis = this;
 		if(util_GameState.state != util_State.USING_GEAR) {
 			return;
 		}
@@ -28738,7 +28741,9 @@ objects_GearPickup.prototype = $extend(objects_Pickup.prototype,{
 		sprite.set_x(pos.x);
 		sprite.set_y(y);
 		var gear = sprite;
-		gear.home = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([zero_openfl_utilities_Game.get_width() - 32 - ui_EquipmentSprite.WIDTH / 2,zero_openfl_utilities_Game.get_height() - 32 - ui_EquipmentSprite.HEIGHT / 2]);
+		var tmp = zero_openfl_utilities_Game.get_width() - 32 - ui_EquipmentSprite.WIDTH / 2;
+		var tmp1 = zero_openfl_utilities_Game.get_height() - 96 - ui_EquipmentSprite.HEIGHT / 2;
+		gear.home = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([tmp,tmp1]);
 		gear.draggable = true;
 		zero_utilities_Tween.get(gear).from_to("scaleX",0.25,1).from_to("scaleY",0.25,1).ease(zero_utilities_Ease.backOut).duration(0.4);
 		scenes_Level.i.info_layer.addChild(gear);
@@ -28748,6 +28753,16 @@ objects_GearPickup.prototype = $extend(objects_Pickup.prototype,{
 		gear.set_active(true);
 		ui_GearSprite.PLACEABLE_GEAR = gear;
 		util_GameState.set_state(util_State.PLACING_GEAR);
+		scenes_Level.i.info_layer.addChild(new ui_CancelButton("Put Back",function() {
+			if(gear.parent != null) {
+				gear.parent.removeChild(gear);
+			}
+			ui_GearSprite.PLACEABLE_GEAR = null;
+			new objects_GearPickup(_gthis.pos[0],_gthis.pos[1],_gthis.data.id);
+			util_GameState.set_state(util_State.USING_GEAR);
+			scenes_Level.i.clear_indicators();
+			return;
+		},util_EventType.GET_GEAR));
 	}
 	,draw_pickup: function() {
 		var graphic = new zero_openfl_utilities_AnimatedSprite({ source : "images/pickups.png", frame_width : 16, frame_height : 16, offset_x : 8, offset_y : 8, animations : []});
@@ -28758,7 +28773,6 @@ objects_GearPickup.prototype = $extend(objects_Pickup.prototype,{
 	,__class__: objects_GearPickup
 });
 var objects_Player = function(x,y,options) {
-	this.AP = 10;
 	var _gthis = this;
 	objects_Actor.call(this,options.data,x,y);
 	this.addEventListener("click",function(e) {
@@ -28807,8 +28821,7 @@ objects_Player.set_selected_player = function(player) {
 };
 objects_Player.__super__ = objects_Actor;
 objects_Player.prototype = $extend(objects_Actor.prototype,{
-	AP: null
-	,set_AP: function(n) {
+	set_AP: function(n) {
 		this.AP = n;
 		this.player_info.update_ap_pts();
 		return this.AP;
@@ -28835,7 +28848,6 @@ objects_Player.prototype = $extend(objects_Actor.prototype,{
 		objects_Actor.prototype.change_health.call(this,delta);
 	}
 	,__class__: objects_Player
-	,__properties__: $extend(objects_Actor.prototype.__properties__,{set_AP:"set_AP"})
 });
 var objects_PlayerSide = $hxEnums["objects.PlayerSide"] = { __ename__ : "objects.PlayerSide", __constructs__ : ["LEFT","RIGHT"]
 	,LEFT: {_hx_index:0,__enum__:"objects.PlayerSide",toString:$estr}
@@ -77009,6 +77021,8 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 		var player2 = new objects_Player(6,8,{ data : util_PlayerData.player2, side : objects_PlayerSide.RIGHT});
 		objects_Player.set_selected_player(player);
 		player2.set_shield(4);
+		player.set_AP(8);
+		player2.set_AP(1);
 		var box = new objects_Box(8,8);
 		this.dolly.flash(zero_utilities__$Color_Color_$Impl_$.BLACK,1);
 		this.addEventListener("enterFrame",function(e) {
@@ -77386,6 +77400,90 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 		return arr;
 	}
 	,__class__: scenes_Level
+});
+var ui_CancelButton = function(text,on_click,dismiss_event) {
+	var _gthis = this;
+	openfl_display_Sprite.call(this);
+	this.on_click = on_click;
+	this.addEventListener("click",$bind(this,this.mouse_down));
+	var cancel_text = zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : util_Translation.get_font(util_Font.BOLD), size : 14, color : zero_utilities__$Color_Color_$Impl_$.WHITE}),text),0,0,zero_utilities_Anchor.MIDDLE_CENTER);
+	var width = cancel_text.get_width() + 64;
+	var color = zero_utilities__$Color_Color_$Impl_$.PICO_8_RED;
+	var x = -width / 2;
+	var radius = 48;
+	if(radius == null) {
+		radius = 0;
+	}
+	this.get_graphics().beginFill((Math.round(color[0] * 255) & 255) << 16 | (Math.round(color[1] * 255) & 255) << 8 | Math.round(color[2] * 255) & 255,color[3]);
+	if(radius == 0) {
+		this.get_graphics().drawRect(x,-24,width,48);
+	} else {
+		this.get_graphics().drawRoundRect(x,-24,width,48,radius);
+	}
+	this.get_graphics().endFill();
+	var sprite = this;
+	var color1 = zero_utilities__$Color_Color_$Impl_$.BLACK;
+	var x1 = -width / 2;
+	var radius1 = 48;
+	var line_width = 4;
+	if(line_width == null) {
+		line_width = 1;
+	}
+	if(radius1 == null) {
+		radius1 = 0;
+	}
+	sprite.get_graphics().lineStyle(line_width,(Math.round(color1[0] * 255) & 255) << 16 | (Math.round(color1[1] * 255) & 255) << 8 | Math.round(color1[2] * 255) & 255,color1[3]);
+	if(radius1 == 0) {
+		sprite.get_graphics().drawRect(x1,-24,width,48);
+	} else {
+		sprite.get_graphics().drawRoundRect(x1,-24,width,48,radius1);
+	}
+	sprite.get_graphics().lineStyle();
+	this.addChild(cancel_text);
+	var x2 = zero_openfl_utilities_Game.get_width() - 32 - ui_EquipmentSprite.WIDTH / 2;
+	var y = zero_openfl_utilities_Game.get_height() - 48;
+	this.set_x(x2);
+	this.set_y(y);
+	var sprite1 = this;
+	var x3 = 0;
+	var y1 = null;
+	if(x3 == null) {
+		x3 = 0;
+	}
+	if(y1 == null) {
+		y1 = x3;
+	}
+	sprite1.set_scaleX(x3);
+	sprite1.set_scaleY(y1);
+	zero_utilities_EventBus.listen(function(_) {
+		if(_.type == dismiss_event) {
+			_gthis.dismiss();
+		}
+		return;
+	},"game_event");
+	zero_utilities_Tween.get(this).from_to("scaleX",0,1).from_to("scaleY",0,1).ease(zero_utilities_Ease.elasticOut).duration(1);
+};
+$hxClasses["ui.CancelButton"] = ui_CancelButton;
+ui_CancelButton.__name__ = "ui.CancelButton";
+ui_CancelButton.__super__ = openfl_display_Sprite;
+ui_CancelButton.prototype = $extend(openfl_display_Sprite.prototype,{
+	on_click: null
+	,dismiss_event: null
+	,mouse_down: function(e) {
+		this.on_click();
+		this.dismiss();
+	}
+	,dismiss: function() {
+		var _gthis = this;
+		this.removeEventListener("click",$bind(this,this.mouse_down));
+		zero_utilities_Tween.get(this).from_to("scaleX",1,0).from_to("scaleY",1,0).on_complete(function() {
+			if(_gthis.parent != null) {
+				_gthis.parent.removeChild(_gthis);
+			}
+			return;
+		}).ease(zero_utilities_Ease.backIn).duration(0.2);
+	}
+	,__class__: ui_CancelButton
 });
 var ui_Card = function() {
 	this.dragging = false;
@@ -78376,7 +78474,7 @@ ui_GearSprite.prototype = $extend(ui_EquipmentSprite.prototype,{
 		sprite3.set_scaleX(x);
 		sprite3.set_scaleY(y);
 		this.destroy_button = sprite3;
-		this.destroy_button.addChild(zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : util_Translation.get_font(util_Font.BOLD), size : 16, color : zero_utilities__$Color_Color_$Impl_$.WHITE}),"DESTROY"),0,0,zero_utilities_Anchor.MIDDLE_CENTER));
+		this.destroy_button.addChild(zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : util_Translation.get_font(util_Font.BOLD), size : 14, color : zero_utilities__$Color_Color_$Impl_$.WHITE}),"DESTROY"),0,0,zero_utilities_Anchor.MIDDLE_CENTER));
 		this.destroy_button.set_buttonMode(true);
 		this.destroy_button.addEventListener("click",function(e) {
 			_gthis.destroy();
@@ -78546,7 +78644,7 @@ ui_GearSprite.prototype = $extend(ui_EquipmentSprite.prototype,{
 		}
 		var destroy_scale = util_GameState.state._hx_index == 0 ? this.get_expended() || this.active ? 0 : 1 : 0;
 		var _g11 = this.destroy_button;
-		this.destroy_button.set_scaleY(_g11.set_scaleX(_g11.get_scaleX() + (destroy_scale - this.destroy_button.get_scaleX()) * 0.1));
+		this.destroy_button.set_scaleY(_g11.set_scaleX(_g11.get_scaleX() + (destroy_scale - this.destroy_button.get_scaleX()) * 0.25));
 	}
 	,mouse_up: function(e) {
 		ui_EquipmentSprite.prototype.mouse_up.call(this,e);
@@ -78562,11 +78660,13 @@ ui_GearSprite.prototype = $extend(ui_EquipmentSprite.prototype,{
 					var v2 = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([this.get_x(),this.get_y()]);
 					var d = zero_utilities__$Vec2_Vec2_$Impl_$.subtract(v1,v2);
 					if(Math.sqrt(d[0] * d[0] + d[1] * d[1]) < 64) {
+						if(!this.insert_into_inventory(spot.position,ui_InventorySprite.active_inventory)) {
+							return;
+						}
 						var x = spot.get_x() + d[0];
 						var y = spot.get_y() + d[1];
 						this.set_x(x);
 						this.set_y(y);
-						this.insert_into_inventory(spot.position,ui_InventorySprite.active_inventory);
 						util_GameState.set_state(util_State.USING_GEAR);
 					}
 					zero_utilities__$Vec2_Vec2_$Impl_$.pool.push(v1);
@@ -78580,13 +78680,19 @@ ui_GearSprite.prototype = $extend(ui_EquipmentSprite.prototype,{
 		}
 	}
 	,insert_into_inventory: function(position,inventory) {
+		if(inventory.inventory.owner.AP < this.gear.gear_data.cost) {
+			return false;
+		}
 		this.draggable = false;
 		this.gear.position = position;
 		inventory.add_equipment(this);
 		ui_GearSprite.PLACEABLE_GEAR = null;
 		this.set_active(false);
+		return true;
 	}
 	,destroy: function() {
+		var _g = this.equipment.inventory.owner;
+		_g.set_AP(_g.AP + this.gear.gear_data.cost);
 		this.equipment.inventory.sprite.remove_equipment(this);
 		if(this.parent != null) {
 			this.parent.removeChild(this);
@@ -78785,7 +78891,7 @@ ui_InventorySprite.prototype = $extend(openfl_display_Sprite.prototype,{
 			if(util_GameState.state == util_State.PLACING_GEAR) {
 				this.placeholder_sprites[s1.equipment.position].set_visible(false);
 			}
-			if(this.active && util_GameState.state != util_State.ENEMY_TURN) {
+			if(this.active && util_GameState.state != util_State.ENEMY_TURN && util_GameState.state != util_State.PLACING_POWERUP) {
 				var _g21 = s1;
 				_g21.set_x(_g21.get_x() + ((this.side == objects_PlayerSide.LEFT ? 168 : -168) + (this.side == objects_PlayerSide.LEFT ? 208 : -208) * s1.equipment.position - s1.get_x()) * 0.25);
 				var _g22 = s1;
@@ -78801,11 +78907,12 @@ ui_InventorySprite.prototype = $extend(openfl_display_Sprite.prototype,{
 				_g26.set_alpha(_g26.get_alpha() + (0 - s1.get_alpha()) * 0.25);
 			}
 		}
-		var tx1 = this.active ? 0 : this.side == objects_PlayerSide.LEFT ? -144 : 144;
+		var tx1 = this.active && util_GameState.state == util_State.USING_GEAR ? 0 : this.side == objects_PlayerSide.LEFT ? -144 : 144;
 		var _g4 = this.movement_sprite;
 		_g4.set_x(_g4.get_x() + (tx1 - this.movement_sprite.get_x()) * 0.25);
 	}
 	,add_equipment: function(eq) {
+		util_EventUtil.dispatch(util_EventType.GET_GEAR,{ object : this.inventory.owner, data : eq.equipment.data});
 		this.equipment_layer.addChild(eq);
 		this.equipment.push(eq);
 		this.inventory.add_equipment(eq.equipment);
@@ -80065,16 +80172,18 @@ var util_EventUtil = function() { };
 $hxClasses["util.EventUtil"] = util_EventUtil;
 util_EventUtil.__name__ = "util.EventUtil";
 util_EventUtil.dispatch = function(ev_type,data) {
+	haxe_Log.trace(ev_type,{ fileName : "src/util/EventUtil.hx", lineNumber : 6, className : "util.EventUtil", methodName : "dispatch", customParams : [data]});
 	zero_utilities_EventBus.dispatch("game_event",{ type : ev_type, data : data});
 };
-var util_EventType = $hxEnums["util.EventType"] = { __ename__ : "util.EventType", __constructs__ : ["PLAYER_TURN","ENEMY_TURN","ATTACK","USE_CARD","SHIELD"]
+var util_EventType = $hxEnums["util.EventType"] = { __ename__ : "util.EventType", __constructs__ : ["PLAYER_TURN","ENEMY_TURN","ATTACK","USE_CARD","SHIELD","GET_GEAR"]
 	,PLAYER_TURN: {_hx_index:0,__enum__:"util.EventType",toString:$estr}
 	,ENEMY_TURN: {_hx_index:1,__enum__:"util.EventType",toString:$estr}
 	,ATTACK: {_hx_index:2,__enum__:"util.EventType",toString:$estr}
 	,USE_CARD: {_hx_index:3,__enum__:"util.EventType",toString:$estr}
 	,SHIELD: {_hx_index:4,__enum__:"util.EventType",toString:$estr}
+	,GET_GEAR: {_hx_index:5,__enum__:"util.EventType",toString:$estr}
 };
-util_EventType.__empty_constructs__ = [util_EventType.PLAYER_TURN,util_EventType.ENEMY_TURN,util_EventType.ATTACK,util_EventType.USE_CARD,util_EventType.SHIELD];
+util_EventType.__empty_constructs__ = [util_EventType.PLAYER_TURN,util_EventType.ENEMY_TURN,util_EventType.ATTACK,util_EventType.USE_CARD,util_EventType.SHIELD,util_EventType.GET_GEAR];
 var util_FilterUtil = function() { };
 $hxClasses["util.FilterUtil"] = util_FilterUtil;
 util_FilterUtil.__name__ = "util.FilterUtil";

@@ -22,6 +22,10 @@
   - [ ] Learn OpenFL audio best practices
   - [ ] Implement some audio for UI
 
+- [x] Better gear placement UX
+  - [x] Cancel button
+  - [x] Hide Move Equipment
+
 # Bugs
 
 - [ ] Sometimes ColorShader doesn't respond to uMix

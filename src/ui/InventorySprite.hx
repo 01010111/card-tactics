@@ -87,7 +87,7 @@ class InventorySprite extends Sprite {
 			var s = equipment[i];
 			if (s.dragging) continue;
 			if (GAMESTATE == PLACING_GEAR) placeholder_sprites[s.equipment.position].visible = false;
-			if (active && GAMESTATE != ENEMY_TURN) {
+			if (active && GAMESTATE != ENEMY_TURN && GAMESTATE != PLACING_POWERUP) {
 				s.x += ((side == LEFT ? 168 : -168) + (side == LEFT ? 208 : -208) * s.equipment.position - s.x) * 0.25;
 				s.y += (64 - s.y) * 0.25;
 				s.alpha += (1 - s.alpha) * 0.25;
@@ -98,11 +98,15 @@ class InventorySprite extends Sprite {
 				s.alpha += (0 - s.alpha) * 0.25;
 			}
 		}
-		var tx = active ? 0 : side == LEFT ? -144 : 144;
+		var tx = active && GAMESTATE == USING_GEAR ? 0 : side == LEFT ? -144 : 144;
 		movement_sprite.x += (tx - movement_sprite.x) * 0.25;
 	}
 
 	public function add_equipment(eq:EquipmentSprite) {
+		GET_GEAR.dispatch({
+			object: inventory.owner,
+			data:eq.equipment.data
+		});
 		equipment_layer.addChild(eq);
 		equipment.push(eq);
 		inventory.add_equipment(eq.equipment);

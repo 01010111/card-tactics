@@ -19,9 +19,7 @@ class Mutation extends Equipment {
 	function listen(?ev:{ type:EventType, data:Dynamic }) {
 		if (mutant_data.listen != ev.type) return;
 		switch ev.type {
-			case PLAYER_TURN:
-			case ENEMY_TURN:
-			case ATTACK:
+			default: {}
 			case USE_CARD: if (ev.data.object == inventory.owner) check_card(ev.data.card_data);
 			case SHIELD: if (ev.data.object == inventory.owner) available = ev.data.value > 0;
 		}

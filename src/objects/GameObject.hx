@@ -21,6 +21,8 @@ class GameObject extends Sprite {
 	public var inventory:Inventory;
 	public var grid_pos(get, never):IntPoint;
 	public var exists:Bool;
+	public var AP(default, set):Int = 0;
+
 	function get_grid_pos():IntPoint return [(x/16).floor(), (y/16).floor()];
 
 	var last:Vec2;
@@ -123,6 +125,10 @@ class GameObject extends Sprite {
 		shield = amt;
 		'game_event'.dispatch({ type:SHIELD, data: { object:this, value:amt }});
 		return shield;
+	}
+
+	function set_AP(v:Int) {
+		return AP = v;
 	}
 
 }

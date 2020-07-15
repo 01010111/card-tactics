@@ -15,8 +15,7 @@ class Player extends Actor {
 
 	public static var selected_player(default, set):Player;
 
-	public var AP(default, set):Int = 10;
-	function set_AP(n:Int) {
+	override function set_AP(n:Int) {
 		AP = n;
 		player_info.update_ap_pts();
 		return AP;

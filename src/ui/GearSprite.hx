@@ -101,13 +101,12 @@ class GearSprite extends EquipmentSprite {
 
 		make_highlights();
 		make_handle();
-
 		make_destroy_button();
 	}
 
 	function make_destroy_button() {
 		destroy_button = new Sprite().fill_rect(Color.PICO_8_RED, -48, -24, 96, 48, 48).rect(Color.BLACK, -48, -24, 96, 48, 48, 4).set_position(0, EquipmentSprite.HEIGHT/2).set_scale(0);
-		destroy_button.add(new TextField().format({ font: Translation.get_font(BOLD), size: 16, color: Color.WHITE }).set_string('DESTROY').set_position(0, 0, MIDDLE_CENTER));
+		destroy_button.add(new TextField().format({ font: Translation.get_font(BOLD), size: 14, color: Color.WHITE }).set_string('DESTROY').set_position(0, 0, MIDDLE_CENTER));
 		destroy_button.buttonMode = true;
 		destroy_button.addEventListener(MouseEvent.CLICK, (e) -> destroy());
 		this.add(destroy_button);
@@ -196,7 +195,7 @@ class GearSprite extends EquipmentSprite {
 			case PLACING_GEAR: expended || active ? 0 : 1;
 			default: 0;
 		}
-		destroy_button.scaleY = destroy_button.scaleX += (destroy_scale - destroy_button.scaleX) * 0.1;
+		destroy_button.scaleY = destroy_button.scaleX += (destroy_scale - destroy_button.scaleX) * 0.25;
 	}
 
 	override function mouse_up(e:MouseEvent) {
@@ -208,8 +207,8 @@ class GearSprite extends EquipmentSprite {
 				var v2:Vec2 = [x, y];
 				var d = v1 - v2;
 				if(d.length < 64) {
+					if (!insert_into_inventory(spot.position, InventorySprite.active_inventory)) return;
 					this.set_position(spot.x + d.x, spot.y + d.y);
-					insert_into_inventory(spot.position, InventorySprite.active_inventory);
 					GAMESTATE = USING_GEAR;
 				}
 				v1.put();
@@ -219,15 +218,18 @@ class GearSprite extends EquipmentSprite {
 		}
 	}
 	
-	function insert_into_inventory(position:Int, inventory:InventorySprite) {
+	function insert_into_inventory(position:Int, inventory:InventorySprite):Bool {
+		if (inventory.inventory.owner.AP < gear.gear_data.cost) return false;
 		draggable = false;
 		gear.position = position;
 		inventory.add_equipment(this);
 		PLACEABLE_GEAR = null;
 		active = false;
+		return true;
 	}
 
 	function destroy() {
+		equipment.inventory.owner.AP += gear.gear_data.cost;
 		equipment.inventory.sprite.remove_equipment(this);
 		this.remove();
 	}

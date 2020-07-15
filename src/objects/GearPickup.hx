@@ -1,5 +1,6 @@
 package objects;
 
+import zero.utilities.IntPoint;
 import ui.EquipmentSprite;
 import ui.InventorySprite;
 import openfl.geom.Point;
@@ -10,15 +11,17 @@ import zero.openfl.utilities.AnimatedSprite;
 import util.EquipmentUtil;
 import zero.utilities.Ease;
 import zero.utilities.Tween;
-import zero.utilities.Color;
+import ui.CancelButton;
 import data.Gear;
 
 class GearPickup extends Pickup {
 	
 	var data:GearData;
+	var pos:IntPoint;
 
 	public function new(x:Int, y:Int, title:String) {
 		data = EquipmentUtil.get_gear_data(title);
+		pos = [x, y];
 		super(x, y, title);
 	}
 
@@ -26,7 +29,7 @@ class GearPickup extends Pickup {
 		if (GAMESTATE != USING_GEAR) return;
 		var pos = parent.parent.localToGlobal(new Point(x, y));
 		var gear:GearSprite = cast new GearSprite(new Gear(new Inventory(this), 0, data)).set_position(pos.x, pos.y);
-		gear.home = [Game.width - 32 - EquipmentSprite.WIDTH/2, Game.height - 32 - EquipmentSprite.HEIGHT/2];
+		gear.home = [Game.width - 32 - EquipmentSprite.WIDTH/2, Game.height - 96 - EquipmentSprite.HEIGHT/2];
 		gear.draggable = true;
 		Tween.get(gear).from_to('scaleX', 0.25, 1).from_to('scaleY', 0.25, 1).ease(Ease.backOut).duration(0.4);
 		LEVEL.info_layer.add(gear);
@@ -34,6 +37,14 @@ class GearPickup extends Pickup {
 		gear.active = true;
 		GearSprite.PLACEABLE_GEAR = gear;
 		GAMESTATE = PLACING_GEAR;
+
+		LEVEL.info_layer.add(new CancelButton('Put Back', () -> {
+			gear.remove();
+			GearSprite.PLACEABLE_GEAR = null;
+			new GearPickup(this.pos.x, this.pos.y, data.id);
+			GAMESTATE = USING_GEAR;
+			LEVEL.clear_indicators();
+		}, GET_GEAR));
 	}
 
 	override function draw_pickup() {

@@ -1,5 +1,6 @@
 package scenes;
 
+import ui.CancelButton;
 import ui.GearSprite;
 import objects.GameObject;
 import openfl.events.Event;
@@ -71,6 +72,8 @@ class Level extends Scene {
 		var player2 = new Player(6, 8, { data: PlayerData.player2, side: RIGHT });
 		Player.selected_player = player;
 		player2.shield = 4;
+		player.AP = 8;
+		player2.AP = 1;
 		var box = new objects.Box(8, 8);
 		dolly.flash(Color.BLACK, 1);
 
