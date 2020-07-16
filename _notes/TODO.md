@@ -23,10 +23,6 @@
   - [ ] Learn OpenFL audio best practices
   - [ ] Implement some audio for UI
 
-- [x] Better gear placement UX
-  - [x] Cancel button
-  - [x] Hide Move Equipment
-
 # Bugs
 
 - [ ] Sometimes ColorShader doesn't respond to uMix
@@ -38,6 +34,9 @@
 - [x] Gear Pickups
   - [x] Create UI for placing new Gear
   - [x] Interaction for (re)placing gear
+- [x] Better gear placement UX
+  - [x] Cancel button
+  - [x] Hide Move Equipment
 - [x] Automatically move html5/bin/ to docs/
 - [x] Refactor Game State members to unified state
 
