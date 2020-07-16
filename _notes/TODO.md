@@ -1,10 +1,11 @@
 # Broad Strokes
 
 - [x] Movement
-- [ ] Mutant Gear
+- [x] Mutant Gear
 - [x] Gear Pickups
-- [ ] Props
+- [x] Props
 - [ ] Turns
+- [ ] Enemies
 
 # Small Things
 

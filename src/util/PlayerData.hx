@@ -16,7 +16,7 @@ class PlayerData {
 		id: 'Test Player',
 		health: { current: 64, max: 64 },
 		movement: { requirement: MAX_CARD, requirement_value: 5, type: FREE, factor: VALUE },
-		equipment: ['test_d_01', 'test_h_01']
+		equipment: ['test_d_01', 'test_u_01', 'test_h_01']
 	}
 
 }

@@ -894,9 +894,9 @@ ApplicationMain.create = function(config) {
 	ManifestResources.init(config);
 	var _this = app.meta;
 	if(__map_reserved["build"] != null) {
-		_this.setReserved("build","55");
+		_this.setReserved("build","56");
 	} else {
-		_this.h["build"] = "55";
+		_this.h["build"] = "56";
 	}
 	var _this1 = app.meta;
 	if(__map_reserved["company"] != null) {
@@ -88932,7 +88932,7 @@ ui_PlayingCard.mini_height = 80;
 util_FilterUtil.grayscale_filter = new openfl_filters_ColorMatrixFilter([0.25,0.25,0.25,0.00,0.00,0.25,0.25,0.25,0.00,0.00,0.25,0.25,0.25,0.00,0.00,0.00,0.00,0.00,1.00,1.00]);
 util_GameState.state = util_State.USING_GEAR;
 util_PlayerData.player1 = { id : "Test Player", health : { current : 48, max : 64}, movement : { requirement : "MAX_CARD", requirement_value : 5, type : data_MoveType.FREE, factor : data_MoveFactor.VALUE}, equipment : ["test_d_02","test_m_01","test_m_02"]};
-util_PlayerData.player2 = { id : "Test Player", health : { current : 64, max : 64}, movement : { requirement : "MAX_CARD", requirement_value : 5, type : data_MoveType.FREE, factor : data_MoveFactor.VALUE}, equipment : ["test_d_01","test_h_01"]};
+util_PlayerData.player2 = { id : "Test Player", health : { current : 64, max : 64}, movement : { requirement : "MAX_CARD", requirement_value : 5, type : data_MoveType.FREE, factor : data_MoveFactor.VALUE}, equipment : ["test_d_01","test_u_01","test_h_01"]};
 util_Translation.language = "en";
 util_Translation.fonts = new haxe_ds_EnumValueMap();
 util_Translation.languages = ["en","af","sq","am","ar","hy","az","eu","be","bn","bs","bg","ca","ceb","zh","zh_CN","zh_TW","co","hr","cs","da","nl","eo","et","fi","fr","fy","gl","ka","de","el","gu","ht","ha","haw","he","hi","hmn","hu","is","ig","id","ga","it","ja","jw","kn","kk","km","ko","ku","ky","lo","la","lv","lt","lb","mk","mg","ms","ml","mt","mi","mr","mn","my","ne","no","ny","ps","fa","pl","pt","pa","ro","ru","sm","gd","sr","st","sn","sd","si","sk","sl","so","es","su","sw","sv","tl","tg","ta","te","th","tr","uk","ur","uz","vi","cy","xh","yi","yo","zu"];
