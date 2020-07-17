@@ -17,11 +17,9 @@ import data.Gear;
 class GearPickup extends Pickup {
 	
 	var data:GearData;
-	var pos:IntPoint;
 
 	public function new(x:Int, y:Int, title:String) {
 		data = EquipmentUtil.get_gear_data(title);
-		pos = [x, y];
 		super(x, y, title);
 	}
 

@@ -69,6 +69,7 @@ class GameObject extends Sprite {
 		if (path.length == 0) return;
 		update_object_map(sx, sy, x, y);
 		follow_path(path);
+		LEVEL.sort_objects();
 	}
 
 	function update_object_map(sx:Int, sy:Int, ?x:Int, ?y:Int) {
@@ -112,6 +113,7 @@ class GameObject extends Sprite {
 		exists = false;
 		this.remove();
 		update_object_map(grid_pos.x, grid_pos.y, -1, -1);
+		drop(grid_pos.x, grid_pos.y);
 		LEVEL.info_layer.hide_info();
 		LEVEL.pops.fire({ x: x, y: y });
 		LEVEL.dolly.flash(Color.WHITE, 0.25, 0.25);
@@ -129,6 +131,10 @@ class GameObject extends Sprite {
 
 	function set_AP(v:Int) {
 		return AP = v;
+	}
+
+	public function drop(x:Int, y:Int) {
+		trace('drop', x, y);
 	}
 
 }

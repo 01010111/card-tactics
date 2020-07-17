@@ -4,6 +4,7 @@
 - [x] Mutant Gear
 - [x] Gear Pickups
 - [x] Props
+- [ ] Pickups
 - [ ] Turns
 - [ ] Enemies
 
@@ -15,20 +16,29 @@
 
 - [ ] Props
   - [ ] Make more props
-  - [ ] Make more pickups
-    - [ ] Monster Meat
-    - [ ] Shields
 
 - [ ] Audio
   - [ ] Learn OpenFL audio best practices
   - [ ] Implement some audio for UI
 
+- [ ] Loot
+  - [ ] Create a system for populating loot per level
+
 # Bugs
 
 - [ ] Sometimes ColorShader doesn't respond to uMix
-- [ ] Fix gear mouseover not showing range
 
 # Completed
+
+7/16/2020
+- [x] Sort objects in Level
+- [x] Loot
+  - [x] Figure out what a loot table is
+  - [x] Create one
+- [x] Pickups 
+  - [x] Make more pickups
+    - [x] Monster Meat
+    - [x] Shields
 
 7/15/2020
 - [x] Gear Pickups
@@ -39,6 +49,7 @@
   - [x] Hide Move Equipment
 - [x] Automatically move html5/bin/ to docs/
 - [x] Refactor Game State members to unified state
+- [x] Fix gear mouseover not showing range
 
 7/14/2020
 - [x] Camera effects

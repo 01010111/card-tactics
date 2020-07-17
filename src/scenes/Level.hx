@@ -1,5 +1,7 @@
 package scenes;
 
+import util.LootUtil;
+import util.LootUtil.LootData;
 import ui.CancelButton;
 import ui.GearSprite;
 import objects.GameObject;
@@ -33,7 +35,7 @@ class Level extends Scene {
 
 	public static var i:Level;
 
-	var tiles:Tilemap;
+	public var tiles:Tilemap;
 	public var object_map:Array<Array<Int>> = [];
 	public var dolly:Dolly;
 	public var available_tiles:Array<IntPoint>;
@@ -75,9 +77,20 @@ class Level extends Scene {
 		player.AP = 8;
 		player2.AP = 1;
 		var box = new objects.Box(8, 8);
+		var box = new objects.Box(8, 7);
 		dolly.flash(Color.BLACK, 1);
-
+		sort_objects();
 		addEventListener(Event.ENTER_FRAME, (e) -> if (Keys.just_pressed(82)) Game.i.change_scene(new Level()));
+		LootUtil.reset([
+			{ type: GEAR, id: 'test_d_01' },
+			//{ type: GEAR, id: 'test_d_02' },
+			//{ type: GEAR, id: 'test_u_01' },
+			//{ type: GEAR, id: 'test_h_01' },
+			//{ type: MEAT, amt: 5 },
+			{ type: MEAT, amt: 10 },
+			//{ type: MEAT, amt: 20 },
+			{ type: SHIELD, amt: 10 },
+		]);
 	}
 
 	function init_dolly() {
@@ -234,6 +247,13 @@ class Level extends Scene {
 				for (p in remove) arr.remove(p);
 		}
 		return arr;
+	}
+
+	public function sort_objects() {
+		var objs = objects.children();
+		objs.sort((o1, o2) -> return o1.y < o2.y ? -1 : 1);
+		objects.removeChildren();
+		for (obj in objs) objects.add(obj);
 	}
 
 }
