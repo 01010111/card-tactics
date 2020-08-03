@@ -33,6 +33,8 @@
 
 8/3/2020
 - [x] Make resizeable
+  - [x] Update UI on resize
+  - [x] Show warning on window that is too small
 
 7/16/2020
 - [x] Sort objects in Level
