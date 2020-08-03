@@ -61,6 +61,13 @@ class Equipment implements Expendable {
 			object: inventory.owner,
 			card_data: card
 		});
+		USE_EQUIPMENT.dispatch({
+			id: data.id,
+			data: data,
+			owner: inventory.owner,
+			target: target,
+			point: point,
+		});
 		if (sprite != null) sprite.execute();
 	}
 	

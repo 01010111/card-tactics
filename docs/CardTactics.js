@@ -894,9 +894,9 @@ ApplicationMain.create = function(config) {
 	ManifestResources.init(config);
 	var _this = app.meta;
 	if(__map_reserved["build"] != null) {
-		_this.setReserved("build","58");
+		_this.setReserved("build","59");
 	} else {
-		_this.h["build"] = "58";
+		_this.h["build"] = "59";
 	}
 	var _this1 = app.meta;
 	if(__map_reserved["company"] != null) {
@@ -928,7 +928,7 @@ ApplicationMain.create = function(config) {
 	} else {
 		_this5.h["version"] = "1.0.0";
 	}
-	var attributes = { allowHighDPI : false, alwaysOnTop : false, borderless : false, element : null, frameRate : 60, height : 720, hidden : false, maximized : false, minimized : false, parameters : { }, resizable : true, title : "CardTactics", width : 1280, x : null, y : null};
+	var attributes = { allowHighDPI : false, alwaysOnTop : false, borderless : false, element : null, frameRate : 60, height : 0, hidden : false, maximized : false, minimized : false, parameters : { }, resizable : true, title : "CardTactics", width : 0, x : null, y : null};
 	attributes.context = { antialiasing : 0, background : 16777215, colorDepth : 32, depth : true, hardware : true, stencil : true, type : null, vsync : false};
 	if(app.__window == null) {
 		if(config != null) {
@@ -4620,8 +4620,13 @@ var Main = function() {
 	util_EquipmentUtil.init();
 	util_Translation.init();
 	new zero_openfl_utilities_Game(this,scenes_Level);
+	this.addChild(new ui_MinSize());
 	zero_openfl_utilities_Keys.init();
 	this.stage.addEventListener("enterFrame",util_UpdateManager.update);
+	this.stage.addEventListener("resize",function(e) {
+		zero_utilities_EventBus.dispatch("resize",e);
+		return;
+	});
 	var sprite = new ui_InfoBox();
 	var y = zero_openfl_utilities_Game.get_height() - 56;
 	sprite.set_x(32);
@@ -4822,7 +4827,7 @@ ManifestResources.init = function(config) {
 	openfl_text_Font.registerFont(_$_$ASSET_$_$OPENFL_$_$fonts_$nunito_$black_$ttf);
 	openfl_text_Font.registerFont(_$_$ASSET_$_$OPENFL_$_$fonts_$oduda_$bold_$ttf);
 	var bundle;
-	var data = "{\"name\":null,\"assets\":\"aoy4:pathy18:images%2Fblank.pngy4:sizei123y4:typey5:IMAGEy2:idR1y7:preloadtgoR0y20:images%2Fobjects.pngR2i292R3R4R5R7R6tgoR0y29:images%2Fparticles%2Fpoof.pngR2i452R3R4R5R8R6tgoR0y28:images%2Fparticles%2Fpop.pngR2i848R3R4R5R9R6tgoR0y20:images%2Fpickups.pngR2i878R3R4R5R10R6tgoR0y20:images%2Fplayers.pngR2i1824R3R4R5R11R6tgoR0y18:images%2Ftiles.pngR2i14787R3R4R5R12R6tgoR0y35:images%2Fui%2Faction_arrow_blue.pngR2i473R3R4R5R13R6tgoR0y36:images%2Fui%2Faction_arrow_green.pngR2i489R3R4R5R14R6tgoR0y34:images%2Fui%2Faction_arrow_red.pngR2i470R3R4R5R15R6tgoR0y36:images%2Fui%2Faction_arrow_white.pngR2i307R3R4R5R16R6tgoR0y25:images%2Fui%2Faim_cta.pngR2i1862R3R4R5R17R6tgoR0y24:images%2Fui%2Fap_pip.pngR2i270R3R4R5R18R6tgoR0y25:images%2Fui%2Fap_pips.pngR2i467R3R4R5R19R6tgoR0y28:images%2Fui%2Fap_pip_big.pngR2i370R3R4R5R20R6tgoR0y25:images%2Fui%2Fcard_bg.pngR2i2030R3R4R5R21R6tgoR0y24:images%2Fui%2Fdo_cta.pngR2i1723R3R4R5R22R6tgoR0y36:images%2Fui%2Ficons%2Ficon_skull.pngR2i2850R3R4R5R23R6tgoR0y35:images%2Fui%2Ficons%2Fmove_free.pngR2i2776R3R4R5R24R6tgoR0y35:images%2Fui%2Ficons%2Fmove_rook.pngR2i3371R3R4R5R25R6tgoR0y39:images%2Fui%2Ficons%2Fmove_teleport.pngR2i3093R3R4R5R26R6tgoR0y51:images%2Fui%2Ficons%2Fon_white%2Ficon_electrify.pngR2i1737R3R4R5R27R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_explode.pngR2i2333R3R4R5R28R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_flame.pngR2i2026R3R4R5R29R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_health.pngR2i1796R3R4R5R30R6tgoR0y46:images%2Fui%2Ficons%2Fon_white%2Ficon_move.pngR2i1973R3R4R5R31R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_pierce.pngR2i1943R3R4R5R32R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_shield.pngR2i2051R3R4R5R33R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_utility.pngR2i1803R3R4R5R34R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_water.pngR2i1906R3R4R5R35R6tgoR0y29:images%2Fui%2Fmutant_card.pngR2i117869R3R4R5R36R6tgoR0y27:images%2Fui%2Frule_face.pngR2i8721R3R4R5R37R6tgoR0y32:images%2Fui%2Frule_two_cards.pngR2i5319R3R4R5R38R6tgoR0y29:images%2Fui%2Fshield_icon.pngR2i815R3R4R5R39R6tgoR0y27:images%2Fui%2Fsuit_club.pngR2i4182R3R4R5R40R6tgoR0y30:images%2Fui%2Fsuit_diamond.pngR2i2985R3R4R5R41R6tgoR0y28:images%2Fui%2Fsuit_heart.pngR2i2540R3R4R5R42R6tgoR0y28:images%2Fui%2Fsuit_spade.pngR2i3507R3R4R5R43R6tgoR0y17:data%2Fgear.jsoncR2i1527R3y4:TEXTR5R44R6tgoR0y22:data%2Fmaps%2F000.jsonR2i1961R3R45R5R46R6tgoR0y23:data%2Fmaps%2Fmaps.ogmoR2i19081R3R45R5R47R6tgoR0y19:data%2Fmutant.jsoncR2i582R3R45R5R48R6tgoR0y44:data%2Ftranslations%2Fequipment_titles.jsoncR2i21213R3R45R5R49R6tgoR0y36:data%2Ftranslations%2Fgameplay.jsoncR2i102911R3R45R5R50R6tgoR0y47:data%2Ftranslations%2Fmutant_descriptions.jsoncR2i14329R3R45R5R51R6tgoR0y40:data%2Ftranslations%2Ftooltip_text.jsoncR2i26543R3R45R5R52R6tgoR2i171180R3y4:FONTy9:classNamey31:__ASSET__fonts_nunito_black_ttfR5y24:fonts%2Fnunito_black.ttfR6tgoR2i19636R3R53R54y29:__ASSET__fonts_oduda_bold_ttfR5y22:fonts%2Foduda_bold.ttfR6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
+	var data = "{\"name\":null,\"assets\":\"aoy4:pathy18:images%2Fblank.pngy4:sizei123y4:typey5:IMAGEy2:idR1y7:preloadtgoR0y20:images%2Fobjects.pngR2i292R3R4R5R7R6tgoR0y29:images%2Fparticles%2Fpoof.pngR2i452R3R4R5R8R6tgoR0y28:images%2Fparticles%2Fpop.pngR2i848R3R4R5R9R6tgoR0y20:images%2Fpickups.pngR2i878R3R4R5R10R6tgoR0y20:images%2Fplayers.pngR2i1824R3R4R5R11R6tgoR0y18:images%2Ftiles.pngR2i14787R3R4R5R12R6tgoR0y35:images%2Fui%2Faction_arrow_blue.pngR2i473R3R4R5R13R6tgoR0y36:images%2Fui%2Faction_arrow_green.pngR2i489R3R4R5R14R6tgoR0y34:images%2Fui%2Faction_arrow_red.pngR2i470R3R4R5R15R6tgoR0y36:images%2Fui%2Faction_arrow_white.pngR2i307R3R4R5R16R6tgoR0y25:images%2Fui%2Faim_cta.pngR2i1862R3R4R5R17R6tgoR0y24:images%2Fui%2Fap_pip.pngR2i270R3R4R5R18R6tgoR0y25:images%2Fui%2Fap_pips.pngR2i467R3R4R5R19R6tgoR0y28:images%2Fui%2Fap_pip_big.pngR2i370R3R4R5R20R6tgoR0y25:images%2Fui%2Fcard_bg.pngR2i2030R3R4R5R21R6tgoR0y24:images%2Fui%2Fdo_cta.pngR2i1723R3R4R5R22R6tgoR0y23:images%2Fui%2Ferror.pngR2i1993R3R4R5R23R6tgoR0y36:images%2Fui%2Ficons%2Ficon_skull.pngR2i2850R3R4R5R24R6tgoR0y35:images%2Fui%2Ficons%2Fmove_free.pngR2i2776R3R4R5R25R6tgoR0y35:images%2Fui%2Ficons%2Fmove_rook.pngR2i3371R3R4R5R26R6tgoR0y39:images%2Fui%2Ficons%2Fmove_teleport.pngR2i3093R3R4R5R27R6tgoR0y51:images%2Fui%2Ficons%2Fon_white%2Ficon_electrify.pngR2i1737R3R4R5R28R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_explode.pngR2i2333R3R4R5R29R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_flame.pngR2i2026R3R4R5R30R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_health.pngR2i1796R3R4R5R31R6tgoR0y46:images%2Fui%2Ficons%2Fon_white%2Ficon_move.pngR2i1973R3R4R5R32R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_pierce.pngR2i1943R3R4R5R33R6tgoR0y48:images%2Fui%2Ficons%2Fon_white%2Ficon_shield.pngR2i2051R3R4R5R34R6tgoR0y49:images%2Fui%2Ficons%2Fon_white%2Ficon_utility.pngR2i1803R3R4R5R35R6tgoR0y47:images%2Fui%2Ficons%2Fon_white%2Ficon_water.pngR2i1906R3R4R5R36R6tgoR0y29:images%2Fui%2Fmutant_card.pngR2i117869R3R4R5R37R6tgoR0y27:images%2Fui%2Frule_face.pngR2i8721R3R4R5R38R6tgoR0y32:images%2Fui%2Frule_two_cards.pngR2i5319R3R4R5R39R6tgoR0y29:images%2Fui%2Fshield_icon.pngR2i815R3R4R5R40R6tgoR0y27:images%2Fui%2Fsuit_club.pngR2i4182R3R4R5R41R6tgoR0y30:images%2Fui%2Fsuit_diamond.pngR2i2985R3R4R5R42R6tgoR0y28:images%2Fui%2Fsuit_heart.pngR2i2540R3R4R5R43R6tgoR0y28:images%2Fui%2Fsuit_spade.pngR2i3507R3R4R5R44R6tgoR2i388012R3y5:SOUNDR5y16:audio%2Ftest.wavy9:pathGroupaR46hR6tgoR0y17:data%2Fgear.jsoncR2i1527R3y4:TEXTR5R48R6tgoR0y22:data%2Fmaps%2F000.jsonR2i1961R3R49R5R50R6tgoR0y23:data%2Fmaps%2Fmaps.ogmoR2i19081R3R49R5R51R6tgoR0y19:data%2Fmutant.jsoncR2i582R3R49R5R52R6tgoR0y44:data%2Ftranslations%2Fequipment_titles.jsoncR2i21213R3R49R5R53R6tgoR0y36:data%2Ftranslations%2Fgameplay.jsoncR2i102911R3R49R5R54R6tgoR0y47:data%2Ftranslations%2Fmutant_descriptions.jsoncR2i14329R3R49R5R55R6tgoR0y40:data%2Ftranslations%2Ftooltip_text.jsoncR2i26543R3R49R5R56R6tgoR0y30:data%2Ftranslations%2Fui.jsoncR2i13811R3R49R5R57R6tgoR2i171180R3y4:FONTy9:classNamey31:__ASSET__fonts_nunito_black_ttfR5y24:fonts%2Fnunito_black.ttfR6tgoR2i19636R3R58R59y29:__ASSET__fonts_oduda_bold_ttfR5y22:fonts%2Foduda_bold.ttfR6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
 	var manifest = lime_utils_AssetManifest.parse(data,ManifestResources.rootPath);
 	var library = lime_utils_AssetLibrary.fromManifest(manifest);
 	lime_utils_Assets.registerLibrary("default",library);
@@ -5630,6 +5635,7 @@ data_Equipment.prototype = {
 			++_g11;
 			util_EventUtil.dispatch(util_EventType.USE_CARD,{ object : this.inventory.owner, card_data : card});
 		}
+		util_EventUtil.dispatch(util_EventType.USE_EQUIPMENT,{ id : this.data.id, data : this.data, owner : this.inventory.owner, target : target, point : point});
 		if(this.sprite != null) {
 			this.sprite.execute();
 		}
@@ -5912,12 +5918,12 @@ data_Mutation.prototype = $extend(data_Equipment.prototype,{
 			return;
 		}
 		switch(ev.type._hx_index) {
-		case 3:
+		case 4:
 			if(ev.data.object == this.inventory.owner) {
 				this.check_card(ev.data.card_data);
 			}
 			break;
-		case 4:
+		case 5:
 			if(ev.data.object == this.inventory.owner) {
 				this.set_available(ev.data.value > 0);
 			}
@@ -10051,10 +10057,10 @@ lime__$internal_backend_html5_HTML5HTTPRequest.prototype = {
 				var value = __map_reserved[key1] != null ? _this.getReserved(key1) : _this.h[key1];
 				if(key1.indexOf("[]") > -1 && ((value) instanceof Array)) {
 					var _g = [];
-					var x = $getIterator(value);
-					while(x.hasNext()) {
-						var x1 = x.next();
-						_g.push(encodeURIComponent(x1));
+					var x1 = $getIterator(value);
+					while(x1.hasNext()) {
+						var x11 = x1.next();
+						_g.push(encodeURIComponent(x11));
 					}
 					var arrayValue = _g.join("&amp;" + key1 + "=");
 					query += encodeURIComponent(key1) + "=" + arrayValue;
@@ -12840,8 +12846,8 @@ lime__$internal_graphics_ImageDataUtil.fillRect = function(image,rect,color,form
 		break;
 	case 2:
 		var bgra = color;
-		var this2 = 0;
-		var rgba1 = this2;
+		var this11 = 0;
+		var rgba1 = this11;
 		rgba1 = (bgra >>> 8 & 255 & 255) << 24 | (bgra >>> 16 & 255 & 255) << 16 | (bgra >>> 24 & 255 & 255) << 8 | bgra & 255 & 255;
 		fillColor = rgba1;
 		break;
@@ -13116,20 +13122,20 @@ lime__$internal_graphics_ImageDataUtil.getColorBoundsRect = function(image,mask,
 		rgba = (argb >>> 16 & 255 & 255) << 24 | (argb >>> 8 & 255 & 255) << 16 | (argb & 255 & 255) << 8 | argb >>> 24 & 255 & 255;
 		_color = rgba;
 		var argb1 = mask;
-		var this2 = 0;
-		var rgba1 = this2;
+		var this11 = 0;
+		var rgba1 = this11;
 		rgba1 = (argb1 >>> 16 & 255 & 255) << 24 | (argb1 >>> 8 & 255 & 255) << 16 | (argb1 & 255 & 255) << 8 | argb1 >>> 24 & 255 & 255;
 		_mask = rgba1;
 		break;
 	case 2:
 		var bgra = color;
-		var this3 = 0;
-		var rgba2 = this3;
+		var this12 = 0;
+		var rgba2 = this12;
 		rgba2 = (bgra >>> 8 & 255 & 255) << 24 | (bgra >>> 16 & 255 & 255) << 16 | (bgra >>> 24 & 255 & 255) << 8 | bgra & 255 & 255;
 		_color = rgba2;
 		var bgra1 = mask;
-		var this4 = 0;
-		var rgba3 = this4;
+		var this13 = 0;
+		var rgba3 = this13;
 		rgba3 = (bgra1 >>> 8 & 255 & 255) << 24 | (bgra1 >>> 16 & 255 & 255) << 16 | (bgra1 >>> 24 & 255 & 255) << 8 | bgra1 & 255 & 255;
 		_mask = rgba3;
 		break;
@@ -13300,8 +13306,8 @@ lime__$internal_graphics_ImageDataUtil.getPixel = function(image,x,y,format) {
 		argb = (pixel & 255 & 255) << 24 | (pixel >>> 24 & 255 & 255) << 16 | (pixel >>> 16 & 255 & 255) << 8 | pixel >>> 8 & 255 & 255;
 		return argb;
 	case 2:
-		var this2 = 0;
-		var bgra = this2;
+		var this11 = 0;
+		var bgra = this11;
 		bgra = (pixel >>> 8 & 255 & 255) << 24 | (pixel >>> 16 & 255 & 255) << 16 | (pixel >>> 24 & 255 & 255) << 8 | pixel & 255 & 255;
 		return bgra;
 	default:
@@ -13344,8 +13350,8 @@ lime__$internal_graphics_ImageDataUtil.getPixel32 = function(image,x,y,format) {
 		argb = (pixel & 255 & 255) << 24 | (pixel >>> 24 & 255 & 255) << 16 | (pixel >>> 16 & 255 & 255) << 8 | pixel >>> 8 & 255 & 255;
 		return argb;
 	case 2:
-		var this2 = 0;
-		var bgra = this2;
+		var this11 = 0;
+		var bgra = this11;
 		bgra = (pixel >>> 8 & 255 & 255) << 24 | (pixel >>> 16 & 255 & 255) << 16 | (pixel >>> 24 & 255 & 255) << 8 | pixel & 255 & 255;
 		return bgra;
 	default:
@@ -13410,8 +13416,8 @@ lime__$internal_graphics_ImageDataUtil.getPixels = function(image,rect,format) {
 				pixel = argb;
 				break;
 			case 2:
-				var this2 = 0;
-				var bgra1 = this2;
+				var this11 = 0;
+				var bgra1 = this11;
 				bgra1 = (pixel >>> 8 & 255 & 255) << 24 | (pixel >>> 16 & 255 & 255) << 16 | (pixel >>> 24 & 255 & 255) << 8 | pixel & 255 & 255;
 				bgra = bgra1;
 				pixel = bgra;
@@ -13872,16 +13878,16 @@ lime__$internal_graphics_ImageDataUtil.setPixel = function(image,x,y,color,forma
 		break;
 	case 2:
 		var bgra = color;
-		var this2 = 0;
-		var rgba1 = this2;
+		var this11 = 0;
+		var rgba1 = this11;
 		rgba1 = (bgra >>> 8 & 255 & 255) << 24 | (bgra >>> 16 & 255 & 255) << 16 | (bgra >>> 24 & 255 & 255) << 8 | bgra & 255 & 255;
 		pixel = rgba1;
 		break;
 	default:
 		pixel = color;
 	}
-	var this3 = 0;
-	var source = this3;
+	var this12 = 0;
+	var source = this12;
 	var data = image.buffer.data;
 	var offset = 4 * (y + image.offsetY) * image.buffer.width + (x + image.offsetX) * 4;
 	var format1 = image.buffer.format;
@@ -13966,8 +13972,8 @@ lime__$internal_graphics_ImageDataUtil.setPixel32 = function(image,x,y,color,for
 		break;
 	case 2:
 		var bgra = color;
-		var this2 = 0;
-		var rgba1 = this2;
+		var this11 = 0;
+		var rgba1 = this11;
 		rgba1 = (bgra >>> 8 & 255 & 255) << 24 | (bgra >>> 16 & 255 & 255) << 16 | (bgra >>> 24 & 255 & 255) << 8 | bgra & 255 & 255;
 		pixel = rgba1;
 		break;
@@ -14060,8 +14066,8 @@ lime__$internal_graphics_ImageDataUtil.setPixels = function(image,rect,bytePoint
 				break;
 			case 2:
 				var bgra = color;
-				var this2 = 0;
-				var rgba1 = this2;
+				var this11 = 0;
+				var rgba1 = this11;
 				rgba1 = (bgra >>> 8 & 255 & 255) << 24 | (bgra >>> 16 & 255 & 255) << 16 | (bgra >>> 24 & 255 & 255) << 8 | bgra & 255 & 255;
 				pixel = rgba1;
 				break;
@@ -14127,30 +14133,30 @@ lime__$internal_graphics_ImageDataUtil.threshold = function(image,sourceImage,so
 		rgba = (argb >>> 16 & 255 & 255) << 24 | (argb >>> 8 & 255 & 255) << 16 | (argb & 255 & 255) << 8 | argb >>> 24 & 255 & 255;
 		_color = rgba;
 		var argb1 = mask;
-		var this2 = 0;
-		var rgba1 = this2;
+		var this11 = 0;
+		var rgba1 = this11;
 		rgba1 = (argb1 >>> 16 & 255 & 255) << 24 | (argb1 >>> 8 & 255 & 255) << 16 | (argb1 & 255 & 255) << 8 | argb1 >>> 24 & 255 & 255;
 		_mask = rgba1;
 		var argb2 = threshold;
-		var this3 = 0;
-		var rgba2 = this3;
+		var this12 = 0;
+		var rgba2 = this12;
 		rgba2 = (argb2 >>> 16 & 255 & 255) << 24 | (argb2 >>> 8 & 255 & 255) << 16 | (argb2 & 255 & 255) << 8 | argb2 >>> 24 & 255 & 255;
 		_threshold = rgba2;
 		break;
 	case 2:
 		var bgra = color;
-		var this4 = 0;
-		var rgba3 = this4;
+		var this13 = 0;
+		var rgba3 = this13;
 		rgba3 = (bgra >>> 8 & 255 & 255) << 24 | (bgra >>> 16 & 255 & 255) << 16 | (bgra >>> 24 & 255 & 255) << 8 | bgra & 255 & 255;
 		_color = rgba3;
 		var bgra1 = mask;
-		var this5 = 0;
-		var rgba4 = this5;
+		var this14 = 0;
+		var rgba4 = this14;
 		rgba4 = (bgra1 >>> 8 & 255 & 255) << 24 | (bgra1 >>> 16 & 255 & 255) << 16 | (bgra1 >>> 24 & 255 & 255) << 8 | bgra1 & 255 & 255;
 		_mask = rgba4;
 		var bgra2 = threshold;
-		var this6 = 0;
-		var rgba5 = this6;
+		var this15 = 0;
+		var rgba5 = this15;
 		rgba5 = (bgra2 >>> 8 & 255 & 255) << 24 | (bgra2 >>> 16 & 255 & 255) << 16 | (bgra2 >>> 24 & 255 & 255) << 8 | bgra2 & 255 & 255;
 		_threshold = rgba5;
 		break;
@@ -17752,15 +17758,15 @@ lime_graphics_Image.prototype = {
 					break;
 				case 2:
 					var bgra = color;
-					var this2 = 0;
-					var argb2 = this2;
+					var this11 = 0;
+					var argb2 = this11;
 					argb2 = (bgra & 255 & 255) << 24 | (bgra >>> 8 & 255 & 255) << 16 | (bgra >>> 16 & 255 & 255) << 8 | bgra >>> 24 & 255 & 255;
 					argb = argb2;
 					break;
 				default:
 					var rgba1 = color;
-					var this3 = 0;
-					var argb3 = this3;
+					var this12 = 0;
+					var argb3 = this12;
 					argb3 = (rgba1 & 255 & 255) << 24 | (rgba1 >>> 24 & 255 & 255) << 16 | (rgba1 >>> 16 & 255 & 255) << 8 | rgba1 >>> 8 & 255 & 255;
 					argb = argb3;
 				}
@@ -17797,15 +17803,15 @@ lime_graphics_Image.prototype = {
 					break;
 				case 2:
 					var bgra = color;
-					var this2 = 0;
-					var argb2 = this2;
+					var this11 = 0;
+					var argb2 = this11;
 					argb2 = (bgra & 255 & 255) << 24 | (bgra >>> 8 & 255 & 255) << 16 | (bgra >>> 16 & 255 & 255) << 8 | bgra >>> 24 & 255 & 255;
 					argb = argb2;
 					break;
 				default:
 					var rgba1 = color;
-					var this3 = 0;
-					var argb3 = this3;
+					var this12 = 0;
+					var argb3 = this12;
 					argb3 = (rgba1 & 255 & 255) << 24 | (rgba1 >>> 24 & 255 & 255) << 16 | (rgba1 >>> 16 & 255 & 255) << 8 | rgba1 >>> 8 & 255 & 255;
 					argb = argb3;
 				}
@@ -17858,14 +17864,14 @@ lime_graphics_Image.prototype = {
 				case 1:
 					return color;
 				case 2:
-					var this2 = 0;
-					var bgra = this2;
+					var this11 = 0;
+					var bgra = this11;
 					bgra = (color & 255 & 255) << 24 | (color >>> 8 & 255 & 255) << 16 | (color >>> 16 & 255 & 255) << 8 | color >>> 24 & 255 & 255;
 					var bgra1 = bgra;
 					return bgra1;
 				default:
-					var this3 = 0;
-					var rgba2 = this3;
+					var this12 = 0;
+					var rgba2 = this12;
 					rgba2 = (color >>> 16 & 255 & 255) << 24 | (color >>> 8 & 255 & 255) << 16 | (color & 255 & 255) << 8 | color >>> 24 & 255 & 255;
 					var rgba3 = rgba2;
 					return rgba3;
@@ -17899,14 +17905,14 @@ lime_graphics_Image.prototype = {
 				case 1:
 					return color;
 				case 2:
-					var this2 = 0;
-					var bgra = this2;
+					var this11 = 0;
+					var bgra = this11;
 					bgra = (color & 255 & 255) << 24 | (color >>> 8 & 255 & 255) << 16 | (color >>> 16 & 255 & 255) << 8 | color >>> 24 & 255 & 255;
 					var bgra1 = bgra;
 					return bgra1;
 				default:
-					var this3 = 0;
-					var rgba2 = this3;
+					var this12 = 0;
+					var rgba2 = this12;
 					rgba2 = (color >>> 16 & 255 & 255) << 24 | (color >>> 8 & 255 & 255) << 16 | (color & 255 & 255) << 8 | color >>> 24 & 255 & 255;
 					var rgba3 = rgba2;
 					return rgba3;
@@ -18018,15 +18024,15 @@ lime_graphics_Image.prototype = {
 					break;
 				case 2:
 					var bgra = color;
-					var this2 = 0;
-					var argb2 = this2;
+					var this11 = 0;
+					var argb2 = this11;
 					argb2 = (bgra & 255 & 255) << 24 | (bgra >>> 8 & 255 & 255) << 16 | (bgra >>> 16 & 255 & 255) << 8 | bgra >>> 24 & 255 & 255;
 					argb = argb2;
 					break;
 				default:
 					var rgba1 = color;
-					var this3 = 0;
-					var argb3 = this3;
+					var this12 = 0;
+					var argb3 = this12;
 					argb3 = (rgba1 & 255 & 255) << 24 | (rgba1 >>> 24 & 255 & 255) << 16 | (rgba1 >>> 16 & 255 & 255) << 8 | rgba1 >>> 8 & 255 & 255;
 					argb = argb3;
 				}
@@ -18063,15 +18069,15 @@ lime_graphics_Image.prototype = {
 					break;
 				case 2:
 					var bgra = color;
-					var this2 = 0;
-					var argb2 = this2;
+					var this11 = 0;
+					var argb2 = this11;
 					argb2 = (bgra & 255 & 255) << 24 | (bgra >>> 8 & 255 & 255) << 16 | (bgra >>> 16 & 255 & 255) << 8 | bgra >>> 24 & 255 & 255;
 					argb = argb2;
 					break;
 				default:
 					var rgba1 = color;
-					var this3 = 0;
-					var argb3 = this3;
+					var this12 = 0;
+					var argb3 = this12;
 					argb3 = (rgba1 & 255 & 255) << 24 | (rgba1 >>> 24 & 255 & 255) << 16 | (rgba1 >>> 16 & 255 & 255) << 8 | rgba1 >>> 8 & 255 & 255;
 					argb = argb3;
 				}
@@ -18135,15 +18141,15 @@ lime_graphics_Image.prototype = {
 					break;
 				case 2:
 					var bgra = color;
-					var this2 = 0;
-					var argb1 = this2;
+					var this11 = 0;
+					var argb1 = this11;
 					argb1 = (bgra & 255 & 255) << 24 | (bgra >>> 8 & 255 & 255) << 16 | (bgra >>> 16 & 255 & 255) << 8 | bgra >>> 24 & 255 & 255;
 					_color = argb1;
 					break;
 				default:
 					var rgba1 = color;
-					var this3 = 0;
-					var argb2 = this3;
+					var this12 = 0;
+					var argb2 = this12;
 					argb2 = (rgba1 & 255 & 255) << 24 | (rgba1 >>> 24 & 255 & 255) << 16 | (rgba1 >>> 16 & 255 & 255) << 8 | rgba1 >>> 8 & 255 & 255;
 					_color = argb2;
 				}
@@ -18151,8 +18157,8 @@ lime_graphics_Image.prototype = {
 			var _mask;
 			if(format == null) {
 				var rgba2 = mask;
-				var this4 = 0;
-				var argb3 = this4;
+				var this13 = 0;
+				var argb3 = this13;
 				argb3 = (rgba2 & 255 & 255) << 24 | (rgba2 >>> 24 & 255 & 255) << 16 | (rgba2 >>> 16 & 255 & 255) << 8 | rgba2 >>> 8 & 255 & 255;
 				_mask = argb3;
 			} else {
@@ -18162,15 +18168,15 @@ lime_graphics_Image.prototype = {
 					break;
 				case 2:
 					var bgra1 = mask;
-					var this5 = 0;
-					var argb4 = this5;
+					var this14 = 0;
+					var argb4 = this14;
 					argb4 = (bgra1 & 255 & 255) << 24 | (bgra1 >>> 8 & 255 & 255) << 16 | (bgra1 >>> 16 & 255 & 255) << 8 | bgra1 >>> 24 & 255 & 255;
 					_mask = argb4;
 					break;
 				default:
 					var rgba3 = mask;
-					var this6 = 0;
-					var argb5 = this6;
+					var this15 = 0;
+					var argb5 = this15;
 					argb5 = (rgba3 & 255 & 255) << 24 | (rgba3 >>> 24 & 255 & 255) << 16 | (rgba3 >>> 16 & 255 & 255) << 8 | rgba3 >>> 8 & 255 & 255;
 					_mask = argb5;
 				}
@@ -25649,7 +25655,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 437945;
+	this.version = 457112;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
@@ -28320,6 +28326,7 @@ var objects_GameObject = function(x,y,health,title) {
 		_gthis.update(0.016666666666666666);
 		return;
 	});
+	scenes_Level.i.sort_objects();
 };
 $hxClasses["objects.GameObject"] = objects_GameObject;
 objects_GameObject.__name__ = "objects.GameObject";
@@ -28374,6 +28381,7 @@ objects_GameObject.prototype = $extend(openfl_display_Sprite.prototype,{
 		this.update_object_map(sx,sy,x,y);
 		this.follow_path(path);
 		scenes_Level.i.sort_objects();
+		util_EventUtil.dispatch(util_EventType.OBJECT_MOVE,{ object : this, from : { x : sx, y : sy}, to : { x : x, y : y}});
 	}
 	,update_object_map: function(sx,sy,x,y) {
 		if(x == null) {
@@ -28434,6 +28442,7 @@ objects_GameObject.prototype = $extend(openfl_display_Sprite.prototype,{
 		scenes_Level.i.info_layer.hide_info();
 		scenes_Level.i.pops.fire({ x : this.get_x(), y : this.get_y()});
 		scenes_Level.i.dolly.flash(zero_utilities__$Color_Color_$Impl_$.WHITE,0.25,0.25);
+		util_EventUtil.dispatch(util_EventType.DESTROY,{ name : this.title});
 	}
 	,pulse: function() {
 		zero_utilities_Tween.get(this).from_to("scaleX",1.5,1).from_to("scaleY",0.5,1).ease(zero_utilities_Ease.elasticOut).duration(0.5);
@@ -28447,7 +28456,7 @@ objects_GameObject.prototype = $extend(openfl_display_Sprite.prototype,{
 		return this.AP = v;
 	}
 	,drop: function(x,y) {
-		haxe_Log.trace("drop",{ fileName : "src/objects/GameObject.hx", lineNumber : 137, className : "objects.GameObject", methodName : "drop", customParams : [x,y]});
+		haxe_Log.trace("drop",{ fileName : "src/objects/GameObject.hx", lineNumber : 143, className : "objects.GameObject", methodName : "drop", customParams : [x,y]});
 	}
 	,__class__: objects_GameObject
 	,__properties__: $extend(openfl_display_Sprite.prototype.__properties__,{set_AP:"set_AP",get_grid_pos:"get_grid_pos",set_shield:"set_shield"})
@@ -28757,6 +28766,9 @@ objects_GearPickup.prototype = $extend(objects_Pickup.prototype,{
 			return;
 		}
 		var pos = this.parent.parent.localToGlobal(new openfl_geom_Point(this.get_x(),this.get_y()));
+		if(this.parent != null) {
+			this.parent.removeChild(this);
+		}
 		var sprite = new ui_GearSprite(new data_Gear(new data_Inventory(this),0,this.data));
 		var y = pos.y;
 		sprite.set_x(pos.x);
@@ -28766,12 +28778,9 @@ objects_GearPickup.prototype = $extend(objects_Pickup.prototype,{
 		var tmp1 = zero_openfl_utilities_Game.get_height() - 96 - ui_EquipmentSprite.HEIGHT / 2;
 		gear.home = zero_utilities__$Vec2_Vec2_$Impl_$.from_array_float([tmp,tmp1]);
 		gear.draggable = true;
+		gear.set_active(true);
 		zero_utilities_Tween.get(gear).from_to("scaleX",0.25,1).from_to("scaleY",0.25,1).ease(zero_utilities_Ease.backOut).duration(0.4);
 		scenes_Level.i.info_layer.addChild(gear);
-		if(this.parent != null) {
-			this.parent.removeChild(this);
-		}
-		gear.set_active(true);
 		ui_GearSprite.PLACEABLE_GEAR = gear;
 		util_GameState.set_state(util_State.PLACING_GEAR);
 		scenes_Level.i.info_layer.addChild(new ui_CancelButton("Put Back",function() {
@@ -30481,140 +30490,140 @@ openfl__$internal_formats_agal__$AGALConverter_SamplerRegister.parse = function(
 	}
 	var b_high = 0;
 	var b_low = 15;
-	var this_high = a.high & b_high;
-	var this_low = a.low & b_low;
-	sr.f = this_low;
+	var this1_high = a.high & b_high;
+	var this1_low = a.low & b_low;
+	sr.f = this1_low;
 	var b1 = 56;
 	b1 &= 63;
 	var a1;
 	if(b1 == 0) {
-		var this4 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
-		a1 = this4;
+		var this11 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
+		a1 = this11;
 	} else if(b1 < 32) {
-		var this5 = new haxe__$Int64__$_$_$Int64(v.high >> b1,v.high << 32 - b1 | v.low >>> b1);
-		a1 = this5;
+		var this21 = new haxe__$Int64__$_$_$Int64(v.high >> b1,v.high << 32 - b1 | v.low >>> b1);
+		a1 = this21;
 	} else {
-		var this6 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b1 - 32);
-		a1 = this6;
+		var this31 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b1 - 32);
+		a1 = this31;
 	}
 	var b_high1 = 0;
 	var b_low1 = 15;
-	var this_high1 = a1.high & b_high1;
-	var this_low1 = a1.low & b_low1;
-	sr.m = this_low1;
+	var this1_high1 = a1.high & b_high1;
+	var this1_low1 = a1.low & b_low1;
+	sr.m = this1_low1;
 	var b2 = 52;
 	b2 &= 63;
 	var a2;
 	if(b2 == 0) {
-		var this7 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
-		a2 = this7;
+		var this12 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
+		a2 = this12;
 	} else if(b2 < 32) {
-		var this8 = new haxe__$Int64__$_$_$Int64(v.high >> b2,v.high << 32 - b2 | v.low >>> b2);
-		a2 = this8;
+		var this22 = new haxe__$Int64__$_$_$Int64(v.high >> b2,v.high << 32 - b2 | v.low >>> b2);
+		a2 = this22;
 	} else {
-		var this9 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b2 - 32);
-		a2 = this9;
+		var this32 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b2 - 32);
+		a2 = this32;
 	}
 	var b_high2 = 0;
 	var b_low2 = 15;
-	var this_high2 = a2.high & b_high2;
-	var this_low2 = a2.low & b_low2;
-	sr.w = this_low2;
+	var this1_high2 = a2.high & b_high2;
+	var this1_low2 = a2.low & b_low2;
+	sr.w = this1_low2;
 	var b3 = 48;
 	b3 &= 63;
 	var a3;
 	if(b3 == 0) {
-		var this10 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
-		a3 = this10;
+		var this13 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
+		a3 = this13;
 	} else if(b3 < 32) {
-		var this11 = new haxe__$Int64__$_$_$Int64(v.high >> b3,v.high << 32 - b3 | v.low >>> b3);
-		a3 = this11;
+		var this23 = new haxe__$Int64__$_$_$Int64(v.high >> b3,v.high << 32 - b3 | v.low >>> b3);
+		a3 = this23;
 	} else {
-		var this12 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b3 - 32);
-		a3 = this12;
+		var this33 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b3 - 32);
+		a3 = this33;
 	}
 	var b_high3 = 0;
 	var b_low3 = 15;
-	var this_high3 = a3.high & b_high3;
-	var this_low3 = a3.low & b_low3;
-	sr.s = this_low3;
+	var this1_high3 = a3.high & b_high3;
+	var this1_low3 = a3.low & b_low3;
+	sr.s = this1_low3;
 	var b4 = 44;
 	b4 &= 63;
 	var a4;
 	if(b4 == 0) {
-		var this13 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
-		a4 = this13;
-	} else if(b4 < 32) {
-		var this14 = new haxe__$Int64__$_$_$Int64(v.high >> b4,v.high << 32 - b4 | v.low >>> b4);
+		var this14 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
 		a4 = this14;
+	} else if(b4 < 32) {
+		var this24 = new haxe__$Int64__$_$_$Int64(v.high >> b4,v.high << 32 - b4 | v.low >>> b4);
+		a4 = this24;
 	} else {
-		var this15 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b4 - 32);
-		a4 = this15;
+		var this34 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b4 - 32);
+		a4 = this34;
 	}
 	var b_high4 = 0;
 	var b_low4 = 15;
-	var this_high4 = a4.high & b_high4;
-	var this_low4 = a4.low & b_low4;
-	sr.d = this_low4;
+	var this1_high4 = a4.high & b_high4;
+	var this1_low4 = a4.low & b_low4;
+	sr.d = this1_low4;
 	var b5 = 40;
 	b5 &= 63;
 	var a5;
 	if(b5 == 0) {
-		var this16 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
-		a5 = this16;
+		var this15 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
+		a5 = this15;
 	} else if(b5 < 32) {
-		var this17 = new haxe__$Int64__$_$_$Int64(v.high >> b5,v.high << 32 - b5 | v.low >>> b5);
-		a5 = this17;
+		var this25 = new haxe__$Int64__$_$_$Int64(v.high >> b5,v.high << 32 - b5 | v.low >>> b5);
+		a5 = this25;
 	} else {
-		var this18 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b5 - 32);
-		a5 = this18;
+		var this35 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b5 - 32);
+		a5 = this35;
 	}
 	var b_high5 = 0;
 	var b_low5 = 15;
-	var this_high5 = a5.high & b_high5;
-	var this_low5 = a5.low & b_low5;
-	sr.t = this_low5;
+	var this1_high5 = a5.high & b_high5;
+	var this1_low5 = a5.low & b_low5;
+	sr.t = this1_low5;
 	var b6 = 32;
 	b6 &= 63;
 	var a6;
 	if(b6 == 0) {
-		var this19 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
-		a6 = this19;
+		var this16 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
+		a6 = this16;
 	} else if(b6 < 32) {
-		var this20 = new haxe__$Int64__$_$_$Int64(v.high >> b6,v.high << 32 - b6 | v.low >>> b6);
-		a6 = this20;
+		var this26 = new haxe__$Int64__$_$_$Int64(v.high >> b6,v.high << 32 - b6 | v.low >>> b6);
+		a6 = this26;
 	} else {
-		var this21 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b6 - 32);
-		a6 = this21;
+		var this36 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b6 - 32);
+		a6 = this36;
 	}
 	var b_high6 = 0;
 	var b_low6 = 15;
-	var this_high6 = a6.high & b_high6;
-	var this_low6 = a6.low & b_low6;
-	sr.type = this_low6;
+	var this1_high6 = a6.high & b_high6;
+	var this1_low6 = a6.low & b_low6;
+	sr.type = this1_low6;
 	var b7 = 16;
 	b7 &= 63;
 	var a7;
 	if(b7 == 0) {
-		var this22 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
-		a7 = this22;
+		var this17 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
+		a7 = this17;
 	} else if(b7 < 32) {
-		var this23 = new haxe__$Int64__$_$_$Int64(v.high >> b7,v.high << 32 - b7 | v.low >>> b7);
-		a7 = this23;
+		var this27 = new haxe__$Int64__$_$_$Int64(v.high >> b7,v.high << 32 - b7 | v.low >>> b7);
+		a7 = this27;
 	} else {
-		var this24 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b7 - 32);
-		a7 = this24;
+		var this37 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b7 - 32);
+		a7 = this37;
 	}
 	var b_high7 = 0;
 	var b_low7 = 255;
-	var this_high7 = a7.high & b_high7;
-	var this_low7 = a7.low & b_low7;
-	sr.b = this_low7;
+	var this1_high7 = a7.high & b_high7;
+	var this1_low7 = a7.low & b_low7;
+	sr.b = this1_low7;
 	var b_high8 = 0;
 	var b_low8 = 65535;
-	var this_high8 = v.high & b_high8;
-	var this_low8 = v.low & b_low8;
-	sr.n = this_low8;
+	var this1_high8 = v.high & b_high8;
+	var this1_low8 = v.low & b_low8;
+	sr.n = this1_low8;
 	return sr;
 };
 openfl__$internal_formats_agal__$AGALConverter_SamplerRegister.prototype = {
@@ -30699,104 +30708,104 @@ openfl__$internal_formats_agal__$AGALConverter_SourceRegister.parse = function(v
 	}
 	var b_high = 0;
 	var b_low = 1;
-	var this_high = a.high & b_high;
-	var this_low = a.low & b_low;
-	sr.d = this_low;
+	var this1_high = a.high & b_high;
+	var this1_low = a.low & b_low;
+	sr.d = this1_low;
 	var b1 = 48;
 	b1 &= 63;
 	var a1;
 	if(b1 == 0) {
-		var this4 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
-		a1 = this4;
+		var this11 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
+		a1 = this11;
 	} else if(b1 < 32) {
-		var this5 = new haxe__$Int64__$_$_$Int64(v.high >> b1,v.high << 32 - b1 | v.low >>> b1);
-		a1 = this5;
+		var this21 = new haxe__$Int64__$_$_$Int64(v.high >> b1,v.high << 32 - b1 | v.low >>> b1);
+		a1 = this21;
 	} else {
-		var this6 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b1 - 32);
-		a1 = this6;
+		var this31 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b1 - 32);
+		a1 = this31;
 	}
 	var b_high1 = 0;
 	var b_low1 = 3;
-	var this_high1 = a1.high & b_high1;
-	var this_low1 = a1.low & b_low1;
-	sr.q = this_low1;
+	var this1_high1 = a1.high & b_high1;
+	var this1_low1 = a1.low & b_low1;
+	sr.q = this1_low1;
 	var b2 = 40;
 	b2 &= 63;
 	var a2;
 	if(b2 == 0) {
-		var this7 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
-		a2 = this7;
+		var this12 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
+		a2 = this12;
 	} else if(b2 < 32) {
-		var this8 = new haxe__$Int64__$_$_$Int64(v.high >> b2,v.high << 32 - b2 | v.low >>> b2);
-		a2 = this8;
+		var this22 = new haxe__$Int64__$_$_$Int64(v.high >> b2,v.high << 32 - b2 | v.low >>> b2);
+		a2 = this22;
 	} else {
-		var this9 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b2 - 32);
-		a2 = this9;
+		var this32 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b2 - 32);
+		a2 = this32;
 	}
 	var b_high2 = 0;
 	var b_low2 = 15;
-	var this_high2 = a2.high & b_high2;
-	var this_low2 = a2.low & b_low2;
-	sr.itype = this_low2;
+	var this1_high2 = a2.high & b_high2;
+	var this1_low2 = a2.low & b_low2;
+	sr.itype = this1_low2;
 	var b3 = 32;
 	b3 &= 63;
 	var a3;
 	if(b3 == 0) {
-		var this10 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
-		a3 = this10;
+		var this13 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
+		a3 = this13;
 	} else if(b3 < 32) {
-		var this11 = new haxe__$Int64__$_$_$Int64(v.high >> b3,v.high << 32 - b3 | v.low >>> b3);
-		a3 = this11;
+		var this23 = new haxe__$Int64__$_$_$Int64(v.high >> b3,v.high << 32 - b3 | v.low >>> b3);
+		a3 = this23;
 	} else {
-		var this12 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b3 - 32);
-		a3 = this12;
+		var this33 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b3 - 32);
+		a3 = this33;
 	}
 	var b_high3 = 0;
 	var b_low3 = 15;
-	var this_high3 = a3.high & b_high3;
-	var this_low3 = a3.low & b_low3;
-	sr.type = this_low3;
+	var this1_high3 = a3.high & b_high3;
+	var this1_low3 = a3.low & b_low3;
+	sr.type = this1_low3;
 	var b4 = 24;
 	b4 &= 63;
 	var a4;
 	if(b4 == 0) {
-		var this13 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
-		a4 = this13;
-	} else if(b4 < 32) {
-		var this14 = new haxe__$Int64__$_$_$Int64(v.high >> b4,v.high << 32 - b4 | v.low >>> b4);
+		var this14 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
 		a4 = this14;
+	} else if(b4 < 32) {
+		var this24 = new haxe__$Int64__$_$_$Int64(v.high >> b4,v.high << 32 - b4 | v.low >>> b4);
+		a4 = this24;
 	} else {
-		var this15 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b4 - 32);
-		a4 = this15;
+		var this34 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b4 - 32);
+		a4 = this34;
 	}
 	var b_high4 = 0;
 	var b_low4 = 255;
-	var this_high4 = a4.high & b_high4;
-	var this_low4 = a4.low & b_low4;
-	sr.s = this_low4;
+	var this1_high4 = a4.high & b_high4;
+	var this1_low4 = a4.low & b_low4;
+	sr.s = this1_low4;
 	var b5 = 16;
 	b5 &= 63;
 	var a5;
 	if(b5 == 0) {
-		var this16 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
-		a5 = this16;
+		var this15 = new haxe__$Int64__$_$_$Int64(v.high,v.low);
+		a5 = this15;
 	} else if(b5 < 32) {
-		var this17 = new haxe__$Int64__$_$_$Int64(v.high >> b5,v.high << 32 - b5 | v.low >>> b5);
-		a5 = this17;
+		var this25 = new haxe__$Int64__$_$_$Int64(v.high >> b5,v.high << 32 - b5 | v.low >>> b5);
+		a5 = this25;
 	} else {
-		var this18 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b5 - 32);
-		a5 = this18;
+		var this35 = new haxe__$Int64__$_$_$Int64(v.high >> 31,v.high >> b5 - 32);
+		a5 = this35;
 	}
 	var b_high5 = 0;
 	var b_low5 = 255;
-	var this_high5 = a5.high & b_high5;
-	var this_low5 = a5.low & b_low5;
-	sr.o = this_low5;
+	var this1_high5 = a5.high & b_high5;
+	var this1_low5 = a5.low & b_low5;
+	sr.o = this1_low5;
 	var b_high6 = 0;
 	var b_low6 = 65535;
-	var this_high6 = v.high & b_high6;
-	var this_low6 = v.low & b_low6;
-	sr.n = this_low6;
+	var this1_high6 = v.high & b_high6;
+	var this1_low6 = v.low & b_low6;
+	sr.n = this1_low6;
 	sr.sourceMask = sourceMask;
 	return sr;
 };
@@ -74177,537 +74186,537 @@ openfl_utils_AGALMiniAssembler.init = function() {
 	} else {
 		_this.h["mov"] = v;
 	}
-	var this2 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this11 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v1 = new openfl_utils__$AGALMiniAssembler_OpCode("add",3,1,0);
-	var _this1 = this2;
+	var _this1 = this11;
 	if(__map_reserved["add"] != null) {
 		_this1.setReserved("add",v1);
 	} else {
 		_this1.h["add"] = v1;
 	}
-	var this3 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this12 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v2 = new openfl_utils__$AGALMiniAssembler_OpCode("sub",3,2,0);
-	var _this2 = this3;
+	var _this2 = this12;
 	if(__map_reserved["sub"] != null) {
 		_this2.setReserved("sub",v2);
 	} else {
 		_this2.h["sub"] = v2;
 	}
-	var this4 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this13 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v3 = new openfl_utils__$AGALMiniAssembler_OpCode("mul",3,3,0);
-	var _this3 = this4;
+	var _this3 = this13;
 	if(__map_reserved["mul"] != null) {
 		_this3.setReserved("mul",v3);
 	} else {
 		_this3.h["mul"] = v3;
 	}
-	var this5 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this14 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v4 = new openfl_utils__$AGALMiniAssembler_OpCode("div",3,4,0);
-	var _this4 = this5;
+	var _this4 = this14;
 	if(__map_reserved["div"] != null) {
 		_this4.setReserved("div",v4);
 	} else {
 		_this4.h["div"] = v4;
 	}
-	var this6 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this15 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v5 = new openfl_utils__$AGALMiniAssembler_OpCode("rcp",2,5,0);
-	var _this5 = this6;
+	var _this5 = this15;
 	if(__map_reserved["rcp"] != null) {
 		_this5.setReserved("rcp",v5);
 	} else {
 		_this5.h["rcp"] = v5;
 	}
-	var this7 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this16 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v6 = new openfl_utils__$AGALMiniAssembler_OpCode("min",3,6,0);
-	var _this6 = this7;
+	var _this6 = this16;
 	if(__map_reserved["min"] != null) {
 		_this6.setReserved("min",v6);
 	} else {
 		_this6.h["min"] = v6;
 	}
-	var this8 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this17 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v7 = new openfl_utils__$AGALMiniAssembler_OpCode("max",3,7,0);
-	var _this7 = this8;
+	var _this7 = this17;
 	if(__map_reserved["max"] != null) {
 		_this7.setReserved("max",v7);
 	} else {
 		_this7.h["max"] = v7;
 	}
-	var this9 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this18 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v8 = new openfl_utils__$AGALMiniAssembler_OpCode("frc",2,8,0);
-	var _this8 = this9;
+	var _this8 = this18;
 	if(__map_reserved["frc"] != null) {
 		_this8.setReserved("frc",v8);
 	} else {
 		_this8.h["frc"] = v8;
 	}
-	var this10 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this19 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v9 = new openfl_utils__$AGALMiniAssembler_OpCode("sqt",2,9,0);
-	var _this9 = this10;
+	var _this9 = this19;
 	if(__map_reserved["sqt"] != null) {
 		_this9.setReserved("sqt",v9);
 	} else {
 		_this9.h["sqt"] = v9;
 	}
-	var this11 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this110 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v10 = new openfl_utils__$AGALMiniAssembler_OpCode("rsq",2,10,0);
-	var _this10 = this11;
+	var _this10 = this110;
 	if(__map_reserved["rsq"] != null) {
 		_this10.setReserved("rsq",v10);
 	} else {
 		_this10.h["rsq"] = v10;
 	}
-	var this12 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this111 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v11 = new openfl_utils__$AGALMiniAssembler_OpCode("pow",3,11,0);
-	var _this11 = this12;
+	var _this11 = this111;
 	if(__map_reserved["pow"] != null) {
 		_this11.setReserved("pow",v11);
 	} else {
 		_this11.h["pow"] = v11;
 	}
-	var this13 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this112 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v12 = new openfl_utils__$AGALMiniAssembler_OpCode("log",2,12,0);
-	var _this12 = this13;
+	var _this12 = this112;
 	if(__map_reserved["log"] != null) {
 		_this12.setReserved("log",v12);
 	} else {
 		_this12.h["log"] = v12;
 	}
-	var this14 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this113 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v13 = new openfl_utils__$AGALMiniAssembler_OpCode("exp",2,13,0);
-	var _this13 = this14;
+	var _this13 = this113;
 	if(__map_reserved["exp"] != null) {
 		_this13.setReserved("exp",v13);
 	} else {
 		_this13.h["exp"] = v13;
 	}
-	var this15 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this114 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v14 = new openfl_utils__$AGALMiniAssembler_OpCode("nrm",2,14,0);
-	var _this14 = this15;
+	var _this14 = this114;
 	if(__map_reserved["nrm"] != null) {
 		_this14.setReserved("nrm",v14);
 	} else {
 		_this14.h["nrm"] = v14;
 	}
-	var this16 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this115 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v15 = new openfl_utils__$AGALMiniAssembler_OpCode("sin",2,15,0);
-	var _this15 = this16;
+	var _this15 = this115;
 	if(__map_reserved["sin"] != null) {
 		_this15.setReserved("sin",v15);
 	} else {
 		_this15.h["sin"] = v15;
 	}
-	var this17 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this116 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v16 = new openfl_utils__$AGALMiniAssembler_OpCode("cos",2,16,0);
-	var _this16 = this17;
+	var _this16 = this116;
 	if(__map_reserved["cos"] != null) {
 		_this16.setReserved("cos",v16);
 	} else {
 		_this16.h["cos"] = v16;
 	}
-	var this18 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this117 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v17 = new openfl_utils__$AGALMiniAssembler_OpCode("crs",3,17,0);
-	var _this17 = this18;
+	var _this17 = this117;
 	if(__map_reserved["crs"] != null) {
 		_this17.setReserved("crs",v17);
 	} else {
 		_this17.h["crs"] = v17;
 	}
-	var this19 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this118 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v18 = new openfl_utils__$AGALMiniAssembler_OpCode("dp3",3,18,0);
-	var _this18 = this19;
+	var _this18 = this118;
 	if(__map_reserved["dp3"] != null) {
 		_this18.setReserved("dp3",v18);
 	} else {
 		_this18.h["dp3"] = v18;
 	}
-	var this20 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this119 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v19 = new openfl_utils__$AGALMiniAssembler_OpCode("dp4",3,19,0);
-	var _this19 = this20;
+	var _this19 = this119;
 	if(__map_reserved["dp4"] != null) {
 		_this19.setReserved("dp4",v19);
 	} else {
 		_this19.h["dp4"] = v19;
 	}
-	var this21 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this120 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v20 = new openfl_utils__$AGALMiniAssembler_OpCode("abs",2,20,0);
-	var _this20 = this21;
+	var _this20 = this120;
 	if(__map_reserved["abs"] != null) {
 		_this20.setReserved("abs",v20);
 	} else {
 		_this20.h["abs"] = v20;
 	}
-	var this22 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this121 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v21 = new openfl_utils__$AGALMiniAssembler_OpCode("neg",2,21,0);
-	var _this21 = this22;
+	var _this21 = this121;
 	if(__map_reserved["neg"] != null) {
 		_this21.setReserved("neg",v21);
 	} else {
 		_this21.h["neg"] = v21;
 	}
-	var this23 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this122 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v22 = new openfl_utils__$AGALMiniAssembler_OpCode("sat",2,22,0);
-	var _this22 = this23;
+	var _this22 = this122;
 	if(__map_reserved["sat"] != null) {
 		_this22.setReserved("sat",v22);
 	} else {
 		_this22.h["sat"] = v22;
 	}
-	var this24 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this123 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v23 = new openfl_utils__$AGALMiniAssembler_OpCode("m33",3,23,16);
-	var _this23 = this24;
+	var _this23 = this123;
 	if(__map_reserved["m33"] != null) {
 		_this23.setReserved("m33",v23);
 	} else {
 		_this23.h["m33"] = v23;
 	}
-	var this25 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this124 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v24 = new openfl_utils__$AGALMiniAssembler_OpCode("m44",3,24,16);
-	var _this24 = this25;
+	var _this24 = this124;
 	if(__map_reserved["m44"] != null) {
 		_this24.setReserved("m44",v24);
 	} else {
 		_this24.h["m44"] = v24;
 	}
-	var this26 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this125 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v25 = new openfl_utils__$AGALMiniAssembler_OpCode("m34",3,25,16);
-	var _this25 = this26;
+	var _this25 = this125;
 	if(__map_reserved["m34"] != null) {
 		_this25.setReserved("m34",v25);
 	} else {
 		_this25.h["m34"] = v25;
 	}
-	var this27 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this126 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v26 = new openfl_utils__$AGALMiniAssembler_OpCode("ddx",2,26,288);
-	var _this26 = this27;
+	var _this26 = this126;
 	if(__map_reserved["ddx"] != null) {
 		_this26.setReserved("ddx",v26);
 	} else {
 		_this26.h["ddx"] = v26;
 	}
-	var this28 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this127 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v27 = new openfl_utils__$AGALMiniAssembler_OpCode("ddy",2,27,288);
-	var _this27 = this28;
+	var _this27 = this127;
 	if(__map_reserved["ddy"] != null) {
 		_this27.setReserved("ddy",v27);
 	} else {
 		_this27.h["ddy"] = v27;
 	}
-	var this29 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this128 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v28 = new openfl_utils__$AGALMiniAssembler_OpCode("ife",2,28,897);
-	var _this28 = this29;
+	var _this28 = this128;
 	if(__map_reserved["ife"] != null) {
 		_this28.setReserved("ife",v28);
 	} else {
 		_this28.h["ife"] = v28;
 	}
-	var this30 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this129 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v29 = new openfl_utils__$AGALMiniAssembler_OpCode("ine",2,29,897);
-	var _this29 = this30;
+	var _this29 = this129;
 	if(__map_reserved["ine"] != null) {
 		_this29.setReserved("ine",v29);
 	} else {
 		_this29.h["ine"] = v29;
 	}
-	var this31 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this130 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v30 = new openfl_utils__$AGALMiniAssembler_OpCode("ifg",2,30,897);
-	var _this30 = this31;
+	var _this30 = this130;
 	if(__map_reserved["ifg"] != null) {
 		_this30.setReserved("ifg",v30);
 	} else {
 		_this30.h["ifg"] = v30;
 	}
-	var this32 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this131 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v31 = new openfl_utils__$AGALMiniAssembler_OpCode("ifl",2,31,897);
-	var _this31 = this32;
+	var _this31 = this131;
 	if(__map_reserved["ifl"] != null) {
 		_this31.setReserved("ifl",v31);
 	} else {
 		_this31.h["ifl"] = v31;
 	}
-	var this33 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this132 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v32 = new openfl_utils__$AGALMiniAssembler_OpCode("els",0,32,1921);
-	var _this32 = this33;
+	var _this32 = this132;
 	if(__map_reserved["els"] != null) {
 		_this32.setReserved("els",v32);
 	} else {
 		_this32.h["els"] = v32;
 	}
-	var this34 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this133 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v33 = new openfl_utils__$AGALMiniAssembler_OpCode("eif",0,33,1409);
-	var _this33 = this34;
+	var _this33 = this133;
 	if(__map_reserved["eif"] != null) {
 		_this33.setReserved("eif",v33);
 	} else {
 		_this33.h["eif"] = v33;
 	}
-	var this35 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this134 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v34 = new openfl_utils__$AGALMiniAssembler_OpCode("kil",1,39,160);
-	var _this34 = this35;
+	var _this34 = this134;
 	if(__map_reserved["kil"] != null) {
 		_this34.setReserved("kil",v34);
 	} else {
 		_this34.h["kil"] = v34;
 	}
-	var this36 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this135 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v35 = new openfl_utils__$AGALMiniAssembler_OpCode("tex",3,40,40);
-	var _this35 = this36;
+	var _this35 = this135;
 	if(__map_reserved["tex"] != null) {
 		_this35.setReserved("tex",v35);
 	} else {
 		_this35.h["tex"] = v35;
 	}
-	var this37 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this136 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v36 = new openfl_utils__$AGALMiniAssembler_OpCode("sge",3,41,0);
-	var _this36 = this37;
+	var _this36 = this136;
 	if(__map_reserved["sge"] != null) {
 		_this36.setReserved("sge",v36);
 	} else {
 		_this36.h["sge"] = v36;
 	}
-	var this38 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this137 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v37 = new openfl_utils__$AGALMiniAssembler_OpCode("slt",3,42,0);
-	var _this37 = this38;
+	var _this37 = this137;
 	if(__map_reserved["slt"] != null) {
 		_this37.setReserved("slt",v37);
 	} else {
 		_this37.h["slt"] = v37;
 	}
-	var this39 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this138 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v38 = new openfl_utils__$AGALMiniAssembler_OpCode("sgn",2,43,0);
-	var _this38 = this39;
+	var _this38 = this138;
 	if(__map_reserved["sgn"] != null) {
 		_this38.setReserved("sgn",v38);
 	} else {
 		_this38.h["sgn"] = v38;
 	}
-	var this40 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this139 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v39 = new openfl_utils__$AGALMiniAssembler_OpCode("seq",3,44,0);
-	var _this39 = this40;
+	var _this39 = this139;
 	if(__map_reserved["seq"] != null) {
 		_this39.setReserved("seq",v39);
 	} else {
 		_this39.h["seq"] = v39;
 	}
-	var this41 = openfl_utils_AGALMiniAssembler.OPMAP;
+	var this140 = openfl_utils_AGALMiniAssembler.OPMAP;
 	var v40 = new openfl_utils__$AGALMiniAssembler_OpCode("sne",3,45,0);
-	var _this40 = this41;
+	var _this40 = this140;
 	if(__map_reserved["sne"] != null) {
 		_this40.setReserved("sne",v40);
 	} else {
 		_this40.h["sne"] = v40;
 	}
-	var this42 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this141 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v41 = new openfl_utils__$AGALMiniAssembler_Sampler("rgba",8,0);
-	var _this41 = this42;
+	var _this41 = this141;
 	if(__map_reserved["rgba"] != null) {
 		_this41.setReserved("rgba",v41);
 	} else {
 		_this41.h["rgba"] = v41;
 	}
-	var this43 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this142 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v42 = new openfl_utils__$AGALMiniAssembler_Sampler("compressed",8,1);
-	var _this42 = this43;
+	var _this42 = this142;
 	if(__map_reserved["compressed"] != null) {
 		_this42.setReserved("compressed",v42);
 	} else {
 		_this42.h["compressed"] = v42;
 	}
-	var this44 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this143 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v43 = new openfl_utils__$AGALMiniAssembler_Sampler("compressedalpha",8,2);
-	var _this43 = this44;
+	var _this43 = this143;
 	if(__map_reserved["compressedalpha"] != null) {
 		_this43.setReserved("compressedalpha",v43);
 	} else {
 		_this43.h["compressedalpha"] = v43;
 	}
-	var this45 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this144 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v44 = new openfl_utils__$AGALMiniAssembler_Sampler("dxt1",8,1);
-	var _this44 = this45;
+	var _this44 = this144;
 	if(__map_reserved["dxt1"] != null) {
 		_this44.setReserved("dxt1",v44);
 	} else {
 		_this44.h["dxt1"] = v44;
 	}
-	var this46 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this145 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v45 = new openfl_utils__$AGALMiniAssembler_Sampler("dxt5",8,2);
-	var _this45 = this46;
+	var _this45 = this145;
 	if(__map_reserved["dxt5"] != null) {
 		_this45.setReserved("dxt5",v45);
 	} else {
 		_this45.h["dxt5"] = v45;
 	}
-	var this47 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this146 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v46 = new openfl_utils__$AGALMiniAssembler_Sampler("video",8,3);
-	var _this46 = this47;
+	var _this46 = this146;
 	if(__map_reserved["video"] != null) {
 		_this46.setReserved("video",v46);
 	} else {
 		_this46.h["video"] = v46;
 	}
-	var this48 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this147 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v47 = new openfl_utils__$AGALMiniAssembler_Sampler("2d",12,0);
-	var _this47 = this48;
+	var _this47 = this147;
 	if(__map_reserved["2d"] != null) {
 		_this47.setReserved("2d",v47);
 	} else {
 		_this47.h["2d"] = v47;
 	}
-	var this49 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this148 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v48 = new openfl_utils__$AGALMiniAssembler_Sampler("3d",12,2);
-	var _this48 = this49;
+	var _this48 = this148;
 	if(__map_reserved["3d"] != null) {
 		_this48.setReserved("3d",v48);
 	} else {
 		_this48.h["3d"] = v48;
 	}
-	var this50 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this149 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v49 = new openfl_utils__$AGALMiniAssembler_Sampler("cube",12,1);
-	var _this49 = this50;
+	var _this49 = this149;
 	if(__map_reserved["cube"] != null) {
 		_this49.setReserved("cube",v49);
 	} else {
 		_this49.h["cube"] = v49;
 	}
-	var this51 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this150 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v50 = new openfl_utils__$AGALMiniAssembler_Sampler("mipnearest",24,1);
-	var _this50 = this51;
+	var _this50 = this150;
 	if(__map_reserved["mipnearest"] != null) {
 		_this50.setReserved("mipnearest",v50);
 	} else {
 		_this50.h["mipnearest"] = v50;
 	}
-	var this52 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this151 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v51 = new openfl_utils__$AGALMiniAssembler_Sampler("miplinear",24,2);
-	var _this51 = this52;
+	var _this51 = this151;
 	if(__map_reserved["miplinear"] != null) {
 		_this51.setReserved("miplinear",v51);
 	} else {
 		_this51.h["miplinear"] = v51;
 	}
-	var this53 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this152 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v52 = new openfl_utils__$AGALMiniAssembler_Sampler("mipnone",24,0);
-	var _this52 = this53;
+	var _this52 = this152;
 	if(__map_reserved["mipnone"] != null) {
 		_this52.setReserved("mipnone",v52);
 	} else {
 		_this52.h["mipnone"] = v52;
 	}
-	var this54 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this153 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v53 = new openfl_utils__$AGALMiniAssembler_Sampler("nomip",24,0);
-	var _this53 = this54;
+	var _this53 = this153;
 	if(__map_reserved["nomip"] != null) {
 		_this53.setReserved("nomip",v53);
 	} else {
 		_this53.h["nomip"] = v53;
 	}
-	var this55 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this154 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v54 = new openfl_utils__$AGALMiniAssembler_Sampler("nearest",28,0);
-	var _this54 = this55;
+	var _this54 = this154;
 	if(__map_reserved["nearest"] != null) {
 		_this54.setReserved("nearest",v54);
 	} else {
 		_this54.h["nearest"] = v54;
 	}
-	var this56 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this155 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v55 = new openfl_utils__$AGALMiniAssembler_Sampler("linear",28,1);
-	var _this55 = this56;
+	var _this55 = this155;
 	if(__map_reserved["linear"] != null) {
 		_this55.setReserved("linear",v55);
 	} else {
 		_this55.h["linear"] = v55;
 	}
-	var this57 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this156 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v56 = new openfl_utils__$AGALMiniAssembler_Sampler("anisotropic2x",28,2);
-	var _this56 = this57;
+	var _this56 = this156;
 	if(__map_reserved["anisotropic2x"] != null) {
 		_this56.setReserved("anisotropic2x",v56);
 	} else {
 		_this56.h["anisotropic2x"] = v56;
 	}
-	var this58 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this157 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v57 = new openfl_utils__$AGALMiniAssembler_Sampler("anisotropic4x",28,3);
-	var _this57 = this58;
+	var _this57 = this157;
 	if(__map_reserved["anisotropic4x"] != null) {
 		_this57.setReserved("anisotropic4x",v57);
 	} else {
 		_this57.h["anisotropic4x"] = v57;
 	}
-	var this59 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this158 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v58 = new openfl_utils__$AGALMiniAssembler_Sampler("anisotropic8x",28,4);
-	var _this58 = this59;
+	var _this58 = this158;
 	if(__map_reserved["anisotropic8x"] != null) {
 		_this58.setReserved("anisotropic8x",v58);
 	} else {
 		_this58.h["anisotropic8x"] = v58;
 	}
-	var this60 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this159 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v59 = new openfl_utils__$AGALMiniAssembler_Sampler("anisotropic16x",28,5);
-	var _this59 = this60;
+	var _this59 = this159;
 	if(__map_reserved["anisotropic16x"] != null) {
 		_this59.setReserved("anisotropic16x",v59);
 	} else {
 		_this59.h["anisotropic16x"] = v59;
 	}
-	var this61 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this160 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v60 = new openfl_utils__$AGALMiniAssembler_Sampler("centroid",16,1);
-	var _this60 = this61;
+	var _this60 = this160;
 	if(__map_reserved["centroid"] != null) {
 		_this60.setReserved("centroid",v60);
 	} else {
 		_this60.h["centroid"] = v60;
 	}
-	var this62 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this161 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v61 = new openfl_utils__$AGALMiniAssembler_Sampler("single",16,2);
-	var _this61 = this62;
+	var _this61 = this161;
 	if(__map_reserved["single"] != null) {
 		_this61.setReserved("single",v61);
 	} else {
 		_this61.h["single"] = v61;
 	}
-	var this63 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this162 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v62 = new openfl_utils__$AGALMiniAssembler_Sampler("ignoresampler",16,4);
-	var _this62 = this63;
+	var _this62 = this162;
 	if(__map_reserved["ignoresampler"] != null) {
 		_this62.setReserved("ignoresampler",v62);
 	} else {
 		_this62.h["ignoresampler"] = v62;
 	}
-	var this64 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this163 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v63 = new openfl_utils__$AGALMiniAssembler_Sampler("repeat",20,1);
-	var _this63 = this64;
+	var _this63 = this163;
 	if(__map_reserved["repeat"] != null) {
 		_this63.setReserved("repeat",v63);
 	} else {
 		_this63.h["repeat"] = v63;
 	}
-	var this65 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this164 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v64 = new openfl_utils__$AGALMiniAssembler_Sampler("wrap",20,1);
-	var _this64 = this65;
+	var _this64 = this164;
 	if(__map_reserved["wrap"] != null) {
 		_this64.setReserved("wrap",v64);
 	} else {
 		_this64.h["wrap"] = v64;
 	}
-	var this66 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this165 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v65 = new openfl_utils__$AGALMiniAssembler_Sampler("clamp",20,0);
-	var _this65 = this66;
+	var _this65 = this165;
 	if(__map_reserved["clamp"] != null) {
 		_this65.setReserved("clamp",v65);
 	} else {
 		_this65.h["clamp"] = v65;
 	}
-	var this67 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this166 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v66 = new openfl_utils__$AGALMiniAssembler_Sampler("clamp_u_repeat_v",20,2);
-	var _this66 = this67;
+	var _this66 = this166;
 	if(__map_reserved["clamp_u_repeat_v"] != null) {
 		_this66.setReserved("clamp_u_repeat_v",v66);
 	} else {
 		_this66.h["clamp_u_repeat_v"] = v66;
 	}
-	var this68 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
+	var this167 = openfl_utils_AGALMiniAssembler.SAMPLEMAP;
 	var v67 = new openfl_utils__$AGALMiniAssembler_Sampler("repeat_u_clamp_v",20,3);
-	var _this67 = this68;
+	var _this67 = this167;
 	if(__map_reserved["repeat_u_clamp_v"] != null) {
 		_this67.setReserved("repeat_u_clamp_v",v67);
 	} else {
@@ -74883,8 +74892,8 @@ openfl_utils_AGALMiniAssembler.prototype = {
 					regidx = Std.parseInt(idxmatch[0]);
 				}
 				if(_$UInt_UInt_$Impl_$.gt(regidx,regFound.range)) {
-					var this2 = regFound.range + 1;
-					this.error = "error: register operand " + j + " (" + regs[j] + ") index exceeds limit of " + Std.string(this2 == null ? null : _$UInt_UInt_$Impl_$.toFloat(this2)) + ".";
+					var this11 = regFound.range + 1;
+					this.error = "error: register operand " + j + " (" + regs[j] + ") index exceeds limit of " + Std.string(this11 == null ? null : _$UInt_UInt_$Impl_$.toFloat(this11)) + ".";
 					badreg = true;
 					break;
 				}
@@ -75069,135 +75078,135 @@ openfl_utils_AGALMiniAssembler.prototype = {
 		} else {
 			_this.h["va"] = v;
 		}
-		var this2 = openfl_utils_AGALMiniAssembler.REGMAP;
+		var this11 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var v1 = new openfl_utils__$AGALMiniAssembler_Register("vc","vertex constant",1,ignorelimits ? 1024 : version == 1 ? 127 : 249,66);
-		var _this1 = this2;
+		var _this1 = this11;
 		if(__map_reserved["vc"] != null) {
 			_this1.setReserved("vc",v1);
 		} else {
 			_this1.h["vc"] = v1;
 		}
-		var this3 = openfl_utils_AGALMiniAssembler.REGMAP;
+		var this12 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var v2 = new openfl_utils__$AGALMiniAssembler_Register("vt","vertex temporary",2,ignorelimits ? 1024 : version == 1 ? 7 : 25,67);
-		var _this2 = this3;
+		var _this2 = this12;
 		if(__map_reserved["vt"] != null) {
 			_this2.setReserved("vt",v2);
 		} else {
 			_this2.h["vt"] = v2;
 		}
-		var this4 = openfl_utils_AGALMiniAssembler.REGMAP;
+		var this13 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var v3 = new openfl_utils__$AGALMiniAssembler_Register("vo","vertex output",3,ignorelimits ? 1024 : 0,65);
-		var _this3 = this4;
+		var _this3 = this13;
 		if(__map_reserved["vo"] != null) {
 			_this3.setReserved("vo",v3);
 		} else {
 			_this3.h["vo"] = v3;
 		}
-		var this5 = openfl_utils_AGALMiniAssembler.REGMAP;
+		var this14 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var v4 = new openfl_utils__$AGALMiniAssembler_Register("vi","varying",4,ignorelimits ? 1024 : version == 1 ? 7 : 9,99);
-		var _this4 = this5;
+		var _this4 = this14;
 		if(__map_reserved["vi"] != null) {
 			_this4.setReserved("vi",v4);
 		} else {
 			_this4.h["vi"] = v4;
 		}
-		var this6 = openfl_utils_AGALMiniAssembler.REGMAP;
+		var this15 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var v5 = new openfl_utils__$AGALMiniAssembler_Register("fc","fragment constant",1,ignorelimits ? 1024 : version == 1 ? 27 : version == 2 ? 63 : 199,34);
-		var _this5 = this6;
+		var _this5 = this15;
 		if(__map_reserved["fc"] != null) {
 			_this5.setReserved("fc",v5);
 		} else {
 			_this5.h["fc"] = v5;
 		}
-		var this7 = openfl_utils_AGALMiniAssembler.REGMAP;
+		var this16 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var v6 = new openfl_utils__$AGALMiniAssembler_Register("ft","fragment temporary",2,ignorelimits ? 1024 : version == 1 ? 7 : 25,35);
-		var _this6 = this7;
+		var _this6 = this16;
 		if(__map_reserved["ft"] != null) {
 			_this6.setReserved("ft",v6);
 		} else {
 			_this6.h["ft"] = v6;
 		}
-		var this8 = openfl_utils_AGALMiniAssembler.REGMAP;
+		var this17 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var v7 = new openfl_utils__$AGALMiniAssembler_Register("fs","texture sampler",5,ignorelimits ? 1024 : 7,34);
-		var _this7 = this8;
+		var _this7 = this17;
 		if(__map_reserved["fs"] != null) {
 			_this7.setReserved("fs",v7);
 		} else {
 			_this7.h["fs"] = v7;
 		}
-		var this9 = openfl_utils_AGALMiniAssembler.REGMAP;
+		var this18 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var v8 = new openfl_utils__$AGALMiniAssembler_Register("fo","fragment output",3,ignorelimits ? 1024 : version == 1 ? 0 : 3,33);
-		var _this8 = this9;
+		var _this8 = this18;
 		if(__map_reserved["fo"] != null) {
 			_this8.setReserved("fo",v8);
 		} else {
 			_this8.h["fo"] = v8;
 		}
-		var this10 = openfl_utils_AGALMiniAssembler.REGMAP;
+		var this19 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var v9 = new openfl_utils__$AGALMiniAssembler_Register("fd","fragment depth output",6,ignorelimits ? 1024 : version == 1 ? -1 : 0,33);
-		var _this9 = this10;
+		var _this9 = this19;
 		if(__map_reserved["fd"] != null) {
 			_this9.setReserved("fd",v9);
 		} else {
 			_this9.h["fd"] = v9;
 		}
-		var this11 = openfl_utils_AGALMiniAssembler.REGMAP;
+		var this110 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var v10 = new openfl_utils__$AGALMiniAssembler_Register("iid","instance id",7,ignorelimits ? 1024 : 0,66);
-		var _this10 = this11;
+		var _this10 = this110;
 		if(__map_reserved["iid"] != null) {
 			_this10.setReserved("iid",v10);
 		} else {
 			_this10.h["iid"] = v10;
 		}
-		var this12 = openfl_utils_AGALMiniAssembler.REGMAP;
+		var this111 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var _this11 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var v11 = __map_reserved["vo"] != null ? _this11.getReserved("vo") : _this11.h["vo"];
-		var _this12 = this12;
+		var _this12 = this111;
 		if(__map_reserved["op"] != null) {
 			_this12.setReserved("op",v11);
 		} else {
 			_this12.h["op"] = v11;
 		}
-		var this13 = openfl_utils_AGALMiniAssembler.REGMAP;
+		var this112 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var _this13 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var v12 = __map_reserved["vi"] != null ? _this13.getReserved("vi") : _this13.h["vi"];
-		var _this14 = this13;
+		var _this14 = this112;
 		if(__map_reserved["i"] != null) {
 			_this14.setReserved("i",v12);
 		} else {
 			_this14.h["i"] = v12;
 		}
-		var this14 = openfl_utils_AGALMiniAssembler.REGMAP;
+		var this113 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var _this15 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var v13 = __map_reserved["vi"] != null ? _this15.getReserved("vi") : _this15.h["vi"];
-		var _this16 = this14;
+		var _this16 = this113;
 		if(__map_reserved["v"] != null) {
 			_this16.setReserved("v",v13);
 		} else {
 			_this16.h["v"] = v13;
 		}
-		var this15 = openfl_utils_AGALMiniAssembler.REGMAP;
+		var this114 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var _this17 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var v14 = __map_reserved["fo"] != null ? _this17.getReserved("fo") : _this17.h["fo"];
-		var _this18 = this15;
+		var _this18 = this114;
 		if(__map_reserved["oc"] != null) {
 			_this18.setReserved("oc",v14);
 		} else {
 			_this18.h["oc"] = v14;
 		}
-		var this16 = openfl_utils_AGALMiniAssembler.REGMAP;
+		var this115 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var _this19 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var v15 = __map_reserved["fd"] != null ? _this19.getReserved("fd") : _this19.h["fd"];
-		var _this20 = this16;
+		var _this20 = this115;
 		if(__map_reserved["od"] != null) {
 			_this20.setReserved("od",v15);
 		} else {
 			_this20.h["od"] = v15;
 		}
-		var this17 = openfl_utils_AGALMiniAssembler.REGMAP;
+		var this116 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var _this21 = openfl_utils_AGALMiniAssembler.REGMAP;
 		var v16 = __map_reserved["vi"] != null ? _this21.getReserved("vi") : _this21.h["vi"];
-		var _this22 = this17;
+		var _this22 = this116;
 		if(__map_reserved["fi"] != null) {
 			_this22.setReserved("fi",v16);
 		} else {
@@ -75253,10 +75262,10 @@ openfl_utils__$AGALMiniAssembler_Register.prototype = {
 	,toString: function() {
 		var this1 = this.emitCode;
 		var tmp = "[Register name=\"" + this.name + "\", longName=\"" + this.longName + "\", emitCode=" + Std.string(this1 == null ? null : _$UInt_UInt_$Impl_$.toFloat(this1)) + ", range=";
-		var this2 = this.range;
-		var tmp1 = tmp + Std.string(this2 == null ? null : _$UInt_UInt_$Impl_$.toFloat(this2)) + ", flags=";
-		var this3 = this.flags;
-		return tmp1 + Std.string(this3 == null ? null : _$UInt_UInt_$Impl_$.toFloat(this3)) + "]";
+		var this11 = this.range;
+		var tmp1 = tmp + Std.string(this11 == null ? null : _$UInt_UInt_$Impl_$.toFloat(this11)) + ", flags=";
+		var this12 = this.flags;
+		return tmp1 + Std.string(this12 == null ? null : _$UInt_UInt_$Impl_$.toFloat(this12)) + "]";
 	}
 	,__class__: openfl_utils__$AGALMiniAssembler_Register
 };
@@ -75274,8 +75283,8 @@ openfl_utils__$AGALMiniAssembler_Sampler.prototype = {
 	,toString: function() {
 		var this1 = this.flag;
 		var tmp = "[Sampler name=\"" + this.name + "\", flag=\"" + Std.string(this1 == null ? null : _$UInt_UInt_$Impl_$.toFloat(this1)) + "\", mask=";
-		var this2 = this.mask;
-		return tmp + Std.string(this2 == null ? null : _$UInt_UInt_$Impl_$.toFloat(this2)) + "]";
+		var this11 = this.mask;
+		return tmp + Std.string(this11 == null ? null : _$UInt_UInt_$Impl_$.toFloat(this11)) + "]";
 	}
 	,__class__: openfl_utils__$AGALMiniAssembler_Sampler
 };
@@ -77107,7 +77116,7 @@ scenes_Level.prototype = $extend(zero_openfl_utilities_Scene.prototype,{
 			}
 			return;
 		});
-		util_LootUtil.reset([{ type : objects_PickupType.GEAR, id : "test_d_01"},{ type : objects_PickupType.MEAT, amt : 10},{ type : objects_PickupType.SHIELD, amt : 10}]);
+		util_LootUtil.reset([{ type : objects_PickupType.GEAR, id : "test_d_01"}]);
 	}
 	,init_dolly: function() {
 		this.addChild(this.dolly = new objects_Dolly());
@@ -77694,6 +77703,7 @@ ui_Deck.prototype = $extend(openfl_display_Sprite.prototype,{
 	,deal_card: function(data) {
 		var card = new ui_PlayingCard(this,data,zero_openfl_utilities_Game.get_width() / 2,zero_openfl_utilities_Game.get_height() + 128);
 		this.add_card(card);
+		util_EventUtil.dispatch(util_EventType.DRAW_CARD,data);
 	}
 	,add_card: function(card) {
 		this.addChild(card);
@@ -79067,6 +79077,54 @@ ui_LinkGraphic.prototype = $extend(openfl_display_Sprite.prototype,{
 	}
 	,__class__: ui_LinkGraphic
 });
+var ui_MinSize = function() {
+	openfl_display_Sprite.call(this);
+	this.bg = new openfl_display_Sprite();
+	var sprite = this.bg;
+	var color = zero_utilities__$Color_Color_$Impl_$.PICO_8_LIGHT_GREY;
+	sprite.get_graphics().beginFill((Math.round(color[0] * 255) & 255) << 16 | (Math.round(color[1] * 255) & 255) << 8 | Math.round(color[2] * 255) & 255,color[3]);
+	sprite.get_graphics().drawRect(-0.5,-0.5,1,1);
+	sprite.get_graphics().endFill();
+	this.text = zero_openfl_extensions_TextTools.format(new openfl_text_TextField(),{ font : util_Translation.get_font(util_Font.BOLD), size : 24, color : zero_utilities__$Color_Color_$Impl_$.BLACK, align : openfl_text__$TextFormatAlign_TextFormatAlign_$Impl_$.fromString("center")});
+	this.icon = zero_openfl_extensions_SpriteTools.load_graphic(new openfl_display_Sprite(),"images/ui/error.png",zero_utilities_Anchor.BOTTOM_CENTER);
+	this.addChild(this.bg);
+	this.addChild(this.icon);
+	this.addChild(this.text);
+	zero_utilities_EventBus.listen($bind(this,this.resize),"resize");
+};
+$hxClasses["ui.MinSize"] = ui_MinSize;
+ui_MinSize.__name__ = "ui.MinSize";
+ui_MinSize.__super__ = openfl_display_Sprite;
+ui_MinSize.prototype = $extend(openfl_display_Sprite.prototype,{
+	bg: null
+	,text: null
+	,icon: null
+	,resize: function(_) {
+		var pass = zero_openfl_utilities_Game.get_width() >= 1024 && zero_openfl_utilities_Game.get_width() > zero_openfl_utilities_Game.get_height();
+		this.set_visible(!pass);
+		if(pass) {
+			return;
+		}
+		var x = zero_openfl_utilities_Game.get_width() / 2;
+		var y = zero_openfl_utilities_Game.get_height() / 2;
+		this.set_x(x);
+		this.set_y(y);
+		var sprite = this.bg;
+		var x1 = zero_openfl_utilities_Game.get_width();
+		var y1 = zero_openfl_utilities_Game.get_height();
+		if(x1 == null) {
+			x1 = 0;
+		}
+		if(y1 == null) {
+			y1 = x1;
+		}
+		sprite.set_scaleX(x1);
+		sprite.set_scaleY(y1);
+		zero_openfl_extensions_TextTools.set_position(zero_openfl_extensions_TextTools.set_string(this.text,zero_openfl_extensions_TextTools.wrap_string(util_Translation.get_ui_text("min_size"),this.text,Math.min(480,zero_openfl_utilities_Game.get_width() - 64))),0,0,zero_utilities_Anchor.MIDDLE_CENTER);
+		this.icon.set_y(this.text.get_y() - this.text.get_height() / 4);
+	}
+	,__class__: ui_MinSize
+});
 var ui_MovementSprite = function(movement) {
 	ui_DropSprite.call(this);
 	this.movement = movement;
@@ -79570,13 +79628,14 @@ ui_Comparison.__empty_constructs__ = [ui_Comparison.EQUAL_THAN,ui_Comparison.LES
 var ui_PlayerInfo = function(player,side) {
 	openfl_display_Sprite.call(this);
 	this.player = player;
-	this.make_inventory(side);
+	this.side = side;
+	this.make_inventory();
 	this.make_avatar();
 	this.make_ap_pts();
 	this.make_health();
 	this.make_shield();
-	this.set_x(side == objects_PlayerSide.LEFT ? 72 : zero_openfl_utilities_Game.get_width() - 72);
-	this.set_y(80);
+	this.set_screen_pos();
+	zero_utilities_EventBus.listen($bind(this,this.set_screen_pos),"resize");
 };
 $hxClasses["ui.PlayerInfo"] = ui_PlayerInfo;
 ui_PlayerInfo.__name__ = "ui.PlayerInfo";
@@ -79592,8 +79651,13 @@ ui_PlayerInfo.prototype = $extend(openfl_display_Sprite.prototype,{
 	,health_text_sprite: null
 	,ap_pts_text: null
 	,shield_text: null
-	,make_inventory: function(side) {
-		this.inventory = new ui_InventorySprite(this.player.inventory,side);
+	,side: null
+	,set_screen_pos: function(_) {
+		this.set_x(this.side == objects_PlayerSide.LEFT ? 72 : zero_openfl_utilities_Game.get_width() - 72);
+		this.set_y(80);
+	}
+	,make_inventory: function() {
+		this.inventory = new ui_InventorySprite(this.player.inventory,this.side);
 		this.addChild(this.inventory);
 	}
 	,make_avatar: function() {
@@ -80280,16 +80344,20 @@ util_EventUtil.dispatch = function(ev_type,data) {
 	zero_utilities_EventBus.dispatch("game_event",{ type : ev_type, data : data});
 	util_EventUtil.log.push({ type : ev_type, data : data});
 };
-var util_EventType = $hxEnums["util.EventType"] = { __ename__ : "util.EventType", __constructs__ : ["PLAYER_TURN","ENEMY_TURN","ATTACK","USE_CARD","SHIELD","GET_GEAR","DROP"]
-	,PLAYER_TURN: {_hx_index:0,__enum__:"util.EventType",toString:$estr}
-	,ENEMY_TURN: {_hx_index:1,__enum__:"util.EventType",toString:$estr}
-	,ATTACK: {_hx_index:2,__enum__:"util.EventType",toString:$estr}
-	,USE_CARD: {_hx_index:3,__enum__:"util.EventType",toString:$estr}
-	,SHIELD: {_hx_index:4,__enum__:"util.EventType",toString:$estr}
-	,GET_GEAR: {_hx_index:5,__enum__:"util.EventType",toString:$estr}
-	,DROP: {_hx_index:6,__enum__:"util.EventType",toString:$estr}
+var util_EventType = $hxEnums["util.EventType"] = { __ename__ : "util.EventType", __constructs__ : ["DRAW_CARD","PLAYER_TURN","ENEMY_TURN","ATTACK","USE_CARD","SHIELD","GET_GEAR","DROP","DESTROY","USE_EQUIPMENT","OBJECT_MOVE"]
+	,DRAW_CARD: {_hx_index:0,__enum__:"util.EventType",toString:$estr}
+	,PLAYER_TURN: {_hx_index:1,__enum__:"util.EventType",toString:$estr}
+	,ENEMY_TURN: {_hx_index:2,__enum__:"util.EventType",toString:$estr}
+	,ATTACK: {_hx_index:3,__enum__:"util.EventType",toString:$estr}
+	,USE_CARD: {_hx_index:4,__enum__:"util.EventType",toString:$estr}
+	,SHIELD: {_hx_index:5,__enum__:"util.EventType",toString:$estr}
+	,GET_GEAR: {_hx_index:6,__enum__:"util.EventType",toString:$estr}
+	,DROP: {_hx_index:7,__enum__:"util.EventType",toString:$estr}
+	,DESTROY: {_hx_index:8,__enum__:"util.EventType",toString:$estr}
+	,USE_EQUIPMENT: {_hx_index:9,__enum__:"util.EventType",toString:$estr}
+	,OBJECT_MOVE: {_hx_index:10,__enum__:"util.EventType",toString:$estr}
 };
-util_EventType.__empty_constructs__ = [util_EventType.PLAYER_TURN,util_EventType.ENEMY_TURN,util_EventType.ATTACK,util_EventType.USE_CARD,util_EventType.SHIELD,util_EventType.GET_GEAR,util_EventType.DROP];
+util_EventType.__empty_constructs__ = [util_EventType.DRAW_CARD,util_EventType.PLAYER_TURN,util_EventType.ENEMY_TURN,util_EventType.ATTACK,util_EventType.USE_CARD,util_EventType.SHIELD,util_EventType.GET_GEAR,util_EventType.DROP,util_EventType.DESTROY,util_EventType.USE_EQUIPMENT,util_EventType.OBJECT_MOVE];
 var util_FilterUtil = function() { };
 $hxClasses["util.FilterUtil"] = util_FilterUtil;
 util_FilterUtil.__name__ = "util.FilterUtil";
@@ -80321,6 +80389,9 @@ util_LootUtil.reset = function(loot) {
 	util_LootUtil.loot_pool = loot;
 };
 util_LootUtil.get = function() {
+	if(util_LootUtil.loot_pool.length == 0) {
+		return null;
+	}
 	zero_extensions_ArrayExt.shuffle(util_LootUtil.loot_pool);
 	var out = util_LootUtil.loot_pool.shift();
 	util_EventUtil.dispatch(util_EventType.DROP,out);
@@ -80329,6 +80400,26 @@ util_LootUtil.get = function() {
 var util_PlayerData = function() { };
 $hxClasses["util.PlayerData"] = util_PlayerData;
 util_PlayerData.__name__ = "util.PlayerData";
+var util_SoundUtil = function() { };
+$hxClasses["util.SoundUtil"] = util_SoundUtil;
+util_SoundUtil.__name__ = "util.SoundUtil";
+util_SoundUtil.play = function(audio,volume,pan) {
+	if(pan == null) {
+		pan = 0;
+	}
+	if(volume == null) {
+		volume = 0.8;
+	}
+	if(!util_SoundUtil.sound_map.exists(audio)) {
+		util_SoundUtil.sound_map.set(audio,{ sound : openfl_utils_Assets.getSound(audio), transform : new openfl_media_SoundTransform()});
+	}
+	if(util_SoundUtil.sound_map.get(audio).current != null) {
+		util_SoundUtil.sound_map.get(audio).current.stop();
+	}
+	util_SoundUtil.sound_map.get(audio).transform.volume = volume;
+	util_SoundUtil.sound_map.get(audio).transform.pan = pan;
+	util_SoundUtil.sound_map.get(audio).current = util_SoundUtil.sound_map.get(audio).sound.play(0,0,util_SoundUtil.sound_map.get(audio).transform);
+};
 var util_TooltipUtil = function() { };
 $hxClasses["util.TooltipUtil"] = util_TooltipUtil;
 util_TooltipUtil.__name__ = "util.TooltipUtil";
@@ -80382,25 +80473,34 @@ util_Translation.init = function() {
 		_g5.push(line3.split("//")[0]);
 	}
 	util_Translation.tooltip_text = util_Translation.map(JSON.parse(_g5.join("\n")));
-	var _g6 = 0;
-	var _g7 = [];
+	var _g6 = [];
 	var _g14 = 0;
-	var _g24 = util_Font.__empty_constructs__.slice();
+	var _g24 = openfl_utils_Assets.getText("data/translations/ui.jsonc").split("\n");
 	while(_g14 < _g24.length) {
-		var e1 = _g24[_g14];
+		var line4 = _g24[_g14];
 		++_g14;
-		_g7.push(e1);
+		_g6.push(line4.split("//")[0]);
 	}
-	var _g15 = _g7;
-	while(_g6 < _g15.length) {
-		var font = _g15[_g6];
-		++_g6;
+	util_Translation.ui_text = util_Translation.map(JSON.parse(_g6.join("\n")));
+	var _g7 = 0;
+	var _g8 = [];
+	var _g15 = 0;
+	var _g25 = util_Font.__empty_constructs__.slice();
+	while(_g15 < _g25.length) {
+		var e1 = _g25[_g15];
+		++_g15;
+		_g8.push(e1);
+	}
+	var _g16 = _g8;
+	while(_g7 < _g16.length) {
+		var font = _g16[_g7];
+		++_g7;
 		util_Translation.fonts.set(font,new haxe_ds_StringMap());
-		var _g8 = 0;
-		var _g16 = util_Translation.languages;
-		while(_g8 < _g16.length) {
-			var ln = _g16[_g8];
-			++_g8;
+		var _g9 = 0;
+		var _g17 = util_Translation.languages;
+		while(_g9 < _g17.length) {
+			var ln = _g17[_g9];
+			++_g9;
 			var _this = util_Translation.fonts.get(font);
 			var key = ln;
 			if(__map_reserved[key] != null) {
@@ -80481,6 +80581,17 @@ util_Translation.get_gameplay_text = function(id) {
 };
 util_Translation.get_tooltip_text = function(id) {
 	var _this = util_Translation.tooltip_text;
+	var this1 = __map_reserved[id] != null ? _this.getReserved(id) : _this.h[id];
+	var key = util_Translation.language;
+	var _this1 = this1;
+	if(__map_reserved[key] != null) {
+		return _this1.getReserved(key);
+	} else {
+		return _this1.h[key];
+	}
+};
+util_Translation.get_ui_text = function(id) {
+	var _this = util_Translation.ui_text;
 	var this1 = __map_reserved[id] != null ? _this.getReserved(id) : _this.h[id];
 	var key = util_Translation.language;
 	var _this1 = this1;
@@ -89051,6 +89162,7 @@ util_GameState.state = util_State.USING_GEAR;
 util_LootUtil.loot_pool = [];
 util_PlayerData.player1 = { id : "Test Player", health : { current : 48, max : 64}, movement : { requirement : "MAX_CARD", requirement_value : 5, type : data_MoveType.FREE, factor : data_MoveFactor.VALUE}, equipment : ["test_d_02","test_m_01","test_m_02"]};
 util_PlayerData.player2 = { id : "Test Player", health : { current : 64, max : 64}, movement : { requirement : "MAX_CARD", requirement_value : 5, type : data_MoveType.FREE, factor : data_MoveFactor.VALUE}, equipment : ["test_d_01","test_u_01","test_h_01"]};
+util_SoundUtil.sound_map = new haxe_ds_StringMap();
 util_Translation.language = "en";
 util_Translation.fonts = new haxe_ds_EnumValueMap();
 util_Translation.languages = ["en","af","sq","am","ar","hy","az","eu","be","bn","bs","bg","ca","ceb","zh","zh_CN","zh_TW","co","hr","cs","da","nl","eo","et","fi","fr","fy","gl","ka","de","el","gu","ht","ha","haw","he","hi","hmn","hu","is","ig","id","ga","it","ja","jw","kn","kk","km","ko","ku","ky","lo","la","lv","lt","lb","mk","mg","ms","ml","mt","mi","mr","mn","my","ne","no","ny","ps","fa","pl","pt","pa","ro","ru","sm","gd","sr","st","sn","sd","si","sk","sl","so","es","su","sw","sv","tl","tg","ta","te","th","tr","uk","ur","uz","vi","cy","xh","yi","yo","zu"];

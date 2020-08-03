@@ -33,7 +33,8 @@ class Deck extends Sprite {
     
     public function deal_card(data:PlayingCardData) {
         var card = new PlayingCard(this, data, Game.width/2, Game.height + 128);
-        add_card(card);
+		add_card(card);
+		DRAW_CARD.dispatch(data);
     }
 
     public function add_card(card:PlayingCard) {

@@ -3,7 +3,7 @@
 	
 	<meta title="CardTactics" package="com.sample.cardtactics" version="1.0.0" company="Company Name" />
 	<app main="Main" path="export" file="CardTactics" />
-	<window width="1280" height="720" fps="60" />
+	<window fps="60" resizeable="true" />
 	
 	<source path="src" />
 	<source path="zerolib-openfl" />

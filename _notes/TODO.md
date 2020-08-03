@@ -24,11 +24,15 @@
 - [ ] Loot
   - [ ] Create a system for populating loot per level
 
+
 # Bugs
 
 - [ ] Sometimes ColorShader doesn't respond to uMix
 
 # Completed
+
+8/3/2020
+- [x] Make resizeable
 
 7/16/2020
 - [x] Sort objects in Level

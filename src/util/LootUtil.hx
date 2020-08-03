@@ -11,6 +11,7 @@ class LootUtil {
 	}
 
 	public static function get():Null<LootData> {
+		if (loot_pool.length == 0) return null;
 		loot_pool.shuffle();
 		var out = loot_pool.shift();
 		DROP.dispatch(out);

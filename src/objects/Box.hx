@@ -1,5 +1,6 @@
 package objects;
 
+import openfl.display.DisplayObject;
 import objects.Pickup.PickupType;
 import data.Inventory;
 import zero.openfl.utilities.AnimatedSprite;

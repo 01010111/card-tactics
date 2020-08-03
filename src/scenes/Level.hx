@@ -87,9 +87,9 @@ class Level extends Scene {
 			//{ type: GEAR, id: 'test_u_01' },
 			//{ type: GEAR, id: 'test_h_01' },
 			//{ type: MEAT, amt: 5 },
-			{ type: MEAT, amt: 10 },
+			//{ type: MEAT, amt: 10 },
 			//{ type: MEAT, amt: 20 },
-			{ type: SHIELD, amt: 10 },
+			//{ type: SHIELD, amt: 10 },
 		]);
 	}
 

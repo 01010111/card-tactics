@@ -1,5 +1,6 @@
 package ui;
 
+import openfl.events.Event;
 import util.Translation;
 import zero.utilities.Ease;
 import zero.utilities.Tween;
@@ -24,19 +25,26 @@ class PlayerInfo extends Sprite {
 	var health_text_sprite:Sprite;
 	var ap_pts_text:TextField;
 	var shield_text:TextField;
+	var side:PlayerSide;
 
 	public function new(player:Player, side:PlayerSide) {
 		super();
 		this.player = player;
-		make_inventory(side);
+		this.side = side;
+		make_inventory();
 		make_avatar();
 		make_ap_pts();
 		make_health();
 		make_shield();
+		set_screen_pos();
+		set_screen_pos.listen('resize');
+	}
+	
+	function set_screen_pos(?_) {
 		this.set_position(side == LEFT ? 72 : Game.width - 72, 80);
 	}
 
-	function make_inventory(side:PlayerSide) {
+	function make_inventory() {
 		inventory = new InventorySprite(player.inventory, side);
 		this.add(inventory);
 	}

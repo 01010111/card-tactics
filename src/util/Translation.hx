@@ -13,6 +13,7 @@ class Translation {
 	static var gameplay:TranslationMap;
 	static var mutant_descriptions:TranslationMap;
 	static var tooltip_text:TranslationMap;
+	static var ui_text:TranslationMap;
 	
 	static var fonts:Map<Font, Map<String, String>> = [];
 
@@ -21,6 +22,7 @@ class Translation {
 		gameplay = map(Assets.getText('data/translations/gameplay.jsonc').parse_json());
 		mutant_descriptions = map(Assets.getText('data/translations/mutant_descriptions.jsonc').parse_json());
 		tooltip_text = map(Assets.getText('data/translations/tooltip_text.jsonc').parse_json());
+		ui_text = map(Assets.getText('data/translations/ui.jsonc').parse_json());
 
 		for (font in Font.all()) {
 			fonts.set(font, []);
@@ -58,6 +60,10 @@ class Translation {
 
 	public static function get_tooltip_text(id:String):String {
 		return tooltip_text[id][language];
+	}
+
+	public static function get_ui_text(id:String):String {
+		return ui_text[id][language];
 	}
 
 	public static function replace(str:String, v:String):String {

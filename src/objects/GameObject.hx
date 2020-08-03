@@ -6,7 +6,6 @@ import openfl.events.Event;
 import zero.utilities.Vec2;
 import zero.utilities.IntPoint;
 import zero.utilities.Tween;
-import scenes.Level;
 import openfl.events.MouseEvent;
 import openfl.display.Sprite;
 import data.Inventory;
@@ -42,6 +41,7 @@ class GameObject extends Sprite {
 		addEventListener(MouseEvent.MOUSE_OVER, mouse_over);
 		addEventListener(MouseEvent.MOUSE_OUT, mouse_out);
 		addEventListener(Event.ENTER_FRAME, (e) -> update(1/60));
+		LEVEL.sort_objects();
 	}
 
 	function mouse_over(e:MouseEvent) {
@@ -70,6 +70,11 @@ class GameObject extends Sprite {
 		update_object_map(sx, sy, x, y);
 		follow_path(path);
 		LEVEL.sort_objects();
+		OBJECT_MOVE.dispatch({
+			object: this,
+			from: { x: sx, y: sy },
+			to: { x: x, y: y }
+		});
 	}
 
 	function update_object_map(sx:Int, sy:Int, ?x:Int, ?y:Int) {
@@ -117,6 +122,7 @@ class GameObject extends Sprite {
 		LEVEL.info_layer.hide_info();
 		LEVEL.pops.fire({ x: x, y: y });
 		LEVEL.dolly.flash(Color.WHITE, 0.25, 0.25);
+		DESTROY.dispatch({ name: title });
 	}
 
 	public function pulse() {

@@ -25,14 +25,16 @@ class GearPickup extends Pickup {
 
 	override function mouse_down() {
 		if (GAMESTATE != USING_GEAR) return;
+		
 		var pos = parent.parent.localToGlobal(new Point(x, y));
+		this.remove();
+
 		var gear:GearSprite = cast new GearSprite(new Gear(new Inventory(this), 0, data)).set_position(pos.x, pos.y);
 		gear.home = [Game.width - 32 - EquipmentSprite.WIDTH/2, Game.height - 96 - EquipmentSprite.HEIGHT/2];
 		gear.draggable = true;
+		gear.active = true;
 		Tween.get(gear).from_to('scaleX', 0.25, 1).from_to('scaleY', 0.25, 1).ease(Ease.backOut).duration(0.4);
 		LEVEL.info_layer.add(gear);
-		this.remove();
-		gear.active = true;
 		GearSprite.PLACEABLE_GEAR = gear;
 		GAMESTATE = PLACING_GEAR;
 

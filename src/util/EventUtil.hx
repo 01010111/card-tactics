@@ -12,6 +12,7 @@ class EventUtil {
 }
 
 enum EventType {
+	DRAW_CARD;
 	PLAYER_TURN;
 	ENEMY_TURN;
 	ATTACK;
@@ -19,4 +20,7 @@ enum EventType {
 	SHIELD;
 	GET_GEAR;
 	DROP;
+	DESTROY;
+	USE_EQUIPMENT;
+	OBJECT_MOVE;
 }
